@@ -7,6 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6012FCB77A64332A79F84F4 /* libPods.a */; };
+		CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CB06CB6817EBA50B007323AA /* DockedAPIClient.m */; };
+		CB06CB6F17EBB625007323AA /* FeedItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB06CB6E17EBB625007323AA /* FeedItemTableViewCell.m */; };
+		CB06CB7117EBB647007323AA /* FeedItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB06CB7017EBB647007323AA /* FeedItemTableViewCell.xib */; };
+		CB429B9B17EFDAFF002273D6 /* GithubSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429B9917EFDAFF002273D6 /* GithubSettingsViewController.m */; };
+		CB429B9C17EFDAFF002273D6 /* GithubSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429B9A17EFDAFF002273D6 /* GithubSettingsViewController.xib */; };
+		CB429BA017EFDB0A002273D6 /* StripeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429B9E17EFDB0A002273D6 /* StripeSettingsViewController.m */; };
+		CB429BA117EFDB0A002273D6 /* StripeSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429B9F17EFDB0A002273D6 /* StripeSettingsViewController.xib */; };
+		CB429BA517EFDB17002273D6 /* SentrySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BA317EFDB17002273D6 /* SentrySettingsViewController.m */; };
+		CB429BA617EFDB17002273D6 /* SentrySettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BA417EFDB17002273D6 /* SentrySettingsViewController.xib */; };
+		CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BA817EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m */; };
+		CB429BAB17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BA917EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib */; };
+		CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BB317F09882002273D6 /* OAuthViewController.m */; };
+		CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BB417F09882002273D6 /* OAuthViewController.xib */; };
+		CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECE917EE894000319223 /* CredentialStore.m */; };
+		CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECEC17EE922C00319223 /* LoginViewController.m */; };
+		CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECED17EE922C00319223 /* LoginViewController.xib */; };
+		CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECF217EF7DAA00319223 /* SignupViewController.m */; };
+		CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECF317EF7DAA00319223 /* SignupViewController.xib */; };
+		CB7C2E4317F2518800BD858D /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4217F2518800BD858D /* Reveal.framework */; };
+		CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4417F251A400BD858D /* CFNetwork.framework */; };
+		CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4617F251AE00BD858D /* QuartzCore.framework */; };
+		CB7C2E4B17F26FAC00BD858D /* StripeChargeSucceeded.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */; };
+		CB7C2E4F17F288E300BD858D /* TextCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7C2E4D17F288E300BD858D /* TextCardViewController.m */; };
+		CB7C2E5017F288E300BD858D /* TextCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB7C2E4E17F288E300BD858D /* TextCardViewController.xib */; };
+		CB81579C17F0D55E006AA14A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579B17F0D55E006AA14A /* User.m */; };
+		CB81579F17F0D568006AA14A /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579E17F0D568006AA14A /* Account.m */; };
+		CB8157A217F0D72F006AA14A /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157A117F0D72F006AA14A /* Provider.m */; };
+		CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157A717F0E0B3006AA14A /* AccountViewController.m */; };
+		CB8157AA17F0E0B3006AA14A /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8157A817F0E0B3006AA14A /* AccountViewController.xib */; };
+		CB8157B417F0E5F3006AA14A /* DataCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157B217F0E5F3006AA14A /* DataCardViewController.m */; };
+		CB8157B517F0E5F3006AA14A /* DataCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8157B317F0E5F3006AA14A /* DataCardViewController.xib */; };
+		CB8157B917F0E5FB006AA14A /* GraphCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157B717F0E5FB006AA14A /* GraphCardViewController.m */; };
+		CB8157BA17F0E5FB006AA14A /* GraphCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8157B817F0E5FB006AA14A /* GraphCardViewController.xib */; };
+		CB8157BD17F0E807006AA14A /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157BC17F0E807006AA14A /* CardViewController.m */; };
+		CB84B41F17EBBF1500C8B00D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B41E17EBBF1500C8B00D /* RootViewController.m */; };
+		CB84B44F17EBEB9700C8B00D /* GithubIssueOpened.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B44E17EBEB9700C8B00D /* GithubIssueOpened.m */; };
+		CB84B45217EBEBA100C8B00D /* SentryException.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B45117EBEBA100C8B00D /* SentryException.m */; };
+		CB84B45517ECB55500C8B00D /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B45417ECB55500C8B00D /* NotificationsViewController.m */; };
 		CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209017EB5D6300EBDC34 /* Foundation.framework */; };
 		CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */; };
 		CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209417EB5D6300EBDC34 /* UIKit.framework */; };
@@ -19,6 +58,11 @@
 		CB8F20AC17EB5D6300EBDC34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209417EB5D6300EBDC34 /* UIKit.framework */; };
 		CB8F20B417EB5D6300EBDC34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB8F20B217EB5D6300EBDC34 /* InfoPlist.strings */; };
 		CB8F20B617EB5D6300EBDC34 /* Docked_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F20B517EB5D6300EBDC34 /* Docked_iosTests.m */; };
+		CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */; };
+		CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8F20D117EB851D00EBDC34 /* Media.xcassets */; };
+		CB8F20D417EB857800EBDC34 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F20D317EB857800EBDC34 /* CoreData.framework */; };
+		CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */; };
+		CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F212317EB871900EBDC34 /* FeedItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +76,68 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B6012FCB77A64332A79F84F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB06CB6717EBA50B007323AA /* DockedAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockedAPIClient.h; sourceTree = "<group>"; };
+		CB06CB6817EBA50B007323AA /* DockedAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockedAPIClient.m; sourceTree = "<group>"; };
+		CB06CB6D17EBB625007323AA /* FeedItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItemTableViewCell.h; sourceTree = "<group>"; };
+		CB06CB6E17EBB625007323AA /* FeedItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemTableViewCell.m; sourceTree = "<group>"; };
+		CB06CB7017EBB647007323AA /* FeedItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedItemTableViewCell.xib; sourceTree = "<group>"; };
+		CB429B9817EFDAFF002273D6 /* GithubSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubSettingsViewController.h; sourceTree = "<group>"; };
+		CB429B9917EFDAFF002273D6 /* GithubSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubSettingsViewController.m; sourceTree = "<group>"; };
+		CB429B9A17EFDAFF002273D6 /* GithubSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GithubSettingsViewController.xib; sourceTree = "<group>"; };
+		CB429B9D17EFDB0A002273D6 /* StripeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeSettingsViewController.h; sourceTree = "<group>"; };
+		CB429B9E17EFDB0A002273D6 /* StripeSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeSettingsViewController.m; sourceTree = "<group>"; };
+		CB429B9F17EFDB0A002273D6 /* StripeSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StripeSettingsViewController.xib; sourceTree = "<group>"; };
+		CB429BA217EFDB17002273D6 /* SentrySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentrySettingsViewController.h; sourceTree = "<group>"; };
+		CB429BA317EFDB17002273D6 /* SentrySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentrySettingsViewController.m; sourceTree = "<group>"; };
+		CB429BA417EFDB17002273D6 /* SentrySettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SentrySettingsViewController.xib; sourceTree = "<group>"; };
+		CB429BA717EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsSettingsViewController.h; sourceTree = "<group>"; };
+		CB429BA817EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsSettingsViewController.m; sourceTree = "<group>"; };
+		CB429BA917EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoogleAnalyticsSettingsViewController.xib; sourceTree = "<group>"; };
+		CB429BB217F09882002273D6 /* OAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthViewController.h; sourceTree = "<group>"; };
+		CB429BB317F09882002273D6 /* OAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthViewController.m; sourceTree = "<group>"; };
+		CB429BB417F09882002273D6 /* OAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthViewController.xib; sourceTree = "<group>"; };
+		CB5AECE817EE894000319223 /* CredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialStore.h; sourceTree = "<group>"; };
+		CB5AECE917EE894000319223 /* CredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialStore.m; sourceTree = "<group>"; };
+		CB5AECEB17EE922C00319223 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		CB5AECEC17EE922C00319223 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		CB5AECED17EE922C00319223 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		CB5AECF117EF7DAA00319223 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		CB5AECF217EF7DAA00319223 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		CB5AECF317EF7DAA00319223 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
+		CB7C2E4217F2518800BD858D /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		CB7C2E4417F251A400BD858D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CB7C2E4617F251AE00BD858D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CB7C2E4917F26FAC00BD858D /* StripeChargeSucceeded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeChargeSucceeded.h; sourceTree = "<group>"; };
+		CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeChargeSucceeded.m; sourceTree = "<group>"; };
+		CB7C2E4C17F288E300BD858D /* TextCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCardViewController.h; sourceTree = "<group>"; };
+		CB7C2E4D17F288E300BD858D /* TextCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCardViewController.m; sourceTree = "<group>"; };
+		CB7C2E4E17F288E300BD858D /* TextCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCardViewController.xib; sourceTree = "<group>"; };
+		CB81579A17F0D55E006AA14A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		CB81579B17F0D55E006AA14A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		CB81579D17F0D568006AA14A /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		CB81579E17F0D568006AA14A /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		CB8157A017F0D72F006AA14A /* Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Provider.h; sourceTree = "<group>"; };
+		CB8157A117F0D72F006AA14A /* Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Provider.m; sourceTree = "<group>"; };
+		CB8157A617F0E0B3006AA14A /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		CB8157A717F0E0B3006AA14A /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		CB8157A817F0E0B3006AA14A /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		CB8157B117F0E5F3006AA14A /* DataCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCardViewController.h; sourceTree = "<group>"; };
+		CB8157B217F0E5F3006AA14A /* DataCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCardViewController.m; sourceTree = "<group>"; };
+		CB8157B317F0E5F3006AA14A /* DataCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataCardViewController.xib; sourceTree = "<group>"; };
+		CB8157B617F0E5FB006AA14A /* GraphCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphCardViewController.h; sourceTree = "<group>"; };
+		CB8157B717F0E5FB006AA14A /* GraphCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphCardViewController.m; sourceTree = "<group>"; };
+		CB8157B817F0E5FB006AA14A /* GraphCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphCardViewController.xib; sourceTree = "<group>"; };
+		CB8157BB17F0E807006AA14A /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		CB8157BC17F0E807006AA14A /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		CB84B41D17EBBF1500C8B00D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		CB84B41E17EBBF1500C8B00D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		CB84B44D17EBEB9700C8B00D /* GithubIssueOpened.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubIssueOpened.h; sourceTree = "<group>"; };
+		CB84B44E17EBEB9700C8B00D /* GithubIssueOpened.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubIssueOpened.m; sourceTree = "<group>"; };
+		CB84B45017EBEBA100C8B00D /* SentryException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentryException.h; sourceTree = "<group>"; };
+		CB84B45117EBEBA100C8B00D /* SentryException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentryException.m; sourceTree = "<group>"; };
+		CB84B45317ECB55500C8B00D /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		CB84B45417ECB55500C8B00D /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
 		CB8F208D17EB5D6300EBDC34 /* Docked-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Docked-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8F209017EB5D6300EBDC34 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +154,14 @@
 		CB8F20B117EB5D6300EBDC34 /* Docked-iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Docked-iosTests-Info.plist"; sourceTree = "<group>"; };
 		CB8F20B317EB5D6300EBDC34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CB8F20B517EB5D6300EBDC34 /* Docked_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Docked_iosTests.m; sourceTree = "<group>"; };
+		CB8F20C117EB5FBA00EBDC34 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
+		CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
+		CB8F20D117EB851D00EBDC34 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		CB8F20D317EB857800EBDC34 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CB8F212017EB869E00EBDC34 /* docked.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = docked.xcdatamodel; sourceTree = "<group>"; };
+		CB8F212217EB871900EBDC34 /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
+		CB8F212317EB871900EBDC34 /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
+		DC84729676AF45F3A3CE10A8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +169,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
+				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
+				CB8F20D417EB857800EBDC34 /* CoreData.framework in Frameworks */,
 				CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */,
 				CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */,
+				CB7C2E4317F2518800BD858D /* Reveal.framework in Frameworks */,
 				CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */,
+				C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,13 +193,155 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB06CB6617EBA4EE007323AA /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				CB06CB6717EBA50B007323AA /* DockedAPIClient.h */,
+				CB06CB6817EBA50B007323AA /* DockedAPIClient.m */,
+			);
+			name = networking;
+			sourceTree = "<group>";
+		};
+		CB06CB6C17EBB58C007323AA /* views */ = {
+			isa = PBXGroup;
+			children = (
+				CB06CB6D17EBB625007323AA /* FeedItemTableViewCell.h */,
+				CB06CB6E17EBB625007323AA /* FeedItemTableViewCell.m */,
+				CB06CB7017EBB647007323AA /* FeedItemTableViewCell.xib */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		CB429B9317EFDAA8002273D6 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				CB429B9717EFDAC1002273D6 /* ga */,
+				CB429B9617EFDABD002273D6 /* sentry */,
+				CB429B9517EFDAB7002273D6 /* stripe */,
+				CB429B9417EFDAB2002273D6 /* github */,
+			);
+			name = services;
+			sourceTree = "<group>";
+		};
+		CB429B9417EFDAB2002273D6 /* github */ = {
+			isa = PBXGroup;
+			children = (
+				CB429B9817EFDAFF002273D6 /* GithubSettingsViewController.h */,
+				CB429B9917EFDAFF002273D6 /* GithubSettingsViewController.m */,
+				CB429B9A17EFDAFF002273D6 /* GithubSettingsViewController.xib */,
+			);
+			name = github;
+			sourceTree = "<group>";
+		};
+		CB429B9517EFDAB7002273D6 /* stripe */ = {
+			isa = PBXGroup;
+			children = (
+				CB429B9D17EFDB0A002273D6 /* StripeSettingsViewController.h */,
+				CB429B9E17EFDB0A002273D6 /* StripeSettingsViewController.m */,
+				CB429B9F17EFDB0A002273D6 /* StripeSettingsViewController.xib */,
+			);
+			name = stripe;
+			sourceTree = "<group>";
+		};
+		CB429B9617EFDABD002273D6 /* sentry */ = {
+			isa = PBXGroup;
+			children = (
+				CB429BA217EFDB17002273D6 /* SentrySettingsViewController.h */,
+				CB429BA317EFDB17002273D6 /* SentrySettingsViewController.m */,
+				CB429BA417EFDB17002273D6 /* SentrySettingsViewController.xib */,
+			);
+			name = sentry;
+			sourceTree = "<group>";
+		};
+		CB429B9717EFDAC1002273D6 /* ga */ = {
+			isa = PBXGroup;
+			children = (
+				CB429BA717EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.h */,
+				CB429BA817EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m */,
+				CB429BA917EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib */,
+			);
+			name = ga;
+			sourceTree = "<group>";
+		};
+		CB5AECE717EE88B900319223 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CB5AECE817EE894000319223 /* CredentialStore.h */,
+				CB5AECE917EE894000319223 /* CredentialStore.m */,
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
+		CB5AECF017EF7D8A00319223 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				CB5AECEB17EE922C00319223 /* LoginViewController.h */,
+				CB5AECEC17EE922C00319223 /* LoginViewController.m */,
+				CB5AECED17EE922C00319223 /* LoginViewController.xib */,
+				CB5AECF117EF7DAA00319223 /* SignupViewController.h */,
+				CB5AECF217EF7DAA00319223 /* SignupViewController.m */,
+				CB5AECF317EF7DAA00319223 /* SignupViewController.xib */,
+				CB429BB217F09882002273D6 /* OAuthViewController.h */,
+				CB429BB317F09882002273D6 /* OAuthViewController.m */,
+				CB429BB417F09882002273D6 /* OAuthViewController.xib */,
+			);
+			name = auth;
+			sourceTree = "<group>";
+		};
+		CB7C2E4817F26F9800BD858D /* stripe */ = {
+			isa = PBXGroup;
+			children = (
+				CB7C2E4917F26FAC00BD858D /* StripeChargeSucceeded.h */,
+				CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */,
+			);
+			name = stripe;
+			sourceTree = "<group>";
+		};
+		CB8157AB17F0E5D0006AA14A /* cards */ = {
+			isa = PBXGroup;
+			children = (
+				CB8157B117F0E5F3006AA14A /* DataCardViewController.h */,
+				CB8157B217F0E5F3006AA14A /* DataCardViewController.m */,
+				CB8157B317F0E5F3006AA14A /* DataCardViewController.xib */,
+				CB8157B617F0E5FB006AA14A /* GraphCardViewController.h */,
+				CB8157B717F0E5FB006AA14A /* GraphCardViewController.m */,
+				CB8157B817F0E5FB006AA14A /* GraphCardViewController.xib */,
+				CB8157BB17F0E807006AA14A /* CardViewController.h */,
+				CB8157BC17F0E807006AA14A /* CardViewController.m */,
+				CB7C2E4C17F288E300BD858D /* TextCardViewController.h */,
+				CB7C2E4D17F288E300BD858D /* TextCardViewController.m */,
+				CB7C2E4E17F288E300BD858D /* TextCardViewController.xib */,
+			);
+			name = cards;
+			sourceTree = "<group>";
+		};
+		CB84B44517EBEB3300C8B00D /* github */ = {
+			isa = PBXGroup;
+			children = (
+				CB84B44D17EBEB9700C8B00D /* GithubIssueOpened.h */,
+				CB84B44E17EBEB9700C8B00D /* GithubIssueOpened.m */,
+			);
+			name = github;
+			sourceTree = "<group>";
+		};
+		CB84B44617EBEB3C00C8B00D /* sentry */ = {
+			isa = PBXGroup;
+			children = (
+				CB84B45017EBEBA100C8B00D /* SentryException.h */,
+				CB84B45117EBEBA100C8B00D /* SentryException.m */,
+			);
+			name = sentry;
+			sourceTree = "<group>";
+		};
 		CB8F208417EB5D6300EBDC34 = {
 			isa = PBXGroup;
 			children = (
+				CB7C2E4217F2518800BD858D /* Reveal.framework */,
 				CB8F209617EB5D6300EBDC34 /* Docked-ios */,
 				CB8F20AF17EB5D6300EBDC34 /* Docked-iosTests */,
 				CB8F208F17EB5D6300EBDC34 /* Frameworks */,
 				CB8F208E17EB5D6300EBDC34 /* Products */,
+				DC84729676AF45F3A3CE10A8 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,10 +357,14 @@
 		CB8F208F17EB5D6300EBDC34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB7C2E4617F251AE00BD858D /* QuartzCore.framework */,
+				CB7C2E4417F251A400BD858D /* CFNetwork.framework */,
+				CB8F20D317EB857800EBDC34 /* CoreData.framework */,
 				CB8F209017EB5D6300EBDC34 /* Foundation.framework */,
 				CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */,
 				CB8F209417EB5D6300EBDC34 /* UIKit.framework */,
 				CB8F20A917EB5D6300EBDC34 /* XCTest.framework */,
+				B6012FCB77A64332A79F84F4 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -107,10 +372,17 @@
 		CB8F209617EB5D6300EBDC34 /* Docked-ios */ = {
 			isa = PBXGroup;
 			children = (
+				CB5AECE717EE88B900319223 /* helpers */,
+				CB06CB6C17EBB58C007323AA /* views */,
+				CB06CB6617EBA4EE007323AA /* networking */,
+				CB8F20C017EB5F8300EBDC34 /* models */,
+				CB8F20BF17EB5F7700EBDC34 /* controllers */,
 				CB8F209F17EB5D6300EBDC34 /* AppDelegate.h */,
 				CB8F20A017EB5D6300EBDC34 /* AppDelegate.m */,
 				CB8F20A217EB5D6300EBDC34 /* Images.xcassets */,
 				CB8F209717EB5D6300EBDC34 /* Supporting Files */,
+				CB8F20D117EB851D00EBDC34 /* Media.xcassets */,
+				CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */,
 			);
 			path = "Docked-ios";
 			sourceTree = "<group>";
@@ -144,6 +416,43 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CB8F20BF17EB5F7700EBDC34 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB8157AB17F0E5D0006AA14A /* cards */,
+				CB429B9317EFDAA8002273D6 /* services */,
+				CB5AECF017EF7D8A00319223 /* auth */,
+				CB8F20C117EB5FBA00EBDC34 /* FeedTableViewController.h */,
+				CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */,
+				CB84B41D17EBBF1500C8B00D /* RootViewController.h */,
+				CB84B41E17EBBF1500C8B00D /* RootViewController.m */,
+				CB84B45317ECB55500C8B00D /* NotificationsViewController.h */,
+				CB84B45417ECB55500C8B00D /* NotificationsViewController.m */,
+				CB8157A617F0E0B3006AA14A /* AccountViewController.h */,
+				CB8157A717F0E0B3006AA14A /* AccountViewController.m */,
+				CB8157A817F0E0B3006AA14A /* AccountViewController.xib */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		CB8F20C017EB5F8300EBDC34 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				CB7C2E4817F26F9800BD858D /* stripe */,
+				CB84B44617EBEB3C00C8B00D /* sentry */,
+				CB84B44517EBEB3300C8B00D /* github */,
+				CB8F212217EB871900EBDC34 /* FeedItem.h */,
+				CB8F212317EB871900EBDC34 /* FeedItem.m */,
+				CB81579A17F0D55E006AA14A /* User.h */,
+				CB81579B17F0D55E006AA14A /* User.m */,
+				CB81579D17F0D568006AA14A /* Account.h */,
+				CB81579E17F0D568006AA14A /* Account.m */,
+				CB8157A017F0D72F006AA14A /* Provider.h */,
+				CB8157A117F0D72F006AA14A /* Provider.m */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,9 +460,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB8F20B917EB5D6300EBDC34 /* Build configuration list for PBXNativeTarget "Docked-ios" */;
 			buildPhases = (
+				9E210DB2A6F44D5D95BE040C /* Check Pods Manifest.lock */,
 				CB8F208917EB5D6300EBDC34 /* Sources */,
 				CB8F208A17EB5D6300EBDC34 /* Frameworks */,
 				CB8F208B17EB5D6300EBDC34 /* Resources */,
+				80D86CE6C1A84610A5998B32 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,7 +530,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB429BA117EFDB0A002273D6 /* StripeSettingsViewController.xib in Resources */,
+				CB429BAB17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib in Resources */,
+				CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */,
+				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
+				CB06CB7117EBB647007323AA /* FeedItemTableViewCell.xib in Resources */,
+				CB429B9C17EFDAFF002273D6 /* GithubSettingsViewController.xib in Resources */,
+				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
+				CB429BA617EFDB17002273D6 /* SentrySettingsViewController.xib in Resources */,
+				CB7C2E5017F288E300BD858D /* TextCardViewController.xib in Resources */,
+				CB8157B517F0E5F3006AA14A /* DataCardViewController.xib in Resources */,
+				CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */,
+				CB8157BA17F0E5FB006AA14A /* GraphCardViewController.xib in Resources */,
+				CB8157AA17F0E0B3006AA14A /* AccountViewController.xib in Resources */,
 				CB8F20A317EB5D6300EBDC34 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,13 +558,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		80D86CE6C1A84610A5998B32 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E210DB2A6F44D5D95BE040C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CB8F208917EB5D6300EBDC34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7C2E4B17F26FAC00BD858D /* StripeChargeSucceeded.m in Sources */,
+				CB7C2E4F17F288E300BD858D /* TextCardViewController.m in Sources */,
+				CB81579C17F0D55E006AA14A /* User.m in Sources */,
+				CB8157B417F0E5F3006AA14A /* DataCardViewController.m in Sources */,
+				CB429BA517EFDB17002273D6 /* SentrySettingsViewController.m in Sources */,
+				CB8157A217F0D72F006AA14A /* Provider.m in Sources */,
+				CB8157BD17F0E807006AA14A /* CardViewController.m in Sources */,
+				CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */,
+				CB429BA017EFDB0A002273D6 /* StripeSettingsViewController.m in Sources */,
 				CB8F20A117EB5D6300EBDC34 /* AppDelegate.m in Sources */,
+				CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */,
+				CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */,
+				CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */,
+				CB429B9B17EFDAFF002273D6 /* GithubSettingsViewController.m in Sources */,
+				CB84B45517ECB55500C8B00D /* NotificationsViewController.m in Sources */,
+				CB84B41F17EBBF1500C8B00D /* RootViewController.m in Sources */,
+				CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */,
+				CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */,
+				CB84B45217EBEBA100C8B00D /* SentryException.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
+				CB06CB6F17EBB625007323AA /* FeedItemTableViewCell.m in Sources */,
+				CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */,
+				CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */,
+				CB84B44F17EBEB9700C8B00D /* GithubIssueOpened.m in Sources */,
+				CB81579F17F0D568006AA14A /* Account.m in Sources */,
+				CB8157B917F0E5FB006AA14A /* GraphCardViewController.m in Sources */,
+				CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */,
+				CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,9 +739,14 @@
 		};
 		CB8F20BA17EB5D6300EBDC34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC84729676AF45F3A3CE10A8 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Docked-ios-Prefix.pch";
 				INFOPLIST_FILE = "Docked-ios/Docked-ios-Info.plist";
@@ -369,9 +757,14 @@
 		};
 		CB8F20BB17EB5D6300EBDC34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC84729676AF45F3A3CE10A8 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Docked-ios-Prefix.pch";
 				INFOPLIST_FILE = "Docked-ios/Docked-ios-Info.plist";
@@ -441,6 +834,7 @@
 				CB8F20BB17EB5D6300EBDC34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB8F20BC17EB5D6300EBDC34 /* Build configuration list for PBXNativeTarget "Docked-iosTests" */ = {
 			isa = XCConfigurationList;
@@ -449,8 +843,22 @@
 				CB8F20BE17EB5D6300EBDC34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CB8F212017EB869E00EBDC34 /* docked.xcdatamodel */,
+			);
+			currentVersion = CB8F212017EB869E00EBDC34 /* docked.xcdatamodel */;
+			path = docked.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CB8F208517EB5D6300EBDC34 /* Project object */;
 }

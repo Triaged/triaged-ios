@@ -7,9 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Account.h"
+#import "SWRevealViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class SWRevealViewController;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) Account *userAccount;
+
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+- (void)saveContext;
+- (NSURL *)applicationDocumentsDirectory;
+
+//nestedView.center = [window convertPoint:windowMidPoint ToView:nestedView];
 
 @end
