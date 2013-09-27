@@ -34,9 +34,4 @@
     return [TextCardViewController class];
 }
 
--(UIImage *)icon {
-    UIImage *icon = [UIImage imageNamed:@"github.png"];
-    return icon;
-}
-
 @end

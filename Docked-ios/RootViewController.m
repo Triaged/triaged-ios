@@ -38,6 +38,16 @@
     [super viewDidLoad];
     //[self setNavigationBarHidden:YES animated:NO];
    self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:204.0f/255.0f green:207.0f/255.0f blue:207.0f/255.0f alpha:1.0f];
+
+    for (UIView *view in self.navigationController.navigationBar.subviews) {
+        for (UIView *view2 in view.subviews) {
+            if ([view2 isKindOfClass:[UIImageView class]]) {
+                [view2 removeFromSuperview];
+            }
+        }
+    }
+    
+    
     self.view.backgroundColor = [[UIColor alloc] initWithRed:204.0f/255.0f green:207.0f/255.0f blue:207.0f/255.0f alpha:1.0f];
 
     self.navigationController.navigationBar.translucent = NO; 

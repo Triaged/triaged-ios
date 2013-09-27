@@ -11,8 +11,8 @@
 
 @interface FeedItem : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy, readonly) NSString *title;
-@property (nonatomic, copy, readonly) NSString *body;
+@property (nonatomic, copy, readonly) NSString *externalID;
+
 
 -(NSString *) eventName;
 -(NSString *)titleLabel;

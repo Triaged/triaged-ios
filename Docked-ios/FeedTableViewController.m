@@ -10,8 +10,7 @@
 #import "DockedAPIClient.h"
 #import "FeedItem.h"
 #import "FeedItemTableViewCell.h"
-#import "TextCardViewController.h"
-#import "RNBlurModalView.h"
+#import "DetailViewController.h"
 
 @interface FeedTableViewController () {
     NSMutableArray *_objects;
@@ -54,7 +53,7 @@
 
 -(void)loadFeedItems {
     
-    [[DockedAPIClient sharedClient] GET:@"feed/mock.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
+    [[DockedAPIClient sharedClient] GET:@"feed.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
         NSArray *results = [JSON valueForKeyPath:@"feed"];
         NSValueTransformer *transformer;
         transformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:FeedItem.class];
@@ -120,12 +119,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FeedItem *item = _objects[indexPath.row];
 //    CardViewController detailClass = (Class)[item detailViewControllerClass];
-    TextCardViewController *detailVC = [[TextCardViewController alloc] init];
+    DetailViewController *detailVC = [[DetailViewController alloc] init];
     [detailVC setDetailItem:item];
     
     //[navController presentViewController:detailVC animated:YES completion:nil];
-    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self view:detailVC.view];
-    [modal show];
+    
+    [navController pushViewController:detailVC animated:YES];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 

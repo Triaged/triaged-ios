@@ -9,6 +9,7 @@
 #import "FeedItem.h"
 #import "SentryException.h"
 #import "GithubIssueOpened.h"
+#import "GithubPush.h"
 #import "StripeChargeSucceeded.h"
 
 
@@ -20,9 +21,12 @@
 
 + (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary {
     if ([JSONDictionary[@"provider"]  isEqual: @"github"]) {
-         if ([JSONDictionary[@"event"]  isEqual: @"issue_opened"]) {
-             return GithubIssueOpened.class;
-         }
+        if ([JSONDictionary[@"event"]  isEqual: @"push"]) {
+            return GithubPush.class;
+        }
+        if ([JSONDictionary[@"event"]  isEqual: @"issue_opened"]) {
+         return GithubIssueOpened.class;
+        }
     }
     
     if ([JSONDictionary[@"provider"]  isEqual: @"sentry"]) {
