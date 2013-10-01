@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Github.h"
 
-@interface GithubCommit : Github
+@interface GithubCommit : MTLModel
 
 @property (nonatomic, copy, readonly) NSString *author;
 @property (nonatomic, copy, readonly) NSString *authorEmail;

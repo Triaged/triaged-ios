@@ -11,6 +11,8 @@
 #import "GithubIssueOpened.h"
 #import "GithubPush.h"
 #import "StripeChargeSucceeded.h"
+#import "TextCardCell.h"
+#import "DockedAPIClient.h"
 
 
 @implementation FeedItem
@@ -44,5 +46,33 @@
     NSAssert(NO, @"No matching class for the JSON dictionary '%@'.", JSONDictionary);
     return self;
 }
+
+-(Class)tableViewCellClass {
+    return [TextCardCell class];
+}
+
+-(NSString *)externalLinkUrl {
+    return @"http://google.com";
+}
+
++ (NSValueTransformer *)messagesJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[Message class]];
+}
+
++(NSMutableArray *)loadFeedItems {
+    __block NSMutableArray *feedItems;
+    [[DockedAPIClient sharedClient] GET:@"feed.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
+        NSArray *results = [JSON valueForKeyPath:@"feed"];
+        NSValueTransformer *transformer;
+        transformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:FeedItem.class];
+        feedItems = [[NSMutableArray alloc] initWithArray:[transformer transformedValue:results]];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"failure");
+        feedItems = [[NSMutableArray alloc] init];
+    }];
+    return feedItems;
+}
+
 
 @end

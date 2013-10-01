@@ -12,4 +12,6 @@
 
 + (instancetype)sharedClient;
 
+- (void) fetchRemoteUserAccount;
+
 @end

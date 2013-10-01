@@ -8,6 +8,9 @@
 
 #import "DockedAPIClient.h"
 #import "CredentialStore.h"
+#import "AppDelegate.h"
+#import "Account.h"
+#import "Mantle.h"
 
 static NSString * const DockedAPIBaseURLString = @"http://docked-rails.herokuapp.com/api/v1/";
 
@@ -33,10 +36,29 @@ static NSString * const DockedAPIBaseURLString = @"http://docked-rails.herokuapp
                                                  selector:@selector(tokenChanged:)
                                                      name:@"token-changed"
                                                    object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(fetchRemoteUserAccount)
+                                                     name:@"login"
+                                                   object:nil];
        
     }
     return self;
 }
+
+- (void) fetchRemoteUserAccount {
+    [[DockedAPIClient sharedClient] GET:@"account.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
+        NSDictionary *results = [JSON valueForKeyPath:@"account"];
+        NSValueTransformer *transformer;
+        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
+        
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        appDelegate.userAccount = [transformer transformedValue:results];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"failure");
+    }];
+    
+}
+
 
 
 - (void)setAuthTokenHeader {

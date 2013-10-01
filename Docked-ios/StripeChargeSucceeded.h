@@ -11,7 +11,6 @@
 
 @interface StripeChargeSucceeded : FeedItem
 
-@property (nonatomic, copy, readonly) NSString *serverID;
 @property (nonatomic, copy, readonly) NSString *amount;
 
 

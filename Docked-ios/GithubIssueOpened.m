@@ -7,7 +7,6 @@
 //
 
 #import "GithubIssueOpened.h"
-#import "TextCardViewController.h"
 
 @implementation GithubIssueOpened
 
@@ -22,16 +21,14 @@
     };
 }
 
+
+
 -(NSString *)titleLabel {
     return @"Issue Opened";
 }
 
 -(NSString *)bodyLabel {
     return self.title;
-}
-
--(Class)detailViewControllerClass {
-    return [TextCardViewController class];
 }
 
 @end

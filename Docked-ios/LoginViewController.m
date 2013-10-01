@@ -48,7 +48,7 @@
                   @"password": self.passwordTextField.text
                   }};
     
-    [[DockedAPIClient sharedClient] POST:@"/api/v1/users/sign_in.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
+    [[DockedAPIClient sharedClient] POST:@"users/sign_in.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
         
         NSString *authToken = [JSON valueForKeyPath:@"auth_token"];
         [[CredentialStore sharedClient] setAuthToken:authToken];

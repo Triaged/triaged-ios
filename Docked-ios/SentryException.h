@@ -11,7 +11,6 @@
 
 @interface SentryException : FeedItem
 
-@property (nonatomic, copy, readonly) NSString *sentryExceptionID;
 @property (nonatomic, copy, readonly) NSString *project;
 @property (nonatomic, copy, readonly) NSString *message;
 @property (nonatomic, copy, readonly) NSString *culprit;

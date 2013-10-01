@@ -7,6 +7,7 @@
 //
 
 #import "MessageTabViewController.h"
+#import "DetailViewController.h"
 
 @interface MessageTabViewController ()
 
@@ -26,7 +27,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"Touches Began");
+    DetailViewController *detailVC = (DetailViewController *)self.parentViewController;
+    [detailVC presentNewMessageVC];
+    
 }
 
 - (void)didReceiveMemoryWarning

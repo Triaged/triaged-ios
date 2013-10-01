@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6012FCB77A64332A79F84F4 /* libPods.a */; };
 		CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CB06CB6817EBA50B007323AA /* DockedAPIClient.m */; };
-		CB06CB6F17EBB625007323AA /* FeedItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB06CB6E17EBB625007323AA /* FeedItemTableViewCell.m */; };
-		CB06CB7117EBB647007323AA /* FeedItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB06CB7017EBB647007323AA /* FeedItemTableViewCell.xib */; };
 		CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906317F34E8500F706BE /* StoreKit.framework */; };
 		CB0B906617F34E9000F706BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906517F34E9000F706BE /* GameKit.framework */; };
 		CB0B906817F34E9500F706BE /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906717F34E9500F706BE /* PassKit.framework */; };
@@ -39,18 +37,11 @@
 		CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4417F251A400BD858D /* CFNetwork.framework */; };
 		CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4617F251AE00BD858D /* QuartzCore.framework */; };
 		CB7C2E4B17F26FAC00BD858D /* StripeChargeSucceeded.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */; };
-		CB7C2E4F17F288E300BD858D /* TextCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7C2E4D17F288E300BD858D /* TextCardViewController.m */; };
-		CB7C2E5017F288E300BD858D /* TextCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB7C2E4E17F288E300BD858D /* TextCardViewController.xib */; };
 		CB81579C17F0D55E006AA14A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579B17F0D55E006AA14A /* User.m */; };
 		CB81579F17F0D568006AA14A /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579E17F0D568006AA14A /* Account.m */; };
 		CB8157A217F0D72F006AA14A /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157A117F0D72F006AA14A /* Provider.m */; };
 		CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157A717F0E0B3006AA14A /* AccountViewController.m */; };
 		CB8157AA17F0E0B3006AA14A /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8157A817F0E0B3006AA14A /* AccountViewController.xib */; };
-		CB8157B417F0E5F3006AA14A /* DataCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157B217F0E5F3006AA14A /* DataCardViewController.m */; };
-		CB8157B517F0E5F3006AA14A /* DataCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8157B317F0E5F3006AA14A /* DataCardViewController.xib */; };
-		CB8157B917F0E5FB006AA14A /* GraphCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157B717F0E5FB006AA14A /* GraphCardViewController.m */; };
-		CB8157BA17F0E5FB006AA14A /* GraphCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8157B817F0E5FB006AA14A /* GraphCardViewController.xib */; };
-		CB8157BD17F0E807006AA14A /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157BC17F0E807006AA14A /* CardViewController.m */; };
 		CB84B41F17EBBF1500C8B00D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B41E17EBBF1500C8B00D /* RootViewController.m */; };
 		CB84B44F17EBEB9700C8B00D /* GithubIssueOpened.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B44E17EBEB9700C8B00D /* GithubIssueOpened.m */; };
 		CB84B45217EBEBA100C8B00D /* SentryException.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B45117EBEBA100C8B00D /* SentryException.m */; };
@@ -61,7 +52,6 @@
 		CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB8F209917EB5D6300EBDC34 /* InfoPlist.strings */; };
 		CB8F209D17EB5D6300EBDC34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F209C17EB5D6300EBDC34 /* main.m */; };
 		CB8F20A117EB5D6300EBDC34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F20A017EB5D6300EBDC34 /* AppDelegate.m */; };
-		CB8F20A317EB5D6300EBDC34 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8F20A217EB5D6300EBDC34 /* Images.xcassets */; };
 		CB8F20AA17EB5D6300EBDC34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F20A917EB5D6300EBDC34 /* XCTest.framework */; };
 		CB8F20AB17EB5D6300EBDC34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209017EB5D6300EBDC34 /* Foundation.framework */; };
 		CB8F20AC17EB5D6300EBDC34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209417EB5D6300EBDC34 /* UIKit.framework */; };
@@ -72,6 +62,21 @@
 		CB8F20D417EB857800EBDC34 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F20D317EB857800EBDC34 /* CoreData.framework */; };
 		CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */; };
 		CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F212317EB871900EBDC34 /* FeedItem.m */; };
+		CBD43EFB17F8B221001AC849 /* TextCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFA17F8B221001AC849 /* TextCardCell.m */; };
+		CBD43EFD17F8B238001AC849 /* TextCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD43EFC17F8B238001AC849 /* TextCardCell.xib */; };
+		CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFF17F8B54B001AC849 /* DataCardCell.m */; };
+		CBD43F0317F8B554001AC849 /* GraphDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F0217F8B554001AC849 /* GraphDataCell.m */; };
+		CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F0517F8B63B001AC849 /* CardCell.m */; };
+		CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */; };
+		CBD43F3317F9DAEF001AC849 /* AMPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3217F9DAEF001AC849 /* AMPNavigationBar.m */; };
+		CBD43F3917F9F4A0001AC849 /* ExternalLinkViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3717F9F49F001AC849 /* ExternalLinkViewViewController.m */; };
+		CBD43F3A17F9F4A0001AC849 /* ExternalLinkViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD43F3817F9F49F001AC849 /* ExternalLinkViewViewController.xib */; };
+		CBD43F3F17FA12A4001AC849 /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */; };
+		CBD43F4017FA12A4001AC849 /* NewMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD43F3E17FA12A4001AC849 /* NewMessageViewController.xib */; };
+		CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */; };
+		CBD43F4E17FA3A49001AC849 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F4D17FA3A49001AC849 /* Message.m */; };
+		CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F5017FA63E9001AC849 /* MessageCell.m */; };
+		CBD43F5317FA63FB001AC849 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD43F5217FA63FB001AC849 /* MessageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,9 +93,6 @@
 		B6012FCB77A64332A79F84F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB06CB6717EBA50B007323AA /* DockedAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockedAPIClient.h; sourceTree = "<group>"; };
 		CB06CB6817EBA50B007323AA /* DockedAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockedAPIClient.m; sourceTree = "<group>"; };
-		CB06CB6D17EBB625007323AA /* FeedItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItemTableViewCell.h; sourceTree = "<group>"; };
-		CB06CB6E17EBB625007323AA /* FeedItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemTableViewCell.m; sourceTree = "<group>"; };
-		CB06CB7017EBB647007323AA /* FeedItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedItemTableViewCell.xib; sourceTree = "<group>"; };
 		CB0B906317F34E8500F706BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CB0B906517F34E9000F706BE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CB0B906717F34E9500F706BE /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
@@ -134,9 +136,6 @@
 		CB7C2E4617F251AE00BD858D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB7C2E4917F26FAC00BD858D /* StripeChargeSucceeded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeChargeSucceeded.h; sourceTree = "<group>"; };
 		CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeChargeSucceeded.m; sourceTree = "<group>"; };
-		CB7C2E4C17F288E300BD858D /* TextCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCardViewController.h; sourceTree = "<group>"; };
-		CB7C2E4D17F288E300BD858D /* TextCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCardViewController.m; sourceTree = "<group>"; };
-		CB7C2E4E17F288E300BD858D /* TextCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCardViewController.xib; sourceTree = "<group>"; };
 		CB81579A17F0D55E006AA14A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		CB81579B17F0D55E006AA14A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		CB81579D17F0D568006AA14A /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -146,14 +145,6 @@
 		CB8157A617F0E0B3006AA14A /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		CB8157A717F0E0B3006AA14A /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		CB8157A817F0E0B3006AA14A /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
-		CB8157B117F0E5F3006AA14A /* DataCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCardViewController.h; sourceTree = "<group>"; };
-		CB8157B217F0E5F3006AA14A /* DataCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCardViewController.m; sourceTree = "<group>"; };
-		CB8157B317F0E5F3006AA14A /* DataCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataCardViewController.xib; sourceTree = "<group>"; };
-		CB8157B617F0E5FB006AA14A /* GraphCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphCardViewController.h; sourceTree = "<group>"; };
-		CB8157B717F0E5FB006AA14A /* GraphCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphCardViewController.m; sourceTree = "<group>"; };
-		CB8157B817F0E5FB006AA14A /* GraphCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphCardViewController.xib; sourceTree = "<group>"; };
-		CB8157BB17F0E807006AA14A /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
-		CB8157BC17F0E807006AA14A /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		CB84B41D17EBBF1500C8B00D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		CB84B41E17EBBF1500C8B00D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		CB84B44D17EBEB9700C8B00D /* GithubIssueOpened.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubIssueOpened.h; sourceTree = "<group>"; };
@@ -172,7 +163,6 @@
 		CB8F209E17EB5D6300EBDC34 /* Docked-ios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Docked-ios-Prefix.pch"; sourceTree = "<group>"; };
 		CB8F209F17EB5D6300EBDC34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB8F20A017EB5D6300EBDC34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CB8F20A217EB5D6300EBDC34 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB8F20A817EB5D6300EBDC34 /* Docked-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Docked-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8F20A917EB5D6300EBDC34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CB8F20B117EB5D6300EBDC34 /* Docked-iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Docked-iosTests-Info.plist"; sourceTree = "<group>"; };
@@ -185,6 +175,32 @@
 		CB8F212017EB869E00EBDC34 /* docked.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = docked.xcdatamodel; sourceTree = "<group>"; };
 		CB8F212217EB871900EBDC34 /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
 		CB8F212317EB871900EBDC34 /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
+		CBD43EF917F8B221001AC849 /* TextCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCardCell.h; sourceTree = "<group>"; };
+		CBD43EFA17F8B221001AC849 /* TextCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCardCell.m; sourceTree = "<group>"; };
+		CBD43EFC17F8B238001AC849 /* TextCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCardCell.xib; sourceTree = "<group>"; };
+		CBD43EFE17F8B54B001AC849 /* DataCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCardCell.h; sourceTree = "<group>"; };
+		CBD43EFF17F8B54B001AC849 /* DataCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCardCell.m; sourceTree = "<group>"; };
+		CBD43F0117F8B554001AC849 /* GraphDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDataCell.h; sourceTree = "<group>"; };
+		CBD43F0217F8B554001AC849 /* GraphDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDataCell.m; sourceTree = "<group>"; };
+		CBD43F0417F8B63B001AC849 /* CardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCell.h; sourceTree = "<group>"; };
+		CBD43F0517F8B63B001AC849 /* CardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCell.m; sourceTree = "<group>"; };
+		CBD43F2E17F918A9001AC849 /* SmokescreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmokescreenViewController.h; sourceTree = "<group>"; };
+		CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmokescreenViewController.m; sourceTree = "<group>"; };
+		CBD43F3117F9DAEF001AC849 /* AMPNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPNavigationBar.h; sourceTree = "<group>"; };
+		CBD43F3217F9DAEF001AC849 /* AMPNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPNavigationBar.m; sourceTree = "<group>"; };
+		CBD43F3617F9F49F001AC849 /* ExternalLinkViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalLinkViewViewController.h; sourceTree = "<group>"; };
+		CBD43F3717F9F49F001AC849 /* ExternalLinkViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalLinkViewViewController.m; sourceTree = "<group>"; };
+		CBD43F3817F9F49F001AC849 /* ExternalLinkViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExternalLinkViewViewController.xib; sourceTree = "<group>"; };
+		CBD43F3C17FA12A4001AC849 /* NewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
+		CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
+		CBD43F3E17FA12A4001AC849 /* NewMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewMessageViewController.xib; sourceTree = "<group>"; };
+		CBD43F4117FA12BE001AC849 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
+		CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
+		CBD43F4C17FA3A49001AC849 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		CBD43F4D17FA3A49001AC849 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		CBD43F4F17FA63E9001AC849 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		CBD43F5017FA63E9001AC849 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		CBD43F5217FA63FB001AC849 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		DC84729676AF45F3A3CE10A8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -229,25 +245,17 @@
 			name = networking;
 			sourceTree = "<group>";
 		};
-		CB06CB6C17EBB58C007323AA /* views */ = {
-			isa = PBXGroup;
-			children = (
-				CB06CB6D17EBB625007323AA /* FeedItemTableViewCell.h */,
-				CB06CB6E17EBB625007323AA /* FeedItemTableViewCell.m */,
-				CB06CB7017EBB647007323AA /* FeedItemTableViewCell.xib */,
-			);
-			name = views;
-			sourceTree = "<group>";
-		};
 		CB0B906D17F4FA2A00F706BE /* detail */ = {
 			isa = PBXGroup;
 			children = (
-				CB8157AB17F0E5D0006AA14A /* cards */,
+				CBD43F3B17FA1287001AC849 /* messages */,
 				CB0B906A17F4F47E00F706BE /* DetailViewController.h */,
 				CB0B906B17F4F47E00F706BE /* DetailViewController.m */,
-				CB0B906F17F4FA7A00F706BE /* MessageTabViewController.h */,
-				CB0B907017F4FA7A00F706BE /* MessageTabViewController.m */,
-				CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */,
+				CBD43F2E17F918A9001AC849 /* SmokescreenViewController.h */,
+				CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */,
+				CBD43F3617F9F49F001AC849 /* ExternalLinkViewViewController.h */,
+				CBD43F3717F9F49F001AC849 /* ExternalLinkViewViewController.m */,
+				CBD43F3817F9F49F001AC849 /* ExternalLinkViewViewController.xib */,
 			);
 			name = detail;
 			sourceTree = "<group>";
@@ -320,6 +328,8 @@
 			children = (
 				CB5AECE817EE894000319223 /* CredentialStore.h */,
 				CB5AECE917EE894000319223 /* CredentialStore.m */,
+				CBD43F3117F9DAEF001AC849 /* AMPNavigationBar.h */,
+				CBD43F3217F9DAEF001AC849 /* AMPNavigationBar.m */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -347,24 +357,6 @@
 				CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */,
 			);
 			name = stripe;
-			sourceTree = "<group>";
-		};
-		CB8157AB17F0E5D0006AA14A /* cards */ = {
-			isa = PBXGroup;
-			children = (
-				CB8157B117F0E5F3006AA14A /* DataCardViewController.h */,
-				CB8157B217F0E5F3006AA14A /* DataCardViewController.m */,
-				CB8157B317F0E5F3006AA14A /* DataCardViewController.xib */,
-				CB8157B617F0E5FB006AA14A /* GraphCardViewController.h */,
-				CB8157B717F0E5FB006AA14A /* GraphCardViewController.m */,
-				CB8157B817F0E5FB006AA14A /* GraphCardViewController.xib */,
-				CB8157BB17F0E807006AA14A /* CardViewController.h */,
-				CB8157BC17F0E807006AA14A /* CardViewController.m */,
-				CB7C2E4C17F288E300BD858D /* TextCardViewController.h */,
-				CB7C2E4D17F288E300BD858D /* TextCardViewController.m */,
-				CB7C2E4E17F288E300BD858D /* TextCardViewController.xib */,
-			);
-			name = cards;
 			sourceTree = "<group>";
 		};
 		CB84B44517EBEB3300C8B00D /* github */ = {
@@ -433,15 +425,14 @@
 		CB8F209617EB5D6300EBDC34 /* Docked-ios */ = {
 			isa = PBXGroup;
 			children = (
+				CBD43EF817F8B200001AC849 /* cells */,
 				CB0B906917F34E9500F706BE /* Docked-ios.entitlements */,
 				CB5AECE717EE88B900319223 /* helpers */,
-				CB06CB6C17EBB58C007323AA /* views */,
 				CB06CB6617EBA4EE007323AA /* networking */,
 				CB8F20C017EB5F8300EBDC34 /* models */,
 				CB8F20BF17EB5F7700EBDC34 /* controllers */,
 				CB8F209F17EB5D6300EBDC34 /* AppDelegate.h */,
 				CB8F20A017EB5D6300EBDC34 /* AppDelegate.m */,
-				CB8F20A217EB5D6300EBDC34 /* Images.xcassets */,
 				CB8F209717EB5D6300EBDC34 /* Supporting Files */,
 				CB8F20D117EB851D00EBDC34 /* Media.xcassets */,
 				CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */,
@@ -507,8 +498,44 @@
 				CB81579E17F0D568006AA14A /* Account.m */,
 				CB8157A017F0D72F006AA14A /* Provider.h */,
 				CB8157A117F0D72F006AA14A /* Provider.m */,
+				CBD43F4C17FA3A49001AC849 /* Message.h */,
+				CBD43F4D17FA3A49001AC849 /* Message.m */,
 			);
 			name = models;
+			sourceTree = "<group>";
+		};
+		CBD43EF817F8B200001AC849 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				CBD43EF917F8B221001AC849 /* TextCardCell.h */,
+				CBD43EFA17F8B221001AC849 /* TextCardCell.m */,
+				CBD43EFC17F8B238001AC849 /* TextCardCell.xib */,
+				CBD43EFE17F8B54B001AC849 /* DataCardCell.h */,
+				CBD43EFF17F8B54B001AC849 /* DataCardCell.m */,
+				CBD43F0117F8B554001AC849 /* GraphDataCell.h */,
+				CBD43F0217F8B554001AC849 /* GraphDataCell.m */,
+				CBD43F0417F8B63B001AC849 /* CardCell.h */,
+				CBD43F0517F8B63B001AC849 /* CardCell.m */,
+				CBD43F4F17FA63E9001AC849 /* MessageCell.h */,
+				CBD43F5017FA63E9001AC849 /* MessageCell.m */,
+				CBD43F5217FA63FB001AC849 /* MessageCell.xib */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		CBD43F3B17FA1287001AC849 /* messages */ = {
+			isa = PBXGroup;
+			children = (
+				CB0B906F17F4FA7A00F706BE /* MessageTabViewController.h */,
+				CB0B907017F4FA7A00F706BE /* MessageTabViewController.m */,
+				CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */,
+				CBD43F3C17FA12A4001AC849 /* NewMessageViewController.h */,
+				CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */,
+				CBD43F3E17FA12A4001AC849 /* NewMessageViewController.xib */,
+				CBD43F4117FA12BE001AC849 /* MessagesTableViewController.h */,
+				CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */,
+			);
+			name = messages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -606,18 +633,17 @@
 				CB429BAB17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib in Resources */,
 				CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */,
 				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
-				CB06CB7117EBB647007323AA /* FeedItemTableViewCell.xib in Resources */,
 				CB429B9C17EFDAFF002273D6 /* GithubSettingsViewController.xib in Resources */,
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
+				CBD43F3A17F9F4A0001AC849 /* ExternalLinkViewViewController.xib in Resources */,
+				CBD43F4017FA12A4001AC849 /* NewMessageViewController.xib in Resources */,
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
+				CBD43EFD17F8B238001AC849 /* TextCardCell.xib in Resources */,
+				CBD43F5317FA63FB001AC849 /* MessageCell.xib in Resources */,
 				CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */,
 				CB429BA617EFDB17002273D6 /* SentrySettingsViewController.xib in Resources */,
-				CB7C2E5017F288E300BD858D /* TextCardViewController.xib in Resources */,
-				CB8157B517F0E5F3006AA14A /* DataCardViewController.xib in Resources */,
 				CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */,
-				CB8157BA17F0E5FB006AA14A /* GraphCardViewController.xib in Resources */,
 				CB8157AA17F0E0B3006AA14A /* AccountViewController.xib in Resources */,
-				CB8F20A317EB5D6300EBDC34 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,37 +696,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB7C2E4B17F26FAC00BD858D /* StripeChargeSucceeded.m in Sources */,
-				CB7C2E4F17F288E300BD858D /* TextCardViewController.m in Sources */,
 				CB81579C17F0D55E006AA14A /* User.m in Sources */,
 				CB6ED88D17F5EC9B00496244 /* Github.m in Sources */,
-				CB8157B417F0E5F3006AA14A /* DataCardViewController.m in Sources */,
 				CB0B907217F4FA7A00F706BE /* MessageTabViewController.m in Sources */,
 				CB429BA517EFDB17002273D6 /* SentrySettingsViewController.m in Sources */,
 				CB8157A217F0D72F006AA14A /* Provider.m in Sources */,
 				CB6ED88717F5EBFF00496244 /* GithubPush.m in Sources */,
-				CB8157BD17F0E807006AA14A /* CardViewController.m in Sources */,
+				CBD43F0317F8B554001AC849 /* GraphDataCell.m in Sources */,
 				CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */,
+				CBD43F4E17FA3A49001AC849 /* Message.m in Sources */,
 				CB429BA017EFDB0A002273D6 /* StripeSettingsViewController.m in Sources */,
+				CBD43EFB17F8B221001AC849 /* TextCardCell.m in Sources */,
 				CB8F20A117EB5D6300EBDC34 /* AppDelegate.m in Sources */,
 				CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */,
+				CBD43F3F17FA12A4001AC849 /* NewMessageViewController.m in Sources */,
+				CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */,
 				CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */,
 				CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */,
 				CB429B9B17EFDAFF002273D6 /* GithubSettingsViewController.m in Sources */,
 				CB84B45517ECB55500C8B00D /* NotificationsViewController.m in Sources */,
 				CB84B41F17EBBF1500C8B00D /* RootViewController.m in Sources */,
 				CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */,
+				CBD43F3317F9DAEF001AC849 /* AMPNavigationBar.m in Sources */,
+				CBD43F3917F9F4A0001AC849 /* ExternalLinkViewViewController.m in Sources */,
 				CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */,
 				CB84B45217EBEBA100C8B00D /* SentryException.m in Sources */,
+				CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */,
+				CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */,
 				CB6ED88A17F5EC3900496244 /* GithubCommit.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
-				CB06CB6F17EBB625007323AA /* FeedItemTableViewCell.m in Sources */,
 				CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */,
 				CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */,
 				CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */,
 				CB84B44F17EBEB9700C8B00D /* GithubIssueOpened.m in Sources */,
+				CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */,
 				CB81579F17F0D568006AA14A /* Account.m in Sources */,
-				CB8157B917F0E5FB006AA14A /* GraphCardViewController.m in Sources */,
 				CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */,
+				CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */,
 				CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

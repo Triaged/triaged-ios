@@ -7,7 +7,7 @@
 //
 
 #import "GithubPush.h"
-#import "TextCardViewController.h"
+#import "TextCardCell.h"
 
 @implementation GithubPush
 
@@ -15,25 +15,33 @@
     return @{
              @"externalID": @"id",
              @"pusher": @"pusher",
-             @"branch": @"branch"
+             @"branch": @"branch",
+             @"url": @"url"
              };
 }
 
-+ (NSValueTransformer *)commitsTransformer
-{
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[GithubCommit class]];
-}
+//+ (NSValueTransformer *)commitsJSONTransformer
+//{
+//    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[GithubCommit class]];
+//}
+
+
+
+
+
 
 -(NSString *)titleLabel {
-    return @"Push";
+    return @"Github-ios";
 }
 
 -(NSString *)bodyLabel {
-    return [NSString stringWithFormat:@" %@ pushed to branch: %@", self.pusher, self.branch];
+    return [NSString stringWithFormat:@"%@ pushed to %@", self.pusher, self.branch];
 }
 
--(Class)detailViewControllerClass {
-    return [TextCardViewController class];
+-(NSString *)externalLinkUrl {
+    return self.url;
 }
+
+
 
 @end

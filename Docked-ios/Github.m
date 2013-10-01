@@ -7,12 +7,17 @@
 //
 
 #import "Github.h"
+#import "TextCardCell.h"
 
 @implementation Github
 
 -(UIImage *)icon {
     UIImage *icon = [UIImage imageNamed:@"github.png"];
     return icon;
+}
+
+-(Class)tableViewCellClass {
+    return [TextCardCell class];
 }
 
 @end

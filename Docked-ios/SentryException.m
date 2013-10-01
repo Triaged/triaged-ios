@@ -12,7 +12,7 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-     @"sentryExceptionID": @"id",
+     @"externalID": @"id",
      @"project": @"project",
      @"message": @"message",
      @"culprit": @"culprit",
@@ -26,7 +26,7 @@
 }
 
 -(NSString*)titleLabel {
-    return self.project;
+    return [self.project capitalizedString];
 }
 
 -(NSString *)bodyLabel {
@@ -37,7 +37,5 @@
     UIImage *icon = [UIImage imageNamed:@"airbrake.png"];
     return icon;
 }
-
-
 
 @end

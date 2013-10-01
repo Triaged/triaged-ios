@@ -33,11 +33,12 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     //[self setNavigationBarHidden:YES animated:NO];
-   self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:204.0f/255.0f green:207.0f/255.0f blue:207.0f/255.0f alpha:1.0f];
+   self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:238.0f/255.0f green:238.0f/255.0f blue:238.0f/255.0f alpha:1.0f];
 
     for (UIView *view in self.navigationController.navigationBar.subviews) {
         for (UIView *view2 in view.subviews) {
@@ -48,9 +49,9 @@
     }
     
     
-    self.view.backgroundColor = [[UIColor alloc] initWithRed:204.0f/255.0f green:207.0f/255.0f blue:207.0f/255.0f alpha:1.0f];
+    self.view.backgroundColor = [[UIColor alloc] initWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
 
-    self.navigationController.navigationBar.translucent = NO; 
+    //self.navigationController.navigationBar.translucent = NO;
     self.revealController = [self revealViewController];
     
     
@@ -82,14 +83,13 @@
 
 - (void)setupViewControllers {
     FeedTableViewController *feedTableView = [[FeedTableViewController alloc] init];
-//    feedTableView.view.frame = self.view.frame;
-    feedTableView.view.frame = CGRectMake(6, self.view.frame.origin.y, self.view.frame.size.width - 12, self.view.frame.size.height);
-    
-
+    feedTableView.view.frame = CGRectMake(6, 0, self.view.frame.size.width - 12, self.view.frame.size.height);
     feedTableView.navController = self.navigationController;
     [self.view addGestureRecognizer:self.revealController.panGestureRecognizer];
     
+    [self addChildViewController:feedTableView];
     [self.view addSubview:feedTableView.view];
+    [feedTableView didMoveToParentViewController:self];
 }
 
 - (void)addSettingsButton {

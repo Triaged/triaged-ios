@@ -11,6 +11,10 @@
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) FeedItem *detailItem;
+@property (strong, nonatomic) FeedItem *feedItem;
+@property (strong, nonatomic) UIView *contentView;
+
+-(void)presentNewMessageVC;
+
 
 @end

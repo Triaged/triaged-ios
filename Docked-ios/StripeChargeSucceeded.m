@@ -12,7 +12,7 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"serverID": @"id",
+             @"externalID": @"id",
              @"amount": @"amount"
              };
 }

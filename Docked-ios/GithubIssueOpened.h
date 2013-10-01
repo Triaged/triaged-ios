@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FeedItem.h"
+#import "Github.h"
 
-@interface GithubIssueOpened : FeedItem
+@interface GithubIssueOpened : Github
 
 @property (nonatomic, copy, readonly) NSString *githubIssueOpenedID;
 @property (nonatomic, copy, readonly) NSString *title;

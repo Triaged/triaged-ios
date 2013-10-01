@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 #import "NotificationsViewController.h"
 #import "DockedAPIClient.h"
+#import "CredentialStore.h"
 
 @implementation AppDelegate
 
@@ -22,11 +23,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [[UIColor alloc] initWithRed:204.0f/255.0f green:207.0f/255.0f blue:207.0f/255.0f alpha:1.0f];
-    self.window.tintColor = [UIColor whiteColor];
+    self.window.backgroundColor = [[UIColor alloc] initWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+    self.window.tintColor = [[UIColor alloc] initWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0f];
+
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     [self addObservers];
+    [[CredentialStore sharedClient] clearSavedCredentials];
     
     
     SWRevealViewController *revealVC = [self setupViewControllers];
@@ -55,23 +58,20 @@
 }
 
 - (void) addObservers {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(fetchRemoteUserAccount)
-                                                 name:@"login"
-                                               object:nil];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+    
+    [[DockedAPIClient sharedClient] fetchRemoteUserAccount];
 }
 
-- (void) fetchRemoteUserAccount {
-    NSLog(@"token changed");
-    [[DockedAPIClient sharedClient] GET:@"account.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
-        NSDictionary *results = [JSON valueForKeyPath:@"account"];
-        NSValueTransformer *transformer;
-        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
-        self.userAccount = [transformer transformedValue:results];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"failure");
-    }];
 
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
+    NSLog(@"Got device token: %@", [devToken description]);
+    
+    //[self sendProviderDeviceToken:[devToken bytes]]; // custom method; e.g., send to a web service and store
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    NSLog(@"Error in registration. Error: %@", err);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
