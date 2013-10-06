@@ -17,25 +17,26 @@
      @"message": @"message",
      @"culprit": @"culprit",
      @"logger": @"logger",
-     @"level": @"level"
+     @"level": @"level",
+     @"timestamp": @"timestamp"
     };
 }
 
--(NSString *) eventName {
-    return @"Exception";
-}
-
--(NSString*)titleLabel {
+-(NSString*)property {
     return [self.project capitalizedString];
 }
 
--(NSString *)bodyLabel {
+-(NSString *) action {
+    return @"exception";
+}
+
+
+-(NSString *)body {
     return self.message;
 }
 
--(UIImage *)icon {
-    UIImage *icon = [UIImage imageNamed:@"airbrake.png"];
-    return icon;
+-(UIImage *)providerIcon {
+    return [UIImage imageNamed:@"airbrake.png"];
 }
 
 @end

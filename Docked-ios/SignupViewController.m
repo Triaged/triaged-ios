@@ -57,12 +57,15 @@
         
         NSString *authToken = [JSON valueForKeyPath:@"auth_token"];
         [[CredentialStore sharedClient] setAuthToken:authToken];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
         
         [SVProgressHUD dismiss];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.rootVC.navigationController popToRootViewControllerAnimated:YES];
+        //[self dismissViewControllerAnimated:YES completion:nil];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
+        [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
         //        if (operation.response.statusCode == 500) {
         //            [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
         //        } else {

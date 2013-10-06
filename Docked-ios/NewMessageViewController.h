@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FeedItem.h"
 
-@interface NewMessageViewController : UIViewController
+@interface NewMessageViewController : UIViewController <UITextViewDelegate>
 
 @property (strong, nonatomic) FeedItem *feedItem;
-@property (weak, nonatomic) IBOutlet UITextView *messageBodTextView;
+@property (strong, nonatomic) UITextView *messageBodyTextView;
 
 -(IBAction)back:(id)sender;
 -(IBAction)sendMessage:(id)sender;

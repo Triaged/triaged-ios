@@ -17,17 +17,22 @@
       @"openedByName": @"opened_by_name",
       @"AssignedToName": @"assigned_to_name",
       @"body": @"body",
-      @"htmlUrl": @"html_url"
+      @"htmlUrl": @"html_url",
+      @"timestamp": @"timestamp"
     };
 }
 
 
 
--(NSString *)titleLabel {
-    return @"Issue Opened";
+-(NSString *)property {
+    return @"Docked-ios";
 }
 
--(NSString *)bodyLabel {
+-(NSString *)action {
+    return @"issue opened";
+}
+
+-(NSString *)body {
     return self.title;
 }
 

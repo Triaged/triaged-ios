@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
 
 @interface DockedAPIClient : AFHTTPSessionManager
 
 + (instancetype)sharedClient;
-
-- (void) fetchRemoteUserAccount;
 
 @end

@@ -19,6 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -26,8 +27,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImage * shareImage = [UIImage imageNamed:@"icn_share.png"];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareImage style:UIBarButtonItemStyleDone target:nil action:nil];
+    
+    self.navigationItem.rightBarButtonItem = shareButton;
+    
+    UIImage * backImage = [UIImage imageNamed:@"icn_back.png"];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:nil action:nil];
+    
     [self.view addSubview:_cardImageView];
-	// Do any additional setup after loading the view.
+    
+   // Do any additional setup after loading the view.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -35,18 +45,10 @@
                           delay:0
                         options: UIViewAnimationCurveEaseOut
                      animations:^{
-                        _cardImageView.frame = CGRectMake(6, 60, 308, 140 );                                 }
+                        _cardImageView.frame = CGRectMake(6, 63, 308, _cardImageView.frame.size.height );                                 }
                      completion:^(BOOL finished){
-                         NSLog(@"Done!");
                          [self dismissViewControllerAnimated:NO completion:nil];
                          [_navController pushViewController:_detailViewController animated:NO];
-                         //[self.navigationController popToViewController:_detailViewController animated:NO];
-//                         [self dismissViewControllerAnimated:NO completion:nil];
-//                         [self.navigationController pushViewController:_detailViewController animated:NO];
-                         
-                         
-
-                         
                      }];
 }
 

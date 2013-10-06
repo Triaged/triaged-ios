@@ -6,17 +6,23 @@
 // project.
 
 
-// AFNetworking/Core
-#define COCOAPODS_POD_AVAILABLE_AFNetworking_Core
-#define COCOAPODS_VERSION_MAJOR_AFNetworking_Core 2
-#define COCOAPODS_VERSION_MINOR_AFNetworking_Core 0
-#define COCOAPODS_VERSION_PATCH_AFNetworking_Core 0
+// AFNetworking
+#define COCOAPODS_POD_AVAILABLE_AFNetworking
+#define COCOAPODS_VERSION_MAJOR_AFNetworking 2
+#define COCOAPODS_VERSION_MINOR_AFNetworking 0
+#define COCOAPODS_VERSION_PATCH_AFNetworking 0
 
 // AFNetworking/NSURLConnection
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_NSURLConnection
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_NSURLConnection 2
 #define COCOAPODS_VERSION_MINOR_AFNetworking_NSURLConnection 0
 #define COCOAPODS_VERSION_PATCH_AFNetworking_NSURLConnection 0
+
+// AFNetworking/NSURLSession
+#define COCOAPODS_POD_AVAILABLE_AFNetworking_NSURLSession
+#define COCOAPODS_VERSION_MAJOR_AFNetworking_NSURLSession 2
+#define COCOAPODS_VERSION_MINOR_AFNetworking_NSURLSession 0
+#define COCOAPODS_VERSION_PATCH_AFNetworking_NSURLSession 0
 
 // AFNetworking/Reachability
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_Reachability
@@ -36,11 +42,11 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_Serialization 0
 #define COCOAPODS_VERSION_PATCH_AFNetworking_Serialization 0
 
-// AFNetworking/UIKit+AFNetworking
-#define COCOAPODS_POD_AVAILABLE_AFNetworking_UIKit_AFNetworking
-#define COCOAPODS_VERSION_MAJOR_AFNetworking_UIKit_AFNetworking 2
-#define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit_AFNetworking 0
-#define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit_AFNetworking 0
+// AFNetworking/UIKit
+#define COCOAPODS_POD_AVAILABLE_AFNetworking_UIKit
+#define COCOAPODS_VERSION_MAJOR_AFNetworking_UIKit 2
+#define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 0
+#define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 0
 
 // Mantle
 #define COCOAPODS_POD_AVAILABLE_Mantle
@@ -54,11 +60,11 @@
 #define COCOAPODS_VERSION_MINOR_Mantle_extobjc 3
 #define COCOAPODS_VERSION_PATCH_Mantle_extobjc 0
 
-// RNBlurModalView
-#define COCOAPODS_POD_AVAILABLE_RNBlurModalView
-#define COCOAPODS_VERSION_MAJOR_RNBlurModalView 0
-#define COCOAPODS_VERSION_MINOR_RNBlurModalView 1
-#define COCOAPODS_VERSION_PATCH_RNBlurModalView 0
+// NSDate+TimeAgo
+#define COCOAPODS_POD_AVAILABLE_NSDate_TimeAgo
+#define COCOAPODS_VERSION_MAJOR_NSDate_TimeAgo 1
+#define COCOAPODS_VERSION_MINOR_NSDate_TimeAgo 0
+#define COCOAPODS_VERSION_PATCH_NSDate_TimeAgo 2
 
 // RNFrostedSidebar
 #define COCOAPODS_POD_AVAILABLE_RNFrostedSidebar
@@ -77,10 +83,4 @@
 #define COCOAPODS_VERSION_MAJOR_SVProgressHUD 0
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_SVProgressHUD 0
-
-// SWRevealViewController
-#define COCOAPODS_POD_AVAILABLE_SWRevealViewController
-#define COCOAPODS_VERSION_MAJOR_SWRevealViewController 1
-#define COCOAPODS_VERSION_MINOR_SWRevealViewController 0
-#define COCOAPODS_VERSION_PATCH_SWRevealViewController 5
 

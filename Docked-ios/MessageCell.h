@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface MessageCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *bodyLabel;
+
+@property (strong, nonatomic) UILabel *authorLabel;
+@property (strong, nonatomic) UILabel *bodyLabel;
+@property (strong, nonatomic) UILabel *moreMessagesLabel;
+
++ (CGFloat) heightOfContent: (NSString *)bodyText;
 
 @end

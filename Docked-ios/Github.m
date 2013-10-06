@@ -11,9 +11,8 @@
 
 @implementation Github
 
--(UIImage *)icon {
-    UIImage *icon = [UIImage imageNamed:@"github.png"];
-    return icon;
+-(UIImage *)providerIcon {
+   return [UIImage imageNamed:@"github.png"];;
 }
 
 -(Class)tableViewCellClass {

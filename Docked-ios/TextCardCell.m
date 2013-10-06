@@ -9,6 +9,7 @@
 #import "TextCardCell.h"
 
 
+
 @implementation TextCardCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -29,30 +30,18 @@
 
 - (void)configureForItem:(FeedItem *)item
 {
-    self.titleLabel.text = item.titleLabel;
-    self.bodyLabel.text = item.bodyLabel;
-    self.iconView.image = item.icon;
-    
-//    CGRect paragraphRect =
-//    [self.bodyLabel.attributedText boundingRectWithSize:CGSizeMake(300.f, CGFLOAT_MAX)
-//                                 options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-//                                 context:nil];
-//    
-//    CGRect newFrame = self.bodyLabel.frame;
-//    newFrame.size.height = paragraphRect.size.height;
-//    self.bodyLabel.frame = newFrame;
+    self.propertyLabel.text = item.property;
+    self.actionLabel.text = item.action;
+    self.bodyLabel.text = item.body;
+    self.providerIconView.image = item.providerIcon;
+    self.timestampLabel.text = [item.timestamp timeAgo];
 
 }
 
-
-+ (CGFloat) heightOfContent: (NSString *)content
-{
-//    CGFloat contentHeight =
-//    [content sizeWithFont: DefaultContentLabelFont
-//        constrainedToSize: CGSizeMake( DefaultCellSize.width, DefaultContentLabelHeight * DefaultContentLabelNumberOfLines )
-//            lineBreakMode: UILineBreakModeWordWrap].height;
-//    return contentHeight + DefaultCellPaddingHeight;
-    return 140;
++ (CGFloat) heightOfContent: (NSString *)bodyText {
+    NSAttributedString *attributedBodyText = [CardCell attributedBodyText:bodyText];
+    CGFloat bodyHeight = [CardCell heightOfBody:attributedBodyText];
+    return (80 + bodyHeight);
 }
 
 @end

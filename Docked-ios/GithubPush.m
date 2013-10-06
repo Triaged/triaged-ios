@@ -16,26 +16,36 @@
              @"externalID": @"id",
              @"pusher": @"pusher",
              @"branch": @"branch",
-             @"url": @"url"
+             @"url": @"url",
+             @"commits": @"commits",
+             @"htmlUrl": @"html_url",
+             @"messages": @"messages",
+             @"timestamp": @"timestamp"
              };
 }
 
-//+ (NSValueTransformer *)commitsJSONTransformer
-//{
-//    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[GithubCommit class]];
-//}
++ (NSValueTransformer *)commitsJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[GithubCommit class]];
+}
 
 
 
-
-
-
--(NSString *)titleLabel {
+-(NSString *)property {
     return @"Github-ios";
 }
 
--(NSString *)bodyLabel {
-    return [NSString stringWithFormat:@"%@ pushed to %@", self.pusher, self.branch];
+-(NSString *)action {
+   return [NSString stringWithFormat:@"%@ pushed to %@", self.pusher, self.branch];
+}
+
+-(NSString *)body {
+    NSString *body = @"";
+    for (GithubCommit *commit in _commits) {
+        body = [body stringByAppendingString:[NSString stringWithFormat:@"- %@\n", commit.message]];
+    }
+    
+    return body;
 }
 
 -(NSString *)externalLinkUrl {

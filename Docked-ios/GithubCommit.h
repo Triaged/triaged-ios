@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Github.h"
 
-@interface GithubCommit : MTLModel
+@interface GithubCommit : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSString *author;
 @property (nonatomic, copy, readonly) NSString *authorEmail;

@@ -13,21 +13,39 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"externalID": @"id",
-             @"amount": @"amount"
+             @"amount": @"amount",
+             @"description": @"description",
+             @"customerEmail": @"customer_email",
+             @"htmlUrl": @"html_url",
+             @"messages": @"messages",
+             @"timestamp": @"timestamp"
              };
 }
 
--(NSString*)titleLabel {
+-(NSString*)property {
+    return @"Docked.com";
+}
+
+-(NSString*)action {
     return @"Charge Succeeded";
 }
 
--(NSString *)bodyLabel {
-    return [NSString stringWithFormat:@"Successful charge of $%@", self.amount];
+-(NSString *)body {
+    NSString *body = [NSString stringWithFormat:@"Amount: $%@\n", self.amount];
+    
+    if (self.description != nil) {
+        body = [body stringByAppendingString:[NSString stringWithFormat:@"Description: %@\n", self.description]];
+    }
+    
+    if (self.customerEmail != nil) {
+        body = [body stringByAppendingString:[NSString stringWithFormat:@"Customer: %@", self.customerEmail]];
+    }
+    
+    return body;
 }
 
--(UIImage *)icon {
-    UIImage *icon = [UIImage imageNamed:@"stripe.png"];
-    return icon;
+-(UIImage *)providerIcon {
+    return [UIImage imageNamed:@"stripe.png"];
 }
 
 @end

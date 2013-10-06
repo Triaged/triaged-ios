@@ -13,13 +13,36 @@
 #import "StripeChargeSucceeded.h"
 #import "TextCardCell.h"
 #import "DockedAPIClient.h"
+#import "GoogleAnalyticsDailyStatus.h"
 
 
 @implementation FeedItem
 
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{};
++ (NSDateFormatter *)dateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+    return dateFormatter;
 }
+
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"htmlUrl": @"html_url",
+             @"messages": @"messages"
+             };
+}
+
++ (NSValueTransformer *)timestampJSONTransformer {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        return [self.dateFormatter dateFromString:str];
+
+    } reverseBlock:^(NSDate *date) {
+        return [self.dateFormatter stringFromDate:date];
+    }];
+}
+
 
 + (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary {
     if ([JSONDictionary[@"provider"]  isEqual: @"github"]) {
@@ -43,6 +66,13 @@
         }
     }
     
+    if ([JSONDictionary[@"provider"]  isEqual: @"google_analytics"]) {
+        if ([JSONDictionary[@"event"]  isEqual: @"daily"]) {
+            return GoogleAnalyticsDailyStatus.class;
+        }
+    }
+    
+    return self;
     NSAssert(NO, @"No matching class for the JSON dictionary '%@'.", JSONDictionary);
     return self;
 }
@@ -51,28 +81,48 @@
     return [TextCardCell class];
 }
 
--(NSString *)externalLinkUrl {
-    return @"http://google.com";
+
+-(NSString *)property {
+    return @"FeedItem";
 }
+
+-(NSString *)action {
+    return @"test";
+}
+
+-(NSString *)body {
+    NSString *body = @"test body";
+    return body;
+}
+
+-(NSString *)externalLinkUrl {
+    return self.htmlUrl;
+}
+
+-(UIImage *)providerIcon {
+    return [UIImage imageNamed:@"github.png"];;
+}
+
 
 + (NSValueTransformer *)messagesJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[Message class]];
 }
 
-+(NSMutableArray *)loadFeedItems {
-    __block NSMutableArray *feedItems;
-    [[DockedAPIClient sharedClient] GET:@"feed.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
-        NSArray *results = [JSON valueForKeyPath:@"feed"];
-        NSValueTransformer *transformer;
-        transformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:FeedItem.class];
-        feedItems = [[NSMutableArray alloc] initWithArray:[transformer transformedValue:results]];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"failure");
-        feedItems = [[NSMutableArray alloc] init];
-    }];
-    return feedItems;
+// ManagedObjects
+
++ (NSString *)managedObjectEntityName {
+    return @"FeedItem";
 }
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return @{@"messages" : Message.class };
+}
+
 
 
 @end

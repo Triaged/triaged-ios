@@ -7,19 +7,22 @@
 //
 
 #import "FeedTableViewController.h"
+#import "AppDelegate.h"
+#import "Store.h"
 #import "DockedAPIClient.h"
 #import "FeedItem.h"
 #import "CardCell.h"
 #import "DetailViewController.h"
 #import "SmokescreenViewController.h"
+#import "FeedItemsDataSource.h"
 
-@interface FeedTableViewController () {
-    NSMutableArray *_objects;
-}
+@interface FeedTableViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) FeedItemsDataSource *feedItemsDataSource;
 
 @end
 
-@implementation FeedTableViewController
+@implementation FeedTableViewController 
 
 @synthesize navController;
 
@@ -27,8 +30,8 @@
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(loadFeedItems)
-                                                     name:@"login"
+                                                 selector:@selector(refreshFeed)
+                                                     name:@"feedUpdated"
                                                    object:nil];
     }
     return self;
@@ -37,82 +40,36 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self setupTableView];
-
-    _objects = [[NSMutableArray alloc] init];
-    [self loadFeedItems];
 }
 
--(void)setupTableView {
-    self.tableView.backgroundColor = [[UIColor alloc] initWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+- (void)setupTableView
+{
+    // Datasource
+    NSArray *feed = [AppDelegate sharedDelegate].store.sortedFeed;
+    self.feedItemsDataSource = [[FeedItemsDataSource alloc] initWithItems:feed];
+    self.tableView.dataSource = self.feedItemsDataSource;
+    
+    // Appearance
+    self.tableView.backgroundColor = [[UIColor alloc] initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
+    // Refresh control
     UIRefreshControl *refreshControl = [UIRefreshControl new];
-    [refreshControl addTarget:self action:@selector(loadFeedItems) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:[AppDelegate sharedDelegate].store action:@selector(fetchRemoteFeedItems) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
-
 }
 
--(void)loadFeedItems {
-    [[DockedAPIClient sharedClient] GET:@"feed.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
-        NSArray *results = [JSON valueForKeyPath:@"feed"];
-        NSValueTransformer *transformer;
-        transformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:FeedItem.class];
-        _objects = [transformer transformedValue:results];
-        [self.refreshControl endRefreshing];
-        [self.tableView reloadData];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"failure");
-    }];
-    
-}
-
-
-
-- (void)didReceiveMemoryWarning
+-(void)refreshFeed
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return _objects.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    FeedItem *item = _objects[indexPath.row];
-
-    // Determine the cell class
-    id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
-    Class cellClass = [ cellSource tableViewCellClass ] ;
-    NSString * cellID = NSStringFromClass( cellClass ) ;
-    CardCell *cell = [ tableView dequeueReusableCellWithIdentifier:cellID ] ;
-    if ( !cell )
-    {
-        cell = [ [ cellClass alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID ] ;
-    }
-    // Configure the cell...
-    [cell configureForItem:item];
-    
-    return cell;
+    self.feedItemsDataSource.feedItems = [AppDelegate sharedDelegate].store.sortedFeed;
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    FeedItem *item = _objects[indexPath.row];
-    
+    FeedItem *item = [self.feedItemsDataSource itemAtIndexPath:indexPath];
     
     CardCell *cell = (CardCell *)[tableView cellForRowAtIndexPath:indexPath];
     
@@ -125,21 +82,39 @@
     cardImageView.backgroundColor = [UIColor whiteColor];
     cardImageView.frame = [cell.contentView convertRect:cell.contentView.frame toView:nil];
 
-    
     DetailViewController *detailVC = [[DetailViewController alloc] init];
     [detailVC setFeedItem:item];
     [detailVC setContentView:cell.contentView];
-    
-    
     
     SmokescreenViewController *ssVC = [[SmokescreenViewController alloc] init];
     [ssVC setCardImageView:cardImageView];
     [ssVC setDetailViewController:detailVC];
     [ssVC setNavController:navController];
-    [self presentViewController:ssVC animated:NO completion:nil];
-    //[navController pushViewController:ssVC animated:NO];
     
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ssVC ];
+    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:86.0f/255.0f green:87.0f/255.0f blue:193.0f/255.0f alpha:1.0f];
+    
+    [self presentViewController:nav animated:NO completion:nil];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (indexPath.row == 0) {
+        FeedItem *item = [self.feedItemsDataSource itemAtIndexPath:indexPath];
+        
+        id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
+        Class cellClass = [ cellSource tableViewCellClass ] ;
+        
+        return [cellClass heightOfContent:item.body];
+    } else if (indexPath.row == 1) {
+        Message *message = [self.feedItemsDataSource itemAtIndexPath:indexPath];
+        return [MessageCell heightOfContent:message.body];
+    } else {
+        return 40;
+    }
+    
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -147,14 +122,4 @@
 //    return [cell.class estimatedHeightOfContent];
 //}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *content = @"blah blah";
-    
-    FeedItem *item = _objects[indexPath.row];
-    id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
-    Class cellClass = [ cellSource tableViewCellClass ] ;
-    return [cellClass heightOfContent:content];
-
-}
 @end

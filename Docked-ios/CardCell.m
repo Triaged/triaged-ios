@@ -10,7 +10,7 @@
 
 @implementation CardCell
 
-@synthesize titleLabel, bodyLabel, iconView;
+@synthesize propertyLabel, actionLabel, bodyLabel, providerIconView, timestampLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -23,7 +23,7 @@
 //        self.layer.shadowOpacity = 0.75f;
         
         UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 3)];/// change size as you need.
-        separatorLineView.backgroundColor = [[UIColor alloc] initWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+        separatorLineView.backgroundColor = [[UIColor alloc] initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
         [self.contentView addSubview:separatorLineView];
         
         
@@ -31,15 +31,31 @@
         CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
         self.layer.shadowPath = shadowPath;
 
-        iconView = [[UIImageView alloc] initWithFrame: CGRectZero];
-        iconView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.contentView addSubview: iconView];
+        providerIconView = [[UIImageView alloc] initWithFrame: CGRectZero];
+        providerIconView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView addSubview: providerIconView];
         
-        titleLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [titleLabel setFont: [UIFont fontWithName:@"AvenirNext-DemiBold" size:16.0]];
-        [titleLabel setLineBreakMode: NSLineBreakByClipping];
-        titleLabel.numberOfLines = 1;
-        [self.contentView addSubview: titleLabel];
+        propertyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+        [propertyLabel setFont: [UIFont fontWithName:@"AvenirNext-DemiBold" size:16.0]];
+        propertyLabel.textColor = [[UIColor alloc] initWithRed:100.0f/255.0f green:101.0f/255.0f blue:197.0f/255.0f alpha:1.0f];
+        [propertyLabel setLineBreakMode: NSLineBreakByClipping];
+        propertyLabel.numberOfLines = 1;
+        [self.contentView addSubview: propertyLabel];
+        
+        actionLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+        [actionLabel setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:12.0]];
+        actionLabel.textColor = [[UIColor alloc] initWithRed:141.0f/255.0f green:141.0f/255.0f blue:141.0f/255.0f alpha:1.0f];
+        [actionLabel setLineBreakMode: NSLineBreakByClipping];
+        actionLabel.numberOfLines = 1;
+        [self.contentView addSubview: actionLabel];
+        
+        timestampLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+        [timestampLabel setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:12.0]];
+        timestampLabel.textColor = [[UIColor alloc] initWithRed:141.0f/255.0f green:141.0f/255.0f blue:141.0f/255.0f alpha:1.0f];
+        [timestampLabel setLineBreakMode: NSLineBreakByClipping];
+        timestampLabel.numberOfLines = 1;
+        timestampLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview: timestampLabel];
         
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
         [bodyLabel setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:13.0]];
@@ -61,28 +77,53 @@
 -(void) layoutSubviews {
     [super layoutSubviews];
     
-    [iconView setFrame:CGRectMake(10, 20.0, 30.0, 30.0)];
-    [titleLabel setFrame:CGRectMake(54, 24.0, 200.0, 20.0)];
+    [providerIconView setFrame:CGRectMake(10, 15.0, 30.0, 30.0)];
+    [propertyLabel setFrame:CGRectMake(50, 17.0, 200.0, 18.0)];
+    [actionLabel setFrame:CGRectMake(50, 32.0, 200.0, 16.0)];
+    [timestampLabel setFrame:CGRectMake(230, 24.0, 70.0, 16.0)];
+    
+    NSAttributedString *attributedBodyText = [CardCell attributedBodyText:bodyLabel.text];
+    CGRect newFrame = CGRectMake(10, 60.0, 288, [CardCell heightOfBody:attributedBodyText]);
+    [bodyLabel setFrame:newFrame];
+}
 
++ (NSAttributedString *) attributedBodyText:(NSString *)bodyText {
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.alignment = NSTextAlignmentLeft;
+    
+    UIFont *font = [UIFont fontWithName:@"AvenirNext-Medium" size:13.0];
+    
+    NSAttributedString *attributedBodyText = [[NSAttributedString alloc] initWithString:bodyText
+                                              attributes:[NSDictionary
+                                                  dictionaryWithObjectsAndKeys:font,
+                                                  NSFontAttributeName,
+                                                  paragraphStyle, NSParagraphStyleAttributeName,nil]];
+    return attributedBodyText;
+    
+}
+
+- (void) configureMessages:(NSArray *)messages {
+    if (messages.count > 0) {
+        
+    }
+}
+
++ (CGFloat) heightOfBody:(NSAttributedString *)bodyText {
     // bodyLabel dynamic height
+    
     CGRect paragraphRect =
-    [self.bodyLabel.attributedText boundingRectWithSize:CGSizeMake(200.0, CGFLOAT_MAX)
+    [bodyText boundingRectWithSize:CGSizeMake(288.0, CGFLOAT_MAX)
                                                 options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
                                                 context:nil];
-    CGRect newFrame = CGRectMake(54, 56.0, paragraphRect.size.width, paragraphRect.size.height);
-    [bodyLabel setFrame:newFrame];
-
-    
-    
+    return paragraphRect.size.height;
 }
 
 + (CGFloat) estimatedHeightOfContent {
     return 88;
 }
 
-+ (CGFloat) heightOfContent: (NSString *)content {
-    return 140;
-}
+
 
 
 

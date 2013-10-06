@@ -37,43 +37,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self setNavigationBarHidden:YES animated:NO];
-   self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:238.0f/255.0f green:238.0f/255.0f blue:238.0f/255.0f alpha:1.0f];
-
-    for (UIView *view in self.navigationController.navigationBar.subviews) {
-        for (UIView *view2 in view.subviews) {
-            if ([view2 isKindOfClass:[UIImageView class]]) {
-                [view2 removeFromSuperview];
-            }
-        }
-    }
-    
-    
-    self.view.backgroundColor = [[UIColor alloc] initWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
-
-    //self.navigationController.navigationBar.translucent = NO;
-    self.revealController = [self revealViewController];
-    
-    
+    self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:86.0f/255.0f green:87.0f/255.0f blue:193.0f/255.0f alpha:1.0f];
+    self.view.backgroundColor = [[UIColor alloc] initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
     [self setupViewControllers];
     [self addSettingsButton];
 	// Do any additional setup after loading the view.
 }
 
--(void)viewDidAppear:(BOOL)animated {
-
+-(void)viewDidAppear:(BOOL)animated
+{
     // Check for authentication
     if (![[CredentialStore sharedClient] isLoggedIn]) {
         loginVC = [[LoginViewController alloc] init];
         signupVC = [[SignupViewController alloc] init];
-        
         loginVC.rootVC = self;
         signupVC.rootVC = self;
-        
         [self presentViewController:loginVC animated:YES completion:nil];
     }
-    
-
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -81,41 +61,21 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)setupViewControllers {
+- (void)setupViewControllers
+{
     FeedTableViewController *feedTableView = [[FeedTableViewController alloc] init];
     feedTableView.view.frame = CGRectMake(6, 0, self.view.frame.size.width - 12, self.view.frame.size.height);
     feedTableView.navController = self.navigationController;
-    [self.view addGestureRecognizer:self.revealController.panGestureRecognizer];
     
     [self addChildViewController:feedTableView];
     [self.view addSubview:feedTableView.view];
     [feedTableView didMoveToParentViewController:self];
 }
 
-- (void)addSettingsButton {
-    UIImage * buttonImage = [UIImage imageNamed:@"menu.png"];
-
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonItemStyleDone target:self action:@selector(toggleSettingsMenu:)];
+- (void)addSettingsButton
+{
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleDone target:self action:@selector(toggleSettingsMenu:)];
     self.navigationItem.leftBarButtonItem = settingsButton;
-    
-//    // Left Button
-//    UIButton *settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    settingsButton.frame = CGRectMake(20, 30, 36, 36);
-//    [settingsButton addTarget:self action:@selector(toggleSettingsMenu:) forControlEvents:UIControlEventTouchUpInside];
-//    UIImage * buttonImage = [UIImage imageNamed:@"settings.png"];
-//    [settingsButton setImage:buttonImage forState:UIControlStateNormal];
-//    
-//    [self.view addSubview:settingsButton];
-//    
-//    
-//    // Right Button
-//    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    rightButton.frame = CGRectMake(280, 30, 36, 36);
-//    [rightButton addTarget:self.revealController action:@selector(rightRevealToggle:) forControlEvents:UIControlEventTouchUpInside];
-//    UIImage * rightButtonImage = [UIImage imageNamed:@"settings.png"];
-//    [rightButton setImage:rightButtonImage forState:UIControlStateNormal];
-//    
-//    [self.view addSubview:rightButton];
 }
 
 - (void)toggleSettingsMenu:(id)sender {
@@ -141,7 +101,6 @@
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
-    NSLog(@"tapped:");
     [self.navigationController popToRootViewControllerAnimated:NO];
     
     if(index == 0) {
@@ -153,7 +112,11 @@
     } else if (index == 2) {
         StripeSettingsViewController *stripeVC = [[StripeSettingsViewController alloc] init];
         [self.navigationController pushViewController:stripeVC animated:NO];
+    } else if (index == 7) {
+        [[CredentialStore sharedClient] clearSavedCredentials];
     }
+    
+    
     
     [sidebar dismiss];
     
@@ -161,6 +124,7 @@
 }
 
 - (void) presentLoginView {
+    
     [UIView transitionFromView:signupVC.view
                         toView:loginVC.view
                       duration:0.65f

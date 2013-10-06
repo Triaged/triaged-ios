@@ -19,4 +19,14 @@
              };
 }
 
+// ManagedObjects
+
++ (NSString *)managedObjectEntityName {
+    return @"Message";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
 @end

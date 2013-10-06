@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Message.h"
+#import "FeedItem.h"
 
 @interface MessagesTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *messages;
+@property (strong, nonatomic) FeedItem *feedItem;
+
+-(void)refreshTableView;
+
 
 @end

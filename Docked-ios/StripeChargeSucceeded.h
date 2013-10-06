@@ -12,6 +12,8 @@
 @interface StripeChargeSucceeded : FeedItem
 
 @property (nonatomic, copy, readonly) NSString *amount;
+@property (nonatomic, copy, readonly) NSString *description;
+@property (nonatomic, copy, readonly) NSString *customerEmail;
 
 
 @end

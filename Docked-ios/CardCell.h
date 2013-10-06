@@ -8,15 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedItem.h"
+#import "Message.h"
+#import "MessageCell.h"
+#import "NSDate+TimeAgo.h"
 
 @interface CardCell : UITableViewCell
 
-@property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) UIImageView *providerIconView;
+@property (strong, nonatomic) UILabel *propertyLabel;
+@property (strong, nonatomic) UILabel *actionLabel;
+@property (strong, nonatomic) UILabel *timestampLabel;
 @property (strong, nonatomic) UILabel *bodyLabel;
-@property (strong, nonatomic) UIImageView *iconView;
+
 
 - (void)configureForItem:(FeedItem *)item;
 + (CGFloat) estimatedHeightOfContent;
-+ (CGFloat) heightOfContent: (NSString *)content;
++ (NSAttributedString *) attributedBodyText:(NSString *)bodyText;
++ (CGFloat) heightOfBody:(NSAttributedString *)bodyText;
++ (CGFloat) heightOfContent: (NSString *)bodyText;
 
 @end

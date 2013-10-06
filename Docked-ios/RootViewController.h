@@ -8,11 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "RNFrostedSidebar.h"
-#import "SWRevealViewController.h"
 
 @interface RootViewController : UIViewController <RNFrostedSidebarDelegate>
-
-@property (strong, nonatomic) SWRevealViewController *revealController;
 
 -(void)presentLoginView;
 -(void)presentSignupView;

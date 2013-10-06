@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6012FCB77A64332A79F84F4 /* libPods.a */; };
 		CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CB06CB6817EBA50B007323AA /* DockedAPIClient.m */; };
+		CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0AAF9917FCA15100695707 /* libstdc++.6.0.9.dylib */; };
 		CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906317F34E8500F706BE /* StoreKit.framework */; };
 		CB0B906617F34E9000F706BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906517F34E9000F706BE /* GameKit.framework */; };
 		CB0B906817F34E9500F706BE /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906717F34E9500F706BE /* PassKit.framework */; };
@@ -25,15 +26,16 @@
 		CB429BAB17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BA917EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib */; };
 		CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BB317F09882002273D6 /* OAuthViewController.m */; };
 		CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BB417F09882002273D6 /* OAuthViewController.xib */; };
+		CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */; };
 		CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECE917EE894000319223 /* CredentialStore.m */; };
 		CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECEC17EE922C00319223 /* LoginViewController.m */; };
 		CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECED17EE922C00319223 /* LoginViewController.xib */; };
 		CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECF217EF7DAA00319223 /* SignupViewController.m */; };
 		CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECF317EF7DAA00319223 /* SignupViewController.xib */; };
+		CB6B63CA1800F83000145953 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6B63C91800F83000145953 /* Reveal.framework */; };
 		CB6ED88717F5EBFF00496244 /* GithubPush.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6ED88617F5EBFF00496244 /* GithubPush.m */; };
 		CB6ED88A17F5EC3900496244 /* GithubCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6ED88917F5EC3900496244 /* GithubCommit.m */; };
 		CB6ED88D17F5EC9B00496244 /* Github.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6ED88C17F5EC9B00496244 /* Github.m */; };
-		CB7C2E4317F2518800BD858D /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4217F2518800BD858D /* Reveal.framework */; };
 		CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4417F251A400BD858D /* CFNetwork.framework */; };
 		CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4617F251AE00BD858D /* QuartzCore.framework */; };
 		CB7C2E4B17F26FAC00BD858D /* StripeChargeSucceeded.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */; };
@@ -62,21 +64,26 @@
 		CB8F20D417EB857800EBDC34 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F20D317EB857800EBDC34 /* CoreData.framework */; };
 		CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */; };
 		CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F212317EB871900EBDC34 /* FeedItem.m */; };
+		CBB89E0D17FE4B9400402973 /* FeedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E0C17FE4B9400402973 /* FeedItemsDataSource.m */; };
+		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
+		CBB89E1417FE7FAD00402973 /* MoreMessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1317FE7FAD00402973 /* MoreMessagesCell.m */; };
 		CBD43EFB17F8B221001AC849 /* TextCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFA17F8B221001AC849 /* TextCardCell.m */; };
-		CBD43EFD17F8B238001AC849 /* TextCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD43EFC17F8B238001AC849 /* TextCardCell.xib */; };
 		CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFF17F8B54B001AC849 /* DataCardCell.m */; };
 		CBD43F0317F8B554001AC849 /* GraphDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F0217F8B554001AC849 /* GraphDataCell.m */; };
 		CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F0517F8B63B001AC849 /* CardCell.m */; };
 		CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */; };
 		CBD43F3317F9DAEF001AC849 /* AMPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3217F9DAEF001AC849 /* AMPNavigationBar.m */; };
 		CBD43F3917F9F4A0001AC849 /* ExternalLinkViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3717F9F49F001AC849 /* ExternalLinkViewViewController.m */; };
-		CBD43F3A17F9F4A0001AC849 /* ExternalLinkViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD43F3817F9F49F001AC849 /* ExternalLinkViewViewController.xib */; };
 		CBD43F3F17FA12A4001AC849 /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */; };
-		CBD43F4017FA12A4001AC849 /* NewMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD43F3E17FA12A4001AC849 /* NewMessageViewController.xib */; };
 		CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */; };
 		CBD43F4E17FA3A49001AC849 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F4D17FA3A49001AC849 /* Message.m */; };
 		CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F5017FA63E9001AC849 /* MessageCell.m */; };
-		CBD43F5317FA63FB001AC849 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD43F5217FA63FB001AC849 /* MessageCell.xib */; };
+		CBE8637117FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE8637017FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.m */; };
+		CBE8637417FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE8637317FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m */; };
+		CBE8637617FC9F8800EF6E73 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637517FC9F8800EF6E73 /* ShinobiCharts.framework */; };
+		CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */; };
+		CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637917FC9F9C00EF6E73 /* CoreText.framework */; };
+		CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637B17FC9FA600EF6E73 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +100,7 @@
 		B6012FCB77A64332A79F84F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB06CB6717EBA50B007323AA /* DockedAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockedAPIClient.h; sourceTree = "<group>"; };
 		CB06CB6817EBA50B007323AA /* DockedAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockedAPIClient.m; sourceTree = "<group>"; };
+		CB0AAF9917FCA15100695707 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		CB0B906317F34E8500F706BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CB0B906517F34E9000F706BE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CB0B906717F34E9500F706BE /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
@@ -117,6 +125,8 @@
 		CB429BB217F09882002273D6 /* OAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthViewController.h; sourceTree = "<group>"; };
 		CB429BB317F09882002273D6 /* OAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthViewController.m; sourceTree = "<group>"; };
 		CB429BB417F09882002273D6 /* OAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthViewController.xib; sourceTree = "<group>"; };
+		CB4FDD4B17FF75B700EEE7F6 /* PersistentStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStack.h; sourceTree = "<group>"; };
+		CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStack.m; sourceTree = "<group>"; };
 		CB5AECE817EE894000319223 /* CredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialStore.h; sourceTree = "<group>"; };
 		CB5AECE917EE894000319223 /* CredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialStore.m; sourceTree = "<group>"; };
 		CB5AECEB17EE922C00319223 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -125,13 +135,13 @@
 		CB5AECF117EF7DAA00319223 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		CB5AECF217EF7DAA00319223 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		CB5AECF317EF7DAA00319223 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
+		CB6B63C91800F83000145953 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		CB6ED88517F5EBFF00496244 /* GithubPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubPush.h; sourceTree = "<group>"; };
 		CB6ED88617F5EBFF00496244 /* GithubPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubPush.m; sourceTree = "<group>"; };
 		CB6ED88817F5EC3900496244 /* GithubCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubCommit.h; sourceTree = "<group>"; };
 		CB6ED88917F5EC3900496244 /* GithubCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubCommit.m; sourceTree = "<group>"; };
 		CB6ED88B17F5EC9B00496244 /* Github.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Github.h; sourceTree = "<group>"; };
 		CB6ED88C17F5EC9B00496244 /* Github.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Github.m; sourceTree = "<group>"; };
-		CB7C2E4217F2518800BD858D /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		CB7C2E4417F251A400BD858D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CB7C2E4617F251AE00BD858D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB7C2E4917F26FAC00BD858D /* StripeChargeSucceeded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeChargeSucceeded.h; sourceTree = "<group>"; };
@@ -175,9 +185,14 @@
 		CB8F212017EB869E00EBDC34 /* docked.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = docked.xcdatamodel; sourceTree = "<group>"; };
 		CB8F212217EB871900EBDC34 /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
 		CB8F212317EB871900EBDC34 /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
+		CBB89E0B17FE4B9400402973 /* FeedItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItemsDataSource.h; sourceTree = "<group>"; };
+		CBB89E0C17FE4B9400402973 /* FeedItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemsDataSource.m; sourceTree = "<group>"; };
+		CBB89E0F17FE4F0600402973 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
+		CBB89E1017FE4F0600402973 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
+		CBB89E1217FE7FAD00402973 /* MoreMessagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreMessagesCell.h; sourceTree = "<group>"; };
+		CBB89E1317FE7FAD00402973 /* MoreMessagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreMessagesCell.m; sourceTree = "<group>"; };
 		CBD43EF917F8B221001AC849 /* TextCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCardCell.h; sourceTree = "<group>"; };
 		CBD43EFA17F8B221001AC849 /* TextCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCardCell.m; sourceTree = "<group>"; };
-		CBD43EFC17F8B238001AC849 /* TextCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCardCell.xib; sourceTree = "<group>"; };
 		CBD43EFE17F8B54B001AC849 /* DataCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCardCell.h; sourceTree = "<group>"; };
 		CBD43EFF17F8B54B001AC849 /* DataCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCardCell.m; sourceTree = "<group>"; };
 		CBD43F0117F8B554001AC849 /* GraphDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDataCell.h; sourceTree = "<group>"; };
@@ -190,17 +205,23 @@
 		CBD43F3217F9DAEF001AC849 /* AMPNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPNavigationBar.m; sourceTree = "<group>"; };
 		CBD43F3617F9F49F001AC849 /* ExternalLinkViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalLinkViewViewController.h; sourceTree = "<group>"; };
 		CBD43F3717F9F49F001AC849 /* ExternalLinkViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalLinkViewViewController.m; sourceTree = "<group>"; };
-		CBD43F3817F9F49F001AC849 /* ExternalLinkViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExternalLinkViewViewController.xib; sourceTree = "<group>"; };
 		CBD43F3C17FA12A4001AC849 /* NewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
 		CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
-		CBD43F3E17FA12A4001AC849 /* NewMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewMessageViewController.xib; sourceTree = "<group>"; };
 		CBD43F4117FA12BE001AC849 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
 		CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
 		CBD43F4C17FA3A49001AC849 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		CBD43F4D17FA3A49001AC849 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		CBD43F4F17FA63E9001AC849 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		CBD43F5017FA63E9001AC849 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
-		CBD43F5217FA63FB001AC849 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		CBE8636F17FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsDailyStatus.h; sourceTree = "<group>"; };
+		CBE8637017FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsDailyStatus.m; sourceTree = "<group>"; };
+		CBE8637217FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsDailyStatusDetails.h; sourceTree = "<group>"; };
+		CBE8637317FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsDailyStatusDetails.m; sourceTree = "<group>"; };
+		CBE8637517FC9F8800EF6E73 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
+		CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		CBE8637917FC9F9C00EF6E73 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		CBE8637B17FC9FA600EF6E73 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CBE8637D17FC9FB300EF6E73 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		DC84729676AF45F3A3CE10A8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -209,13 +230,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
+				CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */,
+				CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */,
+				CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */,
+				CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */,
+				CBE8637617FC9F8800EF6E73 /* ShinobiCharts.framework in Frameworks */,
 				CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */,
 				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
-				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
 				CB8F20D417EB857800EBDC34 /* CoreData.framework in Frameworks */,
 				CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */,
 				CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */,
-				CB7C2E4317F2518800BD858D /* Reveal.framework in Frameworks */,
+				CB6B63CA1800F83000145953 /* Reveal.framework in Frameworks */,
 				CB0B906817F34E9500F706BE /* PassKit.framework in Frameworks */,
 				CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */,
 				C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */,
@@ -255,7 +281,6 @@
 				CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */,
 				CBD43F3617F9F49F001AC849 /* ExternalLinkViewViewController.h */,
 				CBD43F3717F9F49F001AC849 /* ExternalLinkViewViewController.m */,
-				CBD43F3817F9F49F001AC849 /* ExternalLinkViewViewController.xib */,
 			);
 			name = detail;
 			sourceTree = "<group>";
@@ -386,7 +411,7 @@
 		CB8F208417EB5D6300EBDC34 = {
 			isa = PBXGroup;
 			children = (
-				CB7C2E4217F2518800BD858D /* Reveal.framework */,
+				CB6B63C91800F83000145953 /* Reveal.framework */,
 				CB8F209617EB5D6300EBDC34 /* Docked-ios */,
 				CB8F20AF17EB5D6300EBDC34 /* Docked-iosTests */,
 				CB8F208F17EB5D6300EBDC34 /* Frameworks */,
@@ -407,6 +432,12 @@
 		CB8F208F17EB5D6300EBDC34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB0AAF9917FCA15100695707 /* libstdc++.6.0.9.dylib */,
+				CBE8637D17FC9FB300EF6E73 /* libstdc++.dylib */,
+				CBE8637B17FC9FA600EF6E73 /* Security.framework */,
+				CBE8637917FC9F9C00EF6E73 /* CoreText.framework */,
+				CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */,
+				CBE8637517FC9F8800EF6E73 /* ShinobiCharts.framework */,
 				CB0B906717F34E9500F706BE /* PassKit.framework */,
 				CB0B906517F34E9000F706BE /* GameKit.framework */,
 				CB0B906317F34E8500F706BE /* StoreKit.framework */,
@@ -426,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				CBD43EF817F8B200001AC849 /* cells */,
-				CB0B906917F34E9500F706BE /* Docked-ios.entitlements */,
 				CB5AECE717EE88B900319223 /* helpers */,
 				CB06CB6617EBA4EE007323AA /* networking */,
 				CB8F20C017EB5F8300EBDC34 /* models */,
@@ -436,6 +466,7 @@
 				CB8F209717EB5D6300EBDC34 /* Supporting Files */,
 				CB8F20D117EB851D00EBDC34 /* Media.xcassets */,
 				CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */,
+				CB0B906917F34E9500F706BE /* Docked-ios.entitlements */,
 			);
 			path = "Docked-ios";
 			sourceTree = "<group>";
@@ -480,6 +511,8 @@
 				CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */,
 				CB84B41D17EBBF1500C8B00D /* RootViewController.h */,
 				CB84B41E17EBBF1500C8B00D /* RootViewController.m */,
+				CBB89E0B17FE4B9400402973 /* FeedItemsDataSource.h */,
+				CBB89E0C17FE4B9400402973 /* FeedItemsDataSource.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -487,6 +520,7 @@
 		CB8F20C017EB5F8300EBDC34 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				CBE8636E17FC93D900EF6E73 /* googleAnalytics */,
 				CB7C2E4817F26F9800BD858D /* stripe */,
 				CB84B44617EBEB3C00C8B00D /* sentry */,
 				CB84B44517EBEB3300C8B00D /* github */,
@@ -500,6 +534,10 @@
 				CB8157A117F0D72F006AA14A /* Provider.m */,
 				CBD43F4C17FA3A49001AC849 /* Message.h */,
 				CBD43F4D17FA3A49001AC849 /* Message.m */,
+				CBB89E0F17FE4F0600402973 /* Store.h */,
+				CBB89E1017FE4F0600402973 /* Store.m */,
+				CB4FDD4B17FF75B700EEE7F6 /* PersistentStack.h */,
+				CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -509,7 +547,6 @@
 			children = (
 				CBD43EF917F8B221001AC849 /* TextCardCell.h */,
 				CBD43EFA17F8B221001AC849 /* TextCardCell.m */,
-				CBD43EFC17F8B238001AC849 /* TextCardCell.xib */,
 				CBD43EFE17F8B54B001AC849 /* DataCardCell.h */,
 				CBD43EFF17F8B54B001AC849 /* DataCardCell.m */,
 				CBD43F0117F8B554001AC849 /* GraphDataCell.h */,
@@ -518,7 +555,8 @@
 				CBD43F0517F8B63B001AC849 /* CardCell.m */,
 				CBD43F4F17FA63E9001AC849 /* MessageCell.h */,
 				CBD43F5017FA63E9001AC849 /* MessageCell.m */,
-				CBD43F5217FA63FB001AC849 /* MessageCell.xib */,
+				CBB89E1217FE7FAD00402973 /* MoreMessagesCell.h */,
+				CBB89E1317FE7FAD00402973 /* MoreMessagesCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -531,11 +569,21 @@
 				CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */,
 				CBD43F3C17FA12A4001AC849 /* NewMessageViewController.h */,
 				CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */,
-				CBD43F3E17FA12A4001AC849 /* NewMessageViewController.xib */,
 				CBD43F4117FA12BE001AC849 /* MessagesTableViewController.h */,
 				CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */,
 			);
 			name = messages;
+			sourceTree = "<group>";
+		};
+		CBE8636E17FC93D900EF6E73 /* googleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				CBE8636F17FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.h */,
+				CBE8637017FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.m */,
+				CBE8637217FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.h */,
+				CBE8637317FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m */,
+			);
+			name = googleAnalytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -635,11 +683,7 @@
 				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
 				CB429B9C17EFDAFF002273D6 /* GithubSettingsViewController.xib in Resources */,
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
-				CBD43F3A17F9F4A0001AC849 /* ExternalLinkViewViewController.xib in Resources */,
-				CBD43F4017FA12A4001AC849 /* NewMessageViewController.xib in Resources */,
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
-				CBD43EFD17F8B238001AC849 /* TextCardCell.xib in Resources */,
-				CBD43F5317FA63FB001AC849 /* MessageCell.xib in Resources */,
 				CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */,
 				CB429BA617EFDB17002273D6 /* SentrySettingsViewController.xib in Resources */,
 				CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */,
@@ -695,6 +739,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBB89E1117FE4F0600402973 /* Store.m in Sources */,
 				CB7C2E4B17F26FAC00BD858D /* StripeChargeSucceeded.m in Sources */,
 				CB81579C17F0D55E006AA14A /* User.m in Sources */,
 				CB6ED88D17F5EC9B00496244 /* Github.m in Sources */,
@@ -703,12 +748,15 @@
 				CB8157A217F0D72F006AA14A /* Provider.m in Sources */,
 				CB6ED88717F5EBFF00496244 /* GithubPush.m in Sources */,
 				CBD43F0317F8B554001AC849 /* GraphDataCell.m in Sources */,
+				CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */,
 				CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */,
 				CBD43F4E17FA3A49001AC849 /* Message.m in Sources */,
 				CB429BA017EFDB0A002273D6 /* StripeSettingsViewController.m in Sources */,
 				CBD43EFB17F8B221001AC849 /* TextCardCell.m in Sources */,
 				CB8F20A117EB5D6300EBDC34 /* AppDelegate.m in Sources */,
+				CBB89E0D17FE4B9400402973 /* FeedItemsDataSource.m in Sources */,
 				CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */,
+				CBB89E1417FE7FAD00402973 /* MoreMessagesCell.m in Sources */,
 				CBD43F3F17FA12A4001AC849 /* NewMessageViewController.m in Sources */,
 				CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */,
 				CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */,
@@ -722,6 +770,7 @@
 				CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */,
 				CB84B45217EBEBA100C8B00D /* SentryException.m in Sources */,
 				CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */,
+				CBE8637417FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m in Sources */,
 				CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */,
 				CB6ED88A17F5EC3900496244 /* GithubCommit.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
@@ -730,6 +779,7 @@
 				CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */,
 				CB84B44F17EBEB9700C8B00D /* GithubIssueOpened.m in Sources */,
 				CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */,
+				CBE8637117FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.m in Sources */,
 				CB81579F17F0D568006AA14A /* Account.m in Sources */,
 				CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */,
 				CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */,
@@ -858,6 +908,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"/Users/charlie/Sites/Triage/client/Docked-ios",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Docked-ios-Prefix.pch";
@@ -880,6 +932,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"/Users/charlie/Sites/Triage/client/Docked-ios",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Docked-ios-Prefix.pch";

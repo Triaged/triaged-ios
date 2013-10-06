@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CardCell.h"
 
-@interface GraphDataCell : UITableViewCell
+
+@interface GraphDataCell : CardCell
 
 @end

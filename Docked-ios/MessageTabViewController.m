@@ -31,7 +31,6 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"Touches Began");
     DetailViewController *detailVC = (DetailViewController *)self.parentViewController;
     [detailVC presentNewMessageVC];
     

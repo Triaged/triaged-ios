@@ -15,6 +15,8 @@
 
 @interface DetailViewController () {
     NewMessageViewController *newMessageVC;
+    UIScrollView *scrollView;
+    MessagesTableViewController *messagesVC;
 }
 
 @end
@@ -27,6 +29,10 @@
     if (self) {
         // Custom initialization
         newMessageVC = [[NewMessageViewController alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(refreshView)
+                                                     name:@"feedUpdated"
+                                                   object:nil];
     }
     return self;
 }
@@ -51,74 +57,81 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [[UIColor alloc]
-                                 initWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+                                 initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
 
     UIImage * shareImage = [UIImage imageNamed:@"icn_share.png"];
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareImage style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:shareImage style:UIBarButtonItemStyleDone target:nil action:nil];
     
-    self.navigationItem.rightBarButtonItem = shareButton;
+    scrollView = [[UIScrollView alloc] init];
+    scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:scrollView];
+    
+    UIView *contentView;
+    contentView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,self.view.frame.size.height)];
+    [scrollView addSubview:contentView];
+    
 
     // Card View
-    NSString *content = @"blah blah";
     id<DataSourceItem> cellSource = (id<DataSourceItem>)_feedItem;
     Class cellClass = [ cellSource tableViewCellClass ] ;
     NSString * cellID = NSStringFromClass( cellClass ) ;
     CardCell *cell = [ [ cellClass alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID ] ;
-    cell.frame = CGRectMake(6, 60, 308, [cellClass heightOfContent:content] );
+    cell.frame = CGRectMake(6, 0, 308, [cellClass heightOfContent:_feedItem.body] );
     cell.backgroundColor = [UIColor whiteColor];
+    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     [cell configureForItem:_feedItem];
-    
-    UIView *cardBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 60, 320, cell.frame.size.height)];
-    cardBackground.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:cardBackground];
-    [self.view addSubview:cell];
-    
-
+    [contentView addSubview:cell];
     
     // External Link View
     ExternalLinkViewViewController *externalVC = [[ExternalLinkViewViewController alloc] init];
-    [externalVC setExternalLink:[_feedItem externalLinkUrl]];
-    externalVC.view.frame = CGRectMake(0, 60 + cell.frame.size.height, 320, 40);
+    [externalVC setExternalLink:[_feedItem htmlUrl]];
+    externalVC.view.frame = CGRectMake(6, cell.frame.size.height, 308, 44);
+    externalVC.view.translatesAutoresizingMaskIntoConstraints = NO;
     [self addChildViewController:externalVC];
-    [self.view addSubview:externalVC.view];
-
+    [contentView addSubview:externalVC.view];
+    
     // Message Tab View
     MessageTabViewController *messageTabVC = [[MessageTabViewController alloc] init];
-    //x, y, width, height
-    NSLog(@"%f", self.view.frame.size.height);
-    messageTabVC.view.frame = CGRectMake(0, self.view.bounds.size.height - 44, self.view.bounds.size.width, 44);
+    messageTabVC.view.frame = CGRectMake(0, self.view.bounds.size.height - 44, 320, 44);
     messageTabVC.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self addChildViewController:messageTabVC];
     [self.view addSubview:messageTabVC.view];
-    
-    MessagesTableViewController *messagesVC = [[MessagesTableViewController alloc] init];
-    //commentsVC.delegate = self;
-    messagesVC.messages = _feedItem.messages;
-    NSLog(@"%d", messagesVC.messages.count);
-    [self addChildViewController:messagesVC];
-    CGRect frame = CGRectMake(0, externalVC.view.frame.origin.y + externalVC.view.frame.size.height + 10.0, 320.0, 200.0);
-    messagesVC.view.frame = frame;
-    [self.view addSubview:messagesVC.tableView];
-    [messagesVC didMoveToParentViewController:self];
-    
-    
-    // Do any additional setup after loading the view.
+
+    // Messages Table View
+    if (_feedItem.messages.count > 0) {
+         messagesVC = [[MessagesTableViewController alloc] init];
+        //commentsVC.delegate = self;
+        messagesVC.feedItem = _feedItem;
+        [self addChildViewController:messagesVC];
+        CGRect frame = CGRectMake(6, cell.frame.size.height + 44, 308.0, self.view.frame.size.height - (cell.frame.size.height + 44));
+        messagesVC.tableView.frame = frame;
+        [contentView  addSubview:messagesVC.tableView];
+        [messagesVC didMoveToParentViewController:self];
+    }
 }
 
-- (void)addMessagesTableView
+
+-(void)viewDidLayoutSubviews
 {
-    
+    [self setContentSize];
 }
 
--(void)presentNewMessageVC {
+-(void)refreshView {
+    [messagesVC refreshTableView];
+    [self setContentSize];
+}
+
+-(void)setContentSize {
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height);
+    scrollView.frame = self.view.frame;
+}
+
+-(void)presentNewMessageVC
+{
     [newMessageVC setFeedItem:_feedItem];
-    [self.navigationController presentViewController:newMessageVC animated:YES completion:nil];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newMessageVC ];
+    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:86.0f/255.0f green:87.0f/255.0f blue:193.0f/255.0f alpha:1.0f];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 @end

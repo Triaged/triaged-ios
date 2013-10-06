@@ -10,7 +10,7 @@
 #import "Mantle.h"
 
 
-@interface Message : MTLModel <MTLJSONSerializing>
+@interface Message : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @property (nonatomic, copy, readonly) NSString *externalID;
 @property (nonatomic, copy, readonly) NSString *authorName;
