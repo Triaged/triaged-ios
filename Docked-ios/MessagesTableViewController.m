@@ -96,7 +96,7 @@
 {
     
     Message *message = feedItem.messages[indexPath.row];
-    return [MessageCell heightOfContent:message.body];
+    return [MessageCell heightOfContent:message];
     
 }
 

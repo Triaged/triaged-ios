@@ -12,16 +12,15 @@
 @implementation GithubPush
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
-             @"externalID": @"id",
+    NSDictionary *jsonKeys = @{
+             @"repo": @"repo",
              @"pusher": @"pusher",
              @"branch": @"branch",
              @"url": @"url",
              @"commits": @"commits",
-             @"htmlUrl": @"html_url",
-             @"messages": @"messages",
-             @"timestamp": @"timestamp"
              };
+
+    return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
 + (NSValueTransformer *)commitsJSONTransformer
@@ -29,7 +28,9 @@
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[GithubCommit class]];
 }
 
-
+-(UIImage *)providerIcon {
+    return [UIImage imageNamed:@"github.png"];;
+}
 
 -(NSString *)property {
     return @"Github-ios";

@@ -19,15 +19,14 @@
 }
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
-             @"externalID": @"id",
+   NSDictionary *jsonKeys = @{
              @"visitsSum": @"visits_sum",
              @"visitorsSum": @"visitors_sum",
              @"pageViewsSum": @"pageviews_sum",
              @"date": @"date",
              @"dailyDetails": @"daily_details",
-             @"timestamp": @"timestamp"
              };
+    return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
 + (NSValueTransformer *)dailyDetailsJSONTransformer

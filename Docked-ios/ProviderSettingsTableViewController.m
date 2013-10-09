@@ -1,18 +1,18 @@
 //
-//  NotificationsViewController.m
+//  ProviderSettingsTableViewController.m
 //  Docked-ios
 //
-//  Created by Charlie White on 9/20/13.
+//  Created by Charlie White on 10/9/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
-#import "NotificationsViewController.h"
+#import "ProviderSettingsTableViewController.h"
 
-@interface NotificationsViewController ()
+@interface ProviderSettingsTableViewController ()
 
 @end
 
-@implementation NotificationsViewController
+@implementation ProviderSettingsTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

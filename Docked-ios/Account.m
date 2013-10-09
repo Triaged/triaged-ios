@@ -8,21 +8,45 @@
 
 #import "Account.h"
 #import "Provider.h"
+#import "DockedAPIClient.h"
 
 @implementation Account
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
       @"userID": @"id",
+      @"name": @"name",
+      @"email": @"email",
+      @"providers": @"providers"
     };
 }
 
 
-+ (NSValueTransformer *)providersTransformer
++ (void) fetchRemoteUserAccountWithBlock:(void (^)(Account *))block
 {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[Provider class]];
+    [[DockedAPIClient sharedClient] GET:@"account.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
+        NSValueTransformer *transformer;
+        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
+        
+        block([transformer transformedValue:JSON]);
+    
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"failure");
+    }];
 }
 
++(void) updateAPNSPushTokenWithToken:(NSString *)token {
+    
+    id params = @{@"push_token" : @{
+                          @"service": @"apns",
+                          @"token": token
+                          }};
+    
+    [[DockedAPIClient sharedClient] POST:@"account/push_tokens.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",[error localizedDescription]);
+    }];
+}
 
 
 @end

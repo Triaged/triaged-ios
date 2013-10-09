@@ -8,10 +8,12 @@
 
 #import "AppDelegate.h"
 #import "Store.h"
+#import "Account.h"
 #import "PersistentStack.h"
 #import "RootViewController.h"
+#import "SettingsMenuViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () 
 
 @property (nonatomic, strong) PersistentStack* persistentStack;
 
@@ -28,20 +30,33 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+
+    if (remoteNotification != nil) {
+        NSString *message = [remoteNotification descriptionWithLocale:nil indent: 1];
+        NSLog(@"Message in didFinishLaunchingWithOptions: %@",message);
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
     self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
     self.store = [[Store alloc] init];
-    self.store.managedObjectContext = self.persistentStack.managedObjectContext;
     
     [self setBaseStyles];
     [self addObservers];
     
+    [Account updateAPNSPushTokenWithToken:@"85006c46 ee195751 4fd9e2b5 4c49c1c8 cfa46cb3 a30d95bf 0daea81e 04507770"];
+    
     RootViewController *rootVC = [[RootViewController alloc] init];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
     
-    [self.window setRootViewController:navVC];
+    SettingsMenuViewController *settingsMenuViewController = [[SettingsMenuViewController alloc] init];
+    
+    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:settingsMenuViewController frontViewController:navVC];
+    revealController.delegate = self;
+    
+    [self.window setRootViewController:revealController];
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -51,8 +66,7 @@
 - (void) addObservers
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-    
-    }
+}
 
 - (void) setBaseStyles
 {
@@ -90,12 +104,37 @@
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
     NSLog(@"Got device token: %@", [devToken description]);
-    
-    //[self sendProviderDeviceToken:[devToken bytes]]; // custom method; e.g., send to a web service and store
+    [Account updateAPNSPushTokenWithToken:[devToken description]];
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
     NSLog(@"Error in registration. Error: %@", err);
+}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"remote notification received");
+    
+    [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
+        if (newFeedItems) {
+            // TODO: Route to remote notification
+            completionHandler(UIBackgroundFetchResultNewData);
+        } else {
+            completionHandler(UIBackgroundFetchResultNoData);
+        }
+    }];
+    completionHandler(UIBackgroundFetchResultFailed);
+}
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
+        if (newFeedItems) {
+            completionHandler(UIBackgroundFetchResultNewData);
+        } else {
+            completionHandler(UIBackgroundFetchResultNoData);
+        }
+    }];
+    completionHandler(UIBackgroundFetchResultFailed);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

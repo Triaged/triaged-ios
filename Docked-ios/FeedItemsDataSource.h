@@ -16,5 +16,6 @@
 - (id)initWithItems:(NSArray *)anItems;
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
+- (id)feedItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

@@ -27,11 +27,11 @@
     return self;
 }
 
-- (id)initWitURL:(NSString *)url
+- (id)initWitURL:(NSString *)newUrl
 {
     self = [super init];
     if (self) {
-        self.url = url;
+        self.url = newUrl;
         // Custom initialization
     }
     return self;

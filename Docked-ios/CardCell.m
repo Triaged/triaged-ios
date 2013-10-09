@@ -16,13 +16,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-//        self.layer.shadowOffset = CGSizeMake(0, 4);
-//        self.layer.shadowColor = [[[UIColor alloc] initWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0f] CGColor];
-//        
-//        self.layer.shadowRadius = 4;
-//        self.layer.shadowOpacity = 0.75f;
-        
-        UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 3)];/// change size as you need.
+        UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 6)];/// change size as you need.
         separatorLineView.backgroundColor = [[UIColor alloc] initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
         [self.contentView addSubview:separatorLineView];
         
@@ -54,7 +48,7 @@
         timestampLabel.textColor = [[UIColor alloc] initWithRed:141.0f/255.0f green:141.0f/255.0f blue:141.0f/255.0f alpha:1.0f];
         [timestampLabel setLineBreakMode: NSLineBreakByClipping];
         timestampLabel.numberOfLines = 1;
-        timestampLabel.textAlignment = NSTextAlignmentCenter;
+        timestampLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview: timestampLabel];
         
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
@@ -74,20 +68,28 @@
     // Configure the view for the selected state
 }
 
--(void) layoutSubviews {
+-(void) layoutSubviews
+{
     [super layoutSubviews];
     
-    [providerIconView setFrame:CGRectMake(10, 15.0, 30.0, 30.0)];
-    [propertyLabel setFrame:CGRectMake(50, 17.0, 200.0, 18.0)];
-    [actionLabel setFrame:CGRectMake(50, 32.0, 200.0, 16.0)];
-    [timestampLabel setFrame:CGRectMake(230, 24.0, 70.0, 16.0)];
+    [providerIconView setFrame:CGRectMake(10, 18.0, 30.0, 30.0)];
+    [propertyLabel setFrame:CGRectMake(50, 18.0, 200.0, 18.0)];
+    [actionLabel setFrame:CGRectMake(51, 35.0, 200.0, 16.0)];
+    [timestampLabel setFrame:CGRectMake(250, 25.0, 50.0, 16.0)];
     
     NSAttributedString *attributedBodyText = [CardCell attributedBodyText:bodyLabel.text];
-    CGRect newFrame = CGRectMake(10, 60.0, 288, [CardCell heightOfBody:attributedBodyText]);
+    CGRect newFrame = CGRectMake(10, 65.0, 288, [CardCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
 }
 
-+ (NSAttributedString *) attributedBodyText:(NSString *)bodyText {
+- (void)configureForItem:(FeedItem *)item
+{
+    NSAssert(NO, @"ConfigureForItem must be overwritten in a subclass.");
+    
+}
+
++ (NSAttributedString *) attributedBodyText:(NSString *)bodyText
+{
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
@@ -100,18 +102,10 @@
                                                   NSFontAttributeName,
                                                   paragraphStyle, NSParagraphStyleAttributeName,nil]];
     return attributedBodyText;
-    
 }
 
-- (void) configureMessages:(NSArray *)messages {
-    if (messages.count > 0) {
-        
-    }
-}
-
-+ (CGFloat) heightOfBody:(NSAttributedString *)bodyText {
-    // bodyLabel dynamic height
-    
++ (CGFloat) heightOfBody:(NSAttributedString *)bodyText
+{
     CGRect paragraphRect =
     [bodyText boundingRectWithSize:CGSizeMake(288.0, CGFLOAT_MAX)
                                                 options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
@@ -119,13 +113,14 @@
     return paragraphRect.size.height;
 }
 
-+ (CGFloat) estimatedHeightOfContent {
++ (CGFloat) estimatedHeightOfContent
+{
     return 88;
 }
 
-
-
-
-
++ (CGFloat) heightOfContent:(FeedItem *)item
+{
+    return 88;
+}
 
 @end

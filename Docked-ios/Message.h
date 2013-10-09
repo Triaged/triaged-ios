@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
+#import "FeedItem.h"
+#import "Account.h"
 
 
 @interface Message : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
@@ -15,7 +17,5 @@
 @property (nonatomic, copy, readonly) NSString *externalID;
 @property (nonatomic, copy, readonly) NSString *authorName;
 @property (nonatomic, copy, readonly) NSString *body;
-
-
 
 @end

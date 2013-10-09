@@ -19,65 +19,57 @@ NSLocalizedStringFromTableInBundle(key, @"NSDateTimeAgo", [NSBundle bundleWithPa
     
     int minutes;
     
-    if(deltaSeconds < 5)
+    if(deltaSeconds < 60)
     {
-        return NSDateTimeAgoLocalizedStrings(@"Just now");
-    }
-    else if(deltaSeconds < 60)
-    {
-        return [self stringFromFormat:@"%%d %@seconds ago" withValue:deltaSeconds];
-    }
-    else if(deltaSeconds < 120)
-    {
-        return NSDateTimeAgoLocalizedStrings(@"A minute ago");
+        return [self stringFromFormat:@"%%d %@s" withValue:deltaSeconds];
     }
     else if (deltaMinutes < 60)
     {
-        return [self stringFromFormat:@"%%d %@minutes ago" withValue:deltaMinutes];
+        return [self stringFromFormat:@"%%d %@m" withValue:deltaMinutes];
     }
     else if (deltaMinutes < 120)
     {
-        return NSDateTimeAgoLocalizedStrings(@"An hour ago");
+        return NSDateTimeAgoLocalizedStrings(@"1h");
     }
     else if (deltaMinutes < (24 * 60))
     {
         minutes = (int)floor(deltaMinutes/60);
-        return [self stringFromFormat:@"%%d %@hours ago" withValue:minutes];
+        return [self stringFromFormat:@"%%d %@h" withValue:minutes];
     }
     else if (deltaMinutes < (24 * 60 * 2))
     {
-        return NSDateTimeAgoLocalizedStrings(@"Yesterday");
+        return NSDateTimeAgoLocalizedStrings(@"1 day");
     }
     else if (deltaMinutes < (24 * 60 * 7))
     {
         minutes = (int)floor(deltaMinutes/(60 * 24));
-        return [self stringFromFormat:@"%%d %@days ago" withValue:minutes];
+        return [self stringFromFormat:@"%%d %@days" withValue:minutes];
     }
     else if (deltaMinutes < (24 * 60 * 14))
     {
-        return NSDateTimeAgoLocalizedStrings(@"Last week");
+        return NSDateTimeAgoLocalizedStrings(@"1 week");
     }
     else if (deltaMinutes < (24 * 60 * 31))
     {
         minutes = (int)floor(deltaMinutes/(60 * 24 * 7));
-        return [self stringFromFormat:@"%%d %@weeks ago" withValue:minutes];
+        return [self stringFromFormat:@"%%d %@weeks" withValue:minutes];
     }
     else if (deltaMinutes < (24 * 60 * 61))
     {
-        return NSDateTimeAgoLocalizedStrings(@"Last month");
+        return NSDateTimeAgoLocalizedStrings(@"1 month");
     }
     else if (deltaMinutes < (24 * 60 * 365.25))
     {
         minutes = (int)floor(deltaMinutes/(60 * 24 * 30));
-        return [self stringFromFormat:@"%%d %@months ago" withValue:minutes];
+        return [self stringFromFormat:@"%%d %@months" withValue:minutes];
     }
     else if (deltaMinutes < (24 * 60 * 731))
     {
-        return NSDateTimeAgoLocalizedStrings(@"Last year");
+        return NSDateTimeAgoLocalizedStrings(@"1 year");
     }
     
     minutes = (int)floor(deltaMinutes/(60 * 24 * 365));
-    return [self stringFromFormat:@"%%d %@years ago" withValue:minutes];
+    return [self stringFromFormat:@"%%d %@years" withValue:minutes];
 }
 
 // Similar to timeAgo, but only returns "

@@ -11,15 +11,13 @@
 @implementation GithubIssueOpened
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
-      @"githubIssueOpenedID": @"id",
+    NSDictionary *jsonKeys = @{
       @"title": @"title",
       @"openedByName": @"opened_by_name",
       @"AssignedToName": @"assigned_to_name",
-      @"body": @"body",
-      @"htmlUrl": @"html_url",
-      @"timestamp": @"timestamp"
+      @"message": @"body",
     };
+    return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
 
@@ -29,11 +27,13 @@
 }
 
 -(NSString *)action {
-    return @"issue opened";
+    return [NSString stringWithFormat:@"%@ opened an issue", self.openedByName];
 }
 
 -(NSString *)body {
-    return self.title;
+    NSString *bodyText = [NSString stringWithFormat:@"%@:",self.title];
+    bodyText = [bodyText stringByAppendingString:[NSString stringWithFormat:@"\n%@", self.message]];
+    return bodyText;
 }
 
 @end

@@ -30,16 +30,20 @@
 
 - (void)configureForItem:(FeedItem *)item
 {
-    self.propertyLabel.text = item.property;
-    self.actionLabel.text = item.action;
-    self.bodyLabel.text = item.body;
-    self.providerIconView.image = item.providerIcon;
-    self.timestampLabel.text = [item.timestamp timeAgo];
+    id<TextCardProtocol> textCardItem = (id<TextCardProtocol>)item;
+    
+    self.propertyLabel.text = textCardItem.property;
+    self.actionLabel.text = textCardItem.action;
+    self.bodyLabel.text = textCardItem.body;
+    self.providerIconView.image = textCardItem.providerIcon;
+    self.timestampLabel.text = [textCardItem.timestamp timeAgo];
 
 }
 
-+ (CGFloat) heightOfContent: (NSString *)bodyText {
-    NSAttributedString *attributedBodyText = [CardCell attributedBodyText:bodyText];
++ (CGFloat) heightOfContent: (FeedItem *)item {
+    id<TextCardProtocol> textCardItem = (id<TextCardProtocol>)item;
+    
+    NSAttributedString *attributedBodyText = [CardCell attributedBodyText:textCardItem.body];
     CGFloat bodyHeight = [CardCell heightOfBody:attributedBodyText];
     return (80 + bodyHeight);
 }

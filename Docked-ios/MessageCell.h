@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Message.h"
 
 @interface MessageCell : UITableViewCell
 
@@ -14,6 +15,6 @@
 @property (strong, nonatomic) UILabel *bodyLabel;
 @property (strong, nonatomic) UILabel *moreMessagesLabel;
 
-+ (CGFloat) heightOfContent: (NSString *)bodyText;
++ (CGFloat) heightOfContent: (Message *)message;
 
 @end

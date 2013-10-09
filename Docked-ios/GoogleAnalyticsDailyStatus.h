@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "FeedItem.h"
 #import "GoogleAnalyticsDailyStatusDetails.h"
+#import "GraphDataCell.h"
 
-@interface GoogleAnalyticsDailyStatus : FeedItem
+@interface GoogleAnalyticsDailyStatus : FeedItem <GraphCardProtocol>
 
 @property (nonatomic, copy, readonly) NSNumber *visitsSum;
 @property (nonatomic, copy, readonly) NSNumber *visitorsSum;

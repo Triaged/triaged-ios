@@ -80,7 +80,8 @@
     // Configure the view for the selected state
 }
 
-+ (NSAttributedString *) attributedBodyText:(NSString *)bodyText {
++ (NSAttributedString *) attributedBodyText:(NSString *)bodyText
+{
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
@@ -97,7 +98,8 @@
     
 }
 
-+ (CGFloat) heightOfBody:(NSAttributedString *)bodyText {
++ (CGFloat) heightOfBody:(NSAttributedString *)bodyText
+{
     // bodyLabel dynamic height
     
     CGRect paragraphRect =
@@ -107,8 +109,9 @@
     return paragraphRect.size.height;
 }
 
-+ (CGFloat) heightOfContent: (NSString *)bodyText {
-    NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:bodyText];
++ (CGFloat) heightOfContent: (Message *)message
+{
+    NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:message.body];
     CGFloat bodyHeight = [MessageCell heightOfBody:attributedBodyText];
     return (48 + bodyHeight);
 }

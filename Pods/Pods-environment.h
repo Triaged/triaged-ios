@@ -84,3 +84,9 @@
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_SVProgressHUD 0
 
+// SWRevealViewController
+#define COCOAPODS_POD_AVAILABLE_SWRevealViewController
+#define COCOAPODS_VERSION_MAJOR_SWRevealViewController 1
+#define COCOAPODS_VERSION_MINOR_SWRevealViewController 0
+#define COCOAPODS_VERSION_PATCH_SWRevealViewController 5
+

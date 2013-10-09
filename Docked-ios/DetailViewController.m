@@ -76,7 +76,7 @@
     Class cellClass = [ cellSource tableViewCellClass ] ;
     NSString * cellID = NSStringFromClass( cellClass ) ;
     CardCell *cell = [ [ cellClass alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID ] ;
-    cell.frame = CGRectMake(6, 0, 308, [cellClass heightOfContent:_feedItem.body] );
+    cell.frame = CGRectMake(6, 0, 308, [cellClass heightOfContent:_feedItem] );
     cell.backgroundColor = [UIColor whiteColor];
     cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     [cell configureForItem:_feedItem];
@@ -98,16 +98,15 @@
     [self.view addSubview:messageTabVC.view];
 
     // Messages Table View
-    if (_feedItem.messages.count > 0) {
-         messagesVC = [[MessagesTableViewController alloc] init];
-        //commentsVC.delegate = self;
-        messagesVC.feedItem = _feedItem;
-        [self addChildViewController:messagesVC];
-        CGRect frame = CGRectMake(6, cell.frame.size.height + 44, 308.0, self.view.frame.size.height - (cell.frame.size.height + 44));
-        messagesVC.tableView.frame = frame;
-        [contentView  addSubview:messagesVC.tableView];
-        [messagesVC didMoveToParentViewController:self];
-    }
+     messagesVC = [[MessagesTableViewController alloc] init];
+    //commentsVC.delegate = self;
+    messagesVC.feedItem = _feedItem;
+    [self addChildViewController:messagesVC];
+    CGRect frame = CGRectMake(6, cell.frame.size.height + 44, 308.0, self.view.frame.size.height - (cell.frame.size.height + 44));
+    messagesVC.tableView.frame = frame;
+    [contentView  addSubview:messagesVC.tableView];
+    [messagesVC didMoveToParentViewController:self];
+
 }
 
 
@@ -130,7 +129,7 @@
 {
     [newMessageVC setFeedItem:_feedItem];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newMessageVC ];
-    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:86.0f/255.0f green:87.0f/255.0f blue:193.0f/255.0f alpha:1.0f];
+    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:35.0f/255.0f green:36.0f/255.0f blue:171.0f/255.0f alpha:1.0f];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

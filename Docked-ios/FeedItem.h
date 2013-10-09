@@ -14,24 +14,15 @@
 -(Class)tableViewCellClass;
 @end
 
-@interface FeedItem : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
+@interface FeedItem : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSString *externalID;
 @property (nonatomic, copy, readonly) NSString *htmlUrl;
 @property (nonatomic, copy, readonly) NSArray *messages;
 @property (nonatomic, copy, readonly) NSDate *timestamp;
 
--(NSString *)property;
--(NSString *)body;
--(NSString *)action;
--(UIImage  *)providerIcon;
++ (NSDictionary *)JSONKeyPathsWithSuper:(NSDictionary *)JSONKeyPaths;
 
--(NSArray *)chartCoordinates;
-
--(NSNumber *)firstDataField;
--(NSNumber *)secondDataField;
--(NSNumber *)thirdDataField;
-
-+ (NSMutableArray *)loadFeedItems;
++ (void)fetchNewRemoteFeedItemsWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *))block;
 
 @end

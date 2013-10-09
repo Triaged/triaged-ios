@@ -11,15 +11,15 @@
 @implementation SentryException
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
-     @"externalID": @"id",
-     @"project": @"project",
-     @"message": @"message",
-     @"culprit": @"culprit",
-     @"logger": @"logger",
-     @"level": @"level",
-     @"timestamp": @"timestamp"
+    NSDictionary *jsonKeys = @{
+       @"project": @"project",
+       @"message": @"message",
+       @"culprit": @"culprit",
+       @"logger": @"logger",
+       @"level": @"level"
     };
+    
+    return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
 -(NSString*)property {

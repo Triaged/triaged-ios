@@ -167,20 +167,22 @@
 
 - (void)configureForItem:(FeedItem *)item
 {
-    self.propertyLabel.text = item.property;
-    self.actionLabel.text = item.action;
-    self.bodyLabel.text = item.body;
-    self.providerIconView.image = item.providerIcon;
-    self.timestampLabel.text = [item.timestamp timeAgo];
+    id<GraphCardProtocol> graphCardItem = (id<GraphCardProtocol>)item;
     
-    chartCoordinates = item.chartCoordinates;
+    self.propertyLabel.text = graphCardItem.property;
+    self.actionLabel.text = graphCardItem.action;
+    self.bodyLabel.text = graphCardItem.body;
+    self.providerIconView.image = graphCardItem.providerIcon;
+    self.timestampLabel.text = [graphCardItem.timestamp timeAgo];
     
-    firstData.text = [item.firstDataField stringValue];
-    secondData.text = [item.secondDataField stringValue];
-    thirdData.text = [item.thirdDataField stringValue];
+    chartCoordinates = graphCardItem.chartCoordinates;
+    
+    firstData.text = [graphCardItem.firstDataField stringValue];
+    secondData.text = [graphCardItem.secondDataField stringValue];
+    thirdData.text = [graphCardItem.thirdDataField stringValue];
 }
 
-+ (CGFloat) heightOfContent: (NSString *)bodyText {
++ (CGFloat) heightOfContent: (FeedItem *)item {
     return 290;
 }
 

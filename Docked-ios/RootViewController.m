@@ -8,16 +8,17 @@
 
 #import "RootViewController.h"
 #import "FeedTableViewController.h"
-#import "NotificationsViewController.h"
 #import "CredentialStore.h"
 #import "LoginViewController.h"
 #import "SignupViewController.h"
 #import "GithubSettingsViewController.h"
 #import "StripeSettingsViewController.h"
+#import "SWRevealViewController.h"
 
 @interface RootViewController () {
     LoginViewController *loginVC;
     SignupViewController *signupVC;
+    SWRevealViewController *revealController;
 }
 
 @end
@@ -37,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:86.0f/255.0f green:87.0f/255.0f blue:193.0f/255.0f alpha:1.0f];
+    self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:35.0f/255.0f green:36.0f/255.0f blue:171.0f/255.0f alpha:1.0f];
     self.view.backgroundColor = [[UIColor alloc] initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
     [self setupViewControllers];
     [self addSettingsButton];
@@ -63,6 +64,9 @@
 
 - (void)setupViewControllers
 {
+    revealController = [self revealViewController];
+    revealController.rearViewRevealWidth = 180;
+    
     FeedTableViewController *feedTableView = [[FeedTableViewController alloc] init];
     feedTableView.view.frame = CGRectMake(6, 0, self.view.frame.size.width - 12, self.view.frame.size.height);
     feedTableView.navController = self.navigationController;
@@ -74,7 +78,7 @@
 
 - (void)addSettingsButton
 {
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleDone target:self action:@selector(toggleSettingsMenu:)];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleDone target:revealController action:@selector(revealToggle:)];
     self.navigationItem.leftBarButtonItem = settingsButton;
 }
 

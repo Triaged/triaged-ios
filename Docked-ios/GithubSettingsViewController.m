@@ -8,8 +8,12 @@
 
 #import "GithubSettingsViewController.h"
 #import "OAuthViewController.h"
+#import "AppDelegate.h"
+#import "Store.h"
 
 @interface GithubSettingsViewController ()
+
+@property (nonatomic, strong) NSDictionary *settings;
 
 @end
 
@@ -20,6 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _settings = [[AppDelegate sharedDelegate].store.account.providers valueForKey:@"github"];
     }
     return self;
 }
@@ -27,6 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+
+    
+    //BOOL following = [AppDelegate sharedDelegate].store.account.userID;
     // Do any additional setup after loading the view from its nib.
 }
 

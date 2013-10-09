@@ -46,7 +46,7 @@
 - (void)setupTableView
 {
     // Datasource
-    NSArray *feed = [AppDelegate sharedDelegate].store.sortedFeed;
+    NSArray *feed = [AppDelegate sharedDelegate].store.sortedTableFeed;
     self.feedItemsDataSource = [[FeedItemsDataSource alloc] initWithItems:feed];
     self.tableView.dataSource = self.feedItemsDataSource;
     
@@ -63,13 +63,21 @@
 
 -(void)refreshFeed
 {
-    self.feedItemsDataSource.feedItems = [AppDelegate sharedDelegate].store.sortedFeed;
+    self.feedItemsDataSource.feedItems = [AppDelegate sharedDelegate].store.sortedTableFeed;
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    FeedItem *item = [self.feedItemsDataSource itemAtIndexPath:indexPath];
+    
+    
+    FeedItem *item;
+    
+    if(indexPath.row == 0) { // Feed Item
+        item = [self.feedItemsDataSource itemAtIndexPath:indexPath];
+    } else {
+        item = [self.feedItemsDataSource feedItemAtIndexPath:indexPath];
+    }
     
     CardCell *cell = (CardCell *)[tableView cellForRowAtIndexPath:indexPath];
     
@@ -92,7 +100,7 @@
     [ssVC setNavController:navController];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ssVC ];
-    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:86.0f/255.0f green:87.0f/255.0f blue:193.0f/255.0f alpha:1.0f];
+    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:35.0f/255.0f green:36.0f/255.0f blue:171.0f/255.0f alpha:1.0f];
     
     [self presentViewController:nav animated:NO completion:nil];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
@@ -107,10 +115,10 @@
         id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
         Class cellClass = [ cellSource tableViewCellClass ] ;
         
-        return [cellClass heightOfContent:item.body];
+        return [cellClass heightOfContent:item];
     } else if (indexPath.row == 1) {
         Message *message = [self.feedItemsDataSource itemAtIndexPath:indexPath];
-        return [MessageCell heightOfContent:message.body];
+        return [MessageCell heightOfContent:message];
     } else {
         return 40;
     }

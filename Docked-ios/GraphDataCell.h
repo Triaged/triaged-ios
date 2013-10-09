@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "CardCell.h"
 
+@protocol GraphCardProtocol <CardProtocol>
+-(NSArray *)chartCoordinates;
+-(NSNumber *)firstDataField;
+-(NSNumber *)secondDataField;
+-(NSNumber *)thirdDataField;
+@optional
+-(NSString *)body;
+@end
 
 @interface GraphDataCell : CardCell
 

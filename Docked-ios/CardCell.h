@@ -12,6 +12,13 @@
 #import "MessageCell.h"
 #import "NSDate+TimeAgo.h"
 
+@protocol CardProtocol <NSObject>
+-(NSString *)property;
+-(NSString *)action;
+-(UIImage *)providerIcon;
+-(NSDate *)timestamp;
+@end
+
 @interface CardCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *providerIconView;
@@ -23,8 +30,9 @@
 
 - (void)configureForItem:(FeedItem *)item;
 + (CGFloat) estimatedHeightOfContent;
++ (CGFloat) heightOfContent: (FeedItem *)item;
+
 + (NSAttributedString *) attributedBodyText:(NSString *)bodyText;
 + (CGFloat) heightOfBody:(NSAttributedString *)bodyText;
-+ (CGFloat) heightOfContent: (NSString *)bodyText;
 
 @end

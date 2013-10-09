@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FeedItem.h"
 
-@interface Github : FeedItem
+
+@interface Github : FeedItem 
 
 @end

@@ -14,6 +14,10 @@
 @property (nonatomic, copy, readonly) NSString *userID;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *email;
-@property (nonatomic, copy, readonly) NSArray *providers;
+@property (nonatomic, copy, readonly) NSDictionary *providers;
+
++(void) fetchRemoteUserAccountWithBlock:(void (^)(Account *))block;
+
++(void) updateAPNSPushTokenWithToken:(NSString *)token;
 
 @end

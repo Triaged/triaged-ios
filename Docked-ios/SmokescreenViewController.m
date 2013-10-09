@@ -41,9 +41,9 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration:0.35
                           delay:0
-                        options: UIViewAnimationCurveEaseOut
+                        options: UIViewAnimationOptionCurveEaseOut
                      animations:^{
                         _cardImageView.frame = CGRectMake(6, 63, 308, _cardImageView.frame.size.height );                                 }
                      completion:^(BOOL finished){

@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CardCell.h"
 
-@interface DataCardCell : UITableViewCell
+@protocol DataCardProtocol <CardProtocol>
+-(NSNumber *)firstDataField;
+-(NSNumber *)secondDataField;
+-(NSNumber *)thirdDataField;
+@optional
+-(NSString *)body;
+@end
+
+@interface DataCardCell : CardCell
 
 @end

@@ -26,6 +26,7 @@ PODS:
   - RNFrostedSidebar (0.2.0)
   - SSKeychain (1.2.1)
   - SVProgressHUD (0.9)
+  - SWRevealViewController (1.0.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - RNFrostedSidebar (~> 0.2.0)
   - SSKeychain
   - SVProgressHUD
+  - SWRevealViewController
 
 SPEC CHECKSUMS:
   AFNetworking: 3fa983b1beaba69566a3374612511e2a6e3fe845
@@ -42,5 +44,6 @@ SPEC CHECKSUMS:
   RNFrostedSidebar: 36339438a07088fd3ee3926db03af499477ee048
   SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
+  SWRevealViewController: c1698d78b22191af3cd23df4144c3e17e253bb78
 
 COCOAPODS: 0.25.0

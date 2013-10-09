@@ -7,6 +7,7 @@
 //
 
 #import "Message.h"
+#import "DockedAPIClient.h"
 
 @implementation Message
 
@@ -28,5 +29,6 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey {
     return @{};
 }
+
 
 @end

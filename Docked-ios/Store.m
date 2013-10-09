@@ -31,16 +31,58 @@
         [self fetchRemoteUserAccount];
         [self fetchRemoteFeedItems];
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(fetchRemoteUserAccount)
+                                                 selector:@selector(userLoggedIn)
                                                      name:@"login"
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(userSignedOut)
+                                                     name:@"signout"
                                                    object:nil];
 
     }
     return self;
 }
 
-- (NSArray *)sortedFeed {
-    NSArray *sortedFeedItems = [self sortedFeedItems];
+#pragma mark - Remote Updates
+
+- (void) fetchRemoteUserAccount
+{
+    [Account fetchRemoteUserAccountWithBlock:^(Account *account) {
+        _account = account;
+    }];
+}
+
+- (void)fetchRemoteFeedItems
+{
+    [self fetchNewRemoteFeedItemsWithBlock:nil];
+}
+
+- (void)fetchNewRemoteFeedItemsWithBlock:(void (^)(NSArray *))block {
+    NSDictionary *params;
+    
+    if (_minID != nil){
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:_minID, @"min_id", nil];
+    }
+    
+    [FeedItem fetchNewRemoteFeedItemsWithParams:params andBlock:^(NSArray *newItems) {
+        
+        if (newItems.count > 0) {
+            NSMutableArray *allFeedItems = [[NSMutableArray alloc] initWithArray:_feedItems];
+            [allFeedItems addObjectsFromArray:newItems];
+            _feedItems =  [NSArray arrayWithArray:allFeedItems];
+        }
+        
+        // Need to call to ensure table views stop refreshing
+        [self feedWasUpdated];
+        
+        if (block) block(newItems);
+    }];
+}
+
+#pragma mark - Feed methods
+
+- (NSArray *)sortedTableFeed {
+    NSArray *sortedFeedItems = [self sortFeedItems];
     NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:sortedFeedItems.count];
     
     for (FeedItem *item in sortedFeedItems) {
@@ -50,49 +92,19 @@
     return [NSArray arrayWithArray:feed];
 }
 
-- (void) fetchRemoteUserAccount
-{
-    [[DockedAPIClient sharedClient] GET:@"account.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
-        NSValueTransformer *transformer;
-        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
-        _account = [transformer transformedValue:JSON];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"failure");
-    }];
-}
-
-- (void)fetchRemoteFeedItems {
-    
-    NSDictionary *params;
-    
-    if (_minID != nil){
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:_minID, @"min_id", nil];
-    }
-    
-    [[DockedAPIClient sharedClient] GET:@"feed.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
-        NSValueTransformer *transformer;
-        transformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:FeedItem.class];
-        _feedItems = [transformer transformedValue:JSON];
-        
-        [self feedWasUpdated];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"failure");
-    }];
-}
-
 - (void) feedWasUpdated {
     // set minID for remote requests
-    FeedItem *item = [_feedItems firstObject];
+    FeedItem *item = [[self sortFeedItems] firstObject];
     _minID = item.externalID;
     
     // Send notification
     [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
 }
 
-- (NSArray *)sortedFeedItems
+- (NSArray *)sortFeedItems
 {
     return [self.feedItems sortedArrayUsingComparator:^NSComparisonResult(FeedItem *feedItem1, FeedItem *feedItem2) {
-        return [feedItem2.timestamp compare:feedItem1.timestamp];
+        return [feedItem2.externalID compare:feedItem1.externalID];
     }];
 }
 
@@ -107,6 +119,24 @@
     }
     return [NSArray arrayWithArray:groupedFeedItem];
 }
+
+#pragma mark - User Authentication
+
+- (void) userLoggedIn
+{
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    [self fetchRemoteUserAccount];
+    [self fetchRemoteFeedItems];
+}
+
+- (void) userSignedOut
+{
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalNever];
+    _feedItems = nil;
+    [self deleteFeedArchive];
+}
+
+#pragma mark - NSKeyArchiving
 
 - (void)readFeedArchive
 {
@@ -131,8 +161,17 @@
     [NSKeyedArchiver archiveRootObject: rootObject toFile: path];
 }
 
-// Path to the data file in the app's Documents directory
-- (NSString *) pathForDataFile {
+- (BOOL)deleteFeedArchive
+{
+    NSString * path = [self pathForDataFile];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    BOOL exists = [fm fileExistsAtPath:path];
+    if(exists == YES) return [fm removeItemAtPath:path error:nil];
+    return exists;
+}
+
+- (NSString *) pathForDataFile
+{
     NSArray*	documentDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString*	path = nil;
 	

@@ -13,18 +13,18 @@
 
 + (instancetype)store;
 
-@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
-
 @property (readonly, nonatomic, strong) NSArray* feedItems;
 @property (readonly, nonatomic, strong) NSArray* users;
 @property (readonly, nonatomic, strong) Account* account;
 
 - (void)fetchRemoteFeedItems;
+
+- (void)fetchNewRemoteFeedItemsWithBlock:(void (^)(NSArray *))block;
 - (void)saveFeedToArchive;
 
 
-- (NSArray*)sortedFeedItems;
-- (NSArray*)sortedFeed;
+- (NSArray*)sortFeedItems;
+- (NSArray*)sortedTableFeed;
 
 
 @end

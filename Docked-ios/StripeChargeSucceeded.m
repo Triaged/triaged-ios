@@ -11,15 +11,12 @@
 @implementation StripeChargeSucceeded
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
-             @"externalID": @"id",
+    NSDictionary *jsonKeys = @{
              @"amount": @"amount",
              @"description": @"description",
              @"customerEmail": @"customer_email",
-             @"htmlUrl": @"html_url",
-             @"messages": @"messages",
-             @"timestamp": @"timestamp"
              };
+    return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
 -(NSString*)property {

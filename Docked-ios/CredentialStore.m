@@ -32,6 +32,7 @@
 
 - (void)clearSavedCredentials {
     [self setAuthToken:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"signout" object:self];
 }
 
 - (NSString *)authToken {
