@@ -9,6 +9,7 @@
 #import "Account.h"
 #import "Provider.h"
 #import "DockedAPIClient.h"
+#import "CredentialStore.h"
 
 @implementation Account
 
@@ -21,8 +22,7 @@
     };
 }
 
-
-+ (void) fetchRemoteUserAccountWithBlock:(void (^)(Account *))block
++ (void)fetchRemoteUserAccountWithBlock:(void (^)(Account *))block
 {
     [[DockedAPIClient sharedClient] GET:@"account.json" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
         NSValueTransformer *transformer;
@@ -35,7 +35,11 @@
     }];
 }
 
-+(void) updateAPNSPushTokenWithToken:(NSString *)token {
+-(BOOL)isLoggedIn {
+    return [[CredentialStore sharedClient] isLoggedIn];
+}
+
+-(void)updateAPNSPushTokenWithToken:(NSString *)token {
     
     id params = @{@"push_token" : @{
                           @"service": @"apns",
@@ -43,6 +47,19 @@
                           }};
     
     [[DockedAPIClient sharedClient] POST:@"account/push_tokens.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",[error localizedDescription]);
+    }];
+}
+
+-(void)resetAPNSPushCount
+{
+    
+    id params = @{@"push_token" : @{
+                        @"service": @"apns"
+                        }};
+    
+    [[DockedAPIClient sharedClient] POST:@"account/push_tokens/reset_count.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];

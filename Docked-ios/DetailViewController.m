@@ -44,14 +44,6 @@
     }
 }
 
-- (void)setContentView:(UIView *)contentView
-{
-    if (_contentView != contentView) {
-        _contentView = contentView;
-    }
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

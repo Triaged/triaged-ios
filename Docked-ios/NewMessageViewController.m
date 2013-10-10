@@ -61,30 +61,38 @@
 
 -(IBAction)sendMessage:(id)sender{
     
-    [SVProgressHUD show];
-    
-    NSString *path = [NSString stringWithFormat:@"feed/%@/messages.json", _feedItem.externalID];
-    id params = @{@"message" : @{
-                    @"author_id": [AppDelegate sharedDelegate].store.account.userID,
-                    @"body": _messageBodyTextView.text
-                }};
-    
-    [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
-        [SVProgressHUD dismiss];
-        _messageBodyTextView.text = @"";
+    [_feedItem addMessageWithBody:_messageBodyTextView.text];
+    _messageBodyTextView.text = @"";
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 
-        // Update the feedItem with the new message
-        NSError *error = nil;
-        FeedItem *updatedFeedItem = [MTLJSONAdapter modelOfClass:FeedItem.class fromJSONDictionary:JSON error:&error];
-        [_feedItem mergeValuesForKeysFromModel:updatedFeedItem];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
-        [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
-    }];
+
+    
+    
+//    [SVProgressHUD show];
+//    
+//    NSString *path = [NSString stringWithFormat:@"feed/%@/messages.json", _feedItem.externalID];
+//    id params = @{@"message" : @{
+//                    @"author_id": [AppDelegate sharedDelegate].store.account.userID,
+//                    @"body": _messageBodyTextView.text
+//                }};
+//    
+//    [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
+//        [SVProgressHUD dismiss];
+//        _messageBodyTextView.text = @"";
+//
+//        // Update the feedItem with the new message
+//        NSError *error = nil;
+//        FeedItem *updatedFeedItem = [MTLJSONAdapter modelOfClass:FeedItem.class fromJSONDictionary:JSON error:&error];
+//        [_feedItem mergeValuesForKeysFromModel:updatedFeedItem];
+//        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//        
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        NSLog(@"%@",[error localizedDescription]);
+//        [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
+//    }];
     
 }
 

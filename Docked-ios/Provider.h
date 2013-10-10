@@ -13,5 +13,6 @@
 
 @property (nonatomic, copy, readonly) NSString *providerID;
 @property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *iconName;
 
 @end

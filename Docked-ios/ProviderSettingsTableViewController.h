@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Provider.h"
 
 @interface ProviderSettingsTableViewController : UITableViewController
+
+@property (strong, nonatomic) NSArray *providers;
 
 @end

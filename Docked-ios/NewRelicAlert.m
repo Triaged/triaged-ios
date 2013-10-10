@@ -14,13 +14,18 @@
     return [self.applicationName capitalizedString];
 }
 
+-(NSString *)action
+{
+    return @"App Alert";
+}
+
 
 -(NSString *)body {
     return self.message;
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"newrelic.png"];
+    return [UIImage imageNamed:@"new_relic.png"];
 }
 
 -(Class)tableViewCellClass {

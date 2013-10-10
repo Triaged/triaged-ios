@@ -16,8 +16,12 @@
 @property (nonatomic, copy, readonly) NSString *email;
 @property (nonatomic, copy, readonly) NSDictionary *providers;
 
-+(void) fetchRemoteUserAccountWithBlock:(void (^)(Account *))block;
+-(BOOL)isLoggedIn;
+-(void)updateAPNSPushTokenWithToken:(NSString *)token;
+-(void)resetAPNSPushCount;
 
-+(void) updateAPNSPushTokenWithToken:(NSString *)token;
++(void)fetchRemoteUserAccountWithBlock:(void (^)(Account *))block;
+
+
 
 @end

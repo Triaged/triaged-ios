@@ -82,7 +82,7 @@
         cell = [ [ MessageCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
     
-    Message *message = feedItem.messages[indexPath.row];
+    Message *message = feedItem.sortedMessages[indexPath.row];
     
     cell.authorLabel.text = message.authorName;
     cell.bodyLabel.text = message.body;
@@ -95,7 +95,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    Message *message = feedItem.messages[indexPath.row];
+    Message *message = feedItem.sortedMessages[indexPath.row];
     return [MessageCell heightOfContent:message];
     
 }

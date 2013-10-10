@@ -41,6 +41,7 @@
 {
     [super viewDidLoad];
     [self setupTableView];
+    
 }
 
 - (void)setupTableView
@@ -92,7 +93,6 @@
 
     DetailViewController *detailVC = [[DetailViewController alloc] init];
     [detailVC setFeedItem:item];
-    [detailVC setContentView:cell.contentView];
     
     SmokescreenViewController *ssVC = [[SmokescreenViewController alloc] init];
     [ssVC setCardImageView:cardImageView];

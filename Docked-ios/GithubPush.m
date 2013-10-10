@@ -13,7 +13,7 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{
-             @"repo": @"repo",
+             @"repo": @"repo_name",
              @"pusher": @"pusher",
              @"branch": @"branch",
              @"url": @"url",
@@ -33,7 +33,7 @@
 }
 
 -(NSString *)property {
-    return @"Github-ios";
+    return _repo;
 }
 
 -(NSString *)action {

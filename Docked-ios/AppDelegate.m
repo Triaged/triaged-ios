@@ -12,6 +12,7 @@
 #import "PersistentStack.h"
 #import "RootViewController.h"
 #import "SettingsMenuViewController.h"
+#import "DetailViewController.h"
 
 @interface AppDelegate () 
 
@@ -22,6 +23,7 @@
 @implementation AppDelegate
 
 @synthesize store = _store;
+@synthesize navVC;
 
 + (instancetype)sharedDelegate
 {
@@ -43,18 +45,21 @@
     self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
     self.store = [[Store alloc] init];
     
+    if ([self.store.account isLoggedIn]) {
+        [self.store.account resetAPNSPushCount];
+    }
+    
     [self setBaseStyles];
     [self addObservers];
     
-    [Account updateAPNSPushTokenWithToken:@"85006c46 ee195751 4fd9e2b5 4c49c1c8 cfa46cb3 a30d95bf 0daea81e 04507770"];
+    
     
     RootViewController *rootVC = [[RootViewController alloc] init];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
     
     SettingsMenuViewController *settingsMenuViewController = [[SettingsMenuViewController alloc] init];
     
     SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:settingsMenuViewController frontViewController:navVC];
-    revealController.delegate = self;
     
     [self.window setRootViewController:revealController];
     [self.window makeKeyAndVisible];
@@ -99,12 +104,13 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     [self.store saveFeedToArchive];
+    [self.store saveAccountToArchive];
 }
 
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
     NSLog(@"Got device token: %@", [devToken description]);
-    [Account updateAPNSPushTokenWithToken:[devToken description]];
+    [self.store.account updateAPNSPushTokenWithToken:[devToken description]];
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
@@ -113,6 +119,7 @@
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"remote notification received");
+    NSLog(@"%@", userInfo);
     
     [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
         if (newFeedItems) {
@@ -123,6 +130,20 @@
         }
     }];
     completionHandler(UIBackgroundFetchResultFailed);
+
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateInactive) {
+        //the app is in the foreground, so here you do your stuff since the OS does not do it for you
+        //navigate the "aps" dictionary looking for "loc-args" and "loc-key", for example, or your personal payload)
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalID == %@", [userInfo objectForKey:@"external_id"]];
+        NSArray *results = [self.store.feedItems filteredArrayUsingPredicate:predicate];
+        NSLog(@"%@", [results firstObject]);
+        
+        DetailViewController *detailVC = [[DetailViewController alloc] init];
+        [detailVC setFeedItem:[results firstObject]];
+        [navVC pushViewController:detailVC animated:NO];
+    }
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
@@ -147,17 +168,26 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    if ([self.store.account isLoggedIn]) {
+        [self.store.account resetAPNSPushCount];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    if ([self.store.account isLoggedIn]) {
+        [self.store.account resetAPNSPushCount];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         [self.store saveFeedToArchive];
+        [self.store saveAccountToArchive];
 }
 
 

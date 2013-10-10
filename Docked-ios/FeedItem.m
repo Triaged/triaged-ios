@@ -146,6 +146,25 @@
     return [UIImage imageNamed:@"github.png"];;
 }
 
+-(NSArray *)sortedMessages {
+    return [self.messages sortedArrayUsingComparator:^NSComparisonResult(Message *message1, FeedItem *message2) {
+        return [message2.timestamp compare:message1.timestamp];
+    }];
+}
+
+-(BOOL)addMessageWithBody:(NSString *)body {
+    Message* newMessage = [Message buildNewMessageWithBody:body];
+    [newMessage saveRemoteWithFeedItemID:_externalID];
+    [self addMessageToItem:newMessage];
+    return true;
+}
+
+-(void)addMessageToItem:(Message *)message {
+    NSMutableArray *messages = [[NSMutableArray alloc] initWithArray:_messages];
+    [messages addObject:message];
+    _messages =  [NSArray arrayWithArray:messages];
+}
+
 
 + (NSValueTransformer *)messagesJSONTransformer
 {
@@ -163,6 +182,7 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"failure");
+        NSLog(@"%@", [error description]);
     }];
 }
 

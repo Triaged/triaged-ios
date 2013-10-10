@@ -28,8 +28,8 @@
     self = [super init];
     if (self) {
         [self readFeedArchive];
-        [self fetchRemoteUserAccount];
-        [self fetchRemoteFeedItems];
+        [self readAccountArchive];
+
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(userLoggedIn)
                                                      name:@"login"
@@ -111,11 +111,8 @@
 - (NSArray *)buildGroupedFeedItem:(FeedItem *)feedItem
 {
     NSMutableArray *groupedFeedItem = [[NSMutableArray alloc] initWithObjects:feedItem, nil];
-    if (feedItem.messages.count == 1) {
-        [groupedFeedItem addObject:[feedItem.messages firstObject]];
-    } else if (feedItem.messages.count > 1) {
-        [groupedFeedItem addObject:[feedItem.messages firstObject]];
-        //[groupedFeedItem addObject:[NSNumber numberWithInt:(feedItem.messages.count - 1)]];
+    if (feedItem.messages.count > 0) {
+        [groupedFeedItem addObject:[feedItem.sortedMessages firstObject]];
     }
     return [NSArray arrayWithArray:groupedFeedItem];
 }
@@ -180,6 +177,49 @@
     }
 	
     return [NSString stringWithFormat:@"%@/%@", path, @"feed.bin"];
+}
+
+- (void)readAccountArchive
+{
+    NSString     * path         = [self pathForAccountFile];
+    NSDictionary * rootObject;
+    
+    rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    _account = [rootObject valueForKey:@"account"];
+    
+    [self fetchRemoteUserAccount];
+    
+}
+
+- (void)saveAccountToArchive
+{
+    NSString * path = [self pathForAccountFile];
+    
+    NSMutableDictionary * rootObject = [NSMutableDictionary dictionary];
+    [rootObject setValue:_account forKey:@"account"];
+    
+    [NSKeyedArchiver archiveRootObject: rootObject toFile: path];
+}
+
+- (BOOL)deleteAccountArchive
+{
+    NSString * path = [self pathForAccountFile];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    BOOL exists = [fm fileExistsAtPath:path];
+    if(exists == YES) return [fm removeItemAtPath:path error:nil];
+    return exists;
+}
+
+- (NSString *) pathForAccountFile
+{
+    NSArray*	documentDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString*	path = nil;
+	
+    if (documentDir) {
+        path = [documentDir objectAtIndex:0];
+    }
+	
+    return [NSString stringWithFormat:@"%@/%@", path, @"account.bin"];
 }
 
 

@@ -20,7 +20,9 @@
 - (void)fetchRemoteFeedItems;
 
 - (void)fetchNewRemoteFeedItemsWithBlock:(void (^)(NSArray *))block;
+
 - (void)saveFeedToArchive;
+- (void)saveAccountToArchive;
 
 
 - (NSArray*)sortFeedItems;

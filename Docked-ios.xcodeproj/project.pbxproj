@@ -87,6 +87,7 @@
 		CBD7270E180364C30071B177 /* NewRelicAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD7270D180364C30071B177 /* NewRelicAlert.m */; };
 		CBDCEC701805E9370024860B /* SettingsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC6F1805E9370024860B /* SettingsMenuViewController.m */; };
 		CBDCEC731805ED5B0024860B /* ProviderSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC721805ED5B0024860B /* ProviderSettingsTableViewController.m */; };
+		CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC77180629480024860B /* ProviderSettingCell.m */; };
 		CBE8637117FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE8637017FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.m */; };
 		CBE8637417FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE8637317FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m */; };
 		CBE8637617FC9F8800EF6E73 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637517FC9F8800EF6E73 /* ShinobiCharts.framework */; };
@@ -240,6 +241,8 @@
 		CBDCEC6F1805E9370024860B /* SettingsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsMenuViewController.m; sourceTree = "<group>"; };
 		CBDCEC711805ED5B0024860B /* ProviderSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderSettingsTableViewController.h; sourceTree = "<group>"; };
 		CBDCEC721805ED5B0024860B /* ProviderSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderSettingsTableViewController.m; sourceTree = "<group>"; };
+		CBDCEC76180629480024860B /* ProviderSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderSettingCell.h; sourceTree = "<group>"; };
+		CBDCEC77180629480024860B /* ProviderSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderSettingCell.m; sourceTree = "<group>"; };
 		CBE8636F17FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsDailyStatus.h; sourceTree = "<group>"; };
 		CBE8637017FC93F400EF6E73 /* GoogleAnalyticsDailyStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsDailyStatus.m; sourceTree = "<group>"; };
 		CBE8637217FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsDailyStatusDetails.h; sourceTree = "<group>"; };
@@ -585,6 +588,8 @@
 				CBD43F0517F8B63B001AC849 /* CardCell.m */,
 				CBD43F4F17FA63E9001AC849 /* MessageCell.h */,
 				CBD43F5017FA63E9001AC849 /* MessageCell.m */,
+				CBDCEC76180629480024860B /* ProviderSettingCell.h */,
+				CBDCEC77180629480024860B /* ProviderSettingCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -836,6 +841,7 @@
 				CB6ED88A17F5EC3900496244 /* GithubCommit.m in Sources */,
 				CBD726FF180364480071B177 /* Deployment.m in Sources */,
 				CBD7270E180364C30071B177 /* NewRelicAlert.m in Sources */,
+				CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
 				CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */,
 				CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */,

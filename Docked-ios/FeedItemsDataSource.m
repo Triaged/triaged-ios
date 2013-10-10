@@ -29,7 +29,7 @@
     return self.feedItems[(NSUInteger) indexPath.section][indexPath.row];
 }
 
-- (id)feeditemAtIndexPath:(NSIndexPath *)indexPath
+- (id)feedItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return self.feedItems[(NSUInteger) indexPath.section][0];
 }
@@ -91,7 +91,7 @@
     }
     
     Message *message = [self itemAtIndexPath:indexPath];
-    FeedItem *item = [self feeditemAtIndexPath:indexPath];
+    FeedItem *item = [self feedItemAtIndexPath:indexPath];
     
     cell.authorLabel.text = message.authorName;
     cell.bodyLabel.text = message.body;

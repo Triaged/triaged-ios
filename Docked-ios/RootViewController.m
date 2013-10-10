@@ -13,12 +13,13 @@
 #import "SignupViewController.h"
 #import "GithubSettingsViewController.h"
 #import "StripeSettingsViewController.h"
-#import "SWRevealViewController.h"
+
 
 @interface RootViewController () {
     LoginViewController *loginVC;
     SignupViewController *signupVC;
     SWRevealViewController *revealController;
+    FeedTableViewController *feedTableView;
 }
 
 @end
@@ -65,67 +66,28 @@
 - (void)setupViewControllers
 {
     revealController = [self revealViewController];
-    revealController.rearViewRevealWidth = 180;
+    revealController.rearViewRevealWidth = 220;
+    revealController.delegate = self;
     
-    FeedTableViewController *feedTableView = [[FeedTableViewController alloc] init];
+    feedTableView = [[FeedTableViewController alloc] init];
     feedTableView.view.frame = CGRectMake(6, 0, self.view.frame.size.width - 12, self.view.frame.size.height);
     feedTableView.navController = self.navigationController;
+
+
     
     [self addChildViewController:feedTableView];
     [self.view addSubview:feedTableView.view];
     [feedTableView didMoveToParentViewController:self];
+    
+    [self.view addGestureRecognizer:revealController.panGestureRecognizer];
 }
 
 - (void)addSettingsButton
 {
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleDone target:revealController action:@selector(revealToggle:)];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleDone target:self action:@selector(toggleSWRevealController)];
     self.navigationItem.leftBarButtonItem = settingsButton;
 }
 
-- (void)toggleSettingsMenu:(id)sender {
-    NSArray *images = @[
-                        [UIImage imageNamed:@"gear"],
-                        [UIImage imageNamed:@"heart"],
-                        [UIImage imageNamed:@"chat"],
-                        [UIImage imageNamed:@"chat"],
-                        [UIImage imageNamed:@"chat"],
-                        [UIImage imageNamed:@"chat"],
-                        [UIImage imageNamed:@"chat"],
-                        [UIImage imageNamed:@"chat"]
-                        ];
-    
-    NSArray *colors = @[ [UIColor blueColor], [UIColor blueColor], [UIColor blueColor], [UIColor blueColor], [UIColor blueColor], [UIColor blueColor], [UIColor blueColor], [UIColor blueColor]];
-    
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)];
-    
-    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc]
-                                 initWithImages:images selectedIndices:indexSet borderColors:colors];
-    callout.delegate = self;
-    [callout show];
-}
-
-- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
-    [self.navigationController popToRootViewControllerAnimated:NO];
-    
-    if(index == 0) {
-        FeedTableViewController *feedVC = [[FeedTableViewController alloc] init];
-        [self.navigationController pushViewController:feedVC animated:NO];
-    } else if (index == 1) {
-        GithubSettingsViewController *ghsVC = [[GithubSettingsViewController alloc] init];
-        [self.navigationController pushViewController:ghsVC animated:NO];
-    } else if (index == 2) {
-        StripeSettingsViewController *stripeVC = [[StripeSettingsViewController alloc] init];
-        [self.navigationController pushViewController:stripeVC animated:NO];
-    } else if (index == 7) {
-        [[CredentialStore sharedClient] clearSavedCredentials];
-    }
-    
-    
-    
-    [sidebar dismiss];
-    
-    
-}
 
 - (void) presentLoginView {
     
@@ -144,6 +106,28 @@
                        options:UIViewAnimationOptionTransitionFlipFromRight
                     completion:nil];
     
+}
+
+#pragma mark - SWRevealController Interaction
+
+- (void)toggleSWRevealController {
+    [self disableFeedTableViewInteraction];
+    [revealController revealToggle:self];
+}
+
+- (void)revealControllerPanGestureBegan
+{
+    [self disableFeedTableViewInteraction];
+}
+
+- (void)disableFeedTableViewInteraction {
+    feedTableView.tableView.userInteractionEnabled = NO;
+}
+
+-(void)revealController:(SWRevealViewController *)revealController animateToPosition:(FrontViewPosition)position {
+    if (position == FrontViewPositionLeft) {
+        feedTableView.tableView.userInteractionEnabled = YES;
+    }
 }
 
 

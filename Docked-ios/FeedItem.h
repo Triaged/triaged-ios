@@ -25,4 +25,8 @@
 
 + (void)fetchNewRemoteFeedItemsWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *))block;
 
+-(BOOL)addMessageWithBody:(NSString *)body;
+
+-(NSArray *)sortedMessages;
+
 @end

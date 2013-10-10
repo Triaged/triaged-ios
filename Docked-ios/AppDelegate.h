@@ -13,10 +13,11 @@
 @class PersistentStack;
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) Store* store;
+@property (strong, nonatomic) UINavigationController *navVC;
 
 + (instancetype)sharedDelegate;
 
