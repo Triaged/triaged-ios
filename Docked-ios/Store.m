@@ -38,7 +38,6 @@
                                                  selector:@selector(userSignedOut)
                                                      name:@"signout"
                                                    object:nil];
-
     }
     return self;
 }
