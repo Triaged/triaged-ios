@@ -120,11 +120,11 @@
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"remote notification received");
     NSLog(@"%@", userInfo);
+    UIApplicationState state = [application applicationState];
     
     [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
         if (newFeedItems) {
             // TODO: Route to remote notification
-            UIApplicationState state = [application applicationState];
             if (state == UIApplicationStateInactive) {
                 //the app is in the foreground, so here you do your stuff since the OS does not do it for you
                 //navigate the "aps" dictionary looking for "loc-args" and "loc-key", for example, or your personal payload)
