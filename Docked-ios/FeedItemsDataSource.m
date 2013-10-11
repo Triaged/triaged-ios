@@ -99,6 +99,8 @@
     int messagesCount = item.messages.count - 1;
     if (messagesCount > 0) {
         cell.moreMessagesLabel.text = [NSString stringWithFormat:@"+ %d more", messagesCount];
+    } else {
+        cell.moreMessagesLabel.text = @"";
     }
     
     return cell;

@@ -124,26 +124,25 @@
     [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
         if (newFeedItems) {
             // TODO: Route to remote notification
+            UIApplicationState state = [application applicationState];
+            if (state == UIApplicationStateInactive) {
+                //the app is in the foreground, so here you do your stuff since the OS does not do it for you
+                //navigate the "aps" dictionary looking for "loc-args" and "loc-key", for example, or your personal payload)
+                
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalID == %@", [userInfo objectForKey:@"external_id"]];
+                NSArray *results = [self.store.feedItems filteredArrayUsingPredicate:predicate];
+                NSLog(@"%@", [results firstObject]);
+                
+                DetailViewController *detailVC = [[DetailViewController alloc] init];
+                [detailVC setFeedItem:[results firstObject]];
+                [navVC pushViewController:detailVC animated:NO];
+            }
             completionHandler(UIBackgroundFetchResultNewData);
         } else {
             completionHandler(UIBackgroundFetchResultNoData);
         }
     }];
     completionHandler(UIBackgroundFetchResultFailed);
-
-    UIApplicationState state = [application applicationState];
-    if (state == UIApplicationStateInactive) {
-        //the app is in the foreground, so here you do your stuff since the OS does not do it for you
-        //navigate the "aps" dictionary looking for "loc-args" and "loc-key", for example, or your personal payload)
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalID == %@", [userInfo objectForKey:@"external_id"]];
-        NSArray *results = [self.store.feedItems filteredArrayUsingPredicate:predicate];
-        NSLog(@"%@", [results firstObject]);
-        
-        DetailViewController *detailVC = [[DetailViewController alloc] init];
-        [detailVC setFeedItem:[results firstObject]];
-        [navVC pushViewController:detailVC animated:NO];
-    }
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler

@@ -147,7 +147,7 @@
 }
 
 -(NSArray *)sortedMessages {
-    return [self.messages sortedArrayUsingComparator:^NSComparisonResult(Message *message1, FeedItem *message2) {
+    return [_messages sortedArrayUsingComparator:^NSComparisonResult(Message *message1, FeedItem *message2) {
         return [message2.timestamp compare:message1.timestamp];
     }];
 }
