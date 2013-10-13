@@ -59,6 +59,7 @@
 		CB85A8411809F5D700698988 /* HerokuDeploy.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A8401809F5D700698988 /* HerokuDeploy.m */; };
 		CB85A8441809F9A200698988 /* NSString+Inflections.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A8431809F9A200698988 /* NSString+Inflections.m */; };
 		CB85A849180B0CF500698988 /* KilnPush.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A848180B0CF500698988 /* KilnPush.m */; };
+		CB85A84C180B0EF600698988 /* KilnCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A84B180B0EF600698988 /* KilnCommit.m */; };
 		CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209017EB5D6300EBDC34 /* Foundation.framework */; };
 		CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */; };
 		CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209417EB5D6300EBDC34 /* UIKit.framework */; };
@@ -206,6 +207,8 @@
 		CB85A8431809F9A200698988 /* NSString+Inflections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Inflections.m"; sourceTree = "<group>"; };
 		CB85A847180B0CF500698988 /* KilnPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KilnPush.h; sourceTree = "<group>"; };
 		CB85A848180B0CF500698988 /* KilnPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KilnPush.m; sourceTree = "<group>"; };
+		CB85A84A180B0EF600698988 /* KilnCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KilnCommit.h; sourceTree = "<group>"; };
+		CB85A84B180B0EF600698988 /* KilnCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KilnCommit.m; sourceTree = "<group>"; };
 		CB8F208D17EB5D6300EBDC34 /* Docked-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Docked-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8F209017EB5D6300EBDC34 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -554,6 +557,8 @@
 			children = (
 				CB85A847180B0CF500698988 /* KilnPush.h */,
 				CB85A848180B0CF500698988 /* KilnPush.m */,
+				CB85A84A180B0EF600698988 /* KilnCommit.h */,
+				CB85A84B180B0EF600698988 /* KilnCommit.m */,
 			);
 			name = kiln;
 			sourceTree = "<group>";
@@ -988,6 +993,7 @@
 				CBA676B418085B630035368A /* AirbrakeSettingsViewController.m in Sources */,
 				CB2F9FB21808B40A00F5F97C /* Mixpanel.m in Sources */,
 				CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */,
+				CB85A84C180B0EF600698988 /* KilnCommit.m in Sources */,
 				CBD43F3917F9F4A0001AC849 /* ExternalLinkViewViewController.m in Sources */,
 				CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */,
 				CBD72702180364510071B177 /* NewRelicDowntime.m in Sources */,
