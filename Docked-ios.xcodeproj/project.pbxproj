@@ -58,6 +58,7 @@
 		CB84B45217EBEBA100C8B00D /* SentryException.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B45117EBEBA100C8B00D /* SentryException.m */; };
 		CB85A8411809F5D700698988 /* HerokuDeploy.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A8401809F5D700698988 /* HerokuDeploy.m */; };
 		CB85A8441809F9A200698988 /* NSString+Inflections.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A8431809F9A200698988 /* NSString+Inflections.m */; };
+		CB85A849180B0CF500698988 /* KilnPush.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A848180B0CF500698988 /* KilnPush.m */; };
 		CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209017EB5D6300EBDC34 /* Foundation.framework */; };
 		CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */; };
 		CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209417EB5D6300EBDC34 /* UIKit.framework */; };
@@ -203,6 +204,8 @@
 		CB85A8401809F5D700698988 /* HerokuDeploy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HerokuDeploy.m; sourceTree = "<group>"; };
 		CB85A8421809F9A200698988 /* NSString+Inflections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Inflections.h"; sourceTree = "<group>"; };
 		CB85A8431809F9A200698988 /* NSString+Inflections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Inflections.m"; sourceTree = "<group>"; };
+		CB85A847180B0CF500698988 /* KilnPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KilnPush.h; sourceTree = "<group>"; };
+		CB85A848180B0CF500698988 /* KilnPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KilnPush.m; sourceTree = "<group>"; };
 		CB8F208D17EB5D6300EBDC34 /* Docked-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Docked-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8F209017EB5D6300EBDC34 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -546,6 +549,15 @@
 			name = heroku;
 			sourceTree = "<group>";
 		};
+		CB85A845180B0CE000698988 /* kiln */ = {
+			isa = PBXGroup;
+			children = (
+				CB85A847180B0CF500698988 /* KilnPush.h */,
+				CB85A848180B0CF500698988 /* KilnPush.m */,
+			);
+			name = kiln;
+			sourceTree = "<group>";
+		};
 		CB8F208417EB5D6300EBDC34 = {
 			isa = PBXGroup;
 			children = (
@@ -662,6 +674,7 @@
 		CB8F20C017EB5F8300EBDC34 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				CB85A845180B0CE000698988 /* kiln */,
 				CB85A83E1809F5B800698988 /* heroku */,
 				CBD726F3180361A30071B177 /* newRelic */,
 				CBE8636E17FC93D900EF6E73 /* googleAnalytics */,
@@ -988,6 +1001,7 @@
 				CBD726FF180364480071B177 /* NewRelicDeployment.m in Sources */,
 				CBA676B718085D520035368A /* BaseSettingsViewController.m in Sources */,
 				CBD7270E180364C30071B177 /* NewRelicAlert.m in Sources */,
+				CB85A849180B0CF500698988 /* KilnPush.m in Sources */,
 				CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
 				CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */,
