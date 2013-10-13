@@ -25,7 +25,7 @@
 }
 
 -(NSString *) action {
-    return [NSString stringWithFormat:@"%@ pushed to", self.pusher];
+    return [NSString stringWithFormat:@"%@ pushed", self.pusher];
 }
 
 
