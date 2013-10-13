@@ -12,10 +12,10 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{
-                               @"repoName": @"repo_name",
-                               @"pusher": @"pusher",
-                               @"repoUrl": @"repo_url"
-                               };
+                   @"repoName": @"repo_name",
+                   @"pusher": @"pusher",
+                   @"repoUrl": @"repo_url"
+                   };
     
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
