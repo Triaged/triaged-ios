@@ -11,7 +11,7 @@
 #import "GoogleAnalyticsDailyStatusDetails.h"
 #import "GraphDataCell.h"
 
-@interface GoogleAnalyticsDailyStatus : FeedItem <GraphCardProtocol>
+@interface GoogleAnalyticsDaily : FeedItem <GraphCardProtocol>
 
 @property (nonatomic, copy, readonly) NSNumber *visitsSum;
 @property (nonatomic, copy, readonly) NSNumber *visitorsSum;

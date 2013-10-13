@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface AccountViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+
+-(IBAction)logout:(id)sender;
 
 @end

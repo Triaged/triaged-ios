@@ -1,5 +1,5 @@
 //
-//  ErrorThresholdEnded.h
+//  Downtime.h
 //  Docked-ios
 //
 //  Created by Charlie White on 10/7/13.
@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "NewRelicAlert.h"
 
-@interface ErrorThresholdEnded : NewRelicAlert
+@interface NewRelicDowntime : NewRelicAlert
 
 @end

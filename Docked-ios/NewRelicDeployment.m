@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
-#import "Deployment.h"
+#import "NewRelicDeployment.h"
 #import "TextCardCell.h"
 
-@implementation Deployment
+@implementation NewRelicDeployment
 
 +(NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{

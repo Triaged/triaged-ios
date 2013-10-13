@@ -27,6 +27,7 @@
 {
     self = [super init];
     if (self) {
+        //[self deleteFeedArchive];
         [self readFeedArchive];
         [self readAccountArchive];
 

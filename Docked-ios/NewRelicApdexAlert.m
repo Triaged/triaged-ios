@@ -1,16 +1,16 @@
 //
-//  Downtime.m
+//  ApdexAlert.m
 //  Docked-ios
 //
 //  Created by Charlie White on 10/7/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
-#import "Downtime.h"
+#import "NewRelicApdexAlert.h"
 
-@implementation Downtime
+@implementation NewRelicApdexAlert
 
-+(NSDictionary *)JSONKeyPathsByPropertyKey {
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{
        @"applicationName": @"application_name",
        @"accountName": @"account_name",
@@ -24,9 +24,12 @@
 }
 
 -(NSString *) action {
-    return @"downtime";
+    return @"apdex alert";
 }
 
+-(Class)tableViewCellClass {
+    return [TextCardCell class];
+}
 
 
 @end

@@ -1,14 +1,14 @@
 //
-//  AppAlert.m
+//  ErrorThresholdEnded.m
 //  Docked-ios
 //
 //  Created by Charlie White on 10/7/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
-#import "AppAlert.h"
+#import "NewRelicErrorThresholdEnded.h"
 
-@implementation AppAlert
+@implementation NewRelicErrorThresholdEnded
 
 +(NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{
@@ -23,8 +23,9 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
+
 -(NSString *) action {
-    return @"app alert";
+    return @"error threshold ended";
 }
 
 @end

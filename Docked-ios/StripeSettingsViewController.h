@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseSettingsViewController.h"
 
-@interface StripeSettingsViewController : UIViewController
+@interface StripeSettingsViewController : BaseSettingsViewController
 
 - (IBAction)connectToStripe;
 

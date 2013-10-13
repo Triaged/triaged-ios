@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseSettingsViewController.h"
 
-@interface GithubSettingsViewController : UIViewController
+@interface GithubSettingsViewController : BaseSettingsViewController
 
 - (IBAction)connectToGithub;
 

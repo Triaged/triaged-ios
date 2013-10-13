@@ -1,23 +1,18 @@
 //
-//  AccountViewController.m
+//  NewRelicSettingsViewController.m
 //  Docked-ios
 //
-//  Created by Charlie White on 9/23/13.
+//  Created by Charlie White on 10/11/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
-#import "AccountViewController.h"
-#import "CredentialStore.h"
-#import "AppDelegate.h"
-#import "Store.h"
+#import "NewRelicSettingsViewController.h"
 
-@interface AccountViewController ()
+@interface NewRelicSettingsViewController ()
 
 @end
 
-@implementation AccountViewController
-
-@synthesize nameLabel;
+@implementation NewRelicSettingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,19 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    nameLabel.text = [AppDelegate sharedDelegate].store.account.name;
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(IBAction)logout:(id)sender
-{
-    [[CredentialStore sharedClient] clearSavedCredentials];
 }
 
 @end

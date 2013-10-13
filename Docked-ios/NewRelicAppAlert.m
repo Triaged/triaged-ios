@@ -1,14 +1,14 @@
 //
-//  ApdexAlertEnded.m
+//  AppAlert.m
 //  Docked-ios
 //
 //  Created by Charlie White on 10/7/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
-#import "ApdexAlertEnded.h"
+#import "NewRelicAppAlert.h"
 
-@implementation ApdexAlertEnded
+@implementation NewRelicAppAlert
 
 +(NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{
@@ -23,9 +23,8 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
-
 -(NSString *) action {
-    return @"appdex alert ended";
+    return @"app alert";
 }
 
 @end

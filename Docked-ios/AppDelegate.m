@@ -13,6 +13,9 @@
 #import "RootViewController.h"
 #import "SettingsMenuViewController.h"
 #import "DetailViewController.h"
+#import "Mixpanel.h"
+
+#define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
 
 @interface AppDelegate () 
 
@@ -32,6 +35,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 
     if (remoteNotification != nil) {

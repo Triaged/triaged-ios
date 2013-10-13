@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FeedItem.h"
 
-@interface Deployment : FeedItem
+@interface NewRelicDeployment : FeedItem
 
 @property (nonatomic, copy, readonly) NSString *applicationName;
 @property (nonatomic, copy, readonly) NSString *accountName;

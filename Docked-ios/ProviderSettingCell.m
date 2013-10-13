@@ -49,10 +49,10 @@
     // Configure the view for the selected state
 }
 
-- (void)configureForItem:(NSString *)provider
+- (void)configureForItem:(NSDictionary *)provider
 {
-    self.providerIconView.image = [UIImage imageNamed:provider];
-    self.providerLabel.text = provider;
+    self.providerIconView.image = [UIImage imageNamed:[provider objectForKey:@"icon"]];
+    self.providerLabel.text = [provider objectForKey:@"name"];
 }
 
 

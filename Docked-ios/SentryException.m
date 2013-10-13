@@ -32,7 +32,10 @@
 
 
 -(NSString *)body {
-    return self.message;
+    NSString *body = [NSString stringWithFormat:@"%@\n", _message];
+    body = [body stringByAppendingString:[NSString stringWithFormat:@"culprit: %@", _culprit]];
+    return body;
+    
 }
 
 -(UIImage *)providerIcon {

@@ -60,14 +60,11 @@
 {
     NSString *path = [NSString stringWithFormat:@"feed/%@/messages.json", feedItemID];
     id params = @{@"message" : @{
-                          @"author_id": self.authorID,
-                          @"body": self.body
-                          }};
+                  @"author_id": self.authorID,
+                  @"body": self.body
+                }};
     
     [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
-        // Update the feedItem with the new message
-        NSError *error = nil;
-        FeedItem *updatedFeedItem = [MTLJSONAdapter modelOfClass:FeedItem.class fromJSONDictionary:JSON error:&error];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];

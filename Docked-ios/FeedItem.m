@@ -14,15 +14,17 @@
 #import "GithubIssueOpened.h"
 #import "GithubPush.h"
 #import "StripeChargeSucceeded.h"
-#import "GoogleAnalyticsDailyStatus.h"
-#import "ApdexAlert.h"
-#import "ApdexAlertEnded.h"
-#import "AppAlert.h"
-#import "Deployment.h"
-#import "Downtime.h"
-#import "DowntimeEnded.h"
-#import "ErrorThreshold.h"
-#import "ErrorThresholdEnded.h"
+#import "GoogleAnalyticsDaily.h"
+#import "NewRelicApdexAlert.h"
+#import "NewRelicApdexAlertEnded.h"
+#import "NewRelicAppAlert.h"
+#import "NewRelicDeployment.h"
+#import "NewRelicDowntime.h"
+#import "NewRelicDowntimeEnded.h"
+#import "NewRelicErrorThreshold.h"
+#import "NewRelicErrorThresholdEnded.h"
+#import "HerokuDeploy.h"
+#import "NSString+Inflections.h"
 
 
 @implementation FeedItem
@@ -63,61 +65,75 @@
 
 
 + (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary {
-    if ([JSONDictionary[@"provider"]  isEqual: @"github"]) {
-        if ([JSONDictionary[@"event"]  isEqual: @"push"]) {
-            return GithubPush.class;
-        }
-        if ([JSONDictionary[@"event"]  isEqual: @"issue_opened"]) {
-         return GithubIssueOpened.class;
-        }
-    }
     
-    if ([JSONDictionary[@"provider"]  isEqual: @"sentry"]) {
-        if ([JSONDictionary[@"event"]  isEqual: @"exception"]) {
-            return SentryException.class;
-        }
-    }
+    NSString *provider = [JSONDictionary[@"provider"] camelize];
+    NSString *event = [JSONDictionary[@"event"] camelize];
     
-    if ([JSONDictionary[@"provider"]  isEqual: @"stripe"]) {
-        if ([JSONDictionary[@"event"]  isEqual: @"charge_succeeded"]) {
-            return StripeChargeSucceeded.class;
-        }
-    }
+    NSString *providerEventClassString = [provider stringByAppendingString:event];
     
-    if ([JSONDictionary[@"provider"]  isEqual: @"google_analytics"]) {
-        if ([JSONDictionary[@"event"]  isEqual: @"daily"]) {
-            return GoogleAnalyticsDailyStatus.class;
-        }
-    }
+    return NSClassFromString(providerEventClassString);
     
-    if ([JSONDictionary[@"provider"]  isEqual: @"new_relic"]) {
-        if ([JSONDictionary[@"event"]  isEqual: @"apdex_alert"]) {
-            return ApdexAlert.class;
-        }
-        if ([JSONDictionary[@"event"]  isEqual: @"apdex_alert_ended"]) {
-            return ApdexAlertEnded.class;
-        }
-        if ([JSONDictionary[@"event"]  isEqual: @"app_alert"]) {
-            return AppAlert.class;
-        }
-        if ([JSONDictionary[@"event"]  isEqual: @"deployment"]) {
-            return Deployment.class;
-        }
-        if ([JSONDictionary[@"event"]  isEqual: @"downtime"]) {
-            return Downtime.class;
-        }
-        if ([JSONDictionary[@"event"]  isEqual: @"downtime_ended"]) {
-            return DowntimeEnded.class;
-        }
-        if ([JSONDictionary[@"event"]  isEqual: @"error_threshold"]) {
-            return ErrorThreshold.class;
-        }
-        if ([JSONDictionary[@"event"]  isEqual: @"error_threshold_ended"]) {
-            return ErrorThresholdEnded.class;
-        }
-    }
-    
-    return nil;
+//    if ([JSONDictionary[@"provider"]  isEqual: @"github"]) {
+//        if ([JSONDictionary[@"event"]  isEqual: @"push"]) {
+//            return GithubPush.class;
+//        }
+//        if ([JSONDictionary[@"event"]  isEqual: @"issue_opened"]) {
+//         return GithubIssueOpened.class;
+//        }
+//    }
+//    
+//    if ([JSONDictionary[@"provider"]  isEqual: @"sentry"]) {
+//        if ([JSONDictionary[@"event"]  isEqual: @"exception"]) {
+//            return SentryException.class;
+//        }
+//    }
+//    
+//    if ([JSONDictionary[@"provider"]  isEqual: @"stripe"]) {
+//        if ([JSONDictionary[@"event"]  isEqual: @"charge_succeeded"]) {
+//            return StripeChargeSucceeded.class;
+//        }
+//    }
+//    
+//    if ([JSONDictionary[@"provider"]  isEqual: @"heroku"]) {
+//        if ([JSONDictionary[@"event"]  isEqual: @"deploy"]) {
+//            return HerokuDeploy.class;
+//        }
+//    }
+//    
+//    if ([JSONDictionary[@"provider"]  isEqual: @"google_analytics"]) {
+//        if ([JSONDictionary[@"event"]  isEqual: @"daily"]) {
+//            return GoogleAnalyticsDailyStatus.class;
+//        }
+//    }
+//    
+//    if ([JSONDictionary[@"provider"]  isEqual: @"new_relic"]) {
+//        if ([JSONDictionary[@"event"]  isEqual: @"apdex_alert"]) {
+//            return ApdexAlert.class;
+//        }
+//        if ([JSONDictionary[@"event"]  isEqual: @"apdex_alert_ended"]) {
+//            return ApdexAlertEnded.class;
+//        }
+//        if ([JSONDictionary[@"event"]  isEqual: @"app_alert"]) {
+//            return AppAlert.class;
+//        }
+//        if ([JSONDictionary[@"event"]  isEqual: @"deployment"]) {
+//            return Deployment.class;
+//        }
+//        if ([JSONDictionary[@"event"]  isEqual: @"downtime"]) {
+//            return Downtime.class;
+//        }
+//        if ([JSONDictionary[@"event"]  isEqual: @"downtime_ended"]) {
+//            return DowntimeEnded.class;
+//        }
+//        if ([JSONDictionary[@"event"]  isEqual: @"error_threshold"]) {
+//            return ErrorThreshold.class;
+//        }
+//        if ([JSONDictionary[@"event"]  isEqual: @"error_threshold_ended"]) {
+//            return ErrorThresholdEnded.class;
+//        }
+//    }
+//    
+//    return nil;
 }
 
 -(Class)tableViewCellClass {

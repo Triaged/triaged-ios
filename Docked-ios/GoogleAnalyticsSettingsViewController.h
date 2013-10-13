@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseSettingsViewController.h"
 
-@interface GoogleAnalyticsSettingsViewController : UIViewController
+@interface GoogleAnalyticsSettingsViewController : BaseSettingsViewController
 
 @end

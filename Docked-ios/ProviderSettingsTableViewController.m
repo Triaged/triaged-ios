@@ -10,6 +10,8 @@
 #import "ProviderSettingCell.h"
 #import "AppDelegate.h"
 #import "Store.h"
+#import "Provider.h"
+#import "BaseSettingsViewController.h"
 
 @interface ProviderSettingsTableViewController ()
 
@@ -35,11 +37,13 @@
     self.tableView.bounces = NO;
     self.tableView.backgroundColor  = [UIColor colorWithRed:40.0f/255.0f green:40.0f/255.0f blue:40.0f/255.0f alpha:1.0f];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    providers = [Provider currentProviders];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    providers =  [[AppDelegate sharedDelegate].store.account.providers allKeys];
+    
     [self.tableView reloadData];
 }
 
@@ -77,6 +81,20 @@
     [cell configureForItem:provider];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *provider = providers[indexPath.row];
+    Class providerSettingsClass = [provider objectForKey:@"settings_class"];
+    
+    // Grab a handle to the reveal controller, as if you'd do with a navigtion controller via self.navigationController.
+    SWRevealViewController *revealController = self.revealViewController;
+    
+    BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
+    [[AppDelegate sharedDelegate].navVC pushViewController:settingsVC animated:YES];
+    [revealController setFrontViewController:[AppDelegate sharedDelegate].navVC animated:YES];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

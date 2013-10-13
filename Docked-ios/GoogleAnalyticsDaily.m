@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
-#import "GoogleAnalyticsDailyStatus.h"
+#import "GoogleAnalyticsDaily.h"
 #import "GraphDataCell.h"
 
-@implementation GoogleAnalyticsDailyStatus
+@implementation GoogleAnalyticsDaily
 
 + (NSDateFormatter *)dayDateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

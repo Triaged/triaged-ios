@@ -1,14 +1,14 @@
 //
-//  ErrorThresholdEnded.m
+//  DowntimeEnded.m
 //  Docked-ios
 //
 //  Created by Charlie White on 10/7/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
-#import "ErrorThresholdEnded.h"
+#import "NewRelicDowntimeEnded.h"
 
-@implementation ErrorThresholdEnded
+@implementation NewRelicDowntimeEnded
 
 +(NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{
@@ -23,9 +23,8 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
-
 -(NSString *) action {
-    return @"error threshold ended";
+    return @"downtime ended";
 }
 
 @end
