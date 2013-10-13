@@ -13,6 +13,7 @@
 
 @property (nonatomic, copy, readonly) NSString *repoName;
 @property (nonatomic, copy, readonly) NSString *pusher;
+@property (nonatomic, copy, readonly) NSString *branch;
 @property (nonatomic, copy, readonly) NSString *repoUrl;
 
 @end

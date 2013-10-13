@@ -14,6 +14,7 @@
     NSDictionary *jsonKeys = @{
                    @"repoName": @"repo_name",
                    @"pusher": @"pusher",
+                   @"branch": @"branch",
                    @"repoUrl": @"repo_url"
                    };
     
