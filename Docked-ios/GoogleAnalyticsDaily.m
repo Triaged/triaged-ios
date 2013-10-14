@@ -59,7 +59,7 @@
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"google_analytics.png"];
+    return [UIImage imageNamed:@"google_analytics-s.png"];
 }
 
 -(NSArray *)chartCoordinates {

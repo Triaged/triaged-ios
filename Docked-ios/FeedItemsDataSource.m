@@ -51,7 +51,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    
+
     if(indexPath.row == 0) { // Feed Item
         cell = [self cellForFeedItem:tableView AtIndexPath:indexPath];
     } else if (indexPath.row == 1) { // Last Message
@@ -79,6 +79,9 @@
     
     // Configure the cell...
     [cell configureForItem:item];
+    // Should we draw the shadow?
+    NSInteger numberOfRows = [tableView numberOfRowsInSection:[indexPath section]];
+    cell.shouldDrawShadow = (numberOfRows == 1);
     
     return cell;
 }
@@ -96,12 +99,14 @@
     cell.authorLabel.text = message.authorName;
     cell.bodyLabel.text = message.body;
     
-    int messagesCount = item.messages.count - 1;
-    if (messagesCount > 0) {
-        cell.moreMessagesLabel.text = [NSString stringWithFormat:@"+ %d more", messagesCount];
+    if ([item hasMultipleMessages]) {
+        cell.moreMessagesLabel.text = [NSString stringWithFormat:@"+ %d more", (item.messages.count - 1)];
+        cell.shouldDrawMoreMessages = YES;
     } else {
-        cell.moreMessagesLabel.text = @"";
+        cell.shouldDrawMoreMessages = NO;
     }
+    
+    cell.shouldDrawShadow = YES;
     
     return cell;
 }

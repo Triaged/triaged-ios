@@ -39,8 +39,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:35.0f/255.0f green:36.0f/255.0f blue:171.0f/255.0f alpha:1.0f];
-    self.view.backgroundColor = [[UIColor alloc] initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
+    
+    self.view.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
+    self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
+    
+    for (UIView *view in self.navigationController.navigationBar.subviews) {
+        for (UIView *view2 in view.subviews) {
+            if ([view2 isKindOfClass:[UIImageView class]]) {
+                [view2 removeFromSuperview];
+            }
+        }
+    }
+    
     [self setupViewControllers];
     [self addSettingsButton];
 	// Do any additional setup after loading the view.

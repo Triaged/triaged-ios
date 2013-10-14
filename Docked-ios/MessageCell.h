@@ -13,8 +13,14 @@
 
 @property (strong, nonatomic) UILabel *authorLabel;
 @property (strong, nonatomic) UILabel *bodyLabel;
+@property (strong, nonatomic) UIImageView *moreMessagesIcon;
 @property (strong, nonatomic) UILabel *moreMessagesLabel;
+@property  BOOL shouldDrawShadow;
+@property  BOOL shouldDrawMoreMessages;
 
-+ (CGFloat) heightOfContent: (Message *)message;
++ (CGFloat) heightOfContent: (Message *)message hasMultipleMessages:(BOOL)multiple;
+
+-(void) layoutMoreMessages;
+-(void) removeMoreMessages;
 
 @end

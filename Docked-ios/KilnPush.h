@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FeedItem.h"
+#import "KilnCommit.h"
 
 @interface KilnPush : FeedItem
 
@@ -15,5 +16,6 @@
 @property (nonatomic, copy, readonly) NSString *pusher;
 @property (nonatomic, copy, readonly) NSString *branch;
 @property (nonatomic, copy, readonly) NSString *repoUrl;
+@property (nonatomic, copy, readonly) NSArray *commits;
 
 @end

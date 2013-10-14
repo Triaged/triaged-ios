@@ -10,7 +10,7 @@
 
 @implementation MessageCell
 
-@synthesize authorLabel, bodyLabel, moreMessagesLabel;
+@synthesize authorLabel, bodyLabel, moreMessagesLabel, moreMessagesIcon, shouldDrawShadow, shouldDrawMoreMessages;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -18,6 +18,7 @@
     if (self) {
         // Initialization code
         // Line Separator
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.contentView.backgroundColor = [UIColor whiteColor];
         
         UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
@@ -26,35 +27,39 @@
         [self.contentView addSubview: lineView];
         
         // Chat image
-        UIImage *chatIcon = [UIImage imageNamed:@"icn_bubbles.png"];
+        UIImage *chatIcon = [UIImage imageNamed:@"avatar.png"];
         UIImageView *chatIconView = [[UIImageView alloc] initWithImage:chatIcon];
-        chatIconView.frame = CGRectMake(15, 15, 16, 16);
+        chatIconView.frame = CGRectMake(14, 14, 30, 30);
         [self.contentView addSubview: chatIconView];
         
         
         authorLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [authorLabel setFont: [UIFont fontWithName:@"AvenirNext-DemiBold" size:16.0]];
-        authorLabel.textColor = [[UIColor alloc] initWithRed:100.0f/255.0f green:101.0f/255.0f blue:197.0f/255.0f alpha:1.0f];
-        //authorLabel.textColor = [UIColor blackColor];
+        [authorLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
+        authorLabel.textColor = [UIColor blackColor];
         [authorLabel setLineBreakMode: NSLineBreakByClipping];
         authorLabel.numberOfLines = 1;
         [self.contentView addSubview: authorLabel];
         
         
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [bodyLabel setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:13.0]];
+        [bodyLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
+        bodyLabel.textColor = [[UIColor alloc] initWithRed:142.0f/255.0f green:142.0f/255.0f blue:142.0f/255.0f alpha:1.0f];
         [bodyLabel setLineBreakMode: NSLineBreakByWordWrapping];
         bodyLabel.numberOfLines = 0;
         [bodyLabel sizeToFit];
         [self.contentView addSubview: bodyLabel];
         
+        // Chat image
+        UIImage *bubblesIcon = [UIImage imageNamed:@"icn_bubbles.png"];
+        moreMessagesIcon = [[UIImageView alloc] initWithImage:bubblesIcon];
+        
+        
         moreMessagesLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [moreMessagesLabel setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:12.0]];
+        [moreMessagesLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:12.0]];
         moreMessagesLabel.textColor = [[UIColor alloc] initWithRed:100.0f/255.0f green:101.0f/255.0f blue:197.0f/255.0f alpha:1.0f];
         [moreMessagesLabel setLineBreakMode: NSLineBreakByClipping];
         moreMessagesLabel.numberOfLines = 1;
-        [self.contentView addSubview: moreMessagesLabel];
-
+        
         
         self.userInteractionEnabled = NO;
     }
@@ -64,13 +69,44 @@
 -(void) layoutSubviews {
     [super layoutSubviews];
     
-    [authorLabel setFrame:CGRectMake(50.0, 13.0, 260.0, 20.0)];
+    [authorLabel setFrame:CGRectMake(58.0, 14.0, 260.0, 20.0)];
 
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:bodyLabel.text];
-    CGRect newFrame = CGRectMake(50.0, 35.0, 260, [MessageCell heightOfBody:attributedBodyText]);
+    CGRect newFrame = CGRectMake(58.0, 36.0, 260, [MessageCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
     
-    [moreMessagesLabel setFrame:CGRectMake(250.0, bodyLabel.frame.size.height+25, 50.0, 20.0)];
+    if (shouldDrawShadow) [self drawShadow];
+    if (shouldDrawMoreMessages) {
+       [self layoutMoreMessages];
+    } else {
+        [self removeMoreMessages];
+    }
+}
+
+-(void) layoutMoreMessages
+{
+    [moreMessagesIcon setFrame:CGRectMake(230, bodyLabel.frame.size.height+44, 14, 14)];
+    [moreMessagesLabel setFrame:CGRectMake(250.0, bodyLabel.frame.size.height+40, 50.0, 20.0)];
+    [self.contentView addSubview: moreMessagesIcon];
+    [self.contentView addSubview: moreMessagesLabel];
+}
+
+-(void) removeMoreMessages
+{
+    [moreMessagesIcon removeFromSuperview];
+    [moreMessagesLabel removeFromSuperview];
+}
+
+- (void) drawShadow
+{
+    self.layer.shadowOffset = CGSizeMake(0, 0.5);
+    self.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.layer.shadowRadius = 2;
+    self.layer.shadowOpacity = .05;
+    CGRect shadowFrame =  CGRectMake(self.layer.bounds.origin.x, self.layer.bounds.origin.y + self.layer.bounds.size.height, self.layer.bounds.size.width, 2);
+    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
+    self.layer.shadowPath = shadowPath;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -86,7 +122,7 @@
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    UIFont *font = [UIFont fontWithName:@"AvenirNext-Medium" size:13.0];
+    UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:13.0];
     
     NSAttributedString *attributedBodyText
     = [[NSAttributedString alloc] initWithString:bodyText
@@ -109,11 +145,16 @@
     return paragraphRect.size.height;
 }
 
-+ (CGFloat) heightOfContent: (Message *)message
++ (CGFloat) heightOfContent: (Message *)message hasMultipleMessages:(BOOL)multiple;
 {
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:message.body];
     CGFloat bodyHeight = [MessageCell heightOfBody:attributedBodyText];
-    return (48 + bodyHeight);
+    if(multiple) {
+        return (71 + bodyHeight);
+    } else {
+        return (51 + bodyHeight);
+    }
+    
 }
 
 @end

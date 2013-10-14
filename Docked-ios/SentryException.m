@@ -27,7 +27,7 @@
 }
 
 -(NSString *) action {
-    return @"exception";
+    return @"Exception";
 }
 
 
@@ -39,7 +39,7 @@
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"airbrake.png"];
+    return [UIImage imageNamed:@"airbrake-s.png"];
 }
 
 @end

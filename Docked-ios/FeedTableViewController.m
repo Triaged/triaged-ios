@@ -52,12 +52,13 @@
     self.tableView.dataSource = self.feedItemsDataSource;
     
     // Appearance
-    self.tableView.backgroundColor = [[UIColor alloc] initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
+    self.tableView.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
     // Refresh control
     UIRefreshControl *refreshControl = [UIRefreshControl new];
+    refreshControl.tintColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     [refreshControl addTarget:[AppDelegate sharedDelegate].store action:@selector(fetchRemoteFeedItems) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
 }
@@ -82,8 +83,8 @@
     
     CardCell *cell = (CardCell *)[tableView cellForRowAtIndexPath:indexPath];
     
-    UIGraphicsBeginImageContextWithOptions(cell.contentView.bounds.size, cell.contentView.opaque, 0.0);
-    [cell.contentView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIGraphicsBeginImageContextWithOptions(cell.bounds.size, cell.opaque, 0.0);
+    [cell.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -100,7 +101,8 @@
     [ssVC setNavController:navController];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ssVC ];
-    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:35.0f/255.0f green:36.0f/255.0f blue:171.0f/255.0f alpha:1.0f];
+    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
+
     
     [self presentViewController:nav animated:NO completion:nil];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
@@ -118,7 +120,8 @@
         return [cellClass heightOfContent:item];
     } else if (indexPath.row == 1) {
         Message *message = [self.feedItemsDataSource itemAtIndexPath:indexPath];
-        return [MessageCell heightOfContent:message];
+        FeedItem *item = [self.feedItemsDataSource feedItemAtIndexPath:indexPath];
+        return [MessageCell heightOfContent:message hasMultipleMessages:[item hasMultipleMessages]];
     } else {
         return 40;
     }

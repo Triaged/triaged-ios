@@ -27,13 +27,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIImage * shareImage = [UIImage imageNamed:@"icn_share.png"];
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareImage style:UIBarButtonItemStyleDone target:nil action:nil];
     
-    self.navigationItem.rightBarButtonItem = shareButton;
-    
-    UIImage * backImage = [UIImage imageNamed:@"icn_back.png"];
+    for (UIView *view in self.navigationController.navigationBar.subviews) {
+        for (UIView *view2 in view.subviews) {
+            if ([view2 isKindOfClass:[UIImageView class]]) {
+                [view2 removeFromSuperview];
+            }
+        }
+    }
+ 
+    UIImage * backImage = [UIImage imageNamed:@"menu.png"];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:nil action:nil];
+    
+    UIView* coverUpView = [[UIView alloc] initWithFrame:CGRectMake(0, _cardImageView.frame.size.height -1, _cardImageView.frame.size.width, 1)];/// change size as you need.
+    coverUpView.backgroundColor = [UIColor whiteColor];
+    
+    [_cardImageView addSubview:coverUpView];
     
     [self.view addSubview:_cardImageView];
     
@@ -41,11 +50,14 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [UIView animateWithDuration:0.35
+   
+   [UIView animateWithDuration:0.32
                           delay:0
                         options: UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                        _cardImageView.frame = CGRectMake(6, 63, 308, _cardImageView.frame.size.height );                                 }
+                         [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+                         _cardImageView.frame = CGRectMake(6, 64, 308, _cardImageView.frame.size.height );
+                     }
                      completion:^(BOOL finished){
                          [self dismissViewControllerAnimated:NO completion:nil];
                          [_navController pushViewController:_detailViewController animated:NO];

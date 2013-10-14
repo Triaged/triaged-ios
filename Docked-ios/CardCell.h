@@ -22,10 +22,12 @@
 @interface CardCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *providerIconView;
+@property (strong, nonatomic) UIImageView *lineDivider;
 @property (strong, nonatomic) UILabel *propertyLabel;
 @property (strong, nonatomic) UILabel *actionLabel;
 @property (strong, nonatomic) UILabel *timestampLabel;
 @property (strong, nonatomic) UILabel *bodyLabel;
+@property  BOOL shouldDrawShadow;
 
 
 - (void)configureForItem:(FeedItem *)item;

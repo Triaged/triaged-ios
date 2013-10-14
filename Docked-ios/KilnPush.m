@@ -15,10 +15,16 @@
                    @"repoName": @"repo_name",
                    @"pusher": @"pusher",
                    @"branch": @"branch",
-                   @"repoUrl": @"repo_url"
+                   @"repoUrl": @"repo_url",
+                   @"commits": @"commits"
                    };
     
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
+}
+
++ (NSValueTransformer *)commitsJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[KilnCommit class]];
 }
 
 -(NSString*)property {
@@ -26,17 +32,20 @@
 }
 
 -(NSString *) action {
-    return [NSString stringWithFormat:@"%@ pushed", self.pusher];
+    return [NSString stringWithFormat:@"%@ pushed to %@", self.pusher, self.branch];
 }
 
-
 -(NSString *)body {
-    return @"body";
+    NSString *body = @"";
+    for (KilnCommit *commit in _commits) {
+        body = [body stringByAppendingString:[NSString stringWithFormat:@"- %@\n", commit.message]];
+    }
     
+    return body;
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"heroku.png"];
+    return [UIImage imageNamed:@"heroku-s.png"];
 }
 
 @end

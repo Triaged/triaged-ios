@@ -7,13 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FeedItem.h"
+#import "StripeEvent.h"
 
-@interface StripeChargeSucceeded : FeedItem
+@interface StripeChargeSucceeded : StripeEvent
 
-@property (nonatomic, copy, readonly) NSString *amount;
-@property (nonatomic, copy, readonly) NSString *description;
-@property (nonatomic, copy, readonly) NSString *customerEmail;
+
 
 
 @end

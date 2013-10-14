@@ -104,6 +104,11 @@
     _messages =  [NSArray arrayWithArray:messages];
 }
 
+- (bool)hasMultipleMessages
+{
+    return (_messages.count > 1);
+}
+
 
 + (NSValueTransformer *)messagesJSONTransformer
 {

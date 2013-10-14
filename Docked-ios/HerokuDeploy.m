@@ -25,17 +25,19 @@
 }
 
 -(NSString *) action {
-    return [NSString stringWithFormat:@"deploy by %@", self.user];
+    return [NSString stringWithFormat:@"Deploy by %@", self.user];
 }
 
 
 -(NSString *)body {
-    return self.gitLog;
+    NSString *body = @"";
+    body = [body stringByAppendingString:_gitLog];
+    return body;
     
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"heroku.png"];
+    return [UIImage imageNamed:@"heroku-s.png"];
 }
 
 

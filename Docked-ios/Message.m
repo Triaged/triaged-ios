@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "Store.h"
 
+
 @implementation Message
 
 + (NSDateFormatter *)dateFormatter {
@@ -65,6 +66,7 @@
                 }};
     
     [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];

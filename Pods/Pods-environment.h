@@ -66,11 +66,11 @@
 #define COCOAPODS_VERSION_MINOR_NSDate_TimeAgo 0
 #define COCOAPODS_VERSION_PATCH_NSDate_TimeAgo 2
 
-// RNFrostedSidebar
-#define COCOAPODS_POD_AVAILABLE_RNFrostedSidebar
-#define COCOAPODS_VERSION_MAJOR_RNFrostedSidebar 0
-#define COCOAPODS_VERSION_MINOR_RNFrostedSidebar 2
-#define COCOAPODS_VERSION_PATCH_RNFrostedSidebar 0
+// SGNavigationProgress
+#define COCOAPODS_POD_AVAILABLE_SGNavigationProgress
+#define COCOAPODS_VERSION_MAJOR_SGNavigationProgress 1
+#define COCOAPODS_VERSION_MINOR_SGNavigationProgress 0
+#define COCOAPODS_VERSION_PATCH_SGNavigationProgress 0
 
 // SSKeychain
 #define COCOAPODS_POD_AVAILABLE_SSKeychain

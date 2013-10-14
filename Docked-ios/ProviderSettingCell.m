@@ -27,7 +27,7 @@
         // Chat image
 
         providerIconView = [[UIImageView alloc] init];
-        providerIconView.frame = CGRectMake(15, 8, 36, 36);
+        providerIconView.frame = CGRectMake(15, 10, 30, 30);
         [self.contentView addSubview: providerIconView];
         
         

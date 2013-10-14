@@ -96,7 +96,7 @@
 {
     
     Message *message = feedItem.sortedMessages[indexPath.row];
-    return [MessageCell heightOfContent:message];
+    return [MessageCell heightOfContent:message hasMultipleMessages:NO];
     
 }
 

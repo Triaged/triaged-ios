@@ -34,7 +34,7 @@
     
     self.propertyLabel.text = textCardItem.property;
     self.actionLabel.text = textCardItem.action;
-    self.bodyLabel.text = textCardItem.body;
+    self.bodyLabel.attributedText = [CardCell attributedBodyText:textCardItem.body];
     self.providerIconView.image = textCardItem.providerIcon;
     self.timestampLabel.text = [textCardItem.timestamp timeAgo];
 
@@ -45,7 +45,7 @@
     
     NSAttributedString *attributedBodyText = [CardCell attributedBodyText:textCardItem.body];
     CGFloat bodyHeight = [CardCell heightOfBody:attributedBodyText];
-    return (80 + bodyHeight);
+    return (120 + bodyHeight);
 }
 
 @end

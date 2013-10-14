@@ -49,11 +49,8 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [[UIColor alloc]
-                                 initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
+                                 initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
 
-    UIImage * shareImage = [UIImage imageNamed:@"icn_share.png"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:shareImage style:UIBarButtonItemStyleDone target:nil action:nil];
-    
     scrollView = [[UIScrollView alloc] init];
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:scrollView];
@@ -121,7 +118,7 @@
 {
     [newMessageVC setFeedItem:_feedItem];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newMessageVC ];
-    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:35.0f/255.0f green:36.0f/255.0f blue:171.0f/255.0f alpha:1.0f];
+    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

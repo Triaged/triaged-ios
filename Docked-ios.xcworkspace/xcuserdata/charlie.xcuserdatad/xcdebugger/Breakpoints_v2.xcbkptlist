@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Docked-ios/Message.m"
-            timestampString = "403140074.482632"
+            timestampString = "403468121.985183"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "+JSONKeyPathsByPropertyKey"
             landmarkType = "5">
          </BreakpointContent>
@@ -142,6 +142,22 @@
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Docked-ios/FeedItemsDataSource.m"
+            timestampString = "403482430.95594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-cellForMessage:AtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
