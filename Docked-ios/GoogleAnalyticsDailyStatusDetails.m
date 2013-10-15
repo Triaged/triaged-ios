@@ -26,6 +26,14 @@
              };
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"GoogleAnalyticsDailyStatusDetails";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
 + (NSValueTransformer *)dateJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
         return [self.dateFormatter dateFromString:str];

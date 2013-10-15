@@ -16,8 +16,8 @@
        @"accountName": @"account_name",
        @"severity": @"severity",
        @"message": @"message",
-       @"shortDescription": @"short_description",
-       @"longDescription": @"long_description"
+       @"shortDescrip": @"short_description",
+       @"longDescrip": @"long_description"
     };
     
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
@@ -26,6 +26,15 @@
 -(NSString *) action {
     return @"apdex alert";
 }
+
++ (NSString *)managedObjectEntityName {
+    return @"NewRelicApdexAlert";
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
 
 -(Class)tableViewCellClass {
     return [TextCardCell class];

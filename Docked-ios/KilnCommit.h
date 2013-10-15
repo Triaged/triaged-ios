@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
 
-@interface KilnCommit : MTLModel <MTLJSONSerializing>
+@interface KilnCommit : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @property (nonatomic, copy, readonly) NSString *author;
 @property (nonatomic, copy, readonly) NSString *branch;
-@property (nonatomic, copy, readonly) NSString *timestamp;
+@property (nonatomic, copy, readonly) NSDate *timestamp;
 @property (nonatomic, copy, readonly) NSString *message;
 @property (nonatomic, copy, readonly) NSString *url;
 

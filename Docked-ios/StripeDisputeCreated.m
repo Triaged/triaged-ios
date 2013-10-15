@@ -10,4 +10,26 @@
 
 @implementation StripeDisputeCreated
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    NSDictionary *jsonKeys = @{
+                               @"amount": @"amount",
+                               @"descrip": @"description",
+                               @"customerEmail": @"customer_email",
+                               };
+    return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
++ (Class)classForDeserializingManagedObject:(NSManagedObject *)managedObject {
+    return StripeDisputeCreated.class;
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
+
 @end

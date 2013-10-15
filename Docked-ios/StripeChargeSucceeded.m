@@ -13,10 +13,22 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{
              @"amount": @"amount",
-             @"description": @"description",
+             @"descrip": @"description",
              @"customerEmail": @"customer_email",
              };
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
+}
+
++ (NSString *)managedObjectEntityName {
+    return @"StripeChargeSucceeded";
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
 }
 
 -(NSString*)property {

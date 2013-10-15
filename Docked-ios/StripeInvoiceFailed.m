@@ -10,4 +10,25 @@
 
 @implementation StripeInvoiceFailed
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    NSDictionary *jsonKeys = @{
+                               @"amount": @"amount",
+                               @"descrip": @"description",
+                               @"customerEmail": @"customer_email",
+                               };
+    return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
++ (Class)classForDeserializingManagedObject:(NSManagedObject *)managedObject {
+    return StripeInvoiceFailed.class;
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
 @end

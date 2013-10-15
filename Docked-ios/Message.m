@@ -27,11 +27,23 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"externalID": @"id",
+             @"authorID": @"author_id",
              @"authorName": @"author_name",
              @"body": @"body",
              @"timestamp" : @"timestamp"
              };
 }
+
+
++ (NSString *)managedObjectEntityName {
+    return @"Message";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
+
 
 + (NSValueTransformer *)timestampJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {

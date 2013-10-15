@@ -16,8 +16,8 @@
 @property (nonatomic, copy, readonly) NSString *accountName;
 @property (nonatomic, copy, readonly) NSString *severity;
 @property (nonatomic, copy, readonly) NSString *message;
-@property (nonatomic, copy, readonly) NSString *shortDescription;
-@property (nonatomic, copy, readonly) NSString *longDescription;
+@property (nonatomic, copy, readonly) NSString *shortDescrip;
+@property (nonatomic, copy, readonly) NSString *longDescrip;
 
 
 @end

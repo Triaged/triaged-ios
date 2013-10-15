@@ -36,6 +36,8 @@
 		CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BB317F09882002273D6 /* OAuthViewController.m */; };
 		CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BB417F09882002273D6 /* OAuthViewController.xib */; };
 		CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */; };
+		CB5A35C1180CD31200ECAB71 /* FetchedFeedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */; };
+		CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F20D317EB857800EBDC34 /* CoreData.framework */; };
 		CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECE917EE894000319223 /* CredentialStore.m */; };
 		CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECEC17EE922C00319223 /* LoginViewController.m */; };
 		CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECED17EE922C00319223 /* LoginViewController.xib */; };
@@ -172,6 +174,8 @@
 		CB429BB417F09882002273D6 /* OAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthViewController.xib; sourceTree = "<group>"; };
 		CB4FDD4B17FF75B700EEE7F6 /* PersistentStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStack.h; sourceTree = "<group>"; };
 		CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStack.m; sourceTree = "<group>"; };
+		CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedFeedItemsDataSource.h; sourceTree = "<group>"; };
+		CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedFeedItemsDataSource.m; sourceTree = "<group>"; };
 		CB5AECE817EE894000319223 /* CredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialStore.h; sourceTree = "<group>"; };
 		CB5AECE917EE894000319223 /* CredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialStore.m; sourceTree = "<group>"; };
 		CB5AECEB17EE922C00319223 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */,
 				CB2F9F9B1808B2EA00F5F97C /* SystemConfiguration.framework in Frameworks */,
 				CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */,
 				CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */,
@@ -697,6 +702,8 @@
 				CB84B41E17EBBF1500C8B00D /* RootViewController.m */,
 				CBB89E0B17FE4B9400402973 /* FeedItemsDataSource.h */,
 				CBB89E0C17FE4B9400402973 /* FeedItemsDataSource.m */,
+				CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */,
+				CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -1049,6 +1056,7 @@
 				CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */,
 				CBE8637117FC93F400EF6E73 /* GoogleAnalyticsDaily.m in Sources */,
 				CBD726F9180363D60071B177 /* NewRelicApdexAlertEnded.m in Sources */,
+				CB5A35C1180CD31200ECAB71 /* FetchedFeedItemsDataSource.m in Sources */,
 				CB81579F17F0D568006AA14A /* Account.m in Sources */,
 				CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */,
 				CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */,

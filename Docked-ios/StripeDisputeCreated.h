@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StripeEvent.h"
 
-@interface StripeDisputeCreated : NSObject
+@interface StripeDisputeCreated : StripeEvent
 
 @end

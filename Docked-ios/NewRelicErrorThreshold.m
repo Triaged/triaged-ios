@@ -16,11 +16,19 @@
        @"accountName": @"account_name",
        @"severity": @"severity",
        @"message": @"message",
-       @"shortDescription": @"short_description",
-       @"longDescription": @"long_description"
+       @"shortDescrip": @"short_description",
+       @"longDescrip": @"long_description"
     };
     
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
+}
+
++ (NSString *)managedObjectEntityName {
+    return @"NewRelicErrorThreshold";
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
 }
 
 -(NSString *) action {

@@ -22,6 +22,19 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"KilnPush";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{@"commits" : KilnCommit.class}];
+}
+
+
 + (NSValueTransformer *)commitsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[KilnCommit class]];

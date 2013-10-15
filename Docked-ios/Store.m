@@ -18,6 +18,8 @@
 
 @implementation Store
 
+@synthesize managedObjectContext;
+
 + (instancetype)store
 {
     return [[self alloc] init];
@@ -28,7 +30,8 @@
     self = [super init];
     if (self) {
         //[self deleteFeedArchive];
-        [self readFeedArchive];
+        //[self readFeedArchive];
+        [self fetchRemoteFeedItems];
         [self readAccountArchive];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -41,6 +44,13 @@
                                                    object:nil];
     }
     return self;
+}
+
+- (NSFetchedResultsController*)feedItemsFetchedResultsController
+{
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:YES]];
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
 #pragma mark - Remote Updates
@@ -67,9 +77,18 @@
     [FeedItem fetchNewRemoteFeedItemsWithParams:params andBlock:^(NSArray *newItems) {
         
         if (newItems.count > 0) {
-            NSMutableArray *allFeedItems = [[NSMutableArray alloc] initWithArray:_feedItems];
-            [allFeedItems addObjectsFromArray:newItems];
-            _feedItems =  [NSArray arrayWithArray:allFeedItems];
+            
+            for( FeedItem *item in newItems) {
+                
+                [MTLManagedObjectAdapter managedObjectFromModel:item insertingIntoContext:self.managedObjectContext error:nil];
+                NSLog(@"%@", item.externalID);
+                
+            }
+            
+
+//            NSMutableArray *allFeedItems = [[NSMutableArray alloc] initWithArray:_feedItems];
+//            [allFeedItems addObjectsFromArray:newItems];
+//            _feedItems =  [NSArray arrayWithArray:allFeedItems];
         }
         
         // Need to call to ensure table views stop refreshing

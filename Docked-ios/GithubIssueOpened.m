@@ -14,11 +14,24 @@
     NSDictionary *jsonKeys = @{
       @"title": @"title",
       @"openedByName": @"opened_by_name",
-      @"AssignedToName": @"assigned_to_name",
+      @"assignedToName": @"assigned_to_name",
       @"message": @"body",
     };
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
+
++ (NSString *)managedObjectEntityName {
+    return @"GithubIssueOpened";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
 
 
 

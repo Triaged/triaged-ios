@@ -15,10 +15,12 @@
 #import "DetailViewController.h"
 #import "SmokescreenViewController.h"
 #import "FeedItemsDataSource.h"
+#import "FetchedFeedItemsDataSource.h"
 
 @interface FeedTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) FeedItemsDataSource *feedItemsDataSource;
+@property (nonatomic, strong) FetchedFeedItemsDataSource *fetchedFeedItemsDataSource;
 
 @end
 
@@ -47,9 +49,11 @@
 - (void)setupTableView
 {
     // Datasource
-    NSArray *feed = [AppDelegate sharedDelegate].store.sortedTableFeed;
-    self.feedItemsDataSource = [[FeedItemsDataSource alloc] initWithItems:feed];
-    self.tableView.dataSource = self.feedItemsDataSource;
+//    NSArray *feed = [AppDelegate sharedDelegate].store.sortedTableFeed;
+//    self.feedItemsDataSource = [[FeedItemsDataSource alloc] initWithItems:feed];
+//    self.tableView.dataSource = self.feedItemsDataSource;
+    
+    [self setupFetchedResultsController];
     
     // Appearance
     self.tableView.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
@@ -63,9 +67,18 @@
     self.refreshControl = refreshControl;
 }
 
+- (void)setupFetchedResultsController
+{
+    self.fetchedFeedItemsDataSource = [[FetchedFeedItemsDataSource alloc] init];
+    self.fetchedFeedItemsDataSource.fetchedResultsController = [AppDelegate sharedDelegate].store.feedItemsFetchedResultsController;
+    self.tableView.dataSource = self.fetchedFeedItemsDataSource;
+}
+
+
 -(void)refreshFeed
 {
-    self.feedItemsDataSource.feedItems = [AppDelegate sharedDelegate].store.sortedTableFeed;
+    //self.feedItemsDataSource.feedItems = [AppDelegate sharedDelegate].store.sortedTableFeed;
+    [self.fetchedFeedItemsDataSource.fetchedResultsController performFetch:NULL];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }

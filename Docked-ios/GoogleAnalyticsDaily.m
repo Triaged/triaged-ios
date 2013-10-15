@@ -29,6 +29,18 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"GoogleAnalyticsDaily";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{@"dailyDetails" : GoogleAnalyticsDailyStatusDetails.class}];
+}
+
 + (NSValueTransformer *)dailyDetailsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[GoogleAnalyticsDailyStatusDetails class]];

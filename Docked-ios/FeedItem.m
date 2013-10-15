@@ -30,6 +30,10 @@
     return dateFormatter;
 }
 
++ (Class)classForDeserializingManagedObject:(NSManagedObject *)managedObject {
+    return NSClassFromString(managedObject.entity.name);
+}
+
 
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -42,10 +46,32 @@
              };
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"FeedItem";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return @{@"messages" : Message.class};
+}
+
+//+ (NSSet *)propertyKeysForManagedObjectUniquing {
+//    return [NSSet setWithObject:@"externalID"];
+//}
+
 + (NSDictionary *)JSONKeyPathsWithSuper:(NSDictionary *)JSONKeyPaths
 {
     NSMutableDictionary *ret = [[FeedItem JSONKeyPathsByPropertyKey] mutableCopy];
     [ret addEntriesFromDictionary:JSONKeyPaths];
+    return ret;
+}
+
++ (NSDictionary *)relationshipModelClassesWith:(NSDictionary *)relationshipModels {
+    NSMutableDictionary *ret = [[NSMutableDictionary alloc] initWithDictionary:@{@"messages" : Message.class}];
+    [ret addEntriesFromDictionary:relationshipModels];
     return ret;
 }
 

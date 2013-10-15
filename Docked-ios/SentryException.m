@@ -22,6 +22,18 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"SentryException";
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
 -(NSString*)property {
     return [self.project capitalizedString];
 }

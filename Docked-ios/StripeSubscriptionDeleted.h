@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StripeEvent.h"
 
-@interface StripeSubscriptionDeleted : NSObject
+@interface StripeSubscriptionDeleted : StripeEvent
 
 @end

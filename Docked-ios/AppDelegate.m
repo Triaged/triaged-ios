@@ -49,6 +49,7 @@
     
     self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
     self.store = [[Store alloc] init];
+    self.store.managedObjectContext = self.persistentStack.managedObjectContext;
     
     if ([self.store.account isLoggedIn]) {
         [self.store.account resetAPNSPushCount];
