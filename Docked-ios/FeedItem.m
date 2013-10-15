@@ -14,7 +14,7 @@
 
 @implementation FeedItem
 
-+ (NSDateFormatter *)dateFormatter {
++ (NSDateFormatter *)timestampDateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
@@ -22,13 +22,23 @@
     return dateFormatter;
 }
 
++ (NSDateFormatter *)dateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+    return dateFormatter;
+}
+
+
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"externalID": @"id",
              @"htmlUrl": @"html_url",
              @"messages": @"messages",
-             @"timestamp": @"timestamp"
+             @"timestamp": @"timestamp",
+             @"updatedAt": @"updated_at"
              };
 }
 
@@ -41,12 +51,22 @@
 
 + (NSValueTransformer *)timestampJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
-        return [self.dateFormatter dateFromString:str];
+        return [self.timestampDateFormatter dateFromString:str];
 
+    } reverseBlock:^(NSDate *date) {
+        return [self.timestampDateFormatter stringFromDate:date];
+    }];
+}
+
++ (NSValueTransformer *)updatedAtJSONTransformer {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        return [self.dateFormatter dateFromString:str];
+        
     } reverseBlock:^(NSDate *date) {
         return [self.dateFormatter stringFromDate:date];
     }];
 }
+
 
 
 + (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary {

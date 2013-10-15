@@ -85,8 +85,8 @@
 
 -(void) layoutMoreMessages
 {
-    [moreMessagesIcon setFrame:CGRectMake(230, bodyLabel.frame.size.height+44, 14, 14)];
-    [moreMessagesLabel setFrame:CGRectMake(250.0, bodyLabel.frame.size.height+40, 50.0, 20.0)];
+    [moreMessagesIcon setFrame:CGRectMake(225, bodyLabel.frame.size.height+44, 14, 14)];
+    [moreMessagesLabel setFrame:CGRectMake(245.0, bodyLabel.frame.size.height+40, 60.0, 20.0)];
     [self.contentView addSubview: moreMessagesIcon];
     [self.contentView addSubview: moreMessagesLabel];
 }

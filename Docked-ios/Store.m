@@ -104,7 +104,7 @@
 - (NSArray *)sortFeedItems
 {
     return [self.feedItems sortedArrayUsingComparator:^NSComparisonResult(FeedItem *feedItem1, FeedItem *feedItem2) {
-        return [feedItem2.externalID compare:feedItem1.externalID];
+        return [feedItem2.updatedAt compare:feedItem1.updatedAt];
     }];
 }
 

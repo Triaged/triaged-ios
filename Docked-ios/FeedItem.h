@@ -20,6 +20,7 @@
 @property (nonatomic, copy, readonly) NSString *htmlUrl;
 @property (nonatomic, copy, readonly) NSArray *messages;
 @property (nonatomic, copy, readonly) NSDate *timestamp;
+@property (nonatomic, copy, readonly) NSDate *updatedAt;
 
 + (NSDictionary *)JSONKeyPathsWithSuper:(NSDictionary *)JSONKeyPaths;
 
