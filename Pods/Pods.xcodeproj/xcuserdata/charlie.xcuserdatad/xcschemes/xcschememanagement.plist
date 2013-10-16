@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Pods-CorePlot.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>Pods-MTStackViewController.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -272,6 +277,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4A0ADF07F913471E9BF1FF8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4E383EFEB9C545FFA573C18D</key>
 		<dict>
 			<key>primary</key>
@@ -328,6 +338,11 @@
 			<true/>
 		</dict>
 		<key>5CED5CFFA3024199BFD011C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5FA2784FD7654AE888114D2F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -447,6 +462,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7ABD6DF33DB448A981E4B84C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7CD8AC36F0594EBA82A4E3A4</key>
 		<dict>
 			<key>primary</key>
@@ -502,12 +522,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8F897A85C7A949ACA80E3285</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>910255C50CB94E418086370A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>919E40D3029445CF80EBA824</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>91FF3166EB3E42D5A5F4CE1A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9385AE6CFC14431BAED012D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -583,6 +618,16 @@
 			<true/>
 		</dict>
 		<key>B49F749E472A484DA3DEF7DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B53677B116474F75AEE27C9A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B642B68693B749B89B3DC72F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -738,6 +783,11 @@
 			<true/>
 		</dict>
 		<key>EBB6AF34DDE4447C86DA2CA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2BE6D6A92D74DFF99B37DE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

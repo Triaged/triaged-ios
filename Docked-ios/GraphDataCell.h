@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CardCell.h"
+#import "CorePlot-CocoaTouch.h"
 
 @protocol GraphCardProtocol <CardProtocol>
 -(NSArray *)chartCoordinates;

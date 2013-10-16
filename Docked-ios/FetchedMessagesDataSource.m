@@ -49,6 +49,7 @@
     
     cell.authorLabel.text = message.authorName;
     cell.bodyLabel.text = message.body;
+    cell.shouldDrawSeparator = (indexPath.row == 0) ? NO : YES;
     
     return cell;
 }

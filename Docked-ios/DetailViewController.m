@@ -9,7 +9,7 @@
 #import "DetailViewController.h"
 #import "MessageTabViewController.h"
 #import "MessagesTableViewController.h"
-#import "ExternalLinkViewViewController.h"
+#import "ActionBarViewController.h"
 #import "NewMessageViewController.h"
 #import "CardCell.h"
 
@@ -72,26 +72,26 @@
     [contentView addSubview:cell];
     
     // External Link View
-    ExternalLinkViewViewController *externalVC = [[ExternalLinkViewViewController alloc] init];
+    ActionBarViewController *externalVC = [[ActionBarViewController alloc] init];
     [externalVC setExternalLink:[_feedItem htmlUrl]];
-    externalVC.view.frame = CGRectMake(6, cell.frame.size.height, 308, 44);
+    externalVC.view.frame = CGRectMake(6, cell.frame.size.height, 308, 50);
     externalVC.view.translatesAutoresizingMaskIntoConstraints = NO;
     [self addChildViewController:externalVC];
     [contentView addSubview:externalVC.view];
     
-    // Message Tab View
-    MessageTabViewController *messageTabVC = [[MessageTabViewController alloc] init];
-    messageTabVC.view.frame = CGRectMake(0, self.view.bounds.size.height - 44, 320, 44);
-    messageTabVC.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [self addChildViewController:messageTabVC];
-    [self.view addSubview:messageTabVC.view];
+//    // Message Tab View
+//    MessageTabViewController *messageTabVC = [[MessageTabViewController alloc] init];
+//    messageTabVC.view.frame = CGRectMake(0, self.view.bounds.size.height - 44, 320, 44);
+//    messageTabVC.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+//    [self addChildViewController:messageTabVC];
+//    [self.view addSubview:messageTabVC.view];
 
     // Messages Table View
      messagesVC = [[MessagesTableViewController alloc] init];
     //commentsVC.delegate = self;
     messagesVC.feedItem = _feedItem;
     [self addChildViewController:messagesVC];
-    CGRect frame = CGRectMake(6, cell.frame.size.height + 44, 308.0, self.view.frame.size.height - (cell.frame.size.height + 44));
+    CGRect frame = CGRectMake(6, cell.frame.size.height + 64, 308.0, self.view.frame.size.height - (cell.frame.size.height + 44));
     messagesVC.tableView.frame = frame;
     [contentView  addSubview:messagesVC.tableView];
     [messagesVC didMoveToParentViewController:self];

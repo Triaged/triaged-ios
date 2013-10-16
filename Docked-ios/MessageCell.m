@@ -10,7 +10,7 @@
 
 @implementation MessageCell
 
-@synthesize authorLabel, bodyLabel, moreMessagesLabel, moreMessagesIcon, shouldDrawShadow, shouldDrawMoreMessages;
+@synthesize authorLabel, bodyLabel, moreMessagesLabel, moreMessagesIcon, shouldDrawShadow, shouldDrawMoreMessages, shouldDrawSeparator, lineView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,8 +22,7 @@
         self.contentView.backgroundColor = [UIColor whiteColor];
         
         UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-        lineView.frame = CGRectMake(6, 1, 296, 1);
+        lineView = [[UIImageView alloc] initWithImage:lineSeparator];
         [self.contentView addSubview: lineView];
         
         // Chat image
@@ -75,7 +74,9 @@
     CGRect newFrame = CGRectMake(58.0, 36.0, 260, [MessageCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
     
+    if (shouldDrawSeparator) lineView.frame = CGRectMake(6, 1, 296, 1);
     if (shouldDrawShadow) [self drawShadow];
+    
     if (shouldDrawMoreMessages) {
        [self layoutMoreMessages];
     } else {
@@ -85,8 +86,8 @@
 
 -(void) layoutMoreMessages
 {
-    [moreMessagesIcon setFrame:CGRectMake(225, bodyLabel.frame.size.height+44, 14, 14)];
-    [moreMessagesLabel setFrame:CGRectMake(245.0, bodyLabel.frame.size.height+40, 60.0, 20.0)];
+    [moreMessagesIcon setFrame:CGRectMake(225, bodyLabel.frame.size.height+42, 14, 14)];
+    [moreMessagesLabel setFrame:CGRectMake(245.0, bodyLabel.frame.size.height+38, 60.0, 20.0)];
     [self.contentView addSubview: moreMessagesIcon];
     [self.contentView addSubview: moreMessagesLabel];
 }
@@ -122,7 +123,7 @@
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:13.0];
+    UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:14.0];
     
     NSAttributedString *attributedBodyText
     = [[NSAttributedString alloc] initWithString:bodyText
@@ -150,9 +151,9 @@
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:message.body];
     CGFloat bodyHeight = [MessageCell heightOfBody:attributedBodyText];
     if(multiple) {
-        return (71 + bodyHeight);
+        return (65 + bodyHeight);
     } else {
-        return (51 + bodyHeight);
+        return (45 + bodyHeight);
     }
 }
 

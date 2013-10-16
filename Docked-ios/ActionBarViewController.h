@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExternalLinkViewViewController : UIViewController
+@interface ActionBarViewController : UIViewController
 
 @property (strong, nonatomic) NSString *externalLink;
 @property (weak, nonatomic) IBOutlet UIButton *externalLinkButton;
