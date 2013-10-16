@@ -13,7 +13,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{
                                @"amount": @"amount",
-                               @"descrip": @"description",
+                               @"message": @"description",
                                @"customerEmail": @"customer_email",
                                };
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];

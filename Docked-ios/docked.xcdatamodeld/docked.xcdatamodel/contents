@@ -68,15 +68,16 @@
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="externalID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="feedItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FeedItem" inverseName="messages" inverseEntity="FeedItem" syncable="YES"/>
     </entity>
     <entity name="NewRelicAlert" parentEntity="FeedItem" syncable="YES">
         <attribute name="accountName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="applicationName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="longDescrip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longMessage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="severity" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="shortDescrip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortMessage" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="NewRelicApdexAlert" parentEntity="NewRelicAlert" syncable="YES"/>
     <entity name="NewRelicApdexAlertEnded" parentEntity="NewRelicAlert" syncable="YES"/>
@@ -106,36 +107,36 @@
     <entity name="StripeEvent" parentEntity="FeedItem" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="customerEmail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="StripeInvoiceFailed" parentEntity="StripeEvent" syncable="YES"/>
     <entity name="StripeSubscriptionDeleted" parentEntity="StripeEvent" syncable="YES"/>
     <elements>
         <element name="FeedItem" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Message" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="SentryException" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="GithubCommit" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="GithubIssueOpened" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="GithubPush" positionX="0" positionY="0" width="0" height="0"/>
         <element name="GoogleAnalyticsDaily" positionX="0" positionY="0" width="0" height="0"/>
         <element name="GoogleAnalyticsDailyStatusDetails" positionX="0" positionY="0" width="0" height="0"/>
         <element name="HerokuDeploy" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="KilnPush" positionX="0" positionY="0" width="0" height="0"/>
         <element name="KilnCommit" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="KilnPush" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Message" positionX="0" positionY="0" width="0" height="0"/>
         <element name="NewRelicAlert" positionX="0" positionY="0" width="0" height="0"/>
         <element name="NewRelicApdexAlert" positionX="0" positionY="0" width="0" height="0"/>
         <element name="NewRelicApdexAlertEnded" positionX="0" positionY="0" width="0" height="0"/>
         <element name="NewRelicAppAlert" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="NewRelicDeployment" positionX="0" positionY="0" width="0" height="0"/>
         <element name="NewRelicDowntime" positionX="0" positionY="0" width="0" height="0"/>
         <element name="NewRelicDowntimeEnded" positionX="0" positionY="0" width="0" height="0"/>
         <element name="NewRelicErrorThreshold" positionX="0" positionY="0" width="0" height="0"/>
         <element name="NewRelicThresholdEnded" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="NewRelicDeployment" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="StripeEvent" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="StripeChargeSucceeded" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SentryException" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StripeChargeRefunded" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="StripeChargeSucceeded" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StripeDisputeCreated" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="StripeEvent" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StripeInvoiceFailed" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StripeSubscriptionDeleted" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="GithubIssueOpened" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="GithubPush" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="GithubCommit" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -8,7 +8,6 @@
 
 #import "FetchedFeedItemsDataSource.h"
 #import "FeedItem.h"
-#import "Message.h"
 #import "CardCell.h"
 
 @implementation FetchedFeedItemsDataSource
@@ -20,7 +19,8 @@
 
 - (id)feedItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return [MTLManagedObjectAdapter modelOfClass:FeedItem.class
+                        fromManagedObject:[self.fetchedResultsController objectAtIndexPath:indexPath] error:nil];
 }
 
 
@@ -54,7 +54,7 @@
 - (UITableViewCell *)cellForFeedItem:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSLog(@"%@", object);
-    FeedItem *item = [MTLManagedObjectAdapter modelOfClass:FeedItem.class fromManagedObject:[self itemAtIndexPath:indexPath] error:nil];
+    FeedItem *item = [self feedItemAtIndexPath:indexPath];
 
     
     // Determine the cell class
@@ -71,33 +71,8 @@
     // Configure the cell...
     [cell configureForItem:item];
     // Should we draw the shadow?
-    NSInteger numberOfRows = [tableView numberOfRowsInSection:[indexPath section]];
-    cell.shouldDrawShadow = (numberOfRows == 1);
-    
-    return cell;
-}
-- (UITableViewCell *)cellForMessage:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"MessageCell";
-    MessageCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ] ;
-    if ( !cell )
-    {
-        cell = [ [ MessageCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
-    }
-    
-    Message *message = [self itemAtIndexPath:indexPath];
-    FeedItem *item = [self feedItemAtIndexPath:indexPath];
-    
-    cell.authorLabel.text = message.authorName;
-    cell.bodyLabel.text = message.body;
-    
-    if ([item hasMultipleMessages]) {
-        cell.moreMessagesLabel.text = [NSString stringWithFormat:@"+ %d more", (item.messages.count - 1)];
-        cell.shouldDrawMoreMessages = YES;
-    } else {
-        cell.shouldDrawMoreMessages = NO;
-    }
-    
-    cell.shouldDrawShadow = YES;
+    //NSInteger numberOfRows = [tableView numberOfRowsInSection:[indexPath section]];
+    //cell.shouldDrawShadow = (numberOfRows == 1);
     
     return cell;
 }

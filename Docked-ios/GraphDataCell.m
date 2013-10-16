@@ -182,6 +182,11 @@
     thirdData.text = [graphCardItem.thirdDataField stringValue];
 }
 
++ (CGFloat) estimatedHeightOfContent
+{
+    return 290;
+}
+
 + (CGFloat) heightOfContent: (FeedItem *)item {
     return 290;
 }

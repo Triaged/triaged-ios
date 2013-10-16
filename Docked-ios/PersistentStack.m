@@ -13,6 +13,7 @@
 @property (nonatomic,strong,readwrite) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic,strong) NSURL* modelURL;
 @property (nonatomic,strong) NSURL* storeURL;
+@property (nonatomic,strong) NSPersistentStore* store;
 
 @end
 
@@ -35,7 +36,7 @@
     self.managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     self.managedObjectContext.persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
     NSError* error;
-    [self.managedObjectContext.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:self.storeURL options:nil error:&error];
+    self.store = [self.managedObjectContext.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:self.storeURL options:nil error:&error];
     if (error) {
         NSLog(@"error: %@", error);
     }
@@ -60,6 +61,16 @@
         }
     }
 }
+
+- (void)deleteEntireDatabase
+{
+    NSError *error = nil;
+    NSPersistentStoreCoordinator *storeCoordinator = self.managedObjectContext.persistentStoreCoordinator;
+    [storeCoordinator removePersistentStore:self.store error:&error];
+    [[NSFileManager defaultManager] removeItemAtPath:self.storeURL.path error:&error];
+}
+
+
 
 
 

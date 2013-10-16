@@ -67,6 +67,7 @@
 		CB85A855180B586F00698988 /* StripeInvoiceFailed.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A854180B586F00698988 /* StripeInvoiceFailed.m */; };
 		CB85A858180B588000698988 /* StripeSubscriptionDeleted.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A857180B588000698988 /* StripeSubscriptionDeleted.m */; };
 		CB85A85B180B58B500698988 /* StripeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A85A180B58B500698988 /* StripeEvent.m */; };
+		CB8D0EC3180DAA9C004FABBC /* FetchedMessagesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8D0EC2180DAA9C004FABBC /* FetchedMessagesDataSource.m */; };
 		CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209017EB5D6300EBDC34 /* Foundation.framework */; };
 		CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */; };
 		CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209417EB5D6300EBDC34 /* UIKit.framework */; };
@@ -86,7 +87,6 @@
 		CBA676B118085B470035368A /* HerokuSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B018085B470035368A /* HerokuSettingsViewController.m */; };
 		CBA676B418085B630035368A /* AirbrakeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B318085B630035368A /* AirbrakeSettingsViewController.m */; };
 		CBA676B718085D520035368A /* BaseSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B618085D520035368A /* BaseSettingsViewController.m */; };
-		CBB89E0D17FE4B9400402973 /* FeedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E0C17FE4B9400402973 /* FeedItemsDataSource.m */; };
 		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
 		CBD43EFB17F8B221001AC849 /* TextCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFA17F8B221001AC849 /* TextCardCell.m */; };
 		CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFF17F8B54B001AC849 /* DataCardCell.m */; };
@@ -228,6 +228,8 @@
 		CB85A857180B588000698988 /* StripeSubscriptionDeleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeSubscriptionDeleted.m; sourceTree = "<group>"; };
 		CB85A859180B58B500698988 /* StripeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeEvent.h; sourceTree = "<group>"; };
 		CB85A85A180B58B500698988 /* StripeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeEvent.m; sourceTree = "<group>"; };
+		CB8D0EC1180DAA9C004FABBC /* FetchedMessagesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedMessagesDataSource.h; sourceTree = "<group>"; };
+		CB8D0EC2180DAA9C004FABBC /* FetchedMessagesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedMessagesDataSource.m; sourceTree = "<group>"; };
 		CB8F208D17EB5D6300EBDC34 /* Docked-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Docked-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8F209017EB5D6300EBDC34 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -258,8 +260,6 @@
 		CBA676B318085B630035368A /* AirbrakeSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirbrakeSettingsViewController.m; sourceTree = "<group>"; };
 		CBA676B518085D520035368A /* BaseSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSettingsViewController.h; sourceTree = "<group>"; };
 		CBA676B618085D520035368A /* BaseSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSettingsViewController.m; sourceTree = "<group>"; };
-		CBB89E0B17FE4B9400402973 /* FeedItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItemsDataSource.h; sourceTree = "<group>"; };
-		CBB89E0C17FE4B9400402973 /* FeedItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemsDataSource.m; sourceTree = "<group>"; };
 		CBB89E0F17FE4F0600402973 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		CBB89E1017FE4F0600402973 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
 		CBD43EF917F8B221001AC849 /* TextCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCardCell.h; sourceTree = "<group>"; };
@@ -700,8 +700,6 @@
 				CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */,
 				CB84B41D17EBBF1500C8B00D /* RootViewController.h */,
 				CB84B41E17EBBF1500C8B00D /* RootViewController.m */,
-				CBB89E0B17FE4B9400402973 /* FeedItemsDataSource.h */,
-				CBB89E0C17FE4B9400402973 /* FeedItemsDataSource.m */,
 				CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */,
 				CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */,
 			);
@@ -792,6 +790,8 @@
 				CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */,
 				CBD43F4117FA12BE001AC849 /* MessagesTableViewController.h */,
 				CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */,
+				CB8D0EC1180DAA9C004FABBC /* FetchedMessagesDataSource.h */,
+				CB8D0EC2180DAA9C004FABBC /* FetchedMessagesDataSource.m */,
 			);
 			name = messages;
 			sourceTree = "<group>";
@@ -1011,7 +1011,6 @@
 				CBD726FC180363E10071B177 /* NewRelicAppAlert.m in Sources */,
 				CBDCEC731805ED5B0024860B /* ProviderSettingsTableViewController.m in Sources */,
 				CB8F20A117EB5D6300EBDC34 /* AppDelegate.m in Sources */,
-				CBB89E0D17FE4B9400402973 /* FeedItemsDataSource.m in Sources */,
 				CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */,
 				CB85A84F180B585200698988 /* StripeChargeRefunded.m in Sources */,
 				CBD43F3F17FA12A4001AC849 /* NewMessageViewController.m in Sources */,
@@ -1029,6 +1028,7 @@
 				CB2F9FB21808B40A00F5F97C /* Mixpanel.m in Sources */,
 				CB85A85B180B58B500698988 /* StripeEvent.m in Sources */,
 				CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */,
+				CB8D0EC3180DAA9C004FABBC /* FetchedMessagesDataSource.m in Sources */,
 				CB85A84C180B0EF600698988 /* KilnCommit.m in Sources */,
 				CBD43F3917F9F4A0001AC849 /* ExternalLinkViewViewController.m in Sources */,
 				CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */,

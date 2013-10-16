@@ -10,6 +10,8 @@
 #import "DockedAPIClient.h"
 #import "TextCardCell.h"
 #import "NSString+Inflections.h"
+#import "AppDelegate.h"
+#import "Store.h"
 
 
 @implementation FeedItem
@@ -58,9 +60,9 @@
     return @{@"messages" : Message.class};
 }
 
-//+ (NSSet *)propertyKeysForManagedObjectUniquing {
-//    return [NSSet setWithObject:@"externalID"];
-//}
++ (NSSet *)propertyKeysForManagedObjectUniquing {
+    return [NSSet setWithObject:@"externalID"];
+}
 
 + (NSDictionary *)JSONKeyPathsWithSuper:(NSDictionary *)JSONKeyPaths
 {
@@ -137,18 +139,6 @@
     }];
 }
 
--(BOOL)addMessageWithBody:(NSString *)body {
-    Message* newMessage = [Message buildNewMessageWithBody:body];
-    [newMessage saveRemoteWithFeedItemID:_externalID];
-    [self addMessageToItem:newMessage];
-    return true;
-}
-
--(void)addMessageToItem:(Message *)message {
-    NSMutableArray *messages = [[NSMutableArray alloc] initWithArray:_messages];
-    [messages addObject:message];
-    _messages =  [NSArray arrayWithArray:messages];
-}
 
 - (bool)hasMultipleMessages
 {
@@ -174,6 +164,19 @@
         NSLog(@"failure");
         NSLog(@"%@", [error description]);
     }];
+}
+
+- (NSManagedObject *)managedItem
+{
+    return [MTLManagedObjectAdapter managedObjectFromModel:self insertingIntoContext:[AppDelegate sharedDelegate].store.managedObjectContext error:nil];
+}
+
+- (NSFetchedResultsController*)messagesFetchedResultsController
+{
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
+    request.predicate = [NSPredicate predicateWithFormat:@"feedItem = %@", [self managedItem]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]];
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[AppDelegate sharedDelegate].store.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
 

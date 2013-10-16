@@ -11,6 +11,9 @@
 #import "Account.h"
 #import "DockedAPIClient.h"
 #import "AppDelegate.h"
+#import "PersistentStack.h"
+
+//-com.apple.CoreData.SQLDebug 1
 
 @interface Store ()
     @property (nonatomic,strong) NSString *minID;
@@ -49,7 +52,11 @@
 - (NSFetchedResultsController*)feedItemsFetchedResultsController
 {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:YES]];
+    [request setFetchBatchSize:100];
+    [request setRelationshipKeyPathsForPrefetching:@[@"commits"]];
+    [request setRelationshipKeyPathsForPrefetching:@[@"messages"]];
+    [request setRelationshipKeyPathsForPrefetching:@[@"dailyDetails"]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO]];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
@@ -69,9 +76,12 @@
 
 - (void)fetchNewRemoteFeedItemsWithBlock:(void (^)(NSArray *))block {
     NSDictionary *params;
+    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
     
-    if (_minID != nil){
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:_minID, @"min_id", nil];
+    NSString *minUpdatedAt = [standardDefaults stringForKey:@"min_updated_at"];
+    
+    if (minUpdatedAt != nil){
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:minUpdatedAt, @"min_updated_at", nil];
     }
     
     [FeedItem fetchNewRemoteFeedItemsWithParams:params andBlock:^(NSArray *newItems) {
@@ -79,16 +89,21 @@
         if (newItems.count > 0) {
             
             for( FeedItem *item in newItems) {
+                NSError *error = nil;
+                [MTLManagedObjectAdapter managedObjectFromModel:item insertingIntoContext:self.managedObjectContext error:&error];
                 
-                [MTLManagedObjectAdapter managedObjectFromModel:item insertingIntoContext:self.managedObjectContext error:nil];
-                NSLog(@"%@", item.externalID);
+                if (error != nil) {
+                    NSLog(@"%@", [error localizedDescription]);
+                }
                 
             }
+            [self.managedObjectContext save:nil];
             
+            FeedItem *latestItem = [newItems firstObject];
+            NSString *minUpdated = [Store.dateFormatter stringFromDate:latestItem.updatedAt];
+            [standardDefaults setObject:minUpdated forKey:@"min_updated_at"];
+            [standardDefaults synchronize];
 
-//            NSMutableArray *allFeedItems = [[NSMutableArray alloc] initWithArray:_feedItems];
-//            [allFeedItems addObjectsFromArray:newItems];
-//            _feedItems =  [NSArray arrayWithArray:allFeedItems];
         }
         
         // Need to call to ensure table views stop refreshing
@@ -148,55 +163,17 @@
 - (void) userSignedOut
 {
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalNever];
-    _feedItems = nil;
-    [self deleteFeedArchive];
+    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+    [standardDefaults removeObjectForKey:@"min_updated_at"];
+    [standardDefaults synchronize];
+    NSLog(@"%@",[standardDefaults stringForKey:@"min_updated_at"]);
+
+    [[AppDelegate sharedDelegate].persistentStack deleteEntireDatabase];
 }
 
 #pragma mark - NSKeyArchiving
 
-- (void)readFeedArchive
-{
-    NSString     * path         = [self pathForDataFile];
-    NSDictionary * rootObject;
-    
-    rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    _feedItems = [rootObject valueForKey:@"feedItems"];
-    
-    [self feedWasUpdated];
-    [self fetchRemoteFeedItems];
-    
-}
 
-- (void)saveFeedToArchive
-{
-    NSString * path = [self pathForDataFile];
-    
-    NSMutableDictionary * rootObject = [NSMutableDictionary dictionary];
-    [rootObject setValue:_feedItems forKey:@"feedItems"];
-    
-    [NSKeyedArchiver archiveRootObject: rootObject toFile: path];
-}
-
-- (BOOL)deleteFeedArchive
-{
-    NSString * path = [self pathForDataFile];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    BOOL exists = [fm fileExistsAtPath:path];
-    if(exists == YES) return [fm removeItemAtPath:path error:nil];
-    return exists;
-}
-
-- (NSString *) pathForDataFile
-{
-    NSArray*	documentDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString*	path = nil;
-	
-    if (documentDir) {
-        path = [documentDir objectAtIndex:0];
-    }
-	
-    return [NSString stringWithFormat:@"%@/%@", path, @"feed.bin"];
-}
 
 - (void)readAccountArchive
 {
@@ -240,6 +217,15 @@
 	
     return [NSString stringWithFormat:@"%@/%@", path, @"account.bin"];
 }
+        
++ (NSDateFormatter *)dateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+    return dateFormatter;
+}
+
 
 
 

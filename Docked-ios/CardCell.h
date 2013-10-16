@@ -15,6 +15,7 @@
 @protocol CardProtocol <NSObject>
 -(NSString *)property;
 -(NSString *)action;
+-(NSString *)externalID;
 -(UIImage *)providerIcon;
 -(NSDate *)timestamp;
 @end

@@ -30,7 +30,8 @@
              @"authorID": @"author_id",
              @"authorName": @"author_name",
              @"body": @"body",
-             @"timestamp" : @"timestamp"
+             @"timestamp" : @"timestamp",
+             @"uuid" : @"uuid"
              };
 }
 
@@ -43,6 +44,13 @@
     return @{};
 }
 
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return @{@"feedItem" : FeedItem.class};
+}
+
++ (NSSet *)propertyKeysForManagedObjectUniquing {
+    return [NSSet setWithObject:@"uuid"];
+}
 
 
 + (NSValueTransformer *)timestampJSONTransformer {
@@ -69,18 +77,40 @@
     return message;
 }
 
-
-- (void)saveRemoteWithFeedItemID:(NSString *)feedItemID
++ (instancetype) buildNewMessageWithBody:(NSString *)body forFeedItem:(FeedItem *)item
 {
-    NSString *path = [NSString stringWithFormat:@"feed/%@/messages.json", feedItemID];
+    NSDictionary *attributes = @{
+                                 @"body" : body,
+                                 @"authorName" : [AppDelegate sharedDelegate].store.account.name,
+                                 @"authorID" : [AppDelegate sharedDelegate].store.account.userID,
+                                 @"timestamp" : [NSDate date],
+                                 @"feedItem" : item,
+                                 @"uuid" : [[NSUUID UUID] UUIDString]
+                                 };
+    
+    Message *message = [[Message alloc] initWithDictionary:attributes error:nil];
+    
+    // add to local context
+    [MTLManagedObjectAdapter managedObjectFromModel:message insertingIntoContext:[AppDelegate sharedDelegate].store.managedObjectContext error:nil];
+    [[AppDelegate sharedDelegate].store.managedObjectContext save:nil];
+
+    [message saveRemote];
+    return message;
+}
+
+
+- (void)saveRemote
+{
+    NSString *path = [NSString stringWithFormat:@"feed/%@/messages.json", _feedItem.externalID];
     id params = @{@"message" : @{
                   @"author_id": self.authorID,
-                  @"body": self.body
+                  @"body": self.body,
+                  @"uuid": self.uuid,
+                  @"timestamp" : [Message.dateFormatter stringFromDate:self.timestamp]
                 }};
     
     [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
         [[AppDelegate sharedDelegate].navVC showSGProgressWithDuration:1.5];
-        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];

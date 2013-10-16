@@ -13,13 +13,11 @@
 #import "RootViewController.h"
 #import "SettingsMenuViewController.h"
 #import "DetailViewController.h"
-#import "Mixpanel.h"
+//#import "Mixpanel.h"
 
 #define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
 
 @interface AppDelegate () 
-
-@property (nonatomic, strong) PersistentStack* persistentStack;
 
 @end
 
@@ -35,7 +33,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    //[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 
@@ -109,13 +107,13 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [self.store saveFeedToArchive];
     [self.store saveAccountToArchive];
 }
 
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
     NSLog(@"Got device token: %@", [devToken description]);
+    // @TODO: Optimize this:
     [self.store.account updateAPNSPushTokenWithToken:[devToken description]];
 }
 
@@ -193,6 +191,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        [self.store.managedObjectContext save:nil];
         [self.store saveFeedToArchive];
         [self.store saveAccountToArchive];
 }

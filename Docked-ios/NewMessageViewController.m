@@ -60,8 +60,7 @@
 }
 
 -(IBAction)sendMessage:(id)sender{
-    
-    [_feedItem addMessageWithBody:_messageBodyTextView.text];
+    [Message buildNewMessageWithBody:_messageBodyTextView.text forFeedItem:_feedItem];
     _messageBodyTextView.text = @"";
     [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
     [self dismissViewControllerAnimated:YES completion:nil];

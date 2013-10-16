@@ -147,15 +147,13 @@
 
 + (CGFloat) heightOfContent: (Message *)message hasMultipleMessages:(BOOL)multiple;
 {
-//    NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:message.body];
-//    CGFloat bodyHeight = [MessageCell heightOfBody:attributedBodyText];
-//    if(multiple) {
-//        return (71 + bodyHeight);
-//    } else {
-//        return (51 + bodyHeight);
-//    }
-
-    return 140;
+    NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:message.body];
+    CGFloat bodyHeight = [MessageCell heightOfBody:attributedBodyText];
+    if(multiple) {
+        return (71 + bodyHeight);
+    } else {
+        return (51 + bodyHeight);
+    }
 }
 
 @end

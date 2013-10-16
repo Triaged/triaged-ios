@@ -14,6 +14,7 @@
 
 - (id)initWithStoreURL:(NSURL*)storeURL modelURL:(NSURL*)modelURL;
 - (void)saveContext;
+- (void)deleteEntireDatabase;
 
 
 @end

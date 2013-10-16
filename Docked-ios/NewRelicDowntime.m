@@ -16,8 +16,8 @@
        @"accountName": @"account_name",
        @"severity": @"severity",
        @"message": @"message",
-       @"shortDescrip": @"short_description",
-       @"longDescrip": @"long_description"
+       @"shortDMessage": @"short_description",
+       @"longMessage": @"long_description"
     };
     
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];

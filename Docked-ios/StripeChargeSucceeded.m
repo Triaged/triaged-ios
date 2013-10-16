@@ -13,7 +13,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *jsonKeys = @{
              @"amount": @"amount",
-             @"descrip": @"description",
+             @"message": @"description",
              @"customerEmail": @"customer_email",
              };
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
@@ -42,8 +42,8 @@
 -(NSString *)body {
     NSString *body = [NSString stringWithFormat:@"Amount: $%@\n", self.amount];
     
-    if (self.description != nil) {
-        body = [body stringByAppendingString:[NSString stringWithFormat:@"Description: %@\n", self.description]];
+    if (self.message != nil) {
+        body = [body stringByAppendingString:[NSString stringWithFormat:@"Description: %@\n", self.message]];
     }
     
     if (self.customerEmail != nil) {

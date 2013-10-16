@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
 
+- (id)itemAtIndexPath:(NSIndexPath *)indexPath;
+- (id)feedItemAtIndexPath:(NSIndexPath *)indexPath;
+
 @end

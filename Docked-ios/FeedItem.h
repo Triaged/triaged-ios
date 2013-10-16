@@ -33,4 +33,6 @@
 
 -(NSArray *)sortedMessages;
 
+- (NSFetchedResultsController*)messagesFetchedResultsController;
+
 @end
