@@ -23,6 +23,16 @@
                         fromManagedObject:[self.fetchedResultsController objectAtIndexPath:indexPath] error:nil];
 }
 
+- (id)feedItemAtForMessageIndexPath:(NSIndexPath *)indexPath
+{
+
+    NSIndexPath *feedItemIndexPath = [NSIndexPath indexPathForRow:0 inSection:indexPath.section];
+    return [MTLManagedObjectAdapter modelOfClass:FeedItem.class
+                               fromManagedObject:[self.fetchedResultsController
+                                                  objectAtIndexPath:feedItemIndexPath] error:nil];
+}
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
@@ -31,6 +41,7 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
+    
     id<NSFetchedResultsSectionInfo> section = self.fetchedResultsController.sections[sectionIndex];
     return section.numberOfObjects;
 }
@@ -76,6 +87,34 @@
     
     return cell;
 }
+
+
+- (UITableViewCell *)cellForMessage:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"MessageCell";
+    MessageCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ] ;
+    if ( !cell )
+    {
+        cell = [ [ MessageCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
+    }
+    
+    Message *message = [self itemAtIndexPath:indexPath];
+    FeedItem *item = [self feedItemAtIndexPath:indexPath];
+    
+    cell.authorLabel.text = message.authorName;
+    cell.bodyLabel.text = message.body;
+    
+    if ([item hasMultipleMessages]) {
+        cell.moreMessagesLabel.text = [NSString stringWithFormat:@"+ %d more", (item.messages.count - 1)];
+        cell.shouldDrawMoreMessages = YES;
+    } else {
+        cell.shouldDrawMoreMessages = NO;
+    }
+    
+    cell.shouldDrawShadow = YES;
+    
+    return cell;
+}
+
 
 
 
