@@ -14,5 +14,6 @@
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
 - (id)feedItemAtIndexPath:(NSIndexPath *)indexPath;
+- (id)feedItemAtForMessageIndexPath:(NSIndexPath *)indexPath;
 
 @end

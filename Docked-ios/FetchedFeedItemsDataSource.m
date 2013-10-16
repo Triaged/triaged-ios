@@ -41,23 +41,24 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
+    NSIndexPath *feedItemIndexPath = [NSIndexPath indexPathForRow:0 inSection:sectionIndex];
+    FeedItem *item = [self feedItemAtIndexPath:feedItemIndexPath];
     
-    id<NSFetchedResultsSectionInfo> section = self.fetchedResultsController.sections[sectionIndex];
-    return section.numberOfObjects;
+    return ([item hasMessages] ? 2 : 1);
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     UITableViewCell *cell;
      cell = [self cellForFeedItem:tableView AtIndexPath:indexPath];
-//    
-//    if(indexPath.row == 0) { // Feed Item
-//        cell = [self cellForFeedItem:tableView AtIndexPath:indexPath];
-//    } else if (indexPath.row == 1) { // Last Message
-//        cell = [self cellForMessage:tableView AtIndexPath:indexPath];
-//    } else {
-//        cell = nil;
-//    }
+    
+    if(indexPath.row == 0) { // Feed Item
+        cell = [self cellForFeedItem:tableView AtIndexPath:indexPath];
+    } else if (indexPath.row == 1) { // Last Message
+        cell = [self cellForMessage:tableView AtIndexPath:indexPath];
+    } else {
+        cell = nil;
+    }
     
     return cell;
 }
@@ -97,8 +98,8 @@
         cell = [ [ MessageCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
     
-    Message *message = [self itemAtIndexPath:indexPath];
-    FeedItem *item = [self feedItemAtIndexPath:indexPath];
+    FeedItem *item = [self feedItemAtForMessageIndexPath:indexPath];
+    Message *message = [item previewMessage];
     
     cell.authorLabel.text = message.authorName;
     cell.bodyLabel.text = message.body;

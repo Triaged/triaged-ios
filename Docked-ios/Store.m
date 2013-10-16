@@ -57,7 +57,7 @@
     [request setRelationshipKeyPathsForPrefetching:@[@"messages"]];
     [request setRelationshipKeyPathsForPrefetching:@[@"dailyDetails"]];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO]];
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"externalID" cacheName:nil];
 }
 
 #pragma mark - Remote Updates

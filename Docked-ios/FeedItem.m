@@ -139,10 +139,20 @@
     }];
 }
 
+- (bool)hasMessages
+{
+    return (_messages.count > 0);
+}
+
 
 - (bool)hasMultipleMessages
 {
     return (_messages.count > 1);
+}
+
+- (Message *)previewMessage
+{
+    return [_messages lastObject];
 }
 
 

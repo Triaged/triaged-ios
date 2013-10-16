@@ -36,7 +36,7 @@
     self.actionLabel.text = textCardItem.action;
     self.bodyLabel.attributedText = [CardCell attributedBodyText:textCardItem.body];
     self.providerIconView.image = textCardItem.providerIcon;
-    self.timestampLabel.text = textCardItem.externalID; //[textCardItem.timestamp timeAgo];
+    self.timestampLabel.text = [textCardItem.timestamp timeAgo];
 
 }
 

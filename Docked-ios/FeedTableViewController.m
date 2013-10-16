@@ -118,20 +118,23 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-//    if (indexPath.row == 0) {
-    FeedItem *item = [self.fetchedFeedItemsDataSource feedItemAtIndexPath:indexPath];
-        
-        id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
+   if (indexPath.row == 0) {
+        FeedItem *item = [self.fetchedFeedItemsDataSource feedItemAtIndexPath:indexPath];
+       
+       id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
         Class cellClass = [ cellSource tableViewCellClass ] ;
-        
-        return [cellClass heightOfContent:item];
-//    } else if (indexPath.row == 1) {
-//        Message *message = [self.feedItemsDataSource itemAtIndexPath:indexPath];
-//        FeedItem *item = [self.feedItemsDataSource feedItemAtIndexPath:indexPath];
-//        return [MessageCell heightOfContent:message hasMultipleMessages:[item hasMultipleMessages]];
-//    } else {
-//        return 40;
-//    }
+       
+       return [cellClass heightOfContent:item];
+    
+   } else if (indexPath.row == 1) {
+       FeedItem *item = [self.fetchedFeedItemsDataSource feedItemAtForMessageIndexPath:indexPath];
+       Message *message = [item previewMessage];
+       
+       return [MessageCell heightOfContent:message hasMultipleMessages:[item hasMultipleMessages]];
+    
+   } else {
+        return 140;
+    }
     
 }
 

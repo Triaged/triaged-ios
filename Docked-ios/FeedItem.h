@@ -14,6 +14,8 @@
 -(Class)tableViewCellClass;
 @end
 
+@class Message;
+
 @interface FeedItem : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @property (nonatomic, copy, readonly) NSString *externalID;
@@ -29,7 +31,11 @@
 + (void)fetchNewRemoteFeedItemsWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *))block;
 
 -(BOOL)addMessageWithBody:(NSString *)body;
+
+
+- (bool)hasMessages;
 - (bool)hasMultipleMessages;
+- (Message *)previewMessage;
 
 -(NSArray *)sortedMessages;
 
