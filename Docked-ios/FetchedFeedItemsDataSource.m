@@ -9,6 +9,7 @@
 #import "FetchedFeedItemsDataSource.h"
 #import "FeedItem.h"
 #import "CardCell.h"
+#import "NSDate+TimeAgo.h"
 
 @implementation FetchedFeedItemsDataSource
 
@@ -102,6 +103,7 @@
     Message *message = [item previewMessage];
     
     cell.authorLabel.text = message.authorName;
+    cell.timestampLabel.text = [message.timestamp timeAgo];
     cell.bodyLabel.text = message.body;
     
     if ([item hasMultipleMessages]) {

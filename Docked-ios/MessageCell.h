@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIImageView *lineView;
 @property (strong, nonatomic) UILabel *authorLabel;
+@property (strong, nonatomic) UILabel *timestampLabel;
 @property (strong, nonatomic) UILabel *bodyLabel;
 @property (strong, nonatomic) UIImageView *moreMessagesIcon;
 @property (strong, nonatomic) UILabel *moreMessagesLabel;

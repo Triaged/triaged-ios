@@ -168,7 +168,7 @@
     [standardDefaults synchronize];
     NSLog(@"%@",[standardDefaults stringForKey:@"min_updated_at"]);
 
-    [[AppDelegate sharedDelegate].persistentStack deleteEntireDatabase];
+    [[AppDelegate sharedDelegate].persistentStack resetPersistentStore];
 }
 
 #pragma mark - NSKeyArchiving

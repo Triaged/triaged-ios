@@ -14,6 +14,7 @@
 
 @implementation GraphDataCell
 {
+    CPTGraphHostingView* hostView;
     CPTGraph *graph;
     NSArray *chartCoordinates;
     UILabel *firstLabel;
@@ -38,8 +39,10 @@
 
 - (void)initChart {
     // We need a hostview, you can create one in IB (and create an outlet) or just do this:
-    CPTGraphHostingView* hostView = [[CPTGraphHostingView alloc] initWithFrame:CGRectInset(CGRectMake(0, 70, 308, 180), 0, 0)];
+    hostView = [[CPTGraphHostingView alloc] initWithFrame:CGRectInset(CGRectMake(0, 70, 308, 180), 0, 0)];
     [self.contentView addSubview: hostView];
+    hostView.userInteractionEnabled = NO;
+
     
     // Create a CPTGraph object and add to hostView
     graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
@@ -47,6 +50,7 @@
     
     // Get the (default) plotspace from the graph so we can set its x/y ranges
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
+    plotSpace.allowsUserInteraction = FALSE;
     
     // Note that these CPTPlotRange are defined by START and LENGTH (not START and END) !!
     [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( 10 )]];
@@ -71,6 +75,8 @@
     [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
     
     graph.axisSet = nil;
+    
+   
 }
 
 - (void) initBadges {
@@ -119,6 +125,9 @@
     
     thirdLabel.frame = CGRectMake(244, 240, 100, 10);
     thirdData.frame = CGRectMake(244, 252, 100, 20);
+    
+    [hostView setNeedsLayout];
+    
 }
 
 

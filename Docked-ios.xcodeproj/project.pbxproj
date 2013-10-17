@@ -35,6 +35,9 @@
 		CB429BAB17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BA917EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib */; };
 		CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BB317F09882002273D6 /* OAuthViewController.m */; };
 		CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BB417F09882002273D6 /* OAuthViewController.xib */; };
+		CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4F87A8180F428300B685E1 /* AccountViewController.xib */; };
+		CB4F87AC180F532500B685E1 /* TeammateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4F87AB180F532500B685E1 /* TeammateCell.m */; };
+		CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4F87B2180F9A1B00B685E1 /* EventCell.m */; };
 		CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */; };
 		CB5A35C1180CD31200ECAB71 /* FetchedFeedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */; };
 		CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F20D317EB857800EBDC34 /* CoreData.framework */; };
@@ -55,7 +58,6 @@
 		CB81579F17F0D568006AA14A /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579E17F0D568006AA14A /* Account.m */; };
 		CB8157A217F0D72F006AA14A /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157A117F0D72F006AA14A /* Provider.m */; };
 		CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157A717F0E0B3006AA14A /* AccountViewController.m */; };
-		CB8157AA17F0E0B3006AA14A /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8157A817F0E0B3006AA14A /* AccountViewController.xib */; };
 		CB84B41F17EBBF1500C8B00D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B41E17EBBF1500C8B00D /* RootViewController.m */; };
 		CB84B44F17EBEB9700C8B00D /* GithubIssueOpened.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B44E17EBEB9700C8B00D /* GithubIssueOpened.m */; };
 		CB84B45217EBEBA100C8B00D /* SentryException.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B45117EBEBA100C8B00D /* SentryException.m */; };
@@ -91,7 +93,6 @@
 		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
 		CBD43EFB17F8B221001AC849 /* TextCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFA17F8B221001AC849 /* TextCardCell.m */; };
 		CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFF17F8B54B001AC849 /* DataCardCell.m */; };
-		CBD43F0317F8B554001AC849 /* GraphDataCellShinobi.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F0217F8B554001AC849 /* GraphDataCellShinobi.m */; };
 		CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F0517F8B63B001AC849 /* CardCell.m */; };
 		CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */; };
 		CBD43F3917F9F4A0001AC849 /* ActionBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3717F9F49F001AC849 /* ActionBarViewController.m */; };
@@ -113,7 +114,6 @@
 		CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC77180629480024860B /* ProviderSettingCell.m */; };
 		CBE8637117FC93F400EF6E73 /* GoogleAnalyticsDaily.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE8637017FC93F400EF6E73 /* GoogleAnalyticsDaily.m */; };
 		CBE8637417FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE8637317FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m */; };
-		CBE8637617FC9F8800EF6E73 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637517FC9F8800EF6E73 /* ShinobiCharts.framework */; };
 		CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */; };
 		CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637917FC9F9C00EF6E73 /* CoreText.framework */; };
 		CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637B17FC9FA600EF6E73 /* Security.framework */; };
@@ -173,6 +173,11 @@
 		CB429BB217F09882002273D6 /* OAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthViewController.h; sourceTree = "<group>"; };
 		CB429BB317F09882002273D6 /* OAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthViewController.m; sourceTree = "<group>"; };
 		CB429BB417F09882002273D6 /* OAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthViewController.xib; sourceTree = "<group>"; };
+		CB4F87A8180F428300B685E1 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		CB4F87AA180F532500B685E1 /* TeammateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeammateCell.h; sourceTree = "<group>"; };
+		CB4F87AB180F532500B685E1 /* TeammateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeammateCell.m; sourceTree = "<group>"; };
+		CB4F87B1180F9A1B00B685E1 /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		CB4F87B2180F9A1B00B685E1 /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		CB4FDD4B17FF75B700EEE7F6 /* PersistentStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStack.h; sourceTree = "<group>"; };
 		CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStack.m; sourceTree = "<group>"; };
 		CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedFeedItemsDataSource.h; sourceTree = "<group>"; };
@@ -206,7 +211,6 @@
 		CB8157A117F0D72F006AA14A /* Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Provider.m; sourceTree = "<group>"; };
 		CB8157A617F0E0B3006AA14A /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		CB8157A717F0E0B3006AA14A /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
-		CB8157A817F0E0B3006AA14A /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
 		CB84B41D17EBBF1500C8B00D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		CB84B41E17EBBF1500C8B00D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		CB84B44D17EBEB9700C8B00D /* GithubIssueOpened.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubIssueOpened.h; sourceTree = "<group>"; };
@@ -269,8 +273,6 @@
 		CBD43EFA17F8B221001AC849 /* TextCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCardCell.m; sourceTree = "<group>"; };
 		CBD43EFE17F8B54B001AC849 /* DataCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCardCell.h; sourceTree = "<group>"; };
 		CBD43EFF17F8B54B001AC849 /* DataCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCardCell.m; sourceTree = "<group>"; };
-		CBD43F0117F8B554001AC849 /* GraphDataCellShinobi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDataCellShinobi.h; sourceTree = "<group>"; };
-		CBD43F0217F8B554001AC849 /* GraphDataCellShinobi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDataCellShinobi.m; sourceTree = "<group>"; };
 		CBD43F0417F8B63B001AC849 /* CardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCell.h; sourceTree = "<group>"; };
 		CBD43F0517F8B63B001AC849 /* CardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCell.m; sourceTree = "<group>"; };
 		CBD43F2E17F918A9001AC849 /* SmokescreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmokescreenViewController.h; sourceTree = "<group>"; };
@@ -336,7 +338,6 @@
 				CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */,
 				CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */,
 				CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */,
-				CBE8637617FC9F8800EF6E73 /* ShinobiCharts.framework in Frameworks */,
 				CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */,
 				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
 				CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */,
@@ -391,7 +392,7 @@
 				CB429B9317EFDAA8002273D6 /* services */,
 				CB8157A617F0E0B3006AA14A /* AccountViewController.h */,
 				CB8157A717F0E0B3006AA14A /* AccountViewController.m */,
-				CB8157A817F0E0B3006AA14A /* AccountViewController.xib */,
+				CB4F87A8180F428300B685E1 /* AccountViewController.xib */,
 				CBDCEC6E1805E9370024860B /* SettingsMenuViewController.h */,
 				CBDCEC6F1805E9370024860B /* SettingsMenuViewController.m */,
 				CBDCEC711805ED5B0024860B /* ProviderSettingsTableViewController.h */,
@@ -771,8 +772,6 @@
 				CBD43EFA17F8B221001AC849 /* TextCardCell.m */,
 				CBD43EFE17F8B54B001AC849 /* DataCardCell.h */,
 				CBD43EFF17F8B54B001AC849 /* DataCardCell.m */,
-				CBD43F0117F8B554001AC849 /* GraphDataCellShinobi.h */,
-				CBD43F0217F8B554001AC849 /* GraphDataCellShinobi.m */,
 				CBD43F0417F8B63B001AC849 /* CardCell.h */,
 				CBD43F0517F8B63B001AC849 /* CardCell.m */,
 				CBD43F4F17FA63E9001AC849 /* MessageCell.h */,
@@ -781,6 +780,10 @@
 				CBDCEC77180629480024860B /* ProviderSettingCell.m */,
 				CB742D18180EFF2F0068A301 /* GraphDataCell.h */,
 				CB742D19180EFF2F0068A301 /* GraphDataCell.m */,
+				CB4F87AA180F532500B685E1 /* TeammateCell.h */,
+				CB4F87AB180F532500B685E1 /* TeammateCell.m */,
+				CB4F87B1180F9A1B00B685E1 /* EventCell.h */,
+				CB4F87B2180F9A1B00B685E1 /* EventCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -935,12 +938,12 @@
 				CB429BAB17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib in Resources */,
 				CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */,
 				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
+				CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */,
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
 				CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */,
 				CB429BA617EFDB17002273D6 /* SentrySettingsViewController.xib in Resources */,
 				CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */,
-				CB8157AA17F0E0B3006AA14A /* AccountViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1003,8 +1006,8 @@
 				CB429BA517EFDB17002273D6 /* SentrySettingsViewController.m in Sources */,
 				CB8157A217F0D72F006AA14A /* Provider.m in Sources */,
 				CB6ED88717F5EBFF00496244 /* GithubPush.m in Sources */,
-				CBD43F0317F8B554001AC849 /* GraphDataCellShinobi.m in Sources */,
 				CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */,
+				CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */,
 				CBD72708180364710071B177 /* NewRelicErrorThreshold.m in Sources */,
 				CB2F9FAD1808B40A00F5F97C /* MPCJSONDataSerializer.m in Sources */,
 				CBDCEC701805E9370024860B /* SettingsMenuViewController.m in Sources */,
@@ -1054,6 +1057,7 @@
 				CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
 				CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */,
+				CB4F87AC180F532500B685E1 /* TeammateCell.m in Sources */,
 				CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */,
 				CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */,
 				CBD7270B1803647B0071B177 /* NewRelicErrorThresholdEnded.m in Sources */,

@@ -10,6 +10,8 @@
 #import "FeedItem.h"
 #import "Message.h"
 #import "MessageCell.h"
+#import "NSDate+TimeAgo.h"
+
 
 @implementation FetchedMessagesDataSource
 
@@ -49,6 +51,7 @@
     
     cell.authorLabel.text = message.authorName;
     cell.bodyLabel.text = message.body;
+    cell.timestampLabel.text = [message.timestamp timeAgo];
     cell.shouldDrawSeparator = (indexPath.row == 0) ? NO : YES;
     
     return cell;

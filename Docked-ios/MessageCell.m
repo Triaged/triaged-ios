@@ -10,7 +10,7 @@
 
 @implementation MessageCell
 
-@synthesize authorLabel, bodyLabel, moreMessagesLabel, moreMessagesIcon, shouldDrawShadow, shouldDrawMoreMessages, shouldDrawSeparator, lineView;
+@synthesize authorLabel, bodyLabel, moreMessagesLabel, moreMessagesIcon, shouldDrawShadow, shouldDrawMoreMessages, shouldDrawSeparator, lineView, timestampLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -25,11 +25,11 @@
         lineView = [[UIImageView alloc] initWithImage:lineSeparator];
         [self.contentView addSubview: lineView];
         
-        // Chat image
-        UIImage *chatIcon = [UIImage imageNamed:@"avatar.png"];
-        UIImageView *chatIconView = [[UIImageView alloc] initWithImage:chatIcon];
-        chatIconView.frame = CGRectMake(14, 14, 30, 30);
-        [self.contentView addSubview: chatIconView];
+        // Avatar image
+        UIImage *avatarIcon = [UIImage imageNamed:@"avatar.png"];
+        UIImageView *avatarView = [[UIImageView alloc] initWithImage:avatarIcon];
+        avatarView.frame = CGRectMake(14, 14, 30, 30);
+        [self.contentView addSubview: avatarView];
         
         
         authorLabel = [[UILabel alloc] initWithFrame: CGRectZero];
@@ -38,6 +38,14 @@
         [authorLabel setLineBreakMode: NSLineBreakByClipping];
         authorLabel.numberOfLines = 1;
         [self.contentView addSubview: authorLabel];
+        
+        timestampLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+        [timestampLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:11.0]];
+        timestampLabel.textColor = [[UIColor alloc] initWithRed:188.0f/255.0f green:188.0f/255.0f blue:188.0f/255.0f alpha:1.0f];
+        [timestampLabel setLineBreakMode: NSLineBreakByClipping];
+        timestampLabel.numberOfLines = 1;
+        timestampLabel.textAlignment = NSTextAlignmentRight;
+        [self.contentView addSubview: timestampLabel];
         
         
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
@@ -55,7 +63,7 @@
         
         moreMessagesLabel = [[UILabel alloc] initWithFrame: CGRectZero];
         [moreMessagesLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:12.0]];
-        moreMessagesLabel.textColor = [[UIColor alloc] initWithRed:100.0f/255.0f green:101.0f/255.0f blue:197.0f/255.0f alpha:1.0f];
+        moreMessagesLabel.textColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:0.5f];
         [moreMessagesLabel setLineBreakMode: NSLineBreakByClipping];
         moreMessagesLabel.numberOfLines = 1;
         
@@ -68,7 +76,8 @@
 -(void) layoutSubviews {
     [super layoutSubviews];
     
-    [authorLabel setFrame:CGRectMake(58.0, 14.0, 260.0, 20.0)];
+    [authorLabel setFrame:CGRectMake(58.0, 14.0, 220.0, 20.0)];
+    //[timestampLabel setFrame:CGRectMake(220.0, 16.0, 75.0, 20.0)];
 
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:bodyLabel.text];
     CGRect newFrame = CGRectMake(58.0, 36.0, 260, [MessageCell heightOfBody:attributedBodyText]);

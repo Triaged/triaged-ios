@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "Provider.h"
 
-@interface BaseSettingsViewController : UIViewController
+@interface BaseSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) Provider *provider;
+@property (nonatomic, strong) NSArray *events;
+
+@property (strong, nonatomic)  UIButton *connectButton;
+@property (strong, nonatomic) UILabel *eventLabel;
+@property (nonatomic, strong) UIImageView *providerHeroImageView;
+@property (nonatomic, strong) UITableView *eventsTableView;
+
+- (void) layoutSubviews;
 
 @end

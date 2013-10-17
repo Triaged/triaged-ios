@@ -87,8 +87,7 @@
 //    [self.view addSubview:messageTabVC.view];
 
     // Messages Table View
-     messagesVC = [[MessagesTableViewController alloc] init];
-    //commentsVC.delegate = self;
+    messagesVC = [[MessagesTableViewController alloc] init];
     messagesVC.feedItem = _feedItem;
     [self addChildViewController:messagesVC];
     CGRect frame = CGRectMake(6, cell.frame.size.height + 64, 308.0, self.view.frame.size.height - (cell.frame.size.height + 44));

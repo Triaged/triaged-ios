@@ -24,6 +24,8 @@
     if (self) {
         // Custom initialization
         self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"github"] error:nil];
+        
+        self.events = [NSArray arrayWithObjects:@"push", @"commits", @"issue opened", @"issue closed", nil];
     }
     return self;
 }
@@ -35,31 +37,33 @@
     NSDictionary *settings = [[AppDelegate sharedDelegate].store.account.providers valueForKey:@"github"];
     NSLog(@"%@", settings);
     
-    UIImage *heroImage = [UIImage imageNamed:@"github.png"];
-    UIImageView *heroImageView = [[UIImageView alloc] initWithImage:heroImage];
-    heroImageView.frame = CGRectMake(120, 80, 30, 30);
-    [self.view addSubview:heroImageView];
+    self.providerHeroImageView.image = [UIImage imageNamed:@"logo_github.png"];
     
-    UIButton *followButton = [[UIButton alloc] init];
-    [followButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    followButton.frame = CGRectMake(100, 120, 90, 60);
-    [followButton setTitle:@"Follow" forState:UIControlStateNormal];
-    [followButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:followButton];
-    
-    
+    // Connect Button
     if (!self.provider.connected) {
-        UIButton *connectButton = [[UIButton alloc] init];
-        connectButton.frame = CGRectMake(100, 160, 90, 60);
-        [connectButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [connectButton setTitle:@"Connect" forState:UIControlStateNormal];
-        [connectButton addTarget:self action:@selector(connectToGithub) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:connectButton];
+        [self.connectButton setBackgroundColor:[UIColor blackColor]];
+        [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.connectButton setTitle:@"Connect to Github" forState:UIControlStateNormal];
+        [self.view addSubview:self.connectButton];
     }
     
     
+//    UIButton *followButton = [[UIButton alloc] init];
+//    [followButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    followButton.frame = CGRectMake(100, 120, 90, 60);
+//    [followButton setTitle:@"Follow" forState:UIControlStateNormal];
+//    [followButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:followButton];
+//    
+//    
+//
     //BOOL following = [AppDelegate sharedDelegate].store.account.userID;
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
 }
 
 - (void)didReceiveMemoryWarning

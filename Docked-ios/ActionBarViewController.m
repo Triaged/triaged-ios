@@ -39,6 +39,7 @@
     // Message button
     UIImage *messageIcon = [UIImage imageNamed:@"icn_chat.png"];
     UIButton *messageLinkButton = [[UIButton alloc] initWithFrame:CGRectMake(14, 10, 30, 30)];
+    [messageLinkButton setTintColor:[UIColor whiteColor]];
     [messageLinkButton setImage:messageIcon forState:UIControlStateNormal];
     [messageLinkButton addTarget:self action:@selector(didTapMessagesButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:messageLinkButton];
@@ -46,6 +47,7 @@
     // Share
     UIImage *shareIcon = [UIImage imageNamed:@"icn_share.png"];
     UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(96, 10, 30, 30)];
+    shareButton.tintColor = [UIColor whiteColor];
     [shareButton setImage:shareIcon forState:UIControlStateNormal];
     [shareButton addTarget:self action:@selector(didTapExternalLinkButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:shareButton];
@@ -53,6 +55,7 @@
     // Task list
     UIImage *taskIcon = [UIImage imageNamed:@"icn_todo.png"];
     UIButton *taskButton = [[UIButton alloc] initWithFrame:CGRectMake(182, 10, 30, 30)];
+    taskButton.tintColor = [UIColor whiteColor];
     [taskButton setImage:taskIcon forState:UIControlStateNormal];
     [taskButton addTarget:self action:@selector(didTapExternalLinkButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:taskButton];
@@ -60,6 +63,7 @@
     // External Link
     UIImage *safariIcon = [UIImage imageNamed:@"icn_safari.png"];
     UIButton *externalLinkButton = [[UIButton alloc] initWithFrame:CGRectMake(264, 10, 30, 30)];
+    externalLinkButton.tintColor = [UIColor whiteColor];
     [externalLinkButton setImage:safariIcon forState:UIControlStateNormal];
     [externalLinkButton addTarget:self action:@selector(didTapExternalLinkButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:externalLinkButton];
