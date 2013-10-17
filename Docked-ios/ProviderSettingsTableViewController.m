@@ -92,7 +92,7 @@
     SWRevealViewController *revealController = self.revealViewController;
     
     BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
-    [[AppDelegate sharedDelegate].navVC pushViewController:settingsVC animated:YES];
+    [[AppDelegate sharedDelegate].navVC pushViewController:settingsVC animated:NO];
     [revealController setFrontViewController:[AppDelegate sharedDelegate].navVC animated:YES];
     
 }

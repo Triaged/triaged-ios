@@ -53,6 +53,7 @@
     teamTableView.delegate = self;
     teamTableView.dataSource = self;
     teamTableView.scrollEnabled = NO;
+    teamTableView.allowsSelection = NO;
     teamTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [teamTableView setSeparatorInset:UIEdgeInsetsZero];
 }

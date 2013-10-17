@@ -34,31 +34,25 @@
 {
     [super viewDidLoad];
     
-    NSDictionary *settings = [[AppDelegate sharedDelegate].store.account.providers valueForKey:@"github"];
-    NSLog(@"%@", settings);
-    
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_github.png"];
+}
+
+- (void) setupUnconnectedState
+{
+    [super setupUnconnectedState];
     
-    // Connect Button
-    if (!self.provider.connected) {
-        [self.connectButton setBackgroundColor:[UIColor blackColor]];
-        [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.connectButton setTitle:@"Connect to Github" forState:UIControlStateNormal];
-        [self.view addSubview:self.connectButton];
-    }
+    [self.connectButton setBackgroundColor:[UIColor blackColor]];
+    [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.connectButton setTitle:@"Connect to Github" forState:UIControlStateNormal];
+    [self.view addSubview:self.connectButton];
+}
+
+- (void) setupConnectedState
+{
+    [super setupConnectedState];
     
-    
-//    UIButton *followButton = [[UIButton alloc] init];
-//    [followButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    followButton.frame = CGRectMake(100, 120, 90, 60);
-//    [followButton setTitle:@"Follow" forState:UIControlStateNormal];
-//    [followButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:followButton];
-//    
-//    
-//
-    //BOOL following = [AppDelegate sharedDelegate].store.account.userID;
-    // Do any additional setup after loading the view from its nib.
+    [self.view addSubview:self.followButton];
+
 }
 
 - (void) layoutSubviews
@@ -72,18 +66,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)connectToGithub {
+- (void)connect
+{
     OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://triaged-staging.herokuapp.com/services/authenticate_for/github"];
     [self.navigationController presentViewController:oAuthVC animated:YES completion:nil];
-}
-
--(void) toggleFollow
-{
-    if (self.provider.follows) {
-        [self.provider follow];
-    } else {
-        [self.provider unfollow];
-    }
 }
 
 @end

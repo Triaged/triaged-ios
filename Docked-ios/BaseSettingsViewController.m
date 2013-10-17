@@ -15,14 +15,14 @@
 
 @implementation BaseSettingsViewController
 
-@synthesize providerHeroImageView, eventsTableView, events, eventLabel, connectButton;
+@synthesize providerHeroImageView, eventsTableView, events, eventLabel, connectButton, followButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.view.backgroundColor = [UIColor whiteColor];
+        
     }
     return self;
 }
@@ -30,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.providerHeroImageView = [[UIImageView alloc] init];
     self.providerHeroImageView.frame = CGRectMake(100, 70, 104, 134);
@@ -40,11 +42,24 @@
     connectButton.frame = CGRectMake(24, 240, 272, 38);
     connectButton.layer.cornerRadius = 6; // this value vary as per your desire
     connectButton.clipsToBounds = YES;
-    //[connectButton addTarget:self action:@selector(connect) forControlEvents:UIControlEventTouchUpInside];
+    [connectButton addTarget:self action:@selector(connect) forControlEvents:UIControlEventTouchUpInside];
     
+    // Follow Button
+    followButton = [[UIButton alloc] init];
+    followButton.frame = CGRectMake(64, 240, 192, 38);
+    followButton.layer.cornerRadius = 6; // this value vary as per your desire
+    followButton.clipsToBounds = YES;
+    [followButton setBackgroundColor:
+                        [UIColor colorWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f]];
+    [followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [followButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
+    [followButton setTitle:@"Follow" forState:UIControlStateNormal];
+    [followButton setTitle:@"Following" forState:UIControlStateSelected];
+    followButton.selected = [self isFollowing];
+    
+    // Connected State
+    ([self isConnected] ?  [self setupConnectedState] : [self setupUnconnectedState]);
 
-    
-    
     // events
     eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 320, 100, 20)];
     eventLabel.text = @"Events";
@@ -64,6 +79,7 @@
     eventsTableView.delegate = self;
     eventsTableView.dataSource = self;
     eventsTableView.scrollEnabled = NO;
+    eventsTableView.allowsSelection = NO;
     eventsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [eventsTableView setSeparatorInset:UIEdgeInsetsZero];
     [self.view addSubview:eventsTableView];
@@ -73,15 +89,43 @@
     UIImageView *endLineView = [[UIImageView alloc] initWithImage:endLineSeparator];
     endLineView.frame = CGRectMake(0, 524, 320, 1);
     [self.view addSubview: endLineView];
+}
 
+-(void)setupConnectedState
+{
     
+}
 
+-(void)setupUnconnectedState
+{
+    
 }
 
 - (void) layoutSubviews
 {
     eventLabel.frame = CGRectMake(12, 380, 100, 20);
 }
+
+- (BOOL) isConnected
+{
+    return self.provider.connected;
+}
+
+- (BOOL) isFollowing;
+{
+    return self.provider.follows;
+}
+
+-(void) toggleFollow
+{
+    if ([self isFollowing]) {
+        [self.provider unfollow];
+    } else {
+        [self.provider follow];
+    }
+}
+
+#pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {

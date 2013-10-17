@@ -11,6 +11,4 @@
 
 @interface GithubSettingsViewController : BaseSettingsViewController
 
-- (IBAction)connectToGithub;
-
 @end

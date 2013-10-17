@@ -14,11 +14,22 @@
 @property (nonatomic, strong) Provider *provider;
 @property (nonatomic, strong) NSArray *events;
 
-@property (strong, nonatomic)  UIButton *connectButton;
 @property (strong, nonatomic) UILabel *eventLabel;
 @property (nonatomic, strong) UIImageView *providerHeroImageView;
 @property (nonatomic, strong) UITableView *eventsTableView;
 
-- (void) layoutSubviews;
+@property (strong, nonatomic) UIButton *connectButton;
+@property (strong, nonatomic) UIButton *followButton;
+
+
+- (void)layoutSubviews;
+
+- (BOOL)isConnected;
+- (BOOL)isFollowing;
+- (void)connect;
+- (void)toggleFollow;
+
+-(void)setupConnectedState;
+-(void)setupUnconnectedState;
 
 @end

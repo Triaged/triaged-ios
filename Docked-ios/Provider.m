@@ -84,6 +84,10 @@
         @"icon" : @"github.png",
         @"settings_class" : GithubSettingsViewController.class
     },
+    @{  @"name" : @"Kiln",
+        @"icon" : @"kiln.png",
+        @"settings_class" : GithubSettingsViewController.class
+    },
     nil];
     
 

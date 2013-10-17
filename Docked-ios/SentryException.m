@@ -51,7 +51,7 @@
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"airbrake-s.png"];
+    return [UIImage imageNamed:@"sentry-s.png"];
 }
 
 @end

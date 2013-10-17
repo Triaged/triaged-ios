@@ -109,7 +109,7 @@
 }
 
 -(void)setContentSize {
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height + 50);
     scrollView.frame = self.view.frame;
 }
 

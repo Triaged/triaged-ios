@@ -69,7 +69,7 @@
     SWRevealViewController *revealController = self.revealViewController;
     
     AccountViewController *accountVC = [[AccountViewController alloc] init];
-    [[AppDelegate sharedDelegate].navVC pushViewController:accountVC animated:YES];
+    [[AppDelegate sharedDelegate].navVC pushViewController:accountVC animated:NO];
     [revealController setFrontViewController:[AppDelegate sharedDelegate].navVC animated:YES];
 }
 

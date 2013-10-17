@@ -58,7 +58,7 @@
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"heroku-s.png"];
+    return [UIImage imageNamed:@"kiln-s.png"];
 }
 
 @end
