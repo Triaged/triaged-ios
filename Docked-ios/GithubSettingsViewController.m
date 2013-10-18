@@ -7,7 +7,6 @@
 //
 
 #import "GithubSettingsViewController.h"
-#import "OAuthViewController.h"
 #import "AppDelegate.h"
 #import "Store.h"
 
@@ -68,8 +67,26 @@
 
 - (void)connect
 {
-    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://triaged-staging.herokuapp.com/services/authenticate_for/github"];
+    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://www.docked.io/services/authenticate_for/github"];
+    oAuthVC.delegate = self;
     [self.navigationController presentViewController:oAuthVC animated:YES completion:nil];
+}
+
+-(void) oAuthRequestDidSucceed
+{
+    [self.provider connect];
+    [self setupConnectedState];
+    
+    // Set this automatically on succesful oAuth
+    [self toggleFollow];
+    
+    //update our store account from the server
+    [[AppDelegate sharedDelegate].store fetchRemoteUserAccount];
+}
+
+-(void) oAuthRequestDidFail
+{
+    
 }
 
 @end

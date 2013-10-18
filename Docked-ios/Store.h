@@ -26,6 +26,8 @@
 
 - (void)fetchNewRemoteFeedItemsWithBlock:(void (^)(NSArray *))block;
 
+- (void)fetchRemoteUserAccount;
+
 - (void)saveFeedToArchive;
 - (void)saveAccountToArchive;
 

@@ -56,6 +56,9 @@
     teamTableView.allowsSelection = NO;
     teamTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [teamTableView setSeparatorInset:UIEdgeInsetsZero];
+    
+    // Signout
+    [signOutButton addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void) layoutSubviews {
@@ -124,6 +127,7 @@
 -(IBAction)logout:(id)sender
 {
     [[CredentialStore sharedClient] clearSavedCredentials];
+    [[AppDelegate sharedDelegate].navVC popToRootViewControllerAnimated:NO];
 }
 
 @end

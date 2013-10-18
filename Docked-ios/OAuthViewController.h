@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Provider.h"
+
+@protocol OAuthRequestDelegate <NSObject>
+-(void) oAuthRequestDidSucceed;
+-(void) oAuthRequestDidFail;
+@end
 
 @interface OAuthViewController : UIViewController <UIWebViewDelegate>
+
+@property (weak, nonatomic) id<OAuthRequestDelegate> delegate;
 
 @property (strong, atomic) NSString *url;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;

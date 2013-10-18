@@ -16,6 +16,8 @@
 		CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0B906B17F4F47E00F706BE /* DetailViewController.m */; };
 		CB0B907217F4FA7A00F706BE /* MessageTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0B907017F4FA7A00F706BE /* MessageTabViewController.m */; };
 		CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */; };
+		CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0E028A1810A87600484E69 /* WelcomeViewController.m */; };
+		CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0E028B1810A87600484E69 /* WelcomeViewController.xib */; };
 		CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F941808B2B800F5F97C /* Accelerate.framework */; };
 		CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F961808B2C000F5F97C /* AdSupport.framework */; };
 		CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F981808B2CB00F5F97C /* CoreTelephony.framework */; };
@@ -91,6 +93,7 @@
 		CBA676B418085B630035368A /* AirbrakeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B318085B630035368A /* AirbrakeSettingsViewController.m */; };
 		CBA676B718085D520035368A /* BaseSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B618085D520035368A /* BaseSettingsViewController.m */; };
 		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
+		CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC47C1810956C00876AC6 /* CardPageViewController.m */; };
 		CBD43EFB17F8B221001AC849 /* TextCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFA17F8B221001AC849 /* TextCardCell.m */; };
 		CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFF17F8B54B001AC849 /* DataCardCell.m */; };
 		CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F0517F8B63B001AC849 /* CardCell.m */; };
@@ -143,6 +146,9 @@
 		CB0B906F17F4FA7A00F706BE /* MessageTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTabViewController.h; sourceTree = "<group>"; };
 		CB0B907017F4FA7A00F706BE /* MessageTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTabViewController.m; sourceTree = "<group>"; };
 		CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTabViewController.xib; sourceTree = "<group>"; };
+		CB0E02891810A87600484E69 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		CB0E028A1810A87600484E69 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		CB0E028B1810A87600484E69 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		CB2F9F941808B2B800F5F97C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		CB2F9F961808B2C000F5F97C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		CB2F9F981808B2CB00F5F97C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -269,6 +275,8 @@
 		CBA676B618085D520035368A /* BaseSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSettingsViewController.m; sourceTree = "<group>"; };
 		CBB89E0F17FE4F0600402973 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		CBB89E1017FE4F0600402973 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
+		CBBCC47B1810956C00876AC6 /* CardPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardPageViewController.h; sourceTree = "<group>"; };
+		CBBCC47C1810956C00876AC6 /* CardPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardPageViewController.m; sourceTree = "<group>"; };
 		CBD43EF917F8B221001AC849 /* TextCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCardCell.h; sourceTree = "<group>"; };
 		CBD43EFA17F8B221001AC849 /* TextCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCardCell.m; sourceTree = "<group>"; };
 		CBD43EFE17F8B54B001AC849 /* DataCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCardCell.h; sourceTree = "<group>"; };
@@ -530,6 +538,11 @@
 				CB429BB217F09882002273D6 /* OAuthViewController.h */,
 				CB429BB317F09882002273D6 /* OAuthViewController.m */,
 				CB429BB417F09882002273D6 /* OAuthViewController.xib */,
+				CBBCC47B1810956C00876AC6 /* CardPageViewController.h */,
+				CBBCC47C1810956C00876AC6 /* CardPageViewController.m */,
+				CB0E02891810A87600484E69 /* WelcomeViewController.h */,
+				CB0E028A1810A87600484E69 /* WelcomeViewController.m */,
+				CB0E028B1810A87600484E69 /* WelcomeViewController.xib */,
 			);
 			name = auth;
 			sourceTree = "<group>";
@@ -939,6 +952,7 @@
 				CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */,
 				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
 				CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */,
+				CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */,
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
 				CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */,
@@ -1002,6 +1016,7 @@
 				CB7C2E4B17F26FAC00BD858D /* StripeChargeSucceeded.m in Sources */,
 				CB81579C17F0D55E006AA14A /* User.m in Sources */,
 				CB6ED88D17F5EC9B00496244 /* Github.m in Sources */,
+				CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */,
 				CB0B907217F4FA7A00F706BE /* MessageTabViewController.m in Sources */,
 				CB429BA517EFDB17002273D6 /* SentrySettingsViewController.m in Sources */,
 				CB8157A217F0D72F006AA14A /* Provider.m in Sources */,
@@ -1061,6 +1076,7 @@
 				CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */,
 				CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */,
 				CBD7270B1803647B0071B177 /* NewRelicErrorThresholdEnded.m in Sources */,
+				CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */,
 				CB84B44F17EBEB9700C8B00D /* GithubIssueOpened.m in Sources */,
 				CB2F9FB01808B40A00F5F97C /* NSData+MPBase64.m in Sources */,
 				CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */,

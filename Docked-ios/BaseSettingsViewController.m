@@ -15,7 +15,7 @@
 
 @implementation BaseSettingsViewController
 
-@synthesize providerHeroImageView, eventsTableView, events, eventLabel, connectButton, followButton;
+@synthesize providerHeroImageView, eventsTableView, events, eventLabel, connectButton, followButton, connectedLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -93,6 +93,19 @@
 
 -(void)setupConnectedState
 {
+    UIImage *connectedStatusImage = [UIImage imageNamed:@"status_connected.png"];
+    UIImageView *connectedStatusView = [[UIImageView alloc] initWithImage:connectedStatusImage];
+    connectedStatusView.frame = CGRectMake(110, 216, 8, 8);
+    [self.view addSubview:connectedStatusView];
+    
+    connectedLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 210, 80, 20)];
+    [connectedLabel setText:@"Connected"];
+    [connectedLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:13.0]];
+    connectedLabel.textColor = [[UIColor alloc] initWithRed:208.0f/255.0f green:208.0f/255.0f blue:208.0f/255.0f alpha:1.0f];
+    [self.view addSubview:connectedLabel];
+    
+    // remove views
+    [connectButton removeFromSuperview];
     
 }
 

@@ -52,6 +52,11 @@
     }];
 }
 
+- (void) connect
+{
+    _connected = true;
+}
+
 + (NSArray *)currentProviders
 {
 

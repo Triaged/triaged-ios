@@ -21,4 +21,6 @@
 - (void) follow;
 - (void) unfollow;
 
+- (void) connect;
+
 @end

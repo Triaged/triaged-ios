@@ -9,15 +9,12 @@
 #import "RootViewController.h"
 #import "FeedTableViewController.h"
 #import "CredentialStore.h"
-#import "LoginViewController.h"
-#import "SignupViewController.h"
+#import "WelcomeViewController.h"
 #import "GithubSettingsViewController.h"
 #import "StripeSettingsViewController.h"
 
 
 @interface RootViewController () {
-    LoginViewController *loginVC;
-    SignupViewController *signupVC;
     SWRevealViewController *revealController;
     FeedTableViewController *feedTableView;
 }
@@ -60,11 +57,8 @@
 {
     // Check for authentication
     if (![[CredentialStore sharedClient] isLoggedIn]) {
-        loginVC = [[LoginViewController alloc] init];
-        signupVC = [[SignupViewController alloc] init];
-        loginVC.rootVC = self;
-        signupVC.rootVC = self;
-        [self presentViewController:loginVC animated:YES completion:nil];
+        WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];
+        [self presentViewController:welcomeVC animated:NO completion:nil];
     }
 }
 
@@ -99,24 +93,7 @@
 }
 
 
-- (void) presentLoginView {
-    
-    [UIView transitionFromView:signupVC.view
-                        toView:loginVC.view
-                      duration:0.65f
-                       options:UIViewAnimationOptionTransitionFlipFromRight
-                    completion:nil];
 
-}
-
-- (void) presentSignupView {
-    [UIView transitionFromView:loginVC.view
-                        toView:signupVC.view
-                      duration:0.65f
-                       options:UIViewAnimationOptionTransitionFlipFromRight
-                    completion:nil];
-    
-}
 
 #pragma mark - SWRevealController Interaction
 

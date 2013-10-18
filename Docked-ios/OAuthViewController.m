@@ -55,7 +55,10 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    if ([[request.URL.absoluteString lowercaseString] isEqualToString:@"http://triaged-staging.herokuapp.com/services/oauth_complete"]) {
+    if ([[request.URL.absoluteString lowercaseString] isEqualToString:@"http://www.docked.io/services/oauth_complete"]) {
+        [self.delegate oAuthRequestDidSucceed];
+        
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     return YES;

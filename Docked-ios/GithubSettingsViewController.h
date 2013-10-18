@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseSettingsViewController.h"
+#import "OAuthViewController.h"
 
-@interface GithubSettingsViewController : BaseSettingsViewController
+@interface GithubSettingsViewController : BaseSettingsViewController <OAuthRequestDelegate>
 
 @end

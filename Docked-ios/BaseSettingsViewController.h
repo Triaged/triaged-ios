@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) UILabel *eventLabel;
 @property (nonatomic, strong) UIImageView *providerHeroImageView;
+@property (strong, nonatomic) UILabel *connectedLabel;
 @property (nonatomic, strong) UITableView *eventsTableView;
 
 @property (strong, nonatomic) UIButton *connectButton;
