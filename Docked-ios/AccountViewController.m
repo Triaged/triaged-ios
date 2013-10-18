@@ -38,8 +38,8 @@
     [super viewDidLoad];
     
     nameLabel.text = currentAccount.name;
-    nameLabel.text = currentAccount.email;
-    nameLabel.text = currentAccount.companyName;
+    emailLabel.text = currentAccount.email;
+    companyLabel.text = currentAccount.companyName;
     //avatarImage.image = currentAccount.avatar;
     
     // Connections
@@ -128,6 +128,27 @@
 {
     [[CredentialStore sharedClient] clearSavedCredentials];
     [[AppDelegate sharedDelegate].navVC popToRootViewControllerAnimated:NO];
+}
+
+-(IBAction)contactUs:(id)sender
+{
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailComposer =
+        [[MFMailComposeViewController alloc] init];
+        [mailComposer setToRecipients:[NSArray arrayWithObject:@"team@triaged.co"]];
+        [mailComposer setSubject:@"Hello"];
+        NSString *message = @"Hey Triage team,";
+        [mailComposer setMessageBody:message
+                              isHTML:YES];
+         mailComposer.mailComposeDelegate = self;
+        [self presentViewController:mailComposer animated:YES completion:nil];
+    }
+}
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller
+         didFinishWithResult:(MFMailComposeResult)result
+                       error:(NSError *)error{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

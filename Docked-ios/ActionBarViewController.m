@@ -8,6 +8,7 @@
 
 #import "ActionBarViewController.h"
 #import "DetailViewController.h"
+#import "SVProgressHUD.h"
 
 @interface ActionBarViewController ()
 
@@ -49,7 +50,7 @@
     UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(96, 10, 30, 30)];
     shareButton.tintColor = [UIColor whiteColor];
     [shareButton setImage:shareIcon forState:UIControlStateNormal];
-    [shareButton addTarget:self action:@selector(didTapExternalLinkButton:) forControlEvents:UIControlEventTouchUpInside];
+    [shareButton addTarget:self action:@selector(didTapShareButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:shareButton];
 
     // Task list
@@ -57,7 +58,7 @@
     UIButton *taskButton = [[UIButton alloc] initWithFrame:CGRectMake(182, 10, 30, 30)];
     taskButton.tintColor = [UIColor whiteColor];
     [taskButton setImage:taskIcon forState:UIControlStateNormal];
-    [taskButton addTarget:self action:@selector(didTapExternalLinkButton:) forControlEvents:UIControlEventTouchUpInside];
+    [taskButton addTarget:self action:@selector(didTapTodoButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:taskButton];
 
     // External Link
@@ -94,6 +95,17 @@
 {
     DetailViewController *detailVC = (DetailViewController *)self.parentViewController;
     [detailVC presentNewMessageVC];
+}
+
+-(IBAction)didTapShareButton:(id)sender
+{
+    [SVProgressHUD showErrorWithStatus:@"Oops, we haven't quite implemented sharing yet"];
+}
+
+
+-(IBAction)didTapTodoButton:(id)sender
+{
+    [SVProgressHUD showErrorWithStatus:@"Oops, we haven't quite implemented assigning to task lists yet"];
 }
 
 

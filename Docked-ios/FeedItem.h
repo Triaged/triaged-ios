@@ -30,14 +30,11 @@
 
 + (void)fetchNewRemoteFeedItemsWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *))block;
 
--(BOOL)addMessageWithBody:(NSString *)body;
-
-
 - (bool)hasMessages;
 - (bool)hasMultipleMessages;
 - (Message *)previewMessage;
 
--(NSArray *)sortedMessages;
+- (NSArray *)sortedMessages;
 
 - (NSFetchedResultsController*)messagesFetchedResultsController;
 

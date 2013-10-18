@@ -24,7 +24,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.view.backgroundColor = [UIColor colorWithRed:201.0f/255.0f green:203.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
+        //self.view.backgroundColor = [UIColor colorWithRed:201.0f/255.0f green:203.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
+        UIImage *backgroundImage = [UIImage imageNamed:@"bg_list.png"];
+        UIImageView *background = [[UIImageView alloc] initWithImage:backgroundImage];
+        background.frame = self.view.frame;
+        
+        [self.view addSubview:background];
+        [self.view sendSubviewToBack:background];
     }
     return self;
 }

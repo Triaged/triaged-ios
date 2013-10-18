@@ -12,7 +12,4 @@
 
 @interface RootViewController : UIViewController <SWRevealViewControllerDelegate>
 
--(void)presentLoginView;
--(void)presentSignupView;
-
 @end

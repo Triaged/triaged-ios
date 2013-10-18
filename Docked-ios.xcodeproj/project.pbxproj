@@ -18,6 +18,8 @@
 		CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */; };
 		CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0E028A1810A87600484E69 /* WelcomeViewController.m */; };
 		CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0E028B1810A87600484E69 /* WelcomeViewController.xib */; };
+		CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */; };
+		CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB24D08B1811D1E100DF0D19 /* MessageUI.framework */; };
 		CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F941808B2B800F5F97C /* Accelerate.framework */; };
 		CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F961808B2C000F5F97C /* AdSupport.framework */; };
 		CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F981808B2CB00F5F97C /* CoreTelephony.framework */; };
@@ -30,11 +32,8 @@
 		CB2F9FB21808B40A00F5F97C /* Mixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2F9FAC1808B40A00F5F97C /* Mixpanel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CB429B9B17EFDAFF002273D6 /* GithubSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429B9917EFDAFF002273D6 /* GithubSettingsViewController.m */; };
 		CB429BA017EFDB0A002273D6 /* StripeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429B9E17EFDB0A002273D6 /* StripeSettingsViewController.m */; };
-		CB429BA117EFDB0A002273D6 /* StripeSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429B9F17EFDB0A002273D6 /* StripeSettingsViewController.xib */; };
 		CB429BA517EFDB17002273D6 /* SentrySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BA317EFDB17002273D6 /* SentrySettingsViewController.m */; };
-		CB429BA617EFDB17002273D6 /* SentrySettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BA417EFDB17002273D6 /* SentrySettingsViewController.xib */; };
 		CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BA817EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m */; };
-		CB429BAB17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BA917EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib */; };
 		CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BB317F09882002273D6 /* OAuthViewController.m */; };
 		CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB429BB417F09882002273D6 /* OAuthViewController.xib */; };
 		CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4F87A8180F428300B685E1 /* AccountViewController.xib */; };
@@ -149,6 +148,9 @@
 		CB0E02891810A87600484E69 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		CB0E028A1810A87600484E69 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		CB0E028B1810A87600484E69 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		CB24D0861811BAC000DF0D19 /* KilnSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KilnSettingsViewController.h; sourceTree = "<group>"; };
+		CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KilnSettingsViewController.m; sourceTree = "<group>"; };
+		CB24D08B1811D1E100DF0D19 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CB2F9F941808B2B800F5F97C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		CB2F9F961808B2C000F5F97C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		CB2F9F981808B2CB00F5F97C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -169,13 +171,10 @@
 		CB429B9917EFDAFF002273D6 /* GithubSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubSettingsViewController.m; sourceTree = "<group>"; };
 		CB429B9D17EFDB0A002273D6 /* StripeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeSettingsViewController.h; sourceTree = "<group>"; };
 		CB429B9E17EFDB0A002273D6 /* StripeSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeSettingsViewController.m; sourceTree = "<group>"; };
-		CB429B9F17EFDB0A002273D6 /* StripeSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StripeSettingsViewController.xib; sourceTree = "<group>"; };
 		CB429BA217EFDB17002273D6 /* SentrySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentrySettingsViewController.h; sourceTree = "<group>"; };
 		CB429BA317EFDB17002273D6 /* SentrySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentrySettingsViewController.m; sourceTree = "<group>"; };
-		CB429BA417EFDB17002273D6 /* SentrySettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SentrySettingsViewController.xib; sourceTree = "<group>"; };
 		CB429BA717EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsSettingsViewController.h; sourceTree = "<group>"; };
 		CB429BA817EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsSettingsViewController.m; sourceTree = "<group>"; };
-		CB429BA917EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoogleAnalyticsSettingsViewController.xib; sourceTree = "<group>"; };
 		CB429BB217F09882002273D6 /* OAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthViewController.h; sourceTree = "<group>"; };
 		CB429BB317F09882002273D6 /* OAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthViewController.m; sourceTree = "<group>"; };
 		CB429BB417F09882002273D6 /* OAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthViewController.xib; sourceTree = "<group>"; };
@@ -336,6 +335,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */,
 				CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */,
 				CB2F9F9B1808B2EA00F5F97C /* SystemConfiguration.framework in Frameworks */,
 				CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */,
@@ -411,6 +411,15 @@
 			name = settings;
 			sourceTree = "<group>";
 		};
+		CB24D0851811BAB300DF0D19 /* kiln */ = {
+			isa = PBXGroup;
+			children = (
+				CB24D0861811BAC000DF0D19 /* KilnSettingsViewController.h */,
+				CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */,
+			);
+			name = kiln;
+			sourceTree = "<group>";
+		};
 		CB2F9F9C1808B40A00F5F97C /* Mixpanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +474,7 @@
 		CB429B9317EFDAA8002273D6 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				CB24D0851811BAB300DF0D19 /* kiln */,
 				CBA676A818085A480035368A /* heroku */,
 				CBA676A718085A400035368A /* airbrake */,
 				CBA676A618085A360035368A /* new_relic */,
@@ -490,7 +500,6 @@
 			children = (
 				CB429B9D17EFDB0A002273D6 /* StripeSettingsViewController.h */,
 				CB429B9E17EFDB0A002273D6 /* StripeSettingsViewController.m */,
-				CB429B9F17EFDB0A002273D6 /* StripeSettingsViewController.xib */,
 			);
 			name = stripe;
 			sourceTree = "<group>";
@@ -500,7 +509,6 @@
 			children = (
 				CB429BA217EFDB17002273D6 /* SentrySettingsViewController.h */,
 				CB429BA317EFDB17002273D6 /* SentrySettingsViewController.m */,
-				CB429BA417EFDB17002273D6 /* SentrySettingsViewController.xib */,
 			);
 			name = sentry;
 			sourceTree = "<group>";
@@ -510,7 +518,6 @@
 			children = (
 				CB429BA717EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.h */,
 				CB429BA817EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m */,
-				CB429BA917EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib */,
 			);
 			name = ga;
 			sourceTree = "<group>";
@@ -635,6 +642,7 @@
 		CB8F208F17EB5D6300EBDC34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB24D08B1811D1E100DF0D19 /* MessageUI.framework */,
 				CB2F9F9A1808B2EA00F5F97C /* SystemConfiguration.framework */,
 				CB2F9F981808B2CB00F5F97C /* CoreTelephony.framework */,
 				CB2F9F961808B2C000F5F97C /* AdSupport.framework */,
@@ -947,8 +955,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB429BA117EFDB0A002273D6 /* StripeSettingsViewController.xib in Resources */,
-				CB429BAB17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.xib in Resources */,
 				CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */,
 				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
 				CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */,
@@ -956,7 +962,6 @@
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
 				CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */,
-				CB429BA617EFDB17002273D6 /* SentrySettingsViewController.xib in Resources */,
 				CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1054,6 +1059,7 @@
 				CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */,
 				CB8D0EC3180DAA9C004FABBC /* FetchedMessagesDataSource.m in Sources */,
 				CB85A84C180B0EF600698988 /* KilnCommit.m in Sources */,
+				CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */,
 				CBD43F3917F9F4A0001AC849 /* ActionBarViewController.m in Sources */,
 				CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */,
 				CBD72702180364510071B177 /* NewRelicDowntime.m in Sources */,

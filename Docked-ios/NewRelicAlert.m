@@ -25,7 +25,7 @@
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"new_relic-s.png"];
+    return [UIImage imageNamed:@"new_relic.png"];
 }
 
 -(Class)tableViewCellClass {

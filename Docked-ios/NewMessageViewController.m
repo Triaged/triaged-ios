@@ -52,6 +52,7 @@
     _messageBodyTextView.delegate = self;
     _messageBodyTextView.text = @" Your Message";
     _messageBodyTextView.textColor = [UIColor lightGrayColor]; //optional
+    _messageBodyTextView.font = [UIFont fontWithName:@"Avenir-Light" size:18.0];
     [self.view addSubview:_messageBodyTextView];
 }
 
@@ -84,6 +85,7 @@
 {
     textView.text = [textView.text stringByReplacingOccurrencesOfString:@" Your Message" withString:@""];
     textView.textColor = [UIColor blackColor];
+
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView

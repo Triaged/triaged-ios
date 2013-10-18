@@ -58,7 +58,7 @@
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"kiln-s.png"];
+    return [UIImage imageNamed:@"kiln.png"];
 }
 
 @end

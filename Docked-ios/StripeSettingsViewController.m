@@ -9,6 +9,8 @@
 #import "StripeSettingsViewController.h"
 #import "OAuthViewController.h"
 
+
+
 @interface StripeSettingsViewController ()
 
 @end
@@ -20,6 +22,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"stripe"] error:nil];
+        
+        self.events = [NSArray arrayWithObjects:@[@"Charge succeeded", @NO], @[@"Charge refunded", @NO], @[@"Dispute created", @YES], @[@"Invoice failed", @YES], @[@"Subscription deleted", @YES], nil];
     }
     return self;
 }
@@ -27,18 +32,55 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.providerHeroImageView.image = [UIImage imageNamed:@"logo_stripe.png"];
 }
 
-- (void)didReceiveMemoryWarning
+- (void) setupUnconnectedState
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super setupUnconnectedState];
+    
+    [self.connectButton setBackgroundColor:[UIColor colorWithRed:87.0f/255.0f green:146.0f/255.0f blue:239.0f/255.0f alpha:1.0f]];
+    [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.connectButton setTitle:@"Connect to Stripe" forState:UIControlStateNormal];
+    [self.scrollView addSubview:self.connectButton];
 }
 
-- (IBAction)connectToStripe {
-    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://cwhite.local:3000/services/authenticate_for/stripe_connect"];
+- (void) setupConnectedState
+{
+    [super setupConnectedState];
+    
+    [self.scrollView addSubview:self.followButton];
+    
+}
+
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
+}
+
+- (void)connect
+{
+    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://www.docked.io/services/authenticate_for/stripe_connect"];
+    oAuthVC.delegate = self;
     [self.navigationController presentViewController:oAuthVC animated:YES completion:nil];
+}
+
+-(void) oAuthRequestDidSucceed
+{
+    [self.provider connect];
+    [self setupConnectedState];
+    
+    // Set this automatically on succesful oAuth
+    [self toggleFollow];
+    
+    //update our store account from the server
+    [[AppDelegate sharedDelegate].store fetchRemoteUserAccount];
+}
+
+-(void) oAuthRequestDidFail
+{
+    [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
 }
 
 @end

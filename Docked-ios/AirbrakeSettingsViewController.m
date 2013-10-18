@@ -19,6 +19,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"airbrake"] error:nil];
+        
+        self.events = [NSArray arrayWithObjects:@[@"Exception", @YES], nil];
     }
     return self;
 }
@@ -26,13 +29,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.providerHeroImageView.image = [UIImage imageNamed:@"logo_airbrake.png"];
+    [self.scrollView addSubview:self.followButton];
 }
 
-- (void)didReceiveMemoryWarning
+- (void) setupUnconnectedState
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super setupUnconnectedState];
+    
+}
+
+- (void) setupConnectedState
+{
+    [super setupConnectedState];
+    
+    [self.scrollView addSubview:self.followButton];
+    
+}
+
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
 }
 
 @end

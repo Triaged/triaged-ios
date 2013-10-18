@@ -12,7 +12,7 @@
 
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"stripe-s.png"];
+    return [UIImage imageNamed:@"stripe.png"];
 }
 
 @end

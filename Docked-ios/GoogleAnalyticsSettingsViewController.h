@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseSettingsViewController.h"
+#import "OAuthViewController.h"
 
-@interface GoogleAnalyticsSettingsViewController : BaseSettingsViewController
+@interface GoogleAnalyticsSettingsViewController : BaseSettingsViewController <OAuthRequestDelegate>
 
 @end

@@ -32,8 +32,6 @@
         
         pushNotificationSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(250, 8, 49, 32)];
         pushNotificationSwitch.enabled = NO;
-        [pushNotificationSwitch setOn:YES];
-        
         [self.contentView addSubview:pushNotificationSwitch];
     }
     return self;

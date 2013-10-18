@@ -77,7 +77,7 @@
 {
     [super layoutSubviews];
     
-    [providerIconView setFrame:CGRectMake(14, 28.0, 30.0, 30.0)];
+    [providerIconView setFrame:CGRectMake(14, 28.0, 28.0, 28.0)];
     [propertyLabel setFrame:CGRectMake(58, 28.0, 200.0, 18.0)];
     [timestampLabel setFrame:CGRectMake(58, 46.0, 200.0, 16.0)];
     [lineDivider setFrame:CGRectMake(14, 71, 280, 1)];

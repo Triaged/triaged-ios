@@ -7,7 +7,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OAuthViewController">
             <connections>
                 <outlet property="cancelButton" destination="Z7y-um-YGV" id="WXI-cG-LY0"/>
-                <outlet property="titleLabel" destination="Vyc-VP-B28" id="uCZ-uW-yig"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="webView" destination="pfr-LU-dIf" id="5oG-JY-sOV"/>
             </connections>
@@ -22,13 +21,6 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </webView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Redirecting to Github" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vyc-VP-B28">
-                    <rect key="frame" x="78" y="20" width="164" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                    <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7y-um-YGV">
                     <rect key="frame" x="10" y="19" width="12" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

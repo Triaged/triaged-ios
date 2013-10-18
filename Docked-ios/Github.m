@@ -12,7 +12,7 @@
 @implementation Github
 
 -(UIImage *)providerIcon {
-   return [UIImage imageNamed:@"github-s.png"];;
+   return [UIImage imageNamed:@"github.png"];;
 }
 
 -(Class)tableViewCellClass {

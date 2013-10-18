@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface AccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface AccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -21,5 +23,6 @@
 @property (weak, nonatomic) IBOutlet UISwitch *pushNotificationSwitch;
 
 -(IBAction)logout:(id)sender;
+-(IBAction)contactUs:(id)sender;
 
 @end

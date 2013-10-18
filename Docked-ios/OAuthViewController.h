@@ -10,6 +10,7 @@
 #import "Provider.h"
 
 @protocol OAuthRequestDelegate <NSObject>
+-(void) connect;
 -(void) oAuthRequestDidSucceed;
 -(void) oAuthRequestDidFail;
 @end

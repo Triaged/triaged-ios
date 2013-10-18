@@ -16,6 +16,7 @@
 #import "HerokuSettingsViewController.h"
 #import "AirbrakeSettingsViewController.h"
 
+
 @implementation Provider
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -31,6 +32,7 @@
     
     // set this locally first
     _follows = true;
+
     NSString *path = [NSString stringWithFormat:@"providers/%@/follow.json", _providerID];
     [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
         
@@ -43,6 +45,7 @@
 
 - (void) unfollow {
      _follows = false;
+    
     NSString *path = [NSString stringWithFormat:@"providers/%@/unfollow.json", _providerID];
     [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

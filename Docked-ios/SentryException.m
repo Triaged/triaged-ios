@@ -51,7 +51,7 @@
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"sentry-s.png"];
+    return [UIImage imageNamed:@"sentry.png"];
 }
 
 @end

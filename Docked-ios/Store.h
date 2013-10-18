@@ -28,7 +28,6 @@
 
 - (void)fetchRemoteUserAccount;
 
-- (void)saveFeedToArchive;
 - (void)saveAccountToArchive;
 
 

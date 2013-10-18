@@ -110,7 +110,9 @@
                 }};
     
     [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
+    
         [[AppDelegate sharedDelegate].navVC showSGProgressWithDuration:1.5];
+    
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];

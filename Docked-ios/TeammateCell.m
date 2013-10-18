@@ -26,7 +26,7 @@
         // Avatar image
         UIImage *avatarIcon = [UIImage imageNamed:@"avatar.png"];
         avatarView = [[UIImageView alloc] initWithImage:avatarIcon];
-        avatarView.frame = CGRectMake(14, 3, 40, 40);
+        avatarView.frame = CGRectMake(14, 3, 36, 36);
         [self.contentView addSubview: avatarView];
         
         nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(70, 8, 200, 30)];

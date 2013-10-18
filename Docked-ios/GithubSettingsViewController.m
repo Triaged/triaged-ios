@@ -9,6 +9,7 @@
 #import "GithubSettingsViewController.h"
 #import "AppDelegate.h"
 #import "Store.h"
+#import "SVProgressHUD.h"
 
 
 @interface GithubSettingsViewController ()
@@ -24,7 +25,7 @@
         // Custom initialization
         self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"github"] error:nil];
         
-        self.events = [NSArray arrayWithObjects:@"push", @"commits", @"issue opened", @"issue closed", nil];
+        self.events = [NSArray arrayWithObjects:@[@"Push", @NO], @[@"Commits", @NO], @[@"Issue opened", @YES], @[@"Issue closed", @NO], nil];
     }
     return self;
 }
@@ -43,26 +44,19 @@
     [self.connectButton setBackgroundColor:[UIColor blackColor]];
     [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.connectButton setTitle:@"Connect to Github" forState:UIControlStateNormal];
-    [self.view addSubview:self.connectButton];
+    [self.scrollView addSubview:self.connectButton];
 }
 
 - (void) setupConnectedState
 {
     [super setupConnectedState];
     
-    [self.view addSubview:self.followButton];
-
+    [self.scrollView addSubview:self.followButton];
 }
 
 - (void) layoutSubviews
 {
     [super layoutSubviews];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)connect
@@ -86,7 +80,7 @@
 
 -(void) oAuthRequestDidFail
 {
-    
+    [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
 }
 
 @end
