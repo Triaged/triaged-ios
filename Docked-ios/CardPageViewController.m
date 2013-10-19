@@ -36,7 +36,7 @@
     headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(40,10, 240, 40)];
     [headlineLabel setFont: [UIFont fontWithName:@"AvenirNext-UltraLight" size:27.0]];
     headlineLabel.textColor = [UIColor blackColor];
-    [self.view addSubview:headlineLabel];
+    //[self.view addSubview:headlineLabel];
     
     
     cardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(8,46,304, 187)];

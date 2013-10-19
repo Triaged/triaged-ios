@@ -60,6 +60,14 @@
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"externalID" cacheName:nil];
 }
 
+//- (FeedItem*)fetchFeedItemWithId:(NSString *)feedItemId;
+//{
+//    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
+//    request.predicate = [NSPredicate predicateWithFormat:@"externalID = %@", feedItemId];
+//    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO]];
+//    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"externalID" cacheName:nil];
+//}
+
 #pragma mark - Remote Updates
 
 - (void) fetchRemoteUserAccount
@@ -156,6 +164,7 @@
 - (void) userLoggedIn
 {
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     [self fetchRemoteUserAccount];
     [self fetchRemoteFeedItems];
 }

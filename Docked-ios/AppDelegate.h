@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import <HockeySDK/HockeySDK.h>
 
 @class Store;
 @class PersistentStack;

@@ -12,6 +12,7 @@
 #import "Store.h"
 #import "Account.h"
 #import "Mantle.h"
+#import "TRJSONResponseSerializerWithData.h"
 
 static NSString * const DockedAPIBaseURLString = @"http://www.triaged.co/api/v1/";
 
@@ -31,7 +32,7 @@ static NSString * const DockedAPIBaseURLString = @"http://www.triaged.co/api/v1/
     self = [super initWithBaseURL:url];
     if (self) {
         self.requestSerializer = [AFJSONRequestSerializer serializer];
-        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.responseSerializer = [TRJSONResponseSerializerWithData serializer];
         [self setAuthTokenHeader];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(tokenChanged:)

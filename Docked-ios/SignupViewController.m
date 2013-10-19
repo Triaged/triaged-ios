@@ -67,8 +67,8 @@
         [welcomeVC dismissAuthScreens:self];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
-        [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
+        NSLog(@"%@",[error.userInfo objectForKey:@"JSONResponseSerializerWithDataKey"]);
+        [SVProgressHUD showErrorWithStatus:[error.userInfo objectForKey:@"JSONResponseSerializerWithDataKey"]];
 //      if (operation.response.statusCode == 500) {
 //        } else {
 //            NSData *jsonData = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];

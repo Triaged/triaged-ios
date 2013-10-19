@@ -35,6 +35,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"75134b3efefcd10ce90e4509d3a10431"
+                                                           delegate:self];
+    [[BITHockeyManager sharedHockeyManager] startManager];
     
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 
@@ -75,7 +78,7 @@
 
 - (void) addObservers
 {
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+
 }
 
 - (void) setBaseStyles
@@ -142,9 +145,9 @@
             // TODO: Route to remote notification
             if (state == UIApplicationStateInactive) {
                 
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalID == %@", [userInfo objectForKey:@"external_id"]];
-                NSArray *results = [self.store.feedItems filteredArrayUsingPredicate:predicate];
-                [self navigateToDetailViewWithFeedItem:[results firstObject]];
+//                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalID == %@", [userInfo objectForKey:@"external_id"]];
+//                NSArray *results = [self.store.feedItems filteredArrayUsingPredicate:predicate];
+//                [self navigateToDetailViewWithFeedItem:[results firstObject]];
                 
             }
             completionHandler(UIBackgroundFetchResultNewData);
@@ -204,6 +207,14 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         [self.store.managedObjectContext save:nil];
         [self.store saveAccountToArchive];
+}
+
+- (NSString *)customDeviceIdentifierForUpdateManager:(BITUpdateManager *)updateManager {
+#ifndef CONFIGURATION_AppStore
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(uniqueIdentifier)])
+        return [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
+#endif
+    return nil;
 }
 
 

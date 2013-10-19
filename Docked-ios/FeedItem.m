@@ -71,13 +71,15 @@
     return ret;
 }
 
-+ (NSDictionary *)relationshipModelClassesWith:(NSDictionary *)relationshipModels {
++ (NSDictionary *)relationshipModelClassesWith:(NSDictionary *)relationshipModels
+{
     NSMutableDictionary *ret = [[NSMutableDictionary alloc] initWithDictionary:@{@"messages" : Message.class}];
     [ret addEntriesFromDictionary:relationshipModels];
     return ret;
 }
 
-+ (NSValueTransformer *)timestampJSONTransformer {
++ (NSValueTransformer *)timestampJSONTransformer
+{
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
         return [self.timestampDateFormatter dateFromString:str];
 
@@ -86,7 +88,8 @@
     }];
 }
 
-+ (NSValueTransformer *)updatedAtJSONTransformer {
++ (NSValueTransformer *)updatedAtJSONTransformer
+{
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
         return [self.dateFormatter dateFromString:str];
         
@@ -95,9 +98,8 @@
     }];
 }
 
-
-
-+ (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary {
++ (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary
+{
     
     NSString *provider = [JSONDictionary[@"provider"] camelize];
     NSString *event = [JSONDictionary[@"event"] camelize];
