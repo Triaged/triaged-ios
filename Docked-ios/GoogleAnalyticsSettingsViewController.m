@@ -21,7 +21,7 @@
         // Custom initialization
         self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"google_analytics"] error:nil];
         
-        self.events = [NSArray arrayWithObjects:@[@"Daily visitors count", @NO], @[@"Daily visits count", @NO], @[@"Daily page views count", @NO], nil];
+        self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Daily visitors count", @NO], @[@"Daily visits count", @NO], @[@"Daily page views count", @NO], nil];
     }
     return self;
 }
@@ -31,6 +31,10 @@
     [super viewDidLoad];
     
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_google.png"];
+    
+    
+    self.eventsViewController.view.frame = CGRectMake(0, 200, 240, 200);
+    [self.scrollView addSubview:self.eventsViewController.view];
 }
 
 - (void) setupUnconnectedState
@@ -42,6 +46,7 @@
     [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.connectButton setTitle:@"Connect to Google Analytics" forState:UIControlStateNormal];
     [self.scrollView addSubview:self.connectButton];
+
 }
 
 - (void) setupConnectedState
@@ -49,7 +54,7 @@
     [super setupConnectedState];
     
     [self.scrollView addSubview:self.followButton];
-    
+
 }
 
 - (void) layoutSubviews
@@ -59,7 +64,7 @@
 
 - (void)connect
 {
-    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://cwhite.local:3000/services/authenticate_for/google_analytics"];
+    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://www.triaged.co/services/authenticate_for/google_oauth2"];
     oAuthVC.delegate = self;
     [self.navigationController presentViewController:oAuthVC animated:YES completion:nil];
 }

@@ -65,7 +65,7 @@
     Class cellClass = [ cellSource tableViewCellClass ] ;
     NSString * cellID = NSStringFromClass( cellClass ) ;
     CardCell *cell = [ [ cellClass alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID ] ;
-    cell.frame = CGRectMake(6, 0, 308, [cellClass heightOfContent:_feedItem] );
+    cell.frame = CGRectMake(8, 0, 304, [cellClass heightOfContent:_feedItem] );
     cell.backgroundColor = [UIColor whiteColor];
     cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     [cell configureForItem:_feedItem];
@@ -74,7 +74,7 @@
     // External Link View
     ActionBarViewController *externalVC = [[ActionBarViewController alloc] init];
     [externalVC setExternalLink:[_feedItem htmlUrl]];
-    externalVC.view.frame = CGRectMake(6, cell.frame.size.height, 308, 50);
+    externalVC.view.frame = CGRectMake(8, cell.frame.size.height, 304, 50);
     externalVC.view.translatesAutoresizingMaskIntoConstraints = NO;
     [self addChildViewController:externalVC];
     [contentView addSubview:externalVC.view];
@@ -90,7 +90,7 @@
     messagesVC = [[MessagesTableViewController alloc] init];
     messagesVC.feedItem = _feedItem;
     [self addChildViewController:messagesVC];
-    CGRect frame = CGRectMake(6, cell.frame.size.height + 64, 308.0, self.view.frame.size.height - (cell.frame.size.height + 44));
+    CGRect frame = CGRectMake(8, cell.frame.size.height + 64, 304.0, self.view.frame.size.height - (cell.frame.size.height + 44));
     messagesVC.tableView.frame = frame;
     [contentView  addSubview:messagesVC.tableView];
     [messagesVC didMoveToParentViewController:self];

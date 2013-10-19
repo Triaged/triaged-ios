@@ -39,7 +39,7 @@
 
 - (void)initChart {
     // We need a hostview, you can create one in IB (and create an outlet) or just do this:
-    hostView = [[CPTGraphHostingView alloc] initWithFrame:CGRectInset(CGRectMake(0, 70, 308, 180), 0, 0)];
+    hostView = [[CPTGraphHostingView alloc] initWithFrame:CGRectInset(CGRectMake(0, 64, 304, 180), 0, 0)];
     [self.contentView addSubview: hostView];
     hostView.userInteractionEnabled = NO;
 

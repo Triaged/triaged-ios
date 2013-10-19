@@ -25,7 +25,7 @@
         // Custom initialization
         self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"github"] error:nil];
         
-        self.events = [NSArray arrayWithObjects:@[@"Push", @NO], @[@"Commits", @NO], @[@"Issue opened", @YES], @[@"Issue closed", @NO], nil];
+        self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Push", @NO], @[@"Commits", @NO], @[@"Issue opened", @YES], @[@"Issue closed", @NO], nil];
     }
     return self;
 }
@@ -35,6 +35,9 @@
     [super viewDidLoad];
     
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_github.png"];
+    
+    self.eventsViewController.view.frame = CGRectMake(0, 200, 240, 200);
+    [self.scrollView addSubview:self.eventsViewController.view];
 }
 
 - (void) setupUnconnectedState
@@ -45,6 +48,7 @@
     [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.connectButton setTitle:@"Connect to Github" forState:UIControlStateNormal];
     [self.scrollView addSubview:self.connectButton];
+    
 }
 
 - (void) setupConnectedState
@@ -61,7 +65,7 @@
 
 - (void)connect
 {
-    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://www.docked.io/services/authenticate_for/github"];
+    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://www.triaged.co/services/authenticate_for/github"];
     oAuthVC.delegate = self;
     [self.navigationController presentViewController:oAuthVC animated:YES completion:nil];
 }

@@ -13,6 +13,7 @@
 
 @property (nonatomic, copy, readonly) NSString *providerID;
 @property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *webhookUrl;
 @property (nonatomic, readonly) BOOL connected;
 @property (nonatomic, readonly) BOOL follows;
 

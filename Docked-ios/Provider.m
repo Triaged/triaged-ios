@@ -15,6 +15,7 @@
 #import "NewRelicSettingsViewController.h"
 #import "HerokuSettingsViewController.h"
 #import "AirbrakeSettingsViewController.h"
+#import "KilnSettingsViewController.h"
 
 
 @implementation Provider
@@ -24,7 +25,8 @@
      @"providerID": @"id",
      @"name" : @"name",
      @"connected" : @"connected",
-     @"follows" : @"follows"
+     @"follows" : @"follows",
+     @"webhookUrl" : @"webhook_url"
     };
 }
 
@@ -84,17 +86,13 @@
         @"icon" : @"airbrake.png",
         @"settings_class" : AirbrakeSettingsViewController.class
     },
-    @{  @"name" : @"Stripe",
-        @"icon" : @"stripe.png",
-        @"settings_class" :  StripeSettingsViewController.class
-    },
     @{  @"name" : @"Github",
         @"icon" : @"github.png",
         @"settings_class" : GithubSettingsViewController.class
     },
     @{  @"name" : @"Kiln",
         @"icon" : @"kiln.png",
-        @"settings_class" : GithubSettingsViewController.class
+        @"settings_class" : KilnSettingsViewController.class
     },
     nil];
     

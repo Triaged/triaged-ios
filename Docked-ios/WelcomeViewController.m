@@ -41,7 +41,7 @@
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     self.pageController.dataSource = self;
-    [[self.pageController view] setFrame:CGRectMake(0,180,320, 200)];
+    [[self.pageController view] setFrame:CGRectMake(0,100,320, 350)];
     
     CardPageViewController *initialViewController = [self viewControllerAtIndex:0];
     
@@ -79,7 +79,6 @@
     
     NSUInteger index = [(CardPageViewController *)viewController index];
     
-    
     index++;
     
     if (index == 5) {
@@ -113,7 +112,7 @@
     [UIView transitionFromView:sender.view
                         toView:self.view
                       duration:0.65f
-                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                       options:UIViewAnimationOptionTransitionCrossDissolve
                     completion:nil];
 
 }
@@ -123,10 +122,11 @@
     LoginViewController *loginVC = [[LoginViewController alloc] init];
     loginVC.welcomeVC = self;
     
+    
     [UIView transitionFromView:self.view
                         toView:loginVC.view
                       duration:0.65f
-                       options:UIViewAnimationOptionTransitionFlipFromRight
+                       options:UIViewAnimationOptionTransitionNone
                     completion:^(BOOL finished) {
                         [self didMoveToParentViewController:loginVC];
                         [self addChildViewController:loginVC];
@@ -143,7 +143,7 @@
     [UIView transitionFromView:self.view
                         toView:signupVC.view
                       duration:0.65f
-                       options:UIViewAnimationOptionTransitionFlipFromRight
+                       options:UIViewAnimationOptionTransitionCrossDissolve
                     completion:^(BOOL finished) {
                         [self didMoveToParentViewController:signupVC];
                         [self addChildViewController:signupVC];
@@ -155,7 +155,7 @@
     [UIView transitionFromView:sender.view
                         toView:self.view
                       duration:0.65f
-                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                       options:UIViewAnimationOptionTransitionCrossDissolve
                     completion:nil];
     
     [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];

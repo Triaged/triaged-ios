@@ -62,7 +62,7 @@
                             options: UIViewAnimationOptionCurveEaseOut
                          animations:^{
                              [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-                             _cardImageView.frame = CGRectMake(6, 64, 308, _cardImageView.frame.size.height );
+                             _cardImageView.frame = CGRectMake(8, 64, 304, _cardImageView.frame.size.height );
                          }
                          completion:^(BOOL finished){
                              [self dismissViewControllerAnimated:NO completion:nil];

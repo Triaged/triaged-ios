@@ -20,6 +20,7 @@
 		CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0E028B1810A87600484E69 /* WelcomeViewController.xib */; };
 		CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */; };
 		CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB24D08B1811D1E100DF0D19 /* MessageUI.framework */; };
+		CB2D00AB181215E6005350D5 /* SettingEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */; };
 		CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F941808B2B800F5F97C /* Accelerate.framework */; };
 		CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F961808B2C000F5F97C /* AdSupport.framework */; };
 		CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F981808B2CB00F5F97C /* CoreTelephony.framework */; };
@@ -151,6 +152,8 @@
 		CB24D0861811BAC000DF0D19 /* KilnSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KilnSettingsViewController.h; sourceTree = "<group>"; };
 		CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KilnSettingsViewController.m; sourceTree = "<group>"; };
 		CB24D08B1811D1E100DF0D19 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CB2D00A8181215E6005350D5 /* SettingEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingEventsViewController.h; sourceTree = "<group>"; };
+		CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingEventsViewController.m; sourceTree = "<group>"; };
 		CB2F9F941808B2B800F5F97C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		CB2F9F961808B2C000F5F97C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		CB2F9F981808B2CB00F5F97C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -407,6 +410,8 @@
 				CBDCEC721805ED5B0024860B /* ProviderSettingsTableViewController.m */,
 				CBA676B518085D520035368A /* BaseSettingsViewController.h */,
 				CBA676B618085D520035368A /* BaseSettingsViewController.m */,
+				CB2D00A8181215E6005350D5 /* SettingEventsViewController.h */,
+				CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -1088,6 +1093,7 @@
 				CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */,
 				CBE8637117FC93F400EF6E73 /* GoogleAnalyticsDaily.m in Sources */,
 				CBD726F9180363D60071B177 /* NewRelicApdexAlertEnded.m in Sources */,
+				CB2D00AB181215E6005350D5 /* SettingEventsViewController.m in Sources */,
 				CB5A35C1180CD31200ECAB71 /* FetchedFeedItemsDataSource.m in Sources */,
 				CB81579F17F0D568006AA14A /* Account.m in Sources */,
 				CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */,

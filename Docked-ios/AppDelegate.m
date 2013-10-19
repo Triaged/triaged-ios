@@ -13,6 +13,7 @@
 #import "RootViewController.h"
 #import "SettingsMenuViewController.h"
 #import "DetailViewController.h"
+#import "WelcomeViewController.h"
 //#import "Mixpanel.h"
 
 #define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
@@ -83,6 +84,12 @@
     self.window.tintColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[WelcomeViewController class], nil];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:235.0f/255.0f green:235.0f/255.0f blue:235.0f/255.0f alpha:1.0f];
+
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:213.0f/255.0f green:217.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
+    pageControl.backgroundColor = [UIColor whiteColor];
 }
 
 

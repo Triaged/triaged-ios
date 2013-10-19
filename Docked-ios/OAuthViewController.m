@@ -55,7 +55,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    if ([[request.URL.absoluteString lowercaseString] isEqualToString:@"http://www.docked.io/services/oauth_complete"]) {
+    if ([[request.URL.absoluteString lowercaseString] isEqualToString:@"http://www.triaged.co/services/oauth_complete"]) {
         [self dismissViewControllerAnimated:YES completion:nil];
         [self.delegate oAuthRequestDidSucceed];
         

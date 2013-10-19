@@ -7,13 +7,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
                 <outlet property="backButton" destination="h0r-00-eBx" id="QsV-ND-1Si"/>
-                <outlet property="directionsLabel" destination="ZJZ-6v-oqa" id="dOJ-hg-hK8"/>
                 <outlet property="divider1" destination="ie1-eQ-KFJ" id="d5O-Lb-vUy"/>
                 <outlet property="divider2" destination="FaM-rk-rw9" id="s5w-Qd-zD9"/>
                 <outlet property="loginButton" destination="ZHu-r2-ACy" id="ZB5-UT-PZk"/>
                 <outlet property="logoLabel" destination="oSq-oP-JJQ" id="j9z-5F-c1V"/>
                 <outlet property="passwordTextField" destination="UtS-rk-bRi" id="mvD-OM-sbT"/>
-                <outlet property="subtextLabel" destination="LKl-Jg-sRs" id="Rrd-h7-zJr"/>
+                <outlet property="triangeImage" destination="oX6-1k-Isc" id="Nrf-5U-nu0"/>
                 <outlet property="usernameTextField" destination="Tu8-IT-6Qd" id="5gq-x8-kJ6"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -23,17 +22,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Tu8-IT-6Qd">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Work Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Tu8-IT-6Qd">
                     <rect key="frame" x="45" y="305" width="230" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UtS-rk-bRi">
                     <rect key="frame" x="45" y="371" width="230" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHu-r2-ACy">
                     <rect key="frame" x="0.0" y="508" width="320" height="60"/>
@@ -54,19 +53,6 @@
                     <color key="textColor" red="0.63921568627450975" green="0.69411764705882351" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stay in control" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKl-Jg-sRs">
-                    <rect key="frame" x="75" y="120" width="170" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="27"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login with your work email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJZ-6v-oqa">
-                    <rect key="frame" x="71" y="270" width="178" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                    <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="ie1-eQ-KFJ">
                     <rect key="frame" x="45" y="350" width="230" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -85,6 +71,10 @@
                         <action selector="returnToWelcome:" destination="-1" eventType="touchUpInside" id="1ce-h2-s52"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-1k-Isc">
+                    <rect key="frame" x="110" y="115" width="100" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -94,5 +84,6 @@
     <resources>
         <image name="btn_back" width="12" height="20"/>
         <image name="line" width="1" height="1"/>
+        <image name="triangle" width="160" height="138"/>
     </resources>
 </document>

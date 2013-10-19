@@ -24,7 +24,7 @@
         // Custom initialization
         self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"stripe"] error:nil];
         
-        self.events = [NSArray arrayWithObjects:@[@"Charge succeeded", @NO], @[@"Charge refunded", @NO], @[@"Dispute created", @YES], @[@"Invoice failed", @YES], @[@"Subscription deleted", @YES], nil];
+        self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Charge succeeded", @NO], @[@"Charge refunded", @NO], @[@"Dispute created", @YES], @[@"Invoice failed", @YES], @[@"Subscription deleted", @YES], nil];
     }
     return self;
 }
@@ -34,6 +34,9 @@
     [super viewDidLoad];
     
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_stripe.png"];
+    
+    self.eventsViewController.view.frame = CGRectMake(0, 200, 240, 200);
+    [self.scrollView addSubview:self.eventsViewController.view];
 }
 
 - (void) setupUnconnectedState
@@ -44,6 +47,7 @@
     [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.connectButton setTitle:@"Connect to Stripe" forState:UIControlStateNormal];
     [self.scrollView addSubview:self.connectButton];
+
 }
 
 - (void) setupConnectedState
@@ -51,7 +55,6 @@
     [super setupConnectedState];
     
     [self.scrollView addSubview:self.followButton];
-    
 }
 
 - (void) layoutSubviews
@@ -61,7 +64,7 @@
 
 - (void)connect
 {
-    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://www.docked.io/services/authenticate_for/stripe_connect"];
+    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://www.triaged.co/services/authenticate_for/stripe_connect"];
     oAuthVC.delegate = self;
     [self.navigationController presentViewController:oAuthVC animated:YES completion:nil];
 }

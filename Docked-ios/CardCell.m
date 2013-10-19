@@ -18,7 +18,7 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 14)];/// change size as you need.
+        UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 8)];/// change size as you need.
         separatorLineView.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
         [self.contentView addSubview:separatorLineView];
 
@@ -77,15 +77,15 @@
 {
     [super layoutSubviews];
     
-    [providerIconView setFrame:CGRectMake(14, 28.0, 28.0, 28.0)];
-    [propertyLabel setFrame:CGRectMake(58, 28.0, 200.0, 18.0)];
-    [timestampLabel setFrame:CGRectMake(58, 46.0, 200.0, 16.0)];
-    [lineDivider setFrame:CGRectMake(14, 71, 280, 1)];
+    [providerIconView setFrame:CGRectMake(14, 22.0, 28.0, 28.0)];
+    [propertyLabel setFrame:CGRectMake(58, 22.0, 200.0, 18.0)];
+    [timestampLabel setFrame:CGRectMake(58, 40.0, 200.0, 16.0)];
+    [lineDivider setFrame:CGRectMake(14, 65, 280, 1)];
     
-    [actionLabel setFrame:CGRectMake(14, 85.0, 280.0, 16.0)];
+    [actionLabel setFrame:CGRectMake(14, 79.0, 280.0, 16.0)];
     
     NSAttributedString *attributedBodyText = [CardCell attributedBodyText:bodyLabel.text];
-    CGRect newFrame = CGRectMake(14, 104.0, 288, [CardCell heightOfBody:attributedBodyText]);
+    CGRect newFrame = CGRectMake(14, 98.0, 288, [CardCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
     
 //if (shouldDrawShadow) [self drawShadow];

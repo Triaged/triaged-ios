@@ -14,8 +14,7 @@
 @property (strong, nonatomic) WelcomeViewController *welcomeVC;
 
 @property (weak, nonatomic) IBOutlet UILabel *logoLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subtextLabel;
-@property (weak, nonatomic) IBOutlet UILabel *directionsLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *triangleImage;
 
 @property (weak, nonatomic) IBOutlet UIImageView *divider1;
 @property (weak, nonatomic) IBOutlet UIImageView *divider2;

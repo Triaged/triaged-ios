@@ -45,7 +45,7 @@
 
 -(NSString *)body {
     NSString *body = [NSString stringWithFormat:@"%@\n", _message];
-    body = [body stringByAppendingString:[NSString stringWithFormat:@"culprit: %@", _culprit]];
+    body = [body stringByAppendingString:[NSString stringWithFormat:@"\nculprit:\n%@", _culprit]];
     return body;
     
 }

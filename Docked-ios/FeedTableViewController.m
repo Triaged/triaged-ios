@@ -58,6 +58,7 @@
     UIRefreshControl *refreshControl = [UIRefreshControl new];
     refreshControl.tintColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     [refreshControl addTarget:[AppDelegate sharedDelegate].store action:@selector(fetchRemoteFeedItems) forControlEvents:UIControlEventValueChanged];
+    
     self.refreshControl = refreshControl;
 }
 

@@ -74,7 +74,7 @@
     revealController.delegate = self;
     
     feedTableView = [[FeedTableViewController alloc] init];
-    feedTableView.view.frame = CGRectMake(6, 0, self.view.frame.size.width - 12, self.view.frame.size.height);
+    feedTableView.view.frame = CGRectMake(8, 0, self.view.frame.size.width - 16, self.view.frame.size.height);
     feedTableView.navController = self.navigationController;
 
 

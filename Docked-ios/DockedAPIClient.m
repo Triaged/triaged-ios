@@ -13,7 +13,7 @@
 #import "Account.h"
 #import "Mantle.h"
 
-static NSString * const DockedAPIBaseURLString = @"http://www.docked.io/api/v1/";
+static NSString * const DockedAPIBaseURLString = @"http://www.triaged.co/api/v1/";
 
 @implementation DockedAPIClient
 

@@ -17,9 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UILabel *logoLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subtextLabel;
-@property (weak, nonatomic) IBOutlet UILabel *directionsLabel;
-
+@property (weak, nonatomic) IBOutlet UIImageView *triangeImage;
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;

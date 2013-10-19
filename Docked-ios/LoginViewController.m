@@ -18,7 +18,7 @@
 
 @implementation LoginViewController
 
-@synthesize usernameTextField, passwordTextField, welcomeVC, loginButton, subtextLabel, directionsLabel, logoLabel, divider1, divider2, backButton;
+@synthesize usernameTextField, passwordTextField, welcomeVC, loginButton, triangeImage, logoLabel, divider1, divider2, backButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -114,8 +114,8 @@
         logoLabel.frame = logoFrame;
         
         //Subtext
-        subtextLabel.hidden = YES;
-        directionsLabel.hidden = YES;
+        triangeImage.hidden = YES;
+        
         
         // Fields
         CGRect usernameFrame = usernameTextField.frame;

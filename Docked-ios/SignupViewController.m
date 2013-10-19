@@ -19,7 +19,7 @@
 
 @implementation SignupViewController
 
-@synthesize welcomeVC, signupButton, logoLabel, subtextLabel, directionsLabel, divider1, divider2, divider3, nameTextField, emailTextField, passwordTextField;
+@synthesize welcomeVC, signupButton, logoLabel, triangleImage, divider1, divider2, divider3, nameTextField, emailTextField, passwordTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -115,8 +115,8 @@
         logoLabel.frame = logoFrame;
         
         //Subtext
-        subtextLabel.hidden = YES;
-        directionsLabel.hidden = YES;
+        triangleImage.hidden = YES;
+
         
         // Fields
         CGRect usernameFrame = nameTextField.frame;
