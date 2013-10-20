@@ -64,7 +64,7 @@
 
 - (void)connect
 {
-    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://www.triaged.co/services/authenticate_for/stripe_connect"];
+    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"https://www.triaged.co/services/authenticate_for/stripe_connect"];
     oAuthVC.delegate = self;
     [self.navigationController presentViewController:oAuthVC animated:YES completion:nil];
 }

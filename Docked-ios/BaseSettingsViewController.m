@@ -72,7 +72,7 @@
     
     UIImage *connectedStatusImage = [UIImage imageNamed:@"status_connected.png"];
     UIImageView *connectedStatusView = [[UIImageView alloc] initWithImage:connectedStatusImage];
-    connectedStatusView.frame = CGRectMake(115, 100, 8, 8);
+    connectedStatusView.frame = CGRectMake(118, 100, 8, 8);
     [scrollView addSubview:connectedStatusView];
     
     connectedLabel = [[UILabel alloc] initWithFrame:CGRectMake(127.5, 94, 65, 20)];
