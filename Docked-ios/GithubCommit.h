@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Github.h"
 
-@interface GithubCommit : MTLModel <MTLJSONSerializing>
+@interface GithubCommit : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @property (nonatomic, copy, readonly) NSString *author;
 @property (nonatomic, copy, readonly) NSString *authorEmail;
-@property (nonatomic, copy, readonly) NSString *timestamp;
+@property (nonatomic, copy, readonly) NSDate *timestamp;
 @property (nonatomic, copy, readonly) NSString *message;
 @property (nonatomic, copy, readonly) NSString *url;
 

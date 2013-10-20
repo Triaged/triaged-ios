@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseSettingsViewController.h"
 
-@interface SentrySettingsViewController : UIViewController
+@interface SentrySettingsViewController : BaseSettingsViewController
 
 @end

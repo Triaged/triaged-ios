@@ -22,6 +22,18 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"SentryException";
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
 -(NSString*)property {
     return [self.project capitalizedString];
 }
@@ -33,13 +45,13 @@
 
 -(NSString *)body {
     NSString *body = [NSString stringWithFormat:@"%@\n", _message];
-    body = [body stringByAppendingString:[NSString stringWithFormat:@"culprit: %@", _culprit]];
+    body = [body stringByAppendingString:[NSString stringWithFormat:@"\nculprit:\n%@", _culprit]];
     return body;
     
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"airbrake-s.png"];
+    return [UIImage imageNamed:@"sentry.png"];
 }
 
 @end

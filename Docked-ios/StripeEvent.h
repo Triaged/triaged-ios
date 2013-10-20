@@ -11,8 +11,8 @@
 
 @interface StripeEvent : FeedItem
 
-@property (nonatomic, copy, readonly) NSString *amount;
-@property (nonatomic, copy, readonly) NSString *description;
+@property (nonatomic, copy, readonly) NSNumber *amount;
+@property (nonatomic, copy, readonly) NSString *message;
 @property (nonatomic, copy, readonly) NSString *customerEmail;
 
 @end

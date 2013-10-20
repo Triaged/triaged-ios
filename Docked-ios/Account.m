@@ -18,9 +18,20 @@
       @"userID": @"id",
       @"name": @"name",
       @"email": @"email",
-      @"providers": @"providers"
+      @"providers": @"providers",
+      @"followedProviderCount" : @"followed_provider_count",
+      @"companyName" : @"company_name",
+      @"teammates" : @"teammates",
+      @"avatarUrl" : @"avatar_url"
     };
 }
+
+
++ (NSValueTransformer *)teammatesJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[User class]];
+}
+
 
 + (void)fetchRemoteUserAccountWithBlock:(void (^)(Account *))block
 {

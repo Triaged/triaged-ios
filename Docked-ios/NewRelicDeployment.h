@@ -14,7 +14,7 @@
 @property (nonatomic, copy, readonly) NSString *applicationName;
 @property (nonatomic, copy, readonly) NSString *accountName;
 @property (nonatomic, copy, readonly) NSString *changelog;
-@property (nonatomic, copy, readonly) NSString *description;
+@property (nonatomic, copy, readonly) NSString *descrip;
 @property (nonatomic, copy, readonly) NSString *revision;
 @property (nonatomic, copy, readonly) NSString *deployedBy;
 

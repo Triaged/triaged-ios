@@ -9,7 +9,7 @@
 #import "DetailViewController.h"
 #import "MessageTabViewController.h"
 #import "MessagesTableViewController.h"
-#import "ExternalLinkViewViewController.h"
+#import "ActionBarViewController.h"
 #import "NewMessageViewController.h"
 #import "CardCell.h"
 
@@ -65,33 +65,32 @@
     Class cellClass = [ cellSource tableViewCellClass ] ;
     NSString * cellID = NSStringFromClass( cellClass ) ;
     CardCell *cell = [ [ cellClass alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID ] ;
-    cell.frame = CGRectMake(6, 0, 308, [cellClass heightOfContent:_feedItem] );
+    cell.frame = CGRectMake(8, 0, 304, [cellClass heightOfContent:_feedItem] );
     cell.backgroundColor = [UIColor whiteColor];
     cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     [cell configureForItem:_feedItem];
     [contentView addSubview:cell];
     
     // External Link View
-    ExternalLinkViewViewController *externalVC = [[ExternalLinkViewViewController alloc] init];
+    ActionBarViewController *externalVC = [[ActionBarViewController alloc] init];
     [externalVC setExternalLink:[_feedItem htmlUrl]];
-    externalVC.view.frame = CGRectMake(6, cell.frame.size.height, 308, 44);
+    externalVC.view.frame = CGRectMake(8, cell.frame.size.height, 304, 50);
     externalVC.view.translatesAutoresizingMaskIntoConstraints = NO;
     [self addChildViewController:externalVC];
     [contentView addSubview:externalVC.view];
     
-    // Message Tab View
-    MessageTabViewController *messageTabVC = [[MessageTabViewController alloc] init];
-    messageTabVC.view.frame = CGRectMake(0, self.view.bounds.size.height - 44, 320, 44);
-    messageTabVC.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [self addChildViewController:messageTabVC];
-    [self.view addSubview:messageTabVC.view];
+//    // Message Tab View
+//    MessageTabViewController *messageTabVC = [[MessageTabViewController alloc] init];
+//    messageTabVC.view.frame = CGRectMake(0, self.view.bounds.size.height - 44, 320, 44);
+//    messageTabVC.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+//    [self addChildViewController:messageTabVC];
+//    [self.view addSubview:messageTabVC.view];
 
     // Messages Table View
-     messagesVC = [[MessagesTableViewController alloc] init];
-    //commentsVC.delegate = self;
+    messagesVC = [[MessagesTableViewController alloc] init];
     messagesVC.feedItem = _feedItem;
     [self addChildViewController:messagesVC];
-    CGRect frame = CGRectMake(6, cell.frame.size.height + 44, 308.0, self.view.frame.size.height - (cell.frame.size.height + 44));
+    CGRect frame = CGRectMake(8, cell.frame.size.height + 64, 304.0, self.view.frame.size.height - (cell.frame.size.height + 44));
     messagesVC.tableView.frame = frame;
     [contentView  addSubview:messagesVC.tableView];
     [messagesVC didMoveToParentViewController:self];
@@ -110,7 +109,7 @@
 }
 
 -(void)setContentSize {
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height + 50);
     scrollView.frame = self.view.frame;
 }
 

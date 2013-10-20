@@ -10,7 +10,7 @@
 #import "Message.h"
 #import "FeedItem.h"
 
-@interface MessagesTableViewController : UITableViewController
+@interface MessagesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) FeedItem *feedItem;
 

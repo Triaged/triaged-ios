@@ -7,16 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootViewController.h"
+#import "WelcomeViewController.h"
 
 @interface SignupViewController : UIViewController <UITextFieldDelegate>
+
+@property (strong, nonatomic) WelcomeViewController *welcomeVC;
+
+@property (weak, nonatomic) IBOutlet UILabel *logoLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *triangleImage;
+
+@property (weak, nonatomic) IBOutlet UIImageView *divider1;
+@property (weak, nonatomic) IBOutlet UIImageView *divider2;
+@property (weak, nonatomic) IBOutlet UIImageView *divider3;
+
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
-@property (strong, nonatomic)  RootViewController *rootVC;
 
 - (IBAction)signup;
-- (IBAction)presentLogin;
+- (IBAction)returnToWelcome:(id)sender;
 @end

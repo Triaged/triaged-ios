@@ -165,21 +165,6 @@
 }
 
 /**
- * Creates a foreign key name from a class name.
- */
-- (NSString *)foreignKey {
-	return [[[self demodulize] underscore] stringByAppendingString:@"_id"];
-}
-
-/**
- * Creates a foreign key name from a class name without the underscore
- * separating the id part.
- */
-- (NSString *)foreignKeyWithoutIdUnderscore {
-	return [[[self demodulize] underscore] stringByAppendingString:@"id"];
-}
-
-/**
  * Turns a number into an ordinal string used to denote the position in an
  * ordered sequence such as 1st, 2nd, 3rd, 4th.
  *

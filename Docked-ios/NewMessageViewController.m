@@ -52,6 +52,7 @@
     _messageBodyTextView.delegate = self;
     _messageBodyTextView.text = @" Your Message";
     _messageBodyTextView.textColor = [UIColor lightGrayColor]; //optional
+    _messageBodyTextView.font = [UIFont fontWithName:@"Avenir-Light" size:18.0];
     [self.view addSubview:_messageBodyTextView];
 }
 
@@ -60,8 +61,7 @@
 }
 
 -(IBAction)sendMessage:(id)sender{
-    
-    [_feedItem addMessageWithBody:_messageBodyTextView.text];
+    [Message buildNewMessageWithBody:_messageBodyTextView.text forFeedItem:_feedItem];
     _messageBodyTextView.text = @"";
     [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -85,6 +85,7 @@
 {
     textView.text = [textView.text stringByReplacingOccurrencesOfString:@" Your Message" withString:@""];
     textView.textColor = [UIColor blackColor];
+
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView

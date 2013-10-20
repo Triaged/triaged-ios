@@ -24,7 +24,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.view.backgroundColor = [UIColor colorWithRed:40.0f/255.0f green:40.0f/255.0f blue:40.0f/255.0f alpha:1.0f];
+        //self.view.backgroundColor = [UIColor colorWithRed:201.0f/255.0f green:203.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
+        UIImage *backgroundImage = [UIImage imageNamed:@"bg_list.png"];
+        UIImageView *background = [[UIImageView alloc] initWithImage:backgroundImage];
+        background.frame = self.view.frame;
+        
+        [self.view addSubview:background];
+        [self.view sendSubviewToBack:background];
     }
     return self;
 }
@@ -43,13 +49,17 @@
     [self.view  addSubview:providersTableVC.tableView];
     [providersTableVC didMoveToParentViewController:self];
     
-    UIImage *settingsIcon = [UIImage imageNamed:@"icn_settings.png"];
-    UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(4,24, 140, 40)];
-    settingsButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:18.0];
-    [settingsButton setTitleColor:[UIColor colorWithRed:181.0f/255.0f green:181.0f/255.0f blue:181.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    // Avatar image
+    UIImage *avatarIcon = [UIImage imageNamed:@"avatar.png"];
+    UIImageView *avatarView = [[UIImageView alloc] initWithImage:avatarIcon];
+    avatarView.frame = CGRectMake(15, 500, 30, 30);
+    [self.view addSubview: avatarView];
+    
+    UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(54, 500, 80, 30)];
+    settingsButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.0];
+    [settingsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [settingsButton addTarget:self action:@selector(loadAccountView) forControlEvents:UIControlEventTouchUpInside];
-    [settingsButton setImage:settingsIcon forState:UIControlStateNormal];
-    [settingsButton setTitle:@"    Settings" forState:UIControlStateNormal];
+    [settingsButton setTitle:@"Account" forState:UIControlStateNormal];
     [self.view addSubview:settingsButton];
 }
 
@@ -65,7 +75,7 @@
     SWRevealViewController *revealController = self.revealViewController;
     
     AccountViewController *accountVC = [[AccountViewController alloc] init];
-    [[AppDelegate sharedDelegate].navVC pushViewController:accountVC animated:YES];
+    [[AppDelegate sharedDelegate].navVC pushViewController:accountVC animated:NO];
     [revealController setFrontViewController:[AppDelegate sharedDelegate].navVC animated:YES];
 }
 

@@ -11,16 +11,20 @@
 #import "FeedItem.h"
 #import "Account.h"
 
+@class FeedItem;
 
-@interface Message : MTLModel <MTLJSONSerializing>
+
+@interface Message : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @property (nonatomic, copy, readonly) NSString *externalID;
+@property (nonatomic, copy, readonly) NSString *uuid;
 @property (nonatomic, copy, readonly) NSString *authorName;
 @property (nonatomic, copy, readonly) NSString *authorID;
 @property (nonatomic, copy, readonly) NSString *body;
 @property (nonatomic, copy, readonly) NSDate *timestamp;
+@property (nonatomic, copy, readonly) FeedItem *feedItem;
 
 + (instancetype) buildNewMessageWithBody:(NSString *)body;
-- (void)saveRemoteWithFeedItemID:(NSString *)feedItemID;
++ (instancetype) buildNewMessageWithBody:(NSString *)body forFeedItem:(FeedItem *)item;
 
 @end

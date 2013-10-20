@@ -16,12 +16,23 @@
        @"accountName": @"account_name",
        @"severity": @"severity",
        @"message": @"message",
-       @"shortDescription": @"short_description",
-       @"longDescription": @"long_description"
+       @"shortMessage": @"short_description",
+       @"longMessage": @"long_description"
     };
     
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
+
++ (NSString *)managedObjectEntityName {
+    return @"NewRelicAppAlert";
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
+
+
 
 -(NSString *) action {
     return @"app alert";

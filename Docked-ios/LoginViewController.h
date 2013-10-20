@@ -9,16 +9,24 @@
 #import <UIKit/UIKit.h>
 #import "CredentialStore.h"
 #import "RootViewController.h"
+#import "WelcomeViewController.h"
 
 @interface LoginViewController : UIViewController
+
+@property (strong, nonatomic) WelcomeViewController *welcomeVC;
+
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UILabel *logoLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *triangeImage;
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
-@property (strong, nonatomic) RootViewController *rootVC;
+
+@property (weak, nonatomic) IBOutlet UIImageView *divider2;
+@property (weak, nonatomic) IBOutlet UIImageView *divider1;
 
 - (IBAction)login;
-- (IBAction)presentSignup;
-
+- (IBAction)returnToWelcome:(id)sender;
 
 @end

@@ -15,6 +15,8 @@
 #import "NewRelicSettingsViewController.h"
 #import "HerokuSettingsViewController.h"
 #import "AirbrakeSettingsViewController.h"
+#import "KilnSettingsViewController.h"
+
 
 @implementation Provider
 
@@ -23,7 +25,8 @@
      @"providerID": @"id",
      @"name" : @"name",
      @"connected" : @"connected",
-     @"follows" : @"follows"
+     @"follows" : @"follows",
+     @"webhookUrl" : @"webhook_url"
     };
 }
 
@@ -31,6 +34,7 @@
     
     // set this locally first
     _follows = true;
+
     NSString *path = [NSString stringWithFormat:@"providers/%@/follow.json", _providerID];
     [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
         
@@ -43,6 +47,7 @@
 
 - (void) unfollow {
      _follows = false;
+    
     NSString *path = [NSString stringWithFormat:@"providers/%@/unfollow.json", _providerID];
     [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -50,6 +55,11 @@
         // Reset back, if the post fails
         _follows = true;
     }];
+}
+
+- (void) connect
+{
+    _connected = true;
 }
 
 + (NSArray *)currentProviders
@@ -76,13 +86,13 @@
         @"icon" : @"airbrake.png",
         @"settings_class" : AirbrakeSettingsViewController.class
     },
-    @{  @"name" : @"Stripe",
-        @"icon" : @"stripe.png",
-        @"settings_class" :  StripeSettingsViewController.class
-    },
     @{  @"name" : @"Github",
         @"icon" : @"github.png",
         @"settings_class" : GithubSettingsViewController.class
+    },
+    @{  @"name" : @"Kiln",
+        @"icon" : @"kiln.png",
+        @"settings_class" : KilnSettingsViewController.class
     },
     nil];
     

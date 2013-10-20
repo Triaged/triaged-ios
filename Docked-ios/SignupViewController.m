@@ -11,6 +11,7 @@
 #import "SVProgressHUD.h"
 #import "CredentialStore.h"
 #import "LoginViewController.h"
+#import "AppDelegate.h"
 
 @interface SignupViewController ()
 
@@ -18,13 +19,18 @@
 
 @implementation SignupViewController
 
-@synthesize rootVC;
+@synthesize welcomeVC, signupButton, logoLabel, triangleImage, divider1, divider2, divider3, nameTextField, emailTextField, passwordTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+
     }
     return self;
 }
@@ -33,9 +39,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.nameTextField.delegate = self;
-    self.emailTextField.delegate = self;
-    self.passwordTextField.delegate = self;
+    signupButton.backgroundColor = [[UIColor alloc] initWithRed:140.0f/255.0f green:156.0f/255.0f blue:201.0f/255.0f alpha:1.0f];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,32 +64,96 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
         
         [SVProgressHUD dismiss];
-        [self.rootVC.navigationController popToRootViewControllerAnimated:YES];
-        //[self dismissViewControllerAnimated:YES completion:nil];
+        [welcomeVC dismissAuthScreens:self];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
-        [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
-        //        if (operation.response.statusCode == 500) {
-        //            [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
-        //        } else {
-        //            NSData *jsonData = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
-        //            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
-        //                                                                 options:0
-        //                                                                   error:nil];
-        //            NSString *errorMessage = [json objectForKey:@"error"];
-        //            [SVProgressHUD showErrorWithStatus:errorMessage];
-        //        }
+        NSLog(@"%@",[error.userInfo objectForKey:@"JSONResponseSerializerWithDataKey"]);
+        [SVProgressHUD showErrorWithStatus:[error.userInfo objectForKey:@"JSONResponseSerializerWithDataKey"]];
+//      if (operation.response.statusCode == 500) {
+//        } else {
+//            NSData *jsonData = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+//            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                                options:0 error:nil];
+//            NSString *errorMessage = [json objectForKey:@"error"];
+//            [SVProgressHUD showErrorWithStatus:errorMessage];
+//        }
     }];
 }
 
-- (IBAction)presentLogin {
-    [rootVC presentLoginView];
+- (IBAction)returnToWelcome:(id)sender
+{
+    [welcomeVC presentFromVC:self];
 }
 
--(BOOL) textFieldShouldReturn: (UITextField *) textField{
-    [textField resignFirstResponder];
-    return YES;
+-(void)keyboardWillShow:(NSNotification*)notification  {
+    
+    NSDictionary *userInfo = notification.userInfo;
+    
+    //
+    // Get keyboard size.
+    NSValue *endFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardEndFrame = [self.view convertRect:endFrameValue.CGRectValue fromView:nil];
+    
+    //
+    // Get keyboard animation.
+    
+    NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration = durationValue.doubleValue;
+    
+    NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+    UIViewAnimationCurve animationCurve = curveValue.intValue;
+    
+    //
+    // Create animation.
+    void (^animations)() = ^() {
+        // Login Button
+        signupButton.frame = CGRectMake(signupButton.frame.origin.x, signupButton.frame.origin.y-keyboardEndFrame.size.height, signupButton.frame.size.width, signupButton.frame.size.height);
+        
+        // Logo
+        CGRect logoFrame = logoLabel.frame;
+        logoFrame.origin.y = 30;
+        logoLabel.frame = logoFrame;
+        
+        //Subtext
+        triangleImage.hidden = YES;
+
+        
+        // Fields
+        CGRect usernameFrame = nameTextField.frame;
+        usernameFrame.origin.y = usernameFrame.origin.y - 200;
+        nameTextField.frame = usernameFrame;
+        
+        CGRect emailTextFrame = emailTextField.frame;
+        emailTextFrame.origin.y = emailTextFrame.origin.y - 200;
+        emailTextField.frame = emailTextFrame;
+        
+        CGRect passwordFrame = passwordTextField.frame;
+        passwordFrame.origin.y = passwordFrame.origin.y - 200;
+        passwordTextField.frame = passwordFrame;
+        
+        CGRect divider1Frame = divider1.frame;
+        divider1Frame.origin.y = divider1Frame.origin.y - 200;
+        divider1.frame = divider1Frame;
+        
+        CGRect divider2Frame = divider2.frame;
+        divider2Frame.origin.y = divider2Frame.origin.y - 200;
+        divider2.frame = divider2Frame;
+        
+        CGRect divider3Frame = divider3.frame;
+        divider3Frame.origin.y = divider3Frame.origin.y - 200;
+        divider3.frame = divider3Frame;
+    };
+    
+    
+    //
+    // Begin animation.
+    [UIView animateWithDuration:animationDuration
+                          delay:0.0
+                        options:(animationCurve << 16)
+                     animations:animations
+                     completion:NULL];
+    
 }
+
 
 @end

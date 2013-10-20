@@ -16,12 +16,22 @@
        @"accountName": @"account_name",
        @"severity": @"severity",
        @"message": @"message",
-       @"shortDescription": @"short_description",
-       @"longDescription": @"long_description"
+       @"shortDMessage": @"short_description",
+       @"longMessage": @"long_description"
     };
     
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
+
++ (NSString *)managedObjectEntityName {
+    return @"NewRelicDowntime";
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
+
 
 -(NSString *) action {
     return @"downtime";

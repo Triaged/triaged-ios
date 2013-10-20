@@ -7,15 +7,15 @@
 //
 
 #import "GraphDataCell.h"
-#import <ShinobiCharts/ShinobiChart.h>
 
-@interface GraphDataCell () <SChartDatasource>
+@interface GraphDataCell () <CPTPlotDataSource>
 
 @end
 
 @implementation GraphDataCell
 {
-    ShinobiChart* _chart;
+    CPTGraphHostingView* hostView;
+    CPTGraph *graph;
     NSArray *chartCoordinates;
     UILabel *firstLabel;
     UILabel *firstData;
@@ -38,131 +38,120 @@
 }
 
 - (void)initChart {
-    _chart = [[ShinobiChart alloc] initWithFrame:CGRectZero];
+    // We need a hostview, you can create one in IB (and create an outlet) or just do this:
+    hostView = [[CPTGraphHostingView alloc] initWithFrame:CGRectInset(CGRectMake(0, 64, 304, 180), 0, 0)];
+    [self.contentView addSubview: hostView];
+    hostView.userInteractionEnabled = NO;
+
     
-    //_chart.autoresizingMask =  ~UIViewAutoresizingNone;
+    // Create a CPTGraph object and add to hostView
+    graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
+    hostView.hostedGraph = graph;
     
-    _chart.licenseKey = @"YckzPtDz4NAkrOiMjAxMzExMDFpbmZvQHNoaW5vYmljb250cm9scy5jb20=bKW4TvDFZX6P8P7sETLeGBeEzXUmqsgFX/7akg80bGLEjPIJja1IA0h7xTZQpoGGrzwh8ETi7sIHuQ3ddIb9S3ZDUtKchbQ9sEF1Gb0N2PTYJ4nExBsq0EKNXwPLokYH9BUqNKNLlUDA6KbTSjGuQsWffJ1k=BQxSUisl3BaWf/7myRmmlIjRnMU2cA7q+/03ZX9wdj30RzapYANf51ee3Pi8m2rVW6aD7t6Hi4Qy5vv9xpaQYXF5T7XzsafhzS3hbBokp36BoJZg8IrceBj742nQajYyV7trx5GIw9jy/V6r0bvctKYwTim7Kzq+YPWGMtqtQoU=PFJTQUtleVZhbHVlPjxNb2R1bHVzPnh6YlRrc2dYWWJvQUh5VGR6dkNzQXUrUVAxQnM5b2VrZUxxZVdacnRFbUx3OHZlWStBK3pteXg4NGpJbFkzT2hGdlNYbHZDSjlKVGZQTTF4S2ZweWZBVXBGeXgxRnVBMThOcDNETUxXR1JJbTJ6WXA3a1YyMEdYZGU3RnJyTHZjdGhIbW1BZ21PTTdwMFBsNWlSKzNVMDg5M1N4b2hCZlJ5RHdEeE9vdDNlMD08L01vZHVsdXM+PEV4cG9uZW50PkFRQUI8L0V4cG9uZW50PjwvUlNBS2V5VmFsdWU+";
+    // Get the (default) plotspace from the graph so we can set its x/y ranges
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
+    plotSpace.allowsUserInteraction = FALSE;
     
-    // add a pair of axes
-    SChartNumberAxis *xAxis = [[SChartNumberAxis alloc] init];
-    xAxis.style.majorTickStyle.showLabels = NO;
-    xAxis.style.majorTickStyle.showTicks = NO;
-    xAxis.style.lineWidth = @0.5f;
-    xAxis.width = @1.f;
-    _chart.xAxis = xAxis;
+    // Note that these CPTPlotRange are defined by START and LENGTH (not START and END) !!
+    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( 10 )]];
+    [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( 6 )]];
     
-    SChartNumberAxis *yAxis = [[SChartNumberAxis alloc] init];
-    xAxis.style.majorTickStyle.showLabels = NO;
-    yAxis.style.majorTickStyle.showTicks = NO;
-    yAxis.style.lineWidth = @0.5f;
-    yAxis.width = @1.f;
-    yAxis.rangePaddingLow = @(0.5);
-    yAxis.rangePaddingHigh = @(0.5);
-    yAxis.style.majorGridLineStyle.showMajorGridLines = YES;
-    yAxis.style.interSeriesPadding  = [NSNumber numberWithInt:1];
-    _chart.yAxis = yAxis;
+    // Create the plot (we do not define actual x/y values yet, these will be supplied by the datasource...)
+    CPTScatterPlot* plot = [[CPTScatterPlot alloc] initWithFrame:CGRectZero];
     
-    _chart.datasource = self;
-    _chart.legend.hidden = YES;
-    _chart.userInteractionEnabled = NO;
+    // Let's keep it simple and let this class act as datasource (therefore we implemtn <CPTPlotDataSource>)
+    plot.dataSource = self;
     
-    [self.contentView addSubview:_chart];
+    CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
+    lineStyle.lineColor = [CPTColor colorWithComponentRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:0.7f];
+    plot.dataLineStyle = lineStyle;
+    plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:0.7f]];
+    plot.areaBaseValue = CPTDecimalFromInteger(0);
+    plot.interpolation = CPTScatterPlotInterpolationCurved;
+
+    
+    // Finally, add the created plot to the default plot space of the CPTGraph object we created before
+    graph.plotAreaFrame.masksToBorder = NO;
+    [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
+    
+    graph.axisSet = nil;
+    
+   
 }
 
 - (void) initBadges {
     firstLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-    [firstLabel setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:10.0]];
+    [firstLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:10.0]];
+    firstLabel.textColor = [[UIColor alloc] initWithRed:188.0f/255.0f green:188.0f/255.0f blue:188.0f/255.0f alpha:1.0f];
     firstLabel.text = @"Visits";
     [self.contentView addSubview: firstLabel];
     
     firstData = [[UILabel alloc] initWithFrame: CGRectZero];
-    [firstData setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:22.0]];
-    firstData.text = @"4684";
+    [firstData setFont: [UIFont fontWithName:@"Avenir-Light" size:20.0]];
+    firstData.textColor = [[UIColor alloc] initWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1.0f];
     [self.contentView addSubview: firstData];
     
     secondLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-    [secondLabel setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:10.0]];
+    [secondLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:10.0]];
+    secondLabel.textColor = [[UIColor alloc] initWithRed:188.0f/255.0f green:188.0f/255.0f blue:188.0f/255.0f alpha:1.0f];
     secondLabel.text = @"Visitors";
     [self.contentView addSubview: secondLabel];
     
     secondData = [[UILabel alloc] initWithFrame: CGRectZero];
-    [secondData setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:22.0]];
-    secondData.text = @"2648";
+    [secondData setFont: [UIFont fontWithName:@"Avenir-Light" size:20.0]];
+    secondData.textColor = [[UIColor alloc] initWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1.0f];
     [self.contentView addSubview: secondData];
     
     thirdLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-    [thirdLabel setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:10.0]];
+    [thirdLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:10.0]];
+    thirdLabel.textColor = [[UIColor alloc] initWithRed:188.0f/255.0f green:188.0f/255.0f blue:188.0f/255.0f alpha:1.0f];
     thirdLabel.text = @"Pageviews";
     [self.contentView addSubview: thirdLabel];
     
     thirdData = [[UILabel alloc] initWithFrame: CGRectZero];
-    [thirdData setFont: [UIFont fontWithName:@"AvenirNext-Medium" size:22.0]];
-    thirdData.text = @"1423";
+    [thirdData setFont: [UIFont fontWithName:@"Avenir-Light" size:20.0]];
+    thirdData.textColor = [[UIColor alloc] initWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1.0f];
     [self.contentView addSubview: thirdData];
 }
 
 -(void) layoutSubviews {
     [super layoutSubviews];
-    _chart.frame = CGRectInset(CGRectMake(0, 60, 308, 180), 0, 0); //;
-    firstLabel.frame = CGRectMake(20, 240, 100, 10);
-    firstData.frame = CGRectMake(20, 252, 100, 20);
+    firstLabel.frame = CGRectMake(24, 240, 100, 10);
+    firstData.frame = CGRectMake(24, 252, 100, 20);
     
-    secondLabel.frame = CGRectMake(122, 240, 100, 10);
-    secondData.frame = CGRectMake(122, 252, 100, 20);
+    secondLabel.frame = CGRectMake(132, 240, 100, 10);
+    secondData.frame = CGRectMake(132, 252, 100, 20);
     
     
-    thirdLabel.frame = CGRectMake(224, 240, 100, 10);
-    thirdData.frame = CGRectMake(224, 252, 100, 20);
+    thirdLabel.frame = CGRectMake(244, 240, 100, 10);
+    thirdData.frame = CGRectMake(244, 252, 100, 20);
+    
+    [hostView setNeedsLayout];
+    
 }
 
 
 
 #pragma mark - SChartDatasource methods
 
-- (NSInteger)numberOfSeriesInSChart:(ShinobiChart *)chart {
-    return 1;
-}
-
--(SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index {
-    
-    SChartLineSeries *lineSeries = [[SChartLineSeries alloc] init];
-    lineSeries.style.lineColor = [UIColor orangeColor];
-    lineSeries.style.lineWidth = [NSNumber numberWithInt:2];
-    lineSeries.style.showFill = NO;
-    
-    lineSeries.style.pointStyle.showPoints = YES;
-    lineSeries.style.pointStyle.color = [UIColor orangeColor];
-    lineSeries.style.pointStyle.innerColor = [UIColor orangeColor];
-    lineSeries.style.pointStyle.innerRadius = [NSNumber numberWithInt:0];
-    
-    // the first series is a cosine curve, the second is a sine curve
-    
-    lineSeries.title = [NSString stringWithFormat:@"y = cos(x)"];
-    
-    
-    return lineSeries;
-}
-
-- (NSInteger)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(NSInteger)seriesIndex {
+// Therefore this class implements the CPTPlotDataSource protocol
+-(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plotnumberOfRecords {
     return chartCoordinates.count;
 }
 
-- (id<SChartData>)sChart:(ShinobiChart *)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex {
-    
-    SChartDataPoint *datapoint = [[SChartDataPoint alloc] init];
-    
-    datapoint.xValue = [NSNumber numberWithInteger:dataIndex];
-    datapoint.yValue = chartCoordinates[dataIndex];
-    
-    return datapoint;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+// This method is here because this class also functions as datasource for our graph
+// Therefore this class implements the CPTPlotDataSource protocol
+-(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    // This method is actually called twice per point in the plot, one for the X and one for the Y value
+    if(fieldEnum == CPTScatterPlotFieldX)
+    {
+        // Return x value, which will, depending on index, be between -4 to 4
+        return [NSNumber numberWithInteger:index];
+    } else {
+        // Return y value, for this example we'll be plotting y = x * x
+        return chartCoordinates[index];
+    }
 }
 
 - (void)configureForItem:(FeedItem *)item
@@ -180,6 +169,11 @@
     firstData.text = [graphCardItem.firstDataField stringValue];
     secondData.text = [graphCardItem.secondDataField stringValue];
     thirdData.text = [graphCardItem.thirdDataField stringValue];
+}
+
++ (CGFloat) estimatedHeightOfContent
+{
+    return 290;
 }
 
 + (CGFloat) heightOfContent: (FeedItem *)item {

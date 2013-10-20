@@ -23,6 +23,19 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"GithubPush";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{@"commits" : GithubCommit.class}];
+}
+
+
 + (NSValueTransformer *)commitsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[GithubCommit class]];

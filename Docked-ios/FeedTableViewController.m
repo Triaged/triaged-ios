@@ -14,11 +14,11 @@
 #import "CardCell.h"
 #import "DetailViewController.h"
 #import "SmokescreenViewController.h"
-#import "FeedItemsDataSource.h"
+#import "FetchedFeedItemsDataSource.h"
 
 @interface FeedTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) FeedItemsDataSource *feedItemsDataSource;
+@property (nonatomic, strong) FetchedFeedItemsDataSource *fetchedFeedItemsDataSource;
 
 @end
 
@@ -46,10 +46,8 @@
 
 - (void)setupTableView
 {
-    // Datasource
-    NSArray *feed = [AppDelegate sharedDelegate].store.sortedTableFeed;
-    self.feedItemsDataSource = [[FeedItemsDataSource alloc] initWithItems:feed];
-    self.tableView.dataSource = self.feedItemsDataSource;
+    
+    [self setupFetchedResultsController];
     
     // Appearance
     self.tableView.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
@@ -60,12 +58,22 @@
     UIRefreshControl *refreshControl = [UIRefreshControl new];
     refreshControl.tintColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     [refreshControl addTarget:[AppDelegate sharedDelegate].store action:@selector(fetchRemoteFeedItems) forControlEvents:UIControlEventValueChanged];
+    
     self.refreshControl = refreshControl;
 }
 
+- (void)setupFetchedResultsController
+{
+    self.fetchedFeedItemsDataSource = [[FetchedFeedItemsDataSource alloc] init];
+    self.fetchedFeedItemsDataSource.fetchedResultsController = [AppDelegate sharedDelegate].store.feedItemsFetchedResultsController;
+    self.tableView.dataSource = self.fetchedFeedItemsDataSource;
+}
+
+
 -(void)refreshFeed
 {
-    self.feedItemsDataSource.feedItems = [AppDelegate sharedDelegate].store.sortedTableFeed;
+    //self.feedItemsDataSource.feedItems = [AppDelegate sharedDelegate].store.sortedTableFeed;
+    [self.fetchedFeedItemsDataSource.fetchedResultsController performFetch:NULL];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
@@ -75,11 +83,11 @@
     
     FeedItem *item;
     
-    if(indexPath.row == 0) { // Feed Item
-        item = [self.feedItemsDataSource itemAtIndexPath:indexPath];
-    } else {
-        item = [self.feedItemsDataSource feedItemAtIndexPath:indexPath];
-    }
+    //if(indexPath.row == 0) { // Feed Item
+        item = [self.fetchedFeedItemsDataSource feedItemAtIndexPath:indexPath];
+//    } else {
+//        item = [self.feedItemsDataSource feedItemAtIndexPath:indexPath];
+//    }
     
     CardCell *cell = (CardCell *)[tableView cellForRowAtIndexPath:indexPath];
     
@@ -111,26 +119,28 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (indexPath.row == 0) {
-        FeedItem *item = [self.feedItemsDataSource itemAtIndexPath:indexPath];
-        
-        id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
+   if (indexPath.row == 0) {
+        FeedItem *item = [self.fetchedFeedItemsDataSource feedItemAtIndexPath:indexPath];
+       
+       id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
         Class cellClass = [ cellSource tableViewCellClass ] ;
-        
-        return [cellClass heightOfContent:item];
-    } else if (indexPath.row == 1) {
-        Message *message = [self.feedItemsDataSource itemAtIndexPath:indexPath];
-        FeedItem *item = [self.feedItemsDataSource feedItemAtIndexPath:indexPath];
-        return [MessageCell heightOfContent:message hasMultipleMessages:[item hasMultipleMessages]];
-    } else {
-        return 40;
+       
+       return [cellClass heightOfContent:item];
+    
+   } else if (indexPath.row == 1) {
+       FeedItem *item = [self.fetchedFeedItemsDataSource feedItemAtForMessageIndexPath:indexPath];
+       Message *message = [item previewMessage];
+       
+       return [MessageCell heightOfContent:message hasMultipleMessages:[item hasMultipleMessages]];
+    
+   } else {
+        return 140;
     }
     
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    CardCell *cell = (CardCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    return [cell.class estimatedHeightOfContent];
-//}
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 140;
+}
 
 @end

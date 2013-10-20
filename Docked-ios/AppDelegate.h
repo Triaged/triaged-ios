@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import <HockeySDK/HockeySDK.h>
 
 @class Store;
 @class PersistentStack;
@@ -16,6 +17,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) PersistentStack* persistentStack;
 @property (nonatomic, strong) Store* store;
 @property (strong, nonatomic) UINavigationController *navVC;
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
 
-@interface GoogleAnalyticsDailyStatusDetails : MTLModel <MTLJSONSerializing>
+@interface GoogleAnalyticsDailyStatusDetails : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @property (nonatomic, copy, readonly) NSNumber *visitsCount;
 @property (nonatomic, copy, readonly) NSNumber *visitorsCount;

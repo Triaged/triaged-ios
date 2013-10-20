@@ -40,6 +40,11 @@
 
 }
 
++ (CGFloat) estimatedHeightOfContent
+{
+    return 160;
+}
+
 + (CGFloat) heightOfContent: (FeedItem *)item {
     id<TextCardProtocol> textCardItem = (id<TextCardProtocol>)item;
     

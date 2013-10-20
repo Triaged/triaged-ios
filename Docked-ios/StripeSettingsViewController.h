@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseSettingsViewController.h"
+#import "OAuthViewController.h"
 
-@interface StripeSettingsViewController : BaseSettingsViewController
-
-- (IBAction)connectToStripe;
+@interface StripeSettingsViewController : BaseSettingsViewController <OAuthRequestDelegate>
 
 @end

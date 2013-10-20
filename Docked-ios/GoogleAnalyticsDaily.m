@@ -29,6 +29,18 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"GoogleAnalyticsDaily";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{@"dailyDetails" : GoogleAnalyticsDailyStatusDetails.class}];
+}
+
 + (NSValueTransformer *)dailyDetailsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[GoogleAnalyticsDailyStatusDetails class]];
@@ -59,7 +71,7 @@
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"google_analytics-s.png"];
+    return [UIImage imageNamed:@"google_analytics.png"];
 }
 
 -(NSArray *)chartCoordinates {

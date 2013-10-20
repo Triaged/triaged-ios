@@ -7,9 +7,9 @@
 //
 
 #import "GithubSettingsViewController.h"
-#import "OAuthViewController.h"
 #import "AppDelegate.h"
 #import "Store.h"
+#import "SVProgressHUD.h"
 
 
 @interface GithubSettingsViewController ()
@@ -24,6 +24,8 @@
     if (self) {
         // Custom initialization
         self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"github"] error:nil];
+        
+        self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Push", @NO], @[@"Commits", @NO], @[@"Issue opened", @YES], @[@"Issue closed", @NO], nil];
     }
     return self;
 }
@@ -32,54 +34,57 @@
 {
     [super viewDidLoad];
     
-    NSDictionary *settings = [[AppDelegate sharedDelegate].store.account.providers valueForKey:@"github"];
-    NSLog(@"%@", settings);
+    self.providerHeroImageView.image = [UIImage imageNamed:@"logo_github.png"];
     
-    UIImage *heroImage = [UIImage imageNamed:@"github.png"];
-    UIImageView *heroImageView = [[UIImageView alloc] initWithImage:heroImage];
-    heroImageView.frame = CGRectMake(120, 80, 30, 30);
-    [self.view addSubview:heroImageView];
-    
-    UIButton *followButton = [[UIButton alloc] init];
-    [followButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    followButton.frame = CGRectMake(100, 120, 90, 60);
-    [followButton setTitle:@"Follow" forState:UIControlStateNormal];
-    [followButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:followButton];
-    
-    
-    if (!self.provider.connected) {
-        UIButton *connectButton = [[UIButton alloc] init];
-        connectButton.frame = CGRectMake(100, 160, 90, 60);
-        [connectButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [connectButton setTitle:@"Connect" forState:UIControlStateNormal];
-        [connectButton addTarget:self action:@selector(connectToGithub) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:connectButton];
-    }
-    
-    
-    //BOOL following = [AppDelegate sharedDelegate].store.account.userID;
-    // Do any additional setup after loading the view from its nib.
+    self.eventsViewController.view.frame = CGRectMake(0, 200, 240, 200);
+    [self.scrollView addSubview:self.eventsViewController.view];
 }
 
-- (void)didReceiveMemoryWarning
+- (void) setupUnconnectedState
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super setupUnconnectedState];
+    
+    [self.connectButton setBackgroundColor:[UIColor blackColor]];
+    [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.connectButton setTitle:@"Connect to Github" forState:UIControlStateNormal];
+    [self.scrollView addSubview:self.connectButton];
+    
 }
 
-- (IBAction)connectToGithub {
-    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://triaged-staging.herokuapp.com/services/authenticate_for/github"];
+- (void) setupConnectedState
+{
+    [super setupConnectedState];
+    
+    [self.scrollView addSubview:self.followButton];
+}
+
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
+}
+
+- (void)connect
+{
+    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"http://www.triaged.co/services/authenticate_for/github"];
+    oAuthVC.delegate = self;
     [self.navigationController presentViewController:oAuthVC animated:YES completion:nil];
 }
 
--(void) toggleFollow
+-(void) oAuthRequestDidSucceed
 {
-    if (self.provider.follows) {
-        [self.provider follow];
-    } else {
-        [self.provider unfollow];
-    }
+    [self.provider connect];
+    [self setupConnectedState];
+    
+    // Set this automatically on succesful oAuth
+    [self toggleFollow];
+    
+    //update our store account from the server
+    [[AppDelegate sharedDelegate].store fetchRemoteUserAccount];
+}
+
+-(void) oAuthRequestDidFail
+{
+    [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
 }
 
 @end

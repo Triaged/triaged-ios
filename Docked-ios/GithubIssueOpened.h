@@ -11,11 +11,10 @@
 
 @interface GithubIssueOpened : Github 
 
-@property (nonatomic, copy, readonly) NSString *githubIssueOpenedID;
 @property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, copy, readonly) NSString *openedByName;
-@property (nonatomic, copy, readonly) NSString *AssignedToName;
+@property (nonatomic, copy, readonly) NSString *assignedToName;
 @property (nonatomic, copy, readonly) NSString *message;
-@property (nonatomic, copy, readonly) NSString *htmlUrl;
+
 
 @end

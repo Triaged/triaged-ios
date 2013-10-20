@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StripeEvent.h"
 
-@interface StripeInvoiceFailed : NSObject
+@interface StripeInvoiceFailed : StripeEvent
 
 @end

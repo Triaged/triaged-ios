@@ -12,8 +12,9 @@
 #import "Store.h"
 #import "Account.h"
 #import "Mantle.h"
+#import "TRJSONResponseSerializerWithData.h"
 
-static NSString * const DockedAPIBaseURLString = @"http://triaged-staging.herokuapp.com/api/v1/";
+static NSString * const DockedAPIBaseURLString = @"http://www.triaged.co/api/v1/";
 
 @implementation DockedAPIClient
 
@@ -31,7 +32,7 @@ static NSString * const DockedAPIBaseURLString = @"http://triaged-staging.heroku
     self = [super initWithBaseURL:url];
     if (self) {
         self.requestSerializer = [AFJSONRequestSerializer serializer];
-        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.responseSerializer = [TRJSONResponseSerializerWithData serializer];
         [self setAuthTokenHeader];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(tokenChanged:)

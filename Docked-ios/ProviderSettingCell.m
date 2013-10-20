@@ -17,23 +17,24 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.contentView.backgroundColor = [UIColor colorWithRed:40.0f/255.0f green:40.0f/255.0f blue:40.0f/255.0f alpha:1.0f];
-        
-        UIImage *lineSeparator = [UIImage imageNamed:@"list_line.png"];
-        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-        lineView.frame = CGRectMake(60, 1, 160, 1);
-        [self.contentView addSubview: lineView];
-        
+        self.backgroundColor = [UIColor clearColor];
+        self.contentView.backgroundColor = [UIColor clearColor];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+//        UIImage *lineSeparator = [UIImage imageNamed:@"list_line.png"];
+//        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
+//        lineView.frame = CGRectMake(60, 1, 160, 1);
+//        [self.contentView addSubview: lineView];
+//        
         // Chat image
 
         providerIconView = [[UIImageView alloc] init];
-        providerIconView.frame = CGRectMake(15, 10, 30, 30);
+        providerIconView.frame = CGRectMake(18, 10, 28, 28);
         [self.contentView addSubview: providerIconView];
         
         
-        providerLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 10, 160, 30)];
-        [providerLabel setFont: [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
-        providerLabel.textColor = [UIColor colorWithRed:181.0f/255.0f green:181.0f/255.0f blue:181.0f/255.0f alpha:1.0f];
+        providerLabel = [[UILabel alloc] initWithFrame: CGRectMake(64, 10, 160, 30)];
+        [providerLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:16.0]];
+        providerLabel.textColor = [UIColor whiteColor];
         [providerLabel setLineBreakMode: NSLineBreakByClipping];
         providerLabel.numberOfLines = 1;
         [self.contentView addSubview: providerLabel];

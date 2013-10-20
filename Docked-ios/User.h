@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Mantle.h"
 
-@interface User : NSObject
+@interface User : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, copy, readonly) NSString *userID;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *email;
+@property (nonatomic, copy, readonly) NSString *avatarUrl;
 
 @end

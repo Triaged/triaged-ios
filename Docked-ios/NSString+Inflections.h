@@ -39,24 +39,15 @@
 
 @interface NSString (Inflections)
 
-+ (NSArray *)uncountableWords;
 + (NSArray *)pluralRules;
 + (NSArray *)singularRules;
 + (NSArray *)nonTitlecasedWords;
 
-- (NSString *)pluralize;
-- (NSString *)singularize;
-- (NSString *)humanize;
-- (NSString *)titleize;
-- (NSString *)tableize;
-- (NSString *)classify;
 - (NSString *)camelize;
 - (NSString *)camelizeWithLowerFirstLetter;
-- (NSString *)underscore;
-- (NSString *)dasherize;
+
+
 - (NSString *)demodulize;
-- (NSString *)foreignKey;
-- (NSString *)foreignKeyWithoutIdUnderscore;
 - (NSString *)ordinalize;
 - (NSString *)capitalize;
 

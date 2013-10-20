@@ -20,6 +20,19 @@
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"HerokuDeploy";
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
 -(NSString*)property {
     return [self.app capitalizedString];
 }
@@ -37,7 +50,7 @@
 }
 
 -(UIImage *)providerIcon {
-    return [UIImage imageNamed:@"heroku-s.png"];
+    return [UIImage imageNamed:@"heroku.png"];
 }
 
 

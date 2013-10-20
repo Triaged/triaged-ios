@@ -13,13 +13,12 @@
 #import "RootViewController.h"
 #import "SettingsMenuViewController.h"
 #import "DetailViewController.h"
-#import "Mixpanel.h"
+#import "WelcomeViewController.h"
+//#import "Mixpanel.h"
 
 #define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
 
 @interface AppDelegate () 
-
-@property (nonatomic, strong) PersistentStack* persistentStack;
 
 @end
 
@@ -35,7 +34,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    //[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"75134b3efefcd10ce90e4509d3a10431"
+                                                           delegate:self];
+    [[BITHockeyManager sharedHockeyManager] startManager];
     
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 
@@ -49,6 +51,7 @@
     
     self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
     self.store = [[Store alloc] init];
+    self.store.managedObjectContext = self.persistentStack.managedObjectContext;
     
     if ([self.store.account isLoggedIn]) {
         [self.store.account resetAPNSPushCount];
@@ -75,7 +78,7 @@
 
 - (void) addObservers
 {
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+
 }
 
 - (void) setBaseStyles
@@ -84,6 +87,12 @@
     self.window.tintColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[WelcomeViewController class], nil];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:235.0f/255.0f green:235.0f/255.0f blue:235.0f/255.0f alpha:1.0f];
+
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:213.0f/255.0f green:217.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
+    pageControl.backgroundColor = [UIColor whiteColor];
 }
 
 
@@ -108,14 +117,18 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [self.store saveFeedToArchive];
     [self.store saveAccountToArchive];
 }
 
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
     NSLog(@"Got device token: %@", [devToken description]);
-    [self.store.account updateAPNSPushTokenWithToken:[devToken description]];
+    
+    NSString * deviceToken = [[devToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    // @TODO: Optimize this:
+    [self.store.account updateAPNSPushTokenWithToken:deviceToken];
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
@@ -132,9 +145,9 @@
             // TODO: Route to remote notification
             if (state == UIApplicationStateInactive) {
                 
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalID == %@", [userInfo objectForKey:@"external_id"]];
-                NSArray *results = [self.store.feedItems filteredArrayUsingPredicate:predicate];
-                [self navigateToDetailViewWithFeedItem:[results firstObject]];
+//                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalID == %@", [userInfo objectForKey:@"external_id"]];
+//                NSArray *results = [self.store.feedItems filteredArrayUsingPredicate:predicate];
+//                [self navigateToDetailViewWithFeedItem:[results firstObject]];
                 
             }
             completionHandler(UIBackgroundFetchResultNewData);
@@ -192,8 +205,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        [self.store saveFeedToArchive];
+        [self.store.managedObjectContext save:nil];
         [self.store saveAccountToArchive];
+}
+
+- (NSString *)customDeviceIdentifierForUpdateManager:(BITUpdateManager *)updateManager {
+#ifndef CONFIGURATION_AppStore
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(uniqueIdentifier)])
+        return [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
+#endif
+    return nil;
 }
 
 

@@ -50,19 +50,27 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    
+    NSLog(@"%f", _cardImageView.frame.origin.y );
+    
+    if ( _cardImageView.frame.origin.y > 60 &&  _cardImageView.frame.origin.y < 70) {
+        [self dismissViewControllerAnimated:NO completion:nil];
+        [_navController pushViewController:_detailViewController animated:NO];
+    } else {
+        [UIView animateWithDuration:0.32
+                              delay:0
+                            options: UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+                             _cardImageView.frame = CGRectMake(8, 64, 304, _cardImageView.frame.size.height );
+                         }
+                         completion:^(BOOL finished){
+                             [self dismissViewControllerAnimated:NO completion:nil];
+                             [_navController pushViewController:_detailViewController animated:NO];
+                         }];
+    }
    
-   [UIView animateWithDuration:0.32
-                          delay:0
-                        options: UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-                         _cardImageView.frame = CGRectMake(6, 64, 308, _cardImageView.frame.size.height );
-                     }
-                     completion:^(BOOL finished){
-                         [self dismissViewControllerAnimated:NO completion:nil];
-                         [_navController pushViewController:_detailViewController animated:NO];
-                     }];
-}
+  }
 
 - (void)didReceiveMemoryWarning
 {

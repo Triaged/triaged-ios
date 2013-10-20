@@ -55,8 +55,15 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    if ([[request.URL.absoluteString lowercaseString] isEqualToString:@"http://triaged-staging.herokuapp.com/services/oauth_complete"]) {
+    if ([[request.URL.absoluteString lowercaseString] isEqualToString:@"http://www.triaged.co/services/oauth_complete"]) {
         [self dismissViewControllerAnimated:YES completion:nil];
+        [self.delegate oAuthRequestDidSucceed];
+        
+    } else {
+        // @TODO: Check for success: false
+        //[self dismissViewControllerAnimated:YES completion:nil];
+        //[self.delegate oAuthRequestDidFail];
+        
     }
     return YES;
 }

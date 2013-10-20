@@ -16,13 +16,23 @@
        @"applicationName": @"application_name",
        @"accountName": @"account_name",
        @"changelog": @"changelog",
-       @"description": @"description",
+       @"descrip": @"description",
        @"revision": @"revision",
        @"deployedBy": @"deployed_by"
        };
     
     return [FeedItem JSONKeyPathsWithSuper:jsonKeys];
 }
+
++ (NSString *)managedObjectEntityName {
+    return @"NewRelicDeployment";
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return [FeedItem relationshipModelClassesWith:@{}];
+}
+
+
 
 -(NSString*)property {
     return [self.applicationName capitalizedString];
