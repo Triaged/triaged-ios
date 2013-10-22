@@ -46,11 +46,29 @@
 }
 
 + (CGFloat) heightOfContent: (FeedItem *)item {
-    id<TextCardProtocol> textCardItem = (id<TextCardProtocol>)item;
+    static NSCache* heightCache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        heightCache = [NSCache new];
+    });
     
-    NSAttributedString *attributedBodyText = [CardCell attributedBodyText:textCardItem.body];
-    CGFloat bodyHeight = [CardCell heightOfBody:attributedBodyText];
-    return (120 + bodyHeight);
+    NSAssert(heightCache, @"Height cache must exist");
+    
+    NSString* key = item.externalID; //Create a unique key here
+    NSNumber* cachedValue = [heightCache objectForKey: key];
+    
+    if( cachedValue )
+        return [cachedValue floatValue];
+    else {
+        id<TextCardProtocol> textCardItem = (id<TextCardProtocol>)item;
+        
+        NSAttributedString *attributedBodyText = [CardCell attributedBodyText:textCardItem.body];
+        CGFloat bodyHeight = [CardCell heightOfBody:attributedBodyText];
+        CGFloat height = (120 + bodyHeight);
+        
+        [heightCache setObject: [NSNumber numberWithFloat: height] forKey: key];
+        return height;
+    }
 }
 
 @end

@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountViewController">
             <connections>
-                <outlet property="avatarImage" destination="gwW-Hq-5Rz" id="aMG-av-6Yo"/>
+                <outlet property="avatarButton" destination="gLT-Ff-dWk" id="jSR-h9-gAA"/>
                 <outlet property="companyLabel" destination="R5n-TN-lA9" id="bmF-WA-9eK"/>
                 <outlet property="connectionCountLabel" destination="Pha-3M-dtg" id="VZO-C1-Cr1"/>
                 <outlet property="emailLabel" destination="ojC-Ve-gwN" id="fZx-dy-UTQ"/>
@@ -28,10 +28,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="597"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="gwW-Hq-5Rz">
-                            <rect key="frame" x="20" y="13" width="60" height="60"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Charlie White" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naV-VS-ACO">
                             <rect key="frame" x="96" y="15" width="123" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -167,6 +163,13 @@
                             <rect key="frame" x="0.0" y="357" width="320" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLT-Ff-dWk">
+                            <rect key="frame" x="20" y="13" width="60" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </subviews>
                 </scrollView>
             </subviews>
@@ -193,7 +196,6 @@
         </label>
     </objects>
     <resources>
-        <image name="avatar" width="28" height="28"/>
         <image name="line" width="1" height="1"/>
     </resources>
 </document>

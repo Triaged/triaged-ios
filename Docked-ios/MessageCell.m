@@ -7,10 +7,12 @@
 //
 
 #import "MessageCell.h"
+#import "NSDate+TimeAgo.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation MessageCell
 
-@synthesize authorLabel, bodyLabel, moreMessagesLabel, moreMessagesIcon, shouldDrawShadow, shouldDrawMoreMessages, shouldDrawSeparator, lineView, timestampLabel;
+@synthesize authorLabel, bodyLabel, moreMessagesLabel, moreMessagesIcon, shouldDrawShadow, shouldDrawMoreMessages, shouldDrawSeparator, lineView, timestampLabel, avatarView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -26,8 +28,7 @@
         [self.contentView addSubview: lineView];
         
         // Avatar image
-        UIImage *avatarIcon = [UIImage imageNamed:@"avatar.png"];
-        UIImageView *avatarView = [[UIImageView alloc] initWithImage:avatarIcon];
+        avatarView = [[UIImageView alloc] init];
         avatarView.frame = CGRectMake(14, 14, 30, 30);
         [self.contentView addSubview: avatarView];
         
@@ -72,6 +73,19 @@
     }
     return self;
 }
+
+- (void)configureForMessage:(Message *)message
+{
+    authorLabel.text = message.author.name;
+    timestampLabel.text = [message.timestamp timeAgo];
+    bodyLabel.text = message.body;
+    
+    NSURL *avatarUrl = [NSURL URLWithString:message.author.avatarUrl];
+    [avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+    
+}
+
+
 
 -(void) layoutSubviews {
     [super layoutSubviews];
@@ -119,12 +133,6 @@
     
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 + (NSAttributedString *) attributedBodyText:(NSString *)bodyText
 {
@@ -155,14 +163,34 @@
     return paragraphRect.size.height;
 }
 
+
+
 + (CGFloat) heightOfContent: (Message *)message hasMultipleMessages:(BOOL)multiple;
 {
-    NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:message.body];
-    CGFloat bodyHeight = [MessageCell heightOfBody:attributedBodyText];
-    if(multiple) {
-        return (65 + bodyHeight);
-    } else {
-        return (45 + bodyHeight);
+    static NSCache* heightCache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        heightCache = [NSCache new];
+    });
+    
+    NSAssert(heightCache, @"Height cache must exist");
+    
+    NSString* key = message.externalID; //Create a unique key here
+    NSNumber* cachedValue = [heightCache objectForKey: key];
+    
+    if( cachedValue )
+        return [cachedValue floatValue];
+    else {
+        NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:message.body];
+        CGFloat bodyHeight = [MessageCell heightOfBody:attributedBodyText];
+        CGFloat height;
+        if(multiple) {
+            height =  (65 + bodyHeight);
+        } else {
+            height = (45 + bodyHeight);
+        }
+        [heightCache setObject: [NSNumber numberWithFloat: height] forKey: key];
+        return height;
     }
 }
 

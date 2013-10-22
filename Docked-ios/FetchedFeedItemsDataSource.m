@@ -51,7 +51,6 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     UITableViewCell *cell;
-     cell = [self cellForFeedItem:tableView AtIndexPath:indexPath];
     
     if(indexPath.row == 0) { // Feed Item
         cell = [self cellForFeedItem:tableView AtIndexPath:indexPath];
@@ -65,11 +64,8 @@
 }
 
 - (UITableViewCell *)cellForFeedItem:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
-    id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSLog(@"%@", object);
     FeedItem *item = [self feedItemAtIndexPath:indexPath];
 
-    
     // Determine the cell class
     id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
     Class cellClass = [ cellSource tableViewCellClass ] ;
@@ -84,8 +80,8 @@
     // Configure the cell...
     [cell configureForItem:item];
     // Should we draw the shadow?
-    //NSInteger numberOfRows = [tableView numberOfRowsInSection:[indexPath section]];
-    //cell.shouldDrawShadow = (numberOfRows == 1);
+    NSInteger numberOfRows = [tableView numberOfRowsInSection:[indexPath section]];
+    cell.shouldDrawShadow = (numberOfRows == 1);
     
     return cell;
 }
@@ -102,9 +98,7 @@
     FeedItem *item = [self feedItemAtForMessageIndexPath:indexPath];
     Message *message = [item previewMessage];
     
-    cell.authorLabel.text = message.authorName;
-    cell.timestampLabel.text = [message.timestamp timeAgo];
-    cell.bodyLabel.text = message.body;
+    [cell configureForMessage:message];
     
     if ([item hasMultipleMessages]) {
         cell.moreMessagesLabel.text = [NSString stringWithFormat:@"+ %d more", (item.messages.count - 1)];

@@ -11,7 +11,12 @@
 #import "CorePlot-CocoaTouch.h"
 
 @protocol GraphCardProtocol <CardProtocol>
--(NSArray *)chartCoordinates;
+
+-(NSNumber *)maxYCoordinate;
+-(NSArray *)firstCoordinates;
+-(NSArray *)secondCoordinates;
+-(NSArray *)thirdCoordinates;
+
 -(NSNumber *)firstDataField;
 -(NSNumber *)secondDataField;
 -(NSNumber *)thirdDataField;

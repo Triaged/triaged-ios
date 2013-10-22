@@ -10,6 +10,7 @@
 #import "Mantle.h"
 #import "FeedItem.h"
 #import "Account.h"
+#import "User.h"
 
 @class FeedItem;
 
@@ -18,10 +19,9 @@
 
 @property (nonatomic, copy, readonly) NSString *externalID;
 @property (nonatomic, copy, readonly) NSString *uuid;
-@property (nonatomic, copy, readonly) NSString *authorName;
-@property (nonatomic, copy, readonly) NSString *authorID;
 @property (nonatomic, copy, readonly) NSString *body;
 @property (nonatomic, copy, readonly) NSDate *timestamp;
+@property (nonatomic, copy, readonly) User *author;
 @property (nonatomic, copy, readonly) FeedItem *feedItem;
 
 + (instancetype) buildNewMessageWithBody:(NSString *)body;

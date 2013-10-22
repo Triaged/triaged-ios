@@ -63,12 +63,11 @@
         <relationship name="commits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KilnCommit" inverseName="push" inverseEntity="KilnCommit" syncable="YES"/>
     </entity>
     <entity name="Message" syncable="YES">
-        <attribute name="authorID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="authorName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="externalID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="authoredMessages" inverseEntity="User" syncable="YES"/>
         <relationship name="feedItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FeedItem" inverseName="messages" inverseEntity="FeedItem" syncable="YES"/>
     </entity>
     <entity name="NewRelicAlert" parentEntity="FeedItem" syncable="YES">
@@ -111,6 +110,13 @@
     </entity>
     <entity name="StripeInvoiceFailed" parentEntity="StripeEvent" syncable="YES"/>
     <entity name="StripeSubscriptionDeleted" parentEntity="StripeEvent" syncable="YES"/>
+    <entity name="User" syncable="YES">
+        <attribute name="avatarUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="authoredMessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="author" inverseEntity="Message" syncable="YES"/>
+    </entity>
     <elements>
         <element name="FeedItem" positionX="0" positionY="0" width="0" height="0"/>
         <element name="GithubCommit" positionX="0" positionY="0" width="0" height="0"/>
@@ -138,5 +144,6 @@
         <element name="StripeEvent" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StripeInvoiceFailed" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StripeSubscriptionDeleted" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

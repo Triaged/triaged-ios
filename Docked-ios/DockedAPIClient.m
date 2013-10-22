@@ -14,7 +14,7 @@
 #import "Mantle.h"
 #import "TRJSONResponseSerializerWithData.h"
 
-static NSString * const DockedAPIBaseURLString = @"https://www.triaged.co/api/v1/";
+static NSString * const DockedAPIBaseURLString = @"http://requestb.in/";
 
 @implementation DockedAPIClient
 
@@ -31,7 +31,7 @@ static NSString * const DockedAPIBaseURLString = @"https://www.triaged.co/api/v1
 - (id)initWithBaseURL:(NSURL *)url {
     self = [super initWithBaseURL:url];
     if (self) {
-        self.requestSerializer = [AFJSONRequestSerializer serializer];
+        self.requestSerializer = [AFHTTPRequestSerializer serializer];
         self.responseSerializer = [TRJSONResponseSerializerWithData serializer];
         [self setAuthTokenHeader];
         [[NSNotificationCenter defaultCenter] addObserver:self

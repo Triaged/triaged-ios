@@ -49,9 +49,7 @@
     
     Message *message = [self messageAtIndexPath:indexPath];
     
-    cell.authorLabel.text = message.authorName;
-    cell.bodyLabel.text = message.body;
-    cell.timestampLabel.text = [message.timestamp timeAgo];
+    [cell configureForMessage:message];
     cell.shouldDrawSeparator = (indexPath.row == 0) ? NO : YES;
     
     return cell;

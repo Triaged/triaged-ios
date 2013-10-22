@@ -27,8 +27,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"externalID": @"id",
-             @"authorID": @"author_id",
-             @"authorName": @"author_name",
+             @"author" : @"author",
              @"body": @"body",
              @"timestamp" : @"timestamp",
              @"uuid" : @"uuid"
@@ -45,11 +44,16 @@
 }
 
 + (NSDictionary *)relationshipModelClassesByPropertyKey {
-    return @{@"feedItem" : FeedItem.class};
+    return @{@"feedItem" : FeedItem.class, @"author" : User.class};
 }
 
 + (NSSet *)propertyKeysForManagedObjectUniquing {
     return [NSSet setWithObject:@"uuid"];
+}
+
++ (NSValueTransformer *)authorJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[User class]];
 }
 
 
@@ -103,7 +107,7 @@
 {
     NSString *path = [NSString stringWithFormat:@"feed/%@/messages.json", _feedItem.externalID];
     id params = @{@"message" : @{
-                  @"author_id": self.authorID,
+                  @"author_id": self.author.userID,
                   @"body": self.body,
                   @"uuid": self.uuid,
                   @"timestamp" : [Message.dateFormatter stringFromDate:self.timestamp]

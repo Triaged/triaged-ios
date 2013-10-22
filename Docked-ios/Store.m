@@ -52,7 +52,7 @@
 - (NSFetchedResultsController*)feedItemsFetchedResultsController
 {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
-    [request setFetchBatchSize:100];
+    [request setFetchBatchSize:200];
     [request setRelationshipKeyPathsForPrefetching:@[@"commits"]];
     [request setRelationshipKeyPathsForPrefetching:@[@"messages"]];
     [request setRelationshipKeyPathsForPrefetching:@[@"dailyDetails"]];

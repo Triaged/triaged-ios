@@ -90,6 +90,10 @@
         @"icon" : @"github.png",
         @"settings_class" : GithubSettingsViewController.class
     },
+    @{  @"name" : @"Stripe",
+        @"icon" : @"stripe.png",
+        @"settings_class" : StripeSettingsViewController.class
+    },
     @{  @"name" : @"Kiln",
         @"icon" : @"kiln.png",
         @"settings_class" : KilnSettingsViewController.class

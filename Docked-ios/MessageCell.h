@@ -12,6 +12,7 @@
 @interface MessageCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *lineView;
+@property (strong, nonatomic) UIImageView *avatarView;
 @property (strong, nonatomic) UILabel *authorLabel;
 @property (strong, nonatomic) UILabel *timestampLabel;
 @property (strong, nonatomic) UILabel *bodyLabel;
@@ -25,6 +26,8 @@
 
 -(void) layoutMoreMessages;
 -(void) removeMoreMessages;
+
+- (void)configureForMessage:(Message *)message;
 
 
 @end

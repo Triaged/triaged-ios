@@ -10,7 +10,7 @@
 
 @implementation CardCell
 
-@synthesize propertyLabel, actionLabel, bodyLabel, providerIconView, timestampLabel, lineDivider, shouldDrawShadow;
+@synthesize propertyLabel, actionLabel, bodyLabel, providerIconView, timestampLabel, lineDivider, shouldDrawShadow, heightCache;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

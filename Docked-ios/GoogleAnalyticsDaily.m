@@ -74,7 +74,7 @@
     return [UIImage imageNamed:@"google_analytics.png"];
 }
 
--(NSArray *)chartCoordinates {
+-(NSArray *)firstCoordinates {
     NSMutableArray *chartCoordinates = [[NSMutableArray alloc] initWithCapacity:self.dailyDetails.count];
     for(GoogleAnalyticsDailyStatusDetails *detail in self.dailyDetails) {
 //        [chartCoordinates addObject:[NSDictionary dictionaryWithObjectsAndKeys:detail.date, @"date", detail.visitsCount, @"visits", nil]];
@@ -83,7 +83,31 @@
     return [NSArray arrayWithArray:chartCoordinates];
 }
 
+-(NSArray *)secondCoordinates {
+    NSMutableArray *chartCoordinates = [[NSMutableArray alloc] initWithCapacity:self.dailyDetails.count];
+    for(GoogleAnalyticsDailyStatusDetails *detail in self.dailyDetails) {
+        [chartCoordinates addObject:detail.visitorsCount];
+    }
+    return [NSArray arrayWithArray:chartCoordinates];
+}
 
+-(NSArray *)thirdCoordinates {
+    NSMutableArray *chartCoordinates = [[NSMutableArray alloc] initWithCapacity:self.dailyDetails.count];
+    for(GoogleAnalyticsDailyStatusDetails *detail in self.dailyDetails) {
+        //        [chartCoordinates addObject:[NSDictionary dictionaryWithObjectsAndKeys:detail.date, @"date", detail.visitsCount, @"visits", nil]];
+        [chartCoordinates addObject:detail.pageViewsCount];
+    }
+    return [NSArray arrayWithArray:chartCoordinates];
+}
+
+-(NSNumber *)maxYCoordinate
+{
+    NSNumber *maxY = 0;
+    for(GoogleAnalyticsDailyStatusDetails *detail in self.dailyDetails) {
+        if( detail.visitsCount > maxY) maxY = detail.visitsCount;
+    }
+    return maxY;
+}
 
 -(NSNumber *)firstDataField {
     return _visitsSum;
@@ -98,6 +122,4 @@
 -(Class)tableViewCellClass {
     return [GraphDataCell class];
 }
-
-
 @end

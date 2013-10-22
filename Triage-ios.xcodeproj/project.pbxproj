@@ -18,6 +18,7 @@
 		CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */; };
 		CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0E028A1810A87600484E69 /* WelcomeViewController.m */; };
 		CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0E028B1810A87600484E69 /* WelcomeViewController.xib */; };
+		CB19813B181591B20091DB8A /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6B63C91800F83000145953 /* Reveal.framework */; };
 		CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */; };
 		CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB24D08B1811D1E100DF0D19 /* MessageUI.framework */; };
 		CB2D00AB181215E6005350D5 /* SettingEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */; };
@@ -355,6 +356,7 @@
 				CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */,
 				CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */,
 				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
+				CB19813B181591B20091DB8A /* Reveal.framework in Frameworks */,
 				CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */,
 				CBF3872C1812535500554730 /* HockeySDK.framework in Frameworks */,
 				CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */,
@@ -632,6 +634,17 @@
 			name = kiln;
 			sourceTree = "<group>";
 		};
+		CB8E0B6C1814A3CA0020E426 /* feed */ = {
+			isa = PBXGroup;
+			children = (
+				CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */,
+				CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */,
+				CB8F20C117EB5FBA00EBDC34 /* FeedTableViewController.h */,
+				CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */,
+			);
+			name = feed;
+			sourceTree = "<group>";
+		};
 		CB8F208417EB5D6300EBDC34 = {
 			isa = PBXGroup;
 			children = (
@@ -735,15 +748,12 @@
 		CB8F20BF17EB5F7700EBDC34 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CB8E0B6C1814A3CA0020E426 /* feed */,
 				CB0B906E17F4FA3E00F706BE /* settings */,
 				CB0B906D17F4FA2A00F706BE /* detail */,
 				CB5AECF017EF7D8A00319223 /* auth */,
-				CB8F20C117EB5FBA00EBDC34 /* FeedTableViewController.h */,
-				CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */,
 				CB84B41D17EBBF1500C8B00D /* RootViewController.h */,
 				CB84B41E17EBBF1500C8B00D /* RootViewController.m */,
-				CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */,
-				CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -808,6 +818,8 @@
 			children = (
 				CBD43EF917F8B221001AC849 /* TextCardCell.h */,
 				CBD43EFA17F8B221001AC849 /* TextCardCell.m */,
+				CB742D18180EFF2F0068A301 /* GraphDataCell.h */,
+				CB742D19180EFF2F0068A301 /* GraphDataCell.m */,
 				CBD43EFE17F8B54B001AC849 /* DataCardCell.h */,
 				CBD43EFF17F8B54B001AC849 /* DataCardCell.m */,
 				CBD43F0417F8B63B001AC849 /* CardCell.h */,
@@ -816,8 +828,6 @@
 				CBD43F5017FA63E9001AC849 /* MessageCell.m */,
 				CBDCEC76180629480024860B /* ProviderSettingCell.h */,
 				CBDCEC77180629480024860B /* ProviderSettingCell.m */,
-				CB742D18180EFF2F0068A301 /* GraphDataCell.h */,
-				CB742D19180EFF2F0068A301 /* GraphDataCell.m */,
 				CB4F87AA180F532500B685E1 /* TeammateCell.h */,
 				CB4F87AB180F532500B685E1 /* TeammateCell.m */,
 				CB4F87B1180F9A1B00B685E1 /* EventCell.h */,
@@ -1260,12 +1270,13 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"/Users/charlie/Sites/Triage/client/Docked-ios",
 					"/Users/charlie/Sites/Triage/client/Triage-ios/vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework",
+					"/Users/charlie/Sites/Triage/client/Triage-ios",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";
 				INFOPLIST_FILE = "Docked-ios/Triage-ios-Info.plist";
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "73087497-6390-4C0A-B241-F2CF9E1B2F3A";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1285,12 +1296,13 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"/Users/charlie/Sites/Triage/client/Docked-ios",
 					"/Users/charlie/Sites/Triage/client/Triage-ios/vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework",
+					"/Users/charlie/Sites/Triage/client/Triage-ios",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";
 				INFOPLIST_FILE = "Docked-ios/Triage-ios-Info.plist";
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "73087497-6390-4C0A-B241-F2CF9E1B2F3A";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

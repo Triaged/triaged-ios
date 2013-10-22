@@ -27,6 +27,7 @@
 @property (strong, nonatomic) UILabel *actionLabel;
 @property (strong, nonatomic) UILabel *timestampLabel;
 @property (strong, nonatomic) UILabel *bodyLabel;
+@property CGFloat *heightCache;
 @property  BOOL shouldDrawShadow;
 
 

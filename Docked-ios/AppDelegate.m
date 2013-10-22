@@ -53,12 +53,9 @@
     self.store = [[Store alloc] init];
     self.store.managedObjectContext = self.persistentStack.managedObjectContext;
     
-    if ([self.store.account isLoggedIn]) {
-        [self.store.account resetAPNSPushCount];
-    }
-    
     [self setBaseStyles];
     [self addObservers];
+    [self setupLoggedInUser];
     
     
     
@@ -95,6 +92,15 @@
     pageControl.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)setupLoggedInUser
+{
+    if ([self.store.account isLoggedIn]) {
+        if([UIApplication sharedApplication].applicationIconBadgeNumber > 0) {
+            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+            [self.store.account resetAPNSPushCount];
+        }
+    }
+}
 
 - (Store *)store
 {
@@ -187,19 +193,15 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    if ([self.store.account isLoggedIn]) {
-        [self.store.account resetAPNSPushCount];
-    }
+    
+    [self setupLoggedInUser];
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    if ([self.store.account isLoggedIn]) {
-        [self.store.account resetAPNSPushCount];
-    }
+    [self setupLoggedInUser];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

@@ -19,4 +19,17 @@
              };
 }
 
++ (NSString *)managedObjectEntityName {
+    return @"User";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{};
+}
+
++ (NSSet *)propertyKeysForManagedObjectUniquing {
+    return [NSSet setWithObject:@"userID"];
+}
+
+
 @end

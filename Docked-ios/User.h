@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
 
-@interface User : MTLModel <MTLJSONSerializing>
+@interface User : MTLModel <MTLJSONSerializing,  MTLManagedObjectSerializing>
 
 @property (nonatomic, copy, readonly) NSString *userID;
 @property (nonatomic, copy, readonly) NSString *name;

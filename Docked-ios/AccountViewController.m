@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "Store.h"
 #import "TeammateCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIButton+AFNetworking.h"
 
 @interface AccountViewController () <UITableViewDataSource>  {
 
@@ -22,7 +24,7 @@
 
 @implementation AccountViewController
 
-@synthesize scrollView, upgradeButton, nameLabel, emailLabel, companyLabel, connectionCountLabel, pushNotificationSwitch, teamTableView, signOutButton;
+@synthesize scrollView, upgradeButton, nameLabel, emailLabel, companyLabel, connectionCountLabel, pushNotificationSwitch, teamTableView, signOutButton, avatarButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +42,10 @@
     nameLabel.text = currentAccount.name;
     emailLabel.text = currentAccount.email;
     companyLabel.text = currentAccount.companyName;
-    //avatarImage.image = currentAccount.avatar;
+    
+    NSURL *avatarUrl = [NSURL URLWithString:currentAccount.avatarUrl];
+    [avatarButton setBackgroundImageForState:UIControlStateNormal withURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+    [avatarButton addTarget:self action:@selector(updateProfilePicture) forControlEvents:UIControlEventTouchUpInside];
     
     // Connections
     connectionCountLabel.text = [currentAccount.followedProviderCount stringValue];
@@ -105,7 +110,8 @@
         cell.cellIsForInvite = NO;
         User *teammate = currentAccount.teammates[indexPath.row];
         cell.nameLabel.text = teammate.name;
-        //cell.avatarView.image = teammate.avatarUrl;
+        NSURL *avatarUrl = [NSURL URLWithString:teammate.avatarUrl];
+        [cell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
     }
     
     
@@ -118,10 +124,24 @@
 
 
 
-- (void)didReceiveMemoryWarning
+-(void) updateProfilePicture
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    imagePicker.delegate = self;
+    [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    
+    [currentAccount uploadProfilePicture:chosenImage];
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 
 -(IBAction)logout:(id)sender

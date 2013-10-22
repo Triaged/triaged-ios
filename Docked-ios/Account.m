@@ -46,6 +46,17 @@
     }];
 }
 
+-(void)uploadProfilePicture:(UIImage *)profilePicture
+{
+    
+    NSData *imageData = UIImageJPEGRepresentation(profilePicture, 1.0);
+    NSMutableURLRequest *request = [[DockedAPIClient sharedClient].requestSerializer multipartFormRequestWithMethod:@"POST" URLString:@"r44fucr4" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData name:@"icon[image]" fileName:@"icon.png" mimeType:@"image/png"];
+    }];
+    NSURLSessionDataTask *task  = [[DockedAPIClient sharedClient] dataTaskWithRequest:request completionHandler:nil];
+    [task resume];
+}
+
 -(BOOL)isLoggedIn {
     return [[CredentialStore sharedClient] isLoggedIn];
 }

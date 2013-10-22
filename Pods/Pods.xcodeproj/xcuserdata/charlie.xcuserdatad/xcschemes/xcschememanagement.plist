@@ -8,109 +8,91 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-CorePlot.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Pods-NSDate+TimeAgo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Pods-SGNavigationProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>Pods-SSKeychain.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>Pods-SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>Pods-SWRevealViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0FFBD05139EB44E68C79283D</key>
+		<key>03A8A4C905E34E62BA8DEFA9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4CF8A86C6B5D4969AAC23E91</key>
+		<key>11E6A3CADB8142888CBF9E2D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>526D806A75314CD79FEC9252</key>
+		<key>774E6938AFA6460B9D41A1B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>591CDDB149264B63BE0462D6</key>
+		<key>8327DD1EA34F4806B123F6A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>76F25892CE9C430A9003AA2F</key>
+		<key>867FB617F03F480E96F887AC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8793F0F54CA4484BA3EA6396</key>
+		<key>A7AA2B01A0534B23A0180D05</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D7B589EDFBC4C37B9569D87</key>
+		<key>A81767F070AB4CD7AED37550</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DA06ADC4BB7543E896156658</key>
+		<key>CB6DB8B650FF45AB89EB1925</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF1730080BF643BDB3EDC2B4</key>
+		<key>EB89E616EDFB4B518AFB675F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
