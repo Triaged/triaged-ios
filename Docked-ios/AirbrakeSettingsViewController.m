@@ -31,7 +31,6 @@
     [super viewDidLoad];
     
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_airbrake.png"];
-    [self.scrollView addSubview:self.followButton];
 }
 
 - (void) setupUnconnectedState
@@ -70,8 +69,6 @@
 - (void) setupConnectedState
 {
     [super setupConnectedState];
-    
-    [self.scrollView addSubview:self.followButton];
     
     self.eventsViewController.view.frame = CGRectMake(0, 240, 320, 200);
     [self.scrollView addSubview:self.eventsViewController.view];

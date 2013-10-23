@@ -53,8 +53,6 @@
 - (void) setupConnectedState
 {
     [super setupConnectedState];
-    
-    [self.scrollView addSubview:self.followButton];
 }
 
 - (void) layoutSubviews

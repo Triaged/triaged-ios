@@ -25,37 +25,11 @@
      @"providerID": @"id",
      @"name" : @"name",
      @"connected" : @"connected",
-     @"follows" : @"follows",
      @"webhookUrl" : @"webhook_url"
     };
 }
 
-- (void) follow {
-    
-    // set this locally first
-    _follows = true;
 
-    NSString *path = [NSString stringWithFormat:@"providers/%@/follow.json", _providerID];
-    [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
-        // reset back if the post fails
-        _follows = false;
-    }];
-}
-
-- (void) unfollow {
-     _follows = false;
-    
-    NSString *path = [NSString stringWithFormat:@"providers/%@/unfollow.json", _providerID];
-    [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
-        // Reset back, if the post fails
-        _follows = true;
-    }];
-}
 
 - (void) connect
 {

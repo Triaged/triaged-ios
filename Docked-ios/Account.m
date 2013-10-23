@@ -10,6 +10,9 @@
 #import "Provider.h"
 #import "DockedAPIClient.h"
 #import "CredentialStore.h"
+#import "User.h"
+#import "AppDelegate.h"
+#import "Store.h"
 
 @implementation Account
 
@@ -49,13 +52,81 @@
 -(void)uploadProfilePicture:(UIImage *)profilePicture
 {
     
+//    [[DockedAPIClient sharedClient] POST:@"account/avatar.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//            NSData *imageData = UIImageJPEGRepresentation(profilePicture, 1.0);
+//
+//            [formData appendPartWithFileData:imageData name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];
+//    } success:^(NSURLSessionDataTask *task, id responseObject) {
+//        NSLog(@"success");
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        NSLog(@"failure");
+//    }];
     NSData *imageData = UIImageJPEGRepresentation(profilePicture, 1.0);
-    NSMutableURLRequest *request = [[DockedAPIClient sharedClient].requestSerializer multipartFormRequestWithMethod:@"POST" URLString:@"r44fucr4" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:imageData name:@"icon[image]" fileName:@"icon.png" mimeType:@"image/png"];
+    NSString *tmpDirectory = NSTemporaryDirectory();
+    NSString *tmpFile = [tmpDirectory stringByAppendingPathComponent:@"avatar.jpg"];
+    [imageData writeToFile:tmpFile atomically:YES];
+    
+    [[DockedAPIClient sharedClient] POST:@"account/avatar.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:tmpFile];
+        [formData appendPartWithFileURL:fileURL name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg" error:nil];
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"success");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"failure");
     }];
-    NSURLSessionDataTask *task  = [[DockedAPIClient sharedClient] dataTaskWithRequest:request completionHandler:nil];
-    [task resume];
+    
 }
+
+//- (void)postData:(NSData *)data
+//            name:(NSString *)name
+//        fileName:(NSString *)fileName
+//        mimeType:(NSString *)mimeType
+//             url:(NSURL *)url
+//      parameters:(NSDictionary *)parameters
+//         success:(void(^)(id responseObject))success
+//         failure:(void(^)(NSError *error))failure {
+//    NSAssert( data.length > 0, @"You must provide some data to upload" );
+//    
+//    AFHTTPRequestSerializer *serializer = ( AFHTTPRequestSerializer * )[DockedAPIClient sharedClient].requestSerializer;
+//    
+//    NSMutableURLRequest *request =
+//    [serializer multipartFormRequestWithMethod:@"POST"
+//                                     URLString:[[NSURL URLWithString:[url absoluteString] relativeToURL:[DockedAPIClient sharedClient].baseURL] absoluteString]
+//                                    parameters:parameters
+//                     constructingBodyWithBlock:^(id < AFMultipartFormData > formData) {
+//                         if ( mimeType.length > 0 && name.length > 0 && fileName.length > 0 ) {
+//                             [formData appendPartWithFileData:data name:name fileName:fileName mimeType:mimeType];
+//                         }
+//                         else if ( name.length > 0 ) {
+//                             [formData appendPartWithFormData:data name:name];
+//                         }
+//                         else {
+//                             NSAssert( NO, @"You must provide data & name or data & name & fileName & mimeType. No other options are allowed." );
+//                         }
+//                     }];
+//    
+//    NSError *streamError;
+//    NSString *temporaryFileName = [request.HTTPBodyStream writeToTemporaryFileWithError:&streamError];
+//    if ( !temporaryFileName ) {
+//        TM_CALL_BLOCK( failure, streamError );
+//        return;
+//    }
+//    
+//    NSURLSessionUploadTask *task =
+//    [[DockedAPIClient sharedClient] uploadTaskWithRequest:request
+//                                      fromFile:[NSURL fileURLWithPath:temporaryFileName]
+//                                      progress:nil
+//                             completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+//                                 [[NSFileManager defaultManager] removeItemAtPath:temporaryFileName error:nil];
+//                                 NSHTTPURLResponse *httpResponse = ( NSHTTPURLResponse * )response;
+//                                 if ( httpResponse.statusCode == 200 && error == nil ) {
+//                                     TM_CALL_BLOCK( success, responseObject );
+//                                     return;
+//                                 }
+//                                 TM_CALL_BLOCK( failure, error );
+//                             }];
+//    [task resume];
+//}
 
 -(BOOL)isLoggedIn {
     return [[CredentialStore sharedClient] isLoggedIn];
@@ -86,6 +157,17 @@
         NSLog(@"%@",[error localizedDescription]);
     }];
 }
+
+-(User *)currentUser
+{
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", _userID];
+    NSArray * fetchedObjects = [[AppDelegate sharedDelegate].store.managedObjectContext executeFetchRequest:request error:nil];
+    return [MTLManagedObjectAdapter modelOfClass:User.class
+                               fromManagedObject:[fetchedObjects firstObject] error:nil];
+}
+
+
 
 
 @end

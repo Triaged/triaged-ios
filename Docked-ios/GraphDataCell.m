@@ -85,9 +85,9 @@
     if(index == 0) {
         plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:0.7f]];
     } else if (index == [NSNumber numberWithInt:1]) {
-        plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:100.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:0.7f]];
+        plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:179.0f/255.0f green:197.0f/255.0f  blue:227.0f/255.0f alpha:0.7f]];
     } else {
-        plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:32.0f/255.0f green:100.0f/255.0f  blue:133.0f/255.0f alpha:0.7f]];
+        plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:117.0f/255.0f green:220.0f/255.0f  blue:229.0f/255.0f alpha:0.7f]];
     }
     
     plot.areaBaseValue = CPTDecimalFromInteger(0);

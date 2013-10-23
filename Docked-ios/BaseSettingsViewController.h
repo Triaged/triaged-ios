@@ -22,16 +22,12 @@
 @property (nonatomic, strong) UIImageView *providerHeroImageView;
 @property (strong, nonatomic) UILabel *connectedLabel;
 @property (strong, nonatomic) SettingEventsViewController *eventsViewController;
-
-
 @property (strong, nonatomic) UIButton *connectButton;
-@property (strong, nonatomic) UIButton *followButton;
 
 
 - (void)layoutSubviews;
 
 - (BOOL)isConnected;
-- (BOOL)isFollowing;
 - (void)toggleFollow;
 
 -(void)setupConnectedState;

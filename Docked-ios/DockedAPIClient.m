@@ -14,7 +14,7 @@
 #import "Mantle.h"
 #import "TRJSONResponseSerializerWithData.h"
 
-static NSString * const DockedAPIBaseURLString = @"http://requestb.in/";
+static NSString * const DockedAPIBaseURLString = @"https://www.triaged.co/api/v1/";
 
 @implementation DockedAPIClient
 

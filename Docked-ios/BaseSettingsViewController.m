@@ -18,7 +18,7 @@
 
 @implementation BaseSettingsViewController
 
-@synthesize scrollView, providerHeroImageView, connectButton, followButton, connectedLabel, eventsViewController;
+@synthesize scrollView, providerHeroImageView, connectButton, connectedLabel, eventsViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,13 +51,6 @@
     connectButton.layer.cornerRadius = 6; // this value vary as per your desire
     connectButton.clipsToBounds = YES;
     [connectButton addTarget:self action:@selector(connect) forControlEvents:UIControlEventTouchUpInside];
-    
-    // Follow Button
-    followButton = [[UIButton alloc] init];
-    followButton.frame = CGRectMake(95, 115, 130, 29);
-    [followButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
-    ([self isFollowing] ? [self setFollowButtonToFollowing] : [self setFollowButtonToNotFollowing]);
-    
     
     // Connected State
     ([self isConnected] ?  [self setupConnectedState] : [self setupUnconnectedState]);
@@ -113,47 +106,6 @@
 {
     return self.provider.connected;
 }
-
-- (BOOL) isFollowing;
-{
-    return self.provider.follows;
-}
-
--(void) toggleFollow
-{
-    if ([self isFollowing]) {
-        [self.provider unfollow];
-        [self setFollowButtonToNotFollowing];
-    } else {
-        [self.provider follow];
-        [self setFollowButtonToFollowing];
-        
-    }
-    [followButton setNeedsDisplay];
-    [[AppDelegate sharedDelegate].navVC showSGProgressWithDuration:1.5];
-}
-
-- (void)setFollowButtonToFollowing
-{
-    [followButton setTitle:@"Following" forState:UIControlStateNormal];
-    followButton.layer.cornerRadius = 15; // this value vary as per your desire
-    followButton.clipsToBounds = YES;
-    [followButton setBackgroundColor:
-     [UIColor colorWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f]];
-    [followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-}
-
-- (void)setFollowButtonToNotFollowing
-{
-    [followButton setTitle:@"Follow" forState:UIControlStateNormal];
-    followButton.layer.cornerRadius = 15; // this value vary as per your desire
-    followButton.clipsToBounds = YES;
-    [followButton setBackgroundColor:[UIColor whiteColor]];
-    [followButton setTitleColor:[UIColor colorWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    [followButton.layer setBorderWidth:1];
-    [followButton.layer setBorderColor:[[UIColor colorWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f] CGColor]];
-}
-
 
 - (void)didReceiveMemoryWarning
 {

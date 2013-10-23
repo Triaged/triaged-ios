@@ -28,6 +28,7 @@
 +(void)fetchRemoteUserAccountWithBlock:(void (^)(Account *))block;
 
 -(void)uploadProfilePicture:(UIImage *)profilePicture;
+-(User *)currentUser;
 
 
 

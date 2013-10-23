@@ -31,7 +31,6 @@
     [super viewDidLoad];
     
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_sentry.png"];
-    [self.scrollView addSubview:self.followButton];
 }
 
 - (void) setupUnconnectedState

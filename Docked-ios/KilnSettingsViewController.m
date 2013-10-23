@@ -32,7 +32,6 @@
     [super viewDidLoad];
     
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_kiln.png"];
-    [self.scrollView addSubview:self.followButton];
 }
 
 - (void) setupUnconnectedState

@@ -66,29 +66,13 @@
     }];
 }
 
-// ManagedObjects
-
-+ (instancetype) buildNewMessageWithBody:(NSString *)body
-{
-    NSDictionary *attributes = @{
-                                 @"body" : body,
-                                 @"authorName" : [AppDelegate sharedDelegate].store.account.name,
-                                 @"authorID" : [AppDelegate sharedDelegate].store.account.userID,
-                                 @"timestamp" : [NSDate date]
-                                 };
-    
-    Message *message = [[Message alloc] initWithDictionary:attributes error:nil];
-    return message;
-}
-
 + (instancetype) buildNewMessageWithBody:(NSString *)body forFeedItem:(FeedItem *)item
 {
     NSDictionary *attributes = @{
                                  @"body" : body,
-                                 @"authorName" : [AppDelegate sharedDelegate].store.account.name,
-                                 @"authorID" : [AppDelegate sharedDelegate].store.account.userID,
                                  @"timestamp" : [NSDate date],
                                  @"feedItem" : item,
+                                 @"author" : [AppDelegate sharedDelegate].store.account.currentUser,
                                  @"uuid" : [[NSUUID UUID] UUIDString]
                                  };
     

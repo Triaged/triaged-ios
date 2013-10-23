@@ -15,13 +15,8 @@
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *webhookUrl;
 @property (nonatomic, readonly) BOOL connected;
-@property (nonatomic, readonly) BOOL follows;
 
 + (NSArray *)currentProviders;
-
-- (void) follow;
-- (void) unfollow;
-
 - (void) connect;
 
 @end

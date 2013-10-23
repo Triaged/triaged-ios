@@ -24,7 +24,6 @@
 @property (nonatomic, copy, readonly) User *author;
 @property (nonatomic, copy, readonly) FeedItem *feedItem;
 
-+ (instancetype) buildNewMessageWithBody:(NSString *)body;
 + (instancetype) buildNewMessageWithBody:(NSString *)body forFeedItem:(FeedItem *)item;
 
 @end

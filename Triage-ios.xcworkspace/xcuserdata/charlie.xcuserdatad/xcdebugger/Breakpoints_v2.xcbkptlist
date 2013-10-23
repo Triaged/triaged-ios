@@ -73,29 +73,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Docked-ios/MessageCell.m"
-            timestampString = "404095782.281636"
+            filePath = "Docked-ios/Account.m"
+            timestampString = "404187568.819068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-configureForMessage:"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-uploadProfilePicture:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Docked-ios/MessageCell.m"
-            timestampString = "404096301.730456"
+            filePath = "Docked-ios/Message.m"
+            timestampString = "404187899.828732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-configureForMessage:"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "+buildNewMessageWithBody:forFeedItem:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
