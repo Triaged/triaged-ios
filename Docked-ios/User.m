@@ -31,5 +31,10 @@
     return [NSSet setWithObject:@"userID"];
 }
 
+- (NSString *)autocompleteString
+{
+    return self.name;
+}
+
 
 @end

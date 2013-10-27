@@ -87,17 +87,13 @@
 {
     NSDictionary *provider = providers[indexPath.row];
     Class providerSettingsClass = [provider objectForKey:@"settings_class"];
-    
-    // Grab a handle to the reveal controller, as if you'd do with a navigtion controller via self.navigationController.
-    SWRevealViewController *revealController = self.revealViewController;
-    
+
     BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
-    [[AppDelegate sharedDelegate].navVC pushViewController:settingsVC animated:NO];
-    [revealController setFrontViewController:[AppDelegate sharedDelegate].navVC animated:YES];
+    [self.navigationController pushViewController:settingsVC animated:YES];
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return 44;
 }
 @end

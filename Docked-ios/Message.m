@@ -89,6 +89,8 @@
 
 - (void)saveRemote
 {
+    
+    [[AppDelegate sharedDelegate].navVC showSGProgressWithDuration:1.5];
     NSString *path = [NSString stringWithFormat:@"feed/%@/messages.json", _feedItem.externalID];
     id params = @{@"message" : @{
                   @"author_id": self.author.userID,
@@ -98,9 +100,6 @@
                 }};
     
     [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
-    
-        [[AppDelegate sharedDelegate].navVC showSGProgressWithDuration:1.5];
-    
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];

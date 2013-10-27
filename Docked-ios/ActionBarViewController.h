@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *externalLink;
 @property (weak, nonatomic) IBOutlet UIButton *externalLinkButton;
+@property (strong, nonatomic) UIImage *screenShot;
 
 -(void)setExternalLink:(NSString *)newExternalLink;
 -(IBAction)didTapExternalLinkButton:(id)sender;

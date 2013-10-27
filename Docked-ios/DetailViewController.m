@@ -7,32 +7,32 @@
 //
 
 #import "DetailViewController.h"
-#import "MessageTabViewController.h"
 #import "MessagesTableViewController.h"
-#import "ActionBarViewController.h"
-#import "NewMessageViewController.h"
+#import "MessageToolbarViewController.h"
 #import "CardCell.h"
+#import "UIView+BlurredSnapshot.h"
 
 @interface DetailViewController () {
-    NewMessageViewController *newMessageVC;
-    UIScrollView *scrollView;
     MessagesTableViewController *messagesVC;
+    MessageToolbarViewController *messageToolbarVC;
 }
 
 @end
 
 @implementation DetailViewController
 
+@synthesize scrollView, actionBarVC;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        newMessageVC = [[NewMessageViewController alloc] init];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(refreshView)
                                                      name:@"feedUpdated"
                                                    object:nil];
+        actionBarVC = [[ActionBarViewController alloc] init];
     }
     return self;
 }
@@ -47,12 +47,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //self.edgesForExtendedLayout = UIRectEdgeNone;
 
     self.view.backgroundColor = [[UIColor alloc]
                                  initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-
+    self.view.layer.zPosition = -9999;
+    
     scrollView = [[UIScrollView alloc] init];
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    scrollView.frame = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y,self.view.frame.size.width,self.view.frame.size.height - 40);
+    scrollView.layer.zPosition = -9999;
+    scrollView.userInteractionEnabled=YES;
     [self.view addSubview:scrollView];
     
     UIView *contentView;
@@ -72,29 +78,36 @@
     [contentView addSubview:cell];
     
     // External Link View
-    ActionBarViewController *externalVC = [[ActionBarViewController alloc] init];
-    [externalVC setExternalLink:[_feedItem htmlUrl]];
-    externalVC.view.frame = CGRectMake(8, cell.frame.size.height, 304, 50);
-    externalVC.view.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addChildViewController:externalVC];
-    [contentView addSubview:externalVC.view];
     
-//    // Message Tab View
-//    MessageTabViewController *messageTabVC = [[MessageTabViewController alloc] init];
-//    messageTabVC.view.frame = CGRectMake(0, self.view.bounds.size.height - 44, 320, 44);
-//    messageTabVC.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-//    [self addChildViewController:messageTabVC];
-//    [self.view addSubview:messageTabVC.view];
+    [actionBarVC setExternalLink:[_feedItem htmlUrl]];
+    actionBarVC.view.frame = CGRectMake(8, cell.frame.size.height, 304, 44);
+    actionBarVC.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addChildViewController:actionBarVC];
+    [contentView addSubview:actionBarVC.view];
+    
 
     // Messages Table View
     messagesVC = [[MessagesTableViewController alloc] init];
     messagesVC.feedItem = _feedItem;
     [self addChildViewController:messagesVC];
-    CGRect frame = CGRectMake(8, cell.frame.size.height + 64, 304.0, self.view.frame.size.height - (cell.frame.size.height + 44));
+    CGRect frame = CGRectMake(8, cell.frame.size.height + 44, 304.0, self.view.frame.size.height - (cell.frame.size.height + 44));
     messagesVC.tableView.frame = frame;
     [contentView  addSubview:messagesVC.tableView];
     [messagesVC didMoveToParentViewController:self];
-
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+																					action:@selector(handleTapGesture:)];
+    gestureRecognizer.delegate = self;
+    [self.scrollView addGestureRecognizer:gestureRecognizer];
+    
+    // Message Toolbar View
+    messageToolbarVC = [[MessageToolbarViewController alloc] init];
+    messageToolbarVC.view.frame = CGRectMake(0, self.view.bounds.size.height - 40, 320, 40);
+    messageToolbarVC.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    messageToolbarVC.detailView = self;
+    messageToolbarVC.view.layer.zPosition = MAXFLOAT;
+    [self addChildViewController:messageToolbarVC];
+    [self.view addSubview:messageToolbarVC.view];
+    
 }
 
 
@@ -109,16 +122,29 @@
 }
 
 -(void)setContentSize {
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height + 50);
-    scrollView.frame = self.view.frame;
+    
+    CGFloat height = (messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height + 20);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, height);
+    [self.view sendSubviewToBack:scrollView];
 }
 
--(void)presentNewMessageVC
+-(void)scrollToBottomAnimated:(BOOL)animated
 {
-    [newMessageVC setFeedItem:_feedItem];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newMessageVC ];
-    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
-    [self presentViewController:nav animated:YES completion:nil];
+    if (scrollView.contentSize.height > 300) {
+        CGPoint bottomOffset = CGPointMake(0, scrollView.contentSize.height - scrollView.frame.size.height);
+        NSLog(@"height: %f", bottomOffset.y);
+        [scrollView setContentOffset:bottomOffset animated:YES];
+    }
+}
+
+-(void) didSendText:(NSString *)text
+{
+    [Message buildNewMessageWithBody:text forFeedItem:_feedItem];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
+}
+
+- (void)handleTapGesture:(UIGestureRecognizer*)gesture {
+    [messageToolbarVC handleTapGesture:gesture];
 }
 
 @end

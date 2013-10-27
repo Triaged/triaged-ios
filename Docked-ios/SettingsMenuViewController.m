@@ -12,9 +12,14 @@
 #import "Store.h"
 #import "CredentialStore.h"
 #import "AccountViewController.h"
+#import "TeammateCell.h"
+#import "Account.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface SettingsMenuViewController ()
+@interface SettingsMenuViewController () {
 
+    Account *account;
+}
 @end
 
 @implementation SettingsMenuViewController
@@ -24,13 +29,16 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        //self.view.backgroundColor = [UIColor colorWithRed:201.0f/255.0f green:203.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
-        UIImage *backgroundImage = [UIImage imageNamed:@"bg_list.png"];
-        UIImageView *background = [[UIImageView alloc] initWithImage:backgroundImage];
-        background.frame = self.view.frame;
+        self.view.backgroundColor = [UIColor whiteColor];
+        account = [AppDelegate sharedDelegate].store.account;
         
-        [self.view addSubview:background];
-        [self.view sendSubviewToBack:background];
+        for (UIView *view in self.navigationController.navigationBar.subviews) {
+            for (UIView *view2 in view.subviews) {
+                if ([view2 isKindOfClass:[UIImageView class]]) {
+                    [view2 removeFromSuperview];
+                }
+            }
+        }
     }
     return self;
 }
@@ -38,45 +46,118 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    // Messages Table View
+    
+    self.navigationItem.title = @"Settings";
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
+                                   initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                   target:self action:@selector(dismissSettingsView)];
+
+    self.navigationItem.leftBarButtonItem = doneButton;
+    
+    UILabel *connectionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 84, 260, 20)];
+    connectionsLabel.text = @"Connections";
+    [connectionsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
+    connectionsLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
+    [self.view addSubview:connectionsLabel];
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    scrollView.frame = self.view.frame;
+    scrollView.contentSize = CGSizeMake(320, 600);
+    [self.view addSubview:scrollView];
+    
+    
+
+    
     ProviderSettingsTableViewController *providersTableVC = [[ProviderSettingsTableViewController alloc] init];
     //commentsVC.delegate = self;
     //providersTableVC.providers =  [[AppDelegate sharedDelegate].store.account.providers allValues];
     [self addChildViewController:providersTableVC];
-    CGRect frame = CGRectMake(0, 64, 260, self.view.frame.size.height - 64);
+    CGRect frame = CGRectMake(0, 106, 320, self.view.frame.size.height - 100);
     providersTableVC.tableView.frame = frame;
-    [self.view  addSubview:providersTableVC.tableView];
+    [scrollView  addSubview:providersTableVC.tableView];
     [providersTableVC didMoveToParentViewController:self];
     
-    // Avatar image
-    UIImage *avatarIcon = [UIImage imageNamed:@"avatar.png"];
-    UIImageView *avatarView = [[UIImageView alloc] initWithImage:avatarIcon];
-    avatarView.frame = CGRectMake(15, 500, 30, 30);
-    [self.view addSubview: avatarView];
+    UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
+    UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView.frame = CGRectMake(0, 106, 320, 1);
+    [scrollView addSubview: lineView];
     
-    UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(54, 500, 80, 30)];
-    settingsButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.0];
-    [settingsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [settingsButton addTarget:self action:@selector(loadAccountView) forControlEvents:UIControlEventTouchUpInside];
-    [settingsButton setTitle:@"Account" forState:UIControlStateNormal];
-    [self.view addSubview:settingsButton];
+    UIImageView *lineView4 = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView4.frame = CGRectMake(0, 456, 320, 1);
+    [scrollView addSubview: lineView4];
+    
+    
+    UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 480, 260, 20)];
+    settingsLabel.text = @"Account Settings";
+    [settingsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
+    settingsLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
+    [scrollView addSubview:settingsLabel];
+
+    
+    UITableView *accountTable = [[UITableView alloc] init];
+    accountTable.frame = CGRectMake(0, 502, 310, 44);
+    accountTable.delegate = self;
+    accountTable.dataSource = self;
+    [scrollView  addSubview:accountTable];
+    
+    //UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
+    UIImageView *lineView1 = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView1.frame = CGRectMake(0, 502, 320, 1);
+    [scrollView addSubview: lineView1];
+
+    
+    //UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
+    UIImageView *lineView2 = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView2.frame = CGRectMake(0, 544, 320, 1);
+    [scrollView addSubview: lineView2];
+
 }
 
-- (void)didReceiveMemoryWarning
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return 1;
 }
 
-- (void) loadAccountView
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    // Grab a handle to the reveal controller, as if you'd do with a navigtion controller via self.navigationController.
-    SWRevealViewController *revealController = self.revealViewController;
+    return 1;
+}
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    static NSString *CellIdentifier = @"teammateCell";
+    TeammateCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ];
+    if ( !cell )
+    {
+        cell = [ [ TeammateCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.cellIsForInvite = NO;
+    User *user = account.currentUser;
+    cell.nameLabel.text = user.name;
+    NSURL *avatarUrl = [NSURL URLWithString:user.avatarUrl];
+    [cell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
     
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     AccountViewController *accountVC = [[AccountViewController alloc] init];
-    [[AppDelegate sharedDelegate].navVC pushViewController:accountVC animated:NO];
-    [revealController setFrontViewController:[AppDelegate sharedDelegate].navVC animated:YES];
+    [self.navigationController pushViewController:accountVC animated:YES];
+
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 46;
+}
+
+- (void)dismissSettingsView
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

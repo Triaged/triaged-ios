@@ -41,34 +41,42 @@
 
     return [NSArray arrayWithObjects:
     @{  @"name" : @"Google Analytics",
+        @"id"   : @"google_analytics",
         @"icon" : @"google_analytics.png",
         @"settings_class" : GoogleAnalyticsSettingsViewController.class
     },
     @{  @"name" : @"Sentry",
+        @"id"   : @"sentry",
         @"icon" : @"sentry.png",
         @"settings_class" : SentrySettingsViewController.class
     },
     @{  @"name" : @"Heroku",
+        @"id"   : @"heroku",
         @"icon" : @"heroku.png",
         @"settings_class" : HerokuSettingsViewController.class
     },
     @{  @"name" : @"New Relic",
+        @"id"   : @"new_relic",
         @"icon" : @"new_relic.png",
         @"settings_class" : NewRelicSettingsViewController.class
     },
     @{  @"name" : @"Airbrake",
+        @"id"   : @"airbrake",
         @"icon" : @"airbrake.png",
         @"settings_class" : AirbrakeSettingsViewController.class
     },
     @{  @"name" : @"Github",
+        @"id"   : @"github",
         @"icon" : @"github.png",
         @"settings_class" : GithubSettingsViewController.class
     },
     @{  @"name" : @"Stripe",
+        @"id"   : @"stripe",
         @"icon" : @"stripe.png",
         @"settings_class" : StripeSettingsViewController.class
     },
     @{  @"name" : @"Kiln",
+        @"id"   : @"kiln",
         @"icon" : @"kiln.png",
         @"settings_class" : KilnSettingsViewController.class
     },

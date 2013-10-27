@@ -28,7 +28,6 @@
 - (void)layoutSubviews;
 
 - (BOOL)isConnected;
-- (void)toggleFollow;
 
 -(void)setupConnectedState;
 -(void)setupUnconnectedState;

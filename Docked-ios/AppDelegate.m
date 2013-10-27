@@ -46,7 +46,7 @@
         NSLog(@"Message in didFinishLaunchingWithOptions: %@",message);
     }
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIDebugWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
     self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
@@ -62,11 +62,7 @@
     RootViewController *rootVC = [[RootViewController alloc] init];
     navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
     
-    SettingsMenuViewController *settingsMenuViewController = [[SettingsMenuViewController alloc] init];
-    
-    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:settingsMenuViewController frontViewController:navVC];
-    
-    [self.window setRootViewController:revealController];
+    [self.window setRootViewController:navVC];
     [self.window makeKeyAndVisible];
     
     return YES;

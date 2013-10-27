@@ -56,6 +56,7 @@
     [request setRelationshipKeyPathsForPrefetching:@[@"commits"]];
     [request setRelationshipKeyPathsForPrefetching:@[@"messages"]];
     [request setRelationshipKeyPathsForPrefetching:@[@"dailyDetails"]];
+    [request setRelationshipKeyPathsForPrefetching:@[@"author"]];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO]];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"externalID" cacheName:nil];
 }

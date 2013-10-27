@@ -14,11 +14,11 @@
 		CB0B906617F34E9000F706BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906517F34E9000F706BE /* GameKit.framework */; };
 		CB0B906817F34E9500F706BE /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906717F34E9500F706BE /* PassKit.framework */; };
 		CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0B906B17F4F47E00F706BE /* DetailViewController.m */; };
-		CB0B907217F4FA7A00F706BE /* MessageTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0B907017F4FA7A00F706BE /* MessageTabViewController.m */; };
-		CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */; };
 		CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0E028A1810A87600484E69 /* WelcomeViewController.m */; };
 		CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0E028B1810A87600484E69 /* WelcomeViewController.xib */; };
 		CB19813B181591B20091DB8A /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6B63C91800F83000145953 /* Reveal.framework */; };
+		CB23F74C181AD49A0035262D /* UIDebugWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CB23F74B181AD49A0035262D /* UIDebugWindow.m */; };
+		CB23F74F181AF5D60035262D /* GGHashtagMentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB23F74E181AF5D60035262D /* GGHashtagMentionController.m */; };
 		CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */; };
 		CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB24D08B1811D1E100DF0D19 /* MessageUI.framework */; };
 		CB2D00AB181215E6005350D5 /* SettingEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */; };
@@ -94,12 +94,17 @@
 		CBA676B718085D520035368A /* BaseSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B618085D520035368A /* BaseSettingsViewController.m */; };
 		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
 		CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC47C1810956C00876AC6 /* CardPageViewController.m */; };
+		CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C8F18199D71001030C2 /* MLPAutoCompleteTextField.m */; };
+		CBCC6C9618199D71001030C2 /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C9418199D71001030C2 /* NSString+Levenshtein.m */; };
+		CBCC6C9F1819B90C001030C2 /* AtReplyMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C9E1819B90C001030C2 /* AtReplyMessageCell.m */; };
+		CBCC6CA21819C1FF001030C2 /* UIView+BlurredSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6CA11819C1FF001030C2 /* UIView+BlurredSnapshot.m */; };
+		CBCC6CA51819C3D2001030C2 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6CA41819C3D2001030C2 /* UIImage+ImageEffects.m */; };
+		CBD2CF0D181824D1009B3B71 /* MessageToolbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD2CF0C181824D1009B3B71 /* MessageToolbarViewController.m */; };
 		CBD43EFB17F8B221001AC849 /* TextCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFA17F8B221001AC849 /* TextCardCell.m */; };
 		CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43EFF17F8B54B001AC849 /* DataCardCell.m */; };
 		CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F0517F8B63B001AC849 /* CardCell.m */; };
 		CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */; };
 		CBD43F3917F9F4A0001AC849 /* ActionBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3717F9F49F001AC849 /* ActionBarViewController.m */; };
-		CBD43F3F17FA12A4001AC849 /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */; };
 		CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */; };
 		CBD43F4E17FA3A49001AC849 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F4D17FA3A49001AC849 /* Message.m */; };
 		CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F5017FA63E9001AC849 /* MessageCell.m */; };
@@ -147,12 +152,13 @@
 		CB0B906917F34E9500F706BE /* Docked-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Docked-ios.entitlements"; sourceTree = "<group>"; };
 		CB0B906A17F4F47E00F706BE /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		CB0B906B17F4F47E00F706BE /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		CB0B906F17F4FA7A00F706BE /* MessageTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTabViewController.h; sourceTree = "<group>"; };
-		CB0B907017F4FA7A00F706BE /* MessageTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTabViewController.m; sourceTree = "<group>"; };
-		CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTabViewController.xib; sourceTree = "<group>"; };
 		CB0E02891810A87600484E69 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		CB0E028A1810A87600484E69 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		CB0E028B1810A87600484E69 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		CB23F74A181AD49A0035262D /* UIDebugWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDebugWindow.h; sourceTree = "<group>"; };
+		CB23F74B181AD49A0035262D /* UIDebugWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDebugWindow.m; sourceTree = "<group>"; };
+		CB23F74D181AF5D60035262D /* GGHashtagMentionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGHashtagMentionController.h; sourceTree = "<group>"; };
+		CB23F74E181AF5D60035262D /* GGHashtagMentionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGHashtagMentionController.m; sourceTree = "<group>"; };
 		CB24D0861811BAC000DF0D19 /* KilnSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KilnSettingsViewController.h; sourceTree = "<group>"; };
 		CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KilnSettingsViewController.m; sourceTree = "<group>"; };
 		CB24D08B1811D1E100DF0D19 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -283,6 +289,21 @@
 		CBB89E1017FE4F0600402973 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
 		CBBCC47B1810956C00876AC6 /* CardPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardPageViewController.h; sourceTree = "<group>"; };
 		CBBCC47C1810956C00876AC6 /* CardPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardPageViewController.m; sourceTree = "<group>"; };
+		CBCC6C8E18199D71001030C2 /* MLPAutoCompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompleteTextField.h; sourceTree = "<group>"; };
+		CBCC6C8F18199D71001030C2 /* MLPAutoCompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLPAutoCompleteTextField.m; sourceTree = "<group>"; };
+		CBCC6C9018199D71001030C2 /* MLPAutoCompleteTextFieldDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompleteTextFieldDataSource.h; sourceTree = "<group>"; };
+		CBCC6C9118199D71001030C2 /* MLPAutoCompleteTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompleteTextFieldDelegate.h; sourceTree = "<group>"; };
+		CBCC6C9218199D71001030C2 /* MLPAutoCompletionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompletionObject.h; sourceTree = "<group>"; };
+		CBCC6C9318199D71001030C2 /* NSString+Levenshtein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Levenshtein.h"; sourceTree = "<group>"; };
+		CBCC6C9418199D71001030C2 /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
+		CBCC6C9D1819B90C001030C2 /* AtReplyMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtReplyMessageCell.h; sourceTree = "<group>"; };
+		CBCC6C9E1819B90C001030C2 /* AtReplyMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtReplyMessageCell.m; sourceTree = "<group>"; };
+		CBCC6CA01819C1FF001030C2 /* UIView+BlurredSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BlurredSnapshot.h"; sourceTree = "<group>"; };
+		CBCC6CA11819C1FF001030C2 /* UIView+BlurredSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BlurredSnapshot.m"; sourceTree = "<group>"; };
+		CBCC6CA31819C3D2001030C2 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		CBCC6CA41819C3D2001030C2 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		CBD2CF0B181824D1009B3B71 /* MessageToolbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageToolbarViewController.h; sourceTree = "<group>"; };
+		CBD2CF0C181824D1009B3B71 /* MessageToolbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageToolbarViewController.m; sourceTree = "<group>"; };
 		CBD43EF917F8B221001AC849 /* TextCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCardCell.h; sourceTree = "<group>"; };
 		CBD43EFA17F8B221001AC849 /* TextCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCardCell.m; sourceTree = "<group>"; };
 		CBD43EFE17F8B54B001AC849 /* DataCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCardCell.h; sourceTree = "<group>"; };
@@ -293,8 +314,6 @@
 		CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmokescreenViewController.m; sourceTree = "<group>"; };
 		CBD43F3617F9F49F001AC849 /* ActionBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionBarViewController.h; sourceTree = "<group>"; };
 		CBD43F3717F9F49F001AC849 /* ActionBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionBarViewController.m; sourceTree = "<group>"; };
-		CBD43F3C17FA12A4001AC849 /* NewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
-		CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
 		CBD43F4117FA12BE001AC849 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
 		CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
 		CBD43F4C17FA3A49001AC849 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
@@ -542,10 +561,17 @@
 		CB5AECE717EE88B900319223 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CB23F74D181AF5D60035262D /* GGHashtagMentionController.h */,
+				CB23F74E181AF5D60035262D /* GGHashtagMentionController.m */,
+				CBCC6CA31819C3D2001030C2 /* UIImage+ImageEffects.h */,
+				CBCC6CA41819C3D2001030C2 /* UIImage+ImageEffects.m */,
+				CBCC6C8D18199D5F001030C2 /* AutoCompleteTextField */,
 				CB5AECE817EE894000319223 /* CredentialStore.h */,
 				CB5AECE917EE894000319223 /* CredentialStore.m */,
 				CB85A8421809F9A200698988 /* NSString+Inflections.h */,
 				CB85A8431809F9A200698988 /* NSString+Inflections.m */,
+				CBCC6CA01819C1FF001030C2 /* UIView+BlurredSnapshot.h */,
+				CBCC6CA11819C1FF001030C2 /* UIView+BlurredSnapshot.m */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -711,6 +737,8 @@
 				CB8F20D117EB851D00EBDC34 /* Media.xcassets */,
 				CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */,
 				CB0B906917F34E9500F706BE /* Docked-ios.entitlements */,
+				CB23F74A181AD49A0035262D /* UIDebugWindow.h */,
+				CB23F74B181AD49A0035262D /* UIDebugWindow.m */,
 			);
 			name = "Triage-ios";
 			path = "Docked-ios";
@@ -813,6 +841,20 @@
 			name = heroku;
 			sourceTree = "<group>";
 		};
+		CBCC6C8D18199D5F001030C2 /* AutoCompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				CBCC6C8E18199D71001030C2 /* MLPAutoCompleteTextField.h */,
+				CBCC6C8F18199D71001030C2 /* MLPAutoCompleteTextField.m */,
+				CBCC6C9018199D71001030C2 /* MLPAutoCompleteTextFieldDataSource.h */,
+				CBCC6C9118199D71001030C2 /* MLPAutoCompleteTextFieldDelegate.h */,
+				CBCC6C9218199D71001030C2 /* MLPAutoCompletionObject.h */,
+				CBCC6C9318199D71001030C2 /* NSString+Levenshtein.h */,
+				CBCC6C9418199D71001030C2 /* NSString+Levenshtein.m */,
+			);
+			name = AutoCompleteTextField;
+			sourceTree = "<group>";
+		};
 		CBD43EF817F8B200001AC849 /* cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -832,6 +874,8 @@
 				CB4F87AB180F532500B685E1 /* TeammateCell.m */,
 				CB4F87B1180F9A1B00B685E1 /* EventCell.h */,
 				CB4F87B2180F9A1B00B685E1 /* EventCell.m */,
+				CBCC6C9D1819B90C001030C2 /* AtReplyMessageCell.h */,
+				CBCC6C9E1819B90C001030C2 /* AtReplyMessageCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -839,15 +883,12 @@
 		CBD43F3B17FA1287001AC849 /* messages */ = {
 			isa = PBXGroup;
 			children = (
-				CB0B906F17F4FA7A00F706BE /* MessageTabViewController.h */,
-				CB0B907017F4FA7A00F706BE /* MessageTabViewController.m */,
-				CB0B907117F4FA7A00F706BE /* MessageTabViewController.xib */,
-				CBD43F3C17FA12A4001AC849 /* NewMessageViewController.h */,
-				CBD43F3D17FA12A4001AC849 /* NewMessageViewController.m */,
 				CBD43F4117FA12BE001AC849 /* MessagesTableViewController.h */,
 				CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */,
 				CB8D0EC1180DAA9C004FABBC /* FetchedMessagesDataSource.h */,
 				CB8D0EC2180DAA9C004FABBC /* FetchedMessagesDataSource.m */,
+				CBD2CF0B181824D1009B3B71 /* MessageToolbarViewController.h */,
+				CBD2CF0C181824D1009B3B71 /* MessageToolbarViewController.m */,
 			);
 			name = messages;
 			sourceTree = "<group>";
@@ -1009,7 +1050,6 @@
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
 				CBF3872E1812535500554730 /* HockeySDKResources.bundle in Resources */,
-				CB0B907317F4FA7A00F706BE /* MessageTabViewController.xib in Resources */,
 				CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1070,14 +1110,15 @@
 				CB81579C17F0D55E006AA14A /* User.m in Sources */,
 				CB6ED88D17F5EC9B00496244 /* Github.m in Sources */,
 				CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */,
-				CB0B907217F4FA7A00F706BE /* MessageTabViewController.m in Sources */,
 				CB429BA517EFDB17002273D6 /* SentrySettingsViewController.m in Sources */,
 				CB8157A217F0D72F006AA14A /* Provider.m in Sources */,
 				CB6ED88717F5EBFF00496244 /* GithubPush.m in Sources */,
 				CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */,
 				CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */,
+				CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */,
 				CBD72708180364710071B177 /* NewRelicErrorThreshold.m in Sources */,
 				CB2F9FAD1808B40A00F5F97C /* MPCJSONDataSerializer.m in Sources */,
+				CBCC6CA21819C1FF001030C2 /* UIView+BlurredSnapshot.m in Sources */,
 				CBDCEC701805E9370024860B /* SettingsMenuViewController.m in Sources */,
 				CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */,
 				CB2F9FAE1808B40A00F5F97C /* MPCJSONSerializer.m in Sources */,
@@ -1090,7 +1131,8 @@
 				CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */,
 				CB742D1A180EFF2F0068A301 /* GraphDataCell.m in Sources */,
 				CB85A84F180B585200698988 /* StripeChargeRefunded.m in Sources */,
-				CBD43F3F17FA12A4001AC849 /* NewMessageViewController.m in Sources */,
+				CBCC6C9F1819B90C001030C2 /* AtReplyMessageCell.m in Sources */,
+				CBCC6C9618199D71001030C2 /* NSString+Levenshtein.m in Sources */,
 				CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */,
 				CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */,
 				CBA676AE18085B150035368A /* NewRelicSettingsViewController.m in Sources */,
@@ -1101,6 +1143,7 @@
 				CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */,
 				CB429B9B17EFDAFF002273D6 /* GithubSettingsViewController.m in Sources */,
 				CB84B41F17EBBF1500C8B00D /* RootViewController.m in Sources */,
+				CBD2CF0D181824D1009B3B71 /* MessageToolbarViewController.m in Sources */,
 				CBA676B418085B630035368A /* AirbrakeSettingsViewController.m in Sources */,
 				CB2F9FB21808B40A00F5F97C /* Mixpanel.m in Sources */,
 				CB85A85B180B58B500698988 /* StripeEvent.m in Sources */,
@@ -1116,6 +1159,7 @@
 				CB85A8411809F5D700698988 /* HerokuDeploy.m in Sources */,
 				CBF3873118125C8F00554730 /* TRJSONResponseSerializerWithData.m in Sources */,
 				CBD726F6180363CD0071B177 /* NewRelicApdexAlert.m in Sources */,
+				CBCC6CA51819C3D2001030C2 /* UIImage+ImageEffects.m in Sources */,
 				CBE8637417FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m in Sources */,
 				CB85A852180B586200698988 /* StripeDisputeCreated.m in Sources */,
 				CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */,
@@ -1127,6 +1171,7 @@
 				CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
 				CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */,
+				CB23F74C181AD49A0035262D /* UIDebugWindow.m in Sources */,
 				CB4F87AC180F532500B685E1 /* TeammateCell.m in Sources */,
 				CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */,
 				CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */,
@@ -1142,6 +1187,7 @@
 				CB81579F17F0D568006AA14A /* Account.m in Sources */,
 				CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */,
 				CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */,
+				CB23F74F181AF5D60035262D /* GGHashtagMentionController.m in Sources */,
 				CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

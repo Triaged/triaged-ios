@@ -51,8 +51,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    NSLog(@"%f", _cardImageView.frame.origin.y );
-    
     if ( _cardImageView.frame.origin.y > 60 &&  _cardImageView.frame.origin.y < 70) {
         [self dismissViewControllerAnimated:NO completion:nil];
         [_navController pushViewController:_detailViewController animated:NO];
@@ -66,6 +64,7 @@
                          }
                          completion:^(BOOL finished){
                              [self dismissViewControllerAnimated:NO completion:nil];
+                             _detailViewController.actionBarVC.screenShot = _cardImageView.image;
                              [_navController pushViewController:_detailViewController animated:NO];
                          }];
     }

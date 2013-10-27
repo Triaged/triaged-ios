@@ -71,9 +71,6 @@
     [self.provider connect];
     [self setupConnectedState];
     
-    // Set this automatically on succesful oAuth
-    [self toggleFollow];
-    
     //update our store account from the server
     [[AppDelegate sharedDelegate].store fetchRemoteUserAccount];
 }

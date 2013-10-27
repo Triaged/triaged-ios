@@ -64,12 +64,12 @@
         
         moreMessagesLabel = [[UILabel alloc] initWithFrame: CGRectZero];
         [moreMessagesLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:12.0]];
-        moreMessagesLabel.textColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:0.5f];
+        moreMessagesLabel.textColor = [[UIColor alloc]initWithRed:122.0f/255.0f green:141.0f/255.0f blue:196.0f/255.0f alpha:1.0f];
         [moreMessagesLabel setLineBreakMode: NSLineBreakByClipping];
         moreMessagesLabel.numberOfLines = 1;
         
         
-        self.userInteractionEnabled = NO;
+        //self.userInteractionEnabled = NO;
     }
     return self;
 }
@@ -90,11 +90,11 @@
 -(void) layoutSubviews {
     [super layoutSubviews];
     
-    [authorLabel setFrame:CGRectMake(58.0, 14.0, 220.0, 20.0)];
+    [authorLabel setFrame:CGRectMake(58.0, 14.0, 220.0, 18.0)];
     //[timestampLabel setFrame:CGRectMake(220.0, 16.0, 75.0, 20.0)];
 
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:bodyLabel.text];
-    CGRect newFrame = CGRectMake(58.0, 36.0, 260, [MessageCell heightOfBody:attributedBodyText]);
+    CGRect newFrame = CGRectMake(58.0, 34.0, 240, [MessageCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
     
     if (shouldDrawSeparator) lineView.frame = CGRectMake(6, 1, 296, 1);
@@ -110,7 +110,7 @@
 -(void) layoutMoreMessages
 {
     [moreMessagesIcon setFrame:CGRectMake(225, bodyLabel.frame.size.height+42, 14, 14)];
-    [moreMessagesLabel setFrame:CGRectMake(245.0, bodyLabel.frame.size.height+38, 60.0, 20.0)];
+    [moreMessagesLabel setFrame:CGRectMake(242.0, bodyLabel.frame.size.height+39, 60.0, 20.0)];
     [self.contentView addSubview: moreMessagesIcon];
     [self.contentView addSubview: moreMessagesLabel];
 }
@@ -157,7 +157,7 @@
     // bodyLabel dynamic height
     
     CGRect paragraphRect =
-    [bodyText boundingRectWithSize:CGSizeMake(260.0, CGFLOAT_MAX)
+    [bodyText boundingRectWithSize:CGSizeMake(240.0, CGFLOAT_MAX)
                            options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
                            context:nil];
     return paragraphRect.size.height;
@@ -167,20 +167,20 @@
 
 + (CGFloat) heightOfContent: (Message *)message hasMultipleMessages:(BOOL)multiple;
 {
-    static NSCache* heightCache = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        heightCache = [NSCache new];
-    });
-    
-    NSAssert(heightCache, @"Height cache must exist");
-    
-    NSString* key = message.externalID; //Create a unique key here
-    NSNumber* cachedValue = [heightCache objectForKey: key];
-    
-    if( cachedValue )
-        return [cachedValue floatValue];
-    else {
+//    static NSCache* heightCache = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        heightCache = [NSCache new];
+//    });
+//    
+//    NSAssert(heightCache, @"Height cache must exist");
+//    
+//    NSString* key = message.externalID; //Create a unique key here
+//    NSNumber* cachedValue = [heightCache objectForKey: key];
+//    
+//    if( cachedValue )
+//        return [cachedValue floatValue];
+//    else {
         NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:message.body];
         CGFloat bodyHeight = [MessageCell heightOfBody:attributedBodyText];
         CGFloat height;
@@ -189,9 +189,9 @@
         } else {
             height = (45 + bodyHeight);
         }
-        [heightCache setObject: [NSNumber numberWithFloat: height] forKey: key];
+//        [heightCache setObject: [NSNumber numberWithFloat: height] forKey: key];
         return height;
-    }
+//    }
 }
 
 @end

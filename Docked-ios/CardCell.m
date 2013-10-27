@@ -55,8 +55,6 @@
         actionLabel.numberOfLines = 1;
         [self.contentView addSubview: actionLabel];
         
-        
-        
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
         bodyLabel.textColor = [[UIColor alloc] initWithRed:142.0f/255.0f green:142.0f/255.0f blue:142.0f/255.0f alpha:1.0f];
         bodyLabel.numberOfLines = 0;
@@ -82,7 +80,7 @@
     [timestampLabel setFrame:CGRectMake(58, 40.0, 200.0, 16.0)];
     [lineDivider setFrame:CGRectMake(14, 65, 280, 1)];
     
-    [actionLabel setFrame:CGRectMake(14, 79.0, 280.0, 16.0)];
+    [actionLabel setFrame:CGRectMake(14, 79.0, 280.0, 17.0)];
     
     NSAttributedString *attributedBodyText = [CardCell attributedBodyText:bodyLabel.text];
     CGRect newFrame = CGRectMake(14, 98.0, 288, [CardCell heightOfBody:attributedBodyText]);

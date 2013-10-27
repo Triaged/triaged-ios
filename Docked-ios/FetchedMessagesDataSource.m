@@ -22,6 +22,7 @@
 
 - (id)messageAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     return [MTLManagedObjectAdapter modelOfClass:Message.class
                                fromManagedObject:[self.fetchedResultsController objectAtIndexPath:indexPath] error:nil];
 }

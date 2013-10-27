@@ -186,6 +186,7 @@
 - (NSFetchedResultsController*)messagesFetchedResultsController
 {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
+    [request setRelationshipKeyPathsForPrefetching:@[@"author"]];
     request.predicate = [NSPredicate predicateWithFormat:@"feedItem = %@", [self managedItem]];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[AppDelegate sharedDelegate].store.managedObjectContext sectionNameKeyPath:nil cacheName:nil];

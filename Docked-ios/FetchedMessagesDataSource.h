@@ -13,5 +13,7 @@
 @property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
 
 - (id)messageAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex;
+
 
 @end

@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UILabel *providerLabel;
 @property (strong, nonatomic) UIImageView *providerIconView;
+@property (strong, nonatomic) UIImageView *connectedView;
 
 - (void)configureForItem:(NSDictionary *)provider;
 

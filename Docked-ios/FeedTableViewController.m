@@ -72,7 +72,6 @@
 
 -(void)refreshFeed
 {
-    //self.feedItemsDataSource.feedItems = [AppDelegate sharedDelegate].store.sortedTableFeed;
     [self.fetchedFeedItemsDataSource.fetchedResultsController performFetch:NULL];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
@@ -82,14 +81,16 @@
     
     
     FeedItem *item;
+    CardCell *cell;
     
-    //if(indexPath.row == 0) { // Feed Item
+    if(indexPath.row == 0) { // Feed Item
         item = [self.fetchedFeedItemsDataSource feedItemAtIndexPath:indexPath];
-//    } else {
-//        item = [self.feedItemsDataSource feedItemAtIndexPath:indexPath];
-//    }
+        cell = (CardCell *)[tableView cellForRowAtIndexPath:indexPath];
+    } else {
+        item = [self.fetchedFeedItemsDataSource feedItemAtForMessageIndexPath:indexPath];
+        cell = (CardCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
+    }
     
-    CardCell *cell = (CardCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     UIGraphicsBeginImageContextWithOptions(cell.bounds.size, cell.opaque, 0.0);
     [cell.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -102,6 +103,7 @@
 
     DetailViewController *detailVC = [[DetailViewController alloc] init];
     [detailVC setFeedItem:item];
+    detailVC.actionBarVC.screenShot = viewImage;
     
     SmokescreenViewController *ssVC = [[SmokescreenViewController alloc] init];
     [ssVC setCardImageView:cardImageView];
@@ -126,17 +128,15 @@
         Class cellClass = [ cellSource tableViewCellClass ] ;
        
        return [cellClass heightOfContent:item];
-    
+
    } else if (indexPath.row == 1) {
        FeedItem *item = [self.fetchedFeedItemsDataSource feedItemAtForMessageIndexPath:indexPath];
        Message *message = [item previewMessage];
        
        return [MessageCell heightOfContent:message hasMultipleMessages:[item hasMultipleMessages]];
-    
    } else {
         return 140;
     }
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {

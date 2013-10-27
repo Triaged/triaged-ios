@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
+#import "MLPAutoCompletionObject.h"
 
-@interface User : MTLModel <MTLJSONSerializing,  MTLManagedObjectSerializing>
+@interface User : MTLModel <MTLJSONSerializing,  MTLManagedObjectSerializing, MLPAutoCompletionObject>
 
 @property (nonatomic, copy, readonly) NSString *userID;
 @property (nonatomic, copy, readonly) NSString *name;

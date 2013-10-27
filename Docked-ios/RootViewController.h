@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWRevealViewController.h"
 
 
-@interface RootViewController : UIViewController <SWRevealViewControllerDelegate>
+@interface RootViewController : UIViewController
 
 @end

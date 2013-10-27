@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedItem.h"
+#import "ActionBarViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) FeedItem *feedItem;
+@property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *contentView;
+@property (strong, nonatomic) ActionBarViewController *actionBarVC;
 
--(void)presentNewMessageVC;
+
+-(void)scrollToBottomAnimated:(BOOL)animated;
+-(void)didSendText:(NSString *)text;
 
 
 @end
