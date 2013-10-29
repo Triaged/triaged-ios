@@ -81,15 +81,20 @@
     plot.dataSource = self;
     
     CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
-    lineStyle.lineColor = [CPTColor colorWithComponentRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:0.7f];
-    plot.dataLineStyle = lineStyle;
+    
     
     if(index == 0) {
         plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:0.7f]];
+        lineStyle.lineColor = [CPTColor colorWithComponentRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:0.7f];
+        plot.dataLineStyle = lineStyle;
     } else if (index == [NSNumber numberWithInt:1]) {
         plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:179.0f/255.0f green:197.0f/255.0f  blue:227.0f/255.0f alpha:0.7f]];
+        lineStyle.lineColor = [CPTColor colorWithComponentRed:179.0f/255.0f green:197.0f/255.0f  blue:227.0f/255.0f alpha:0.7f];
+        plot.dataLineStyle = lineStyle;
     } else {
         plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:117.0f/255.0f green:220.0f/255.0f  blue:229.0f/255.0f alpha:0.7f]];
+        lineStyle.lineColor = [CPTColor colorWithComponentRed:117.0f/255.0f green:220.0f/255.0f  blue:229.0f/255.0f alpha:0.7f];
+        plot.dataLineStyle = lineStyle;
     }
     
     plot.areaBaseValue = CPTDecimalFromInteger(0);

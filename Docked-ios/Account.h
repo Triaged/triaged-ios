@@ -14,6 +14,7 @@
 
 @property (nonatomic, copy, readonly) NSString *userID;
 @property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *slug;
 @property (nonatomic, copy, readonly) NSString *email;
 @property (nonatomic, copy, readonly) NSString *avatarUrl;
 @property (nonatomic, copy, readonly) NSString *companyName;
@@ -31,6 +32,8 @@
 
 -(User *)currentUser;
 -(NSArray *)team;
+
+-(NSNumber *)connectedCount;
 
 
 

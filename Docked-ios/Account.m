@@ -25,8 +25,21 @@
       @"followedProviderCount" : @"followed_provider_count",
       @"companyName" : @"company_name",
       @"teammates" : @"teammates",
-      @"avatarUrl" : @"avatar_url"
+      @"avatarUrl" : @"avatar_url",
+      @"slug" : @"slug"
     };
+}
+
+
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return @{
+             @"userID": @"userID",
+             @"name": @"name",
+             @"email": @"email",
+             @"avatarUrl" : @"avatarUrl",
+             @"slug" : @"slug"
+             };
 }
 
 
@@ -42,12 +55,35 @@
         NSValueTransformer *transformer;
         transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
         
-        block([transformer transformedValue:JSON]);
+        Account *currentAccount = [transformer transformedValue:JSON];
+        
+        [currentAccount createUserFromAccount];
+        
+        block(currentAccount);
     
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"failure");
     }];
 }
+
+-(void) createUserFromAccount
+{
+    NSDictionary *attributes = @{
+                    @"userID": self.userID,
+                    @"name": self.name,
+                    @"email": self.email,
+                    @"avatarUrl" : self.avatarUrl,
+                   // @"slug" : self.slug
+                };
+    
+    MTLUser *user = [[MTLUser alloc] initWithDictionary:attributes error:nil];
+    
+    NSManagedObjectContext *context = [AppDelegate sharedDelegate].store.managedObjectContext;
+    [MTLManagedObjectAdapter managedObjectFromModel:user insertingIntoContext:context error:nil];
+    [context save:nil];
+}
+
+
 
 -(void)uploadProfilePicture:(UIImage *)profilePicture
 {
@@ -172,6 +208,13 @@
     request.predicate = [NSPredicate predicateWithFormat:@"userID != %@", _userID];
     NSArray * fetchedObjects = [[AppDelegate sharedDelegate].store.managedObjectContext executeFetchRequest:request error:nil];
     return fetchedObjects;
+}
+
+-(NSNumber *)connectedCount
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"connected == YES"];
+    NSArray *results = [[self.providers allValues] filteredArrayUsingPredicate:predicate];
+    return [NSNumber numberWithInt:results.count];
 }
 
 

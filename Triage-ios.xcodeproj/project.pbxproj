@@ -89,6 +89,8 @@
 		CBA6D116181F22CB006B73AC /* GraphDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D115181F22CB006B73AC /* GraphDataSet.m */; };
 		CBA6D119181F2316006B73AC /* GraphItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D118181F2316006B73AC /* GraphItem.m */; };
 		CBA6D11C181F2351006B73AC /* GraphDataDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D11B181F2351006B73AC /* GraphDataDetail.m */; };
+		CBA6D123181F66DC006B73AC /* TeamMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D121181F66DC006B73AC /* TeamMembersViewController.m */; };
+		CBA6D124181F66DC006B73AC /* TeamMembersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA6D122181F66DC006B73AC /* TeamMembersViewController.xib */; };
 		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
 		CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC47C1810956C00876AC6 /* CardPageViewController.m */; };
 		CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C8F18199D71001030C2 /* MLPAutoCompleteTextField.m */; };
@@ -267,6 +269,9 @@
 		CBA6D118181F2316006B73AC /* GraphItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphItem.m; sourceTree = "<group>"; };
 		CBA6D11A181F2351006B73AC /* GraphDataDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDataDetail.h; sourceTree = "<group>"; };
 		CBA6D11B181F2351006B73AC /* GraphDataDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDataDetail.m; sourceTree = "<group>"; };
+		CBA6D120181F66DC006B73AC /* TeamMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamMembersViewController.h; sourceTree = "<group>"; };
+		CBA6D121181F66DC006B73AC /* TeamMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamMembersViewController.m; sourceTree = "<group>"; };
+		CBA6D122181F66DC006B73AC /* TeamMembersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamMembersViewController.xib; sourceTree = "<group>"; };
 		CBB89E0F17FE4F0600402973 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		CBB89E1017FE4F0600402973 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
 		CBBCC47B1810956C00876AC6 /* CardPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardPageViewController.h; sourceTree = "<group>"; };
@@ -404,6 +409,9 @@
 				CBA676B618085D520035368A /* BaseSettingsViewController.m */,
 				CB2D00A8181215E6005350D5 /* SettingEventsViewController.h */,
 				CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */,
+				CBA6D120181F66DC006B73AC /* TeamMembersViewController.h */,
+				CBA6D121181F66DC006B73AC /* TeamMembersViewController.m */,
+				CBA6D122181F66DC006B73AC /* TeamMembersViewController.xib */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -930,6 +938,7 @@
 				CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */,
 				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
 				CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */,
+				CBA6D124181F66DC006B73AC /* TeamMembersViewController.xib in Resources */,
 				CBF3872D1812535500554730 /* HockeySDK.xcconfig in Resources */,
 				CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */,
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
@@ -1013,6 +1022,7 @@
 				CB8F212417EB871900EBDC34 /* MTLFeedItem.m in Sources */,
 				CB742D1A180EFF2F0068A301 /* GraphCardCell.m in Sources */,
 				CBCC6C9F1819B90C001030C2 /* AtReplyMessageCell.m in Sources */,
+				CBA6D123181F66DC006B73AC /* TeamMembersViewController.m in Sources */,
 				CBCC6C9618199D71001030C2 /* NSString+Levenshtein.m in Sources */,
 				CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */,
 				CBA6D0D9181DDE03006B73AC /* MTLTextItem.m in Sources */,

@@ -15,6 +15,7 @@
 #import "TeammateCell.h"
 #import "Account.h"
 #import "UIImageView+AFNetworking.h"
+#import "TeamMembersViewController.h"
 
 @interface SettingsMenuViewController () {
 
@@ -55,17 +56,18 @@
 
     self.navigationItem.leftBarButtonItem = doneButton;
     
-    UILabel *connectionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 84, 260, 20)];
-    connectionsLabel.text = @"Connections";
-    [connectionsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
-    connectionsLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
-    [self.view addSubview:connectionsLabel];
-    
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     scrollView.frame = self.view.frame;
-    scrollView.contentSize = CGSizeMake(320, 600);
+    scrollView.contentSize = CGSizeMake(320, 550);
     [self.view addSubview:scrollView];
+    
+    UILabel *connectionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 24, 260, 20)];
+    connectionsLabel.text = @"Connections";
+    [connectionsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
+    connectionsLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
+    [scrollView addSubview:connectionsLabel];
+
     
     
 
@@ -74,22 +76,22 @@
     //commentsVC.delegate = self;
     //providersTableVC.providers =  [[AppDelegate sharedDelegate].store.account.providers allValues];
     [self addChildViewController:providersTableVC];
-    CGRect frame = CGRectMake(0, 106, 320, self.view.frame.size.height - 100);
+    CGRect frame = CGRectMake(0, 46, 320, self.view.frame.size.height - 100);
     providersTableVC.tableView.frame = frame;
     [scrollView  addSubview:providersTableVC.tableView];
     [providersTableVC didMoveToParentViewController:self];
     
     UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
     UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView.frame = CGRectMake(0, 106, 320, 1);
+    lineView.frame = CGRectMake(0, 46, 320, 1);
     [scrollView addSubview: lineView];
     
     UIImageView *lineView4 = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView4.frame = CGRectMake(0, 456, 320, 1);
+    lineView4.frame = CGRectMake(0, 396, 320, 1);
     [scrollView addSubview: lineView4];
     
     
-    UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 480, 260, 20)];
+    UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 420, 260, 20)];
     settingsLabel.text = @"Account Settings";
     [settingsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     settingsLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
@@ -97,20 +99,22 @@
 
     
     UITableView *accountTable = [[UITableView alloc] init];
-    accountTable.frame = CGRectMake(0, 502, 310, 44);
+    accountTable.frame = CGRectMake(0, 442, 310, 88);
     accountTable.delegate = self;
     accountTable.dataSource = self;
+    accountTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    accountTable.scrollEnabled = NO;
     [scrollView  addSubview:accountTable];
     
     //UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
     UIImageView *lineView1 = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView1.frame = CGRectMake(0, 502, 320, 1);
+    lineView1.frame = CGRectMake(0, 442, 320, 1);
     [scrollView addSubview: lineView1];
 
     
     //UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
     UIImageView *lineView2 = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView2.frame = CGRectMake(0, 544, 320, 1);
+    lineView2.frame = CGRectMake(0, 550, 320, 1);
     [scrollView addSubview: lineView2];
 
 }
@@ -122,7 +126,7 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -133,20 +137,35 @@
     {
         cell = [ [ TeammateCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.cellIsForInvite = NO;
-    User *user = account.currentUser;
-    cell.nameLabel.text = user.name;
-    NSURL *avatarUrl = [NSURL URLWithString:user.avatarUrl];
-    [cell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+
+    
+    if (indexPath.row == 0) {
+        cell.cellIsForInvite = NO;
+        User *user = account.currentUser;
+        cell.nameLabel.text = user.name;
+        NSURL *avatarUrl = [NSURL URLWithString:user.avatarUrl];
+        [cell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+    } else {
+        cell.nameLabel.text = @"Teammates";
+        cell.avatarView.image = [UIImage imageNamed:@"avatar"];
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    AccountViewController *accountVC = [[AccountViewController alloc] init];
-    [self.navigationController pushViewController:accountVC animated:YES];
+    
+    if (indexPath.row == 0) {
+        AccountViewController *accountVC = [[AccountViewController alloc] init];
+        [self.navigationController pushViewController:accountVC animated:YES];
+    } else {
+        TeamMembersViewController *teamVC = [[TeamMembersViewController alloc] init];
+        [self.navigationController pushViewController:teamVC animated:YES];
+    }
+    
 
 }
 

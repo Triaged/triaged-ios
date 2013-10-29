@@ -37,6 +37,7 @@
     self.tableView.bounces = NO;
     self.tableView.backgroundColor  = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.scrollEnabled = NO;
     
     providers = [Provider currentProviders];
 }

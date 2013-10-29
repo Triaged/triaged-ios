@@ -101,7 +101,7 @@
 
 -(IBAction)didTapShareButton:(id)sender
 {
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"Your Note.", screenShot, @"Sent with Triage. (triaged.co)", nil] applicationActivities:nil];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"<html><body><p></p><br />", screenShot, nil] applicationActivities:nil];
     activityVC.excludedActivityTypes = @[ UIActivityTypeAddToReadingList, UIActivityTypePostToTwitter, UIActivityTypePostToFacebook, UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
     [self presentViewController:activityVC animated:YES completion:nil];
 }
