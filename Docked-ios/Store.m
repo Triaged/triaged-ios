@@ -34,6 +34,7 @@
     if (self) {
         //[self deleteFeedArchive];
         //[self readFeedArchive];
+        
         [self fetchRemoteFeedItems];
         [self readAccountArchive];
 

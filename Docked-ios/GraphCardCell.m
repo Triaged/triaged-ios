@@ -221,7 +221,7 @@
     
     self.propertyLabel.text = item.property;
     self.actionLabel.text = item.action;
-    self.bodyLabel.text = item.body;
+    //self.bodyLabel.text = item.body;
     NSString *providerIconString = [NSString stringWithFormat:@"%@.png", item.provider];
     self.providerIconView.image = [UIImage imageNamed:providerIconString];
     self.timestampLabel.text = [item.timestamp timeAgo];
