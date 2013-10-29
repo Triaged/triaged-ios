@@ -122,10 +122,11 @@
 {
     
    if (indexPath.row == 0) {
-        FeedItem *item = [self.fetchedFeedItemsDataSource feedItemAtIndexPath:indexPath];
+       FeedItem *item = [self.fetchedFeedItemsDataSource feedItemAtIndexPath:indexPath];
        
-       id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
-        Class cellClass = [ cellSource tableViewCellClass ] ;
+       NSEntityDescription *entityDescription = item.entity;
+       NSString *cellID = entityDescription.userInfo[@"cell"];
+       Class cellClass = NSClassFromString(cellID);
        
        return [cellClass heightOfContent:item];
 

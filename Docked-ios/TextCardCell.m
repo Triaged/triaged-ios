@@ -7,6 +7,7 @@
 //
 
 #import "TextCardCell.h"
+#import "TextItem.h"
 
 
 
@@ -28,15 +29,14 @@
     // Configure the view for the selected state
 }
 
-- (void)configureForItem:(FeedItem *)item
+- (void)configureForItem:(TextItem *)item
 {
-    id<TextCardProtocol> textCardItem = (id<TextCardProtocol>)item;
-    
-    self.propertyLabel.text = textCardItem.property;
-    self.actionLabel.text = textCardItem.action;
-    self.bodyLabel.attributedText = [CardCell attributedBodyText:textCardItem.body];
-    self.providerIconView.image = textCardItem.providerIcon;
-    self.timestampLabel.text = [textCardItem.timestamp timeAgo];
+    self.propertyLabel.text = item.property;
+    self.actionLabel.text = item.action;
+    self.bodyLabel.attributedText = [CardCell attributedBodyText:item.body];
+    NSString *providerIconString = [NSString stringWithFormat:@"%@.png", item.provider];
+    self.providerIconView.image = [UIImage imageNamed:providerIconString];
+    self.timestampLabel.text = [item.timestamp timeAgo];
 
 }
 
@@ -45,7 +45,7 @@
     return 160;
 }
 
-+ (CGFloat) heightOfContent: (FeedItem *)item {
++ (CGFloat) heightOfContent: (TextItem *)item {
     static NSCache* heightCache = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -60,9 +60,7 @@
     if( cachedValue )
         return [cachedValue floatValue];
     else {
-        id<TextCardProtocol> textCardItem = (id<TextCardProtocol>)item;
-        
-        NSAttributedString *attributedBodyText = [CardCell attributedBodyText:textCardItem.body];
+        NSAttributedString *attributedBodyText = [CardCell attributedBodyText:item.body];
         CGFloat bodyHeight = [CardCell heightOfBody:attributedBodyText];
         CGFloat height = (120 + bodyHeight);
         

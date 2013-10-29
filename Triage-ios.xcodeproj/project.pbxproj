@@ -12,7 +12,6 @@
 		CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0AAF9917FCA15100695707 /* libstdc++.6.0.9.dylib */; };
 		CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906317F34E8500F706BE /* StoreKit.framework */; };
 		CB0B906617F34E9000F706BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906517F34E9000F706BE /* GameKit.framework */; };
-		CB0B906817F34E9500F706BE /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906717F34E9500F706BE /* PassKit.framework */; };
 		CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0B906B17F4F47E00F706BE /* DetailViewController.m */; };
 		CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0E028A1810A87600484E69 /* WelcomeViewController.m */; };
 		CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0E028B1810A87600484E69 /* WelcomeViewController.xib */; };
@@ -49,29 +48,15 @@
 		CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECED17EE922C00319223 /* LoginViewController.xib */; };
 		CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECF217EF7DAA00319223 /* SignupViewController.m */; };
 		CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECF317EF7DAA00319223 /* SignupViewController.xib */; };
-		CB6ED88717F5EBFF00496244 /* GithubPush.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6ED88617F5EBFF00496244 /* GithubPush.m */; };
-		CB6ED88A17F5EC3900496244 /* GithubCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6ED88917F5EC3900496244 /* GithubCommit.m */; };
-		CB6ED88D17F5EC9B00496244 /* Github.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6ED88C17F5EC9B00496244 /* Github.m */; };
-		CB742D1A180EFF2F0068A301 /* GraphDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB742D19180EFF2F0068A301 /* GraphDataCell.m */; };
+		CB742D1A180EFF2F0068A301 /* GraphCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB742D19180EFF2F0068A301 /* GraphCardCell.m */; };
 		CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4417F251A400BD858D /* CFNetwork.framework */; };
 		CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4617F251AE00BD858D /* QuartzCore.framework */; };
-		CB7C2E4B17F26FAC00BD858D /* StripeChargeSucceeded.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */; };
-		CB81579C17F0D55E006AA14A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579B17F0D55E006AA14A /* User.m */; };
+		CB81579C17F0D55E006AA14A /* MTLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579B17F0D55E006AA14A /* MTLUser.m */; };
 		CB81579F17F0D568006AA14A /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579E17F0D568006AA14A /* Account.m */; };
 		CB8157A217F0D72F006AA14A /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157A117F0D72F006AA14A /* Provider.m */; };
 		CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157A717F0E0B3006AA14A /* AccountViewController.m */; };
 		CB84B41F17EBBF1500C8B00D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B41E17EBBF1500C8B00D /* RootViewController.m */; };
-		CB84B44F17EBEB9700C8B00D /* GithubIssueOpened.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B44E17EBEB9700C8B00D /* GithubIssueOpened.m */; };
-		CB84B45217EBEBA100C8B00D /* SentryException.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84B45117EBEBA100C8B00D /* SentryException.m */; };
-		CB85A8411809F5D700698988 /* HerokuDeploy.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A8401809F5D700698988 /* HerokuDeploy.m */; };
 		CB85A8441809F9A200698988 /* NSString+Inflections.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A8431809F9A200698988 /* NSString+Inflections.m */; };
-		CB85A849180B0CF500698988 /* KilnPush.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A848180B0CF500698988 /* KilnPush.m */; };
-		CB85A84C180B0EF600698988 /* KilnCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A84B180B0EF600698988 /* KilnCommit.m */; };
-		CB85A84F180B585200698988 /* StripeChargeRefunded.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A84E180B585200698988 /* StripeChargeRefunded.m */; };
-		CB85A852180B586200698988 /* StripeDisputeCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A851180B586200698988 /* StripeDisputeCreated.m */; };
-		CB85A855180B586F00698988 /* StripeInvoiceFailed.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A854180B586F00698988 /* StripeInvoiceFailed.m */; };
-		CB85A858180B588000698988 /* StripeSubscriptionDeleted.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A857180B588000698988 /* StripeSubscriptionDeleted.m */; };
-		CB85A85B180B58B500698988 /* StripeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CB85A85A180B58B500698988 /* StripeEvent.m */; };
 		CB8D0EC3180DAA9C004FABBC /* FetchedMessagesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8D0EC2180DAA9C004FABBC /* FetchedMessagesDataSource.m */; };
 		CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209017EB5D6300EBDC34 /* Foundation.framework */; };
 		CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209217EB5D6300EBDC34 /* CoreGraphics.framework */; };
@@ -87,11 +72,23 @@
 		CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */; };
 		CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8F20D117EB851D00EBDC34 /* Media.xcassets */; };
 		CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */; };
-		CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F212317EB871900EBDC34 /* FeedItem.m */; };
+		CB8F212417EB871900EBDC34 /* MTLFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F212317EB871900EBDC34 /* MTLFeedItem.m */; };
 		CBA676AE18085B150035368A /* NewRelicSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676AD18085B150035368A /* NewRelicSettingsViewController.m */; };
 		CBA676B118085B470035368A /* HerokuSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B018085B470035368A /* HerokuSettingsViewController.m */; };
 		CBA676B418085B630035368A /* AirbrakeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B318085B630035368A /* AirbrakeSettingsViewController.m */; };
 		CBA676B718085D520035368A /* BaseSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B618085D520035368A /* BaseSettingsViewController.m */; };
+		CBA6D0D9181DDE03006B73AC /* MTLTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D0D8181DDE03006B73AC /* MTLTextItem.m */; };
+		CBA6D0DE181DDF30006B73AC /* MTLGraphItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D0DD181DDF30006B73AC /* MTLGraphItem.m */; };
+		CBA6D0EB181DF492006B73AC /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D0EA181DF492006B73AC /* FeedItem.m */; };
+		CBA6D0F4181DF4EE006B73AC /* TextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D0F3181DF4EE006B73AC /* TextItem.m */; };
+		CBA6D0F7181E03F6006B73AC /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D0F6181E03F6006B73AC /* Message.m */; };
+		CBA6D0FA181E0439006B73AC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D0F9181E0439006B73AC /* User.m */; };
+		CBA6D0FD181ECF6C006B73AC /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D0FC181ECF6B006B73AC /* DetailView.m */; };
+		CBA6D110181F1EF7006B73AC /* MTLGraphDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D10F181F1EF7006B73AC /* MTLGraphDataSet.m */; };
+		CBA6D113181F1F05006B73AC /* MTLGraphDataDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D112181F1F05006B73AC /* MTLGraphDataDetail.m */; };
+		CBA6D116181F22CB006B73AC /* GraphDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D115181F22CB006B73AC /* GraphDataSet.m */; };
+		CBA6D119181F2316006B73AC /* GraphItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D118181F2316006B73AC /* GraphItem.m */; };
+		CBA6D11C181F2351006B73AC /* GraphDataDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D11B181F2351006B73AC /* GraphDataDetail.m */; };
 		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
 		CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC47C1810956C00876AC6 /* CardPageViewController.m */; };
 		CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C8F18199D71001030C2 /* MLPAutoCompleteTextField.m */; };
@@ -106,22 +103,11 @@
 		CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */; };
 		CBD43F3917F9F4A0001AC849 /* ActionBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F3717F9F49F001AC849 /* ActionBarViewController.m */; };
 		CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */; };
-		CBD43F4E17FA3A49001AC849 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F4D17FA3A49001AC849 /* Message.m */; };
+		CBD43F4E17FA3A49001AC849 /* MTLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F4D17FA3A49001AC849 /* MTLMessage.m */; };
 		CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD43F5017FA63E9001AC849 /* MessageCell.m */; };
-		CBD726F6180363CD0071B177 /* NewRelicApdexAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD726F5180363CD0071B177 /* NewRelicApdexAlert.m */; };
-		CBD726F9180363D60071B177 /* NewRelicApdexAlertEnded.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD726F8180363D60071B177 /* NewRelicApdexAlertEnded.m */; };
-		CBD726FC180363E10071B177 /* NewRelicAppAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD726FB180363E10071B177 /* NewRelicAppAlert.m */; };
-		CBD726FF180364480071B177 /* NewRelicDeployment.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD726FE180364480071B177 /* NewRelicDeployment.m */; };
-		CBD72702180364510071B177 /* NewRelicDowntime.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD72701180364510071B177 /* NewRelicDowntime.m */; };
-		CBD72705180364640071B177 /* NewRelicDowntimeEnded.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD72704180364640071B177 /* NewRelicDowntimeEnded.m */; };
-		CBD72708180364710071B177 /* NewRelicErrorThreshold.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD72707180364710071B177 /* NewRelicErrorThreshold.m */; };
-		CBD7270B1803647B0071B177 /* NewRelicErrorThresholdEnded.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD7270A1803647B0071B177 /* NewRelicErrorThresholdEnded.m */; };
-		CBD7270E180364C30071B177 /* NewRelicAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD7270D180364C30071B177 /* NewRelicAlert.m */; };
 		CBDCEC701805E9370024860B /* SettingsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC6F1805E9370024860B /* SettingsMenuViewController.m */; };
 		CBDCEC731805ED5B0024860B /* ProviderSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC721805ED5B0024860B /* ProviderSettingsTableViewController.m */; };
 		CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC77180629480024860B /* ProviderSettingCell.m */; };
-		CBE8637117FC93F400EF6E73 /* GoogleAnalyticsDaily.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE8637017FC93F400EF6E73 /* GoogleAnalyticsDaily.m */; };
-		CBE8637417FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE8637317FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m */; };
 		CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */; };
 		CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637917FC9F9C00EF6E73 /* CoreText.framework */; };
 		CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637B17FC9FA600EF6E73 /* Security.framework */; };
@@ -148,7 +134,6 @@
 		CB0AAF9917FCA15100695707 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		CB0B906317F34E8500F706BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CB0B906517F34E9000F706BE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		CB0B906717F34E9500F706BE /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		CB0B906917F34E9500F706BE /* Docked-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Docked-ios.entitlements"; sourceTree = "<group>"; };
 		CB0B906A17F4F47E00F706BE /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		CB0B906B17F4F47E00F706BE /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
@@ -209,20 +194,12 @@
 		CB5AECF217EF7DAA00319223 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		CB5AECF317EF7DAA00319223 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
 		CB6B63C91800F83000145953 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
-		CB6ED88517F5EBFF00496244 /* GithubPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubPush.h; sourceTree = "<group>"; };
-		CB6ED88617F5EBFF00496244 /* GithubPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubPush.m; sourceTree = "<group>"; };
-		CB6ED88817F5EC3900496244 /* GithubCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubCommit.h; sourceTree = "<group>"; };
-		CB6ED88917F5EC3900496244 /* GithubCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubCommit.m; sourceTree = "<group>"; };
-		CB6ED88B17F5EC9B00496244 /* Github.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Github.h; sourceTree = "<group>"; };
-		CB6ED88C17F5EC9B00496244 /* Github.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Github.m; sourceTree = "<group>"; };
-		CB742D18180EFF2F0068A301 /* GraphDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDataCell.h; sourceTree = "<group>"; };
-		CB742D19180EFF2F0068A301 /* GraphDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDataCell.m; sourceTree = "<group>"; };
+		CB742D18180EFF2F0068A301 /* GraphCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphCardCell.h; sourceTree = "<group>"; };
+		CB742D19180EFF2F0068A301 /* GraphCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphCardCell.m; sourceTree = "<group>"; };
 		CB7C2E4417F251A400BD858D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CB7C2E4617F251AE00BD858D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		CB7C2E4917F26FAC00BD858D /* StripeChargeSucceeded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeChargeSucceeded.h; sourceTree = "<group>"; };
-		CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeChargeSucceeded.m; sourceTree = "<group>"; };
-		CB81579A17F0D55E006AA14A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		CB81579B17F0D55E006AA14A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		CB81579A17F0D55E006AA14A /* MTLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLUser.h; sourceTree = "<group>"; };
+		CB81579B17F0D55E006AA14A /* MTLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLUser.m; sourceTree = "<group>"; };
 		CB81579D17F0D568006AA14A /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		CB81579E17F0D568006AA14A /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		CB8157A017F0D72F006AA14A /* Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Provider.h; sourceTree = "<group>"; };
@@ -231,28 +208,8 @@
 		CB8157A717F0E0B3006AA14A /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		CB84B41D17EBBF1500C8B00D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		CB84B41E17EBBF1500C8B00D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		CB84B44D17EBEB9700C8B00D /* GithubIssueOpened.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubIssueOpened.h; sourceTree = "<group>"; };
-		CB84B44E17EBEB9700C8B00D /* GithubIssueOpened.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubIssueOpened.m; sourceTree = "<group>"; };
-		CB84B45017EBEBA100C8B00D /* SentryException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentryException.h; sourceTree = "<group>"; };
-		CB84B45117EBEBA100C8B00D /* SentryException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentryException.m; sourceTree = "<group>"; };
-		CB85A83F1809F5D700698988 /* HerokuDeploy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerokuDeploy.h; sourceTree = "<group>"; };
-		CB85A8401809F5D700698988 /* HerokuDeploy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HerokuDeploy.m; sourceTree = "<group>"; };
 		CB85A8421809F9A200698988 /* NSString+Inflections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Inflections.h"; sourceTree = "<group>"; };
 		CB85A8431809F9A200698988 /* NSString+Inflections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Inflections.m"; sourceTree = "<group>"; };
-		CB85A847180B0CF500698988 /* KilnPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KilnPush.h; sourceTree = "<group>"; };
-		CB85A848180B0CF500698988 /* KilnPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KilnPush.m; sourceTree = "<group>"; };
-		CB85A84A180B0EF600698988 /* KilnCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KilnCommit.h; sourceTree = "<group>"; };
-		CB85A84B180B0EF600698988 /* KilnCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KilnCommit.m; sourceTree = "<group>"; };
-		CB85A84D180B585200698988 /* StripeChargeRefunded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeChargeRefunded.h; sourceTree = "<group>"; };
-		CB85A84E180B585200698988 /* StripeChargeRefunded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeChargeRefunded.m; sourceTree = "<group>"; };
-		CB85A850180B586200698988 /* StripeDisputeCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeDisputeCreated.h; sourceTree = "<group>"; };
-		CB85A851180B586200698988 /* StripeDisputeCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeDisputeCreated.m; sourceTree = "<group>"; };
-		CB85A853180B586F00698988 /* StripeInvoiceFailed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeInvoiceFailed.h; sourceTree = "<group>"; };
-		CB85A854180B586F00698988 /* StripeInvoiceFailed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeInvoiceFailed.m; sourceTree = "<group>"; };
-		CB85A856180B588000698988 /* StripeSubscriptionDeleted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeSubscriptionDeleted.h; sourceTree = "<group>"; };
-		CB85A857180B588000698988 /* StripeSubscriptionDeleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeSubscriptionDeleted.m; sourceTree = "<group>"; };
-		CB85A859180B58B500698988 /* StripeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeEvent.h; sourceTree = "<group>"; };
-		CB85A85A180B58B500698988 /* StripeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeEvent.m; sourceTree = "<group>"; };
 		CB8D0EC1180DAA9C004FABBC /* FetchedMessagesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedMessagesDataSource.h; sourceTree = "<group>"; };
 		CB8D0EC2180DAA9C004FABBC /* FetchedMessagesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedMessagesDataSource.m; sourceTree = "<group>"; };
 		CB8F208D17EB5D6300EBDC34 /* Triage-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Triage-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,8 +232,8 @@
 		CB8F20D117EB851D00EBDC34 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		CB8F20D317EB857800EBDC34 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CB8F212017EB869E00EBDC34 /* docked.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = docked.xcdatamodel; sourceTree = "<group>"; };
-		CB8F212217EB871900EBDC34 /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
-		CB8F212317EB871900EBDC34 /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
+		CB8F212217EB871900EBDC34 /* MTLFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLFeedItem.h; sourceTree = "<group>"; };
+		CB8F212317EB871900EBDC34 /* MTLFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLFeedItem.m; sourceTree = "<group>"; };
 		CBA676AC18085B150035368A /* NewRelicSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicSettingsViewController.h; sourceTree = "<group>"; };
 		CBA676AD18085B150035368A /* NewRelicSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicSettingsViewController.m; sourceTree = "<group>"; };
 		CBA676AF18085B470035368A /* HerokuSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerokuSettingsViewController.h; sourceTree = "<group>"; };
@@ -285,6 +242,31 @@
 		CBA676B318085B630035368A /* AirbrakeSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirbrakeSettingsViewController.m; sourceTree = "<group>"; };
 		CBA676B518085D520035368A /* BaseSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSettingsViewController.h; sourceTree = "<group>"; };
 		CBA676B618085D520035368A /* BaseSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSettingsViewController.m; sourceTree = "<group>"; };
+		CBA6D0D7181DDE03006B73AC /* MTLTextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLTextItem.h; sourceTree = "<group>"; };
+		CBA6D0D8181DDE03006B73AC /* MTLTextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLTextItem.m; sourceTree = "<group>"; };
+		CBA6D0DC181DDF30006B73AC /* MTLGraphItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLGraphItem.h; sourceTree = "<group>"; };
+		CBA6D0DD181DDF30006B73AC /* MTLGraphItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLGraphItem.m; sourceTree = "<group>"; };
+		CBA6D0E9181DF492006B73AC /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
+		CBA6D0EA181DF492006B73AC /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
+		CBA6D0F2181DF4EE006B73AC /* TextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextItem.h; sourceTree = "<group>"; };
+		CBA6D0F3181DF4EE006B73AC /* TextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextItem.m; sourceTree = "<group>"; };
+		CBA6D0F5181E03F6006B73AC /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		CBA6D0F6181E03F6006B73AC /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		CBA6D0F8181E0439006B73AC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		CBA6D0F9181E0439006B73AC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		CBA6D0FB181ECF6B006B73AC /* DetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailView.h; sourceTree = "<group>"; };
+		CBA6D0FC181ECF6B006B73AC /* DetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailView.m; sourceTree = "<group>"; };
+		CBA6D0FE181EF83C006B73AC /* Triage-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Triage-ios.entitlements"; sourceTree = SOURCE_ROOT; };
+		CBA6D10E181F1EF7006B73AC /* MTLGraphDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLGraphDataSet.h; sourceTree = "<group>"; };
+		CBA6D10F181F1EF7006B73AC /* MTLGraphDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLGraphDataSet.m; sourceTree = "<group>"; };
+		CBA6D111181F1F05006B73AC /* MTLGraphDataDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLGraphDataDetail.h; sourceTree = "<group>"; };
+		CBA6D112181F1F05006B73AC /* MTLGraphDataDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLGraphDataDetail.m; sourceTree = "<group>"; };
+		CBA6D114181F22CB006B73AC /* GraphDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDataSet.h; sourceTree = "<group>"; };
+		CBA6D115181F22CB006B73AC /* GraphDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDataSet.m; sourceTree = "<group>"; };
+		CBA6D117181F2316006B73AC /* GraphItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphItem.h; sourceTree = "<group>"; };
+		CBA6D118181F2316006B73AC /* GraphItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphItem.m; sourceTree = "<group>"; };
+		CBA6D11A181F2351006B73AC /* GraphDataDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDataDetail.h; sourceTree = "<group>"; };
+		CBA6D11B181F2351006B73AC /* GraphDataDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDataDetail.m; sourceTree = "<group>"; };
 		CBB89E0F17FE4F0600402973 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		CBB89E1017FE4F0600402973 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
 		CBBCC47B1810956C00876AC6 /* CardPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardPageViewController.h; sourceTree = "<group>"; };
@@ -316,38 +298,16 @@
 		CBD43F3717F9F49F001AC849 /* ActionBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionBarViewController.m; sourceTree = "<group>"; };
 		CBD43F4117FA12BE001AC849 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
 		CBD43F4217FA12BE001AC849 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
-		CBD43F4C17FA3A49001AC849 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		CBD43F4D17FA3A49001AC849 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		CBD43F4C17FA3A49001AC849 /* MTLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLMessage.h; sourceTree = "<group>"; };
+		CBD43F4D17FA3A49001AC849 /* MTLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLMessage.m; sourceTree = "<group>"; };
 		CBD43F4F17FA63E9001AC849 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		CBD43F5017FA63E9001AC849 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
-		CBD726F4180363CD0071B177 /* NewRelicApdexAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicApdexAlert.h; sourceTree = "<group>"; };
-		CBD726F5180363CD0071B177 /* NewRelicApdexAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicApdexAlert.m; sourceTree = "<group>"; };
-		CBD726F7180363D60071B177 /* NewRelicApdexAlertEnded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicApdexAlertEnded.h; sourceTree = "<group>"; };
-		CBD726F8180363D60071B177 /* NewRelicApdexAlertEnded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicApdexAlertEnded.m; sourceTree = "<group>"; };
-		CBD726FA180363E10071B177 /* NewRelicAppAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicAppAlert.h; sourceTree = "<group>"; };
-		CBD726FB180363E10071B177 /* NewRelicAppAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicAppAlert.m; sourceTree = "<group>"; };
-		CBD726FD180364480071B177 /* NewRelicDeployment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicDeployment.h; sourceTree = "<group>"; };
-		CBD726FE180364480071B177 /* NewRelicDeployment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicDeployment.m; sourceTree = "<group>"; };
-		CBD72700180364510071B177 /* NewRelicDowntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicDowntime.h; sourceTree = "<group>"; };
-		CBD72701180364510071B177 /* NewRelicDowntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicDowntime.m; sourceTree = "<group>"; };
-		CBD72703180364640071B177 /* NewRelicDowntimeEnded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicDowntimeEnded.h; sourceTree = "<group>"; };
-		CBD72704180364640071B177 /* NewRelicDowntimeEnded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicDowntimeEnded.m; sourceTree = "<group>"; };
-		CBD72706180364710071B177 /* NewRelicErrorThreshold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicErrorThreshold.h; sourceTree = "<group>"; };
-		CBD72707180364710071B177 /* NewRelicErrorThreshold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicErrorThreshold.m; sourceTree = "<group>"; };
-		CBD727091803647B0071B177 /* NewRelicErrorThresholdEnded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicErrorThresholdEnded.h; sourceTree = "<group>"; };
-		CBD7270A1803647B0071B177 /* NewRelicErrorThresholdEnded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicErrorThresholdEnded.m; sourceTree = "<group>"; };
-		CBD7270C180364C30071B177 /* NewRelicAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicAlert.h; sourceTree = "<group>"; };
-		CBD7270D180364C30071B177 /* NewRelicAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicAlert.m; sourceTree = "<group>"; };
 		CBDCEC6E1805E9370024860B /* SettingsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsMenuViewController.h; sourceTree = "<group>"; };
 		CBDCEC6F1805E9370024860B /* SettingsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsMenuViewController.m; sourceTree = "<group>"; };
 		CBDCEC711805ED5B0024860B /* ProviderSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderSettingsTableViewController.h; sourceTree = "<group>"; };
 		CBDCEC721805ED5B0024860B /* ProviderSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderSettingsTableViewController.m; sourceTree = "<group>"; };
 		CBDCEC76180629480024860B /* ProviderSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderSettingCell.h; sourceTree = "<group>"; };
 		CBDCEC77180629480024860B /* ProviderSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderSettingCell.m; sourceTree = "<group>"; };
-		CBE8636F17FC93F400EF6E73 /* GoogleAnalyticsDaily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsDaily.h; sourceTree = "<group>"; };
-		CBE8637017FC93F400EF6E73 /* GoogleAnalyticsDaily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsDaily.m; sourceTree = "<group>"; };
-		CBE8637217FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsDailyStatusDetails.h; sourceTree = "<group>"; };
-		CBE8637317FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsDailyStatusDetails.m; sourceTree = "<group>"; };
 		CBE8637517FC9F8800EF6E73 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
 		CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		CBE8637917FC9F9C00EF6E73 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -383,7 +343,6 @@
 				CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */,
 				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
 				CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */,
-				CB0B906817F34E9500F706BE /* PassKit.framework in Frameworks */,
 				CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */,
 				C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */,
 				CB0B906617F34E9000F706BE /* GameKit.framework in Frameworks */,
@@ -424,6 +383,8 @@
 				CBD43F2F17F918A9001AC849 /* SmokescreenViewController.m */,
 				CBD43F3617F9F49F001AC849 /* ActionBarViewController.h */,
 				CBD43F3717F9F49F001AC849 /* ActionBarViewController.m */,
+				CBA6D0FB181ECF6B006B73AC /* DetailView.h */,
+				CBA6D0FC181ECF6B006B73AC /* DetailView.m */,
 			);
 			name = detail;
 			sourceTree = "<group>";
@@ -597,69 +558,6 @@
 			name = auth;
 			sourceTree = "<group>";
 		};
-		CB7C2E4817F26F9800BD858D /* stripe */ = {
-			isa = PBXGroup;
-			children = (
-				CB7C2E4917F26FAC00BD858D /* StripeChargeSucceeded.h */,
-				CB7C2E4A17F26FAC00BD858D /* StripeChargeSucceeded.m */,
-				CB85A84D180B585200698988 /* StripeChargeRefunded.h */,
-				CB85A84E180B585200698988 /* StripeChargeRefunded.m */,
-				CB85A850180B586200698988 /* StripeDisputeCreated.h */,
-				CB85A851180B586200698988 /* StripeDisputeCreated.m */,
-				CB85A853180B586F00698988 /* StripeInvoiceFailed.h */,
-				CB85A854180B586F00698988 /* StripeInvoiceFailed.m */,
-				CB85A856180B588000698988 /* StripeSubscriptionDeleted.h */,
-				CB85A857180B588000698988 /* StripeSubscriptionDeleted.m */,
-				CB85A859180B58B500698988 /* StripeEvent.h */,
-				CB85A85A180B58B500698988 /* StripeEvent.m */,
-			);
-			name = stripe;
-			sourceTree = "<group>";
-		};
-		CB84B44517EBEB3300C8B00D /* github */ = {
-			isa = PBXGroup;
-			children = (
-				CB84B44D17EBEB9700C8B00D /* GithubIssueOpened.h */,
-				CB84B44E17EBEB9700C8B00D /* GithubIssueOpened.m */,
-				CB6ED88517F5EBFF00496244 /* GithubPush.h */,
-				CB6ED88617F5EBFF00496244 /* GithubPush.m */,
-				CB6ED88817F5EC3900496244 /* GithubCommit.h */,
-				CB6ED88917F5EC3900496244 /* GithubCommit.m */,
-				CB6ED88B17F5EC9B00496244 /* Github.h */,
-				CB6ED88C17F5EC9B00496244 /* Github.m */,
-			);
-			name = github;
-			sourceTree = "<group>";
-		};
-		CB84B44617EBEB3C00C8B00D /* sentry */ = {
-			isa = PBXGroup;
-			children = (
-				CB84B45017EBEBA100C8B00D /* SentryException.h */,
-				CB84B45117EBEBA100C8B00D /* SentryException.m */,
-			);
-			name = sentry;
-			sourceTree = "<group>";
-		};
-		CB85A83E1809F5B800698988 /* heroku */ = {
-			isa = PBXGroup;
-			children = (
-				CB85A83F1809F5D700698988 /* HerokuDeploy.h */,
-				CB85A8401809F5D700698988 /* HerokuDeploy.m */,
-			);
-			name = heroku;
-			sourceTree = "<group>";
-		};
-		CB85A845180B0CE000698988 /* kiln */ = {
-			isa = PBXGroup;
-			children = (
-				CB85A847180B0CF500698988 /* KilnPush.h */,
-				CB85A848180B0CF500698988 /* KilnPush.m */,
-				CB85A84A180B0EF600698988 /* KilnCommit.h */,
-				CB85A84B180B0EF600698988 /* KilnCommit.m */,
-			);
-			name = kiln;
-			sourceTree = "<group>";
-		};
 		CB8E0B6C1814A3CA0020E426 /* feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,7 +606,6 @@
 				CBE8637917FC9F9C00EF6E73 /* CoreText.framework */,
 				CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */,
 				CBE8637517FC9F8800EF6E73 /* ShinobiCharts.framework */,
-				CB0B906717F34E9500F706BE /* PassKit.framework */,
 				CB0B906517F34E9000F706BE /* GameKit.framework */,
 				CB0B906317F34E8500F706BE /* StoreKit.framework */,
 				CB7C2E4617F251AE00BD858D /* QuartzCore.framework */,
@@ -726,6 +623,7 @@
 		CB8F209617EB5D6300EBDC34 /* Triage-ios */ = {
 			isa = PBXGroup;
 			children = (
+				CBA6D0FE181EF83C006B73AC /* Triage-ios.entitlements */,
 				CBD43EF817F8B200001AC849 /* cells */,
 				CB5AECE717EE88B900319223 /* helpers */,
 				CB06CB6617EBA4EE007323AA /* networking */,
@@ -789,23 +687,21 @@
 		CB8F20C017EB5F8300EBDC34 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				CB85A845180B0CE000698988 /* kiln */,
-				CB85A83E1809F5B800698988 /* heroku */,
-				CBD726F3180361A30071B177 /* newRelic */,
-				CBE8636E17FC93D900EF6E73 /* googleAnalytics */,
-				CB7C2E4817F26F9800BD858D /* stripe */,
-				CB84B44617EBEB3C00C8B00D /* sentry */,
-				CB84B44517EBEB3300C8B00D /* github */,
-				CB8F212217EB871900EBDC34 /* FeedItem.h */,
-				CB8F212317EB871900EBDC34 /* FeedItem.m */,
-				CB81579A17F0D55E006AA14A /* User.h */,
-				CB81579B17F0D55E006AA14A /* User.m */,
-				CB81579D17F0D568006AA14A /* Account.h */,
-				CB81579E17F0D568006AA14A /* Account.m */,
-				CB8157A017F0D72F006AA14A /* Provider.h */,
-				CB8157A117F0D72F006AA14A /* Provider.m */,
-				CBD43F4C17FA3A49001AC849 /* Message.h */,
-				CBD43F4D17FA3A49001AC849 /* Message.m */,
+				CBA6D0E8181DF41E006B73AC /* Mantle */,
+				CBA6D0E9181DF492006B73AC /* FeedItem.h */,
+				CBA6D0EA181DF492006B73AC /* FeedItem.m */,
+				CBA6D117181F2316006B73AC /* GraphItem.h */,
+				CBA6D118181F2316006B73AC /* GraphItem.m */,
+				CBA6D114181F22CB006B73AC /* GraphDataSet.h */,
+				CBA6D115181F22CB006B73AC /* GraphDataSet.m */,
+				CBA6D11A181F2351006B73AC /* GraphDataDetail.h */,
+				CBA6D11B181F2351006B73AC /* GraphDataDetail.m */,
+				CBA6D0F2181DF4EE006B73AC /* TextItem.h */,
+				CBA6D0F3181DF4EE006B73AC /* TextItem.m */,
+				CBA6D0F5181E03F6006B73AC /* Message.h */,
+				CBA6D0F6181E03F6006B73AC /* Message.m */,
+				CBA6D0F8181E0439006B73AC /* User.h */,
+				CBA6D0F9181E0439006B73AC /* User.m */,
 				CBB89E0F17FE4F0600402973 /* Store.h */,
 				CBB89E1017FE4F0600402973 /* Store.m */,
 				CB4FDD4B17FF75B700EEE7F6 /* PersistentStack.h */,
@@ -841,6 +737,31 @@
 			name = heroku;
 			sourceTree = "<group>";
 		};
+		CBA6D0E8181DF41E006B73AC /* Mantle */ = {
+			isa = PBXGroup;
+			children = (
+				CB81579D17F0D568006AA14A /* Account.h */,
+				CB81579E17F0D568006AA14A /* Account.m */,
+				CB8157A017F0D72F006AA14A /* Provider.h */,
+				CB8157A117F0D72F006AA14A /* Provider.m */,
+				CBD43F4C17FA3A49001AC849 /* MTLMessage.h */,
+				CBD43F4D17FA3A49001AC849 /* MTLMessage.m */,
+				CB8F212217EB871900EBDC34 /* MTLFeedItem.h */,
+				CB8F212317EB871900EBDC34 /* MTLFeedItem.m */,
+				CBA6D0D7181DDE03006B73AC /* MTLTextItem.h */,
+				CBA6D0D8181DDE03006B73AC /* MTLTextItem.m */,
+				CBA6D0DC181DDF30006B73AC /* MTLGraphItem.h */,
+				CBA6D0DD181DDF30006B73AC /* MTLGraphItem.m */,
+				CBA6D10E181F1EF7006B73AC /* MTLGraphDataSet.h */,
+				CBA6D10F181F1EF7006B73AC /* MTLGraphDataSet.m */,
+				CBA6D111181F1F05006B73AC /* MTLGraphDataDetail.h */,
+				CBA6D112181F1F05006B73AC /* MTLGraphDataDetail.m */,
+				CB81579A17F0D55E006AA14A /* MTLUser.h */,
+				CB81579B17F0D55E006AA14A /* MTLUser.m */,
+			);
+			name = Mantle;
+			sourceTree = "<group>";
+		};
 		CBCC6C8D18199D5F001030C2 /* AutoCompleteTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -860,8 +781,8 @@
 			children = (
 				CBD43EF917F8B221001AC849 /* TextCardCell.h */,
 				CBD43EFA17F8B221001AC849 /* TextCardCell.m */,
-				CB742D18180EFF2F0068A301 /* GraphDataCell.h */,
-				CB742D19180EFF2F0068A301 /* GraphDataCell.m */,
+				CB742D18180EFF2F0068A301 /* GraphCardCell.h */,
+				CB742D19180EFF2F0068A301 /* GraphCardCell.m */,
 				CBD43EFE17F8B54B001AC849 /* DataCardCell.h */,
 				CBD43EFF17F8B54B001AC849 /* DataCardCell.m */,
 				CBD43F0417F8B63B001AC849 /* CardCell.h */,
@@ -891,42 +812,6 @@
 				CBD2CF0C181824D1009B3B71 /* MessageToolbarViewController.m */,
 			);
 			name = messages;
-			sourceTree = "<group>";
-		};
-		CBD726F3180361A30071B177 /* newRelic */ = {
-			isa = PBXGroup;
-			children = (
-				CBD726F4180363CD0071B177 /* NewRelicApdexAlert.h */,
-				CBD726F5180363CD0071B177 /* NewRelicApdexAlert.m */,
-				CBD726F7180363D60071B177 /* NewRelicApdexAlertEnded.h */,
-				CBD726F8180363D60071B177 /* NewRelicApdexAlertEnded.m */,
-				CBD726FA180363E10071B177 /* NewRelicAppAlert.h */,
-				CBD726FB180363E10071B177 /* NewRelicAppAlert.m */,
-				CBD726FD180364480071B177 /* NewRelicDeployment.h */,
-				CBD726FE180364480071B177 /* NewRelicDeployment.m */,
-				CBD72700180364510071B177 /* NewRelicDowntime.h */,
-				CBD72701180364510071B177 /* NewRelicDowntime.m */,
-				CBD72703180364640071B177 /* NewRelicDowntimeEnded.h */,
-				CBD72704180364640071B177 /* NewRelicDowntimeEnded.m */,
-				CBD72706180364710071B177 /* NewRelicErrorThreshold.h */,
-				CBD72707180364710071B177 /* NewRelicErrorThreshold.m */,
-				CBD727091803647B0071B177 /* NewRelicErrorThresholdEnded.h */,
-				CBD7270A1803647B0071B177 /* NewRelicErrorThresholdEnded.m */,
-				CBD7270C180364C30071B177 /* NewRelicAlert.h */,
-				CBD7270D180364C30071B177 /* NewRelicAlert.m */,
-			);
-			name = newRelic;
-			sourceTree = "<group>";
-		};
-		CBE8636E17FC93D900EF6E73 /* googleAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				CBE8636F17FC93F400EF6E73 /* GoogleAnalyticsDaily.h */,
-				CBE8637017FC93F400EF6E73 /* GoogleAnalyticsDaily.m */,
-				CBE8637217FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.h */,
-				CBE8637317FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m */,
-			);
-			name = googleAnalytics;
 			sourceTree = "<group>";
 		};
 		CBF387271812535500554730 /* HockeySDK.embeddedframework */ = {
@@ -1010,7 +895,7 @@
 								enabled = 1;
 							};
 							com.apple.Passbook = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1103,85 +988,72 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB2F9FB11808B40A00F5F97C /* ODIN.m in Sources */,
-				CB85A855180B586F00698988 /* StripeInvoiceFailed.m in Sources */,
+				CBA6D116181F22CB006B73AC /* GraphDataSet.m in Sources */,
 				CB2F9FAF1808B40A00F5F97C /* MPCSerializedJSONData.m in Sources */,
 				CBB89E1117FE4F0600402973 /* Store.m in Sources */,
-				CB7C2E4B17F26FAC00BD858D /* StripeChargeSucceeded.m in Sources */,
-				CB81579C17F0D55E006AA14A /* User.m in Sources */,
-				CB6ED88D17F5EC9B00496244 /* Github.m in Sources */,
+				CB81579C17F0D55E006AA14A /* MTLUser.m in Sources */,
 				CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */,
 				CB429BA517EFDB17002273D6 /* SentrySettingsViewController.m in Sources */,
 				CB8157A217F0D72F006AA14A /* Provider.m in Sources */,
-				CB6ED88717F5EBFF00496244 /* GithubPush.m in Sources */,
 				CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */,
 				CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */,
 				CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */,
-				CBD72708180364710071B177 /* NewRelicErrorThreshold.m in Sources */,
 				CB2F9FAD1808B40A00F5F97C /* MPCJSONDataSerializer.m in Sources */,
+				CBA6D110181F1EF7006B73AC /* MTLGraphDataSet.m in Sources */,
 				CBCC6CA21819C1FF001030C2 /* UIView+BlurredSnapshot.m in Sources */,
 				CBDCEC701805E9370024860B /* SettingsMenuViewController.m in Sources */,
+				CBA6D0F7181E03F6006B73AC /* Message.m in Sources */,
 				CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */,
 				CB2F9FAE1808B40A00F5F97C /* MPCJSONSerializer.m in Sources */,
-				CBD43F4E17FA3A49001AC849 /* Message.m in Sources */,
+				CBD43F4E17FA3A49001AC849 /* MTLMessage.m in Sources */,
 				CB429BA017EFDB0A002273D6 /* StripeSettingsViewController.m in Sources */,
 				CBD43EFB17F8B221001AC849 /* TextCardCell.m in Sources */,
-				CBD726FC180363E10071B177 /* NewRelicAppAlert.m in Sources */,
 				CBDCEC731805ED5B0024860B /* ProviderSettingsTableViewController.m in Sources */,
 				CB8F20A117EB5D6300EBDC34 /* AppDelegate.m in Sources */,
-				CB8F212417EB871900EBDC34 /* FeedItem.m in Sources */,
-				CB742D1A180EFF2F0068A301 /* GraphDataCell.m in Sources */,
-				CB85A84F180B585200698988 /* StripeChargeRefunded.m in Sources */,
+				CB8F212417EB871900EBDC34 /* MTLFeedItem.m in Sources */,
+				CB742D1A180EFF2F0068A301 /* GraphCardCell.m in Sources */,
 				CBCC6C9F1819B90C001030C2 /* AtReplyMessageCell.m in Sources */,
 				CBCC6C9618199D71001030C2 /* NSString+Levenshtein.m in Sources */,
 				CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */,
+				CBA6D0D9181DDE03006B73AC /* MTLTextItem.m in Sources */,
 				CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */,
 				CBA676AE18085B150035368A /* NewRelicSettingsViewController.m in Sources */,
 				CBA676B118085B470035368A /* HerokuSettingsViewController.m in Sources */,
 				CB85A8441809F9A200698988 /* NSString+Inflections.m in Sources */,
-				CB85A858180B588000698988 /* StripeSubscriptionDeleted.m in Sources */,
-				CBD72705180364640071B177 /* NewRelicDowntimeEnded.m in Sources */,
 				CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */,
 				CB429B9B17EFDAFF002273D6 /* GithubSettingsViewController.m in Sources */,
 				CB84B41F17EBBF1500C8B00D /* RootViewController.m in Sources */,
 				CBD2CF0D181824D1009B3B71 /* MessageToolbarViewController.m in Sources */,
+				CBA6D0FA181E0439006B73AC /* User.m in Sources */,
 				CBA676B418085B630035368A /* AirbrakeSettingsViewController.m in Sources */,
 				CB2F9FB21808B40A00F5F97C /* Mixpanel.m in Sources */,
-				CB85A85B180B58B500698988 /* StripeEvent.m in Sources */,
 				CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */,
 				CB8D0EC3180DAA9C004FABBC /* FetchedMessagesDataSource.m in Sources */,
-				CB85A84C180B0EF600698988 /* KilnCommit.m in Sources */,
 				CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */,
+				CBA6D0DE181DDF30006B73AC /* MTLGraphItem.m in Sources */,
 				CBD43F3917F9F4A0001AC849 /* ActionBarViewController.m in Sources */,
+				CBA6D119181F2316006B73AC /* GraphItem.m in Sources */,
 				CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */,
-				CBD72702180364510071B177 /* NewRelicDowntime.m in Sources */,
-				CB84B45217EBEBA100C8B00D /* SentryException.m in Sources */,
 				CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */,
-				CB85A8411809F5D700698988 /* HerokuDeploy.m in Sources */,
 				CBF3873118125C8F00554730 /* TRJSONResponseSerializerWithData.m in Sources */,
-				CBD726F6180363CD0071B177 /* NewRelicApdexAlert.m in Sources */,
 				CBCC6CA51819C3D2001030C2 /* UIImage+ImageEffects.m in Sources */,
-				CBE8637417FC9ACF00EF6E73 /* GoogleAnalyticsDailyStatusDetails.m in Sources */,
-				CB85A852180B586200698988 /* StripeDisputeCreated.m in Sources */,
+				CBA6D0FD181ECF6C006B73AC /* DetailView.m in Sources */,
+				CBA6D113181F1F05006B73AC /* MTLGraphDataDetail.m in Sources */,
 				CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */,
-				CB6ED88A17F5EC3900496244 /* GithubCommit.m in Sources */,
-				CBD726FF180364480071B177 /* NewRelicDeployment.m in Sources */,
 				CBA676B718085D520035368A /* BaseSettingsViewController.m in Sources */,
-				CBD7270E180364C30071B177 /* NewRelicAlert.m in Sources */,
-				CB85A849180B0CF500698988 /* KilnPush.m in Sources */,
+				CBA6D0F4181DF4EE006B73AC /* TextItem.m in Sources */,
 				CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
+				CBA6D11C181F2351006B73AC /* GraphDataDetail.m in Sources */,
 				CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */,
 				CB23F74C181AD49A0035262D /* UIDebugWindow.m in Sources */,
+				CBA6D0EB181DF492006B73AC /* FeedItem.m in Sources */,
 				CB4F87AC180F532500B685E1 /* TeammateCell.m in Sources */,
 				CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */,
 				CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */,
-				CBD7270B1803647B0071B177 /* NewRelicErrorThresholdEnded.m in Sources */,
 				CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */,
-				CB84B44F17EBEB9700C8B00D /* GithubIssueOpened.m in Sources */,
 				CB2F9FB01808B40A00F5F97C /* NSData+MPBase64.m in Sources */,
 				CBD43F3017F918A9001AC849 /* SmokescreenViewController.m in Sources */,
-				CBE8637117FC93F400EF6E73 /* GoogleAnalyticsDaily.m in Sources */,
-				CBD726F9180363D60071B177 /* NewRelicApdexAlertEnded.m in Sources */,
 				CB2D00AB181215E6005350D5 /* SettingEventsViewController.m in Sources */,
 				CB5A35C1180CD31200ECAB71 /* FetchedFeedItemsDataSource.m in Sources */,
 				CB81579F17F0D568006AA14A /* Account.m in Sources */,
@@ -1308,7 +1180,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1334,7 +1206,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

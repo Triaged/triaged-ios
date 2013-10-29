@@ -1,40 +1,27 @@
 //
 //  User.m
-//  Docked-ios
+//  Triage-ios
 //
-//  Created by Charlie White on 9/23/13.
+//  Created by Charlie White on 10/27/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
 #import "User.h"
+#import "Message.h"
+
 
 @implementation User
 
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
-             @"userID": @"id",
-             @"name": @"name",
-             @"email": @"email",
-             @"avatarUrl" : @"avatar_url"
-             };
-}
-
-+ (NSString *)managedObjectEntityName {
-    return @"User";
-}
-
-+ (NSDictionary *)managedObjectKeysByPropertyKey {
-    return @{};
-}
-
-+ (NSSet *)propertyKeysForManagedObjectUniquing {
-    return [NSSet setWithObject:@"userID"];
-}
+@dynamic avatarUrl;
+@dynamic email;
+@dynamic name;
+@dynamic slug;
+@dynamic userID;
+@dynamic authoredMessages;
 
 - (NSString *)autocompleteString
 {
-    return self.name;
+    return self.slug;
 }
-
 
 @end

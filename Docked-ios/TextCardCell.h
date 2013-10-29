@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CardCell.h"
 
-@protocol TextCardProtocol <CardProtocol>
--(NSString *)body;
-@end
-
 @interface TextCardCell : CardCell
 
 @end

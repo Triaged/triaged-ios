@@ -28,6 +28,8 @@
 @property (nonatomic, assign) float			previousTextFieldHeight;
 @property (nonatomic, assign) BOOL shouldSearchForUser;
 @property (nonatomic, retain) GGHashtagMentionController *hmc;
+@property (nonatomic) NSRange currentTokenRange;
+
 
 @end
 
@@ -57,7 +59,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-    [self.textView resignFirstResponder];
     [self.textView shouldShowAutoCompleteTable:NO];
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
@@ -91,8 +92,8 @@
     [self.textView setFont:[UIFont fontWithName:@"Avenir-Roman" size:15.0]];
     [self.textView setTextColor: [UIColor blackColor]];
     [self.textView setKeyboardAppearance:UIKeyboardAppearanceDefault];
-    [self.textView setKeyboardType:UIKeyboardTypeDefault];
-    [self.textView setReturnKeyType:UIReturnKeyDefault];
+    [self.textView setKeyboardType:UIKeyboardTypeTwitter];
+    //[self.textView setReturnKeyType:UIReturnKeyDefault];
     [self.textView registerAutoCompleteCellClass:[AtReplyMessageCell class]
                                        forCellReuseIdentifier:@"AtReplyCellID"];
     self.textView.autoCompleteDataSource = self;
@@ -103,7 +104,7 @@
     self.hmc = [[GGHashtagMentionController alloc] initWithTextView:self.textView delegate:self];
     
     self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.0f, 6.0f, width, kLineHeight)];
-    self.placeholderLabel.text = @"Write a message...";
+    self.placeholderLabel.text = @"Discuss...";
     [self.placeholderLabel setFont:[UIFont fontWithName:@"Avenir-Roman" size:15.0]];
     [self.placeholderLabel setTextColor:[[UIColor alloc] initWithRed:158.0f/255.0f green:158.0f/255.0f blue:158.0f/255.0f alpha:1.0f]];
     [self.imageInput addSubview:self.placeholderLabel];
@@ -164,7 +165,7 @@
 	
 	CGFloat viewHeight =  self.detailView.view.frame.size.height;
     NSLog(@"%f", self.detailView.view.frame.origin.y);
-	CGFloat keyboardY = [self.view.superview convertRect:keyboardRect fromView:nil].origin.y;
+	CGFloat keyboardY = [self.detailView.view convertRect:keyboardRect fromView:nil].origin.y;
 	CGFloat diff = keyboardY - viewHeight;
    	
 	// Thanks to Raja Baz (@raja-baz) for the delay's animation fix.
@@ -180,24 +181,15 @@
 	void (^completition)(void) = ^{
 		CGFloat inputViewFrameY = keyboardY - self.view.frame.size.height;
         
-        NSLog(@"superview y: %f", self.view.superview.frame.origin.y);
-        NSLog(@"superview height: %f", self.view.superview.frame.size.height);
-        NSLog(@"keyboard: %f", keyboardY);
-        NSLog(@"inputViewFrameY: %f", inputViewFrameY);
-        
         self.view.frame = CGRectMake(self.view.frame.origin.x,
-										   self.view.superview.frame.origin.y,
-										   self.view.frame.size.width,
-										   self.view.superview.frame.size.height - keyboardY + 50);
-        self.imageInput.frame = CGRectMake(self.imageInput.frame.origin.x, self.view.frame.size.height - self.imageInput.frame.size.height, self.imageInput.frame.size.width, self.imageInput.frame.size.height);
-//        self.view.frame = CGRectMake(self.view.frame.origin.x,
-//                                     self.view.frame.origin.y + inputViewFrameY,
-//                                     self.view.frame.size.width,
-//                                     self.view.frame.size.height);
-       self.detailView.scrollView.frame = CGRectMake(self.detailView.scrollView.frame.origin.x,
+                                     inputViewFrameY,
+                                     self.view.frame.size.width,
+                                     self.view.frame.size.height);
+       
+        self.detailView.scrollView.frame = CGRectMake(self.detailView.scrollView.frame.origin.x,
                                                       self.detailView.scrollView.frame.origin.y,
                                                       self.detailView.scrollView.frame.size.width,
-                                                      self.detailView.scrollView.frame.size.height + inputViewFrameY);
+                                                       inputViewFrameY);
 };
 	
 	
@@ -306,6 +298,7 @@
         self.detailView.scrollView.userInteractionEnabled = NO;
     }
     
+    self.currentTokenRange = range;
     self.textView.autoCompleteQueryString = text;
     [self.textView shouldShowAutoCompleteTable:YES];
     self.shouldSearchForUser = YES;
@@ -341,8 +334,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
         NSArray *completions;
-        completions = [AppDelegate sharedDelegate].store.account.teammates;
-        
+        completions = [AppDelegate sharedDelegate].store.account.team;
         
         handler(completions);
     });
@@ -378,6 +370,16 @@
        withAutoCompleteObject:(id<MLPAutoCompletionObject>)selectedObject
             forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    // Add the token to our text field
+    NSMutableString *currentText = [NSMutableString stringWithString:self.textView.text];
+    [currentText replaceCharactersInRange:self.currentTokenRange withString:@"@ "];
+    [currentText insertString:[selectedObject autocompleteString] atIndex:(self.currentTokenRange.location + 1)];
+    self.textView.text = currentText;
+    
+    // Add user interaction back in
+    self.detailView.scrollView.userInteractionEnabled = YES;
+    
     if(selectedObject){
         NSLog(@"selected object from autocomplete menu %@ with string %@", selectedObject, [selectedObject autocompleteString]);
     } else {

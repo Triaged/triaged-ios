@@ -1,41 +1,47 @@
 //
 //  FeedItem.h
-//  Docked-ios
+//  Triage-ios
 //
-//  Created by Charlie White on 9/19/13.
+//  Created by Charlie White on 10/27/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "Mantle.h"
-#import "Message.h"
-
-@protocol DataSourceItem <NSObject>
--(Class)tableViewCellClass;
-@end
+#import <CoreData/CoreData.h>
 
 @class Message;
 
-@interface FeedItem : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
+@interface FeedItem : NSManagedObject
 
-@property (nonatomic, copy, readonly) NSString *externalID;
-@property (nonatomic, copy, readonly) NSString *htmlUrl;
-@property (nonatomic, copy, readonly) NSArray *messages;
-@property (nonatomic, copy, readonly) NSDate *timestamp;
-@property (nonatomic, copy, readonly) NSDate *updatedAt;
-
-+ (NSDictionary *)JSONKeyPathsWithSuper:(NSDictionary *)JSONKeyPaths;
-+ (NSDictionary *)relationshipModelClassesWith:(NSDictionary *)relationshipModels;
-
-
-+ (void)fetchNewRemoteFeedItemsWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *))block;
+@property (nonatomic, retain) NSString * provider;
+@property (nonatomic, retain) NSString * property;
+@property (nonatomic, retain) NSString * action;
+@property (nonatomic, retain) NSString * event;
+@property (nonatomic, retain) NSString * externalID;
+@property (nonatomic, retain) NSString * htmlUrl;
+@property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSDate * updatedAt;
+@property (nonatomic, retain) NSOrderedSet *messages;
 
 - (bool)hasMessages;
 - (bool)hasMultipleMessages;
 - (Message *)previewMessage;
 
-- (NSArray *)sortedMessages;
-
 - (NSFetchedResultsController*)messagesFetchedResultsController;
 
+
+@end
+
+@interface FeedItem (CoreDataGeneratedAccessors)
+
+- (void)insertObject:(NSManagedObject *)value inMessagesAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromMessagesAtIndex:(NSUInteger)idx;
+- (void)insertMessages:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeMessagesAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInMessagesAtIndex:(NSUInteger)idx withObject:(NSManagedObject *)value;
+- (void)replaceMessagesAtIndexes:(NSIndexSet *)indexes withMessages:(NSArray *)values;
+- (void)addMessagesObject:(NSManagedObject *)value;
+- (void)removeMessagesObject:(NSManagedObject *)value;
+- (void)addMessages:(NSOrderedSet *)values;
+- (void)removeMessages:(NSOrderedSet *)values;
 @end

@@ -36,7 +36,7 @@
         }
     }
  
-    UIImage * backImage = [UIImage imageNamed:@"menu.png"];
+    UIImage * backImage = [UIImage imageNamed:@"cog.png"];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:nil action:nil];
     
     UIView* coverUpView = [[UIView alloc] initWithFrame:CGRectMake(0, _cardImageView.frame.size.height -1, _cardImageView.frame.size.width, 1)];/// change size as you need.

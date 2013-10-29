@@ -14,6 +14,7 @@
 #import "SettingsMenuViewController.h"
 #import "DetailViewController.h"
 #import "WelcomeViewController.h"
+#import "CredentialStore.h"
 //#import "Mixpanel.h"
 
 #define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"

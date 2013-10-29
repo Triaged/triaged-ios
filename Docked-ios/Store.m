@@ -7,7 +7,7 @@
 //
 
 #import "Store.h"
-#import "FeedItem.h"
+#import "MTLFeedItem.h"
 #import "Account.h"
 #import "DockedAPIClient.h"
 #import "AppDelegate.h"
@@ -53,9 +53,9 @@
 {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
     [request setFetchBatchSize:200];
-    [request setRelationshipKeyPathsForPrefetching:@[@"commits"]];
+    [request setRelationshipKeyPathsForPrefetching:@[@"dataSets"]];
+    [request setRelationshipKeyPathsForPrefetching:@[@"dataDetails"]];
     [request setRelationshipKeyPathsForPrefetching:@[@"messages"]];
-    [request setRelationshipKeyPathsForPrefetching:@[@"dailyDetails"]];
     [request setRelationshipKeyPathsForPrefetching:@[@"author"]];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO]];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"externalID" cacheName:nil];
@@ -75,6 +75,13 @@
 {
     [Account fetchRemoteUserAccountWithBlock:^(Account *account) {
         _account = account;
+        
+        // Save teammates to CoreData
+        for( MTLUser* teammate in _account.teammates) {
+            NSError *error = nil;
+            [MTLManagedObjectAdapter managedObjectFromModel:teammate insertingIntoContext:self.managedObjectContext error:&error];
+        }
+        [self.managedObjectContext save:nil];
     }];
 }
 
@@ -93,11 +100,11 @@
         params = [[NSDictionary alloc] initWithObjectsAndKeys:minUpdatedAt, @"min_updated_at", nil];
     }
     
-    [FeedItem fetchNewRemoteFeedItemsWithParams:params andBlock:^(NSArray *newItems) {
+    [MTLFeedItem fetchNewRemoteFeedItemsWithParams:params andBlock:^(NSArray *newItems) {
         
         if (newItems.count > 0) {
             
-            for( FeedItem *item in newItems) {
+            for( MTLFeedItem *item in newItems) {
                 NSError *error = nil;
                 [MTLManagedObjectAdapter managedObjectFromModel:item insertingIntoContext:self.managedObjectContext error:&error];
                 
@@ -108,7 +115,7 @@
             }
             [self.managedObjectContext save:nil];
             
-            FeedItem *latestItem = [newItems firstObject];
+            MTLFeedItem *latestItem = [newItems firstObject];
             NSString *minUpdated = [Store.dateFormatter stringFromDate:latestItem.updatedAt];
             [standardDefaults setObject:minUpdated forKey:@"min_updated_at"];
             [standardDefaults synchronize];
@@ -128,7 +135,7 @@
     NSArray *sortedFeedItems = [self sortFeedItems];
     NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:sortedFeedItems.count];
     
-    for (FeedItem *item in sortedFeedItems) {
+    for (MTLFeedItem *item in sortedFeedItems) {
         [feed addObject:[self buildGroupedFeedItem:item]];
     }
     
@@ -137,7 +144,7 @@
 
 - (void) feedWasUpdated {
     // set minID for remote requests
-    FeedItem *item = [[self sortFeedItems] firstObject];
+    MTLFeedItem *item = [[self sortFeedItems] firstObject];
     _minID = item.externalID;
     
     // Send notification
@@ -146,12 +153,12 @@
 
 - (NSArray *)sortFeedItems
 {
-    return [self.feedItems sortedArrayUsingComparator:^NSComparisonResult(FeedItem *feedItem1, FeedItem *feedItem2) {
+    return [self.feedItems sortedArrayUsingComparator:^NSComparisonResult(MTLFeedItem *feedItem1, MTLFeedItem *feedItem2) {
         return [feedItem2.updatedAt compare:feedItem1.updatedAt];
     }];
 }
 
-- (NSArray *)buildGroupedFeedItem:(FeedItem *)feedItem
+- (NSArray *)buildGroupedFeedItem:(MTLFeedItem *)feedItem
 {
     NSMutableArray *groupedFeedItem = [[NSMutableArray alloc] initWithObjects:feedItem, nil];
     if (feedItem.messages.count > 0) {

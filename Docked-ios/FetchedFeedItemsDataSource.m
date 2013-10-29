@@ -7,6 +7,7 @@
 //
 
 #import "FetchedFeedItemsDataSource.h"
+#import "MTLFeedItem.h"
 #import "FeedItem.h"
 #import "CardCell.h"
 #import "NSDate+TimeAgo.h"
@@ -20,17 +21,14 @@
 
 - (id)feedItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [MTLManagedObjectAdapter modelOfClass:FeedItem.class
-                        fromManagedObject:[self.fetchedResultsController objectAtIndexPath:indexPath] error:nil];
+    return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
 - (id)feedItemAtForMessageIndexPath:(NSIndexPath *)indexPath
 {
 
     NSIndexPath *feedItemIndexPath = [NSIndexPath indexPathForRow:0 inSection:indexPath.section];
-    return [MTLManagedObjectAdapter modelOfClass:FeedItem.class
-                               fromManagedObject:[self.fetchedResultsController
-                                                  objectAtIndexPath:feedItemIndexPath] error:nil];
+    return [self.fetchedResultsController objectAtIndexPath:feedItemIndexPath];
 }
 
 
@@ -46,6 +44,7 @@
     FeedItem *item = [self feedItemAtIndexPath:feedItemIndexPath];
     
     return ([item hasMessages] ? 2 : 1);
+    return 1;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -67,9 +66,9 @@
     FeedItem *item = [self feedItemAtIndexPath:indexPath];
 
     // Determine the cell class
-    id<DataSourceItem> cellSource = (id<DataSourceItem>)item;
-    Class cellClass = [ cellSource tableViewCellClass ] ;
-    NSString * cellID = NSStringFromClass( cellClass ) ;
+    NSEntityDescription *entityDescription = item.entity;
+    NSString *cellID = entityDescription.userInfo[@"cell"];
+    Class cellClass = NSClassFromString(cellID);
     
     CardCell *cell = [ tableView dequeueReusableCellWithIdentifier:cellID ] ;
     if ( !cell )

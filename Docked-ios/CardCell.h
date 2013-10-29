@@ -12,13 +12,6 @@
 #import "MessageCell.h"
 #import "NSDate+TimeAgo.h"
 
-@protocol CardProtocol <NSObject>
--(NSString *)property;
--(NSString *)action;
--(UIImage *)providerIcon;
--(NSDate *)timestamp;
-@end
-
 @interface CardCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *providerIconView;

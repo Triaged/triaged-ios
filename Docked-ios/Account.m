@@ -10,7 +10,7 @@
 #import "Provider.h"
 #import "DockedAPIClient.h"
 #import "CredentialStore.h"
-#import "User.h"
+#import "MTLUser.h"
 #import "AppDelegate.h"
 #import "Store.h"
 
@@ -32,7 +32,7 @@
 
 + (NSValueTransformer *)teammatesJSONTransformer
 {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[User class]];
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[MTLUser class]];
 }
 
 
@@ -163,9 +163,18 @@
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", _userID];
     NSArray * fetchedObjects = [[AppDelegate sharedDelegate].store.managedObjectContext executeFetchRequest:request error:nil];
-    return [MTLManagedObjectAdapter modelOfClass:User.class
-                               fromManagedObject:[fetchedObjects firstObject] error:nil];
+    return [fetchedObjects firstObject];
 }
+
+-(NSArray *)team
+{
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    request.predicate = [NSPredicate predicateWithFormat:@"userID != %@", _userID];
+    NSArray * fetchedObjects = [[AppDelegate sharedDelegate].store.managedObjectContext executeFetchRequest:request error:nil];
+    return fetchedObjects;
+}
+
+
 
 
 

@@ -1,20 +1,32 @@
 //
 //  User.h
-//  Docked-ios
+//  Triage-ios
 //
-//  Created by Charlie White on 9/23/13.
+//  Created by Charlie White on 10/27/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "Mantle.h"
+#import <CoreData/CoreData.h>
 #import "MLPAutoCompletionObject.h"
 
-@interface User : MTLModel <MTLJSONSerializing,  MTLManagedObjectSerializing, MLPAutoCompletionObject>
+@class Message;
 
-@property (nonatomic, copy, readonly) NSString *userID;
-@property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *email;
-@property (nonatomic, copy, readonly) NSString *avatarUrl;
+@interface User : NSManagedObject <MLPAutoCompletionObject>
+
+@property (nonatomic, retain) NSString * avatarUrl;
+@property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * slug;
+@property (nonatomic, retain) NSString * userID;
+@property (nonatomic, retain) NSSet *authoredMessages;
+@end
+
+@interface User (CoreDataGeneratedAccessors)
+
+- (void)addAuthoredMessagesObject:(Message *)value;
+- (void)removeAuthoredMessagesObject:(Message *)value;
+- (void)addAuthoredMessages:(NSSet *)values;
+- (void)removeAuthoredMessages:(NSSet *)values;
 
 @end

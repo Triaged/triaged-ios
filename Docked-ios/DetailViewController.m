@@ -11,6 +11,8 @@
 #import "MessageToolbarViewController.h"
 #import "CardCell.h"
 #import "UIView+BlurredSnapshot.h"
+#import "DetailView.h"
+#import "AppDelegate.h"
 
 @interface DetailViewController () {
     MessagesTableViewController *messagesVC;
@@ -66,11 +68,11 @@
     [scrollView addSubview:contentView];
     
 
-    // Card View
-    id<DataSourceItem> cellSource = (id<DataSourceItem>)_feedItem;
-    Class cellClass = [ cellSource tableViewCellClass ] ;
-    NSString * cellID = NSStringFromClass( cellClass ) ;
+    NSEntityDescription *entityDescription = _feedItem.entity;
+    NSString *cellID = entityDescription.userInfo[@"cell"];
+    Class cellClass = NSClassFromString(cellID);
     CardCell *cell = [ [ cellClass alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID ] ;
+    
     cell.frame = CGRectMake(8, 0, 304, [cellClass heightOfContent:_feedItem] );
     cell.backgroundColor = [UIColor whiteColor];
     cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -136,6 +138,7 @@
         [scrollView setContentOffset:bottomOffset animated:YES];
     }
 }
+
 
 -(void) didSendText:(NSString *)text
 {

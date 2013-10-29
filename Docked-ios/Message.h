@@ -1,28 +1,27 @@
 //
 //  Message.h
-//  Docked-ios
+//  Triage-ios
 //
-//  Created by Charlie White on 9/30/13.
+//  Created by Charlie White on 10/27/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "Mantle.h"
-#import "FeedItem.h"
-#import "Account.h"
+#import <CoreData/CoreData.h>
 #import "User.h"
+#import "FeedItem.h"
 
 @class FeedItem;
+@class User;
 
+@interface Message : NSManagedObject
 
-@interface Message : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
-
-@property (nonatomic, copy, readonly) NSString *externalID;
-@property (nonatomic, copy, readonly) NSString *uuid;
-@property (nonatomic, copy, readonly) NSString *body;
-@property (nonatomic, copy, readonly) NSDate *timestamp;
-@property (nonatomic, copy, readonly) User *author;
-@property (nonatomic, copy, readonly) FeedItem *feedItem;
+@property (nonatomic, retain) NSString * body;
+@property (nonatomic, retain) NSString * externalID;
+@property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSString * uuid;
+@property (nonatomic, retain) User *author;
+@property (nonatomic, retain) FeedItem *feedItem;
 
 + (instancetype) buildNewMessageWithBody:(NSString *)body forFeedItem:(FeedItem *)item;
 

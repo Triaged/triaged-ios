@@ -15,6 +15,7 @@
 #import "MLPAutoCompleteTextField.h"
 #import "MLPAutoCompletionObject.h"
 #import "NSString+Levenshtein.h"
+#import "AtReplyMessageCell.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -237,9 +238,9 @@ withAutoCompleteString:(NSString *)string
         [self closeAutoCompleteTableView];
     }
     
-    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *autoCompleteString = selectedCell.textLabel.text;
-    self.text = autoCompleteString;
+    AtReplyMessageCell *selectedCell = (AtReplyMessageCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSString *autoCompleteString = selectedCell.nameLabel.text;
+    
     
     id<MLPAutoCompletionObject> autoCompleteObject = self.autoCompleteSuggestions[indexPath.row];
     if(![autoCompleteObject conformsToProtocol:@protocol(MLPAutoCompletionObject)]){
@@ -254,8 +255,6 @@ withAutoCompleteString:(NSString *)string
                                   withAutoCompleteObject:autoCompleteObject
                                        forRowAtIndexPath:indexPath];
     }
-    
-    [self finishedSearching];
 }
 
 #pragma mark - AutoComplete Sort Operation Delegate
@@ -316,7 +315,7 @@ withAutoCompleteString:(NSString *)string
 
 - (void) finishedSearching
 {
-    [self resignFirstResponder];
+    //[self resignFirstResponder];
 }
 
 - (BOOL)resignFirstResponder
@@ -373,10 +372,8 @@ withAutoCompleteString:(NSString *)string
             }
         }
         
-        [self.superview bringSubviewToFront:self];
-        [self.superview insertSubview:self.autoCompleteTableView
-                         belowSubview:self];
-        [self.superview insertSubview:self.blurredBackgroundView belowSubview:self.autoCompleteTableView];
+        self.autoCompleteTableView.backgroundView = self.blurredBackgroundView;
+        [self.superview.superview.superview addSubview:self.autoCompleteTableView];
         [self.autoCompleteTableView setUserInteractionEnabled:YES];
         
     } else {
@@ -599,7 +596,7 @@ withAutoCompleteString:(NSString *)string
 
 + (CGRect)autoCompleteTableViewFrameForTextField:(MLPAutoCompleteTextField *)textField
 {
-    CGRect frame = CGRectMake(0,-240,320, 242);
+    CGRect frame = CGRectMake(0,64,320, 242);
     frame = CGRectInset(frame, 1, 0);
     
     return frame;

@@ -1,5 +1,5 @@
 //
-//  DataCardCell.h
+//  GraphDataCell.h
 //  Docked-ios
 //
 //  Created by Charlie White on 9/29/13.
@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "CardCell.h"
+#import "CorePlot-CocoaTouch.h"
 
-//@protocol DataCardProtocol <CardProtocol>
+//@protocol GraphCardProtocol <CardProtocol>
+//
+//-(NSNumber *)maxYCoordinate;
+//-(NSArray *)firstCoordinates;
+//-(NSArray *)secondCoordinates;
+//-(NSArray *)thirdCoordinates;
+//
 //-(NSNumber *)firstDataField;
 //-(NSNumber *)secondDataField;
 //-(NSNumber *)thirdDataField;
@@ -17,6 +24,6 @@
 //-(NSString *)body;
 //@end
 
-@interface DataCardCell : CardCell
+@interface GraphCardCell : CardCell
 
 @end
