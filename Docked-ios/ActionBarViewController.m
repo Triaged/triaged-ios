@@ -9,14 +9,19 @@
 #import "ActionBarViewController.h"
 #import "DetailViewController.h"
 #import "SVProgressHUD.h"
+#import "NSString+Inflections.h"
+#import "ActionCell.h"
 
-@interface ActionBarViewController ()
+@interface ActionBarViewController () {
+    NSArray *actions;
+    UITableView *_tableView;
+}
 
 @end
 
 @implementation ActionBarViewController
 
-@synthesize screenShot;
+@synthesize screenShot, feedItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,94 +36,168 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor =  [[UIColor alloc] initWithRed:249.0f/255.0f green:249.0f/255.0f blue:251.0f/255.0f alpha:1.0f];
+    self.view.backgroundColor =  [UIColor whiteColor];//[[UIColor alloc] initWithRed:249.0f/255.0f green:249.0f/255.0f blue:251.0f/255.0f alpha:1.0f];
 //    self.view.backgroundColor = [[UIColor alloc] initWithRed:122.0f/255.0f green:141.0f/255.0f blue:196.0f/255.0f alpha:0.6f];
     
-    UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 1)];/// change size as you need.
-    separatorLineView.backgroundColor = [[UIColor alloc] initWithRed:241.0f/255.0f green:241.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-    [self.view addSubview:separatorLineView];
     
     
-    // Explore
-    UIImage *exploreIcon = [UIImage imageNamed:@"icn_explore.png"];
-    UIButton *exploreLinkButton = [[UIButton alloc] initWithFrame:CGRectMake(6, 8, 81, 30)];
-    [exploreLinkButton setTitle:@"  explore" forState:UIControlStateNormal];
-    [exploreLinkButton setImage:exploreIcon forState:UIControlStateNormal];
-    exploreLinkButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:15.0];
-    [exploreLinkButton setTitleColor:[[UIColor alloc] initWithRed:122.0f/255.0f green:141.0f/255.0f blue:196.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    [exploreLinkButton addTarget:self action:@selector(didTapExternalLinkButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:exploreLinkButton];
+    _tableView = [[UITableView alloc] init];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.scrollEnabled = NO;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    // Assign
-    UIImage *assignIcon = [UIImage imageNamed:@"icn_assign.png"];
-    UIButton *assignButton = [[UIButton alloc] initWithFrame:CGRectMake(114, 8, 78, 30)];
-    [assignButton setTitle:@"  assign" forState:UIControlStateNormal];
-    [assignButton setImage:exploreIcon forState:UIControlStateNormal];
-    assignButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:15.0];
-    [assignButton setTitleColor:[[UIColor alloc] initWithRed:122.0f/255.0f green:141.0f/255.0f blue:196.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    [assignButton setImage:assignIcon forState:UIControlStateNormal];
-    [assignButton addTarget:self action:@selector(didTapTodoButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:assignButton];
-
+    [self.view addSubview:_tableView];
     
-    // Share
-    UIImage *shareIcon = [UIImage imageNamed:@"icn_share.png"];
-    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(231, 8, 66, 30)];
-    [shareButton setTitle:@"  share" forState:UIControlStateNormal];
-    [shareButton setImage:exploreIcon forState:UIControlStateNormal];
-    shareButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:15.0];
-    [shareButton setTitleColor:[[UIColor alloc] initWithRed:122.0f/255.0f green:141.0f/255.0f blue:196.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    [shareButton setImage:shareIcon forState:UIControlStateNormal];
-    [shareButton addTarget:self action:@selector(didTapShareButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:shareButton];
     
-    UIView* separator1LineView = [[UIView alloc] initWithFrame:CGRectMake(0, 43, self.view.frame.size.width, 1)];/// change size as you need.
-    separator1LineView.backgroundColor = [[UIColor alloc] initWithRed:241.0f/255.0f green:241.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-    [self.view addSubview:separator1LineView];
-
+    actions = @[
+                @{@"label" : @"Explore in safari", @"icon" : @"icn_explore.png" },
+                @{@"label" : @"Share via email", @"icon" : @"icn_share-up.png" },
+            ];
     
-//    self.view.layer.shadowOffset = CGSizeMake(0, 1);
-//    self.view.layer.shadowColor = [[UIColor blackColor] CGColor];
-//    self.view.layer.shadowRadius = 3;
-//    self.view.layer.shadowOpacity = .5;
-//    CGRect shadowFrame =  CGRectMake(self.view.layer.bounds.origin.x, self.view.layer.bounds.origin.y + self.view.layer.bounds.size.height, self.view.layer.bounds.size.width, 2);
-//    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
-//    self.view.layer.shadowPath = shadowPath;
+    self.view.layer.shadowOffset = CGSizeMake(0, 1);
+    self.view.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.view.layer.shadowRadius = 3;
+    self.view.layer.shadowOpacity = .5;
+    CGRect shadowFrame =  CGRectMake(self.view.layer.bounds.origin.x, self.view.layer.bounds.origin.y + self.view.layer.bounds.size.height, self.view.layer.bounds.size.width, 2);
+    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
+    self.view.layer.shadowPath = shadowPath;
 
 }
 
-- (void)setExternalLink:(NSString *)newExternalLink
+-(void) viewWillLayoutSubviews
 {
-    if (_externalLink != newExternalLink) {
-        _externalLink = newExternalLink;
+    [_tableView reloadData];
+    [_tableView layoutIfNeeded];
+    CGRect frame = CGRectMake(0, _tableView.frame.origin.y, self.view.frame.size.width, [_tableView contentSize].height);
+    _tableView.frame = frame;
+
+    self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, _tableView.frame.size.height);
+}
+
+
+-(void) disableAllActions
+{
+    self.view.userInteractionEnabled = NO;
+}
+-(void) enableAllActions
+{
+    self.view.userInteractionEnabled = YES;
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
+{
+    return 2; //actions.count;
+}
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    static NSString *CellIdentifier = @"ActionCell";
+    ActionCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ] ;
+    if ( !cell )
+    {
+        cell = [ [ ActionCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
+    
+    NSDictionary *actionDict = actions[indexPath.row];
+    
+    [cell configureForItem:actionDict];
+    
+    return cell;
 }
 
--(IBAction)didTapExternalLinkButton:(id)sender
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_externalLink]];
+    if (indexPath.row == 0) {
+        [self didTapExternalLinkButton];
+    } else {
+        [self didTapShareButton];
+    }
+
 }
 
--(IBAction)didTapShareButton:(id)sender
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"<html><body><p></p><br />", screenShot, nil] applicationActivities:nil];
-    activityVC.excludedActivityTypes = @[ UIActivityTypeAddToReadingList, UIActivityTypePostToTwitter, UIActivityTypePostToFacebook, UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
-    [self presentViewController:activityVC animated:YES completion:nil];
+    return 44;
 }
 
 
--(IBAction)didTapTodoButton:(id)sender
+-(IBAction)didTapExternalLinkButton
 {
-    [SVProgressHUD showErrorWithStatus:@"Oops, we haven't quite implemented assigning to task lists yet"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[feedItem htmlUrl]]];
 }
 
 
-
-
-- (void)didReceiveMemoryWarning
+-(IBAction)didTapShareButton
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"<html><body><p></p><br />", screenShot, nil] applicationActivities:nil];
+//    activityVC.excludedActivityTypes = @[ UIActivityTypeAddToReadingList, UIActivityTypePostToTwitter, UIActivityTypePostToFacebook, UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
+//    [self presentViewController:activityVC animated:YES completion:nil];
+    
+    
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+	picker.mailComposeDelegate = self;
+	
+	[picker setSubject:[[NSString stringWithFormat:@"%@ %@", feedItem.provider, feedItem.action] humanize]];
+    // Attach an image to the email
+    
+    
+    NSLog(@"height: %f", screenShot.size.height);
+    NSLog(@"width: %f", screenShot.size.width);
+    UIImage *croppedScreenShot = [self imageWithBorderFromImage:screenShot];
+
+    NSData *imageData = UIImageJPEGRepresentation(croppedScreenShot, 1.0);
+	[picker addAttachmentData:imageData mimeType:@"image/jpeg" fileName:@"screenshot"];
+	
+	// Fill out the email body text
+	NSString *emailBody = @"";
+	[picker setMessageBody:emailBody isHTML:NO];
+	
+	[self presentViewController:picker animated:YES completion:NULL];
+
 }
 
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+	[self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (UIImage*)imageByCropping:(UIImage *)imageToCrop toRect:(CGRect)rect
+{
+    CGImageRef imageRef = CGImageCreateWithImageInRect([imageToCrop CGImage], rect);
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef];
+    
+    NSLog(@"height: %f", cropped.size.height);
+    NSLog(@"width: %f", cropped.size.width);
+
+    
+    return cropped;
+}
+
+- (UIImage*)imageWithBorderFromImage:(UIImage*)source;
+{
+    
+    //source = [self imageByCropping:source toRect:CGRectMake(0, 0, source.size.width, source.size.height)];
+    
+    CGSize size = [source size];
+    UIGraphicsBeginImageContextWithOptions(size, YES, 0.0);
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    [source drawInRect:rect blendMode:kCGBlendModeNormal alpha:1.0];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetRGBStrokeColor(context, 239.0/255.0, 240.0/255.0, 245.0/255.0, 1.0);
+    //[[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
+
+    CGContextStrokeRect(context, rect);
+    UIImage *testImg =  UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return testImg;
+}
 @end

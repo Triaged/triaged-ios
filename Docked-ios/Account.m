@@ -8,6 +8,7 @@
 
 #import "Account.h"
 #import "Provider.h"
+#import "DockedRequestAPIClient.h"
 #import "DockedAPIClient.h"
 #import "CredentialStore.h"
 #import "MTLUser.h"
@@ -57,8 +58,6 @@
         
         Account *currentAccount = [transformer transformedValue:JSON];
         
-        [currentAccount createUserFromAccount];
-        
         block(currentAccount);
     
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -68,13 +67,17 @@
 
 -(void) createUserFromAccount
 {
+    NSString *avatar = self.avatarUrl ? self.avatarUrl : @"";
+    
     NSDictionary *attributes = @{
                     @"userID": self.userID,
                     @"name": self.name,
                     @"email": self.email,
-                    @"avatarUrl" : self.avatarUrl,
+                    @"avatarUrl" : avatar,
                    // @"slug" : self.slug
                 };
+    
+    
     
     MTLUser *user = [[MTLUser alloc] initWithDictionary:attributes error:nil];
     
@@ -83,11 +86,31 @@
     [context save:nil];
 }
 
+-(void)uploadAvatar:(UIImage *)avatar WithBlock:(void (^)(bool))block
+
+{
+        [[DockedRequestAPIClient sharedClient] POST:@"account.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                NSData *imageData = UIImageJPEGRepresentation(avatar, 1.0);
+    
+                [formData appendPartWithFileData:imageData name:@"user[avatar]" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];
+        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSValueTransformer *transformer;
+            transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
+            
+            [AppDelegate sharedDelegate].store.account = [transformer transformedValue:responseObject];
+            
+            block(true);
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+           block(false);
+        }];
+}
+
 
 
 -(void)uploadProfilePicture:(UIImage *)profilePicture
 {
-    
+//    
 //    [[DockedAPIClient sharedClient] POST:@"account/avatar.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 //            NSData *imageData = UIImageJPEGRepresentation(profilePicture, 1.0);
 //
@@ -97,72 +120,58 @@
 //    } failure:^(NSURLSessionDataTask *task, NSError *error) {
 //        NSLog(@"failure");
 //    }];
+    NSString *url = @"https://www.triaged.co/api/v1/account.json";
+    NSURL *requestURL = [NSURL URLWithString:url];
+    NSString *FileParamConstant = @"user[avatar]";
+    
+    // create request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setTimeoutInterval:30];
+    [request setHTTPMethod:@"PUT"];
+    
+    // set Content-Type in HTTP header
+    NSString *boundary = @"0xKhTmLbOuNdArY";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    CredentialStore *store = [[CredentialStore alloc] init];
+    NSString *authToken = [store authToken];
+    [request setValue:authToken forHTTPHeaderField:@"authorization"];
+    
+    // post body
+    NSMutableData *body = [NSMutableData data];
+    
+    // add params (all params are strings)
+//    for (NSString *param in _params) {
+//        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+//        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", param] dataUsingEncoding:NSUTF8StringEncoding]];
+//        [body appendData:[[NSString stringWithFormat:@"%@\r\n", [_params objectForKey:param]] dataUsingEncoding:NSUTF8StringEncoding]];
+//    }
+    
+    // add image data
     NSData *imageData = UIImageJPEGRepresentation(profilePicture, 1.0);
-    NSString *tmpDirectory = NSTemporaryDirectory();
-    NSString *tmpFile = [tmpDirectory stringByAppendingPathComponent:@"avatar.jpg"];
-    [imageData writeToFile:tmpFile atomically:YES];
+    if (imageData) {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", FileParamConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:imageData];
+        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     
-    [[DockedAPIClient sharedClient] POST:@"account/avatar.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:tmpFile];
-        [formData appendPartWithFileURL:fileURL name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg" error:nil];
-    } success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"success");
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"failure");
-    }];
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
+    // setting the body of the post to the reqeust
+    [request setHTTPBody:body];
+    
+    // set URL
+    [request setURL:requestURL];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:nil];
 }
 
-//- (void)postData:(NSData *)data
-//            name:(NSString *)name
-//        fileName:(NSString *)fileName
-//        mimeType:(NSString *)mimeType
-//             url:(NSURL *)url
-//      parameters:(NSDictionary *)parameters
-//         success:(void(^)(id responseObject))success
-//         failure:(void(^)(NSError *error))failure {
-//    NSAssert( data.length > 0, @"You must provide some data to upload" );
-//    
-//    AFHTTPRequestSerializer *serializer = ( AFHTTPRequestSerializer * )[DockedAPIClient sharedClient].requestSerializer;
-//    
-//    NSMutableURLRequest *request =
-//    [serializer multipartFormRequestWithMethod:@"POST"
-//                                     URLString:[[NSURL URLWithString:[url absoluteString] relativeToURL:[DockedAPIClient sharedClient].baseURL] absoluteString]
-//                                    parameters:parameters
-//                     constructingBodyWithBlock:^(id < AFMultipartFormData > formData) {
-//                         if ( mimeType.length > 0 && name.length > 0 && fileName.length > 0 ) {
-//                             [formData appendPartWithFileData:data name:name fileName:fileName mimeType:mimeType];
-//                         }
-//                         else if ( name.length > 0 ) {
-//                             [formData appendPartWithFormData:data name:name];
-//                         }
-//                         else {
-//                             NSAssert( NO, @"You must provide data & name or data & name & fileName & mimeType. No other options are allowed." );
-//                         }
-//                     }];
-//    
-//    NSError *streamError;
-//    NSString *temporaryFileName = [request.HTTPBodyStream writeToTemporaryFileWithError:&streamError];
-//    if ( !temporaryFileName ) {
-//        TM_CALL_BLOCK( failure, streamError );
-//        return;
-//    }
-//    
-//    NSURLSessionUploadTask *task =
-//    [[DockedAPIClient sharedClient] uploadTaskWithRequest:request
-//                                      fromFile:[NSURL fileURLWithPath:temporaryFileName]
-//                                      progress:nil
-//                             completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-//                                 [[NSFileManager defaultManager] removeItemAtPath:temporaryFileName error:nil];
-//                                 NSHTTPURLResponse *httpResponse = ( NSHTTPURLResponse * )response;
-//                                 if ( httpResponse.statusCode == 200 && error == nil ) {
-//                                     TM_CALL_BLOCK( success, responseObject );
-//                                     return;
-//                                 }
-//                                 TM_CALL_BLOCK( failure, error );
-//                             }];
-//    [task resume];
-//}
+
 
 -(BOOL)isLoggedIn {
     return [[CredentialStore sharedClient] isLoggedIn];
@@ -210,16 +219,16 @@
     return fetchedObjects;
 }
 
--(NSNumber *)connectedCount
+-(NSArray *)connectedProviders
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"connected == YES"];
-    NSArray *results = [[self.providers allValues] filteredArrayUsingPredicate:predicate];
-    return [NSNumber numberWithInt:results.count];
+    return [[self.providers allValues] filteredArrayUsingPredicate:predicate];
 }
 
-
-
-
-
+-(NSNumber *)connectedProviderCount
+{
+   
+    return [NSNumber numberWithInt:[self connectedProviders].count];
+}
 
 @end

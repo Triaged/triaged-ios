@@ -39,19 +39,15 @@
     eventLabel.numberOfLines = 1;
     [self.view addSubview: eventLabel];
     
-    pushLabel = [[UILabel alloc] initWithFrame:CGRectMake(260, 0, 60, 20)];
+    pushLabel = [[UILabel alloc] initWithFrame:CGRectMake(277, 0, 40, 20)];
     pushLabel.text = @"Push";
     [pushLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
-    pushLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
+    pushLabel.textColor = [[UIColor alloc]
+                           initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
     [pushLabel setLineBreakMode: NSLineBreakByClipping];
     pushLabel.numberOfLines = 1;
     [self.view addSubview: pushLabel];
     
-    
-    UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-    UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView.frame = CGRectMake(0, 20, 320, 1);
-    [self.view addSubview: lineView];
     
     // Events
     eventsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, 320, 184)];
@@ -64,23 +60,20 @@
     [eventsTableView setSeparatorInset:UIEdgeInsetsZero];
     [self.view addSubview:eventsTableView];
     
-    UIImage *endLineSeparator = [UIImage imageNamed:@"line.png"];
-    endLineView = [[UIImageView alloc] initWithImage:endLineSeparator];
-    //[self.view addSubview: endLineView];
-
-    // Do any additional setup after loading the view from its nib.
 }
 
-- (void) layoutSubviews
+- (void) viewWillLayoutSubviews
 {
+    UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
     
-    //eventLabel.frame = CGRectMake(12, 380, 100, 20);
+    UIImageView *lineView2 = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView2.frame = CGRectMake(0, eventsTableView.frame.origin.y, 320, 1);
+    [self.view addSubview: lineView2];
     
-    // Layout Event Table size
-    [eventsTableView layoutIfNeeded];
-    CGRect frame = CGRectMake(eventsTableView.frame.origin.x, eventsTableView.frame.origin.y, eventsTableView.frame.size.width, [eventsTableView contentSize].height);
-    eventsTableView.frame = frame;
-    //endLineView.frame = CGRectMake(0, eventsTableView.frame.origin.y + eventsTableView.frame.size.height, 320, 1);
+    UIImageView *lineView1 = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView1.frame = CGRectMake(0, eventsTableView.frame.origin.y + eventsTableView.frame.size.height, 320, 1);
+    [self.view addSubview: lineView1];
+
 }
 
 
@@ -107,7 +100,9 @@
     
     NSArray *event = events[indexPath.row];
     cell.eventLabel.text = event[0];
-    [cell.pushNotificationSwitch setOn:([event[1] boolValue] ? YES : NO)];
+    
+    bool showConnected = ([event[1] boolValue] ? NO : YES);
+    cell.connectedView.hidden = showConnected;
     
     return cell;
 }

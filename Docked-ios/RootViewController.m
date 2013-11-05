@@ -11,6 +11,7 @@
 #import "CredentialStore.h"
 #import "WelcomeViewController.h"
 #import "SettingsMenuViewController.h"
+#import "ConnectionWizardViewController.h"
 
 
 @interface RootViewController () {
@@ -58,7 +59,19 @@
     if (![[CredentialStore sharedClient] isLoggedIn]) {
         WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];
         [self presentViewController:welcomeVC animated:NO completion:nil];
+    } else {
+        if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenTutorial"])
+            [self displayConnectionWizard];
     }
+    
+    
+}
+
+-(void) displayConnectionWizard
+{
+    ConnectionWizardViewController *connectionWizardVC = [[ConnectionWizardViewController alloc] init];
+    connectionWizardVC.showingWelcomeTour = YES;
+    [self presentViewController:connectionWizardVC animated:NO completion:nil];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -86,7 +99,18 @@
 - (void)presentSettingsView
 {
     SettingsMenuViewController *settingsVC = [[SettingsMenuViewController alloc] init];
+    
+    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+    
+    for (UIView *view in nav.navigationBar.subviews) {
+        for (UIView *view2 in view.subviews) {
+            if ([view2 isKindOfClass:[UIImageView class]]) {
+                [view2 removeFromSuperview];
+            }
+        }
+    }
+    nav.navigationBar.barTintColor = [UIColor whiteColor];
     
     [self presentViewController:nav animated:YES completion:nil];
 }

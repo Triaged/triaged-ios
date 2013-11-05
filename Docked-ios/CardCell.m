@@ -49,7 +49,7 @@
         // Body
         
         actionLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [actionLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
+        [actionLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.5]];
         actionLabel.textColor = [UIColor blackColor];
         [actionLabel setLineBreakMode: NSLineBreakByClipping];
         actionLabel.numberOfLines = 1;
@@ -83,7 +83,7 @@
     [actionLabel setFrame:CGRectMake(14, 79.0, 280.0, 17.0)];
     
     NSAttributedString *attributedBodyText = [CardCell attributedBodyText:bodyLabel.text];
-    CGRect newFrame = CGRectMake(14, 98.0, 288, [CardCell heightOfBody:attributedBodyText]);
+    CGRect newFrame = CGRectMake(14, 102.0, 288, [CardCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
     
 //if (shouldDrawShadow) [self drawShadow];
@@ -114,7 +114,7 @@
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     paragraphStyle.lineSpacing = .5;
-    UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:14.0];
+    UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:14.5];
     
     NSAttributedString *attributedBodyText = [[NSAttributedString alloc] initWithString:bodyText
                                               attributes:[NSDictionary

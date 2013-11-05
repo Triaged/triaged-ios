@@ -10,4 +10,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+    #import "Mixpanel.h"
+    #import "AppDelegate.h"
+    #import "Store.h"
 #endif

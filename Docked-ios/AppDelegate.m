@@ -15,9 +15,13 @@
 #import "DetailViewController.h"
 #import "WelcomeViewController.h"
 #import "CredentialStore.h"
-//#import "Mixpanel.h"
+
 
 #define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
+
+/******* Set your tracking ID here *******/
+static NSString *const kTrackingId = @"UA-45309305-1";
+static NSString *const kAllowTracking = @"allowTracking";
 
 @interface AppDelegate () 
 
@@ -35,10 +39,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    //[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"hasSeenTutorial"];
+    
+    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"App Open" properties:@{}];
+    
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"75134b3efefcd10ce90e4509d3a10431"
                                                            delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
+    
+    [GAI sharedInstance].optOut =
+    ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
+    // Initialize Google Analytics with a 120-second dispatch interval. There is a
+    // tradeoff between battery usage and timely dispatch.
+    [GAI sharedInstance].dispatchInterval = 120;
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    self.tracker = [[GAI sharedInstance] trackerWithName:@"CuteAnimals"
+                                              trackingId:kTrackingId];
+
     
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 
@@ -81,12 +101,6 @@
     self.window.tintColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    
-    UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[WelcomeViewController class], nil];
-    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:235.0f/255.0f green:235.0f/255.0f blue:235.0f/255.0f alpha:1.0f];
-
-    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:213.0f/255.0f green:217.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
-    pageControl.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)setupLoggedInUser

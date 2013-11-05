@@ -50,6 +50,7 @@
     [instructionsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     instructionsLabel.textColor = [UIColor blackColor];
     instructionsLabel.numberOfLines = 0;
+    instructionsLabel.textAlignment = NSTextAlignmentCenter;    
     [instructionsLabel sizeToFit];
     [self.scrollView addSubview:instructionsLabel];
     
@@ -61,7 +62,11 @@
     serviceUrlLabel.textColor = [UIColor colorWithRed:100.0f/255.0f green:101.0f/255.0f blue:197.0f/255.0f alpha:1.0f];
     [self.scrollView addSubview:serviceUrlLabel];
     
-    self.eventsViewController.view.frame = CGRectMake(0, 260, 320, 200);
+    // Email Instructions
+    self.emailInstructionsButton.frame = CGRectMake(40, 240, 240, 40);
+    [self.scrollView addSubview:self.emailInstructionsButton];
+    
+    self.eventsViewController.view.frame = CGRectMake(0, 300, 320, 200);
     [self.scrollView addSubview:self.eventsViewController.view];
     
 }

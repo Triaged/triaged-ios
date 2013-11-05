@@ -90,7 +90,7 @@
     [self.textView setUserInteractionEnabled:YES];
     self.textView.backgroundColor = [[UIColor alloc] initWithRed:247.0f/255.0f green:247.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
     [self.textView setFont:[UIFont fontWithName:@"Avenir-Roman" size:15.0]];
-    [self.textView setTextColor: [UIColor blackColor]];
+    [self.textView setTextColor: [[UIColor alloc] initWithRed:76.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f]];
     [self.textView setKeyboardAppearance:UIKeyboardAppearanceDefault];
     [self.textView setKeyboardType:UIKeyboardTypeTwitter];
     //[self.textView setReturnKeyType:UIReturnKeyDefault];
@@ -137,6 +137,10 @@
 #pragma mark - Keyboard Handlers
 - (void)handleKeyboardWillShow:(NSNotification *)notification
 {
+    // detail view
+    self.detailView.gestureRecognizer.enabled = YES;
+    [self.detailView.actionBarVC disableAllActions];
+    
     [self.placeholderLabel removeFromSuperview];
 	[self resizeView:notification];
 	[self scrollToBottomAnimated:YES];
@@ -148,7 +152,11 @@
 
 - (void)handleKeyboardWillHide:(NSNotification *)notification
 {
-	[self resizeView:notification];
+	//detail view
+    self.detailView.gestureRecognizer.enabled = NO;
+    [self.detailView.actionBarVC enableAllActions];
+    
+    [self resizeView:notification];
     if (![@"" isEqualToString:self.textView.text]) {
         [self.placeholderLabel removeFromSuperview];
     } else {
@@ -261,8 +269,13 @@
                                                                 self.imageInput.frame.origin.y - delta,
                                                                 self.imageInput.frame.size.width,
                                                                 self.imageInput.frame.size.height + delta);
+                        
+                             self.buttonSend.frame = CGRectMake(self.buttonSend.frame.origin.x,
+                                                                self.buttonSend.frame.origin.y + delta,
+                                                                self.buttonSend.frame.size.width,
+                                                                self.buttonSend.frame.size.height);
                          }
-                         completion:^(BOOL finished) {
+                        completion:^(BOOL finished) {
                              if(isShrinking)
                                  [self resizeTextViewByHeight:delta];
                          }];
@@ -319,6 +332,7 @@
 	[self textViewDidChange:self.textView];
 	[self resizeTextViewByHeight:self.textView.contentSize.height - self.previousTextFieldHeight];
     [self.buttonSend setEnabled:NO];
+    [self.imageInput addSubview:self.placeholderLabel];
 	//[self scrollToBottomAnimated:YES];
     
 }

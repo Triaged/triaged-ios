@@ -26,10 +26,10 @@
         // Avatar image
         UIImage *avatarIcon = [UIImage imageNamed:@"avatar.png"];
         avatarView = [[UIImageView alloc] initWithImage:avatarIcon];
-        avatarView.frame = CGRectMake(14, 3, 36, 36);
+        avatarView.frame = CGRectMake(14, 6, 36, 36);
         [self.contentView addSubview: avatarView];
         
-        nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(70, 8, 200, 30)];
+        nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(70, 10, 200, 30)];
         [nameLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:17.0]];
         nameLabel.textColor = [UIColor blackColor];
         [nameLabel setLineBreakMode: NSLineBreakByClipping];

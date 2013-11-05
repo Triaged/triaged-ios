@@ -43,6 +43,8 @@
 + (NSArray *)singularRules;
 + (NSArray *)nonTitlecasedWords;
 
+- (NSString *)humanize;
+
 - (NSString *)camelize;
 - (NSString *)camelizeWithLowerFirstLetter;
 

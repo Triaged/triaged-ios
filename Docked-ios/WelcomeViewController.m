@@ -20,28 +20,25 @@
 
 @synthesize pageController, loginButton, signupButton;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
     
     // buttons
     signupButton.backgroundColor = [[UIColor alloc] initWithRed:140.0f/255.0f green:156.0f/255.0f blue:201.0f/255.0f alpha:1.0f];
     loginButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     
+    UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[WelcomeViewController class], nil];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:76.0f/255.0f green:89.0f/255.0f blue:127.0f/255.0f alpha:1.0f];
+    
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:140.0f/255.0f green:156.0f/255.0f blue:201.0f/255.0f alpha:1.0f];
+    pageControl.backgroundColor = [UIColor clearColor];
+
+    
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     self.pageController.dataSource = self;
-    [[self.pageController view] setFrame:CGRectMake(0,100,320, 350)];
+    [[self.pageController view] setFrame:CGRectMake(0,0,320, signupButton.frame.origin.y - 20)];
     
     CardPageViewController *initialViewController = [self viewControllerAtIndex:0];
     
@@ -107,11 +104,11 @@
     return childViewController;
 }
 
--(void)presentFromVC:(UIViewController *)sender
+- (void) presentSelfFromVC:(UIViewController *)sender
 {
     [UIView transitionFromView:sender.view
                         toView:self.view
-                      duration:0.65f
+                      duration:0.20f
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     completion:nil];
 
@@ -125,8 +122,8 @@
     
     [UIView transitionFromView:self.view
                         toView:loginVC.view
-                      duration:0.65f
-                       options:UIViewAnimationOptionTransitionNone
+                      duration:0.20f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
                     completion:^(BOOL finished) {
                         [self didMoveToParentViewController:loginVC];
                         [self addChildViewController:loginVC];
@@ -142,7 +139,7 @@
 
     [UIView transitionFromView:self.view
                         toView:signupVC.view
-                      duration:0.65f
+                      duration:0.20f
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     completion:^(BOOL finished) {
                         [self didMoveToParentViewController:signupVC];
@@ -154,14 +151,13 @@
 {
     [UIView transitionFromView:sender.view
                         toView:self.view
-                      duration:0.65f
+                      duration:0.20f
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     completion:nil];
     
-    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
     
+    
+    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
 }
-
-
 
 @end

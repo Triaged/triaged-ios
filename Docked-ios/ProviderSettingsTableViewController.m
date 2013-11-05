@@ -38,8 +38,14 @@
     self.tableView.backgroundColor  = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled = NO;
-    
-    providers = [Provider currentProviders];
+}
+
+-(void)refreshTableView
+{
+    [self.tableView reloadData];
+    [self.tableView layoutIfNeeded];
+    CGRect frame = CGRectMake(0, self.tableView.frame.origin.y, 320.0, [self.tableView contentSize].height);
+    self.tableView.frame = frame;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -87,7 +93,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *provider = providers[indexPath.row];
-    Class providerSettingsClass = [provider objectForKey:@"settings_class"];
+    
+    NSDictionary *providerSettings = [Provider settingsDictForProvider:[provider objectForKey:@"name"]];
+    Class providerSettingsClass = [providerSettings objectForKey:@"settings_class"];
 
     BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
     [self.navigationController pushViewController:settingsVC animated:YES];

@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) ActionBarViewController *actionBarVC;
+@property (strong, nonatomic) UITapGestureRecognizer *gestureRecognizer;
 
 
 -(void)scrollToBottomAnimated:(BOOL)animated;

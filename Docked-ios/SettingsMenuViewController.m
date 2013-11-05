@@ -16,9 +16,15 @@
 #import "Account.h"
 #import "UIImageView+AFNetworking.h"
 #import "TeamMembersViewController.h"
+#import "ConnectionWizardViewController.h"
 
 @interface SettingsMenuViewController () {
 
+    UIScrollView *scrollView;
+    ProviderSettingsTableViewController *providersTableVC;
+    UIButton *connectProviderButton;
+    UILabel *settingsLabel;
+    UITableView *accountSettingsTableView;
     Account *account;
 }
 @end
@@ -31,15 +37,6 @@
     if (self) {
         // Custom initialization
         self.view.backgroundColor = [UIColor whiteColor];
-        account = [AppDelegate sharedDelegate].store.account;
-        
-        for (UIView *view in self.navigationController.navigationBar.subviews) {
-            for (UIView *view2 in view.subviews) {
-                if ([view2 isKindOfClass:[UIImageView class]]) {
-                    [view2 removeFromSuperview];
-                }
-            }
-        }
     }
     return self;
 }
@@ -47,6 +44,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    account = [AppDelegate sharedDelegate].store.account;
     
     self.navigationItem.title = @"Settings";
     
@@ -56,68 +56,147 @@
 
     self.navigationItem.leftBarButtonItem = doneButton;
     
-    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView = [[UIScrollView alloc] init];
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     scrollView.frame = self.view.frame;
-    scrollView.contentSize = CGSizeMake(320, 550);
     [self.view addSubview:scrollView];
     
-    UILabel *connectionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 24, 260, 20)];
-    connectionsLabel.text = @"Connections";
-    [connectionsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
-    connectionsLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
-    [scrollView addSubview:connectionsLabel];
-
+    // Connected Label
+    UILabel *connectedLabel = [[UILabel alloc] init];
+    connectedLabel.frame = CGRectMake(10, 20, 320, 20);
+    connectedLabel.font = [UIFont fontWithName:@"Avenir-Light" size:14.0];
+    connectedLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
+    [scrollView addSubview:connectedLabel];
     
     
-
-    
-    ProviderSettingsTableViewController *providersTableVC = [[ProviderSettingsTableViewController alloc] init];
-    //commentsVC.delegate = self;
-    //providersTableVC.providers =  [[AppDelegate sharedDelegate].store.account.providers allValues];
+    // Connected Providers TableView
+    providersTableVC = [[ProviderSettingsTableViewController alloc] init];
     [self addChildViewController:providersTableVC];
-    CGRect frame = CGRectMake(0, 46, 320, self.view.frame.size.height - 100);
+    CGRect frame = CGRectMake(0, 40, 320, self.view.frame.size.height - 40);
     providersTableVC.tableView.frame = frame;
-    [scrollView  addSubview:providersTableVC.tableView];
+    UITableView *providersTableView = providersTableVC.tableView;
+    [scrollView  addSubview:providersTableView];
     [providersTableVC didMoveToParentViewController:self];
     
-    UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-    UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView.frame = CGRectMake(0, 46, 320, 1);
-    [scrollView addSubview: lineView];
     
-    UIImageView *lineView4 = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView4.frame = CGRectMake(0, 396, 320, 1);
-    [scrollView addSubview: lineView4];
+    providersTableVC.providers = [[AppDelegate sharedDelegate].store.account connectedProviders];
+    connectedLabel.text = (providersTableVC.providers.count > 0) ? @"Connected Services" : @"No Services Connected";
     
     
-    UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 420, 260, 20)];
+    
+    connectProviderButton = [[UIButton alloc] init];
+    connectProviderButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
+     connectProviderButton.frame = CGRectMake(40, 300, 240, 40);
+    [connectProviderButton setTitle:@"Connect Services" forState:UIControlStateNormal];
+    [connectProviderButton addTarget:self action:@selector(showConnectionWizard) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:connectProviderButton];
+    
+    
+    
+    // Account Settings
+    settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 330, 260, 20)];
     settingsLabel.text = @"Account Settings";
     [settingsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     settingsLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
     [scrollView addSubview:settingsLabel];
 
     
-    UITableView *accountTable = [[UITableView alloc] init];
-    accountTable.frame = CGRectMake(0, 442, 310, 88);
-    accountTable.delegate = self;
-    accountTable.dataSource = self;
-    accountTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    accountTable.scrollEnabled = NO;
-    [scrollView  addSubview:accountTable];
+    accountSettingsTableView = [[UITableView alloc] init];
+    accountSettingsTableView.frame = CGRectMake(0, 350, 320, 44);
+    accountSettingsTableView.delegate = self;
+    accountSettingsTableView.dataSource = self;
+    accountSettingsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    accountSettingsTableView.scrollEnabled = NO;
+    [scrollView addSubview:accountSettingsTableView];
+//    
+//    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
+//                               @"V:|[providersTableView][connectProviderButton][accountSettingsTableView]"
+//                                                                      options:NSLayoutFormatAlignAllCenterX
+//                                                                      metrics:nil
+//                                                                        views:NSDictionaryOfVariableBindings(providersTableView, connectProviderButton, accountSettingsTableView)]];
     
-    //UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-    UIImageView *lineView1 = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView1.frame = CGRectMake(0, 442, 320, 1);
-    [scrollView addSubview: lineView1];
+    
 
     
     //UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-    UIImageView *lineView2 = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView2.frame = CGRectMake(0, 550, 320, 1);
-    [scrollView addSubview: lineView2];
+    
 
 }
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    account = [AppDelegate sharedDelegate].store.account;
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [providersTableVC refreshTableView];
+    [self setContentSize];
+}
+
+-(void)refreshView {
+    [providersTableVC refreshTableView];
+    [self setContentSize];
+}
+
+-(void)setContentSize {
+    
+    UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
+    
+    UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView.frame = CGRectMake(0, providersTableVC.tableView.frame.origin.y + providersTableVC.tableView.contentSize.height, 320, 1);
+    [scrollView addSubview: lineView];
+    
+    UIImageView *lineView3 = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView3.frame = CGRectMake(0, providersTableVC.tableView.frame.origin.y, 320, 1);
+    [scrollView addSubview: lineView3];
+
+
+    
+    CGFloat providersTableVCHeight = (providersTableVC.tableView.frame.origin.y + providersTableVC.tableView.contentSize.height + 20);
+    
+    // Set connect button
+    CGRect  buttonFrame = CGRectMake(connectProviderButton.frame.origin.x, providersTableVCHeight, connectProviderButton.frame.size.width, connectProviderButton.frame.size.height);
+    connectProviderButton.frame = buttonFrame;
+    [connectProviderButton.layer setCornerRadius:20.0f];
+    [connectProviderButton.layer setMasksToBounds:YES];
+    [connectProviderButton.layer setBorderWidth:1.0f];
+    connectProviderButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    
+    // Settings Label
+    CGRect  accountSettingsFrame = CGRectMake(settingsLabel.frame.origin.x, buttonFrame.origin.y + 80, settingsLabel.frame.size.width, settingsLabel.frame.size.height);
+    settingsLabel.frame = accountSettingsFrame;
+    
+    // Set Accounts tableView
+    CGRect  accountTableFrame = CGRectMake(accountSettingsTableView.frame.origin.x, buttonFrame.origin.y + 100, accountSettingsTableView.frame.size.width, accountSettingsTableView.frame.size.height);
+    accountSettingsTableView.frame = accountTableFrame;
+    
+
+    
+    UIImageView *lineView1 = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView1.frame = CGRectMake(0, accountSettingsTableView.frame.origin.y, 320, 1);
+    [scrollView addSubview: lineView1];
+    
+    UIImageView *lineView2 = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView2.frame = CGRectMake(0, accountSettingsTableView.frame.origin.y + accountSettingsTableView.frame.size.height, 320, 1);
+    [scrollView addSubview: lineView2];
+    
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, accountSettingsTableView.frame.origin.y + accountSettingsTableView.frame.size.height+ 30);
+    [self.view sendSubviewToBack:scrollView];
+}
+
+- (void) showConnectionWizard
+{
+    ConnectionWizardViewController *connectionWizard = [[ConnectionWizardViewController alloc] init];
+    [self.navigationController presentViewController:connectionWizard animated:YES completion:^ {
+        [self refreshView];
+    }];
+}
+
+
+
+
+#pragma mark UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
@@ -126,7 +205,7 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 2;
+    return 1;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -149,7 +228,7 @@
         NSURL *avatarUrl = [NSURL URLWithString:user.avatarUrl];
         [cell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
     } else {
-        cell.nameLabel.text = @"Teammates";
+        cell.nameLabel.text = @"Team Members";
         cell.avatarView.image = [UIImage imageNamed:@"avatar"];
     }
     

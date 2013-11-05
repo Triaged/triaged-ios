@@ -22,18 +22,22 @@
 @property (nonatomic, copy, readonly) NSDictionary *providers;
 @property (nonatomic, copy, readonly) NSArray *teammates;
 
--(BOOL)isLoggedIn;
--(void)updateAPNSPushTokenWithToken:(NSString *)token;
--(void)resetAPNSPushCount;
 
 +(void)fetchRemoteUserAccountWithBlock:(void (^)(Account *))block;
 
--(void)uploadProfilePicture:(UIImage *)profilePicture;
-
 -(User *)currentUser;
+-(void) createUserFromAccount;
 -(NSArray *)team;
 
--(NSNumber *)connectedCount;
+-(BOOL)isLoggedIn;
+-(void)updateAPNSPushTokenWithToken:(NSString *)token;
+-(void)resetAPNSPushCount;
+-(void)uploadProfilePicture:(UIImage *)profilePicture;
+-(void)uploadAvatar:(UIImage *)avatar WithBlock:(void (^)(bool))block;
+
+
+-(NSArray *)connectedProviders;
+-(NSNumber *)connectedProviderCount;
 
 
 

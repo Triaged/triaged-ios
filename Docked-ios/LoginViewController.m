@@ -38,6 +38,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     loginButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
+    
+    UIColor *color = [UIColor whiteColor];
+    usernameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Work Email" attributes:@{NSForegroundColorAttributeName: color}];
+
+    passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +87,7 @@
 
 - (IBAction)returnToWelcome:(id)sender
 {
-    [welcomeVC presentFromVC:self];
+    [welcomeVC presentSelfFromVC:self];
 }
 
 -(void)keyboardWillShow:(NSNotification*)notification  {

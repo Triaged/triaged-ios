@@ -15,7 +15,12 @@
 		CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0B906B17F4F47E00F706BE /* DetailViewController.m */; };
 		CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0E028A1810A87600484E69 /* WelcomeViewController.m */; };
 		CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0E028B1810A87600484E69 /* WelcomeViewController.xib */; };
-		CB19813B181591B20091DB8A /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6B63C91800F83000145953 /* Reveal.framework */; };
+		CB13946D1821F31100053086 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13946C1821F31100053086 /* libz.dylib */; };
+		CB13946F1821F34800053086 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13946E1821F34800053086 /* libGoogleAnalyticsServices.a */; };
+		CB1394751822F88C00053086 /* ProviderAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1394741822F88C00053086 /* ProviderAccountCell.m */; };
+		CB1394781822F96C00053086 /* ProviderAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1394771822F96C00053086 /* ProviderAccountTableViewController.m */; };
+		CB13947C182319D500053086 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13947B182319D500053086 /* Reveal.framework */; };
+		CB13948018231A7400053086 /* ProviderAccountDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */; };
 		CB23F74C181AD49A0035262D /* UIDebugWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CB23F74B181AD49A0035262D /* UIDebugWindow.m */; };
 		CB23F74F181AF5D60035262D /* GGHashtagMentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB23F74E181AF5D60035262D /* GGHashtagMentionController.m */; };
 		CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */; };
@@ -91,6 +96,10 @@
 		CBA6D11C181F2351006B73AC /* GraphDataDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D11B181F2351006B73AC /* GraphDataDetail.m */; };
 		CBA6D123181F66DC006B73AC /* TeamMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D121181F66DC006B73AC /* TeamMembersViewController.m */; };
 		CBA6D124181F66DC006B73AC /* TeamMembersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA6D122181F66DC006B73AC /* TeamMembersViewController.xib */; };
+		CBA6D12818202C0E006B73AC /* ConnectionWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D12618202C0E006B73AC /* ConnectionWizardViewController.m */; };
+		CBA6D12918202C0E006B73AC /* ConnectionWizardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA6D12718202C0E006B73AC /* ConnectionWizardViewController.xib */; };
+		CBA6D12C18202C70006B73AC /* ConnectionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D12B18202C70006B73AC /* ConnectionPageViewController.m */; };
+		CBA6D12F18206E07006B73AC /* ProviderWizardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D12E18206E07006B73AC /* ProviderWizardCell.m */; };
 		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
 		CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC47C1810956C00876AC6 /* CardPageViewController.m */; };
 		CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C8F18199D71001030C2 /* MLPAutoCompleteTextField.m */; };
@@ -117,6 +126,8 @@
 		CBF3872D1812535500554730 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CBF3872A1812535500554730 /* HockeySDK.xcconfig */; };
 		CBF3872E1812535500554730 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CBF3872B1812535500554730 /* HockeySDKResources.bundle */; };
 		CBF3873118125C8F00554730 /* TRJSONResponseSerializerWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF3873018125C8F00554730 /* TRJSONResponseSerializerWithData.m */; };
+		CBFDFBC6182821980013BBA2 /* DockedRequestAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDFBC5182821980013BBA2 /* DockedRequestAPIClient.m */; };
+		CBFDFBC9182868980013BBA2 /* ActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDFBC8182868980013BBA2 /* ActionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +153,21 @@
 		CB0E02891810A87600484E69 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		CB0E028A1810A87600484E69 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		CB0E028B1810A87600484E69 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		CB1394641821EFBA00053086 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		CB1394651821EFBA00053086 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		CB1394661821EFBA00053086 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		CB1394671821EFBA00053086 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		CB1394681821EFBA00053086 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		CB1394691821EFBA00053086 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		CB13946C1821F31100053086 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		CB13946E1821F34800053086 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		CB1394731822F88C00053086 /* ProviderAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountCell.h; sourceTree = "<group>"; };
+		CB1394741822F88C00053086 /* ProviderAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountCell.m; sourceTree = "<group>"; };
+		CB1394761822F96C00053086 /* ProviderAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountTableViewController.h; sourceTree = "<group>"; };
+		CB1394771822F96C00053086 /* ProviderAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountTableViewController.m; sourceTree = "<group>"; };
+		CB13947B182319D500053086 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = ../Reveal.framework; sourceTree = "<group>"; };
+		CB13947E18231A7400053086 /* ProviderAccountDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountDetailsTableViewController.h; sourceTree = "<group>"; };
+		CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountDetailsTableViewController.m; sourceTree = "<group>"; };
 		CB23F74A181AD49A0035262D /* UIDebugWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDebugWindow.h; sourceTree = "<group>"; };
 		CB23F74B181AD49A0035262D /* UIDebugWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDebugWindow.m; sourceTree = "<group>"; };
 		CB23F74D181AF5D60035262D /* GGHashtagMentionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGHashtagMentionController.h; sourceTree = "<group>"; };
@@ -195,7 +221,6 @@
 		CB5AECF117EF7DAA00319223 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		CB5AECF217EF7DAA00319223 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		CB5AECF317EF7DAA00319223 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
-		CB6B63C91800F83000145953 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		CB742D18180EFF2F0068A301 /* GraphCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphCardCell.h; sourceTree = "<group>"; };
 		CB742D19180EFF2F0068A301 /* GraphCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphCardCell.m; sourceTree = "<group>"; };
 		CB7C2E4417F251A400BD858D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -272,6 +297,13 @@
 		CBA6D120181F66DC006B73AC /* TeamMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamMembersViewController.h; sourceTree = "<group>"; };
 		CBA6D121181F66DC006B73AC /* TeamMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamMembersViewController.m; sourceTree = "<group>"; };
 		CBA6D122181F66DC006B73AC /* TeamMembersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamMembersViewController.xib; sourceTree = "<group>"; };
+		CBA6D12518202C0E006B73AC /* ConnectionWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionWizardViewController.h; sourceTree = "<group>"; };
+		CBA6D12618202C0E006B73AC /* ConnectionWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionWizardViewController.m; sourceTree = "<group>"; };
+		CBA6D12718202C0E006B73AC /* ConnectionWizardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionWizardViewController.xib; sourceTree = "<group>"; };
+		CBA6D12A18202C70006B73AC /* ConnectionPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionPageViewController.h; sourceTree = "<group>"; };
+		CBA6D12B18202C70006B73AC /* ConnectionPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionPageViewController.m; sourceTree = "<group>"; };
+		CBA6D12D18206E07006B73AC /* ProviderWizardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderWizardCell.h; sourceTree = "<group>"; };
+		CBA6D12E18206E07006B73AC /* ProviderWizardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderWizardCell.m; sourceTree = "<group>"; };
 		CBB89E0F17FE4F0600402973 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		CBB89E1017FE4F0600402973 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
 		CBBCC47B1810956C00876AC6 /* CardPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardPageViewController.h; sourceTree = "<group>"; };
@@ -323,6 +355,10 @@
 		CBF3872B1812535500554730 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		CBF3872F18125C8F00554730 /* TRJSONResponseSerializerWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRJSONResponseSerializerWithData.h; sourceTree = "<group>"; };
 		CBF3873018125C8F00554730 /* TRJSONResponseSerializerWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRJSONResponseSerializerWithData.m; sourceTree = "<group>"; };
+		CBFDFBC4182821980013BBA2 /* DockedRequestAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockedRequestAPIClient.h; sourceTree = "<group>"; };
+		CBFDFBC5182821980013BBA2 /* DockedRequestAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockedRequestAPIClient.m; sourceTree = "<group>"; };
+		CBFDFBC7182868980013BBA2 /* ActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCell.h; sourceTree = "<group>"; };
+		CBFDFBC8182868980013BBA2 /* ActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCell.m; sourceTree = "<group>"; };
 		DC84729676AF45F3A3CE10A8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -331,16 +367,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */,
+				CB13947C182319D500053086 /* Reveal.framework in Frameworks */,
+				CB13946D1821F31100053086 /* libz.dylib in Frameworks */,
 				CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */,
 				CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */,
-				CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */,
 				CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */,
 				CB2F9F9B1808B2EA00F5F97C /* SystemConfiguration.framework in Frameworks */,
 				CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */,
 				CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */,
 				CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */,
 				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
-				CB19813B181591B20091DB8A /* Reveal.framework in Frameworks */,
 				CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */,
 				CBF3872C1812535500554730 /* HockeySDK.framework in Frameworks */,
 				CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */,
@@ -349,6 +386,7 @@
 				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
 				CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */,
 				CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */,
+				CB13946F1821F34800053086 /* libGoogleAnalyticsServices.a in Frameworks */,
 				C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */,
 				CB0B906617F34E9000F706BE /* GameKit.framework in Frameworks */,
 			);
@@ -374,6 +412,8 @@
 				CB06CB6817EBA50B007323AA /* DockedAPIClient.m */,
 				CBF3872F18125C8F00554730 /* TRJSONResponseSerializerWithData.h */,
 				CBF3873018125C8F00554730 /* TRJSONResponseSerializerWithData.m */,
+				CBFDFBC4182821980013BBA2 /* DockedRequestAPIClient.h */,
+				CBFDFBC5182821980013BBA2 /* DockedRequestAPIClient.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -412,8 +452,38 @@
 				CBA6D120181F66DC006B73AC /* TeamMembersViewController.h */,
 				CBA6D121181F66DC006B73AC /* TeamMembersViewController.m */,
 				CBA6D122181F66DC006B73AC /* TeamMembersViewController.xib */,
+				CB1394761822F96C00053086 /* ProviderAccountTableViewController.h */,
+				CB1394771822F96C00053086 /* ProviderAccountTableViewController.m */,
+				CB13947E18231A7400053086 /* ProviderAccountDetailsTableViewController.h */,
+				CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */,
 			);
 			name = settings;
+			sourceTree = "<group>";
+		};
+		CB1394631821EFAC00053086 /* Google Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				CB13946E1821F34800053086 /* libGoogleAnalyticsServices.a */,
+				CB1394641821EFBA00053086 /* GAI.h */,
+				CB1394651821EFBA00053086 /* GAIDictionaryBuilder.h */,
+				CB1394661821EFBA00053086 /* GAIFields.h */,
+				CB1394671821EFBA00053086 /* GAILogger.h */,
+				CB1394681821EFBA00053086 /* GAITrackedViewController.h */,
+				CB1394691821EFBA00053086 /* GAITracker.h */,
+			);
+			name = "Google Analytics";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		CB1394811823440E00053086 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				CB13947B182319D500053086 /* Reveal.framework */,
+				CB1394631821EFAC00053086 /* Google Analytics */,
+				CBF387271812535500554730 /* HockeySDK.embeddedframework */,
+				CB2F9F9C1808B40A00F5F97C /* Mixpanel */,
+			);
+			name = vendor;
 			sourceTree = "<group>";
 		};
 		CB24D0851811BAB300DF0D19 /* kiln */ = {
@@ -432,7 +502,8 @@
 				CB2F9FAB1808B40A00F5F97C /* Mixpanel.h */,
 				CB2F9FAC1808B40A00F5F97C /* Mixpanel.m */,
 			);
-			path = Mixpanel;
+			name = Mixpanel;
+			path = ../Mixpanel;
 			sourceTree = "<group>";
 		};
 		CB2F9F9D1808B40A00F5F97C /* Library */ = {
@@ -545,7 +616,7 @@
 			name = helpers;
 			sourceTree = "<group>";
 		};
-		CB5AECF017EF7D8A00319223 /* auth */ = {
+		CB5AECF017EF7D8A00319223 /* welcome */ = {
 			isa = PBXGroup;
 			children = (
 				CB5AECEB17EE922C00319223 /* LoginViewController.h */,
@@ -562,8 +633,13 @@
 				CB0E02891810A87600484E69 /* WelcomeViewController.h */,
 				CB0E028A1810A87600484E69 /* WelcomeViewController.m */,
 				CB0E028B1810A87600484E69 /* WelcomeViewController.xib */,
+				CBA6D12518202C0E006B73AC /* ConnectionWizardViewController.h */,
+				CBA6D12618202C0E006B73AC /* ConnectionWizardViewController.m */,
+				CBA6D12718202C0E006B73AC /* ConnectionWizardViewController.xib */,
+				CBA6D12A18202C70006B73AC /* ConnectionPageViewController.h */,
+				CBA6D12B18202C70006B73AC /* ConnectionPageViewController.m */,
 			);
-			name = auth;
+			name = welcome;
 			sourceTree = "<group>";
 		};
 		CB8E0B6C1814A3CA0020E426 /* feed */ = {
@@ -580,9 +656,6 @@
 		CB8F208417EB5D6300EBDC34 = {
 			isa = PBXGroup;
 			children = (
-				CBF387271812535500554730 /* HockeySDK.embeddedframework */,
-				CB2F9F9C1808B40A00F5F97C /* Mixpanel */,
-				CB6B63C91800F83000145953 /* Reveal.framework */,
 				CB8F209617EB5D6300EBDC34 /* Triage-ios */,
 				CB8F20AF17EB5D6300EBDC34 /* Docked-iosTests */,
 				CB8F208F17EB5D6300EBDC34 /* Frameworks */,
@@ -603,6 +676,7 @@
 		CB8F208F17EB5D6300EBDC34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB13946C1821F31100053086 /* libz.dylib */,
 				CB24D08B1811D1E100DF0D19 /* MessageUI.framework */,
 				CB2F9F9A1808B2EA00F5F97C /* SystemConfiguration.framework */,
 				CB2F9F981808B2CB00F5F97C /* CoreTelephony.framework */,
@@ -631,6 +705,7 @@
 		CB8F209617EB5D6300EBDC34 /* Triage-ios */ = {
 			isa = PBXGroup;
 			children = (
+				CB1394811823440E00053086 /* vendor */,
 				CBA6D0FE181EF83C006B73AC /* Triage-ios.entitlements */,
 				CBD43EF817F8B200001AC849 /* cells */,
 				CB5AECE717EE88B900319223 /* helpers */,
@@ -685,7 +760,7 @@
 				CB8E0B6C1814A3CA0020E426 /* feed */,
 				CB0B906E17F4FA3E00F706BE /* settings */,
 				CB0B906D17F4FA2A00F706BE /* detail */,
-				CB5AECF017EF7D8A00319223 /* auth */,
+				CB5AECF017EF7D8A00319223 /* welcome */,
 				CB84B41D17EBBF1500C8B00D /* RootViewController.h */,
 				CB84B41E17EBBF1500C8B00D /* RootViewController.m */,
 			);
@@ -805,6 +880,12 @@
 				CB4F87B2180F9A1B00B685E1 /* EventCell.m */,
 				CBCC6C9D1819B90C001030C2 /* AtReplyMessageCell.h */,
 				CBCC6C9E1819B90C001030C2 /* AtReplyMessageCell.m */,
+				CBA6D12D18206E07006B73AC /* ProviderWizardCell.h */,
+				CBA6D12E18206E07006B73AC /* ProviderWizardCell.m */,
+				CB1394731822F88C00053086 /* ProviderAccountCell.h */,
+				CB1394741822F88C00053086 /* ProviderAccountCell.m */,
+				CBFDFBC7182868980013BBA2 /* ActionCell.h */,
+				CBFDFBC8182868980013BBA2 /* ActionCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -829,7 +910,7 @@
 				CBF387291812535500554730 /* Resources */,
 			);
 			name = HockeySDK.embeddedframework;
-			path = "vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework";
+			path = "../vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework";
 			sourceTree = "<group>";
 		};
 		CBF387291812535500554730 /* Resources */ = {
@@ -940,6 +1021,7 @@
 				CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */,
 				CBA6D124181F66DC006B73AC /* TeamMembersViewController.xib in Resources */,
 				CBF3872D1812535500554730 /* HockeySDK.xcconfig in Resources */,
+				CBA6D12918202C0E006B73AC /* ConnectionWizardViewController.xib in Resources */,
 				CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */,
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
@@ -1008,7 +1090,10 @@
 				CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */,
 				CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */,
 				CB2F9FAD1808B40A00F5F97C /* MPCJSONDataSerializer.m in Sources */,
+				CB1394751822F88C00053086 /* ProviderAccountCell.m in Sources */,
 				CBA6D110181F1EF7006B73AC /* MTLGraphDataSet.m in Sources */,
+				CBFDFBC9182868980013BBA2 /* ActionCell.m in Sources */,
+				CB1394781822F96C00053086 /* ProviderAccountTableViewController.m in Sources */,
 				CBCC6CA21819C1FF001030C2 /* UIView+BlurredSnapshot.m in Sources */,
 				CBDCEC701805E9370024860B /* SettingsMenuViewController.m in Sources */,
 				CBA6D0F7181E03F6006B73AC /* Message.m in Sources */,
@@ -1022,8 +1107,10 @@
 				CB8F212417EB871900EBDC34 /* MTLFeedItem.m in Sources */,
 				CB742D1A180EFF2F0068A301 /* GraphCardCell.m in Sources */,
 				CBCC6C9F1819B90C001030C2 /* AtReplyMessageCell.m in Sources */,
+				CBA6D12818202C0E006B73AC /* ConnectionWizardViewController.m in Sources */,
 				CBA6D123181F66DC006B73AC /* TeamMembersViewController.m in Sources */,
 				CBCC6C9618199D71001030C2 /* NSString+Levenshtein.m in Sources */,
+				CBA6D12C18202C70006B73AC /* ConnectionPageViewController.m in Sources */,
 				CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */,
 				CBA6D0D9181DDE03006B73AC /* MTLTextItem.m in Sources */,
 				CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */,
@@ -1039,6 +1126,7 @@
 				CB2F9FB21808B40A00F5F97C /* Mixpanel.m in Sources */,
 				CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */,
 				CB8D0EC3180DAA9C004FABBC /* FetchedMessagesDataSource.m in Sources */,
+				CB13948018231A7400053086 /* ProviderAccountDetailsTableViewController.m in Sources */,
 				CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */,
 				CBA6D0DE181DDF30006B73AC /* MTLGraphItem.m in Sources */,
 				CBD43F3917F9F4A0001AC849 /* ActionBarViewController.m in Sources */,
@@ -1048,9 +1136,11 @@
 				CBF3873118125C8F00554730 /* TRJSONResponseSerializerWithData.m in Sources */,
 				CBCC6CA51819C3D2001030C2 /* UIImage+ImageEffects.m in Sources */,
 				CBA6D0FD181ECF6C006B73AC /* DetailView.m in Sources */,
+				CBFDFBC6182821980013BBA2 /* DockedRequestAPIClient.m in Sources */,
 				CBA6D113181F1F05006B73AC /* MTLGraphDataDetail.m in Sources */,
 				CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */,
 				CBA676B718085D520035368A /* BaseSettingsViewController.m in Sources */,
+				CBA6D12F18206E07006B73AC /* ProviderWizardCell.m in Sources */,
 				CBA6D0F4181DF4EE006B73AC /* TextItem.m in Sources */,
 				CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
@@ -1190,8 +1280,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Richardson White (G3JFES9DV5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1203,8 +1293,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";
 				INFOPLIST_FILE = "Docked-ios/Triage-ios-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/charlie/Sites/Triage/client/Triage-ios",
+				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A04124BA-A990-46DB-91F1-4E4C2C5AAB84";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1216,8 +1310,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Richardson White (G3JFES9DV5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1229,8 +1323,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";
 				INFOPLIST_FILE = "Docked-ios/Triage-ios-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/charlie/Sites/Triage/client/Triage-ios",
+				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A04124BA-A990-46DB-91F1-4E4C2C5AAB84";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

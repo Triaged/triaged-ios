@@ -40,6 +40,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     signupButton.backgroundColor = [[UIColor alloc] initWithRed:140.0f/255.0f green:156.0f/255.0f blue:201.0f/255.0f alpha:1.0f];
+    
+    UIColor *color = [UIColor whiteColor];
+    nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color}];
+    
+    emailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Work Email" attributes:@{NSForegroundColorAttributeName: color}];
+    
+    passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,11 +58,11 @@
 - (IBAction)signup {
     [SVProgressHUD show];
     
-    id params = @{
+    id params = @{ @"registration" : @{
       @"name": self.nameTextField.text,
       @"email": self.emailTextField.text,
       @"password": self.passwordTextField.text
-    };
+      }};
     
     [[DockedAPIClient sharedClient] POST:@"/api/v1/users.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
         
@@ -82,7 +89,7 @@
 
 - (IBAction)returnToWelcome:(id)sender
 {
-    [welcomeVC presentFromVC:self];
+    [welcomeVC presentSelfFromVC:self];
 }
 
 -(void)keyboardWillShow:(NSNotification*)notification  {

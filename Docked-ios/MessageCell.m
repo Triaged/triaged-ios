@@ -34,15 +34,15 @@
         
         
         authorLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [authorLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
-        authorLabel.textColor = [UIColor blackColor];
+        [authorLabel setFont: [UIFont fontWithName:@"Avenir-Medium" size:14.5]];
+        authorLabel.textColor = [[UIColor alloc] initWithRed:15.0f/255.0f green:15.0f/255.0f blue:15.0f/255.0f alpha:1.0f];
         [authorLabel setLineBreakMode: NSLineBreakByClipping];
         authorLabel.numberOfLines = 1;
         [self.contentView addSubview: authorLabel];
         
         timestampLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [timestampLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:11.0]];
-        timestampLabel.textColor = [[UIColor alloc] initWithRed:188.0f/255.0f green:188.0f/255.0f blue:188.0f/255.0f alpha:1.0f];
+        [timestampLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:10.0]];
+        timestampLabel.textColor = [[UIColor alloc] initWithRed:200.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1.0f];
         [timestampLabel setLineBreakMode: NSLineBreakByClipping];
         timestampLabel.numberOfLines = 1;
         timestampLabel.textAlignment = NSTextAlignmentRight;
@@ -50,8 +50,8 @@
         
         
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [bodyLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
-        bodyLabel.textColor = [[UIColor alloc] initWithRed:142.0f/255.0f green:142.0f/255.0f blue:142.0f/255.0f alpha:1.0f];
+        [bodyLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.5]];
+        bodyLabel.textColor = [[UIColor alloc] initWithRed:76.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f];
         [bodyLabel setLineBreakMode: NSLineBreakByWordWrapping];
         bodyLabel.numberOfLines = 0;
         [bodyLabel sizeToFit];
@@ -91,7 +91,7 @@
     [super layoutSubviews];
     
     [authorLabel setFrame:CGRectMake(58.0, 14.0, 220.0, 18.0)];
-    //[timestampLabel setFrame:CGRectMake(220.0, 16.0, 75.0, 20.0)];
+    [timestampLabel setFrame:CGRectMake(220.0, 16.0, 75.0, 12.0)];
 
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:bodyLabel.text];
     CGRect newFrame = CGRectMake(58.0, 34.0, 240, [MessageCell heightOfBody:attributedBodyText]);
@@ -140,7 +140,7 @@
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:14.0];
+    UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:14.5];
     
     NSAttributedString *attributedBodyText
     = [[NSAttributedString alloc] initWithString:bodyText

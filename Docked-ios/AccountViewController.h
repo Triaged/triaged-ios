@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 
-@interface AccountViewController : UIViewController <MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate>
+@interface AccountViewController : UIViewController <MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *avatarButton;
@@ -21,9 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *signOutButton;
 @property (weak, nonatomic) IBOutlet UISwitch *pushNotificationSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *teamButton;
+@property (weak, nonatomic) IBOutlet UITableView *teamTableView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *dynamicTVHeight;
 
 -(IBAction)logout:(id)sender;
 -(IBAction)contactUs:(id)sender;
--(IBAction)showTeam:(id)sender;
 
 @end

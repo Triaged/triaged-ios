@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) NSArray *providers;
 
+-(void)refreshTableView;
+
 @end

@@ -110,11 +110,11 @@
     [ssVC setDetailViewController:detailVC];
     [ssVC setNavController:navController];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ssVC ];
-    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ssVC ];
+//    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
 
     
-    [self presentViewController:nav animated:NO completion:nil];
+    [self.navController pushViewController:ssVC animated:NO];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 

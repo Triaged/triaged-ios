@@ -23,7 +23,7 @@
 
 @implementation DetailViewController
 
-@synthesize scrollView, actionBarVC;
+@synthesize scrollView, actionBarVC, gestureRecognizer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,9 +81,8 @@
     
     // External Link View
     
-    [actionBarVC setExternalLink:[_feedItem htmlUrl]];
-    actionBarVC.view.frame = CGRectMake(8, cell.frame.size.height, 304, 44);
-    actionBarVC.view.translatesAutoresizingMaskIntoConstraints = NO;
+    actionBarVC.feedItem = _feedItem;
+    actionBarVC.view.frame = CGRectMake(8, cell.frame.size.height, 304, 100);
     [self addChildViewController:actionBarVC];
     [contentView addSubview:actionBarVC.view];
     
@@ -92,13 +91,16 @@
     messagesVC = [[MessagesTableViewController alloc] init];
     messagesVC.feedItem = _feedItem;
     [self addChildViewController:messagesVC];
-    CGRect frame = CGRectMake(8, cell.frame.size.height + 44, 304.0, self.view.frame.size.height - (cell.frame.size.height + 44));
+    CGRect frame = CGRectMake(8, cell.frame.size.height + 96, 304.0, self.view.frame.size.height - (cell.frame.size.height + 44));
     messagesVC.tableView.frame = frame;
     [contentView  addSubview:messagesVC.tableView];
     [messagesVC didMoveToParentViewController:self];
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+    
+    
+    gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
 																					action:@selector(handleTapGesture:)];
     gestureRecognizer.delegate = self;
+    gestureRecognizer.enabled = NO;
     [self.scrollView addGestureRecognizer:gestureRecognizer];
     
     // Message Toolbar View

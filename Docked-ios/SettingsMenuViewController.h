@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProviderSettingsTableViewController.h"
 
 @interface SettingsMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

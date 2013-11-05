@@ -33,18 +33,19 @@
 {
     [super viewDidLoad];
     
-    headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(40,10, 240, 40)];
-    [headlineLabel setFont: [UIFont fontWithName:@"AvenirNext-UltraLight" size:27.0]];
-    headlineLabel.textColor = [UIColor blackColor];
-    //[self.view addSubview:headlineLabel];
     
-    
-    cardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(8,46,304, 187)];
+    cardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(8,48,304, 187)];
     [self.view addSubview:cardImageView];
     
-    UIImage *line = [UIImage imageNamed:@"line.png"];
-    lineDivider = [[UIImageView alloc] initWithImage:line];
-    [self.view addSubview:lineDivider];
+    
+    headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,324, 280, 60)];
+    [headlineLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:18.0]];
+    headlineLabel.textColor = [UIColor whiteColor];
+    headlineLabel.textAlignment = NSTextAlignmentCenter;
+    headlineLabel.numberOfLines = 3;
+    [self.view addSubview:headlineLabel];
+    
+    
     
 	// Do any additional setup after loading the view.
 }
@@ -52,38 +53,32 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     if (index == 0){
-        headlineLabel.text = @"";
-        headlineLabel.frame = CGRectMake(30,10, 260, 40);
+        headlineLabel.text = @"Ever felt there was a lot\nhappening at work?";
+
         cardImageView.image = [UIImage imageNamed:@"triangle.png"];
         cardImageView.frame = CGRectMake(80,90,160,160);
-        lineDivider.frame = CGRectNull;
     }
     if (index == 1){
-        headlineLabel.text = @"Instant Insight,";
-        headlineLabel.frame = CGRectMake(74,10, 172, 40);
-        cardImageView.image = [UIImage imageNamed:@"card_sentry.png"];
-        cardImageView.frame = CGRectMake(6,92,308, 187);
-        lineDivider.frame = CGRectMake(6, 279,308, 1);
+        headlineLabel.text = @"Triage informs you of the things you care about.";
+
+        cardImageView.image = [UIImage imageNamed:@"card_ga.png"];
+        cardImageView.frame = CGRectMake(6,48,308, 257);
+
     } else if (index == 2) {
-        headlineLabel.text = @"At Your Fingertips.";
-        headlineLabel.frame = CGRectMake(50,10, 220, 40);
+        headlineLabel.text = @"And intelligently notifies you when action is needed.";
         cardImageView.image = [UIImage imageNamed:@"card_stripe.png"];
-        cardImageView.frame = CGRectMake(6,116,308, 140);
-        lineDivider.frame = CGRectMake(6, 254,308, 1);
+        cardImageView.frame = CGRectMake(6,101.5,308, 140);
+
     } else if (index == 3) {
-        headlineLabel.text = @"React, Discuss, Resolve,";
-        headlineLabel.frame = CGRectMake(15,10, 290, 40);
-        cardImageView.image = [UIImage imageNamed:@"card_github.png"];
-        cardImageView.frame = CGRectMake(6,83,308, 205);
-        lineDivider.frame = CGRectMake(6, 288,308, 1);
+        headlineLabel.text = @"It monitors all the services you already use.";
+        cardImageView.image = [UIImage imageNamed:@"card_sentry.png"];
+        cardImageView.frame = CGRectMake(6,78,308, 187);
+
         
     } else if (index == 4) {
-        headlineLabel.text = @"Move On.";
-        headlineLabel.frame = CGRectMake(100,10, 120, 40);
-        cardImageView.image = [UIImage imageNamed:@"card_ga.png"];
-        cardImageView.frame = CGRectMake(6,53,308, 257);
-        lineDivider.frame = CGRectMake(6,308,308, 1);
-        
+        cardImageView.image = [UIImage imageNamed:@"card_github.png"];
+        cardImageView.frame = CGRectMake(6,69,308, 205);
+        headlineLabel.text = @"Assign, share, & discuss events.\nIt's better with your team.";
     }
     
     [headlineLabel setNeedsDisplay];

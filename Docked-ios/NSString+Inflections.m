@@ -111,6 +111,29 @@
 	return _nonTitlecasedWords;
 }
 
+- (NSString *)humanize {
+    NSString *ret = [self lowercaseString];
+    
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"_id"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+     ret = [regex stringByReplacingMatchesInString:ret
+                                    options:0
+                                      range:NSMakeRange(0, [ret length])
+                               withTemplate:@""];
+    
+    NSRegularExpression *regex1 = [NSRegularExpression regularExpressionWithPattern:@"_"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    ret = [regex1 stringByReplacingMatchesInString:ret
+                                          options:0
+                                            range:NSMakeRange(0, [ret length])
+                                     withTemplate:@" "];
+
+    return [ret capitalize];
+}
+
 
 
 /**

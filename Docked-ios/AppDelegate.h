@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <HockeySDK/HockeySDK.h>
 #import "UIDebugWindow.h"
+#import "GAI.h"
 
 @class Store;
 @class PersistentStack;
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) PersistentStack* persistentStack;
 @property (nonatomic, strong) Store* store;
 @property (strong, nonatomic) UINavigationController *navVC;
+@property(nonatomic, strong) id<GAITracker> tracker;
 
 + (instancetype)sharedDelegate;
 

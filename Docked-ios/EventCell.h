@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) UILabel *eventLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *pushNotificationSwitch;
+@property (strong, nonatomic) UIImageView *connectedView;
 
 @end

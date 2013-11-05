@@ -19,7 +19,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"google_analytics"] error:nil];
+        self.providerDict = [[AppDelegate sharedDelegate].store.account.providers
+                                                        valueForKey:@"google_analytics"];
+        
+        self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:self.providerDict
+                                               error:nil];
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Daily visitors count", @NO], @[@"Daily visits count", @NO], @[@"Daily page views count", @NO], nil];
     }
@@ -33,7 +37,7 @@
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_google.png"];
     
     
-    self.eventsViewController.view.frame = CGRectMake(0, 200, 240, 200);
+    self.eventsViewController.view.frame = CGRectMake(0, 220, 240, 200);
     [self.scrollView addSubview:self.eventsViewController.view];
 }
 
@@ -52,6 +56,20 @@
 - (void) setupConnectedState
 {
     [super setupConnectedState];
+
+    self.providerAccountTableVC.view.frame = CGRectMake(0, 130, 320, 44);
+    self.providerAccountTableVC.accountText = [[self.providerDict valueForKey:@"account_settings"] valueForKey:@"account"];
+    self.accountDetails = [[self.providerDict valueForKey:@"account_settings"] valueForKey:@"properties"];
+    self.accountDetailsTitle = @"Properties";
+
+    [self.scrollView addSubview:self.providerAccountTableVC.view];
+    
+    UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
+    UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
+    lineView.frame = CGRectMake(0, self.providerAccountTableVC.tableView.frame.origin.y, 320, 1);
+    [self.scrollView addSubview: lineView];
+    
+
 }
 
 - (void) layoutSubviews

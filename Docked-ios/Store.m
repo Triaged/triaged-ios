@@ -12,6 +12,7 @@
 #import "DockedAPIClient.h"
 #import "AppDelegate.h"
 #import "PersistentStack.h"
+#import "ConnectionWizardViewController.h"
 
 //-com.apple.CoreData.SQLDebug 1
 
@@ -77,13 +78,23 @@
     [Account fetchRemoteUserAccountWithBlock:^(Account *account) {
         _account = account;
         
+        [_account createUserFromAccount];
+        
         // Save teammates to CoreData
         for( MTLUser* teammate in _account.teammates) {
             NSError *error = nil;
             [MTLManagedObjectAdapter managedObjectFromModel:teammate insertingIntoContext:self.managedObjectContext error:&error];
         }
         [self.managedObjectContext save:nil];
+        
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        [mixpanel identify:_account.userID];
+        [mixpanel track:@"login" properties:@{@"id": _account.userID,
+                                              @"email" : _account.email,
+                                              @"company" : _account.companyName}];
     }];
+    
+
 }
 
 - (void)fetchRemoteFeedItems
@@ -120,7 +131,8 @@
             NSString *minUpdated = [Store.dateFormatter stringFromDate:latestItem.updatedAt];
             [standardDefaults setObject:minUpdated forKey:@"min_updated_at"];
             [standardDefaults synchronize];
-
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
         }
         
         // Need to call to ensure table views stop refreshing
@@ -188,6 +200,8 @@
 
     [[AppDelegate sharedDelegate].persistentStack resetPersistentStore];
 }
+
+
 
 #pragma mark - NSKeyArchiving
 

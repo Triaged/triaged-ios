@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedItem.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ActionBarViewController : UIViewController
+@interface ActionBarViewController : UIViewController <MFMailComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) NSString *externalLink;
+@property (strong, nonatomic) FeedItem *feedItem;
 @property (weak, nonatomic) IBOutlet UIButton *externalLinkButton;
 @property (strong, nonatomic) UIImage *screenShot;
 
--(void)setExternalLink:(NSString *)newExternalLink;
--(IBAction)didTapExternalLinkButton:(id)sender;
+-(void) disableAllActions;
+-(void) enableAllActions;
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation EventCell
 
-@synthesize eventLabel, pushNotificationSwitch;
+@synthesize eventLabel, pushNotificationSwitch, connectedView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,9 +30,12 @@
         eventLabel.numberOfLines = 1;
         [self.contentView addSubview: eventLabel];
         
-        pushNotificationSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(250, 8, 49, 32)];
-        pushNotificationSwitch.enabled = NO;
-        [self.contentView addSubview:pushNotificationSwitch];
+//        pushNotificationSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(250, 8, 49, 32)];
+//        pushNotificationSwitch.enabled = NO;
+//        [self.contentView addSubview:pushNotificationSwitch];
+        connectedView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings_connected.png"]];
+        connectedView.frame = CGRectMake(280, 14, 24, 20);
+        [self.contentView addSubview:connectedView];
     }
     return self;
 }

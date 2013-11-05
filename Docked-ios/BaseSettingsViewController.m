@@ -10,6 +10,7 @@
 #import "EventCell.h"
 #import "AppDelegate.h"
 #import "UINavigationController+SGProgress.h"
+#import "ProviderAccountDetailsTableViewController.h"
 
 
 @interface BaseSettingsViewController ()
@@ -18,7 +19,8 @@
 
 @implementation BaseSettingsViewController
 
-@synthesize scrollView, providerHeroImageView, connectButton, connectedLabel, eventsViewController;
+@synthesize scrollView, providerHeroImageView, connectButton, connectedLabel, eventsViewController, providerAccountTableVC, providerDict,
+    accountDetails, emailInstructionsButton, provider, accountDetailsTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +28,8 @@
     if (self) {
         // Custom initialization
         eventsViewController = [[SettingEventsViewController alloc] init];
-        
+        providerAccountTableVC = [[ProviderAccountTableViewController alloc] init];
+        providerAccountTableVC.tableView.delegate = self;
     }
     return self;
 }
@@ -36,7 +39,6 @@
     [super viewDidLoad];
     
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    //scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:scrollView];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -52,10 +54,35 @@
     connectButton.clipsToBounds = YES;
     [connectButton addTarget:self action:@selector(connect) forControlEvents:UIControlEventTouchUpInside];
     
+    // Email Instructions
+    emailInstructionsButton = [[UIButton alloc] init];
+    [emailInstructionsButton.layer setCornerRadius:20.0f];
+    [emailInstructionsButton.layer setMasksToBounds:YES];
+    [emailInstructionsButton.layer setBorderWidth:1.0f];
+    emailInstructionsButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    emailInstructionsButton.clipsToBounds = YES;
+    emailInstructionsButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
+    [emailInstructionsButton setTitle:@"Email Directions" forState:UIControlStateNormal];
+    [emailInstructionsButton addTarget:self action:@selector(emailProviderConnectInstructions) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Provider Account
+    providerAccountTableVC.tableView.scrollEnabled = NO;
+    
     // Connected State
     ([self isConnected] ?  [self setupConnectedState] : [self setupUnconnectedState]);
 
     
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.navigationController.navigationBar.backItem == NULL) {
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSettingsView)];
+        [self.navigationItem setLeftBarButtonItem:doneButton];
+    }
 }
 
 -(void)setupConnectedState
@@ -80,16 +107,9 @@
     
 }
 
-- (void) layoutSubviews
+- (void) viewWillLayoutSubviews
 {
-    
-    //eventLabel.frame = CGRectMake(12, 380, 100, 20);
-    
-    // Layout Event Table size
-    [eventsViewController.eventsTableView layoutIfNeeded];
-    CGRect frame = CGRectMake(eventsViewController.eventsTableView.frame.origin.x, eventsViewController.eventsTableView.frame.origin.y, eventsViewController.eventsTableView.frame.size.width, [eventsViewController.eventsTableView contentSize].height);
-    eventsViewController.eventsTableView.frame = frame;
-    eventsViewController.eventsTableView.frame = CGRectMake(0, eventsViewController.eventsTableView.frame.origin.y + eventsViewController.eventsTableView.frame.size.height, 320, 1);
+    [self setContentSize];
 }
 
 - (void) viewDidLayoutSubviews
@@ -98,7 +118,7 @@
 }
 
 -(void)setContentSize {
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, eventsViewController.eventsTableView.frame.origin.y + eventsViewController.eventsTableView.contentSize.height + 200);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, eventsViewController.view.frame.origin.y + eventsViewController.eventsTableView.frame.size.height + 50);
     scrollView.frame = self.view.frame;
 }
 
@@ -107,10 +127,28 @@
     return self.provider.connected;
 }
 
-- (void)didReceiveMemoryWarning
+- (void) emailProviderConnectInstructions
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [provider emailConnectInstructions];
 }
+
+
+-(void) dismissSettingsView
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+// Details View Controller
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    ProviderAccountDetailsTableViewController *detailsVC = [[ProviderAccountDetailsTableViewController alloc] init];
+    detailsVC.accountDetails = accountDetails;
+    detailsVC.accountDetailsTitle = accountDetailsTitle;
+    
+    [self.navigationController pushViewController:detailsVC animated:YES];
+    
+}
+
 
 @end

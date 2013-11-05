@@ -10,6 +10,7 @@
 #import "Provider.h"
 #import "AppDelegate.h"
 #import "Store.h"
+#import "NSString+Inflections.h"
 
 @implementation ProviderSettingCell
 
@@ -40,7 +41,7 @@
         [self.contentView addSubview: providerLabel];
         
         connectedView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings_connected.png"]];
-        connectedView.frame = CGRectMake(280, 14, 24, 20);
+        connectedView.frame = CGRectMake(278, 14, 24, 20);
         
 
     }
@@ -56,13 +57,15 @@
 
 - (void)configureForItem:(NSDictionary *)provider
 {
-    self.providerIconView.image = [UIImage imageNamed:[provider objectForKey:@"icon"]];
-    self.providerLabel.text = [provider objectForKey:@"name"];
-    Provider *providerObject = [MTLJSONAdapter modelOfClass:Provider.class
-                                   fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers
-                                                       valueForKey:[provider objectForKey:@"id"]] error:nil];
+    self.providerIconView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [provider objectForKey:@"name"]]];
+    self.providerLabel.text = [[provider objectForKey:@"name"] humanize];
     
-    if (providerObject.connected) [self.contentView addSubview: connectedView];
+//    Provider *providerObject = [MTLJSONAdapter modelOfClass:Provider.class
+//                                   fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers
+//                                                       valueForKey:[provider objectForKey:@"id"]] error:nil];
+    
+    bool connected = [provider objectForKey:@"connected"];
+    if (connected) [self.contentView addSubview: connectedView];
 }
 
 

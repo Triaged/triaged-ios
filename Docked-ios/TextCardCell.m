@@ -62,7 +62,7 @@
     else {
         NSAttributedString *attributedBodyText = [CardCell attributedBodyText:item.body];
         CGFloat bodyHeight = [CardCell heightOfBody:attributedBodyText];
-        CGFloat height = (120 + bodyHeight);
+        CGFloat height = (117 + bodyHeight);
         
         [heightCache setObject: [NSNumber numberWithFloat: height] forKey: key];
         return height;

@@ -92,6 +92,11 @@
         }
     }
     
+    //Make new persistent store for future saves   (Taken From Above Answer)
+    if (![self.managedObjectContext.persistentStoreCoordinator  addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:self.store.URL options:nil error:&error]) {
+        // do something with the error
+    }
+    
     // Delete the reference to non-existing store
     return nil;
 }

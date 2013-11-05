@@ -17,7 +17,7 @@
 - (IBAction) presentSignupView;
 - (IBAction) presentLoginView;
 
--(void) presentFromVC:(UIViewController *)sender;
+-(void) presentSelfFromVC:(UIViewController *)sender;
 -(void) dismissAuthScreens:(UIViewController *)sender;
 
 @end
