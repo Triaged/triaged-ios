@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 
-@interface AccountViewController : UIViewController <MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface AccountViewController : UIViewController <MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *avatarButton;
@@ -26,5 +26,6 @@
 
 -(IBAction)logout:(id)sender;
 -(IBAction)contactUs:(id)sender;
+- (IBAction)pushSwitchValueChanged:(id)sender;
 
 @end

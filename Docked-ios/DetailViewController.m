@@ -76,6 +76,7 @@
     cell.frame = CGRectMake(8, 0, 304, [cellClass heightOfContent:_feedItem] );
     cell.backgroundColor = [UIColor whiteColor];
     cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    cell.shouldCache = NO;
     [cell configureForItem:_feedItem];
     [contentView addSubview:cell];
     
@@ -136,7 +137,6 @@
 {
     if (scrollView.contentSize.height > 300) {
         CGPoint bottomOffset = CGPointMake(0, scrollView.contentSize.height - scrollView.frame.size.height);
-        NSLog(@"height: %f", bottomOffset.y);
         [scrollView setContentOffset:bottomOffset animated:YES];
     }
 }

@@ -15,16 +15,19 @@
 #import "DetailViewController.h"
 #import "SmokescreenViewController.h"
 #import "FetchedFeedItemsDataSource.h"
+#import "CustomPullToRefreshControl.h"
 
 @interface FeedTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) FetchedFeedItemsDataSource *fetchedFeedItemsDataSource;
+@property (nonatomic, strong) CustomPullToRefreshControl* customRefreshControl;
+@property (nonatomic, strong) UIImageView* refreshIV;
 
 @end
 
 @implementation FeedTableViewController 
 
-@synthesize navController;
+@synthesize navController, rootController;
 
 - (id)init{
     self = [super init];
@@ -54,13 +57,70 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
+    
+
+    
+    //self.tableView.directionalLockEnabled = true;
+    
     // Refresh control
     UIRefreshControl *refreshControl = [UIRefreshControl new];
     refreshControl.tintColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     [refreshControl addTarget:[AppDelegate sharedDelegate].store action:@selector(fetchRemoteFeedItems) forControlEvents:UIControlEventValueChanged];
+     self.refreshControl = refreshControl;
+    // Pull to refresh control
     
-    self.refreshControl = refreshControl;
+    
+    
+//    
+//	self.refreshIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_navbar.png"]];
+//	self.customRefreshControl = [[CustomPullToRefreshControl alloc]
+//                           initInScrollView:self.tableView
+//                           activityIndicatorView:self.refreshIV];
+//	self.customRefreshControl.backgroundColor = [UIColor clearColor];
+//	self.customRefreshControl.tintColor = [UIColor clearColor];
+//	self.customRefreshControl.strokeColor = [UIColor clearColor];
+//	self.customRefreshControl.pullView = [[UIImageView alloc] initWithImage:self.refreshIV.image];
+//	self.customRefreshControl.drawDiskWhenPulling = false;
+//	self.customRefreshControl.enableDiskDripEffect = false;
+//	self.customRefreshControl.stickToTopWhenRefreshing = false;
+//	self.customRefreshControl.scrollUpToCancel = false;
+//	self.customRefreshControl.refreshStyle = CustomPullToRefreshSpin;
+//	self.customRefreshControl.refreshEasing = CustomPullToRefreshContinuous;
+//    [self.customRefreshControl addTarget:self action:@selector(pulledToRefresh:)
+//                  forControlEvents:UIControlEventValueChanged];
+//    [self.customRefreshControl addTarget:self action:@selector(cancelledRefresh:)
+//                  forControlEvents:UIControlEventTouchCancel];
+    
+   
 }
+
+///** @brief Pull to refresh was canceled */
+//- (void)cancelledRefresh:(id)sender
+//{
+//	// Do something
+//}
+//
+///** @brief Pull to refresh initiated */
+//- (void)pulledToRefresh:(id)sender
+//{
+//	// Animate refreshIV while loading
+//	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+//	//CATransform3D transform = self.refreshIV.layer.transform;
+//    CATransform3D transform = self.navigationItem.titleView.layer.transform;
+//	transform.m34 = -1/500;
+//	transform = CATransform3DRotate(transform, M_PI, 0, 1, 0);
+//	animation.autoreverses = true;
+//	animation.toValue = [NSValue valueWithCATransform3D:transform];
+//	animation.duration = 0.3;
+//	animation.repeatCount = HUGE_VALF;
+//	[self.refreshIV.layer addAnimation:animation forKey:@"rotate"];
+//    
+//	// End refreshing after some time
+//	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)),
+//                   dispatch_get_main_queue(), ^(void){
+//                       [self.customRefreshControl endRefreshing];
+//                   });
+//}
 
 - (void)setupFetchedResultsController
 {

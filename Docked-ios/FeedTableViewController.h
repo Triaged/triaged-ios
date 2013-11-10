@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
 @interface FeedTableViewController : UITableViewController
 
 @property (strong, nonatomic) UINavigationController *navController;
+@property (strong, nonatomic) RootViewController *rootController;
 @end

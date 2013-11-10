@@ -16,27 +16,23 @@
 
 @interface BaseSettingsViewController : UIViewController <UITableViewDelegate>
 
-@property (nonatomic, strong) NSDictionary *providerDict;
 @property (nonatomic, strong) Provider *provider;
+@property (strong, nonatomic) NSArray *accountProperties;
+@property (strong, nonatomic) NSString *accountDetailsTitle;
 
 @property (strong, nonatomic) UIScrollView *scrollView;
-
 @property (nonatomic, strong) UIImageView *providerHeroImageView;
 @property (strong, nonatomic) UILabel *connectedLabel;
-@property (strong, nonatomic) SettingEventsViewController *eventsViewController;
-@property (strong, nonatomic) ProviderAccountTableViewController *providerAccountTableVC;
+@property (strong, nonatomic) UIButton *ignoreButton;
 @property (strong, nonatomic) UIButton *connectButton;
 @property (strong, nonatomic) UIButton *emailInstructionsButton;
 
-@property (strong, nonatomic) NSArray *accountDetails;
-@property (strong, nonatomic) NSString *accountDetailsTitle;
+@property (strong, nonatomic) SettingEventsViewController *eventsViewController;
+@property (strong, nonatomic) ProviderAccountTableViewController *providerAccountTableVC;
 
-
-- (void)layoutSubviews;
 
 - (BOOL)isConnected;
-
--(void)setupConnectedState;
--(void)setupUnconnectedState;
+- (void)setupConnectedState;
+- (void)setupUnconnectedState;
 
 @end

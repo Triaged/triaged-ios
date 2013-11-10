@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
+#import "MTLProviderAccount.h"
 
 @interface Provider : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSString *providerID;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *webhookUrl;
+@property (nonatomic, copy, readonly) MTLProviderAccount *account;
 @property (nonatomic, readonly) BOOL connected;
 @property (nonatomic, readonly) BOOL follows;
 

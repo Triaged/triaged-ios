@@ -14,6 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIButton+AFNetworking.h"
 #import "TeamMembersViewController.h"
+#import "MRProgress.h"
 
 @interface AccountViewController ()  {
 
@@ -42,6 +43,8 @@
 {
     [super viewDidLoad];
     
+    self.title = @"Account";
+    
     nameLabel.text = currentAccount.name;
     emailLabel.text = currentAccount.email;
     companyLabel.text = currentAccount.companyName;
@@ -53,11 +56,11 @@
     // Connections
     connectionCountLabel.text = [[currentAccount connectedProviderCount] stringValue];
     // pushNotificationSwitch setOn
+    pushNotificationSwitch.on = currentAccount.pushEnabled;
     
     // Team Table View
     // Team Members
     teamTableView.scrollEnabled = NO;
-    teamTableView.allowsSelection = NO;
     teamTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [teamTableView setSeparatorInset:UIEdgeInsetsZero];
 
@@ -78,19 +81,31 @@
 
 - (void) viewDidLayoutSubviews
 {
-    
-    dynamicTVHeight.constant =  teamTableView.contentSize.height;
-    //[teamTableView layoutIfNeeded];
-    
-    // Scroll View Size
+    dynamicTVHeight.constant =  (teamTableView.contentSize.height > 100) ? teamTableView.contentSize.height : 100;
+    NSLog(@"%f", teamTableView.contentSize.height);
     scrollView.contentSize = CGSizeMake(320, signOutButton.frame.origin.y + 80);
-    //[scrollView layoutIfNeeded];
-
-
 }
 
 
 -(void) updateProfilePicture
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"How would you like to set your picture?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Picture", @"Choose Picture", nil];
+    [actionSheet showInView:self.view];
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self takePhoto];
+    } else if (buttonIndex == 1) {
+        [self selectPhoto];
+    } else {
+        [actionSheet dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    }
+}
+
+-(void) selectPhoto
 {
     UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.allowsEditing = YES;
@@ -98,20 +113,37 @@
     
     imagePicker.delegate = self;
     [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
+
+}
+
+-(void) takePhoto
+{
+    UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    imagePicker.delegate = self;
+    [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
+
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     // Set the placeholder image while we're uploading
     [avatarButton setBackgroundImage:[UIImage imageNamed:@"avatar"] forState:UIControlStateNormal];
+    MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    progressView.titleLabelText = @"Uploading";
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    
     
     [currentAccount uploadAvatar:chosenImage WithBlock:^(bool block) {
         currentAccount = [AppDelegate sharedDelegate].store.account;
         NSURL *avatarUrl = [NSURL URLWithString:currentAccount.avatarUrl];
         [avatarButton setBackgroundImageForState:UIControlStateNormal withURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
         [avatarButton setNeedsDisplay];
+        [progressView dismiss:YES];
+        
     }];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -138,6 +170,11 @@
          mailComposer.mailComposeDelegate = self;
         [self presentViewController:mailComposer animated:YES completion:nil];
     }
+}
+
+- (IBAction)pushSwitchValueChanged:(id)sender {
+    NSLog(@"push switch value changed");
+    [currentAccount updatePushEnabled:pushNotificationSwitch.on];
 }
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller
@@ -172,6 +209,7 @@
         cell.cellIsForInvite = YES;
     } else {
         cell.cellIsForInvite = NO;
+        cell.userInteractionEnabled = NO;
         User *teammate = team[indexPath.row];
         cell.nameLabel.text = teammate.name;
         NSURL *avatarUrl = [NSURL URLWithString:teammate.avatarUrl];
@@ -180,6 +218,22 @@
     
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailComposer =
+        [[MFMailComposeViewController alloc] init];
+        [mailComposer setSubject:@"check out Triage"];
+        NSString *message = [NSString stringWithFormat:@"Hey, <br><br> I've been using the Triage app to keep tabs of work when I'm on the go. I think you'd like it. <br /><br />Check it out at <a href='triaged.co'>triaged.co</a> <br /><br /> thanks!<br /> %@", currentAccount.name];
+        [mailComposer setMessageBody:message
+                              isHTML:YES];
+        mailComposer.mailComposeDelegate = self;
+        [self presentViewController:mailComposer animated:YES completion:nil];
+    }
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

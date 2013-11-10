@@ -42,6 +42,7 @@
     connectionsTable.delegate = self;
     connectionsTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     connectionsTable.backgroundColor = [UIColor clearColor];
+    connectionsTable.scrollEnabled = NO;
     [self.view addSubview:connectionsTable];
 
     

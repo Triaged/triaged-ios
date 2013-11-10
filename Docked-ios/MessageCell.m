@@ -34,15 +34,15 @@
         
         
         authorLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [authorLabel setFont: [UIFont fontWithName:@"Avenir-Medium" size:14.5]];
-        authorLabel.textColor = [[UIColor alloc] initWithRed:15.0f/255.0f green:15.0f/255.0f blue:15.0f/255.0f alpha:1.0f];
+        [authorLabel setFont: [UIFont fontWithName:@"Avenir-Medium" size:15]];
+        authorLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
         [authorLabel setLineBreakMode: NSLineBreakByClipping];
         authorLabel.numberOfLines = 1;
         [self.contentView addSubview: authorLabel];
         
         timestampLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [timestampLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:10.0]];
-        timestampLabel.textColor = [[UIColor alloc] initWithRed:200.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1.0f];
+        [timestampLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:11.0]];
+        timestampLabel.textColor = [[UIColor alloc] initWithRed:191.0f/255.0f green:198.0f/255.0f blue:208.0f/255.0f alpha:1.0f];
         [timestampLabel setLineBreakMode: NSLineBreakByClipping];
         timestampLabel.numberOfLines = 1;
         timestampLabel.textAlignment = NSTextAlignmentRight;
@@ -50,8 +50,8 @@
         
         
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [bodyLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.5]];
-        bodyLabel.textColor = [[UIColor alloc] initWithRed:76.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f];
+        [bodyLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:14]];
+        bodyLabel.textColor = [[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
         [bodyLabel setLineBreakMode: NSLineBreakByWordWrapping];
         bodyLabel.numberOfLines = 0;
         [bodyLabel sizeToFit];
@@ -65,6 +65,7 @@
         moreMessagesLabel = [[UILabel alloc] initWithFrame: CGRectZero];
         [moreMessagesLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:12.0]];
         moreMessagesLabel.textColor = [[UIColor alloc]initWithRed:122.0f/255.0f green:141.0f/255.0f blue:196.0f/255.0f alpha:1.0f];
+        moreMessagesLabel.textAlignment = NSTextAlignmentRight;
         [moreMessagesLabel setLineBreakMode: NSLineBreakByClipping];
         moreMessagesLabel.numberOfLines = 1;
         
@@ -90,11 +91,11 @@
 -(void) layoutSubviews {
     [super layoutSubviews];
     
-    [authorLabel setFrame:CGRectMake(58.0, 14.0, 220.0, 18.0)];
+    [authorLabel setFrame:CGRectMake(56.0, 14.0, 220.0, 18.0)];
     [timestampLabel setFrame:CGRectMake(220.0, 16.0, 75.0, 12.0)];
 
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:bodyLabel.text];
-    CGRect newFrame = CGRectMake(58.0, 34.0, 240, [MessageCell heightOfBody:attributedBodyText]);
+    CGRect newFrame = CGRectMake(56.0, 34.0, 240, [MessageCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
     
     if (shouldDrawSeparator) lineView.frame = CGRectMake(6, 1, 296, 1);
@@ -109,8 +110,8 @@
 
 -(void) layoutMoreMessages
 {
-    [moreMessagesIcon setFrame:CGRectMake(225, bodyLabel.frame.size.height+42, 14, 14)];
-    [moreMessagesLabel setFrame:CGRectMake(242.0, bodyLabel.frame.size.height+39, 60.0, 20.0)];
+    [moreMessagesIcon setFrame:CGRectMake(227, bodyLabel.frame.size.height+39, 14, 14)];
+    [moreMessagesLabel setFrame:CGRectMake(240.0, bodyLabel.frame.size.height+36, 55.0, 20.0)];
     [self.contentView addSubview: moreMessagesIcon];
     [self.contentView addSubview: moreMessagesLabel];
 }
@@ -127,10 +128,8 @@
     self.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.layer.shadowRadius = 2;
     self.layer.shadowOpacity = .05;
-    CGRect shadowFrame =  CGRectMake(self.layer.bounds.origin.x, self.layer.bounds.origin.y + self.layer.bounds.size.height, self.layer.bounds.size.width, 2);
-    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
-    self.layer.shadowPath = shadowPath;
-    
+    [self.layer setShadowPath:[[UIBezierPath
+                                bezierPathWithRect:self.bounds] CGPath]];
 }
 
 
@@ -140,7 +139,7 @@
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:14.5];
+    UIFont *font = [UIFont fontWithName:@"Avenir-Roman" size:14];
     
     NSAttributedString *attributedBodyText
     = [[NSAttributedString alloc] initWithString:bodyText
@@ -185,9 +184,9 @@
         CGFloat bodyHeight = [MessageCell heightOfBody:attributedBodyText];
         CGFloat height;
         if(multiple) {
-            height =  (65 + bodyHeight);
+            height =  (62 + bodyHeight);
         } else {
-            height = (45 + bodyHeight);
+            height = (42 + bodyHeight);
         }
 //        [heightCache setObject: [NSNumber numberWithFloat: height] forKey: key];
         return height;

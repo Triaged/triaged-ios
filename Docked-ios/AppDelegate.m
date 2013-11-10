@@ -40,6 +40,7 @@ static NSString *const kAllowTracking = @"allowTracking";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"hasSeenTutorial"];
+    //[[CredentialStore sharedClient] clearSavedCredentials];
     
     [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
@@ -67,7 +68,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         NSLog(@"Message in didFinishLaunchingWithOptions: %@",message);
     }
     
-    self.window = [[UIDebugWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
     self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
@@ -81,7 +82,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     
     
     RootViewController *rootVC = [[RootViewController alloc] init];
-    navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    navVC = [[TRNavigationViewController alloc] initWithRootViewController:rootVC];
     
     [self.window setRootViewController:navVC];
     [self.window makeKeyAndVisible];
@@ -98,7 +99,14 @@ static NSString *const kAllowTracking = @"allowTracking";
 - (void) setBaseStyles
 {
     self.window.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-    self.window.tintColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
+    self.window.tintColor = [[UIColor alloc] initWithRed:105.0f/255.0f green:125.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
+                                                                           fontWithName:@"Avenir-Book" size:17], NSFontAttributeName,
+                                [[UIColor alloc] initWithRed:105.0f/255.0f green:125.0f/255.0f blue:165.0f/255.0f alpha:1.0f], NSForegroundColorAttributeName, nil];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+    
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }

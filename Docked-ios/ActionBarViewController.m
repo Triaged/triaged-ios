@@ -28,6 +28,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        actions = @[
+                    @{@"label" : @"Explore in safari", @"icon" : @"icn_explore.png" },
+                    @{@"label" : @"Share via email", @"icon" : @"icn_share-up.png" },
+            ];
     }
     return self;
 }
@@ -39,7 +43,12 @@
     self.view.backgroundColor =  [UIColor whiteColor];//[[UIColor alloc] initWithRed:249.0f/255.0f green:249.0f/255.0f blue:251.0f/255.0f alpha:1.0f];
 //    self.view.backgroundColor = [[UIColor alloc] initWithRed:122.0f/255.0f green:141.0f/255.0f blue:196.0f/255.0f alpha:0.6f];
     
-    
+    self.view.clipsToBounds = NO;
+    [self.view.layer setMasksToBounds:NO];
+    self.view.layer.shadowOffset = CGSizeMake(0, 0.5);
+    self.view.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.view.layer.shadowRadius = 2;
+    self.view.layer.shadowOpacity = .05;
     
     _tableView = [[UITableView alloc] init];
     _tableView.delegate = self;
@@ -50,19 +59,8 @@
     [self.view addSubview:_tableView];
     
     
-    actions = @[
-                @{@"label" : @"Explore in safari", @"icon" : @"icn_explore.png" },
-                @{@"label" : @"Share via email", @"icon" : @"icn_share-up.png" },
-            ];
     
-    self.view.layer.shadowOffset = CGSizeMake(0, 1);
-    self.view.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.view.layer.shadowRadius = 3;
-    self.view.layer.shadowOpacity = .5;
-    CGRect shadowFrame =  CGRectMake(self.view.layer.bounds.origin.x, self.view.layer.bounds.origin.y + self.view.layer.bounds.size.height, self.view.layer.bounds.size.width, 2);
-    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
-    self.view.layer.shadowPath = shadowPath;
-
+    
 }
 
 -(void) viewWillLayoutSubviews
@@ -73,6 +71,9 @@
     _tableView.frame = frame;
 
     self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, _tableView.frame.size.height);
+    
+    [self.view.layer setShadowPath:[[UIBezierPath
+                                     bezierPathWithRect:self.view.bounds] CGPath]];
 }
 
 
@@ -147,9 +148,6 @@
 	[picker setSubject:[[NSString stringWithFormat:@"%@ %@", feedItem.provider, feedItem.action] humanize]];
     // Attach an image to the email
     
-    
-    NSLog(@"height: %f", screenShot.size.height);
-    NSLog(@"width: %f", screenShot.size.width);
     UIImage *croppedScreenShot = [self imageWithBorderFromImage:screenShot];
 
     NSData *imageData = UIImageJPEGRepresentation(croppedScreenShot, 1.0);

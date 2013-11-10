@@ -66,22 +66,20 @@
     [self.navigationItem setBackBarButtonItem:nil];
 
     
-    
-    if ( _cardImageView.frame.origin.y > 60 &&  _cardImageView.frame.origin.y < 70) {
-        [self.navigationController popViewControllerAnimated:NO];
-        _detailViewController.actionBarVC.screenShot = _cardImageView.image;
-        [_navController pushViewController:_detailViewController animated:NO];
-    } else {
+//    
+//    if ( _cardImageView.frame.origin.y > 60 &&  _cardImageView.frame.origin.y < 70) {
+//        _detailViewController.actionBarVC.screenShot = _cardImageView.image;
+//        [_navController pushViewController:_detailViewController animated:NO];
+//        [self.navigationController popViewControllerAnimated:NO];
+//        
+//    } else {
         [UIView animateWithDuration:0.32
                               delay:0
                             options: UIViewAnimationOptionCurveEaseOut
                          animations:^{
-                             //self.navigationItem.backBarButtonItem = backButton;
-
                              
-                             _cardImageView.frame = CGRectMake(8, 64, 304, _cardImageView.frame.size.height );
-                             
-                             messageToolbarView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height - 40, self.view.frame.size.width, 40);
+                            _cardImageView.frame = CGRectMake(8, 64, 304, _cardImageView.frame.size.height );
+                            messageToolbarView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height - 40, self.view.frame.size.width, 40);
 
                          }
                          completion:^(BOOL finished){
@@ -89,7 +87,7 @@
                              _detailViewController.actionBarVC.screenShot = _cardImageView.image;
                              [_navController pushViewController:_detailViewController animated:NO];
                          }];
-    }
+    //}
    
   }
 

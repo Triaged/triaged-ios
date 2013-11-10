@@ -22,6 +22,7 @@
 @property (strong, nonatomic) UILabel *bodyLabel;
 @property CGFloat *heightCache;
 @property  BOOL shouldDrawShadow;
+@property  BOOL shouldCache;
 
 
 - (void)configureForItem:(FeedItem *)item;

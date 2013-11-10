@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "PersistentStack.h"
 #import "ConnectionWizardViewController.h"
+#import "CredentialStore.h"
 
 //-com.apple.CoreData.SQLDebug 1
 
@@ -33,11 +34,12 @@
 {
     self = [super init];
     if (self) {
-        //[self deleteFeedArchive];
-        //[self readFeedArchive];
         
-        [self fetchRemoteFeedItems];
-        [self readAccountArchive];
+        if ([[CredentialStore sharedClient] isLoggedIn]) {
+            [self fetchRemoteFeedItems];
+            [self readAccountArchive];
+
+        }
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(userLoggedIn)
@@ -186,7 +188,7 @@
 {
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-    [self fetchRemoteUserAccount];
+    
     [self fetchRemoteFeedItems];
 }
 
@@ -211,21 +213,17 @@
 {
     NSString     * path         = [self pathForAccountFile];
     NSDictionary * rootObject;
-    
     rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     _account = [rootObject valueForKey:@"account"];
     
     [self fetchRemoteUserAccount];
-    
 }
 
 - (void)saveAccountToArchive
 {
     NSString * path = [self pathForAccountFile];
-    
     NSMutableDictionary * rootObject = [NSMutableDictionary dictionary];
     [rootObject setValue:_account forKey:@"account"];
-    
     [NSKeyedArchiver archiveRootObject: rootObject toFile: path];
 }
 

@@ -17,10 +17,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        self.selectionStyle = UITableViewCellSeparatorStyleNone;
         
         UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
         UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-        lineView.frame = CGRectMake(70, 0, 250, 1);
+        lineView.frame = CGRectMake(70, 0, 250, .5);
         [self.contentView addSubview: lineView];
         
         // Avatar image
@@ -30,8 +31,8 @@
         [self.contentView addSubview: avatarView];
         
         nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(70, 10, 200, 30)];
-        [nameLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:17.0]];
-        nameLabel.textColor = [UIColor blackColor];
+        [nameLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
+        nameLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
         [nameLabel setLineBreakMode: NSLineBreakByClipping];
         nameLabel.numberOfLines = 1;
         [self.contentView addSubview: nameLabel];

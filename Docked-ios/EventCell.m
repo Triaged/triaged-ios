@@ -24,8 +24,9 @@
         [self.contentView addSubview: lineView];
         
         eventLabel = [[UILabel alloc] initWithFrame: CGRectMake(20, 8, 200, 30)];
-        [eventLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:17.0]];
-        eventLabel.textColor = [UIColor blackColor];
+        [eventLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
+        eventLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
+
         [eventLabel setLineBreakMode: NSLineBreakByClipping];
         eventLabel.numberOfLines = 1;
         [self.contentView addSubview: eventLabel];
@@ -34,7 +35,7 @@
 //        pushNotificationSwitch.enabled = NO;
 //        [self.contentView addSubview:pushNotificationSwitch];
         connectedView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings_connected.png"]];
-        connectedView.frame = CGRectMake(280, 14, 24, 20);
+        connectedView.frame = CGRectMake(284, 14, 24, 20);
         [self.contentView addSubview:connectedView];
     }
     return self;

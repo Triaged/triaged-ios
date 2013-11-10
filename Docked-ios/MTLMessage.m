@@ -66,7 +66,7 @@
     }];
 }
 
-+ (void)saveRemote:(Message *)message
++ (NSURLSessionDataTask *)saveRemote:(Message *)message
 {
     [[AppDelegate sharedDelegate].navVC showSGProgressWithDuration:1.5];
     NSString *path = [NSString stringWithFormat:@"feed/%@/messages.json", message.feedItem.externalID];
@@ -77,11 +77,10 @@
                   @"timestamp" : [MTLMessage.dateFormatter stringFromDate:message.timestamp]
                 }};
     
-    [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
+    return [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];
-    
 }
 
 

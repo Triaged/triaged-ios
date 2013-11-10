@@ -39,7 +39,7 @@
     eventLabel.numberOfLines = 1;
     [self.view addSubview: eventLabel];
     
-    pushLabel = [[UILabel alloc] initWithFrame:CGRectMake(277, 0, 40, 20)];
+    pushLabel = [[UILabel alloc] initWithFrame:CGRectMake(281, 0, 40, 20)];
     pushLabel.text = @"Push";
     [pushLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     pushLabel.textColor = [[UIColor alloc]

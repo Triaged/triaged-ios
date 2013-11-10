@@ -31,7 +31,7 @@ static NSString * const DockedAPIBaseURLString = @"https://www.triaged.co/api/v1
 - (id)initWithBaseURL:(NSURL *)url {
     self = [super initWithBaseURL:url];
     if (self) {
-        self.requestSerializer = [AFHTTPRequestSerializer serializer];
+        self.requestSerializer = [AFJSONRequestSerializer serializer];
         self.responseSerializer = [TRJSONResponseSerializerWithData serializer];
         [self setAuthTokenHeader];
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -51,6 +51,11 @@ static NSString * const DockedAPIBaseURLString = @"https://www.triaged.co/api/v1
 
 - (void)tokenChanged:(NSNotification *)notification {
     [self setAuthTokenHeader];
+}
+
+- (void)setUploadProgressForTask:(NSURLSessionTask *)task
+                      usingBlock:(void (^)(uint32_t bytesWritten, uint32_t totalBytesWritten, uint32_t totalBytesExpectedToWrite))block {
+    NSLog(@"upload task");
 }
 
 @end

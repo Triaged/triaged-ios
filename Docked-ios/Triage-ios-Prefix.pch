@@ -13,4 +13,6 @@
     #import "Mixpanel.h"
     #import "AppDelegate.h"
     #import "Store.h"
+
+    #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 #endif

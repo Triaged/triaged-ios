@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"sentry"] error:nil];
+        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"sentry"];
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Exception", @YES], nil];
     }
@@ -78,11 +78,5 @@
     self.eventsViewController.view.frame = CGRectMake(0, 240, 320, 200);
     [self.scrollView addSubview:self.eventsViewController.view];
 }
-
-- (void) layoutSubviews
-{
-    [super layoutSubviews];
-}
-
 
 @end

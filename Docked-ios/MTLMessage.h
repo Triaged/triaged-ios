@@ -15,7 +15,6 @@
 
 @class MTLFeedItem;
 
-
 @interface MTLMessage : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @property (nonatomic, copy, readonly) NSString *externalID;
@@ -25,8 +24,6 @@
 @property (nonatomic, copy, readonly) MTLUser *author;
 @property (nonatomic, copy, readonly) MTLFeedItem *feedItem;
 
-+ (void)saveRemote:(Message *)message;
-
-
++ (NSURLSessionDataTask *)saveRemote:(Message *)message;
 
 @end

@@ -18,7 +18,7 @@
 
 @implementation WelcomeViewController
 
-@synthesize pageController, loginButton, signupButton;
+@synthesize pageController, loginButton, signupButton, scrollView;
 
 - (void)viewDidLoad {
     
@@ -38,7 +38,8 @@
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     self.pageController.dataSource = self;
-    [[self.pageController view] setFrame:CGRectMake(0,0,320, signupButton.frame.origin.y - 20)];
+    self.pageController.view.autoresizingMask = NO;
+    [[self.pageController view] setFrame:CGRectMake(0,0,320, 428)];
     
     CardPageViewController *initialViewController = [self viewControllerAtIndex:0];
     
@@ -47,9 +48,17 @@
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageController];
-    [[self view] addSubview:[self.pageController view]];
+    [scrollView addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
     
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    scrollView.contentSize = CGSizeMake(320, loginButton.frame.origin.y + loginButton.frame.size.height);
+    NSLog(@"Content Size: %f", scrollView.contentSize.height);
+    scrollView.frame = self.view.frame;
+    NSLog(@"ScreenSize: %f", scrollView.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning

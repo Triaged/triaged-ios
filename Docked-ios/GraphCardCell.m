@@ -29,6 +29,11 @@
     UILabel *secondData;
     UILabel *thirdLabel;
     UILabel *thirdData;
+    UIButton *showFirstGraphButton;
+    UIButton *showSecondGraphButton;
+    UIButton *showThirdGraphButton;
+    
+    float maxYValue;
     
 }
 
@@ -45,22 +50,21 @@
 
 - (void)initChart {
     // We need a hostview, you can create one in IB (and create an outlet) or just do this:
-    graphImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, 300, 180)];
-    [self.contentView addSubview: graphImageView];
+    graphImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 80, 304, 180)];
     
-    hostView = [[CPTGraphHostingView alloc] initWithFrame:CGRectMake(0, 64, 300, 180)];
+    hostView = [[CPTGraphHostingView alloc] initWithFrame:CGRectMake(0, 80, 304, 180)];
     hostView.userInteractionEnabled = NO;
+    
     
     // Create a CPTGraph object and add to hostView
     graph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
     hostView.hostedGraph = graph;
-    graph.axisSet = nil;
-    graph.paddingLeft = 4;
-    graph.paddingRight = 4;
     
-    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:2]];
-    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:1]];
-    [self initPlotSpaceWithIndex:0];
+    graph.paddingLeft = 0;
+    graph.paddingRight = 0;
+    graph.plotAreaFrame.paddingLeft   = 0.0;
+    graph.plotAreaFrame.paddingRight  = 0.0;
+    
 }
 
 - (void) initPlotSpaceWithIndex:(NSNumber *)index
@@ -68,26 +72,28 @@
     // Get the (default) plotspace from the graph so we can set its x/y ranges
     CPTXYPlotSpace *plotSpace = [[CPTXYPlotSpace alloc] init];
     plotSpace.allowsUserInteraction = FALSE;
+    plotSpace.identifier = [index stringValue];
     [graph addPlotSpace:plotSpace];
     
     
     // Note that these CPTPlotRange are defined by START and LENGTH (not START and END) !!
-    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( 10 )]];
-    [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( 6 )]];
+    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( 14 )]];
+    [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromString(@"0") length:CPTDecimalFromString(@"6")]];
     
     // Create the plot (we do not define actual x/y values yet, these will be supplied by the datasource...)
     CPTScatterPlot* plot = [[CPTScatterPlot alloc] initWithFrame:CGRectZero];
     plot.identifier = [index stringValue];
     plot.dataSource = self;
+    plot.delegate = self;
     
     CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
     
     
-    if(index == 0) {
+    if([index intValue] == 0) {
         plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:0.7f]];
         lineStyle.lineColor = [CPTColor colorWithComponentRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:0.7f];
         plot.dataLineStyle = lineStyle;
-    } else if (index == [NSNumber numberWithInt:1]) {
+    } else if ([index intValue] == 1) {
         plot.areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:179.0f/255.0f green:197.0f/255.0f  blue:227.0f/255.0f alpha:0.7f]];
         lineStyle.lineColor = [CPTColor colorWithComponentRed:179.0f/255.0f green:197.0f/255.0f  blue:227.0f/255.0f alpha:0.7f];
         plot.dataLineStyle = lineStyle;
@@ -108,50 +114,71 @@
 
 - (void) initBadges {
     firstLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-    [firstLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:10.0]];
-    firstLabel.textColor = [[UIColor alloc] initWithRed:188.0f/255.0f green:188.0f/255.0f blue:188.0f/255.0f alpha:1.0f];
+    [firstLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:10.0]];
+    firstLabel.textAlignment = NSTextAlignmentCenter;
+    firstLabel.textColor = [[UIColor alloc] initWithRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:1.0f];
     firstLabel.text = @"Visits";
     [self.contentView addSubview: firstLabel];
     
     firstData = [[UILabel alloc] initWithFrame: CGRectZero];
-    [firstData setFont: [UIFont fontWithName:@"Avenir-Light" size:20.0]];
-    firstData.textColor = [[UIColor alloc] initWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1.0f];
+    [firstData setFont: [UIFont fontWithName:@"Avenir-Medium" size:16.0]];
+    firstData.textAlignment = NSTextAlignmentCenter;
+    firstData.textColor = [[UIColor alloc] initWithRed:40.0f/255.0f green:47.0f/255.0f blue:63.0f/255.0f alpha:1.0f];
     [self.contentView addSubview: firstData];
     
     secondLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-    [secondLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:10.0]];
-    secondLabel.textColor = [[UIColor alloc] initWithRed:188.0f/255.0f green:188.0f/255.0f blue:188.0f/255.0f alpha:1.0f];
+    secondLabel.textAlignment = NSTextAlignmentCenter;
+    [secondLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:10.0]];
+    secondLabel.textColor = [[UIColor alloc] initWithRed:179.0f/255.0f green:197.0f/255.0f  blue:227.0f/255.0f alpha:1.0f];
     secondLabel.text = @"Visitors";
     [self.contentView addSubview: secondLabel];
     
     secondData = [[UILabel alloc] initWithFrame: CGRectZero];
-    [secondData setFont: [UIFont fontWithName:@"Avenir-Light" size:20.0]];
-    secondData.textColor = [[UIColor alloc] initWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1.0f];
+    [secondData setFont: [UIFont fontWithName:@"Avenir-Medium" size:16.0]];
+    secondData.textAlignment = NSTextAlignmentCenter;
+    secondData.textColor = [[UIColor alloc] initWithRed:40.0f/255.0f green:47.0f/255.0f blue:63.0f/255.0f alpha:1.0f];
     [self.contentView addSubview: secondData];
     
     thirdLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-    [thirdLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:10.0]];
-    thirdLabel.textColor = [[UIColor alloc] initWithRed:188.0f/255.0f green:188.0f/255.0f blue:188.0f/255.0f alpha:1.0f];
-    thirdLabel.text = @"Pageviews";
+    thirdLabel.textAlignment = NSTextAlignmentCenter;
+    [thirdLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:10.0]];
+    thirdLabel.textColor = [[UIColor alloc] initWithRed:117.0f/255.0f green:220.0f/255.0f  blue:229.0f/255.0f alpha:1.0f];
+    thirdLabel.text = @"Page Views";
     [self.contentView addSubview: thirdLabel];
     
     thirdData = [[UILabel alloc] initWithFrame: CGRectZero];
-    [thirdData setFont: [UIFont fontWithName:@"Avenir-Light" size:20.0]];
-    thirdData.textColor = [[UIColor alloc] initWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1.0f];
+    thirdData.textAlignment = NSTextAlignmentCenter;
+    [thirdData setFont: [UIFont fontWithName:@"Avenir-Medium" size:16.0]];
+    thirdData.textColor = [[UIColor alloc] initWithRed:40.0f/255.0f green:47.0f/255.0f blue:63.0f/255.0f alpha:1.0f];
     [self.contentView addSubview: thirdData];
+    
+    showFirstGraphButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 260, 100, 50)];
+    showFirstGraphButton.backgroundColor = [UIColor clearColor];
+    [showFirstGraphButton addTarget:self action:@selector(showFirstPlotSpace) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:showFirstGraphButton];
+    
+    showSecondGraphButton = [[UIButton alloc] initWithFrame: CGRectMake(100, 260, 100, 50)];
+    showSecondGraphButton.backgroundColor = [UIColor clearColor];
+    [showSecondGraphButton addTarget:self action:@selector(showSecondPlotSpace) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:showSecondGraphButton];
+    
+    showThirdGraphButton = [[UIButton alloc] initWithFrame: CGRectMake(200, 260, 100, 50)];
+    showThirdGraphButton.backgroundColor = [UIColor clearColor];
+    [showThirdGraphButton addTarget:self action:@selector(showThirdPlotSpace) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:showThirdGraphButton];
 }
 
 -(void) layoutSubviews {
     [super layoutSubviews];
-    firstLabel.frame = CGRectMake(24, 246, 100, 8);
-    firstData.frame = CGRectMake(24, 254, 100, 20);
+    firstLabel.frame = CGRectMake(0, 290, 100, 12);
+    firstData.frame = CGRectMake(0, 270, 100, 20);
     
-    secondLabel.frame = CGRectMake(132, 246, 100, 8);
-    secondData.frame = CGRectMake(132, 254, 100, 20);
+    secondLabel.frame = CGRectMake(100, 290, 100, 12);
+    secondData.frame = CGRectMake(100, 270, 100, 20);
     
     
-    thirdLabel.frame = CGRectMake(244, 246, 100, 8);
-    thirdData.frame = CGRectMake(244, 254, 100, 20);
+    thirdLabel.frame = CGRectMake(200, 290, 100, 12);
+    thirdData.frame = CGRectMake(200, 270, 100, 20);
     
     [hostView setNeedsLayout];
     
@@ -176,25 +203,26 @@
 // Therefore this class implements the CPTPlotDataSource protocol
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
-    if (plot.identifier == 0) {
+    if ([plot.identifier isEqual:@"0"]) {
         
         GraphDataDetail *detail = (GraphDataDetail *)firstCoordinates[index];
         // This method is actually called twice per point in the plot, one for the X and one for the Y value
         if(fieldEnum == CPTScatterPlotFieldX)
         {
             // Return x value, which will, depending on index, be between -4 to 4
-            return  detail.index;
+            return [NSNumber numberWithInteger:index];
         } else {
             // Return y value, for this example we'll be plotting y = x * x
+            //NSLog(@"Index: %lu, Value: %@", (unsigned long)index, detail.y);
             return detail.y;
         }
-      } else if (plot.identifier == [NSNumber numberWithInt:1]) {
+      } else if ([plot.identifier isEqual:@"1"]) {
           GraphDataDetail *detail = (GraphDataDetail *)secondCoordinates[index];
           // This method is actually called twice per point in the plot, one for the X and one for the Y value
           if(fieldEnum == CPTScatterPlotFieldX)
           {
               // Return x value, which will, depending on index, be between -4 to 4
-              return  detail.index;
+              return [NSNumber numberWithInteger:index];
           } else {
               // Return y value, for this example we'll be plotting y = x * x
               return detail.y;
@@ -206,7 +234,7 @@
           if(fieldEnum == CPTScatterPlotFieldX)
           {
               // Return x value, which will, depending on index, be between -4 to 4
-              return  detail.index;
+              return [NSNumber numberWithInteger:index];
           } else {
               // Return y value, for this example we'll be plotting y = x * x
               return detail.y;
@@ -230,64 +258,234 @@
     GraphDataSet *firstSet = item.dataSets.firstObject;
     firstCoordinates = [firstSet.dataDetails array];
     firstData.text = [firstSet.totalDataCount stringValue];
+    maxYValue = [firstSet.maxYCount floatValue];
     
-    NSLog(@"%@", firstSet.maxYCount);
-    
-    // Second Set
-    GraphDataSet *secondSet = item.dataSets[1];
-    secondCoordinates = [secondSet.dataDetails array];
-    secondData.text = [secondSet.totalDataCount stringValue];
-    
-    // Third Set
-    GraphDataSet *thirdSet = item.dataSets[2];
-    thirdCoordinates = [thirdSet.dataDetails array];
-    thirdData.text = [thirdSet.totalDataCount stringValue];
-
-    
-    
-//    firstCoordinates = graphCardItem.firstCoordinates;
-//    secondCoordinates = graphCardItem.secondCoordinates;
-//    thirdCoordinates = graphCardItem.thirdCoordinates;
-//    
-//    
-//    firstData.text = [graphCardItem.firstDataField stringValue];
-//    secondData.text = [graphCardItem.secondDataField stringValue];
-//    thirdData.text = [graphCardItem.thirdDataField stringValue];
-//    
-    static NSCache* imageCache = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        imageCache = [NSCache new];
-    });
-    
-    NSAssert(imageCache, @"Height cache must exist");
-    
-    NSString* key = item.externalID; //Create a unique key here
-    UIImage* cachedValue = [imageCache objectForKey: key];
-    
-    if( cachedValue )
-       [graphImageView setImage:cachedValue];
-    else {
+     // Second Set
+    if (item.dataSets.count > 1) {
+        UIImage *line = [UIImage imageNamed:@"line_graph.png"];
+        UIImageView *lineView = [[UIImageView alloc] initWithImage:line];
+        lineView.frame = CGRectMake(100, 274, 1, 26);
+        [self.contentView addSubview:lineView];
         
-        // Note that these CPTPlotRange are defined by START and LENGTH (not START and END) !!
-        CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-        [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 )
-                                                           length:CPTDecimalFromFloat([firstSet.maxYCount floatValue] )]];
-        
-        [graph reloadData];
-        UIImage *newImage=[graph imageOfLayer];
-        [imageCache setObject:newImage forKey:key];
-        [graphImageView setImage:newImage];
+        GraphDataSet *secondSet = item.dataSets[1];
+        secondCoordinates = [secondSet.dataDetails array];
+        secondData.text = [secondSet.totalDataCount stringValue];
+        if ([secondSet.maxYCount floatValue] > maxYValue) maxYValue = [secondSet.maxYCount floatValue];
     }
+    
+     // Third Set
+    if (item.dataSets.count > 2) {
+        UIImage *line = [UIImage imageNamed:@"line_graph.png"];
+        UIImageView *lineView = [[UIImageView alloc] initWithImage:line];
+        lineView.frame = CGRectMake(200, 274, 1, 26);
+        [self.contentView addSubview:lineView];
+       
+        GraphDataSet *thirdSet = item.dataSets[2];
+        thirdCoordinates = [thirdSet.dataDetails array];
+        thirdData.text = [thirdSet.totalDataCount stringValue];
+        if ([thirdSet.maxYCount floatValue] > maxYValue) maxYValue = [thirdSet.maxYCount floatValue];
+    }
+    
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue )]];
+    [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromString(@"0") length:CPTDecimalFromString(@"6")]];
+    
+    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:2]];
+    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:1]];
+    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:0]];
+    
+    if (!self.shouldCache) {
+        
+        [self configureAxis];
+        [graph reloadData];
+        
+        [self.contentView addSubview:hostView];
+        
+        showFirstGraphButton.enabled = YES;
+        showSecondGraphButton.enabled = YES;
+        showThirdGraphButton.enabled = YES;
+    
+    } else {
+        static NSCache* imageCache = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            imageCache = [NSCache new];
+        });
+        
+        NSAssert(imageCache, @"Height cache must exist");
+        
+        NSString* key = item.externalID; //Create a unique key here
+        UIImage* cachedValue = [imageCache objectForKey: key];
+        
+        if( cachedValue )
+            [graphImageView setImage:cachedValue];
+        else {
+            
+            // Note that these CPTPlotRange are defined by START and LENGTH (not START and END) !!
+            
+            [self configureAxis];
+            [graph reloadData];
+            
+            UIImage *newImage=[graph imageOfLayer];
+            [imageCache setObject:newImage forKey:key];
+            [graphImageView setImage:newImage];
+            [self.contentView addSubview: graphImageView];
+        }
+        
+        showFirstGraphButton.enabled = NO;
+        showSecondGraphButton.enabled = NO;
+        showThirdGraphButton.enabled = NO;
+
+    }
+}
+
+
+
+- (void) configureAxis {
+    
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
+    
+    CPTMutableTextStyle *textStyle = [[ CPTMutableTextStyle alloc] init];
+    textStyle.fontName = @"Avenir-Roman";
+    textStyle.fontSize = 10;
+    textStyle.color = [CPTColor grayColor];
+    
+    // X Axis
+    CPTXYAxis *x = axisSet.xAxis;
+    x.hidden = YES;
+    //x.axisConstraints = [CPTConstraints constraintWithLowerOffset:0.0];
+    x.labelOffset = -5;
+    x.labelTextStyle = textStyle;
+    x.labelingPolicy = CPTAxisLabelingPolicyAutomatic;
+    x.preferredNumberOfMajorTicks = 7;
+    //x.majorIntervalLength =  CPTDecimalFromString(@"1");
+    //x.preferredNumberOfMajorTicks = 3;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"EEE";
+    CPTCalendarFormatter *calendarFormatter = [[CPTCalendarFormatter
+                                                 alloc] initWithDateFormatter:dateFormatter];
+    calendarFormatter.referenceDate = [NSDate date];
+    calendarFormatter.referenceCalendarUnit = NSDayCalendarUnit;
+    x.labelFormatter = calendarFormatter;
+    
+    for (CPTAxisLabel *label in [x.axisLabels allObjects]) {
+    
+        if (CPTDecimalEquals(label.tickLocation, CPTDecimalFromString(@"0"))) {
+             NSLog(@"same!");
+        }
+    }
+        
+    
+    //x.axisConstraints = [CPTConstraints constraintWithLowerOffset:50.0];
+    //x.frame = CGRectMake(10, 240, 280, 20);
+    x.labelAlignment = CPTAlignmentCenter;
+    
+    // Y Axis
+    CPTMutableLineStyle *majorYGridLineStyle = [CPTMutableLineStyle lineStyle];
+    majorYGridLineStyle.lineWidth = .5f;
+    majorYGridLineStyle.dashPattern =  CPTLinearBlendingMode;
+    majorYGridLineStyle.lineColor = [CPTColor colorWithComponentRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0];
+    axisSet.yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
+    axisSet.yAxis.majorGridLineStyle = majorYGridLineStyle;
+    axisSet.yAxis.hidden = YES;
+    
+    // Top Label
+    NSString *maxYString = [NSString stringWithFormat:@"%.0f", maxYValue];
+    CPTAxisLabel *newLabel = [[CPTAxisLabel alloc] initWithText:maxYString textStyle:textStyle];
+    float maxTickLocation = maxYValue - (maxYValue * .06);
+    newLabel.tickLocation = [[NSNumber numberWithFloat:maxTickLocation] decimalValue];
+    newLabel.offset = (newLabel.contentLayer.frame.size.width * -1);
+    
+    
+    
+    // Mid Label
+    NSString *midYString = [NSString stringWithFormat:@"%.0f", (maxYValue / 2)];
+    CPTAxisLabel *midLabel = [[CPTAxisLabel alloc] initWithText:midYString textStyle:textStyle];
+    float midTickLocation = (maxYValue / 2) - (maxYValue * .06);
+    midLabel.tickLocation = [[NSNumber numberWithFloat:midTickLocation] decimalValue];
+    midLabel.offset = (midLabel.contentLayer.frame.size.width * -1);
+    
+    axisSet.yAxis.axisLabels = [NSSet setWithObjects:newLabel, midLabel, nil];
+    
+    // Grid Lines
+    float spacer = maxYValue / 4.0f;
+    NSNumber *tick1 = [NSNumber numberWithFloat:(spacer)];
+    NSNumber *tick2 = [NSNumber numberWithFloat:(spacer * 2)];
+    NSNumber *tick3 = [NSNumber numberWithFloat:(spacer * 3)];
+    NSNumber *tick4 = [NSNumber numberWithFloat:maxYValue];
+    axisSet.yAxis.majorTickLocations = [NSSet setWithObjects:tick1, tick2, tick3, tick4, nil];
 }
 
 + (CGFloat) estimatedHeightOfContent
 {
-    return 290;
+    return 320;
 }
 
 + (CGFloat) heightOfContent: (FeedItem *)item {
-    return 290;
+    return 320;
+}
+
+#pragma mark Animations
+
+-(void) showFirstPlotSpace {
+    [self showPlotSpaceWithIndex:@"0"];
+}
+
+-(void) showSecondPlotSpace {
+    [self showPlotSpaceWithIndex:@"1"];
+}
+
+-(void) showThirdPlotSpace {
+    [self showPlotSpaceWithIndex:@"2"];
+}
+
+
+- (void) hidePlot:(CPTScatterPlot *) plot {
+    CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeOutAnimation.duration = 0.5f;
+    fadeOutAnimation.removedOnCompletion = NO;
+    fadeOutAnimation.fillMode = kCAFillModeForwards;
+    fadeOutAnimation.toValue = [NSNumber numberWithFloat:0.0f];
+    fadeOutAnimation.delegate = self;
+    [fadeOutAnimation setValue:(NSString *)plot.identifier forKey:@"id"];
+    [fadeOutAnimation setValue:@"fadeout" forKey:@"type"];
+    [plot addAnimation:fadeOutAnimation forKey:@"animateOpacity"];
+}
+
+- (void) showPlotSpaceWithIndex:(NSString *)index
+{
+    NSArray *plots = [graph allPlots];
+    for (CPTScatterPlot* plot in plots) {
+        if (![plot.identifier isEqual:index]) {
+            [self hidePlot:plot];
+        }
+    }
+    
+    CPTScatterPlot* plot = (CPTScatterPlot*)[graph plotWithIdentifier:index];
+    
+    if (plot.hidden == YES) {
+        CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        fadeInAnimation.duration            = 0.5f;
+        fadeInAnimation.removedOnCompletion = NO;
+        fadeInAnimation.fillMode            = kCAFillModeForwards;
+        fadeInAnimation.toValue             = [NSNumber numberWithFloat:1.0];
+        fadeInAnimation.delegate = self;
+        [fadeInAnimation setValue:@"fadein" forKey:@"type"];
+        [fadeInAnimation setValue:(NSString *)plot.identifier forKey:@"id"];
+        [plot addAnimation:fadeInAnimation forKey:@"fadein"];
+        
+        plot.hidden = NO;
+    }
+}
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
+    CPTScatterPlot* plot = (CPTScatterPlot*)[graph plotWithIdentifier:[theAnimation valueForKey:@"id"]];
+    if ([[theAnimation valueForKey:@"type"] isEqual:@"fadeout"]) {
+        plot.hidden = YES;
+    } else {
+        plot.hidden = NO;
+    }
 }
 
 @end

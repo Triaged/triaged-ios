@@ -21,6 +21,9 @@
 		CB1394781822F96C00053086 /* ProviderAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1394771822F96C00053086 /* ProviderAccountTableViewController.m */; };
 		CB13947C182319D500053086 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13947B182319D500053086 /* Reveal.framework */; };
 		CB13948018231A7400053086 /* ProviderAccountDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */; };
+		CB1947B3182D71F500944E80 /* MTLProviderAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947B2182D71F500944E80 /* MTLProviderAccount.m */; };
+		CB1947B6182D720100944E80 /* MTLProviderProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947B5182D720100944E80 /* MTLProviderProperty.m */; };
+		CB1947BC182F13E500944E80 /* CustomPullToRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947BB182F13E500944E80 /* CustomPullToRefreshControl.m */; };
 		CB23F74C181AD49A0035262D /* UIDebugWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CB23F74B181AD49A0035262D /* UIDebugWindow.m */; };
 		CB23F74F181AF5D60035262D /* GGHashtagMentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB23F74E181AF5D60035262D /* GGHashtagMentionController.m */; };
 		CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */; };
@@ -46,6 +49,7 @@
 		CB4F87AC180F532500B685E1 /* TeammateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4F87AB180F532500B685E1 /* TeammateCell.m */; };
 		CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4F87B2180F9A1B00B685E1 /* EventCell.m */; };
 		CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */; };
+		CB50F96F182968FD0074CA99 /* TRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB50F96E182968FD0074CA99 /* TRNavigationViewController.m */; };
 		CB5A35C1180CD31200ECAB71 /* FetchedFeedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */; };
 		CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F20D317EB857800EBDC34 /* CoreData.framework */; };
 		CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECE917EE894000319223 /* CredentialStore.m */; };
@@ -56,6 +60,8 @@
 		CB742D1A180EFF2F0068A301 /* GraphCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB742D19180EFF2F0068A301 /* GraphCardCell.m */; };
 		CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4417F251A400BD858D /* CFNetwork.framework */; };
 		CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4617F251AE00BD858D /* QuartzCore.framework */; };
+		CB7F4B68182AF820002FDE58 /* VerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7F4B66182AF820002FDE58 /* VerifyViewController.m */; };
+		CB7F4B69182AF820002FDE58 /* VerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB7F4B67182AF820002FDE58 /* VerifyViewController.xib */; };
 		CB81579C17F0D55E006AA14A /* MTLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579B17F0D55E006AA14A /* MTLUser.m */; };
 		CB81579F17F0D568006AA14A /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = CB81579E17F0D568006AA14A /* Account.m */; };
 		CB8157A217F0D72F006AA14A /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8157A117F0D72F006AA14A /* Provider.m */; };
@@ -168,6 +174,12 @@
 		CB13947B182319D500053086 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = ../Reveal.framework; sourceTree = "<group>"; };
 		CB13947E18231A7400053086 /* ProviderAccountDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountDetailsTableViewController.h; sourceTree = "<group>"; };
 		CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountDetailsTableViewController.m; sourceTree = "<group>"; };
+		CB1947B1182D71F500944E80 /* MTLProviderAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLProviderAccount.h; sourceTree = "<group>"; };
+		CB1947B2182D71F500944E80 /* MTLProviderAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLProviderAccount.m; sourceTree = "<group>"; };
+		CB1947B4182D720100944E80 /* MTLProviderProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLProviderProperty.h; sourceTree = "<group>"; };
+		CB1947B5182D720100944E80 /* MTLProviderProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLProviderProperty.m; sourceTree = "<group>"; };
+		CB1947BA182F13E500944E80 /* CustomPullToRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPullToRefreshControl.h; sourceTree = "<group>"; };
+		CB1947BB182F13E500944E80 /* CustomPullToRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPullToRefreshControl.m; sourceTree = "<group>"; };
 		CB23F74A181AD49A0035262D /* UIDebugWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDebugWindow.h; sourceTree = "<group>"; };
 		CB23F74B181AD49A0035262D /* UIDebugWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDebugWindow.m; sourceTree = "<group>"; };
 		CB23F74D181AF5D60035262D /* GGHashtagMentionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGHashtagMentionController.h; sourceTree = "<group>"; };
@@ -211,6 +223,8 @@
 		CB4F87B2180F9A1B00B685E1 /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		CB4FDD4B17FF75B700EEE7F6 /* PersistentStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStack.h; sourceTree = "<group>"; };
 		CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStack.m; sourceTree = "<group>"; };
+		CB50F96D182968FD0074CA99 /* TRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNavigationViewController.h; sourceTree = "<group>"; };
+		CB50F96E182968FD0074CA99 /* TRNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNavigationViewController.m; sourceTree = "<group>"; };
 		CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedFeedItemsDataSource.h; sourceTree = "<group>"; };
 		CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedFeedItemsDataSource.m; sourceTree = "<group>"; };
 		CB5AECE817EE894000319223 /* CredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialStore.h; sourceTree = "<group>"; };
@@ -225,6 +239,9 @@
 		CB742D19180EFF2F0068A301 /* GraphCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphCardCell.m; sourceTree = "<group>"; };
 		CB7C2E4417F251A400BD858D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CB7C2E4617F251AE00BD858D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CB7F4B65182AF820002FDE58 /* VerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyViewController.h; sourceTree = "<group>"; };
+		CB7F4B66182AF820002FDE58 /* VerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyViewController.m; sourceTree = "<group>"; };
+		CB7F4B67182AF820002FDE58 /* VerifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerifyViewController.xib; sourceTree = "<group>"; };
 		CB81579A17F0D55E006AA14A /* MTLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLUser.h; sourceTree = "<group>"; };
 		CB81579B17F0D55E006AA14A /* MTLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLUser.m; sourceTree = "<group>"; };
 		CB81579D17F0D568006AA14A /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -601,6 +618,8 @@
 		CB5AECE717EE88B900319223 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CB1947BA182F13E500944E80 /* CustomPullToRefreshControl.h */,
+				CB1947BB182F13E500944E80 /* CustomPullToRefreshControl.m */,
 				CB23F74D181AF5D60035262D /* GGHashtagMentionController.h */,
 				CB23F74E181AF5D60035262D /* GGHashtagMentionController.m */,
 				CBCC6CA31819C3D2001030C2 /* UIImage+ImageEffects.h */,
@@ -638,6 +657,9 @@
 				CBA6D12718202C0E006B73AC /* ConnectionWizardViewController.xib */,
 				CBA6D12A18202C70006B73AC /* ConnectionPageViewController.h */,
 				CBA6D12B18202C70006B73AC /* ConnectionPageViewController.m */,
+				CB7F4B65182AF820002FDE58 /* VerifyViewController.h */,
+				CB7F4B66182AF820002FDE58 /* VerifyViewController.m */,
+				CB7F4B67182AF820002FDE58 /* VerifyViewController.xib */,
 			);
 			name = welcome;
 			sourceTree = "<group>";
@@ -763,6 +785,8 @@
 				CB5AECF017EF7D8A00319223 /* welcome */,
 				CB84B41D17EBBF1500C8B00D /* RootViewController.h */,
 				CB84B41E17EBBF1500C8B00D /* RootViewController.m */,
+				CB50F96D182968FD0074CA99 /* TRNavigationViewController.h */,
+				CB50F96E182968FD0074CA99 /* TRNavigationViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -841,6 +865,10 @@
 				CBA6D112181F1F05006B73AC /* MTLGraphDataDetail.m */,
 				CB81579A17F0D55E006AA14A /* MTLUser.h */,
 				CB81579B17F0D55E006AA14A /* MTLUser.m */,
+				CB1947B1182D71F500944E80 /* MTLProviderAccount.h */,
+				CB1947B2182D71F500944E80 /* MTLProviderAccount.m */,
+				CB1947B4182D720100944E80 /* MTLProviderProperty.h */,
+				CB1947B5182D720100944E80 /* MTLProviderProperty.m */,
 			);
 			name = Mantle;
 			sourceTree = "<group>";
@@ -1017,6 +1045,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */,
+				CB7F4B69182AF820002FDE58 /* VerifyViewController.xib in Resources */,
 				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
 				CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */,
 				CBA6D124181F66DC006B73AC /* TeamMembersViewController.xib in Resources */,
@@ -1094,7 +1123,9 @@
 				CBA6D110181F1EF7006B73AC /* MTLGraphDataSet.m in Sources */,
 				CBFDFBC9182868980013BBA2 /* ActionCell.m in Sources */,
 				CB1394781822F96C00053086 /* ProviderAccountTableViewController.m in Sources */,
+				CB1947B3182D71F500944E80 /* MTLProviderAccount.m in Sources */,
 				CBCC6CA21819C1FF001030C2 /* UIView+BlurredSnapshot.m in Sources */,
+				CB1947BC182F13E500944E80 /* CustomPullToRefreshControl.m in Sources */,
 				CBDCEC701805E9370024860B /* SettingsMenuViewController.m in Sources */,
 				CBA6D0F7181E03F6006B73AC /* Message.m in Sources */,
 				CB8157A917F0E0B3006AA14A /* AccountViewController.m in Sources */,
@@ -1132,12 +1163,14 @@
 				CBD43F3917F9F4A0001AC849 /* ActionBarViewController.m in Sources */,
 				CBA6D119181F2316006B73AC /* GraphItem.m in Sources */,
 				CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */,
+				CB1947B6182D720100944E80 /* MTLProviderProperty.m in Sources */,
 				CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */,
 				CBF3873118125C8F00554730 /* TRJSONResponseSerializerWithData.m in Sources */,
 				CBCC6CA51819C3D2001030C2 /* UIImage+ImageEffects.m in Sources */,
 				CBA6D0FD181ECF6C006B73AC /* DetailView.m in Sources */,
 				CBFDFBC6182821980013BBA2 /* DockedRequestAPIClient.m in Sources */,
 				CBA6D113181F1F05006B73AC /* MTLGraphDataDetail.m in Sources */,
+				CB50F96F182968FD0074CA99 /* TRNavigationViewController.m in Sources */,
 				CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */,
 				CBA676B718085D520035368A /* BaseSettingsViewController.m in Sources */,
 				CBA6D12F18206E07006B73AC /* ProviderWizardCell.m in Sources */,
@@ -1159,6 +1192,7 @@
 				CB81579F17F0D568006AA14A /* Account.m in Sources */,
 				CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */,
 				CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */,
+				CB7F4B68182AF820002FDE58 /* VerifyViewController.m in Sources */,
 				CB23F74F181AF5D60035262D /* GGHashtagMentionController.m in Sources */,
 				CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */,
 			);

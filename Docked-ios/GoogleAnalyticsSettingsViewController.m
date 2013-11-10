@@ -19,12 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.providerDict = [[AppDelegate sharedDelegate].store.account.providers
-                                                        valueForKey:@"google_analytics"];
-        
-        self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:self.providerDict
-                                               error:nil];
-        
+        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"google_analytics"];
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Daily visitors count", @NO], @[@"Daily visits count", @NO], @[@"Daily page views count", @NO], nil];
     }
     return self;
@@ -37,8 +32,7 @@
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_google.png"];
     
     
-    self.eventsViewController.view.frame = CGRectMake(0, 220, 240, 200);
-    [self.scrollView addSubview:self.eventsViewController.view];
+    
 }
 
 - (void) setupUnconnectedState
@@ -50,6 +44,9 @@
     [self.connectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.connectButton setTitle:@"Connect to Google Analytics" forState:UIControlStateNormal];
     [self.scrollView addSubview:self.connectButton];
+    
+    self.eventsViewController.view.frame = CGRectMake(0, 220, 240, 200);
+    [self.scrollView addSubview:self.eventsViewController.view];
 
 }
 
@@ -57,12 +54,15 @@
 {
     [super setupConnectedState];
 
-    self.providerAccountTableVC.view.frame = CGRectMake(0, 130, 320, 44);
-    self.providerAccountTableVC.accountText = [[self.providerDict valueForKey:@"account_settings"] valueForKey:@"account"];
-    self.accountDetails = [[self.providerDict valueForKey:@"account_settings"] valueForKey:@"properties"];
-    self.accountDetailsTitle = @"Properties";
+    self.providerAccountTableVC.view.frame = CGRectMake(0, 190, 320, 44);
+    self.providerAccountTableVC.accountText = self.provider.account.name;
+    self.accountProperties  = self.provider.account.properties;
+    self.accountDetailsTitle = self.provider.account.propertyLabel;
 
     [self.scrollView addSubview:self.providerAccountTableVC.view];
+    
+    self.eventsViewController.view.frame = CGRectMake(0, 260, 320, 200);
+    [self.scrollView addSubview:self.eventsViewController.view];
     
     UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
     UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
@@ -72,10 +72,6 @@
 
 }
 
-- (void) layoutSubviews
-{
-    [super layoutSubviews];
-}
 
 - (void)connect
 {

@@ -12,6 +12,7 @@
 #import "WelcomeViewController.h"
 #import "SettingsMenuViewController.h"
 #import "ConnectionWizardViewController.h"
+#import "VerifyViewController.h"
 
 
 @interface RootViewController () {
@@ -37,16 +38,9 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-    self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
+//    self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
     
     
-    for (UIView *view in self.navigationController.navigationBar.subviews) {
-        for (UIView *view2 in view.subviews) {
-            if ([view2 isKindOfClass:[UIImageView class]]) {
-                [view2 removeFromSuperview];
-            }
-        }
-    }
     
     [self setupViewControllers];
     [self addSettingsButton];
@@ -60,11 +54,28 @@
         WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];
         [self presentViewController:welcomeVC animated:NO completion:nil];
     } else {
-        if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenTutorial"])
-            [self displayConnectionWizard];
+        [self shouldShowWelcomeScreens];
     }
+}
+
+-(void) shouldShowWelcomeScreens
+{
+    Account *account = [AppDelegate sharedDelegate].store.account;
+    bool shouldSeeTutorial = ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenTutorial"];
     
-    
+    if (account.personalAccount) {
+        if (shouldSeeTutorial) [self displayConnectionWizard];
+    } else {
+        if (account.connectedProviderCount == 0) {
+            // Show connection Wizard first
+            if (shouldSeeTutorial) [self displayConnectionWizard];
+            if (!account.validatedCompany) [self displayCompanyValidation]; // Show validation screen
+        } else {
+            // Show validate company first
+            if (!account.validatedCompany) [self displayCompanyValidation];// Show Validated Company
+            if (shouldSeeTutorial) [self displayConnectionWizard];
+        }
+    }
 }
 
 -(void) displayConnectionWizard
@@ -72,6 +83,12 @@
     ConnectionWizardViewController *connectionWizardVC = [[ConnectionWizardViewController alloc] init];
     connectionWizardVC.showingWelcomeTour = YES;
     [self presentViewController:connectionWizardVC animated:NO completion:nil];
+}
+
+-(void) displayCompanyValidation
+{
+    VerifyViewController *verifyVC = [[VerifyViewController alloc] init];
+    [self presentViewController:verifyVC animated:NO completion:nil];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -84,6 +101,7 @@
     feedTableView = [[FeedTableViewController alloc] init];
     feedTableView.view.frame = CGRectMake(8, 0, self.view.frame.size.width - 16, self.view.frame.size.height);
     feedTableView.navController = self.navigationController;
+    feedTableView.rootController = self;
 
     [self addChildViewController:feedTableView];
     [self.view addSubview:feedTableView.view];
@@ -92,8 +110,14 @@
 
 - (void)addSettingsButton
 {
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"cog.png"] style:UIBarButtonItemStyleDone target:self action:@selector(presentSettingsView)];
+
+    UIImage *menuImage = [UIImage imageNamed:@"menu-1.png"];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:menuImage style:UIBarButtonItemStyleDone target:self action:@selector(presentSettingsView)];
     self.navigationItem.leftBarButtonItem = settingsButton;
+    
+    UIImage *logoImage = [[UIImage imageNamed:@"logo_navbar.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:logoImage];
+    self.navigationItem.titleView = logoImageView;
 }
 
 - (void)presentSettingsView

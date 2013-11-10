@@ -21,7 +21,7 @@
         
         UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
         UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-        lineView.frame = CGRectMake(0, 1, 304, .5);
+        lineView.frame = CGRectMake(0, 1, 304, 1);
         [self.contentView addSubview: lineView];
         
         actionIconView = [[UIImageView alloc] init];
@@ -31,7 +31,7 @@
         
         actionLabel = [[UILabel alloc] initWithFrame: CGRectMake(50, 10, 160, 30)];
         actionLabel.font = [UIFont fontWithName:@"Avenir-Book" size:16.0];
-        actionLabel.textColor = [[UIColor alloc] initWithRed:122.0f/255.0f green:141.0f/255.0f blue:196.0f/255.0f alpha:1.0f];
+        actionLabel.textColor = [[UIColor alloc] initWithRed:105.0f/255.0f green:125.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
         [actionLabel setLineBreakMode: NSLineBreakByClipping];
         actionLabel.numberOfLines = 1;
         [self.contentView addSubview: actionLabel];

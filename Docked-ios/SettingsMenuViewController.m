@@ -89,6 +89,10 @@
      connectProviderButton.frame = CGRectMake(40, 300, 240, 40);
     [connectProviderButton setTitle:@"Connect Services" forState:UIControlStateNormal];
     [connectProviderButton addTarget:self action:@selector(showConnectionWizard) forControlEvents:UIControlEventTouchUpInside];
+    [connectProviderButton.layer setCornerRadius:20.0f];
+    [connectProviderButton.layer setMasksToBounds:YES];
+    [connectProviderButton.layer setBorderWidth:1.0f];
+    connectProviderButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     [scrollView addSubview:connectProviderButton];
     
     
@@ -108,24 +112,12 @@
     accountSettingsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     accountSettingsTableView.scrollEnabled = NO;
     [scrollView addSubview:accountSettingsTableView];
-//    
-//    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
-//                               @"V:|[providersTableView][connectProviderButton][accountSettingsTableView]"
-//                                                                      options:NSLayoutFormatAlignAllCenterX
-//                                                                      metrics:nil
-//                                                                        views:NSDictionaryOfVariableBindings(providersTableView, connectProviderButton, accountSettingsTableView)]];
-    
-    
-
-    
-    //UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-    
-
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     account = [AppDelegate sharedDelegate].store.account;
+    [self refreshView];
 }
 
 -(void)viewDidLayoutSubviews
@@ -135,6 +127,7 @@
 }
 
 -(void)refreshView {
+    [accountSettingsTableView reloadData];
     [providersTableVC refreshTableView];
     [self setContentSize];
 }
@@ -158,10 +151,6 @@
     // Set connect button
     CGRect  buttonFrame = CGRectMake(connectProviderButton.frame.origin.x, providersTableVCHeight, connectProviderButton.frame.size.width, connectProviderButton.frame.size.height);
     connectProviderButton.frame = buttonFrame;
-    [connectProviderButton.layer setCornerRadius:20.0f];
-    [connectProviderButton.layer setMasksToBounds:YES];
-    [connectProviderButton.layer setBorderWidth:1.0f];
-    connectProviderButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     
     // Settings Label
     CGRect  accountSettingsFrame = CGRectMake(settingsLabel.frame.origin.x, buttonFrame.origin.y + 80, settingsLabel.frame.size.width, settingsLabel.frame.size.height);

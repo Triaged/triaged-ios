@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
 #import "User.h"
+#import "Provider.h"
 
 @interface Account : MTLModel <MTLJSONSerializing>
 
@@ -18,8 +19,11 @@
 @property (nonatomic, copy, readonly) NSString *email;
 @property (nonatomic, copy, readonly) NSString *avatarUrl;
 @property (nonatomic, copy, readonly) NSString *companyName;
+@property (nonatomic, readonly) BOOL pushEnabled;
+@property (nonatomic, readonly) BOOL validatedCompany;
+@property (nonatomic, readonly) BOOL personalAccount;
 @property (nonatomic, copy, readonly) NSNumber *followedProviderCount;
-@property (nonatomic, copy, readonly) NSDictionary *providers;
+@property (nonatomic, copy, readonly) NSArray *providers;
 @property (nonatomic, copy, readonly) NSArray *teammates;
 
 
@@ -32,12 +36,13 @@
 -(BOOL)isLoggedIn;
 -(void)updateAPNSPushTokenWithToken:(NSString *)token;
 -(void)resetAPNSPushCount;
--(void)uploadProfilePicture:(UIImage *)profilePicture;
--(void)uploadAvatar:(UIImage *)avatar WithBlock:(void (^)(bool))block;
 
+-(void)uploadAvatar:(UIImage *)avatar WithBlock:(void (^)(bool))block;
+- (void)updatePushEnabled:(BOOL)pushValue;
 
 -(NSArray *)connectedProviders;
 -(NSNumber *)connectedProviderCount;
+-(Provider *)providerWithName:(NSString *)name;
 
 
 

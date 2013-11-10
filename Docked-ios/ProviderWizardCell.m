@@ -72,10 +72,9 @@
 
 - (void)configureForItem:(NSDictionary *)provider
 {
-    Provider *providerObject = [MTLJSONAdapter modelOfClass:Provider.class
-                                         fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers
-                                                             valueForKey:[provider objectForKey:@"id"]] error:nil];
     self.providerIconView.image = [UIImage imageNamed:[provider objectForKey:@"settings_icon"]];
+    
+    Provider *providerObject = [[AppDelegate sharedDelegate].store.account providerWithName:[provider objectForKey:@"id"]];
 
     if (providerObject.connected) {
         dataView.backgroundColor = [UIColor whiteColor];

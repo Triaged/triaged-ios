@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"heroku"] error:nil];
+        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"heroku"];
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Deployment", @NO], nil];
     }
@@ -79,11 +79,5 @@
     [self.scrollView addSubview:self.eventsViewController.view];
     
 }
-
-- (void) layoutSubviews
-{
-    [super layoutSubviews];
-}
-
 
 @end

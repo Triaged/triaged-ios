@@ -172,8 +172,7 @@
 	double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
 	
 	CGFloat viewHeight =  self.detailView.view.frame.size.height;
-    NSLog(@"%f", self.detailView.view.frame.origin.y);
-	CGFloat keyboardY = [self.detailView.view convertRect:keyboardRect fromView:nil].origin.y;
+    CGFloat keyboardY = [self.detailView.view convertRect:keyboardRect fromView:nil].origin.y;
 	CGFloat diff = keyboardY - viewHeight;
    	
 	// Thanks to Raja Baz (@raja-baz) for the delay's animation fix.
@@ -203,7 +202,7 @@
 	
     [UIView animateWithDuration:0.5
                           delay:0
-         usingSpringWithDamping:500.0f
+         usingSpringWithDamping:500.0f  
           initialSpringVelocity:0.0f
                         options:UIViewAnimationOptionCurveLinear
                      animations:completition
@@ -236,7 +235,7 @@
 {
     [self.buttonSend setEnabled:([textView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0)];
     
-	CGFloat maxHeight = self.textView.font.lineHeight * 5;
+	CGFloat maxHeight = self.textView.font.lineHeight * 6;
     CGFloat textViewContentHeight =  [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)].height;
 	
 	// Fixes the wrong content size computed by iOS7

@@ -25,6 +25,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.view.frame = [AppDelegate sharedDelegate].window.frame;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWillShow:)
                                                      name:UIKeyboardWillShowNotification
@@ -41,6 +43,7 @@
     
     UIColor *color = [UIColor whiteColor];
     usernameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Work Email" attributes:@{NSForegroundColorAttributeName: color}];
+
 
     passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
 
@@ -62,8 +65,16 @@
     
     [[DockedAPIClient sharedClient] POST:@"users/sign_in.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
         
-        NSString *authToken = [JSON valueForKeyPath:@"auth_token"];
+        // Set Auth Code
+        NSString *authToken = [JSON valueForKeyPath:@"authentication_token"];
         [[CredentialStore sharedClient] setAuthToken:authToken];
+        
+        // Set current user
+        NSValueTransformer *transformer;
+        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
+        [AppDelegate sharedDelegate].store.account = [transformer transformedValue:JSON];
+        
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
         
         [SVProgressHUD dismiss];
@@ -121,23 +132,31 @@
         
         //Subtext
         triangeImage.hidden = YES;
+        if (!IS_IPHONE5) logoLabel.hidden = YES;
         
         
         // Fields
         CGRect usernameFrame = usernameTextField.frame;
-        usernameFrame.origin.y = usernameFrame.origin.y - 200;
-        usernameTextField.frame = usernameFrame;
-        
         CGRect passwordFrame = passwordTextField.frame;
-        passwordFrame.origin.y = passwordFrame.origin.y - 200;
-        passwordTextField.frame = passwordFrame;
-        
         CGRect divider1Frame = divider1.frame;
-        divider1Frame.origin.y = divider1Frame.origin.y - 200;
-        divider1.frame = divider1Frame;
         
         CGRect divider2Frame = divider2.frame;
-        divider2Frame.origin.y = divider2Frame.origin.y - 200;
+        if (IS_IPHONE5) {
+            usernameFrame.origin.y = usernameFrame.origin.y - keyboardEndFrame.size.height;
+            passwordFrame.origin.y = passwordFrame.origin.y - keyboardEndFrame.size.height;
+            divider1Frame.origin.y = divider1Frame.origin.y - keyboardEndFrame.size.height;
+            divider2Frame.origin.y = divider2Frame.origin.y - keyboardEndFrame.size.height;
+        } else {
+            usernameFrame.origin.y = usernameFrame.origin.y - 200;
+            passwordFrame.origin.y = passwordFrame.origin.y - 200;
+            divider1Frame.origin.y = divider1Frame.origin.y - 200;
+            divider2Frame.origin.y = divider2Frame.origin.y - 200;
+
+        }
+        
+        usernameTextField.frame = usernameFrame;
+        passwordTextField.frame = passwordFrame;
+        divider1.frame = divider1Frame;
         divider2.frame = divider2Frame;
     };
     

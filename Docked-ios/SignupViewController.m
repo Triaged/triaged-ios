@@ -26,6 +26,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.view.frame = [AppDelegate sharedDelegate].window.frame;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWillShow:)
                                                      name:UIKeyboardWillShowNotification
@@ -66,8 +68,15 @@
     
     [[DockedAPIClient sharedClient] POST:@"/api/v1/users.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
         
-        NSString *authToken = [JSON valueForKeyPath:@"auth_token"];
+        // Set Auth Code
+        NSString *authToken = [JSON valueForKeyPath:@"authentication_token"];
         [[CredentialStore sharedClient] setAuthToken:authToken];
+        
+        // Set current user
+        NSValueTransformer *transformer;
+        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
+        [AppDelegate sharedDelegate].store.account = [transformer transformedValue:JSON];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
         
         [SVProgressHUD dismiss];
@@ -123,31 +132,39 @@
         
         //Subtext
         triangleImage.hidden = YES;
+        if (!IS_IPHONE5) logoLabel.hidden = YES;
+        
+        CGRect usernameFrame = nameTextField.frame;
+        CGRect emailTextFrame = emailTextField.frame;
+        CGRect passwordFrame = passwordTextField.frame;
+        CGRect divider1Frame = divider1.frame;
+        CGRect divider2Frame = divider2.frame;
+        CGRect divider3Frame = divider3.frame;
 
+        if (IS_IPHONE5) {
+            usernameFrame.origin.y = usernameFrame.origin.y - keyboardEndFrame.size.height;
+            emailTextFrame.origin.y = emailTextFrame.origin.y - keyboardEndFrame.size.height;
+            passwordFrame.origin.y = passwordFrame.origin.y - keyboardEndFrame.size.height;
+            divider1Frame.origin.y = divider1Frame.origin.y - keyboardEndFrame.size.height;
+            divider2Frame.origin.y = divider2Frame.origin.y - keyboardEndFrame.size.height;
+            divider3Frame.origin.y = divider3Frame.origin.y - keyboardEndFrame.size.height;
+        } else {
+            usernameFrame.origin.y = usernameFrame.origin.y     - 200;
+            emailTextFrame.origin.y = emailTextFrame.origin.y   - 200;
+            passwordFrame.origin.y = passwordFrame.origin.y     - 200;
+            divider1Frame.origin.y = divider1Frame.origin.y     - 200;
+            divider2Frame.origin.y = divider2Frame.origin.y     - 200;
+            divider3Frame.origin.y = divider3Frame.origin.y     - 200;
+        }
         
         // Fields
-        CGRect usernameFrame = nameTextField.frame;
-        usernameFrame.origin.y = usernameFrame.origin.y - 200;
+        
+        
         nameTextField.frame = usernameFrame;
-        
-        CGRect emailTextFrame = emailTextField.frame;
-        emailTextFrame.origin.y = emailTextFrame.origin.y - 200;
         emailTextField.frame = emailTextFrame;
-        
-        CGRect passwordFrame = passwordTextField.frame;
-        passwordFrame.origin.y = passwordFrame.origin.y - 200;
         passwordTextField.frame = passwordFrame;
-        
-        CGRect divider1Frame = divider1.frame;
-        divider1Frame.origin.y = divider1Frame.origin.y - 200;
         divider1.frame = divider1Frame;
-        
-        CGRect divider2Frame = divider2.frame;
-        divider2Frame.origin.y = divider2Frame.origin.y - 200;
         divider2.frame = divider2Frame;
-        
-        CGRect divider3Frame = divider3.frame;
-        divider3Frame.origin.y = divider3Frame.origin.y - 200;
         divider3.frame = divider3Frame;
     };
     

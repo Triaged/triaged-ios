@@ -24,6 +24,6 @@
 //-(NSString *)body;
 //@end
 
-@interface GraphCardCell : CardCell
+@interface GraphCardCell : CardCell <CPTPlotDelegate>
 
 @end

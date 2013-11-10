@@ -22,7 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"stripe"] error:nil];
+        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"stripe"];
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Charge succeeded", @NO], @[@"Charge refunded", @NO], @[@"Dispute created", @YES], @[@"Invoice failed", @YES], @[@"Subscription deleted", @YES], nil];
     }
@@ -53,11 +53,6 @@
 - (void) setupConnectedState
 {
     [super setupConnectedState];
-}
-
-- (void) layoutSubviews
-{
-    [super layoutSubviews];
 }
 
 - (void)connect

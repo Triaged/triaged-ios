@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [MTLJSONAdapter modelOfClass:Provider.class fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers valueForKey:@"airbrake"] error:nil];
+        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"airbrake"];
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Exception", @YES], nil];
     }
@@ -80,9 +80,6 @@
     
 }
 
-- (void) layoutSubviews
-{
-    [super layoutSubviews];
-}
+
 
 @end

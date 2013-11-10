@@ -92,9 +92,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *provider = providers[indexPath.row];
+    Provider *provider = providers[indexPath.row];
     
-    NSDictionary *providerSettings = [Provider settingsDictForProvider:[provider objectForKey:@"name"]];
+    NSDictionary *providerSettings = [Provider settingsDictForProvider:provider.name];
     Class providerSettingsClass = [providerSettings objectForKey:@"settings_class"];
 
     BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];

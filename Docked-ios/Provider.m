@@ -26,8 +26,15 @@
      @"name" : @"name",
      @"connected" : @"connected",
      @"follows" : @"follows",
-     @"webhookUrl" : @"webhook_url"
+     @"webhookUrl" : @"webhook_url",
+     @"account" : @"account"
     };
+}
+
+
++ (NSValueTransformer *)accountJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[MTLProviderAccount class]];
 }
 
 
@@ -55,7 +62,7 @@
 - (void) ignore {
     _follows = false;
     
-    NSString *path = [NSString stringWithFormat:@"providers/%@/unfollow.json", _providerID];
+    NSString *path = [NSString stringWithFormat:@"providers/%@/ignore.json", _providerID];
     [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);

@@ -34,8 +34,9 @@
         
         
         providerLabel = [[UILabel alloc] initWithFrame: CGRectMake(70, 10, 160, 30)];
-        [providerLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:17.0]];
-        providerLabel.textColor = [UIColor blackColor];
+        [providerLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
+        providerLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
+
         [providerLabel setLineBreakMode: NSLineBreakByClipping];
         providerLabel.numberOfLines = 1;
         [self.contentView addSubview: providerLabel];
@@ -55,16 +56,12 @@
     // Configure the view for the selected state
 }
 
-- (void)configureForItem:(NSDictionary *)provider
+- (void)configureForItem:(Provider *)provider
 {
-    self.providerIconView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [provider objectForKey:@"name"]]];
-    self.providerLabel.text = [[provider objectForKey:@"name"] humanize];
+    self.providerIconView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", provider.name]];
+    self.providerLabel.text = [provider.name humanize];
     
-//    Provider *providerObject = [MTLJSONAdapter modelOfClass:Provider.class
-//                                   fromJSONDictionary:[[AppDelegate sharedDelegate].store.account.providers
-//                                                       valueForKey:[provider objectForKey:@"id"]] error:nil];
-    
-    bool connected = [provider objectForKey:@"connected"];
+    bool connected = provider.follows;
     if (connected) [self.contentView addSubview: connectedView];
 }
 
