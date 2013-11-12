@@ -15,7 +15,7 @@
 
 @implementation ProviderAccountDetailsTableViewController
 
-@synthesize accountDetails, accountDetailsTitle;
+@synthesize accountDetails, accountDetailsTitle, provider;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -75,6 +75,7 @@
     cell.accountLabel.text = property.name;
     UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
     switchview.tag = indexPath.row;
+    switchview.on = property.follows;
     [switchview addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
     cell.accessoryView = switchview;
     
@@ -85,6 +86,13 @@
 
 - (void)updateSwitchAtIndexPath:(UISwitch *)aswitch{
     NSLog(@"%i",aswitch.tag);
+    MTLProviderProperty *property = [accountDetails objectAtIndex:aswitch.tag];
+    
+    if (property.follows) {
+        [property ignoreWithProvider:provider andAccount:provider.account];
+    } else {
+        [property followWithProvider:provider andAccount:provider.account];
+    }
 }
 
 @end

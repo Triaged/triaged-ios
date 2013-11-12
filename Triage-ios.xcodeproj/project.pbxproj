@@ -24,6 +24,11 @@
 		CB1947B3182D71F500944E80 /* MTLProviderAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947B2182D71F500944E80 /* MTLProviderAccount.m */; };
 		CB1947B6182D720100944E80 /* MTLProviderProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947B5182D720100944E80 /* MTLProviderProperty.m */; };
 		CB1947BC182F13E500944E80 /* CustomPullToRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947BB182F13E500944E80 /* CustomPullToRefreshControl.m */; };
+		CB1947BF183077B400944E80 /* CSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947BE183077B400944E80 /* CSNotificationView.m */; };
+		CB1947C11830997800944E80 /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1947C01830997800944E80 /* Appsee.framework */; };
+		CB1947C31830998A00944E80 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1947C21830998A00944E80 /* AVFoundation.framework */; };
+		CB1947C51830999400944E80 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1947C41830999400944E80 /* CoreMedia.framework */; };
+		CB1947C71830999D00944E80 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1947C61830999D00944E80 /* CoreVideo.framework */; };
 		CB23F74C181AD49A0035262D /* UIDebugWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CB23F74B181AD49A0035262D /* UIDebugWindow.m */; };
 		CB23F74F181AF5D60035262D /* GGHashtagMentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB23F74E181AF5D60035262D /* GGHashtagMentionController.m */; };
 		CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */; };
@@ -180,6 +185,12 @@
 		CB1947B5182D720100944E80 /* MTLProviderProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLProviderProperty.m; sourceTree = "<group>"; };
 		CB1947BA182F13E500944E80 /* CustomPullToRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPullToRefreshControl.h; sourceTree = "<group>"; };
 		CB1947BB182F13E500944E80 /* CustomPullToRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPullToRefreshControl.m; sourceTree = "<group>"; };
+		CB1947BD183077B400944E80 /* CSNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNotificationView.h; sourceTree = "<group>"; };
+		CB1947BE183077B400944E80 /* CSNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNotificationView.m; sourceTree = "<group>"; };
+		CB1947C01830997800944E80 /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
+		CB1947C21830998A00944E80 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CB1947C41830999400944E80 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CB1947C61830999D00944E80 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CB23F74A181AD49A0035262D /* UIDebugWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDebugWindow.h; sourceTree = "<group>"; };
 		CB23F74B181AD49A0035262D /* UIDebugWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDebugWindow.m; sourceTree = "<group>"; };
 		CB23F74D181AF5D60035262D /* GGHashtagMentionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGHashtagMentionController.h; sourceTree = "<group>"; };
@@ -384,6 +395,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB1947C71830999D00944E80 /* CoreVideo.framework in Frameworks */,
+				CB1947C51830999400944E80 /* CoreMedia.framework in Frameworks */,
+				CB1947C31830998A00944E80 /* AVFoundation.framework in Frameworks */,
 				CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */,
 				CB13947C182319D500053086 /* Reveal.framework in Frameworks */,
 				CB13946D1821F31100053086 /* libz.dylib in Frameworks */,
@@ -396,6 +410,7 @@
 				CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */,
 				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
 				CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */,
+				CB1947C11830997800944E80 /* Appsee.framework in Frameworks */,
 				CBF3872C1812535500554730 /* HockeySDK.framework in Frameworks */,
 				CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */,
 				CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */,
@@ -618,6 +633,8 @@
 		CB5AECE717EE88B900319223 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CB1947BD183077B400944E80 /* CSNotificationView.h */,
+				CB1947BE183077B400944E80 /* CSNotificationView.m */,
 				CB1947BA182F13E500944E80 /* CustomPullToRefreshControl.h */,
 				CB1947BB182F13E500944E80 /* CustomPullToRefreshControl.m */,
 				CB23F74D181AF5D60035262D /* GGHashtagMentionController.h */,
@@ -698,6 +715,10 @@
 		CB8F208F17EB5D6300EBDC34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB1947C61830999D00944E80 /* CoreVideo.framework */,
+				CB1947C41830999400944E80 /* CoreMedia.framework */,
+				CB1947C21830998A00944E80 /* AVFoundation.framework */,
+				CB1947C01830997800944E80 /* Appsee.framework */,
 				CB13946C1821F31100053086 /* libz.dylib */,
 				CB24D08B1811D1E100DF0D19 /* MessageUI.framework */,
 				CB2F9F9A1808B2EA00F5F97C /* SystemConfiguration.framework */,
@@ -1177,6 +1198,7 @@
 				CBA6D0F4181DF4EE006B73AC /* TextItem.m in Sources */,
 				CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
+				CB1947BF183077B400944E80 /* CSNotificationView.m in Sources */,
 				CBA6D11C181F2351006B73AC /* GraphDataDetail.m in Sources */,
 				CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */,
 				CB23F74C181AD49A0035262D /* UIDebugWindow.m in Sources */,

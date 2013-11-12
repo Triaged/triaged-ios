@@ -12,7 +12,6 @@
 #import "UINavigationController+SGProgress.h"
 #import "ProviderAccountDetailsTableViewController.h"
 
-
 @interface BaseSettingsViewController ()
 
 @end
@@ -76,7 +75,7 @@
     emailInstructionsButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     emailInstructionsButton.clipsToBounds = YES;
     emailInstructionsButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
-    [emailInstructionsButton setTitle:@"Email Directions" forState:UIControlStateNormal];
+    [emailInstructionsButton setTitle:@"Email These Directions" forState:UIControlStateNormal];
     [emailInstructionsButton addTarget:self action:@selector(emailProviderConnectInstructions) forControlEvents:UIControlEventTouchUpInside];
     
     // Provider Account
@@ -152,6 +151,8 @@
 
 - (void) emailProviderConnectInstructions
 {
+    [self.navigationController showSGProgressWithDuration:1.5];
+    [emailInstructionsButton setTitle:@"Emailed" forState:UIControlStateNormal];
     [provider emailConnectInstructions];
 }
 
@@ -187,7 +188,7 @@
 
 - (void)setIgnoreButtonToIgnore
 {
-    [ignoreButton setTitle:@"Ignore" forState:UIControlStateNormal];
+    [ignoreButton setTitle:@"Unfollow" forState:UIControlStateNormal];
     [ignoreButton setTitleColor:[[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     [ignoreButton setBackgroundColor:[UIColor whiteColor]];
     
@@ -205,6 +206,7 @@
 {
     
     ProviderAccountDetailsTableViewController *detailsVC = [[ProviderAccountDetailsTableViewController alloc] init];
+    detailsVC.provider = provider;
     detailsVC.accountDetails = accountProperties;
     detailsVC.accountDetailsTitle = accountDetailsTitle;
     

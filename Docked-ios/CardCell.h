@@ -20,8 +20,10 @@
 @property (strong, nonatomic) UILabel *actionLabel;
 @property (strong, nonatomic) UILabel *timestampLabel;
 @property (strong, nonatomic) UILabel *bodyLabel;
+@property (strong, nonatomic) UIView* separatorLineView;
 @property CGFloat *heightCache;
 @property  BOOL shouldDrawShadow;
+@property  BOOL shouldDrawSeparator;
 @property  BOOL shouldCache;
 
 

@@ -123,7 +123,6 @@
                 <constraint firstItem="Q5i-qE-SmG" firstAttribute="top" secondItem="N8d-Bw-RJm" secondAttribute="bottom" constant="16" id="MrL-do-5X1"/>
                 <constraint firstAttribute="trailing" secondItem="Q5i-qE-SmG" secondAttribute="trailing" constant="45" id="N0U-Mr-rqd"/>
                 <constraint firstItem="Q5i-qE-SmG" firstAttribute="top" secondItem="N8d-Bw-RJm" secondAttribute="bottom" constant="16" id="OIQ-TP-Qul"/>
-                <constraint firstItem="VAO-qc-9gw" firstAttribute="top" secondItem="XN0-9i-5su" secondAttribute="bottom" id="Tow-qL-KM1"/>
                 <constraint firstItem="VAO-qc-9gw" firstAttribute="top" secondItem="XN0-9i-5su" secondAttribute="bottom" id="TvT-hy-XfK"/>
                 <constraint firstAttribute="trailing" secondItem="Qdi-kL-Ze5" secondAttribute="trailing" constant="45" id="UTi-DJ-wYk"/>
                 <constraint firstItem="Qdi-kL-Ze5" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="45" id="eFJ-kt-lEM"/>

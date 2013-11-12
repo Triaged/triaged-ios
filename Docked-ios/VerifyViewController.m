@@ -22,11 +22,11 @@
     if (self) {
         // Custom initialization
         self.view.frame = [AppDelegate sharedDelegate].window.frame;
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardWillShow:)
-                                                     name:UIKeyboardWillShowNotification
-                                                   object:nil];
+//        
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                 selector:@selector(keyboardWillShow:)
+//                                                     name:UIKeyboardWillShowNotification
+//                                                   object:nil];
         
     }
     return self;
@@ -42,51 +42,58 @@
     verifyCodeLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Verification Code" attributes:@{NSForegroundColorAttributeName: color}];
 }
 
--(void)keyboardWillShow:(NSNotification*)notification  {
-    
-    NSDictionary *userInfo = notification.userInfo;
-    
-    //
-    // Get keyboard size.
-    NSValue *endFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey];
-    CGRect keyboardEndFrame = [self.view convertRect:endFrameValue.CGRectValue fromView:nil];
-    
-    //
-    // Get keyboard animation.
-    
-    NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
-    NSTimeInterval animationDuration = durationValue.doubleValue;
-    
-    NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
-    UIViewAnimationCurve animationCurve = curveValue.intValue;
-    
-    //
-    // Create animation.
-    void (^animations)() = ^() {
-        // Login Button
-        verifyButton.frame = CGRectMake(verifyButton.frame.origin.x, verifyButton.frame.origin.y-keyboardEndFrame.size.height, verifyButton.frame.size.width, verifyButton.frame.size.height);
-        
-        
-        // Fields
-        CGRect verifyFrame = verifyCodeLabel.frame;
-        verifyFrame.origin.y = verifyFrame.origin.y - keyboardEndFrame.size.height;
-        verifyCodeLabel.frame = verifyFrame;
-        
-        CGRect lineFrame = lineView.frame;
-        lineFrame.origin.y = lineFrame.origin.y - keyboardEndFrame.size.height;
-        lineView.frame = verifyFrame;
+//-(void)keyboardWillShow:(NSNotification*)notification  {
+//
+//    NSDictionary *userInfo = notification.userInfo;
+//
+//    //
+//    // Get keyboard size.
+//    NSValue *endFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey];
+//    CGRect keyboardEndFrame = [self.view convertRect:endFrameValue.CGRectValue fromView:nil];
+//
+//    //
+//    // Get keyboard animation.
+//
+//    NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
+//    NSTimeInterval animationDuration = durationValue.doubleValue;
+//
+//    NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+//    UIViewAnimationCurve animationCurve = curveValue.intValue;
+//
+//    //
+//    // Create animation.
+//    void (^animations)() = ^() {
+//        // Login Button
+//        verifyButton.frame = CGRectMake(verifyButton.frame.origin.x, verifyButton.frame.origin.y-keyboardEndFrame.size.height, verifyButton.frame.size.width, verifyButton.frame.size.height);
+//
+//
+//        // Fields
+//        CGRect verifyFrame = verifyCodeLabel.frame;
+//        verifyFrame.origin.y = verifyFrame.origin.y - 140;
+//        verifyCodeLabel.frame = verifyFrame;
+//
+//        CGRect lineFrame = lineView.frame;
+//        lineFrame.origin.y = lineFrame.origin.y - 140;
+//        lineView.frame = lineFrame;
+//
+//    };
+//
+//
+//    //
+//    // Begin animation.
+//    [UIView animateWithDuration:animationDuration
+//                          delay:0.0
+//                        options:(animationCurve << 16)
+//                     animations:animations
+//                     completion:NULL];
+//
+//}
 
-    };
+
+
+- (IBAction)verify:(id)sender {
     
-    
-    //
-    // Begin animation.
-    [UIView animateWithDuration:animationDuration
-                          delay:0.0
-                        options:(animationCurve << 16)
-                     animations:animations
-                     completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
-
 @end

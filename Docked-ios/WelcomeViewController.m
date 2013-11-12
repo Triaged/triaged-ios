@@ -56,9 +56,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     scrollView.contentSize = CGSizeMake(320, loginButton.frame.origin.y + loginButton.frame.size.height);
-    NSLog(@"Content Size: %f", scrollView.contentSize.height);
     scrollView.frame = self.view.frame;
-    NSLog(@"ScreenSize: %f", scrollView.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning

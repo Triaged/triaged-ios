@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_CorePlot 4
 #define COCOAPODS_VERSION_PATCH_CorePlot 0
 
+// HTCopyableLabel
+#define COCOAPODS_POD_AVAILABLE_HTCopyableLabel
+#define COCOAPODS_VERSION_MAJOR_HTCopyableLabel 0
+#define COCOAPODS_VERSION_MINOR_HTCopyableLabel 0
+#define COCOAPODS_VERSION_PATCH_HTCopyableLabel 7
+
 // MRProgress
 #define COCOAPODS_POD_AVAILABLE_MRProgress
 #define COCOAPODS_VERSION_MAJOR_MRProgress 0

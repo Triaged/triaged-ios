@@ -17,15 +17,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B65-b3-f9k">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B65-b3-f9k">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="welcome_bg" translatesAutoresizingMaskIntoConstraints="NO" id="vKq-Hs-lMM">
-                            <rect key="frame" x="0.0" y="-40" width="320" height="608"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_bg" translatesAutoresizingMaskIntoConstraints="NO" id="vKq-Hs-lMM">
+                            <rect key="frame" x="0.0" y="-40" width="320" height="696"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VO-6c-D9U">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VO-6c-D9U">
                             <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
@@ -41,7 +41,7 @@
                                 <action selector="presentLoginView" destination="-1" eventType="touchUpInside" id="nI4-7X-Qbw"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYY-jj-EdE">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYY-jj-EdE">
                             <rect key="frame" x="0.0" y="448" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
@@ -58,9 +58,16 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="iYY-jj-EdE" secondAttribute="trailing" id="A67-Rs-0gb"/>
                         <constraint firstItem="8VO-6c-D9U" firstAttribute="top" secondItem="iYY-jj-EdE" secondAttribute="bottom" id="AU2-CE-DB1"/>
+                        <constraint firstAttribute="width" constant="320" id="BEJ-co-L3D"/>
                         <constraint firstAttribute="bottom" secondItem="vKq-Hs-lMM" secondAttribute="bottom" constant="-88" id="BNT-2S-Ukw"/>
+                        <constraint firstItem="8VO-6c-D9U" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="Bjo-X3-iqU"/>
+                        <constraint firstAttribute="trailing" secondItem="vKq-Hs-lMM" secondAttribute="trailing" id="Crs-sy-B14"/>
+                        <constraint firstItem="vKq-Hs-lMM" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="Irk-sG-rKi"/>
                         <constraint firstItem="iYY-jj-EdE" firstAttribute="top" secondItem="B65-b3-f9k" secondAttribute="top" constant="448" id="boe-9h-ler"/>
+                        <constraint firstAttribute="trailing" secondItem="8VO-6c-D9U" secondAttribute="trailing" id="c3d-GY-GVW"/>
+                        <constraint firstItem="iYY-jj-EdE" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="eCX-MI-Iao"/>
                         <constraint firstAttribute="bottom" secondItem="8VO-6c-D9U" secondAttribute="bottom" id="nz5-ho-7g4"/>
                         <constraint firstItem="vKq-Hs-lMM" firstAttribute="top" secondItem="B65-b3-f9k" secondAttribute="top" constant="-40" id="tLV-cS-aEq"/>
                     </constraints>
@@ -68,6 +75,8 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="B65-b3-f9k" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="4tC-Bi-36v"/>
+                <constraint firstAttribute="trailing" secondItem="B65-b3-f9k" secondAttribute="trailing" id="K6g-WN-Rhg"/>
                 <constraint firstItem="B65-b3-f9k" firstAttribute="top" secondItem="1" secondAttribute="top" id="rJg-6R-KBZ"/>
                 <constraint firstAttribute="bottom" secondItem="B65-b3-f9k" secondAttribute="bottom" id="zod-ve-huc"/>
             </constraints>

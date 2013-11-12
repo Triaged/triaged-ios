@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Provider.h"
+#import "MTLProviderAccount.h"
 
 @interface ProviderAccountDetailsTableViewController : UITableViewController
 
+@property (strong, nonatomic) Provider *provider;
 @property (strong, nonatomic) NSArray *accountDetails;
 @property (strong, nonatomic) NSString *accountDetailsTitle;
 

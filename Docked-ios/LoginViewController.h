@@ -25,6 +25,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *divider2;
 @property (weak, nonatomic) IBOutlet UIImageView *divider1;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttomBottomConstraint;
 
 - (IBAction)login;
 - (IBAction)returnToWelcome:(id)sender;

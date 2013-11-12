@@ -11,7 +11,7 @@
 #import "CredentialStore.h"
 #import "SSKeychain.h"
 
-#define SERVICE_NAME @"NSScreencast-AuthClient"
+#define SERVICE_NAME @"Triage-AuthClient"
 #define AUTH_TOKEN_KEY @"auth_token"
 
 @implementation CredentialStore
@@ -20,6 +20,7 @@
     static CredentialStore *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        [SSKeychain setAccessibilityType:kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly];
         _sharedClient = [[CredentialStore alloc] init];
     });
     
@@ -55,7 +56,16 @@
 }
 
 - (NSString *)secureValueForKey:(NSString *)key {
-    return [SSKeychain passwordForService:SERVICE_NAME account:key];
+    NSError *error = nil;
+    NSString *result = [SSKeychain passwordForService:SERVICE_NAME account:key error:&error];
+    
+    if ([error code] == errSecItemNotFound) {
+        NSLog(@"Password not found");
+    } else if (error != nil) {
+        NSLog(@"Some other error occurred: %@", [error localizedDescription]);
+    }
+    
+    return result;
 }
 
 @end

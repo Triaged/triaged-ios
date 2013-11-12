@@ -72,8 +72,10 @@
 
     self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, _tableView.frame.size.height);
     
-    [self.view.layer setShadowPath:[[UIBezierPath
-                                     bezierPathWithRect:self.view.bounds] CGPath]];
+    CGRect shadowFrame =  CGRectMake(self.view.layer.bounds.origin.x, self.view.layer.bounds.origin.y + self.view.layer.bounds.size.height, self.view.layer.bounds.size.width, 1);
+    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
+    [self.view.layer setShadowPath:shadowPath];
+
 }
 
 

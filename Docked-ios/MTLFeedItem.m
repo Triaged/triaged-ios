@@ -150,8 +150,11 @@
         block(newItems);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"failure");
-        NSLog(@"%@", [error description]);
+        [CSNotificationView showInViewController:[AppDelegate sharedDelegate].navVC
+                                           style:CSNotificationViewStyleError
+                                         message:@"Feed failed to load."];
+        block(nil);
+
     }];
 }
 

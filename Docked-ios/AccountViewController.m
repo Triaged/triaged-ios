@@ -82,8 +82,9 @@
 - (void) viewDidLayoutSubviews
 {
     dynamicTVHeight.constant =  (teamTableView.contentSize.height > 100) ? teamTableView.contentSize.height : 100;
-    NSLog(@"%f", teamTableView.contentSize.height);
     scrollView.contentSize = CGSizeMake(320, signOutButton.frame.origin.y + 80);
+    
+    [self.view layoutSubviews];
 }
 
 
@@ -129,8 +130,6 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    // Set the placeholder image while we're uploading
-    [avatarButton setBackgroundImage:[UIImage imageNamed:@"avatar"] forState:UIControlStateNormal];
     MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
     progressView.titleLabelText = @"Uploading";
     
@@ -138,11 +137,20 @@
     
     
     [currentAccount uploadAvatar:chosenImage WithBlock:^(bool block) {
-        currentAccount = [AppDelegate sharedDelegate].store.account;
-        NSURL *avatarUrl = [NSURL URLWithString:currentAccount.avatarUrl];
-        [avatarButton setBackgroundImageForState:UIControlStateNormal withURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
-        [avatarButton setNeedsDisplay];
-        [progressView dismiss:YES];
+        if (block) {
+            currentAccount = [AppDelegate sharedDelegate].store.account;
+            NSURL *avatarUrl = [NSURL URLWithString:currentAccount.avatarUrl];
+            [avatarButton setBackgroundImageForState:UIControlStateNormal withURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+            [avatarButton setNeedsDisplay];
+            [currentAccount createUserFromAccount];
+            [progressView dismiss:YES];
+        }
+            else {
+                [progressView dismiss:YES];
+                [CSNotificationView showInViewController:self
+                                                   style:CSNotificationViewStyleError
+                                                 message:@"Avatar failed to upload."];
+            }
         
     }];
     
@@ -225,7 +233,7 @@
     if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *mailComposer =
         [[MFMailComposeViewController alloc] init];
-        [mailComposer setSubject:@"check out Triage"];
+        [mailComposer setSubject:@"Check out Triage"];
         NSString *message = [NSString stringWithFormat:@"Hey, <br><br> I've been using the Triage app to keep tabs of work when I'm on the go. I think you'd like it. <br /><br />Check it out at <a href='triaged.co'>triaged.co</a> <br /><br /> thanks!<br /> %@", currentAccount.name];
         [mailComposer setMessageBody:message
                               isHTML:YES];

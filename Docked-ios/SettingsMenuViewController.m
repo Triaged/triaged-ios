@@ -212,9 +212,9 @@
     
     if (indexPath.row == 0) {
         cell.cellIsForInvite = NO;
-        User *user = account.currentUser;
-        cell.nameLabel.text = user.name;
-        NSURL *avatarUrl = [NSURL URLWithString:user.avatarUrl];
+        //User *user = account.currentUser;
+        cell.nameLabel.text = account.name;
+        NSURL *avatarUrl = [NSURL URLWithString:account.avatarUrl];
         [cell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
     } else {
         cell.nameLabel.text = @"Team Members";

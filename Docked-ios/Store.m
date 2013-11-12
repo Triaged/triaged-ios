@@ -82,13 +82,6 @@
         
         [_account createUserFromAccount];
         
-        // Save teammates to CoreData
-        for( MTLUser* teammate in _account.teammates) {
-            NSError *error = nil;
-            [MTLManagedObjectAdapter managedObjectFromModel:teammate insertingIntoContext:self.managedObjectContext error:&error];
-        }
-        [self.managedObjectContext save:nil];
-        
         Mixpanel *mixpanel = [Mixpanel sharedInstance];
         [mixpanel identify:_account.userID];
         [mixpanel track:@"login" properties:@{@"id": _account.userID,
@@ -186,9 +179,6 @@
 
 - (void) userLoggedIn
 {
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-    
     [self fetchRemoteFeedItems];
 }
 

@@ -172,12 +172,17 @@
                                  // @"slug" : self.slug
                                  };
     
-    
-    
     MTLUser *user = [[MTLUser alloc] initWithDictionary:attributes error:nil];
-    
     NSManagedObjectContext *context = [AppDelegate sharedDelegate].store.managedObjectContext;
+    
     [MTLManagedObjectAdapter managedObjectFromModel:user insertingIntoContext:context error:nil];
+    
+    // Save teammates to CoreData
+    for( MTLUser* teammate in self.teammates) {
+        NSError *error = nil;
+        [MTLManagedObjectAdapter managedObjectFromModel:teammate insertingIntoContext:context error:&error];
+    }
+    
     [context save:nil];
 }
 

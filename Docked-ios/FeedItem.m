@@ -36,7 +36,7 @@
 
 - (Message *)previewMessage
 {
-    return [self.messages lastObject];
+    return [self.messages firstObject];
 }
 
 - (NSFetchedResultsController*)messagesFetchedResultsController

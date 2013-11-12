@@ -77,6 +77,7 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     cell.shouldCache = NO;
+    //cell.shouldDrawSeparator = NO;
     [cell configureForItem:_feedItem];
     [contentView addSubview:cell];
     

@@ -27,9 +27,13 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IQ-Ge-v8J">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IQ-Ge-v8J">
                     <rect key="frame" x="259" y="518" width="50" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="lfp-La-J4b"/>
+                        <constraint firstAttribute="width" constant="50" id="wZq-Ko-8Ym"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
                     <state key="normal" title="Finish">
                         <color key="titleColor" red="0.5490196078431373" green="0.61176470588235299" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,6 +46,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="8IQ-Ge-v8J" secondAttribute="trailing" constant="11" id="54J-Fd-IKl"/>
                 <constraint firstAttribute="bottom" secondItem="8IQ-Ge-v8J" secondAttribute="bottom" constant="6" id="lE3-eB-RDm"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

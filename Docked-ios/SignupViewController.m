@@ -83,16 +83,13 @@
         [welcomeVC dismissAuthScreens:self];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",[error.userInfo objectForKey:@"JSONResponseSerializerWithDataKey"]);
-        [SVProgressHUD showErrorWithStatus:[error.userInfo objectForKey:@"JSONResponseSerializerWithDataKey"]];
-//      if (operation.response.statusCode == 500) {
-//        } else {
-//            NSData *jsonData = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
-//            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
-//                                                                options:0 error:nil];
-//            NSString *errorMessage = [json objectForKey:@"error"];
-//            [SVProgressHUD showErrorWithStatus:errorMessage];
-//        }
+        NSHTTPURLResponse *response = [error.userInfo objectForKey:@"AFNetworkingOperationFailingURLResponseErrorKey"];
+        if (response.statusCode == 500) {
+            [SVProgressHUD showErrorWithStatus:@"Something went wrong. Please try again."];
+        } else {
+            NSString *errorMessage = [error.userInfo objectForKey:@"JSONResponseSerializerWithDataKey"];
+            [SVProgressHUD showErrorWithStatus:errorMessage];
+        }
     }];
 }
 

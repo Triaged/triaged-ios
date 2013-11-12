@@ -7,6 +7,7 @@
 //
 
 #import "SentrySettingsViewController.h"
+#import "HTCopyableLabel.h"
 
 @interface SentrySettingsViewController ()
 
@@ -46,7 +47,7 @@
     
     // Instructions
     UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 140, 240, 40)];
-    [instructionsLabel setText:@"Please login to Sentry. Go to your project settings and add a webhook with the url:"];
+    [instructionsLabel setText:@"Please login to Sentry.\nGo to your project settings and add a webhook with the url:"];
     [instructionsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     instructionsLabel.textColor = [UIColor blackColor];
     instructionsLabel.numberOfLines = 0;
@@ -55,7 +56,7 @@
     [self.scrollView addSubview:instructionsLabel];
     
     // Service URL
-    UILabel *serviceUrlLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 205, 280, 20)];
+    HTCopyableLabel *serviceUrlLabel = [[HTCopyableLabel alloc] initWithFrame:CGRectMake(20, 205, 280, 20)];
     [serviceUrlLabel setText:self.provider.webhookUrl];
     [serviceUrlLabel setTextAlignment:NSTextAlignmentCenter];
     [serviceUrlLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];

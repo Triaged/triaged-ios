@@ -7,6 +7,7 @@
 //
 
 #import "HerokuSettingsViewController.h"
+#import "HTCopyableLabel.h"
 
 @interface HerokuSettingsViewController ()
 
@@ -49,13 +50,12 @@
     [instructionsLabel setText:@"Add an http deploy hook using Heroku's command line tools. Use this url, with no other parameters:"];
     [instructionsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     instructionsLabel.textColor = [UIColor blackColor];
-    instructionsLabel.numberOfLines = 0;
-    instructionsLabel.textAlignment = NSTextAlignmentCenter;    
+    instructionsLabel.textAlignment = NSTextAlignmentCenter;
     [instructionsLabel sizeToFit];
     [self.scrollView addSubview:instructionsLabel];
     
     // Service URL
-    UILabel *serviceUrlLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 205, 280, 20)];
+    HTCopyableLabel *serviceUrlLabel = [[HTCopyableLabel alloc] initWithFrame:CGRectMake(20, 205, 280, 20)];
     [serviceUrlLabel setText:self.provider.webhookUrl];
     [serviceUrlLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     [serviceUrlLabel setTextAlignment:NSTextAlignmentCenter];

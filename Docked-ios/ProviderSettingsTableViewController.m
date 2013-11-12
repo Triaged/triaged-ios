@@ -83,7 +83,7 @@
         cell = [ [ ProviderSettingCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
     
-    NSDictionary *provider = providers[indexPath.row];
+    Provider *provider = providers[indexPath.row];
     
     [cell configureForItem:provider];
     

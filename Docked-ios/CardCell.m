@@ -10,7 +10,7 @@
 
 @implementation CardCell
 
-@synthesize propertyLabel, actionLabel, bodyLabel, providerIconView, timestampLabel, lineDivider, shouldDrawShadow, heightCache, shouldCache;
+@synthesize propertyLabel, actionLabel, bodyLabel, providerIconView, timestampLabel, lineDivider, shouldDrawShadow, heightCache, shouldCache, shouldDrawSeparator, separatorLineView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -19,14 +19,11 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         shouldCache = YES;
-        
-        
-//        [self.layer setCornerRadius:4.0f];
-        //[self.layer setMasksToBounds:YES];
-        
-        UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 8)];/// change size as you need.
+        shouldDrawSeparator = YES;
+
+        separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 8)];/// change size as you need.
         separatorLineView.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-        [self.contentView addSubview:separatorLineView];
+        
 
         providerIconView = [[UIImageView alloc] initWithFrame: CGRectZero];
         providerIconView.contentMode = UIViewContentModeScaleAspectFit;
@@ -46,11 +43,6 @@
         timestampLabel.numberOfLines = 1;
         timestampLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview: timestampLabel];
-        
-        
-//        UIImage *line = [UIImage imageNamed:@"line.png"];
-//        lineDivider = [[UIImageView alloc] initWithImage:line];
-//        [self.contentView addSubview:lineDivider];
         
         // Body
         
@@ -91,8 +83,13 @@
     CGRect newFrame = CGRectMake(14, 100.0, 280, [CardCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
     
-    //if (shouldDrawShadow)
     [self drawShadow];
+    
+    if (shouldDrawSeparator) {
+        [self.contentView addSubview:separatorLineView];
+    } else {
+        [separatorLineView removeFromSuperview];
+    }
     
 }
 
@@ -102,8 +99,9 @@
     self.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.layer.shadowRadius = 2;
     self.layer.shadowOpacity = .05;
-    [self.layer setShadowPath:[[UIBezierPath
-                                  bezierPathWithRect:self.bounds] CGPath]];
+    CGRect shadowFrame =  CGRectMake(self.layer.bounds.origin.x, self.layer.bounds.origin.y + self.layer.bounds.size.height, self.layer.bounds.size.width, 1);
+    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
+    [self.layer setShadowPath:shadowPath];
 
 }
 

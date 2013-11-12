@@ -68,6 +68,13 @@
     return YES;
 }
 
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [CSNotificationView showInViewController:self
+                                       style:CSNotificationViewStyleError
+                                     message:@"Request failed to load."];
+
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

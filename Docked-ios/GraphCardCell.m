@@ -32,6 +32,7 @@
     UIButton *showFirstGraphButton;
     UIButton *showSecondGraphButton;
     UIButton *showThirdGraphButton;
+    CPTMutableTextStyle *labelTextStyle;
     
     float maxYValue;
     
@@ -43,6 +44,8 @@
     if (self) {
         [self initChart];
         [self initBadges];
+        
+        self.shouldCache = YES;
         
     }
     return self;
@@ -64,6 +67,43 @@
     graph.paddingRight = 0;
     graph.plotAreaFrame.paddingLeft   = 0.0;
     graph.plotAreaFrame.paddingRight  = 0.0;
+    
+    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:2]];
+    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:1]];
+    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:0]];
+    
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
+    
+    labelTextStyle = [[ CPTMutableTextStyle alloc] init];
+    labelTextStyle.fontName = @"Avenir-Roman";
+    labelTextStyle.fontSize = 10;
+    labelTextStyle.color = [CPTColor grayColor];
+    
+    // X Axis
+    CPTXYAxis *x = axisSet.xAxis;
+    x.hidden = YES;
+    //x.axisConstraints = [CPTConstraints constraintWithLowerOffset:0.0];
+    x.labelOffset = -5;
+    x.labelTextStyle = labelTextStyle;
+    x.labelingPolicy = CPTAxisLabelingPolicyNone;
+    x.preferredNumberOfMajorTicks = 3;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"EEEEE";
+    CPTCalendarFormatter *calendarFormatter = [[CPTCalendarFormatter
+                                                alloc] initWithDateFormatter:dateFormatter];
+    calendarFormatter.referenceCalendarUnit = NSDayCalendarUnit;
+    x.labelFormatter = calendarFormatter;
+    x.labelAlignment = CPTAlignmentCenter;
+    
+    // Y Axis
+    CPTMutableLineStyle *majorYGridLineStyle = [CPTMutableLineStyle lineStyle];
+    majorYGridLineStyle.lineWidth = .5f;
+    majorYGridLineStyle.dashPattern =  CPTLinearBlendingMode;
+    majorYGridLineStyle.lineColor = [CPTColor colorWithComponentRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0];
+    axisSet.yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
+    axisSet.yAxis.majorGridLineStyle = majorYGridLineStyle;
+    axisSet.yAxis.hidden = YES;
     
 }
 
@@ -105,6 +145,8 @@
     
     plot.areaBaseValue = CPTDecimalFromInteger(0);
     plot.interpolation = CPTScatterPlotInterpolationCurved;
+    
+    
     
     
     // Finally, add the created plot to the default plot space of the CPTGraph object we created before
@@ -290,9 +332,7 @@
     [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue )]];
     [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromString(@"0") length:CPTDecimalFromString(@"6")]];
     
-    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:2]];
-    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:1]];
-    [self initPlotSpaceWithIndex:[NSNumber numberWithInt:0]];
+    
     
     if (!self.shouldCache) {
         
@@ -345,68 +385,28 @@
     
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
     
-    CPTMutableTextStyle *textStyle = [[ CPTMutableTextStyle alloc] init];
-    textStyle.fontName = @"Avenir-Roman";
-    textStyle.fontSize = 10;
-    textStyle.color = [CPTColor grayColor];
-    
     // X Axis
-    CPTXYAxis *x = axisSet.xAxis;
-    x.hidden = YES;
-    //x.axisConstraints = [CPTConstraints constraintWithLowerOffset:0.0];
-    x.labelOffset = -5;
-    x.labelTextStyle = textStyle;
-    x.labelingPolicy = CPTAxisLabelingPolicyAutomatic;
-    x.preferredNumberOfMajorTicks = 7;
-    //x.majorIntervalLength =  CPTDecimalFromString(@"1");
-    //x.preferredNumberOfMajorTicks = 3;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"EEE";
-    CPTCalendarFormatter *calendarFormatter = [[CPTCalendarFormatter
-                                                 alloc] initWithDateFormatter:dateFormatter];
+    CPTCalendarFormatter *calendarFormatter = (CPTCalendarFormatter *)axisSet.xAxis.labelFormatter;
     calendarFormatter.referenceDate = [NSDate date];
-    calendarFormatter.referenceCalendarUnit = NSDayCalendarUnit;
-    x.labelFormatter = calendarFormatter;
-    
-    for (CPTAxisLabel *label in [x.axisLabels allObjects]) {
-    
-        if (CPTDecimalEquals(label.tickLocation, CPTDecimalFromString(@"0"))) {
-             NSLog(@"same!");
-        }
-    }
-        
-    
-    //x.axisConstraints = [CPTConstraints constraintWithLowerOffset:50.0];
-    //x.frame = CGRectMake(10, 240, 280, 20);
-    x.labelAlignment = CPTAlignmentCenter;
     
     // Y Axis
-    CPTMutableLineStyle *majorYGridLineStyle = [CPTMutableLineStyle lineStyle];
-    majorYGridLineStyle.lineWidth = .5f;
-    majorYGridLineStyle.dashPattern =  CPTLinearBlendingMode;
-    majorYGridLineStyle.lineColor = [CPTColor colorWithComponentRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0];
-    axisSet.yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
-    axisSet.yAxis.majorGridLineStyle = majorYGridLineStyle;
-    axisSet.yAxis.hidden = YES;
     
     // Top Label
     NSString *maxYString = [NSString stringWithFormat:@"%.0f", maxYValue];
-    CPTAxisLabel *newLabel = [[CPTAxisLabel alloc] initWithText:maxYString textStyle:textStyle];
+    CPTAxisLabel *topLabel = [[CPTAxisLabel alloc] initWithText:maxYString textStyle:labelTextStyle];
     float maxTickLocation = maxYValue - (maxYValue * .06);
-    newLabel.tickLocation = [[NSNumber numberWithFloat:maxTickLocation] decimalValue];
-    newLabel.offset = (newLabel.contentLayer.frame.size.width * -1);
-    
-    
+    topLabel.tickLocation = [[NSNumber numberWithFloat:maxTickLocation] decimalValue];
+    topLabel.offset = (topLabel.contentLayer.frame.size.width * -1.1);
     
     // Mid Label
     NSString *midYString = [NSString stringWithFormat:@"%.0f", (maxYValue / 2)];
-    CPTAxisLabel *midLabel = [[CPTAxisLabel alloc] initWithText:midYString textStyle:textStyle];
+    CPTAxisLabel *midLabel = [[CPTAxisLabel alloc] initWithText:midYString textStyle:labelTextStyle];
     float midTickLocation = (maxYValue / 2) - (maxYValue * .06);
     midLabel.tickLocation = [[NSNumber numberWithFloat:midTickLocation] decimalValue];
-    midLabel.offset = (midLabel.contentLayer.frame.size.width * -1);
+    midLabel.offset = (midLabel.contentLayer.frame.size.width * -1.1);
     
-    axisSet.yAxis.axisLabels = [NSSet setWithObjects:newLabel, midLabel, nil];
+    
+    axisSet.yAxis.axisLabels = [NSSet setWithObjects:topLabel, midLabel, nil];
     
     // Grid Lines
     float spacer = maxYValue / 4.0f;

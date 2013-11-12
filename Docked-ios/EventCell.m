@@ -35,7 +35,7 @@
 //        pushNotificationSwitch.enabled = NO;
 //        [self.contentView addSubview:pushNotificationSwitch];
         connectedView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings_connected.png"]];
-        connectedView.frame = CGRectMake(284, 14, 24, 20);
+        connectedView.frame = CGRectMake(288, 14, 24, 20);
         [self.contentView addSubview:connectedView];
     }
     return self;

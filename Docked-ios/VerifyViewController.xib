@@ -14,22 +14,29 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="welcome_bg" translatesAutoresizingMaskIntoConstraints="NO" id="NyF-te-TQW">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Let's get started by connecting services you use..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="UbG-Yh-vBx">
-                    <rect key="frame" x="20" y="50" width="280" height="68"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We emailed you a verification code to ensure you only share data with colleagues." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="UbG-Yh-vBx">
+                    <rect key="frame" x="20" y="50" width="280" height="74"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K6P-bP-RXq">
-                    <rect key="frame" x="45" y="270" width="230" height="45"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check your email." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJu-Fk-yCB">
+                    <rect key="frame" x="20" y="376" width="280" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K6P-bP-RXq">
+                    <rect key="frame" x="45" y="200" width="230" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="3RO-Qw-6Ve"/>
@@ -39,15 +46,15 @@
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="Rdg-DC-qgh">
-                    <rect key="frame" x="45" y="315" width="230" height="1"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="Rdg-DC-qgh">
+                    <rect key="frame" x="45" y="245" width="230" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="8To-nh-7yE"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuJ-x8-E07">
-                    <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuJ-x8-E07">
+                    <rect key="frame" x="0.0" y="420" width="320" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Syu-1P-SM1"/>
@@ -55,28 +62,36 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="VtI-E9-a35"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                    <state key="normal" title="Button">
+                    <state key="normal" title="Verify">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="verify:" destination="-1" eventType="touchUpInside" id="UGZ-L3-sJh"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="sJu-Fk-yCB" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="7AG-iz-o2x"/>
                 <constraint firstItem="Rdg-DC-qgh" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="45" id="9nc-3m-P0J"/>
                 <constraint firstAttribute="trailing" secondItem="Rdg-DC-qgh" secondAttribute="trailing" constant="45" id="AYq-Ae-gxY"/>
                 <constraint firstItem="Rdg-DC-qgh" firstAttribute="top" secondItem="K6P-bP-RXq" secondAttribute="bottom" id="f5h-BJ-KBY"/>
                 <constraint firstAttribute="bottom" secondItem="NuJ-x8-E07" secondAttribute="bottom" id="gen-Te-KBX"/>
                 <constraint firstItem="UbG-Yh-vBx" firstAttribute="top" secondItem="1" secondAttribute="top" constant="50" id="gtg-n8-skD"/>
                 <constraint firstItem="Rdg-DC-qgh" firstAttribute="top" secondItem="K6P-bP-RXq" secondAttribute="bottom" id="iGt-N2-fxZ"/>
+                <constraint firstAttribute="trailing" secondItem="sJu-Fk-yCB" secondAttribute="trailing" constant="20" id="igH-ax-jkb"/>
                 <constraint firstAttribute="trailing" secondItem="K6P-bP-RXq" secondAttribute="trailing" constant="45" id="ikg-JW-T7D"/>
                 <constraint firstAttribute="trailing" secondItem="NuJ-x8-E07" secondAttribute="trailing" id="l3j-oG-OHp"/>
+                <constraint firstItem="UbG-Yh-vBx" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="lLx-Jx-2z7"/>
+                <constraint firstAttribute="trailing" secondItem="UbG-Yh-vBx" secondAttribute="trailing" constant="20" id="ncu-pn-kxo"/>
+                <constraint firstItem="NuJ-x8-E07" firstAttribute="top" secondItem="sJu-Fk-yCB" secondAttribute="bottom" constant="19" id="oaA-Ex-qKN"/>
                 <constraint firstItem="NuJ-x8-E07" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="x5i-Sn-bMe"/>
                 <constraint firstItem="K6P-bP-RXq" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="45" id="yad-9i-tcO"/>
-                <constraint firstItem="K6P-bP-RXq" firstAttribute="top" secondItem="UbG-Yh-vBx" secondAttribute="bottom" constant="152" id="z8h-rh-ESt"/>
+                <constraint firstItem="K6P-bP-RXq" firstAttribute="top" secondItem="UbG-Yh-vBx" secondAttribute="bottom" constant="76" id="z8h-rh-ESt"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>

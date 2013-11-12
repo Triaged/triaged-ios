@@ -68,7 +68,7 @@
 
 + (NSURLSessionDataTask *)saveRemote:(Message *)message
 {
-    [[AppDelegate sharedDelegate].navVC showSGProgressWithDuration:1.5];
+    
     NSString *path = [NSString stringWithFormat:@"feed/%@/messages.json", message.feedItem.externalID];
     id params = @{@"message" : @{
                   @"author_id": message.author.userID,
@@ -77,9 +77,21 @@
                   @"timestamp" : [MTLMessage.dateFormatter stringFromDate:message.timestamp]
                 }};
     
+    [[AppDelegate sharedDelegate].navVC showSGProgressWithDuration:1.5];
     return [[DockedAPIClient sharedClient] POST:path parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
+        
+        [CSNotificationView showInViewController:[AppDelegate sharedDelegate].navVC
+                                           style:CSNotificationViewStyleError
+                                         message:@"Message Failed to Send."];
+        
+        // Delete new Message
+        NSManagedObjectContext *context = [AppDelegate sharedDelegate].store.managedObjectContext;
+        [context deleteObject:message];
+        NSError *saveError;
+        if (![context save:&saveError]) {
+            // Handle the error.
+        }
     }];
 }
 

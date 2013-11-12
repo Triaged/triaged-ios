@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
                 <outlet property="backButton" destination="h0r-00-eBx" id="QsV-ND-1Si"/>
+                <outlet property="buttomBottomConstraint" destination="b84-sW-jPF" id="zcR-XM-F1C"/>
                 <outlet property="divider1" destination="ie1-eQ-KFJ" id="d5O-Lb-vUy"/>
                 <outlet property="divider2" destination="FaM-rk-rw9" id="s5w-Qd-zD9"/>
                 <outlet property="loginButton" destination="ZHu-r2-ACy" id="ZB5-UT-PZk"/>
@@ -87,7 +88,7 @@
                         <constraint firstAttribute="height" constant="1" id="AbY-HM-pr7"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="FaM-rk-rw9">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="FaM-rk-rw9">
                     <rect key="frame" x="45" y="359" width="230" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -95,7 +96,7 @@
                         <constraint firstAttribute="width" constant="230" id="hEs-s2-UFg"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHu-r2-ACy">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHu-r2-ACy">
                     <rect key="frame" x="0.0" y="420" width="320" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -125,7 +126,7 @@
                 <constraint firstAttribute="trailing" secondItem="UtS-rk-bRi" secondAttribute="trailing" constant="45" id="TL1-vR-Ju1"/>
                 <constraint firstItem="Tu8-IT-6Qd" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="45" id="YDz-YW-brf"/>
                 <constraint firstItem="ie1-eQ-KFJ" firstAttribute="top" secondItem="Tu8-IT-6Qd" secondAttribute="bottom" id="YZW-p7-dAZ"/>
-                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="ZHu-r2-ACy" secondAttribute="bottom" id="b84-sW-jPF"/>
+                <constraint firstAttribute="bottom" secondItem="ZHu-r2-ACy" secondAttribute="bottom" id="b84-sW-jPF"/>
                 <constraint firstAttribute="trailing" secondItem="FaM-rk-rw9" secondAttribute="trailing" constant="45" id="eR8-vg-AMQ"/>
                 <constraint firstItem="ZHu-r2-ACy" firstAttribute="top" secondItem="FaM-rk-rw9" secondAttribute="bottom" constant="60" id="hNT-Aa-hnq"/>
                 <constraint firstItem="h0r-00-eBx" firstAttribute="top" secondItem="1" secondAttribute="top" constant="25" id="jBK-Kd-QRx"/>

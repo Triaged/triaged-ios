@@ -15,6 +15,7 @@
 #import "DetailViewController.h"
 #import "WelcomeViewController.h"
 #import "CredentialStore.h"
+#import <Appsee/Appsee.h>
 
 
 #define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
@@ -42,24 +43,8 @@ static NSString *const kAllowTracking = @"allowTracking";
     //[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"hasSeenTutorial"];
     //[[CredentialStore sharedClient] clearSavedCredentials];
     
-    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    [self setAnalytics];
     
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"App Open" properties:@{}];
-    
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"75134b3efefcd10ce90e4509d3a10431"
-                                                           delegate:self];
-    [[BITHockeyManager sharedHockeyManager] startManager];
-    
-    [GAI sharedInstance].optOut =
-    ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
-    // Initialize Google Analytics with a 120-second dispatch interval. There is a
-    // tradeoff between battery usage and timely dispatch.
-    [GAI sharedInstance].dispatchInterval = 120;
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    self.tracker = [[GAI sharedInstance] trackerWithName:@"CuteAnimals"
-                                              trackingId:kTrackingId];
-
     
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 
@@ -106,9 +91,32 @@ static NSString *const kAllowTracking = @"allowTracking";
                                 [[UIColor alloc] initWithRed:105.0f/255.0f green:125.0f/255.0f blue:165.0f/255.0f alpha:1.0f], NSForegroundColorAttributeName, nil];
     
     [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
+- (void) setAnalytics {
+    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"App Open" properties:@{}];
+    
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"75134b3efefcd10ce90e4509d3a10431"
+                                                           delegate:self];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    
+    [GAI sharedInstance].optOut =
+    ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
+    // Initialize Google Analytics with a 120-second dispatch interval. There is a
+    // tradeoff between battery usage and timely dispatch.
+    [GAI sharedInstance].dispatchInterval = 120;
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    self.tracker = [[GAI sharedInstance] trackerWithName:@"CuteAnimals"
+                                              trackingId:kTrackingId];
+    
+    [Appsee start:@"ec4d1216d3464c1f8dd7882242876d4d"];
 }
 
 - (void)setupLoggedInUser
@@ -117,6 +125,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         if([UIApplication sharedApplication].applicationIconBadgeNumber > 0) {
             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
             [self.store.account resetAPNSPushCount];
+            [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
         }
     }
 }
@@ -162,18 +171,12 @@ static NSString *const kAllowTracking = @"allowTracking";
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"remote notification received");
-    NSLog(@"%@", userInfo);
     UIApplicationState state = [application applicationState];
     
     [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
         if (newFeedItems) {
-            // TODO: Route to remote notification
             if (state == UIApplicationStateInactive) {
-                
-//                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalID == %@", [userInfo objectForKey:@"external_id"]];
-//                NSArray *results = [self.store.feedItems filteredArrayUsingPredicate:predicate];
-//                [self navigateToDetailViewWithFeedItem:[results firstObject]];
-                
+                [self navigateToDetailViewWithFeedItem:[userInfo objectForKey:@"external_id"]];
             }
             completionHandler(UIBackgroundFetchResultNewData);
         } else {
@@ -195,10 +198,14 @@ static NSString *const kAllowTracking = @"allowTracking";
     completionHandler(UIBackgroundFetchResultFailed);
 }
 
-- (void) navigateToDetailViewWithFeedItem:(FeedItem *)item
+- (void) navigateToDetailViewWithFeedItem:(NSString *)externalID
 {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
+    request.predicate = [NSPredicate predicateWithFormat:@"externalID = %@", externalID];
+    NSArray * fetchedObjects = [self.store.managedObjectContext executeFetchRequest:request error:nil];
+   
     DetailViewController *detailVC = [[DetailViewController alloc] init];
-    [detailVC setFeedItem:item];
+    [detailVC setFeedItem:[fetchedObjects firstObject]];
     [navVC pushViewController:detailVC animated:NO];
 }
 
@@ -229,14 +236,5 @@ static NSString *const kAllowTracking = @"allowTracking";
         [self.store.managedObjectContext save:nil];
         [self.store saveAccountToArchive];
 }
-
-- (NSString *)customDeviceIdentifierForUpdateManager:(BITUpdateManager *)updateManager {
-#ifndef CONFIGURATION_AppStore
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(uniqueIdentifier)])
-        return [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
-#endif
-    return nil;
-}
-
 
 @end

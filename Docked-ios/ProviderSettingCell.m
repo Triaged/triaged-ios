@@ -42,7 +42,7 @@
         [self.contentView addSubview: providerLabel];
         
         connectedView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings_connected.png"]];
-        connectedView.frame = CGRectMake(278, 14, 24, 20);
+        connectedView.frame = CGRectMake(288, 14, 24, 20);
         
 
     }
@@ -62,7 +62,11 @@
     self.providerLabel.text = [provider.name humanize];
     
     bool connected = provider.follows;
-    if (connected) [self.contentView addSubview: connectedView];
+    if (connected) {
+     [self.contentView addSubview: connectedView];
+    } else {
+        [connectedView removeFromSuperview];
+    }
 }
 
 
