@@ -102,9 +102,9 @@
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_SVProgressHUD 0
 
-// SWRevealViewController
-#define COCOAPODS_POD_AVAILABLE_SWRevealViewController
-#define COCOAPODS_VERSION_MAJOR_SWRevealViewController 1
-#define COCOAPODS_VERSION_MINOR_SWRevealViewController 0
-#define COCOAPODS_VERSION_PATCH_SWRevealViewController 5
+// UITableView-NXEmptyView
+#define COCOAPODS_POD_AVAILABLE_UITableView_NXEmptyView
+#define COCOAPODS_VERSION_MAJOR_UITableView_NXEmptyView 0
+#define COCOAPODS_VERSION_MINOR_UITableView_NXEmptyView 1
+#define COCOAPODS_VERSION_PATCH_UITableView_NXEmptyView 4
 

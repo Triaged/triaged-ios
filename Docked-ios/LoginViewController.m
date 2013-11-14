@@ -31,6 +31,8 @@
                                                  selector:@selector(keyboardWillShow:)
                                                      name:UIKeyboardWillShowNotification
                                                    object:nil];
+        
+        //self.triangeImage.hidden = YES;
     }
     return self;
 }
@@ -49,6 +51,10 @@
 
 }
 
+//-(void) viewDidAppear:(BOOL)animated {
+//    [usernameTextField becomeFirstResponder];
+//}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -65,14 +71,16 @@
     
     [[DockedAPIClient sharedClient] POST:@"users/sign_in.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
         
-        // Set Auth Code
-        NSString *authToken = [JSON valueForKeyPath:@"authentication_token"];
-        [[CredentialStore sharedClient] setAuthToken:authToken];
+        
         
         // Set current user
         NSValueTransformer *transformer;
         transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
         [AppDelegate sharedDelegate].store.account = [transformer transformedValue:JSON];
+        
+        // Set Auth Code
+        NSString *authToken = [JSON valueForKeyPath:@"authentication_token"];
+        [[CredentialStore sharedClient] setAuthToken:authToken];
         
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];

@@ -20,7 +20,6 @@
     static CredentialStore *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [SSKeychain setAccessibilityType:kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly];
         _sharedClient = [[CredentialStore alloc] init];
     });
     
@@ -41,6 +40,7 @@
 }
 
 - (void)setAuthToken:(NSString *)authToken {
+    [SSKeychain setAccessibilityType:kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly];
     [self setSecureValue:authToken forKey:AUTH_TOKEN_KEY];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"token-changed" object:self];
 }

@@ -21,14 +21,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_bg" translatesAutoresizingMaskIntoConstraints="NO" id="vKq-Hs-lMM">
-                            <rect key="frame" x="0.0" y="-40" width="320" height="696"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VO-6c-D9U">
                             <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
+                                <constraint firstAttribute="width" constant="320" id="Ld9-qX-LTR"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="UTf-OU-JBv"/>
                                 <constraint firstAttribute="height" constant="60" id="xRD-5A-GMK"/>
                             </constraints>
@@ -45,7 +42,9 @@
                             <rect key="frame" x="0.0" y="448" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
+                                <constraint firstAttribute="width" constant="320" id="6dZ-JM-JOL"/>
                                 <constraint firstAttribute="height" constant="60" id="Izo-l3-Fc0"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="rNN-c4-8gd"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                             <state key="normal" title="Sign Up">
@@ -58,18 +57,14 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="iYY-jj-EdE" secondAttribute="trailing" id="A67-Rs-0gb"/>
                         <constraint firstItem="8VO-6c-D9U" firstAttribute="top" secondItem="iYY-jj-EdE" secondAttribute="bottom" id="AU2-CE-DB1"/>
                         <constraint firstAttribute="width" constant="320" id="BEJ-co-L3D"/>
-                        <constraint firstAttribute="bottom" secondItem="vKq-Hs-lMM" secondAttribute="bottom" constant="-88" id="BNT-2S-Ukw"/>
-                        <constraint firstItem="8VO-6c-D9U" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="Bjo-X3-iqU"/>
-                        <constraint firstAttribute="trailing" secondItem="vKq-Hs-lMM" secondAttribute="trailing" id="Crs-sy-B14"/>
-                        <constraint firstItem="vKq-Hs-lMM" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="Irk-sG-rKi"/>
+                        <constraint firstAttribute="trailing" secondItem="iYY-jj-EdE" secondAttribute="trailing" id="Lmh-91-WoU"/>
+                        <constraint firstAttribute="trailing" secondItem="8VO-6c-D9U" secondAttribute="trailing" id="Zf8-wg-FG8"/>
                         <constraint firstItem="iYY-jj-EdE" firstAttribute="top" secondItem="B65-b3-f9k" secondAttribute="top" constant="448" id="boe-9h-ler"/>
-                        <constraint firstAttribute="trailing" secondItem="8VO-6c-D9U" secondAttribute="trailing" id="c3d-GY-GVW"/>
-                        <constraint firstItem="iYY-jj-EdE" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="eCX-MI-Iao"/>
+                        <constraint firstItem="8VO-6c-D9U" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="l7Q-pk-Um5"/>
                         <constraint firstAttribute="bottom" secondItem="8VO-6c-D9U" secondAttribute="bottom" id="nz5-ho-7g4"/>
-                        <constraint firstItem="vKq-Hs-lMM" firstAttribute="top" secondItem="B65-b3-f9k" secondAttribute="top" constant="-40" id="tLV-cS-aEq"/>
+                        <constraint firstItem="iYY-jj-EdE" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="us9-gb-sNQ"/>
                     </constraints>
                 </scrollView>
             </subviews>
@@ -84,7 +79,4 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
-    <resources>
-        <image name="welcome_bg" width="320" height="568"/>
-    </resources>
 </document>

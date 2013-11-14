@@ -47,9 +47,10 @@
     
     // Instructions
     UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 140, 240, 40)];
-    [instructionsLabel setText:@"Add an http deploy hook using Heroku's command line tools. Use this url, with no other parameters:"];
+    [instructionsLabel setText:@"Add an http deploy hook using the Heroku command line tool. Use this url, with no other parameters:"];
     [instructionsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     instructionsLabel.textColor = [UIColor blackColor];
+    instructionsLabel.numberOfLines = 0;
     instructionsLabel.textAlignment = NSTextAlignmentCenter;
     [instructionsLabel sizeToFit];
     [self.scrollView addSubview:instructionsLabel];

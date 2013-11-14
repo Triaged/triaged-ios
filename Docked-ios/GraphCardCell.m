@@ -65,8 +65,8 @@
     
     graph.paddingLeft = 0;
     graph.paddingRight = 0;
-    graph.plotAreaFrame.paddingLeft   = 0.0;
-    graph.plotAreaFrame.paddingRight  = 0.0;
+    graph.plotAreaFrame.paddingLeft   = 6.0;
+    graph.plotAreaFrame.paddingRight  = 6.0;
     
     [self initPlotSpaceWithIndex:[NSNumber numberWithInt:2]];
     [self initPlotSpaceWithIndex:[NSNumber numberWithInt:1]];
@@ -76,19 +76,23 @@
     
     labelTextStyle = [[ CPTMutableTextStyle alloc] init];
     labelTextStyle.fontName = @"Avenir-Roman";
-    labelTextStyle.fontSize = 10;
-    labelTextStyle.color = [CPTColor grayColor];
+    labelTextStyle.fontSize = 9;
+    labelTextStyle.color =    [CPTColor colorWithComponentRed:197.0f/255.0f green:208.0f/255.0f blue:215.0f/255.0f alpha:1.0f];
+    
     
     // X Axis
     CPTXYAxis *x = axisSet.xAxis;
     x.hidden = YES;
     //x.axisConstraints = [CPTConstraints constraintWithLowerOffset:0.0];
-    x.labelOffset = -5;
+//    NSSet *labelPositions = [[NSSet alloc] initWithObjects:[NSNumber numberWithFloat:0],[NSNumber numberWithFloat:1.1],[NSNumber numberWithFloat:2.0],[NSNumber numberWithFloat:3.0],[NSNumber numberWithFloat:4.0],[NSNumber numberWithFloat:5.0],[NSNumber numberWithFloat:6], nil];
+    x.labelOffset = -3;
     x.labelTextStyle = labelTextStyle;
-    x.labelingPolicy = CPTAxisLabelingPolicyNone;
-    x.preferredNumberOfMajorTicks = 3;
+    //x.labelingPolicy = CPTAxisLabelingPolicyLocationsProvided;
+    //[x setMajorTickLocations:labelPositions];
+    x.preferredNumberOfMajorTicks = 7;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //dateFormatter.dateStyle = NSDateFormatterShortStyle;
     dateFormatter.dateFormat = @"EEEEE";
     CPTCalendarFormatter *calendarFormatter = [[CPTCalendarFormatter
                                                 alloc] initWithDateFormatter:dateFormatter];
@@ -156,10 +160,10 @@
 
 - (void) initBadges {
     firstLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-    [firstLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:10.0]];
+    [firstLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:8.0]];
     firstLabel.textAlignment = NSTextAlignmentCenter;
     firstLabel.textColor = [[UIColor alloc] initWithRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:1.0f];
-    firstLabel.text = @"Visits";
+    firstLabel.text = @"VISITORS";
     [self.contentView addSubview: firstLabel];
     
     firstData = [[UILabel alloc] initWithFrame: CGRectZero];
@@ -170,9 +174,9 @@
     
     secondLabel = [[UILabel alloc] initWithFrame: CGRectZero];
     secondLabel.textAlignment = NSTextAlignmentCenter;
-    [secondLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:10.0]];
+    [secondLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:8.0]];
     secondLabel.textColor = [[UIColor alloc] initWithRed:179.0f/255.0f green:197.0f/255.0f  blue:227.0f/255.0f alpha:1.0f];
-    secondLabel.text = @"Visitors";
+    secondLabel.text = @"VISITS";
     [self.contentView addSubview: secondLabel];
     
     secondData = [[UILabel alloc] initWithFrame: CGRectZero];
@@ -183,9 +187,9 @@
     
     thirdLabel = [[UILabel alloc] initWithFrame: CGRectZero];
     thirdLabel.textAlignment = NSTextAlignmentCenter;
-    [thirdLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:10.0]];
+    [thirdLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:8.0]];
     thirdLabel.textColor = [[UIColor alloc] initWithRed:117.0f/255.0f green:220.0f/255.0f  blue:229.0f/255.0f alpha:1.0f];
-    thirdLabel.text = @"Page Views";
+    thirdLabel.text = @"PAGEVIEWS";
     [self.contentView addSubview: thirdLabel];
     
     thirdData = [[UILabel alloc] initWithFrame: CGRectZero];
@@ -194,17 +198,17 @@
     thirdData.textColor = [[UIColor alloc] initWithRed:40.0f/255.0f green:47.0f/255.0f blue:63.0f/255.0f alpha:1.0f];
     [self.contentView addSubview: thirdData];
     
-    showFirstGraphButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 260, 100, 50)];
+    showFirstGraphButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 260, 101, 50)];
     showFirstGraphButton.backgroundColor = [UIColor clearColor];
     [showFirstGraphButton addTarget:self action:@selector(showFirstPlotSpace) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:showFirstGraphButton];
     
-    showSecondGraphButton = [[UIButton alloc] initWithFrame: CGRectMake(100, 260, 100, 50)];
+    showSecondGraphButton = [[UIButton alloc] initWithFrame: CGRectMake(101, 260, 101, 50)];
     showSecondGraphButton.backgroundColor = [UIColor clearColor];
     [showSecondGraphButton addTarget:self action:@selector(showSecondPlotSpace) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:showSecondGraphButton];
     
-    showThirdGraphButton = [[UIButton alloc] initWithFrame: CGRectMake(200, 260, 100, 50)];
+    showThirdGraphButton = [[UIButton alloc] initWithFrame: CGRectMake(202, 260, 101, 50)];
     showThirdGraphButton.backgroundColor = [UIColor clearColor];
     [showThirdGraphButton addTarget:self action:@selector(showThirdPlotSpace) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:showThirdGraphButton];
@@ -212,15 +216,15 @@
 
 -(void) layoutSubviews {
     [super layoutSubviews];
-    firstLabel.frame = CGRectMake(0, 290, 100, 12);
-    firstData.frame = CGRectMake(0, 270, 100, 20);
+    firstLabel.frame = CGRectMake(0, 290, 101, 12);
+    firstData.frame = CGRectMake(0, 270, 101, 20);
     
-    secondLabel.frame = CGRectMake(100, 290, 100, 12);
-    secondData.frame = CGRectMake(100, 270, 100, 20);
+    secondLabel.frame = CGRectMake(101, 290, 101, 12);
+    secondData.frame = CGRectMake(101, 270, 101, 20);
     
     
-    thirdLabel.frame = CGRectMake(200, 290, 100, 12);
-    thirdData.frame = CGRectMake(200, 270, 100, 20);
+    thirdLabel.frame = CGRectMake(202, 290, 101, 12);
+    thirdData.frame = CGRectMake(202, 270, 101, 20);
     
     [hostView setNeedsLayout];
     
@@ -329,21 +333,21 @@
     }
     
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue )]];
+    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue)]];
     [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromString(@"0") length:CPTDecimalFromString(@"6")]];
     
-    
+    [self configureAxis:item.timestamp];
+    [graph reloadData];
     
     if (!self.shouldCache) {
-        
-        [self configureAxis];
-        [graph reloadData];
-        
         [self.contentView addSubview:hostView];
         
         showFirstGraphButton.enabled = YES;
         showSecondGraphButton.enabled = YES;
         showThirdGraphButton.enabled = YES;
+        
+        CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
+        axisSet.xAxis.labelingPolicy = CPTAxisLabelingPolicyAutomatic;
     
     } else {
         static NSCache* imageCache = nil;
@@ -357,14 +361,13 @@
         NSString* key = item.externalID; //Create a unique key here
         UIImage* cachedValue = [imageCache objectForKey: key];
         
+        CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
+        axisSet.xAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
+
+        
         if( cachedValue )
             [graphImageView setImage:cachedValue];
         else {
-            
-            // Note that these CPTPlotRange are defined by START and LENGTH (not START and END) !!
-            
-            [self configureAxis];
-            [graph reloadData];
             
             UIImage *newImage=[graph imageOfLayer];
             [imageCache setObject:newImage forKey:key];
@@ -381,13 +384,17 @@
 
 
 
-- (void) configureAxis {
+- (void) configureAxis:(NSDate *)referenceDate {
     
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
     
     // X Axis
     CPTCalendarFormatter *calendarFormatter = (CPTCalendarFormatter *)axisSet.xAxis.labelFormatter;
-    calendarFormatter.referenceDate = [NSDate date];
+    calendarFormatter.referenceDate = referenceDate;
+    axisSet.xAxis.labelFormatter = calendarFormatter;
+    
+    //[axisSet.yAxis setNeedsRelabel];
+    [axisSet.xAxis setNeedsRelabel];
     
     // Y Axis
     
@@ -396,14 +403,14 @@
     CPTAxisLabel *topLabel = [[CPTAxisLabel alloc] initWithText:maxYString textStyle:labelTextStyle];
     float maxTickLocation = maxYValue - (maxYValue * .06);
     topLabel.tickLocation = [[NSNumber numberWithFloat:maxTickLocation] decimalValue];
-    topLabel.offset = (topLabel.contentLayer.frame.size.width * -1.1);
+    topLabel.offset = (topLabel.contentLayer.frame.size.width * -0.5);
     
     // Mid Label
     NSString *midYString = [NSString stringWithFormat:@"%.0f", (maxYValue / 2)];
     CPTAxisLabel *midLabel = [[CPTAxisLabel alloc] initWithText:midYString textStyle:labelTextStyle];
     float midTickLocation = (maxYValue / 2) - (maxYValue * .06);
     midLabel.tickLocation = [[NSNumber numberWithFloat:midTickLocation] decimalValue];
-    midLabel.offset = (midLabel.contentLayer.frame.size.width * -1.1);
+    midLabel.offset = (midLabel.contentLayer.frame.size.width * -0.5);
     
     
     axisSet.yAxis.axisLabels = [NSSet setWithObjects:topLabel, midLabel, nil];

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 
-@interface FeedTableViewController : UITableViewController
+@interface FeedTableViewController : UITableViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) UINavigationController *navController;
 @property (strong, nonatomic) RootViewController *rootController;

@@ -11,15 +11,12 @@
 		CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CB06CB6817EBA50B007323AA /* DockedAPIClient.m */; };
 		CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0AAF9917FCA15100695707 /* libstdc++.6.0.9.dylib */; };
 		CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906317F34E8500F706BE /* StoreKit.framework */; };
-		CB0B906617F34E9000F706BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906517F34E9000F706BE /* GameKit.framework */; };
 		CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0B906B17F4F47E00F706BE /* DetailViewController.m */; };
 		CB0E028C1810A87600484E69 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0E028A1810A87600484E69 /* WelcomeViewController.m */; };
 		CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0E028B1810A87600484E69 /* WelcomeViewController.xib */; };
 		CB13946D1821F31100053086 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13946C1821F31100053086 /* libz.dylib */; };
-		CB13946F1821F34800053086 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13946E1821F34800053086 /* libGoogleAnalyticsServices.a */; };
 		CB1394751822F88C00053086 /* ProviderAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1394741822F88C00053086 /* ProviderAccountCell.m */; };
 		CB1394781822F96C00053086 /* ProviderAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1394771822F96C00053086 /* ProviderAccountTableViewController.m */; };
-		CB13947C182319D500053086 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13947B182319D500053086 /* Reveal.framework */; };
 		CB13948018231A7400053086 /* ProviderAccountDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */; };
 		CB1947B3182D71F500944E80 /* MTLProviderAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947B2182D71F500944E80 /* MTLProviderAccount.m */; };
 		CB1947B6182D720100944E80 /* MTLProviderProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947B5182D720100944E80 /* MTLProviderProperty.m */; };
@@ -84,11 +81,13 @@
 		CB8F20AB17EB5D6300EBDC34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209017EB5D6300EBDC34 /* Foundation.framework */; };
 		CB8F20AC17EB5D6300EBDC34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F209417EB5D6300EBDC34 /* UIKit.framework */; };
 		CB8F20B417EB5D6300EBDC34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB8F20B217EB5D6300EBDC34 /* InfoPlist.strings */; };
-		CB8F20B617EB5D6300EBDC34 /* Docked_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F20B517EB5D6300EBDC34 /* Docked_iosTests.m */; };
+		CB8F20B617EB5D6300EBDC34 /* Triage_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F20B517EB5D6300EBDC34 /* Triage_iosTests.m */; };
 		CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */; };
 		CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8F20D117EB851D00EBDC34 /* Media.xcassets */; };
-		CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */; };
+		CB8F212117EB869E00EBDC34 /* triage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8F211F17EB869E00EBDC34 /* triage.xcdatamodeld */; };
 		CB8F212417EB871900EBDC34 /* MTLFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F212317EB871900EBDC34 /* MTLFeedItem.m */; };
+		CB9886AA183408EC00BA37C9 /* EmptyFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9886A8183408EC00BA37C9 /* EmptyFeedViewController.m */; };
+		CB9886AB183408EC00BA37C9 /* EmptyFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9886A9183408EC00BA37C9 /* EmptyFeedViewController.xib */; };
 		CBA676AE18085B150035368A /* NewRelicSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676AD18085B150035368A /* NewRelicSettingsViewController.m */; };
 		CBA676B118085B470035368A /* HerokuSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B018085B470035368A /* HerokuSettingsViewController.m */; };
 		CBA676B418085B630035368A /* AirbrakeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676B318085B630035368A /* AirbrakeSettingsViewController.m */; };
@@ -157,26 +156,16 @@
 		CB06CB6817EBA50B007323AA /* DockedAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockedAPIClient.m; sourceTree = "<group>"; };
 		CB0AAF9917FCA15100695707 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		CB0B906317F34E8500F706BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		CB0B906517F34E9000F706BE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		CB0B906917F34E9500F706BE /* Docked-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Docked-ios.entitlements"; sourceTree = "<group>"; };
 		CB0B906A17F4F47E00F706BE /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		CB0B906B17F4F47E00F706BE /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		CB0E02891810A87600484E69 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		CB0E028A1810A87600484E69 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		CB0E028B1810A87600484E69 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
-		CB1394641821EFBA00053086 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		CB1394651821EFBA00053086 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		CB1394661821EFBA00053086 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		CB1394671821EFBA00053086 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		CB1394681821EFBA00053086 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		CB1394691821EFBA00053086 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		CB13946C1821F31100053086 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		CB13946E1821F34800053086 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		CB1394731822F88C00053086 /* ProviderAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountCell.h; sourceTree = "<group>"; };
 		CB1394741822F88C00053086 /* ProviderAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountCell.m; sourceTree = "<group>"; };
 		CB1394761822F96C00053086 /* ProviderAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountTableViewController.h; sourceTree = "<group>"; };
 		CB1394771822F96C00053086 /* ProviderAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountTableViewController.m; sourceTree = "<group>"; };
-		CB13947B182319D500053086 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = ../Reveal.framework; sourceTree = "<group>"; };
 		CB13947E18231A7400053086 /* ProviderAccountDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountDetailsTableViewController.h; sourceTree = "<group>"; };
 		CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountDetailsTableViewController.m; sourceTree = "<group>"; };
 		CB1947B1182D71F500944E80 /* MTLProviderAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLProviderAccount.h; sourceTree = "<group>"; };
@@ -281,14 +270,17 @@
 		CB8F20A917EB5D6300EBDC34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CB8F20B117EB5D6300EBDC34 /* Triage-iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Triage-iosTests-Info.plist"; sourceTree = "<group>"; };
 		CB8F20B317EB5D6300EBDC34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CB8F20B517EB5D6300EBDC34 /* Docked_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Docked_iosTests.m; sourceTree = "<group>"; };
+		CB8F20B517EB5D6300EBDC34 /* Triage_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Triage_iosTests.m; sourceTree = "<group>"; };
 		CB8F20C117EB5FBA00EBDC34 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		CB8F20D117EB851D00EBDC34 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		CB8F20D317EB857800EBDC34 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		CB8F212017EB869E00EBDC34 /* docked.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = docked.xcdatamodel; sourceTree = "<group>"; };
+		CB8F212017EB869E00EBDC34 /* triage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = triage.xcdatamodel; sourceTree = "<group>"; };
 		CB8F212217EB871900EBDC34 /* MTLFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLFeedItem.h; sourceTree = "<group>"; };
 		CB8F212317EB871900EBDC34 /* MTLFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLFeedItem.m; sourceTree = "<group>"; };
+		CB9886A7183408EC00BA37C9 /* EmptyFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyFeedViewController.h; sourceTree = "<group>"; };
+		CB9886A8183408EC00BA37C9 /* EmptyFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyFeedViewController.m; sourceTree = "<group>"; };
+		CB9886A9183408EC00BA37C9 /* EmptyFeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyFeedViewController.xib; sourceTree = "<group>"; };
 		CBA676AC18085B150035368A /* NewRelicSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRelicSettingsViewController.h; sourceTree = "<group>"; };
 		CBA676AD18085B150035368A /* NewRelicSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRelicSettingsViewController.m; sourceTree = "<group>"; };
 		CBA676AF18085B470035368A /* HerokuSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerokuSettingsViewController.h; sourceTree = "<group>"; };
@@ -399,7 +391,6 @@
 				CB1947C51830999400944E80 /* CoreMedia.framework in Frameworks */,
 				CB1947C31830998A00944E80 /* AVFoundation.framework in Frameworks */,
 				CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */,
-				CB13947C182319D500053086 /* Reveal.framework in Frameworks */,
 				CB13946D1821F31100053086 /* libz.dylib in Frameworks */,
 				CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */,
 				CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */,
@@ -418,9 +409,7 @@
 				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
 				CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */,
 				CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */,
-				CB13946F1821F34800053086 /* libGoogleAnalyticsServices.a in Frameworks */,
 				C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */,
-				CB0B906617F34E9000F706BE /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,26 +481,9 @@
 			name = settings;
 			sourceTree = "<group>";
 		};
-		CB1394631821EFAC00053086 /* Google Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				CB13946E1821F34800053086 /* libGoogleAnalyticsServices.a */,
-				CB1394641821EFBA00053086 /* GAI.h */,
-				CB1394651821EFBA00053086 /* GAIDictionaryBuilder.h */,
-				CB1394661821EFBA00053086 /* GAIFields.h */,
-				CB1394671821EFBA00053086 /* GAILogger.h */,
-				CB1394681821EFBA00053086 /* GAITrackedViewController.h */,
-				CB1394691821EFBA00053086 /* GAITracker.h */,
-			);
-			name = "Google Analytics";
-			path = ..;
-			sourceTree = "<group>";
-		};
 		CB1394811823440E00053086 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
-				CB13947B182319D500053086 /* Reveal.framework */,
-				CB1394631821EFAC00053086 /* Google Analytics */,
 				CBF387271812535500554730 /* HockeySDK.embeddedframework */,
 				CB2F9F9C1808B40A00F5F97C /* Mixpanel */,
 			);
@@ -688,6 +660,9 @@
 				CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */,
 				CB8F20C117EB5FBA00EBDC34 /* FeedTableViewController.h */,
 				CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */,
+				CB9886A7183408EC00BA37C9 /* EmptyFeedViewController.h */,
+				CB9886A8183408EC00BA37C9 /* EmptyFeedViewController.m */,
+				CB9886A9183408EC00BA37C9 /* EmptyFeedViewController.xib */,
 			);
 			name = feed;
 			sourceTree = "<group>";
@@ -696,7 +671,7 @@
 			isa = PBXGroup;
 			children = (
 				CB8F209617EB5D6300EBDC34 /* Triage-ios */,
-				CB8F20AF17EB5D6300EBDC34 /* Docked-iosTests */,
+				CB8F20AF17EB5D6300EBDC34 /* Triage-iosTests */,
 				CB8F208F17EB5D6300EBDC34 /* Frameworks */,
 				CB8F208E17EB5D6300EBDC34 /* Products */,
 				DC84729676AF45F3A3CE10A8 /* Pods.xcconfig */,
@@ -731,7 +706,6 @@
 				CBE8637917FC9F9C00EF6E73 /* CoreText.framework */,
 				CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */,
 				CBE8637517FC9F8800EF6E73 /* ShinobiCharts.framework */,
-				CB0B906517F34E9000F706BE /* GameKit.framework */,
 				CB0B906317F34E8500F706BE /* StoreKit.framework */,
 				CB7C2E4617F251AE00BD858D /* QuartzCore.framework */,
 				CB7C2E4417F251A400BD858D /* CFNetwork.framework */,
@@ -759,8 +733,7 @@
 				CB8F20A017EB5D6300EBDC34 /* AppDelegate.m */,
 				CB8F209717EB5D6300EBDC34 /* Supporting Files */,
 				CB8F20D117EB851D00EBDC34 /* Media.xcassets */,
-				CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */,
-				CB0B906917F34E9500F706BE /* Docked-ios.entitlements */,
+				CB8F211F17EB869E00EBDC34 /* triage.xcdatamodeld */,
 				CB23F74A181AD49A0035262D /* UIDebugWindow.h */,
 				CB23F74B181AD49A0035262D /* UIDebugWindow.m */,
 			);
@@ -779,12 +752,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CB8F20AF17EB5D6300EBDC34 /* Docked-iosTests */ = {
+		CB8F20AF17EB5D6300EBDC34 /* Triage-iosTests */ = {
 			isa = PBXGroup;
 			children = (
-				CB8F20B517EB5D6300EBDC34 /* Docked_iosTests.m */,
+				CB8F20B517EB5D6300EBDC34 /* Triage_iosTests.m */,
 				CB8F20B017EB5D6300EBDC34 /* Supporting Files */,
 			);
+			name = "Triage-iosTests";
 			path = "Docked-iosTests";
 			sourceTree = "<group>";
 		};
@@ -1027,7 +1001,7 @@
 								enabled = 1;
 							};
 							com.apple.GameCenter = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -1075,6 +1049,7 @@
 				CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */,
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
+				CB9886AB183408EC00BA37C9 /* EmptyFeedViewController.xib in Resources */,
 				CBF3872E1812535500554730 /* HockeySDKResources.bundle in Resources */,
 				CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */,
 			);
@@ -1160,6 +1135,7 @@
 				CB742D1A180EFF2F0068A301 /* GraphCardCell.m in Sources */,
 				CBCC6C9F1819B90C001030C2 /* AtReplyMessageCell.m in Sources */,
 				CBA6D12818202C0E006B73AC /* ConnectionWizardViewController.m in Sources */,
+				CB9886AA183408EC00BA37C9 /* EmptyFeedViewController.m in Sources */,
 				CBA6D123181F66DC006B73AC /* TeamMembersViewController.m in Sources */,
 				CBCC6C9618199D71001030C2 /* NSString+Levenshtein.m in Sources */,
 				CBA6D12C18202C70006B73AC /* ConnectionPageViewController.m in Sources */,
@@ -1183,7 +1159,7 @@
 				CBA6D0DE181DDF30006B73AC /* MTLGraphItem.m in Sources */,
 				CBD43F3917F9F4A0001AC849 /* ActionBarViewController.m in Sources */,
 				CBA6D119181F2316006B73AC /* GraphItem.m in Sources */,
-				CB8F212117EB869E00EBDC34 /* docked.xcdatamodeld in Sources */,
+				CB8F212117EB869E00EBDC34 /* triage.xcdatamodeld in Sources */,
 				CB1947B6182D720100944E80 /* MTLProviderProperty.m in Sources */,
 				CBD43F0617F8B63B001AC849 /* CardCell.m in Sources */,
 				CBF3873118125C8F00554730 /* TRJSONResponseSerializerWithData.m in Sources */,
@@ -1224,7 +1200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB8F20B617EB5D6300EBDC34 /* Docked_iosTests.m in Sources */,
+				CB8F20B617EB5D6300EBDC34 /* Triage_iosTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1336,8 +1312,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1354,7 +1330,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
 				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "A04124BA-A990-46DB-91F1-4E4C2C5AAB84";
+				PROVISIONING_PROFILE = "A8410EAE-7CAF-450F-BCD6-F742E92CB896";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1384,7 +1360,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
 				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "A04124BA-A990-46DB-91F1-4E4C2C5AAB84";
+				PROVISIONING_PROFILE = "A8410EAE-7CAF-450F-BCD6-F742E92CB896";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1465,13 +1441,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CB8F211F17EB869E00EBDC34 /* docked.xcdatamodeld */ = {
+		CB8F211F17EB869E00EBDC34 /* triage.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CB8F212017EB869E00EBDC34 /* docked.xcdatamodel */,
+				CB8F212017EB869E00EBDC34 /* triage.xcdatamodel */,
 			);
-			currentVersion = CB8F212017EB869E00EBDC34 /* docked.xcdatamodel */;
-			path = docked.xcdatamodeld;
+			currentVersion = CB8F212017EB869E00EBDC34 /* triage.xcdatamodel */;
+			path = triage.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

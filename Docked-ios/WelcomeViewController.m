@@ -12,7 +12,9 @@
 #import "SignupViewController.h"
 #import "AppDelegate.h"
 
-@interface WelcomeViewController ()
+@interface WelcomeViewController () {
+    NSTimer *timer;
+}
 
 @end
 
@@ -23,6 +25,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     // buttons
     signupButton.backgroundColor = [[UIColor alloc] initWithRed:140.0f/255.0f green:156.0f/255.0f blue:201.0f/255.0f alpha:1.0f];
@@ -51,6 +55,8 @@
     [scrollView addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
     
+    //timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(pageGoto:) userInfo:nil repeats:NO];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -74,7 +80,7 @@
     }
     
     index--;
-    
+            //[timer invalidate];
     return [self viewControllerAtIndex:index];
     
 }
@@ -88,9 +94,22 @@
     if (index == 5) {
         return nil;
     }
-    
+           // [timer invalidate];
     return [self viewControllerAtIndex:index];
     
+}
+
+-(IBAction)pageGoto:(id)sender {
+    
+    //get current index of current page
+    CardPageViewController *theCurrentViewController = [self.pageController.viewControllers objectAtIndex:0];
+    NSUInteger index = [theCurrentViewController index];
+    
+    if (index < 4) {
+        [self.pageController setViewControllers:@[[self viewControllerAtIndex:(index+1)]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];
+        
+       // timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(pageGoto:) userInfo:nil repeats:NO];
+    }
 }
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
@@ -100,7 +119,7 @@
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
     // The selected item reflected in the page indicator.
-    return 0;
+    return [[self.pageController.viewControllers objectAtIndex:0] index];
 }
 
 - (CardPageViewController *)viewControllerAtIndex:(NSUInteger)index {

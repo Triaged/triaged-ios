@@ -56,7 +56,7 @@
     if (showingWelcomeTour) {
         finishButton.hidden = YES;
     } else {
-        welcomeTourLabel.text = @"Connect your Services";
+        welcomeTourLabel.text = @"Connect Your Services";
     }
 }
 
@@ -121,7 +121,16 @@
 
 - (IBAction)finishConnectionWizard:(id)sender
 {
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasSeenTutorial"];
+    bool hasSeenTutorial = [[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenTutorial"];
+
+    if (!hasSeenTutorial) {
+        // Once we get through all the welcome screens, ask for push notifications
+        [[AppDelegate sharedDelegate].store.account welcomeComplete];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasSeenTutorial"];
+    }
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

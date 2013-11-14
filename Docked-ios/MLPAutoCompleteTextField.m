@@ -665,13 +665,6 @@ withAutoCompleteString:(NSString *)string
     
     if(!self.isCancelled){
         
-        if(suggestions.count){
-            NSObject *firstObject = suggestions[0];
-            NSAssert([firstObject isKindOfClass:[NSString class]] ||
-                     [firstObject conformsToProtocol:@protocol(MLPAutoCompletionObject)],
-                     @"MLPAutoCompleteTextField expects an array with objects that are either strings or conform to the MLPAutoCompletionObject protocol for possible completions.");
-        }
-        
         NSDictionary *resultsInfo = @{kFetchedTermsKey: suggestions,
                                       kFetchedStringKey : self.incompleteString};
         [(NSObject *)self.delegate

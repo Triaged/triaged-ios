@@ -36,6 +36,7 @@
 -(BOOL)isLoggedIn;
 -(void)updateAPNSPushTokenWithToken:(NSString *)token;
 -(void)resetAPNSPushCount;
+-(void)welcomeComplete;
 
 -(void)uploadAvatar:(UIImage *)avatar WithBlock:(void (^)(bool))block;
 - (void)updatePushEnabled:(BOOL)pushValue;

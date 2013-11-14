@@ -75,7 +75,7 @@
     
     [providerIconView setFrame:CGRectMake(14, 22.0, 28.0, 28.0)];
     [propertyLabel setFrame:CGRectMake(56, 26.0, 200.0, 20.0)];
-    [timestampLabel setFrame:CGRectMake(220, 28.0, 75.0, 16.0)];
+    [timestampLabel setFrame:CGRectMake(220, 28.0, 70.0, 16.0)];
     
     [actionLabel setFrame:CGRectMake(14, 66.0, 280.0, 18.0)];
     
@@ -117,7 +117,7 @@
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     paragraphStyle.lineSpacing = .5;
-    UIFont *font = [UIFont fontWithName:@"Avenir-Roman" size:14.5];
+    UIFont *font = [UIFont fontWithName:@"Avenir-Book" size:14.5];
     
     NSAttributedString *attributedBodyText = [[NSAttributedString alloc] initWithString:bodyText
                                               attributes:[NSDictionary

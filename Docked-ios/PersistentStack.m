@@ -20,19 +20,31 @@
 
 @implementation PersistentStack
 
-- (id)initWithStoreURL:(NSURL*)storeURL modelURL:(NSURL*)modelURL
+- (id)init
 {
     self = [super init];
     if (self) {
-        self.storeURL = storeURL;
-        self.modelURL = modelURL;
-        [self setupManagedObjectContext];
+       [self setupManagedObjectContext];
     }
     return self;
 }
 
+- (NSURL*)buildStoreURL
+{
+    NSURL* documentsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:NULL];
+    return [documentsDirectory URLByAppendingPathComponent:@"triage.sqlite"];
+}
+
+- (NSURL*)buildModelURL
+{
+    return [[NSBundle mainBundle] URLForResource:@"triage" withExtension:@"momd"];
+}
+
 - (void)setupManagedObjectContext
 {
+    self.storeURL = [self buildStoreURL];
+    self.modelURL = [self buildModelURL];
+    
     self.managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     self.managedObjectContext.persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
     NSError* error;
@@ -77,12 +89,12 @@
     if (self.managedObjectContext.persistentStoreCoordinator == nil)
         return nil;
     // FIXME: dirty. If there are many stores...
-    NSPersistentStore *store = [[self.managedObjectContext.persistentStoreCoordinator persistentStores] lastObject];
+    //NSPersistentStore *store = [[self.managedObjectContext.persistentStoreCoordinator persistentStores] lastObject];
     
-    if (![self.managedObjectContext.persistentStoreCoordinator removePersistentStore:store error:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
+//    if (![self.managedObjectContext.persistentStoreCoordinator removePersistentStore:store error:&error]) {
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//        abort();
+//    }
     
     // Delete file
     if ([[NSFileManager defaultManager] fileExistsAtPath:self.store.URL.path]) {
@@ -92,10 +104,10 @@
         }
     }
     
+    self.storeURL = [self buildStoreURL];
+    
     //Make new persistent store for future saves   (Taken From Above Answer)
-    if (![self.managedObjectContext.persistentStoreCoordinator  addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:self.store.URL options:nil error:&error]) {
-        // do something with the error
-    }
+    [self setupManagedObjectContext];
     
     // Delete the reference to non-existing store
     return nil;

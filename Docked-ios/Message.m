@@ -27,6 +27,7 @@
     Message *message = [NSEntityDescription insertNewObjectForEntityForName:@"Message"
                                                      inManagedObjectContext:[AppDelegate sharedDelegate].store.managedObjectContext];
 
+    
     message.feedItem    = item;
     message.body        = body;
     message.timestamp   = [NSDate date];

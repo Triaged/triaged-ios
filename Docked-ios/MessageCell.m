@@ -92,7 +92,7 @@
     [super layoutSubviews];
     
     [authorLabel setFrame:CGRectMake(56.0, 14.0, 220.0, 18.0)];
-    [timestampLabel setFrame:CGRectMake(220.0, 16.0, 75.0, 12.0)];
+    [timestampLabel setFrame:CGRectMake(220.0, 16.0, 70.0, 12.0)];
 
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:bodyLabel.text];
     CGRect newFrame = CGRectMake(56.0, 34.0, 240, [MessageCell heightOfBody:attributedBodyText]);
@@ -110,8 +110,8 @@
 
 -(void) layoutMoreMessages
 {
-    [moreMessagesIcon setFrame:CGRectMake(227, bodyLabel.frame.size.height+39, 14, 14)];
-    [moreMessagesLabel setFrame:CGRectMake(240.0, bodyLabel.frame.size.height+36, 55.0, 20.0)];
+    [moreMessagesIcon setFrame:CGRectMake(218, bodyLabel.frame.size.height+39, 14, 14)];
+    [moreMessagesLabel setFrame:CGRectMake(235.0, bodyLabel.frame.size.height+36, 55.0, 20.0)];
     [self.contentView addSubview: moreMessagesIcon];
     [self.contentView addSubview: moreMessagesLabel];
 }

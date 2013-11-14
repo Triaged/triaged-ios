@@ -39,11 +39,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-1k-Isc">
-                    <rect key="frame" x="98" y="102" width="125" height="125"/>
+                    <rect key="frame" x="110" y="102" width="101" height="89"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="125" id="3gb-Wt-saS"/>
-                        <constraint firstAttribute="height" constant="125" id="iWb-4v-AU6"/>
+                        <constraint firstAttribute="width" constant="101" id="3gb-Wt-saS"/>
+                        <constraint firstAttribute="height" constant="89" id="iWb-4v-AU6"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0r-00-eBx">
@@ -68,7 +68,7 @@
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UtS-rk-bRi">
                     <rect key="frame" x="45" y="314" width="230" height="45"/>
@@ -78,7 +78,7 @@
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="ie1-eQ-KFJ">
                     <rect key="frame" x="45" y="299" width="230" height="1"/>
@@ -143,7 +143,7 @@
     <resources>
         <image name="btn_back" width="12" height="20"/>
         <image name="line" width="1" height="1"/>
-        <image name="triangle" width="160" height="138"/>
+        <image name="triangle" width="101" height="89"/>
         <image name="welcome_bg" width="320" height="568"/>
     </resources>
 </document>

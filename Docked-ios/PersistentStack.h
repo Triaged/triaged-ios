@@ -12,7 +12,7 @@
 
 @property (nonatomic,strong,readonly) NSManagedObjectContext* managedObjectContext;
 
-- (id)initWithStoreURL:(NSURL*)storeURL modelURL:(NSURL*)modelURL;
+//- (id)initWithStoreURL:(NSURL*)storeURL modelURL:(NSURL*)modelURL;
 - (void)saveContext;
 - (NSPersistentStoreCoordinator *)resetPersistentStore;
 

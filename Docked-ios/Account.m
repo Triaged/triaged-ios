@@ -125,6 +125,16 @@
     }];
 }
 
+-(void)welcomeComplete
+{
+    
+    [[DockedRequestAPIClient sharedClient] POST:@"account/welcome_complete.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", [error localizedDescription]);
+    }];
+}
+
+
 
 
 

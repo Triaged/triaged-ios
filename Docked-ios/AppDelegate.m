@@ -17,12 +17,15 @@
 #import "CredentialStore.h"
 #import <Appsee/Appsee.h>
 
+// STAGING
+//#define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
+//#define APPSEE_TOKEN @"ec4d1216d3464c1f8dd7882242876d4d"
+#define HOCKEYAPP_TOKEN @"75134b3efefcd10ce90e4509d3a10431"
 
-#define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
+// RELEASE
+#define MIXPANEL_TOKEN @"392cf507394a7b630ad9e6b878003f3d"
+#define APPSEE_TOKEN @"13389247ea0b457e837f7aec5d80acb8"
 
-/******* Set your tracking ID here *******/
-static NSString *const kTrackingId = @"UA-45309305-1";
-static NSString *const kAllowTracking = @"allowTracking";
 
 @interface AppDelegate () 
 
@@ -56,7 +59,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
+    self.persistentStack = [[PersistentStack alloc] init];
     self.store = [[Store alloc] init];
     self.store.managedObjectContext = self.persistentStack.managedObjectContext;
     
@@ -103,20 +106,9 @@ static NSString *const kAllowTracking = @"allowTracking";
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"App Open" properties:@{}];
     
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"75134b3efefcd10ce90e4509d3a10431"
-                                                           delegate:self];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEYAPP_TOKEN delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
-    
-    [GAI sharedInstance].optOut =
-    ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
-    // Initialize Google Analytics with a 120-second dispatch interval. There is a
-    // tradeoff between battery usage and timely dispatch.
-    [GAI sharedInstance].dispatchInterval = 120;
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    self.tracker = [[GAI sharedInstance] trackerWithName:@"CuteAnimals"
-                                              trackingId:kTrackingId];
-    
-    [Appsee start:@"ec4d1216d3464c1f8dd7882242876d4d"];
+    [Appsee start:APPSEE_TOKEN];
 }
 
 - (void)setupLoggedInUser
@@ -136,17 +128,6 @@ static NSString *const kAllowTracking = @"allowTracking";
         _store = [Store store];
     }
     return _store;
-}
-
-- (NSURL*)storeURL
-{
-    NSURL* documentsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:NULL];
-    return [documentsDirectory URLByAppendingPathComponent:@"docked.sqlite"];
-}
-
-- (NSURL*)modelURL
-{
-    return [[NSBundle mainBundle] URLForResource:@"docked" withExtension:@"momd"];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSString * htmlUrl;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSOrderedSet *messages;
+@property (nonatomic, retain) NSArray *messages;
 
 - (bool)hasMessages;
 - (bool)hasMultipleMessages;

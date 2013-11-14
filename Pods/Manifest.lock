@@ -29,7 +29,7 @@ PODS:
   - SGNavigationProgress (1.0)
   - SSKeychain (1.2.1)
   - SVProgressHUD (0.9)
-  - SWRevealViewController (1.0.5)
+  - UITableView-NXEmptyView (0.1.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0.1)
@@ -41,7 +41,7 @@ DEPENDENCIES:
   - SGNavigationProgress
   - SSKeychain
   - SVProgressHUD
-  - SWRevealViewController
+  - UITableView-NXEmptyView
 
 SPEC CHECKSUMS:
   AFNetworking: a6f11ac4ac087303e6ff87adc1ba57b0dac20ef8
@@ -53,6 +53,6 @@ SPEC CHECKSUMS:
   SGNavigationProgress: 014937336a9f71fb46506bb3245d2858c3f5f1f5
   SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
-  SWRevealViewController: c1698d78b22191af3cd23df4144c3e17e253bb78
+  UITableView-NXEmptyView: 034e5162ce7b8e3584d720d0d925c27ea7711220
 
 COCOAPODS: 0.26.2

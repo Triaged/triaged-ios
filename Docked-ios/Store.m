@@ -36,8 +36,7 @@
     if (self) {
         
         if ([[CredentialStore sharedClient] isLoggedIn]) {
-            [self fetchRemoteFeedItems];
-            [self readAccountArchive];
+            [self userLoggedIn];
 
         }
 
@@ -180,6 +179,7 @@
 - (void) userLoggedIn
 {
     [self fetchRemoteFeedItems];
+    [self readAccountArchive];
 }
 
 - (void) userSignedOut

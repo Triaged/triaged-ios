@@ -31,9 +31,9 @@
 {
     [super viewDidLoad];
     
-    //self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.hidesBackButton = YES;
     
-    backButton = self.navigationItem.backBarButtonItem;
+    //backButton = self.navigationItem.backBarButtonItem;
     
 //    UIImage * backImage = [UIImage imageNamed:@"cog.png"];
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:nil action:nil];

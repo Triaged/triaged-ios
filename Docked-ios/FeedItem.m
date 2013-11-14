@@ -36,16 +36,21 @@
 
 - (Message *)previewMessage
 {
-    return [self.messages firstObject];
+    NSArray * fetchedObjects =[[AppDelegate sharedDelegate].store.managedObjectContext executeFetchRequest:[self messageFetchRequest] error:nil];
+    return (Message *)[fetchedObjects lastObject];
 }
 
 - (NSFetchedResultsController*)messagesFetchedResultsController
 {
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:[self messageFetchRequest] managedObjectContext:[AppDelegate sharedDelegate].store.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+}
+
+- (NSFetchRequest *)messageFetchRequest {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
     [request setRelationshipKeyPathsForPrefetching:@[@"author"]];
     request.predicate = [NSPredicate predicateWithFormat:@"feedItem = %@", self];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]];
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[AppDelegate sharedDelegate].store.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    return request;
 }
 
 

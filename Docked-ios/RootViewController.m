@@ -76,10 +76,6 @@
             if (shouldSeeTutorial) [self displayConnectionWizard];
         }
     }
-    
-    // Once we get through all the welcome screens, ask for push notifications
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-
 }
 
 -(void) displayConnectionWizard
