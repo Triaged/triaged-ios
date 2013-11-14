@@ -16,15 +16,16 @@
 #import "WelcomeViewController.h"
 #import "CredentialStore.h"
 #import <Appsee/Appsee.h>
+#import <Crashlytics/Crashlytics.h>
 
 // STAGING
-//#define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
-//#define APPSEE_TOKEN @"ec4d1216d3464c1f8dd7882242876d4d"
+#define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
+#define APPSEE_TOKEN @"ec4d1216d3464c1f8dd7882242876d4d"
 #define HOCKEYAPP_TOKEN @"75134b3efefcd10ce90e4509d3a10431"
 
 // RELEASE
-#define MIXPANEL_TOKEN @"392cf507394a7b630ad9e6b878003f3d"
-#define APPSEE_TOKEN @"13389247ea0b457e837f7aec5d80acb8"
+//#define MIXPANEL_TOKEN @"392cf507394a7b630ad9e6b878003f3d"
+//#define APPSEE_TOKEN @"13389247ea0b457e837f7aec5d80acb8"
 
 
 @interface AppDelegate () 
@@ -109,6 +110,9 @@
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEYAPP_TOKEN delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [Appsee start:APPSEE_TOKEN];
+    
+    [Crashlytics startWithAPIKey:@"2776a41715c04dde4ba5d15b716b66a51e353b0f"];
+    
 }
 
 - (void)setupLoggedInUser

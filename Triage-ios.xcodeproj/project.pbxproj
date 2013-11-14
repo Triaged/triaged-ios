@@ -86,6 +86,7 @@
 		CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8F20D117EB851D00EBDC34 /* Media.xcassets */; };
 		CB8F212117EB869E00EBDC34 /* triage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8F211F17EB869E00EBDC34 /* triage.xcdatamodeld */; };
 		CB8F212417EB871900EBDC34 /* MTLFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F212317EB871900EBDC34 /* MTLFeedItem.m */; };
+		CB96D9BB18353997003DD13E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB96D9BA18353997003DD13E /* Crashlytics.framework */; };
 		CB9886AA183408EC00BA37C9 /* EmptyFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9886A8183408EC00BA37C9 /* EmptyFeedViewController.m */; };
 		CB9886AB183408EC00BA37C9 /* EmptyFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9886A9183408EC00BA37C9 /* EmptyFeedViewController.xib */; };
 		CBA676AE18085B150035368A /* NewRelicSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676AD18085B150035368A /* NewRelicSettingsViewController.m */; };
@@ -278,6 +279,7 @@
 		CB8F212017EB869E00EBDC34 /* triage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = triage.xcdatamodel; sourceTree = "<group>"; };
 		CB8F212217EB871900EBDC34 /* MTLFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLFeedItem.h; sourceTree = "<group>"; };
 		CB8F212317EB871900EBDC34 /* MTLFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLFeedItem.m; sourceTree = "<group>"; };
+		CB96D9BA18353997003DD13E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CB9886A7183408EC00BA37C9 /* EmptyFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyFeedViewController.h; sourceTree = "<group>"; };
 		CB9886A8183408EC00BA37C9 /* EmptyFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyFeedViewController.m; sourceTree = "<group>"; };
 		CB9886A9183408EC00BA37C9 /* EmptyFeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyFeedViewController.xib; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 				CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */,
 				CB2F9F9B1808B2EA00F5F97C /* SystemConfiguration.framework in Frameworks */,
 				CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */,
+				CB96D9BB18353997003DD13E /* Crashlytics.framework in Frameworks */,
 				CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */,
 				CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */,
 				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
@@ -690,6 +693,7 @@
 		CB8F208F17EB5D6300EBDC34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB96D9BA18353997003DD13E /* Crashlytics.framework */,
 				CB1947C61830999D00944E80 /* CoreVideo.framework */,
 				CB1947C41830999400944E80 /* CoreMedia.framework */,
 				CB1947C21830998A00944E80 /* AVFoundation.framework */,
@@ -957,6 +961,7 @@
 				CB8F208A17EB5D6300EBDC34 /* Frameworks */,
 				CB8F208B17EB5D6300EBDC34 /* Resources */,
 				80D86CE6C1A84610A5998B32 /* Copy Pods Resources */,
+				CB96D9B918353944003DD13E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1095,6 +1100,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		CB96D9B918353944003DD13E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 2776a41715c04dde4ba5d15b716b66a51e353b0f";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1330,7 +1348,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
 				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "A8410EAE-7CAF-450F-BCD6-F742E92CB896";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1342,8 +1360,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1360,7 +1378,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
 				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "A8410EAE-7CAF-450F-BCD6-F742E92CB896";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
