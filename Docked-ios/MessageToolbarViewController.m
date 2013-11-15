@@ -393,11 +393,11 @@
     // Add user interaction back in
     self.detailView.scrollView.userInteractionEnabled = YES;
     
-    if(selectedObject){
-        NSLog(@"selected object from autocomplete menu %@ with string %@", selectedObject, [selectedObject autocompleteString]);
-    } else {
-        NSLog(@"selected string '%@' from autocomplete menu", selectedString);
-    }
+//    if(selectedObject){
+//        NSLog(@"selected object from autocomplete menu %@ with string %@", selectedObject, [selectedObject autocompleteString]);
+//    } else {
+//        NSLog(@"selected string '%@' from autocomplete menu", selectedString);
+//    }
 }
 
 

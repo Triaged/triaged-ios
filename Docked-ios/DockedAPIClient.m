@@ -55,7 +55,6 @@ static NSString * const DockedAPIBaseURLString = @"https://www.triaged.co/api/v1
 
 - (void)setUploadProgressForTask:(NSURLSessionTask *)task
                       usingBlock:(void (^)(uint32_t bytesWritten, uint32_t totalBytesWritten, uint32_t totalBytesExpectedToWrite))block {
-    NSLog(@"upload task");
 }
 
 @end

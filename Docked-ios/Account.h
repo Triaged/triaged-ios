@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) BOOL pushEnabled;
 @property (nonatomic, readonly) BOOL validatedCompany;
 @property (nonatomic, readonly) BOOL personalAccount;
+@property (nonatomic, copy, readonly) NSString *validationToken;
 @property (nonatomic, copy, readonly) NSNumber *followedProviderCount;
 @property (nonatomic, copy, readonly) NSArray *providers;
 @property (nonatomic, copy, readonly) NSArray *teammates;
@@ -37,6 +38,8 @@
 -(void)updateAPNSPushTokenWithToken:(NSString *)token;
 -(void)resetAPNSPushCount;
 -(void)welcomeComplete;
+-(void)resendVerifyEmail;
+-(void)setValidated;
 
 -(void)uploadAvatar:(UIImage *)avatar WithBlock:(void (^)(bool))block;
 - (void)updatePushEnabled:(BOOL)pushValue;

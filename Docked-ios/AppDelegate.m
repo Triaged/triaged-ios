@@ -19,13 +19,14 @@
 #import <Crashlytics/Crashlytics.h>
 
 // STAGING
-#define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
-#define APPSEE_TOKEN @"ec4d1216d3464c1f8dd7882242876d4d"
+//#define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
+//#define APPSEE_TOKEN @"ec4d1216d3464c1f8dd7882242876d4d"
 #define HOCKEYAPP_TOKEN @"75134b3efefcd10ce90e4509d3a10431"
+#define CRASHLYTICS_TOKEN @"2776a41715c04dde4ba5d15b716b66a51e353b0f"
 
 // RELEASE
-//#define MIXPANEL_TOKEN @"392cf507394a7b630ad9e6b878003f3d"
-//#define APPSEE_TOKEN @"13389247ea0b457e837f7aec5d80acb8"
+#define MIXPANEL_TOKEN @"392cf507394a7b630ad9e6b878003f3d"
+#define APPSEE_TOKEN @"13389247ea0b457e837f7aec5d80acb8"
 
 
 @interface AppDelegate () 
@@ -49,13 +50,6 @@
     
     [self setAnalytics];
     
-    
-    NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-
-    if (remoteNotification != nil) {
-        NSString *message = [remoteNotification descriptionWithLocale:nil indent: 1];
-        NSLog(@"Message in didFinishLaunchingWithOptions: %@",message);
-    }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -111,7 +105,7 @@
     [[BITHockeyManager sharedHockeyManager] startManager];
     [Appsee start:APPSEE_TOKEN];
     
-    [Crashlytics startWithAPIKey:@"2776a41715c04dde4ba5d15b716b66a51e353b0f"];
+    [Crashlytics startWithAPIKey:CRASHLYTICS_TOKEN];
     
 }
 
@@ -141,8 +135,6 @@
 
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-    NSLog(@"Got device token: %@", [devToken description]);
-    
     NSString * deviceToken = [[devToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     
@@ -155,7 +147,6 @@
 }
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    NSLog(@"remote notification received");
     UIApplicationState state = [application applicationState];
     
     [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
@@ -194,6 +185,21 @@
     [navVC pushViewController:detailVC animated:NO];
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([[url scheme] isEqualToString:@"triage"]) {
+
+        NSString *token = [url query];
+        if ([token isEqual:self.store.account.validationToken]) {
+            [self.store.account setValidated];
+        }
+        
+        
+        return YES;
+    }
+    return NO;
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -218,8 +224,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        [self.store.managedObjectContext save:nil];
-        [self.store saveAccountToArchive];
+    [self.store saveAccountToArchive];
 }
 
 @end

@@ -21,16 +21,6 @@
                     <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In the meantime, thanks for trying Triage!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uO3-Kf-NBe">
-                    <rect key="frame" x="40" y="389" width="240" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="240" id="lrL-DN-lVZ"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                    <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing's Hit Quite Yet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQT-U3-BS0">
                     <rect key="frame" x="46" y="167" width="229" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -49,8 +39,6 @@
                 <constraint firstItem="fNa-r4-L81" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="59" id="dGD-9O-xNU"/>
                 <constraint firstItem="MQT-U3-BS0" firstAttribute="top" secondItem="1" secondAttribute="top" constant="167" id="ev4-rb-MMl"/>
                 <constraint firstItem="fNa-r4-L81" firstAttribute="top" secondItem="MQT-U3-BS0" secondAttribute="bottom" constant="3" id="gAz-RK-JeG"/>
-                <constraint firstItem="uO3-Kf-NBe" firstAttribute="top" secondItem="fNa-r4-L81" secondAttribute="bottom" constant="152" id="h7t-GH-wO3"/>
-                <constraint firstItem="uO3-Kf-NBe" firstAttribute="centerX" secondItem="fNa-r4-L81" secondAttribute="centerX" constant="1" id="mrr-p3-Qja"/>
                 <constraint firstItem="MQT-U3-BS0" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="y8x-KN-ywr"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

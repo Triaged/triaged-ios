@@ -83,12 +83,8 @@
     // X Axis
     CPTXYAxis *x = axisSet.xAxis;
     x.hidden = YES;
-    //x.axisConstraints = [CPTConstraints constraintWithLowerOffset:0.0];
-//    NSSet *labelPositions = [[NSSet alloc] initWithObjects:[NSNumber numberWithFloat:0],[NSNumber numberWithFloat:1.1],[NSNumber numberWithFloat:2.0],[NSNumber numberWithFloat:3.0],[NSNumber numberWithFloat:4.0],[NSNumber numberWithFloat:5.0],[NSNumber numberWithFloat:6], nil];
     x.labelOffset = -3;
     x.labelTextStyle = labelTextStyle;
-    //x.labelingPolicy = CPTAxisLabelingPolicyLocationsProvided;
-    //[x setMajorTickLocations:labelPositions];
     x.preferredNumberOfMajorTicks = 7;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -108,6 +104,7 @@
     axisSet.yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     axisSet.yAxis.majorGridLineStyle = majorYGridLineStyle;
     axisSet.yAxis.hidden = YES;
+    axisSet.yAxis.labelAlignment = CPTAlignmentCenter;
     
 }
 
@@ -392,8 +389,6 @@
     CPTCalendarFormatter *calendarFormatter = (CPTCalendarFormatter *)axisSet.xAxis.labelFormatter;
     calendarFormatter.referenceDate = referenceDate;
     axisSet.xAxis.labelFormatter = calendarFormatter;
-    
-    //[axisSet.yAxis setNeedsRelabel];
     [axisSet.xAxis setNeedsRelabel];
     
     // Y Axis
@@ -403,14 +398,16 @@
     CPTAxisLabel *topLabel = [[CPTAxisLabel alloc] initWithText:maxYString textStyle:labelTextStyle];
     float maxTickLocation = maxYValue - (maxYValue * .06);
     topLabel.tickLocation = [[NSNumber numberWithFloat:maxTickLocation] decimalValue];
-    topLabel.offset = (topLabel.contentLayer.frame.size.width * -0.5);
+    topLabel.offset = [self labelOffsetSize:topLabel.contentLayer.frame.size.width];
+    
     
     // Mid Label
     NSString *midYString = [NSString stringWithFormat:@"%.0f", (maxYValue / 2)];
     CPTAxisLabel *midLabel = [[CPTAxisLabel alloc] initWithText:midYString textStyle:labelTextStyle];
     float midTickLocation = (maxYValue / 2) - (maxYValue * .06);
     midLabel.tickLocation = [[NSNumber numberWithFloat:midTickLocation] decimalValue];
-    midLabel.offset = (midLabel.contentLayer.frame.size.width * -0.5);
+    midLabel.offset = [self labelOffsetSize:midLabel.contentLayer.frame.size.width];
+    
     
     
     axisSet.yAxis.axisLabels = [NSSet setWithObjects:topLabel, midLabel, nil];
@@ -422,6 +419,18 @@
     NSNumber *tick3 = [NSNumber numberWithFloat:(spacer * 3)];
     NSNumber *tick4 = [NSNumber numberWithFloat:maxYValue];
     axisSet.yAxis.majorTickLocations = [NSSet setWithObjects:tick1, tick2, tick3, tick4, nil];
+}
+
+- (CGFloat)labelOffsetSize:(CGFloat)frameWidth {
+    if (frameWidth < 10.0f) {
+        return (frameWidth * -0.2);
+    } else if (frameWidth < 20.0f) {
+        return (frameWidth * -0.5);
+    } else if (frameWidth < 30.0f) {
+        return (frameWidth * -0.7);
+    } else {
+        return -7.0f;
+    }
 }
 
 + (CGFloat) estimatedHeightOfContent

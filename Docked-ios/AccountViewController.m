@@ -181,7 +181,6 @@
 }
 
 - (IBAction)pushSwitchValueChanged:(id)sender {
-    NSLog(@"push switch value changed");
     [currentAccount updatePushEnabled:pushNotificationSwitch.on];
 }
 

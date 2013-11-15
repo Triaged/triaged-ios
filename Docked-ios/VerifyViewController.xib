@@ -6,9 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerifyViewController">
             <connections>
-                <outlet property="lineView" destination="Rdg-DC-qgh" id="Bcg-LT-g4g"/>
                 <outlet property="verifyButton" destination="NuJ-x8-E07" id="c69-oR-k5y"/>
-                <outlet property="verifyCodeLabel" destination="K6P-bP-RXq" id="iNj-sY-Hlg"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -21,38 +19,28 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We emailed you a verification code to ensure you only share data with colleagues." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="UbG-Yh-vBx">
-                    <rect key="frame" x="20" y="50" width="280" height="74"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check your email." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJu-Fk-yCB">
-                    <rect key="frame" x="20" y="376" width="280" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K6P-bP-RXq">
-                    <rect key="frame" x="45" y="200" width="230" height="45"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="lZ3-N3-hFr">
+                    <rect key="frame" x="110" y="102" width="101" height="89"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="3RO-Qw-6Ve"/>
-                        <constraint firstAttribute="width" constant="230" id="Qbq-ht-dKz"/>
-                    </constraints>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="Rdg-DC-qgh">
-                    <rect key="frame" x="45" y="245" width="230" height="1"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="8To-nh-7yE"/>
+                        <constraint firstAttribute="width" constant="101" id="eJ2-Cd-Lea"/>
+                        <constraint firstAttribute="height" constant="89" id="rC4-mP-fBZ"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for trying Triage!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbG-Yh-vBx">
+                    <rect key="frame" x="30" y="209" width="261" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to confirm your email address is valid, please check for the email we just sent." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="sJu-Fk-yCB">
+                    <rect key="frame" x="10" y="304" width="300" height="66"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuJ-x8-E07">
                     <rect key="frame" x="0.0" y="420" width="320" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -62,40 +50,36 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="VtI-E9-a35"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                    <state key="normal" title="Verify">
+                    <state key="normal" title="Resend Email">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="verify:" destination="-1" eventType="touchUpInside" id="UGZ-L3-sJh"/>
+                        <action selector="resendEmail:" destination="-1" eventType="touchUpInside" id="qih-Xi-v0v"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="sJu-Fk-yCB" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="7AG-iz-o2x"/>
-                <constraint firstItem="Rdg-DC-qgh" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="45" id="9nc-3m-P0J"/>
-                <constraint firstAttribute="trailing" secondItem="Rdg-DC-qgh" secondAttribute="trailing" constant="45" id="AYq-Ae-gxY"/>
-                <constraint firstItem="Rdg-DC-qgh" firstAttribute="top" secondItem="K6P-bP-RXq" secondAttribute="bottom" id="f5h-BJ-KBY"/>
+                <constraint firstItem="sJu-Fk-yCB" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="10" id="7AG-iz-o2x"/>
+                <constraint firstItem="lZ3-N3-hFr" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="110" id="KUM-85-knC"/>
+                <constraint firstItem="UbG-Yh-vBx" firstAttribute="top" secondItem="lZ3-N3-hFr" secondAttribute="bottom" constant="18" id="QXW-Lm-bjs"/>
                 <constraint firstAttribute="bottom" secondItem="NuJ-x8-E07" secondAttribute="bottom" id="gen-Te-KBX"/>
-                <constraint firstItem="UbG-Yh-vBx" firstAttribute="top" secondItem="1" secondAttribute="top" constant="50" id="gtg-n8-skD"/>
-                <constraint firstItem="Rdg-DC-qgh" firstAttribute="top" secondItem="K6P-bP-RXq" secondAttribute="bottom" id="iGt-N2-fxZ"/>
-                <constraint firstAttribute="trailing" secondItem="sJu-Fk-yCB" secondAttribute="trailing" constant="20" id="igH-ax-jkb"/>
-                <constraint firstAttribute="trailing" secondItem="K6P-bP-RXq" secondAttribute="trailing" constant="45" id="ikg-JW-T7D"/>
+                <constraint firstAttribute="trailing" secondItem="sJu-Fk-yCB" secondAttribute="trailing" constant="10" id="igH-ax-jkb"/>
                 <constraint firstAttribute="trailing" secondItem="NuJ-x8-E07" secondAttribute="trailing" id="l3j-oG-OHp"/>
-                <constraint firstItem="UbG-Yh-vBx" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="lLx-Jx-2z7"/>
-                <constraint firstAttribute="trailing" secondItem="UbG-Yh-vBx" secondAttribute="trailing" constant="20" id="ncu-pn-kxo"/>
-                <constraint firstItem="NuJ-x8-E07" firstAttribute="top" secondItem="sJu-Fk-yCB" secondAttribute="bottom" constant="19" id="oaA-Ex-qKN"/>
+                <constraint firstItem="lZ3-N3-hFr" firstAttribute="top" secondItem="1" secondAttribute="top" constant="102" id="l9Y-x2-tgh"/>
+                <constraint firstItem="UbG-Yh-vBx" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="30" id="lLx-Jx-2z7"/>
+                <constraint firstAttribute="trailing" secondItem="lZ3-N3-hFr" secondAttribute="trailing" constant="109" id="nX8-0Z-AHT"/>
+                <constraint firstAttribute="trailing" secondItem="UbG-Yh-vBx" secondAttribute="trailing" constant="29" id="ncu-pn-kxo"/>
+                <constraint firstItem="NuJ-x8-E07" firstAttribute="top" secondItem="sJu-Fk-yCB" secondAttribute="bottom" constant="50" id="vd3-Qp-hdn"/>
                 <constraint firstItem="NuJ-x8-E07" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="x5i-Sn-bMe"/>
-                <constraint firstItem="K6P-bP-RXq" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="45" id="yad-9i-tcO"/>
-                <constraint firstItem="K6P-bP-RXq" firstAttribute="top" secondItem="UbG-Yh-vBx" secondAttribute="bottom" constant="76" id="z8h-rh-ESt"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="line" width="1" height="1"/>
+        <image name="triangle" width="101" height="89"/>
         <image name="welcome_bg" width="320" height="568"/>
     </resources>
 </document>

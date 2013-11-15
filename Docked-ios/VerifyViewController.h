@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *verifyButton;
 @property (weak, nonatomic) IBOutlet UIImageView *lineView;
 
-- (IBAction)verify:(id)sender;
+- (IBAction)resendEmail:(id)sender;
 
 
 @end

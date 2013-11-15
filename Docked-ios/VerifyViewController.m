@@ -40,60 +40,23 @@
     
     UIColor *color = [UIColor whiteColor];
     verifyCodeLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Verification Code" attributes:@{NSForegroundColorAttributeName: color}];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkVerificationStatus) userInfo:nil repeats:YES];
 }
 
-//-(void)keyboardWillShow:(NSNotification*)notification  {
-//
-//    NSDictionary *userInfo = notification.userInfo;
-//
-//    //
-//    // Get keyboard size.
-//    NSValue *endFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey];
-//    CGRect keyboardEndFrame = [self.view convertRect:endFrameValue.CGRectValue fromView:nil];
-//
-//    //
-//    // Get keyboard animation.
-//
-//    NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
-//    NSTimeInterval animationDuration = durationValue.doubleValue;
-//
-//    NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
-//    UIViewAnimationCurve animationCurve = curveValue.intValue;
-//
-//    //
-//    // Create animation.
-//    void (^animations)() = ^() {
-//        // Login Button
-//        verifyButton.frame = CGRectMake(verifyButton.frame.origin.x, verifyButton.frame.origin.y-keyboardEndFrame.size.height, verifyButton.frame.size.width, verifyButton.frame.size.height);
-//
-//
-//        // Fields
-//        CGRect verifyFrame = verifyCodeLabel.frame;
-//        verifyFrame.origin.y = verifyFrame.origin.y - 140;
-//        verifyCodeLabel.frame = verifyFrame;
-//
-//        CGRect lineFrame = lineView.frame;
-//        lineFrame.origin.y = lineFrame.origin.y - 140;
-//        lineView.frame = lineFrame;
-//
-//    };
-//
-//
-//    //
-//    // Begin animation.
-//    [UIView animateWithDuration:animationDuration
-//                          delay:0.0
-//                        options:(animationCurve << 16)
-//                     animations:animations
-//                     completion:NULL];
-//
-//}
 
 
-
-- (IBAction)verify:(id)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
+- (void) checkVerificationStatus {
+    if ([AppDelegate sharedDelegate].store.account.validatedCompany) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [[AppDelegate sharedDelegate].store fetchRemoteUserAccount];
+    }
 }
+
+- (IBAction)resendEmail:(id)sender {
+    
+    [[AppDelegate sharedDelegate].store.account resendVerifyEmail];
+}
+
 @end

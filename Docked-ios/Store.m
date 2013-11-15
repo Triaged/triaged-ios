@@ -125,8 +125,6 @@
             NSString *minUpdated = [Store.dateFormatter stringFromDate:latestItem.updatedAt];
             [standardDefaults setObject:minUpdated forKey:@"min_updated_at"];
             [standardDefaults synchronize];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
         }
         
         // Need to call to ensure table views stop refreshing
@@ -150,10 +148,6 @@
 }
 
 - (void) feedWasUpdated {
-    // set minID for remote requests
-    MTLFeedItem *item = [[self sortFeedItems] firstObject];
-    _minID = item.externalID;
-    
     // Send notification
     [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
 }
@@ -188,8 +182,7 @@
     NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
     [standardDefaults removeObjectForKey:@"min_updated_at"];
     [standardDefaults synchronize];
-    NSLog(@"%@",[standardDefaults stringForKey:@"min_updated_at"]);
-
+    
     [[AppDelegate sharedDelegate].persistentStack resetPersistentStore];
 }
 

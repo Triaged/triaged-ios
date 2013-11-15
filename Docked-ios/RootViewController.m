@@ -69,10 +69,10 @@
         if (account.connectedProviderCount == 0) {
             // Show connection Wizard first
             if (shouldSeeTutorial) [self displayConnectionWizard];
-            //if (!account.validatedCompany) [self displayCompanyValidation]; // Show validation screen
+            if (!account.validatedCompany) [self displayCompanyValidation]; // Show validation screen
         } else {
             // Show validate company first
-            //if (!account.validatedCompany) [self displayCompanyValidation];// Show Validated Company
+            if (!account.validatedCompany) [self displayCompanyValidation];// Show Validated Company
             if (shouldSeeTutorial) [self displayConnectionWizard];
         }
     }

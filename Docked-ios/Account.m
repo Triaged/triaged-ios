@@ -29,7 +29,8 @@
       @"slug" : @"slug",
       @"pushEnabled" : @"push_enabled",
       @"validatedCompany" : @"validated_belongs_to_company",
-      @"personalAccount" : @"personal_account"
+      @"personalAccount" : @"personal_account",
+      @"validationToken" : @"company_validation_token"
     };
 }
 
@@ -166,6 +167,18 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];
+}
+
+-(void)resendVerifyEmail {
+    
+    [[DockedAPIClient sharedClient] POST:@"account/resend_verify_email" parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",[error localizedDescription]);
+    }];
+}
+
+-(void)setValidated {
+    _validatedCompany = YES;
 }
 
 #pragma mark Core Data Getter/Setters

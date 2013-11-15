@@ -85,7 +85,6 @@
 }
 
 - (void)updateSwitchAtIndexPath:(UISwitch *)aswitch{
-    NSLog(@"%i",aswitch.tag);
     MTLProviderProperty *property = [accountDetails objectAtIndex:aswitch.tag];
     
     if (property.follows) {
