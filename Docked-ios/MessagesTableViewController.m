@@ -55,7 +55,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.tableView layoutIfNeeded];
-    CGRect frame = CGRectMake(8, self.tableView.frame.origin.y, 304.0, [self.tableView contentSize].height);
+    CGRect frame = CGRectMake(0, self.tableView.frame.origin.y, 320.0, [self.tableView contentSize].height);
     self.tableView.frame = frame;
 }
 
@@ -63,7 +63,7 @@
 {
     [self.tableView reloadData];
     [self.tableView layoutIfNeeded];
-    CGRect frame = CGRectMake(8, self.tableView.frame.origin.y, 304.0, [self.tableView contentSize].height);
+    CGRect frame = CGRectMake(0, self.tableView.frame.origin.y, 320.0, [self.tableView contentSize].height);
     self.tableView.frame = frame;
 }
 

@@ -21,7 +21,7 @@
 
 - (NSString *)autocompleteString
 {
-    return self.slug;
+    return [self.slug capitalizedString];
 }
 
 @end

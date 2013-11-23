@@ -118,6 +118,7 @@
     
     
     // Note that these CPTPlotRange are defined by START and LENGTH (not START and END) !!
+    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromString(@"0") length:CPTDecimalFromString(@"10")]];
     [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromString(@"0") length:CPTDecimalFromString(@"6")]];
     
     // Create the plot (we do not define actual x/y values yet, these will be supplied by the datasource...)
@@ -159,7 +160,6 @@
     [firstLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:8.0]];
     firstLabel.textAlignment = NSTextAlignmentCenter;
     firstLabel.textColor = [[UIColor alloc] initWithRed:32.0f/255.0f green:203.0f/255.0f  blue:133.0f/255.0f alpha:1.0f];
-    firstLabel.text = @"VISITORS";
     [self.contentView addSubview: firstLabel];
     
     firstData = [[UILabel alloc] initWithFrame: CGRectZero];
@@ -172,7 +172,6 @@
     secondLabel.textAlignment = NSTextAlignmentCenter;
     [secondLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:8.0]];
     secondLabel.textColor = [[UIColor alloc] initWithRed:179.0f/255.0f green:197.0f/255.0f  blue:227.0f/255.0f alpha:1.0f];
-    secondLabel.text = @"VISITS";
     [self.contentView addSubview: secondLabel];
     
     secondData = [[UILabel alloc] initWithFrame: CGRectZero];
@@ -185,7 +184,6 @@
     thirdLabel.textAlignment = NSTextAlignmentCenter;
     [thirdLabel setFont: [UIFont fontWithName:@"Avenir-Heavy" size:8.0]];
     thirdLabel.textColor = [[UIColor alloc] initWithRed:117.0f/255.0f green:220.0f/255.0f  blue:229.0f/255.0f alpha:1.0f];
-    thirdLabel.text = @"PAGEVIEWS";
     [self.contentView addSubview: thirdLabel];
     
     thirdData = [[UILabel alloc] initWithFrame: CGRectZero];
@@ -299,6 +297,7 @@
     
     // First Set
     GraphDataSet *firstSet = item.dataSets.firstObject;
+    firstLabel.text = [firstSet.title uppercaseString];
     firstCoordinates = [firstSet.dataDetails array];
     firstData.text = [firstSet.totalDataCount stringValue];
     maxYValue = [firstSet.maxYCount floatValue];
@@ -311,6 +310,7 @@
         [self.contentView addSubview:lineView];
         
         GraphDataSet *secondSet = item.dataSets[1];
+        secondLabel.text = [secondSet.title uppercaseString];
         secondCoordinates = [secondSet.dataDetails array];
         secondData.text = [secondSet.totalDataCount stringValue];
         if ([secondSet.maxYCount floatValue] > maxYValue) maxYValue = [secondSet.maxYCount floatValue];
@@ -324,6 +324,7 @@
         [self.contentView addSubview:lineView];
        
         GraphDataSet *thirdSet = item.dataSets[2];
+        thirdLabel.text = [thirdSet.title uppercaseString];
         thirdCoordinates = [thirdSet.dataDetails array];
         thirdData.text = [thirdSet.totalDataCount stringValue];
         if ([thirdSet.maxYCount floatValue] > maxYValue) maxYValue = [thirdSet.maxYCount floatValue];
@@ -331,6 +332,7 @@
     // Configure Y Axis
     
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+    [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromString(@"0") length:CPTDecimalFromString(@"6")]];
     [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue )]];
     CPTXYPlotSpace *plotSpace0 = (CPTXYPlotSpace *)[graph plotSpaceWithIdentifier:@"0"];
     [plotSpace0 setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue )]];
@@ -414,8 +416,6 @@
     float midTickLocation = (maxYValue / 2) - (maxYValue * .06);
     midLabel.tickLocation = [[NSNumber numberWithFloat:midTickLocation] decimalValue];
     midLabel.offset = [self labelOffsetSize:midLabel.contentLayer.frame.size.width];
-    
-    
     
     axisSet.yAxis.axisLabels = [NSSet setWithObjects:topLabel, midLabel, nil];
     

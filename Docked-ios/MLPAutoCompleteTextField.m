@@ -114,7 +114,7 @@ static NSString *kDefaultAutoCompleteCellIdentifier = @"_DefaultAutoCompleteCell
     [self setAutoCompleteTableView:newTableView];
     
     self.blurredBackgroundView = [[UIImageView alloc] init];
-    self.blurredBackgroundView.frame = CGRectMake(0,-248,320, 248);
+    self.blurredBackgroundView.frame = CGRectMake(0,-248,320, 260);
 }
 
 
@@ -591,12 +591,12 @@ withAutoCompleteString:(NSString *)string
 + (CGFloat)autoCompleteTableHeightForTextField:(MLPAutoCompleteTextField *)textField
                               withNumberOfRows:(NSInteger)numberOfRows
 {
-    return 246;
+    return 250;
 }
 
 + (CGRect)autoCompleteTableViewFrameForTextField:(MLPAutoCompleteTextField *)textField
 {
-    CGRect frame = CGRectMake(0,64,320, 244);
+    CGRect frame = CGRectMake(0,63.5,320, 250);
     frame = CGRectInset(frame, 1, 0);
     
     return frame;

@@ -20,7 +20,7 @@
         
         UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
         UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-        lineView.frame = CGRectMake(70, 0, 250, 1);
+        lineView.frame = CGRectMake(70, 0, 250, 0.5);
         [self.contentView addSubview: lineView];
         
         // Avatar image
