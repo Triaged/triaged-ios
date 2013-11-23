@@ -75,6 +75,12 @@
     return self;
 }
 
+- (void)setFrame:(CGRect)frame {
+    frame.origin.x = 8.0f;
+    frame.size.width = 304.0f;
+    [super setFrame:frame];
+}
+
 - (void)configureForMessage:(Message *)message
 {
     authorLabel.text = message.author.name;

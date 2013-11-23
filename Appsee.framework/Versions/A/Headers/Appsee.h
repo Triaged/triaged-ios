@@ -48,9 +48,9 @@
  */
 +(void)setDebugToNSLog:(BOOL)log;
 
-/***************************
- Application Events & Views
- **************************/
+/****************************
+ Application Events & Screens
+ ***************************/
 
 /** Add a timed application event (such as: user reached a specific level or screen). 
  @param eventName The name of the event (ie: "WelcomeScreen").
@@ -68,6 +68,12 @@
  @param screenName The name of the screen (ie: "WelcomeScreen").
  */
 +(void)startScreen:(NSString*)screenName;
+
+/** Overlay an image on top of the next video frame.
+ @param image The image to overlay. Can be 'nil' to stop overlaying any image.
+ @param rect The image's location in the screen.
+ */
++(void)overlayImage:(UIImage*)image inRect:(CGRect)rect;
 
 /************************
  Setting User Information
@@ -100,7 +106,5 @@
  @param view A UIView that contains sensitive information.
  */
 +(void)markViewAsSensitive:(UIView*)view;
-
-
 
 @end

@@ -36,6 +36,7 @@
     if (self) {
         
         if ([[CredentialStore sharedClient] isLoggedIn]) {
+            [self readAccountArchive];
             [self userLoggedIn];
 
         }
@@ -77,18 +78,23 @@
 - (void) fetchRemoteUserAccount
 {
     [Account fetchRemoteUserAccountWithBlock:^(Account *account) {
-        _account = account;
-        
-        [_account createUserFromAccount];
-        
-        Mixpanel *mixpanel = [Mixpanel sharedInstance];
-        [mixpanel identify:_account.userID];
-        [mixpanel track:@"login" properties:@{@"id": _account.userID,
-                                              @"email" : _account.email,
-                                              @"company" : _account.companyName}];
+        [self setCurrentAccount:account];
     }];
-    
+}
 
+- (void) setCurrentAccount: (Account *)account {
+    _account = account;
+    
+    [_account createUserFromAccount];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:_account.validatedCompany forKey:@"companyValidated"];
+    [self saveAccountToArchive];
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel identify:_account.userID];
+    [mixpanel track:@"login" properties:@{@"id": _account.userID,
+                                          @"email" : _account.email,
+                                          @"company" : _account.companyName}];
 }
 
 - (void)fetchRemoteFeedItems
@@ -119,7 +125,12 @@
                 }
                 
             }
-            [self.managedObjectContext save:nil];
+            
+            NSError *error = nil;
+            [self.managedObjectContext save:&error];
+            if (error != nil) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
             
             MTLFeedItem *latestItem = [newItems firstObject];
             NSString *minUpdated = [Store.dateFormatter stringFromDate:latestItem.updatedAt];
@@ -173,7 +184,6 @@
 - (void) userLoggedIn
 {
     [self fetchRemoteFeedItems];
-    [self readAccountArchive];
 }
 
 - (void) userSignedOut
@@ -181,6 +191,7 @@
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalNever];
     NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
     [standardDefaults removeObjectForKey:@"min_updated_at"];
+    [standardDefaults removeObjectForKey:@"companyValidated"];
     [standardDefaults synchronize];
     
     [[AppDelegate sharedDelegate].persistentStack resetPersistentStore];

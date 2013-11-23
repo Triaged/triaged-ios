@@ -118,7 +118,6 @@
     
     
     // Note that these CPTPlotRange are defined by START and LENGTH (not START and END) !!
-    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( 14 )]];
     [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromString(@"0") length:CPTDecimalFromString(@"6")]];
     
     // Create the plot (we do not define actual x/y values yet, these will be supplied by the datasource...)
@@ -258,6 +257,7 @@
             // Return y value, for this example we'll be plotting y = x * x
             //NSLog(@"Index: %lu, Value: %@", (unsigned long)index, detail.y);
             return detail.y;
+            
         }
       } else if ([plot.identifier isEqual:@"1"]) {
           GraphDataDetail *detail = (GraphDataDetail *)secondCoordinates[index];
@@ -328,10 +328,17 @@
         thirdData.text = [thirdSet.totalDataCount stringValue];
         if ([thirdSet.maxYCount floatValue] > maxYValue) maxYValue = [thirdSet.maxYCount floatValue];
     }
+    // Configure Y Axis
     
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue)]];
-    [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromString(@"0") length:CPTDecimalFromString(@"6")]];
+    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue )]];
+    CPTXYPlotSpace *plotSpace0 = (CPTXYPlotSpace *)[graph plotSpaceWithIdentifier:@"0"];
+    [plotSpace0 setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue )]];
+    CPTXYPlotSpace *plotSpace1 = (CPTXYPlotSpace *)[graph plotSpaceWithIdentifier:@"1"];
+    [plotSpace1 setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue )]];
+    CPTXYPlotSpace *plotSpace2 = (CPTXYPlotSpace *)[graph plotSpaceWithIdentifier:@"2"];
+    [plotSpace2 setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( maxYValue )]];
+
     
     [self configureAxis:item.timestamp];
     [graph reloadData];
@@ -425,11 +432,11 @@
     if (frameWidth < 10.0f) {
         return (frameWidth * -0.2);
     } else if (frameWidth < 20.0f) {
-        return (frameWidth * -0.5);
+        return (frameWidth * -0.75);
     } else if (frameWidth < 30.0f) {
-        return (frameWidth * -0.7);
+        return (frameWidth * -0.9);
     } else {
-        return -7.0f;
+        return (frameWidth * -1.0);
     }
 }
 

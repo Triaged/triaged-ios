@@ -7,6 +7,7 @@
 //
 
 #import "VerifyViewController.h"
+#import "CredentialStore.h"
 
 @interface VerifyViewController ()
 
@@ -22,12 +23,6 @@
     if (self) {
         // Custom initialization
         self.view.frame = [AppDelegate sharedDelegate].window.frame;
-//        
-//        [[NSNotificationCenter defaultCenter] addObserver:self
-//                                                 selector:@selector(keyboardWillShow:)
-//                                                     name:UIKeyboardWillShowNotification
-//                                                   object:nil];
-        
     }
     return self;
 }
@@ -48,7 +43,7 @@
 
 - (void) checkVerificationStatus {
     if ([AppDelegate sharedDelegate].store.account.validatedCompany) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:NO completion:nil];
     } else {
         [[AppDelegate sharedDelegate].store fetchRemoteUserAccount];
     }
@@ -57,6 +52,13 @@
 - (IBAction)resendEmail:(id)sender {
     
     [[AppDelegate sharedDelegate].store.account resendVerifyEmail];
+}
+
+- (IBAction)logout:(id)sender {
+    [[CredentialStore sharedClient] clearSavedCredentials];
+    [[AppDelegate sharedDelegate].navVC popToRootViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
 }
 
 @end

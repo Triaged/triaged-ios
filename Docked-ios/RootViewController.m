@@ -12,11 +12,13 @@
 #import "WelcomeViewController.h"
 #import "SettingsMenuViewController.h"
 #import "ConnectionWizardViewController.h"
+#import "ConnectionIntroViewController.h"
 #import "VerifyViewController.h"
 
 
 @interface RootViewController () {
     FeedTableViewController *feedTableView;
+    ConnectionIntroViewController *connectionIntroVC;
 }
 
 @end
@@ -62,33 +64,35 @@
 {
     Account *account = [AppDelegate sharedDelegate].store.account;
     bool shouldSeeTutorial = ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenTutorial"];
+    bool needsValidation = ![[NSUserDefaults standardUserDefaults] boolForKey:@"companyValidated"];
     
     if (account.personalAccount) {
-        if (shouldSeeTutorial) [self displayConnectionWizard];
+        if (shouldSeeTutorial) [self displayConnectionIntro];
     } else {
         if (account.connectedProviderCount == 0) {
             // Show connection Wizard first
-            if (shouldSeeTutorial) [self displayConnectionWizard];
-            if (!account.validatedCompany) [self displayCompanyValidation]; // Show validation screen
+            if (shouldSeeTutorial) [self displayConnectionIntro];
+            if (needsValidation)
+                if (!account.validatedCompany) [self displayCompanyValidation]; // Show validation screen
         } else {
             // Show validate company first
-            if (!account.validatedCompany) [self displayCompanyValidation];// Show Validated Company
-            if (shouldSeeTutorial) [self displayConnectionWizard];
+            if (needsValidation)
+                if (!account.validatedCompany) [self displayCompanyValidation];// Show Validated Company
+            if (shouldSeeTutorial) [self displayConnectionIntro];
         }
     }
 }
 
--(void) displayConnectionWizard
-{
-    ConnectionWizardViewController *connectionWizardVC = [[ConnectionWizardViewController alloc] init];
-    connectionWizardVC.showingWelcomeTour = YES;
-    [self presentViewController:connectionWizardVC animated:NO completion:nil];
+-(void) displayConnectionIntro {
+    connectionIntroVC = [[ConnectionIntroViewController alloc] init];
+    connectionIntroVC.rootController = self;
+    [self presentViewController:connectionIntroVC animated:NO completion:nil];
 }
 
 -(void) displayCompanyValidation
 {
     VerifyViewController *verifyVC = [[VerifyViewController alloc] init];
-    [self presentViewController:verifyVC animated:NO completion:nil];
+    [self presentViewController:verifyVC animated:YES completion:nil];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -99,7 +103,7 @@
 - (void)setupViewControllers
 {
     feedTableView = [[FeedTableViewController alloc] init];
-    feedTableView.view.frame = CGRectMake(8, 0, self.view.frame.size.width - 16, self.view.frame.size.height);
+    feedTableView.view.frame = self.view.frame;//CGRectMake(8, 0, self.view.frame.size.width - 16, self.view.frame.size.height);
     feedTableView.navController = self.navigationController;
     feedTableView.rootController = self;
 

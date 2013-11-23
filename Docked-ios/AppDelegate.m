@@ -115,6 +115,7 @@
         if([UIApplication sharedApplication].applicationIconBadgeNumber > 0) {
             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
             [self.store.account resetAPNSPushCount];
+            [self.store readAccountArchive];
             [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
         }
     }
@@ -225,6 +226,12 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [self.store saveAccountToArchive];
+    
+    NSError *error = nil;
+    [self.store.managedObjectContext save:&error];
+    if (error != nil) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
 }
 
 @end

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *lineView;
 
 - (IBAction)resendEmail:(id)sender;
+- (IBAction)logout:(id)sender;
 
 
 @end

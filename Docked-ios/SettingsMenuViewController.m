@@ -25,6 +25,7 @@
     UIButton *connectProviderButton;
     UILabel *settingsLabel;
     UITableView *accountSettingsTableView;
+    UILabel *connectedLabel;
     Account *account;
 }
 @end
@@ -62,7 +63,7 @@
     [self.view addSubview:scrollView];
     
     // Connected Label
-    UILabel *connectedLabel = [[UILabel alloc] init];
+    connectedLabel = [[UILabel alloc] init];
     connectedLabel.frame = CGRectMake(10, 20, 320, 20);
     connectedLabel.font = [UIFont fontWithName:@"Avenir-Light" size:14.0];
     connectedLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
@@ -116,7 +117,6 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    account = [AppDelegate sharedDelegate].store.account;
     [self refreshView];
 }
 
@@ -128,7 +128,9 @@
 
 -(void)refreshView {
     [accountSettingsTableView reloadData];
+    providersTableVC.providers = [[AppDelegate sharedDelegate].store.account connectedProviders];
     [providersTableVC refreshTableView];
+    connectedLabel.text = (providersTableVC.providers.count > 0) ? @"Connected Services" : @"No Services Connected";
     [self setContentSize];
 }
 
@@ -167,7 +169,7 @@
     [scrollView addSubview: lineView1];
     
     UIImageView *lineView2 = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView2.frame = CGRectMake(0, accountSettingsTableView.frame.origin.y + accountSettingsTableView.frame.size.height, 320, 1);
+    lineView2.frame = CGRectMake(0, accountSettingsTableView.frame.origin.y + accountSettingsTableView.frame.size.height+2, 320, 1);
     [scrollView addSubview: lineView2];
     
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, accountSettingsTableView.frame.origin.y + accountSettingsTableView.frame.size.height+ 30);

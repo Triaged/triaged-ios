@@ -75,7 +75,7 @@
         // Set current user
         NSValueTransformer *transformer;
         transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
-        [AppDelegate sharedDelegate].store.account = [transformer transformedValue:JSON];
+        [[AppDelegate sharedDelegate].store setCurrentAccount:[transformer transformedValue:JSON]];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
         

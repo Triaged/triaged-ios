@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ConnectionIntroViewController.h"
 
 @interface ConnectionWizardViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property bool showingWelcomeTour;
-
+@property (strong, nonatomic) ConnectionIntroViewController *introController;
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (weak, nonatomic) IBOutlet UIButton *finishButton;
-@property (weak, nonatomic) IBOutlet UILabel *welcomeTourLabel;
-
-
 
 - (IBAction)finishConnectionWizard:(id)sender;
 

@@ -23,11 +23,11 @@
 - (NSFetchedResultsController*)feedItemsFetchedResultsController;
 
 - (void)fetchRemoteFeedItems;
-
 - (void)fetchNewRemoteFeedItemsWithBlock:(void (^)(NSArray *))block;
 
+- (void)setCurrentAccount: (Account *)account;
 - (void)fetchRemoteUserAccount;
-
+- (void)readAccountArchive;
 - (void)saveAccountToArchive;
 
 

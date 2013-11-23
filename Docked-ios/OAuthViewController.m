@@ -32,6 +32,7 @@
     self = [super init];
     if (self) {
         self.url = newUrl;
+        self.view.frame = [AppDelegate sharedDelegate].window.frame;
         // Custom initialization
     }
     return self;
@@ -56,9 +57,14 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
     if ([[request.URL.absoluteString lowercaseString] isEqualToString:@"https://www.triaged.co/services/oauth_complete"]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [self.delegate oAuthRequestDidSucceed];
         
+        //update our store account from the server
+        [Account fetchRemoteUserAccountWithBlock:^(Account * account) {
+            [AppDelegate sharedDelegate].store.account = account;
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.delegate oAuthRequestDidSucceed];
+            
+        }];
     } else {
         // @TODO: Check for success: false
         //[self dismissViewControllerAnimated:YES completion:nil];
@@ -69,6 +75,7 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    NSLog(@"%@", [error localizedDescription]);
     [CSNotificationView showInViewController:self
                                        style:CSNotificationViewStyleError
                                      message:@"Request failed to load."];

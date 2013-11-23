@@ -74,16 +74,10 @@
     }
 }
 
-- (void)deleteEntireDatabase
-{
-    NSError *error = nil;
-    NSPersistentStoreCoordinator *storeCoordinator = self.managedObjectContext.persistentStoreCoordinator;
-    [storeCoordinator removePersistentStore:self.store error:&error];
-    [[NSFileManager defaultManager] removeItemAtPath:self.storeURL.path error:&error];
-}
 
 - (NSPersistentStoreCoordinator *)resetPersistentStore
 {
+    NSLog(@"resetting persistent store");
     NSError *error = nil;
     
     if (self.managedObjectContext.persistentStoreCoordinator == nil)

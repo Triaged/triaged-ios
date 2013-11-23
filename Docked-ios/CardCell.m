@@ -62,6 +62,12 @@
     return self;
 }
 
+- (void)setFrame:(CGRect)frame {
+    frame.origin.x = 8.0f;
+    frame.size.width = 304.0f;
+    [super setFrame:frame];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

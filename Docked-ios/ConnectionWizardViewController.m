@@ -15,7 +15,7 @@
 
 @implementation ConnectionWizardViewController
 
-@synthesize pageController, finishButton, showingWelcomeTour, welcomeTourLabel;
+@synthesize pageController, finishButton, showingWelcomeTour, introController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +40,7 @@
     
     self.pageController.dataSource = self;
     self.pageController.delegate = self;
-    [[self.pageController view] setFrame:CGRectMake(0,100,320, self.view.frame.size.height - 110)];
+    [[self.pageController view] setFrame:CGRectMake(0,40,320, self.view.frame.size.height - 50)];
     
     ConnectionPageViewController *initialViewController = [self viewControllerAtIndex:0];
     
@@ -55,9 +55,7 @@
     
     if (showingWelcomeTour) {
         finishButton.hidden = YES;
-    } else {
-        welcomeTourLabel.text = @"Connect Your Services";
-    }
+    } 
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -131,7 +129,13 @@
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasSeenTutorial"];
     }
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    if (introController) {
+        //[introController dismissViewControllerAnimated:YES completion:nil];
+        [introController dismiss];
+    } else {
+      [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 
 @end

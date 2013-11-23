@@ -37,7 +37,7 @@
     headlineLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:headlineLabel];
     
-    connectionsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 140, 320, 267)];
+    connectionsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 140, 320, 300)];
     connectionsTable.dataSource = self;
     connectionsTable.delegate = self;
     connectionsTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -46,7 +46,7 @@
     [self.view addSubview:connectionsTable];
 
     
-    workWarningLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 380, 280, 40)];
+    workWarningLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 420, 280, 40)];
     [workWarningLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:12.0]];
     workWarningLabel.textColor = [UIColor whiteColor];
     workWarningLabel.text = @"Your colleagues at triaged.co share connections, so, please only connect work accounts.";

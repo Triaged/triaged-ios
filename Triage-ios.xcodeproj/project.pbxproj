@@ -22,7 +22,6 @@
 		CB1947B6182D720100944E80 /* MTLProviderProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947B5182D720100944E80 /* MTLProviderProperty.m */; };
 		CB1947BC182F13E500944E80 /* CustomPullToRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947BB182F13E500944E80 /* CustomPullToRefreshControl.m */; };
 		CB1947BF183077B400944E80 /* CSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947BE183077B400944E80 /* CSNotificationView.m */; };
-		CB1947C11830997800944E80 /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1947C01830997800944E80 /* Appsee.framework */; };
 		CB1947C31830998A00944E80 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1947C21830998A00944E80 /* AVFoundation.framework */; };
 		CB1947C51830999400944E80 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1947C41830999400944E80 /* CoreMedia.framework */; };
 		CB1947C71830999D00944E80 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1947C61830999D00944E80 /* CoreVideo.framework */; };
@@ -41,6 +40,8 @@
 		CB2F9FB01808B40A00F5F97C /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2F9FA71808B40A00F5F97C /* NSData+MPBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CB2F9FB11808B40A00F5F97C /* ODIN.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2F9FAA1808B40A00F5F97C /* ODIN.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CB2F9FB21808B40A00F5F97C /* Mixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2F9FAC1808B40A00F5F97C /* Mixpanel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CB30E09A183FC42F0067F5E1 /* ConnectionIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB30E098183FC42F0067F5E1 /* ConnectionIntroViewController.m */; };
+		CB30E09B183FC42F0067F5E1 /* ConnectionIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB30E099183FC42F0067F5E1 /* ConnectionIntroViewController.xib */; };
 		CB429B9B17EFDAFF002273D6 /* GithubSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429B9917EFDAFF002273D6 /* GithubSettingsViewController.m */; };
 		CB429BA017EFDB0A002273D6 /* StripeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429B9E17EFDB0A002273D6 /* StripeSettingsViewController.m */; };
 		CB429BA517EFDB17002273D6 /* SentrySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB429BA317EFDB17002273D6 /* SentrySettingsViewController.m */; };
@@ -59,6 +60,7 @@
 		CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECED17EE922C00319223 /* LoginViewController.xib */; };
 		CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECF217EF7DAA00319223 /* SignupViewController.m */; };
 		CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECF317EF7DAA00319223 /* SignupViewController.xib */; };
+		CB70536E183E77A4002A377F /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB70536D183E77A4002A377F /* Appsee.framework */; };
 		CB742D1A180EFF2F0068A301 /* GraphCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB742D19180EFF2F0068A301 /* GraphCardCell.m */; };
 		CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4417F251A400BD858D /* CFNetwork.framework */; };
 		CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4617F251AE00BD858D /* QuartzCore.framework */; };
@@ -177,7 +179,6 @@
 		CB1947BB182F13E500944E80 /* CustomPullToRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPullToRefreshControl.m; sourceTree = "<group>"; };
 		CB1947BD183077B400944E80 /* CSNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNotificationView.h; sourceTree = "<group>"; };
 		CB1947BE183077B400944E80 /* CSNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNotificationView.m; sourceTree = "<group>"; };
-		CB1947C01830997800944E80 /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
 		CB1947C21830998A00944E80 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CB1947C41830999400944E80 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		CB1947C61830999D00944E80 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -206,6 +207,9 @@
 		CB2F9FAA1808B40A00F5F97C /* ODIN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODIN.m; sourceTree = "<group>"; };
 		CB2F9FAB1808B40A00F5F97C /* Mixpanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixpanel.h; sourceTree = "<group>"; };
 		CB2F9FAC1808B40A00F5F97C /* Mixpanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mixpanel.m; sourceTree = "<group>"; };
+		CB30E097183FC42F0067F5E1 /* ConnectionIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionIntroViewController.h; sourceTree = "<group>"; };
+		CB30E098183FC42F0067F5E1 /* ConnectionIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionIntroViewController.m; sourceTree = "<group>"; };
+		CB30E099183FC42F0067F5E1 /* ConnectionIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionIntroViewController.xib; sourceTree = "<group>"; };
 		CB429B9817EFDAFF002273D6 /* GithubSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubSettingsViewController.h; sourceTree = "<group>"; };
 		CB429B9917EFDAFF002273D6 /* GithubSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubSettingsViewController.m; sourceTree = "<group>"; };
 		CB429B9D17EFDB0A002273D6 /* StripeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeSettingsViewController.h; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 		CB5AECF117EF7DAA00319223 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		CB5AECF217EF7DAA00319223 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		CB5AECF317EF7DAA00319223 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
+		CB70536D183E77A4002A377F /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
 		CB742D18180EFF2F0068A301 /* GraphCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphCardCell.h; sourceTree = "<group>"; };
 		CB742D19180EFF2F0068A301 /* GraphCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphCardCell.m; sourceTree = "<group>"; };
 		CB7C2E4417F251A400BD858D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -404,10 +409,10 @@
 				CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */,
 				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
 				CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */,
-				CB1947C11830997800944E80 /* Appsee.framework in Frameworks */,
 				CBF3872C1812535500554730 /* HockeySDK.framework in Frameworks */,
 				CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */,
 				CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */,
+				CB70536E183E77A4002A377F /* Appsee.framework in Frameworks */,
 				CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */,
 				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
 				CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */,
@@ -652,6 +657,9 @@
 				CB7F4B65182AF820002FDE58 /* VerifyViewController.h */,
 				CB7F4B66182AF820002FDE58 /* VerifyViewController.m */,
 				CB7F4B67182AF820002FDE58 /* VerifyViewController.xib */,
+				CB30E097183FC42F0067F5E1 /* ConnectionIntroViewController.h */,
+				CB30E098183FC42F0067F5E1 /* ConnectionIntroViewController.m */,
+				CB30E099183FC42F0067F5E1 /* ConnectionIntroViewController.xib */,
 			);
 			name = welcome;
 			sourceTree = "<group>";
@@ -693,11 +701,11 @@
 		CB8F208F17EB5D6300EBDC34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB70536D183E77A4002A377F /* Appsee.framework */,
 				CB96D9BA18353997003DD13E /* Crashlytics.framework */,
 				CB1947C61830999D00944E80 /* CoreVideo.framework */,
 				CB1947C41830999400944E80 /* CoreMedia.framework */,
 				CB1947C21830998A00944E80 /* AVFoundation.framework */,
-				CB1947C01830997800944E80 /* Appsee.framework */,
 				CB13946C1821F31100053086 /* libz.dylib */,
 				CB24D08B1811D1E100DF0D19 /* MessageUI.framework */,
 				CB2F9F9A1808B2EA00F5F97C /* SystemConfiguration.framework */,
@@ -1047,6 +1055,7 @@
 				CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */,
 				CB7F4B69182AF820002FDE58 /* VerifyViewController.xib in Resources */,
 				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
+				CB30E09B183FC42F0067F5E1 /* ConnectionIntroViewController.xib in Resources */,
 				CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */,
 				CBA6D124181F66DC006B73AC /* TeamMembersViewController.xib in Resources */,
 				CBF3872D1812535500554730 /* HockeySDK.xcconfig in Resources */,
@@ -1197,6 +1206,7 @@
 				CB429BAA17EFDB22002273D6 /* GoogleAnalyticsSettingsViewController.m in Sources */,
 				CB23F74C181AD49A0035262D /* UIDebugWindow.m in Sources */,
 				CBA6D0EB181DF492006B73AC /* FeedItem.m in Sources */,
+				CB30E09A183FC42F0067F5E1 /* ConnectionIntroViewController.m in Sources */,
 				CB4F87AC180F532500B685E1 /* TeammateCell.m in Sources */,
 				CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */,
 				CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */,
@@ -1330,8 +1340,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Richardson White (G3JFES9DV5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1348,7 +1358,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
 				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A8410EAE-7CAF-450F-BCD6-F742E92CB896";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1360,8 +1370,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Richardson White (G3JFES9DV5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1378,7 +1388,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
 				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A8410EAE-7CAF-450F-BCD6-F742E92CB896";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

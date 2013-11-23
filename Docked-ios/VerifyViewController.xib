@@ -15,12 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="welcome_bg" translatesAutoresizingMaskIntoConstraints="NO" id="NyF-te-TQW">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="lZ3-N3-hFr">
-                    <rect key="frame" x="110" y="102" width="101" height="89"/>
+                    <rect key="frame" x="109" y="102" width="101" height="89"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="101" id="eJ2-Cd-Lea"/>
@@ -30,15 +26,21 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for trying Triage!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbG-Yh-vBx">
                     <rect key="frame" x="30" y="209" width="261" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="PFP-NS-npZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                    <color key="textColor" red="0.70980392156862748" green="0.73333333333333328" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to confirm your email address is valid, please check for the email we just sent." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="sJu-Fk-yCB">
-                    <rect key="frame" x="10" y="304" width="300" height="66"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to confirm your email address is valid. Please check your inbox inbox now." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="sJu-Fk-yCB">
+                    <rect key="frame" x="10" y="283" width="300" height="87"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="87" id="Nzg-m9-RcO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                    <color key="textColor" red="0.70980392156862748" green="0.73333333333333328" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuJ-x8-E07">
@@ -58,20 +60,37 @@
                         <action selector="resendEmail:" destination="-1" eventType="touchUpInside" id="qih-Xi-v0v"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7Q-Ei-4t0">
+                    <rect key="frame" x="15" y="15" width="60" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="4n9-8S-zNR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                    <state key="normal" title="Sign Out">
+                        <color key="titleColor" red="0.41176470588235292" green="0.49019607843137253" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="logout:" destination="-1" eventType="touchUpInside" id="KmG-tj-8Hd"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="sJu-Fk-yCB" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="10" id="7AG-iz-o2x"/>
-                <constraint firstItem="lZ3-N3-hFr" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="110" id="KUM-85-knC"/>
+                <constraint firstItem="NuJ-x8-E07" firstAttribute="top" secondItem="sJu-Fk-yCB" secondAttribute="bottom" constant="50" id="C7k-8p-cVV"/>
+                <constraint firstItem="lZ3-N3-hFr" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="109" id="KUM-85-knC"/>
                 <constraint firstItem="UbG-Yh-vBx" firstAttribute="top" secondItem="lZ3-N3-hFr" secondAttribute="bottom" constant="18" id="QXW-Lm-bjs"/>
+                <constraint firstItem="s7Q-Ei-4t0" firstAttribute="top" secondItem="1" secondAttribute="top" constant="15" id="RHi-8z-7Lf"/>
                 <constraint firstAttribute="bottom" secondItem="NuJ-x8-E07" secondAttribute="bottom" id="gen-Te-KBX"/>
                 <constraint firstAttribute="trailing" secondItem="sJu-Fk-yCB" secondAttribute="trailing" constant="10" id="igH-ax-jkb"/>
                 <constraint firstAttribute="trailing" secondItem="NuJ-x8-E07" secondAttribute="trailing" id="l3j-oG-OHp"/>
                 <constraint firstItem="lZ3-N3-hFr" firstAttribute="top" secondItem="1" secondAttribute="top" constant="102" id="l9Y-x2-tgh"/>
                 <constraint firstItem="UbG-Yh-vBx" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="30" id="lLx-Jx-2z7"/>
-                <constraint firstAttribute="trailing" secondItem="lZ3-N3-hFr" secondAttribute="trailing" constant="109" id="nX8-0Z-AHT"/>
+                <constraint firstAttribute="trailing" secondItem="lZ3-N3-hFr" secondAttribute="trailing" constant="110" id="nX8-0Z-AHT"/>
                 <constraint firstAttribute="trailing" secondItem="UbG-Yh-vBx" secondAttribute="trailing" constant="29" id="ncu-pn-kxo"/>
-                <constraint firstItem="NuJ-x8-E07" firstAttribute="top" secondItem="sJu-Fk-yCB" secondAttribute="bottom" constant="50" id="vd3-Qp-hdn"/>
+                <constraint firstItem="s7Q-Ei-4t0" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="15" id="sNU-JJ-2HN"/>
                 <constraint firstItem="NuJ-x8-E07" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="x5i-Sn-bMe"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -80,6 +99,5 @@
     </objects>
     <resources>
         <image name="triangle" width="101" height="89"/>
-        <image name="welcome_bg" width="320" height="568"/>
     </resources>
 </document>
