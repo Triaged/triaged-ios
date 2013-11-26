@@ -31,7 +31,7 @@
 
 - (void)configureForItem:(TextItem *)item
 {
-    self.propertyLabel.text = item.property;
+    self.propertyLabel.text = [self propertyFormatter:item.property];
     self.actionLabel.text = item.action;
     self.bodyLabel.attributedText = [CardCell attributedBodyText:item.body];
     NSString *providerIconString = [NSString stringWithFormat:@"%@.png", item.provider];

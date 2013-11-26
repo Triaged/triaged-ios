@@ -29,6 +29,10 @@
 		CB23F74F181AF5D60035262D /* GGHashtagMentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB23F74E181AF5D60035262D /* GGHashtagMentionController.m */; };
 		CB24D0891811BAC000DF0D19 /* KilnSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */; };
 		CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB24D08B1811D1E100DF0D19 /* MessageUI.framework */; };
+		CB27B51B184420F1000B4D55 /* BeanstalkSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB27B51A184420F1000B4D55 /* BeanstalkSettingsViewController.m */; };
+		CB27B51E184420FE000B4D55 /* HockeyAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB27B51D184420FE000B4D55 /* HockeyAppSettingsViewController.m */; };
+		CB27B52118442108000B4D55 /* AppfiguresSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB27B52018442108000B4D55 /* AppfiguresSettingsViewController.m */; };
+		CB27B52418442115000B4D55 /* CrashlyticsSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB27B52318442115000B4D55 /* CrashlyticsSettingsViewController.m */; };
 		CB2D00AB181215E6005350D5 /* SettingEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */; };
 		CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F941808B2B800F5F97C /* Accelerate.framework */; };
 		CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F961808B2C000F5F97C /* AdSupport.framework */; };
@@ -189,6 +193,14 @@
 		CB24D0861811BAC000DF0D19 /* KilnSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KilnSettingsViewController.h; sourceTree = "<group>"; };
 		CB24D0871811BAC000DF0D19 /* KilnSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KilnSettingsViewController.m; sourceTree = "<group>"; };
 		CB24D08B1811D1E100DF0D19 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CB27B519184420F1000B4D55 /* BeanstalkSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeanstalkSettingsViewController.h; sourceTree = "<group>"; };
+		CB27B51A184420F1000B4D55 /* BeanstalkSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeanstalkSettingsViewController.m; sourceTree = "<group>"; };
+		CB27B51C184420FE000B4D55 /* HockeyAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HockeyAppSettingsViewController.h; sourceTree = "<group>"; };
+		CB27B51D184420FE000B4D55 /* HockeyAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HockeyAppSettingsViewController.m; sourceTree = "<group>"; };
+		CB27B51F18442108000B4D55 /* AppfiguresSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppfiguresSettingsViewController.h; sourceTree = "<group>"; };
+		CB27B52018442108000B4D55 /* AppfiguresSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppfiguresSettingsViewController.m; sourceTree = "<group>"; };
+		CB27B52218442115000B4D55 /* CrashlyticsSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashlyticsSettingsViewController.h; sourceTree = "<group>"; };
+		CB27B52318442115000B4D55 /* CrashlyticsSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashlyticsSettingsViewController.m; sourceTree = "<group>"; };
 		CB2D00A8181215E6005350D5 /* SettingEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingEventsViewController.h; sourceTree = "<group>"; };
 		CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingEventsViewController.m; sourceTree = "<group>"; };
 		CB2F9F941808B2B800F5F97C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -507,6 +519,42 @@
 			name = kiln;
 			sourceTree = "<group>";
 		};
+		CB27B515184420B6000B4D55 /* crashlytics */ = {
+			isa = PBXGroup;
+			children = (
+				CB27B52218442115000B4D55 /* CrashlyticsSettingsViewController.h */,
+				CB27B52318442115000B4D55 /* CrashlyticsSettingsViewController.m */,
+			);
+			name = crashlytics;
+			sourceTree = "<group>";
+		};
+		CB27B516184420C3000B4D55 /* appfigures */ = {
+			isa = PBXGroup;
+			children = (
+				CB27B51F18442108000B4D55 /* AppfiguresSettingsViewController.h */,
+				CB27B52018442108000B4D55 /* AppfiguresSettingsViewController.m */,
+			);
+			name = appfigures;
+			sourceTree = "<group>";
+		};
+		CB27B517184420C8000B4D55 /* hockey_app */ = {
+			isa = PBXGroup;
+			children = (
+				CB27B51C184420FE000B4D55 /* HockeyAppSettingsViewController.h */,
+				CB27B51D184420FE000B4D55 /* HockeyAppSettingsViewController.m */,
+			);
+			name = hockey_app;
+			sourceTree = "<group>";
+		};
+		CB27B518184420CC000B4D55 /* beanstalk */ = {
+			isa = PBXGroup;
+			children = (
+				CB27B519184420F1000B4D55 /* BeanstalkSettingsViewController.h */,
+				CB27B51A184420F1000B4D55 /* BeanstalkSettingsViewController.m */,
+			);
+			name = beanstalk;
+			sourceTree = "<group>";
+		};
 		CB2F9F9C1808B40A00F5F97C /* Mixpanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,6 +610,10 @@
 		CB429B9317EFDAA8002273D6 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				CB27B518184420CC000B4D55 /* beanstalk */,
+				CB27B517184420C8000B4D55 /* hockey_app */,
+				CB27B516184420C3000B4D55 /* appfigures */,
+				CB27B515184420B6000B4D55 /* crashlytics */,
 				CB24D0851811BAB300DF0D19 /* kiln */,
 				CBA676A818085A480035368A /* heroku */,
 				CBA676A718085A400035368A /* airbrake */,
@@ -1145,6 +1197,7 @@
 				CB1394751822F88C00053086 /* ProviderAccountCell.m in Sources */,
 				CBA6D110181F1EF7006B73AC /* MTLGraphDataSet.m in Sources */,
 				CBFDFBC9182868980013BBA2 /* ActionCell.m in Sources */,
+				CB27B51B184420F1000B4D55 /* BeanstalkSettingsViewController.m in Sources */,
 				CB1394781822F96C00053086 /* ProviderAccountTableViewController.m in Sources */,
 				CB1947B3182D71F500944E80 /* MTLProviderAccount.m in Sources */,
 				CBCC6CA21819C1FF001030C2 /* UIView+BlurredSnapshot.m in Sources */,
@@ -1171,6 +1224,7 @@
 				CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */,
 				CBA676AE18085B150035368A /* NewRelicSettingsViewController.m in Sources */,
 				CBA676B118085B470035368A /* HerokuSettingsViewController.m in Sources */,
+				CB27B51E184420FE000B4D55 /* HockeyAppSettingsViewController.m in Sources */,
 				CB85A8441809F9A200698988 /* NSString+Inflections.m in Sources */,
 				CB429BB517F09882002273D6 /* OAuthViewController.m in Sources */,
 				CB429B9B17EFDAFF002273D6 /* GithubSettingsViewController.m in Sources */,
@@ -1200,6 +1254,7 @@
 				CBA6D12F18206E07006B73AC /* ProviderWizardCell.m in Sources */,
 				CBA6D0F4181DF4EE006B73AC /* TextItem.m in Sources */,
 				CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */,
+				CB27B52418442115000B4D55 /* CrashlyticsSettingsViewController.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
 				CB1947BF183077B400944E80 /* CSNotificationView.m in Sources */,
 				CBA6D11C181F2351006B73AC /* GraphDataDetail.m in Sources */,
@@ -1209,6 +1264,7 @@
 				CB30E09A183FC42F0067F5E1 /* ConnectionIntroViewController.m in Sources */,
 				CB4F87AC180F532500B685E1 /* TeammateCell.m in Sources */,
 				CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */,
+				CB27B52118442108000B4D55 /* AppfiguresSettingsViewController.m in Sources */,
 				CB0B906C17F4F47E00F706BE /* DetailViewController.m in Sources */,
 				CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */,
 				CB2F9FB01808B40A00F5F97C /* NSData+MPBase64.m in Sources */,

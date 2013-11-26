@@ -332,6 +332,9 @@
 	[self resizeTextViewByHeight:self.textView.contentSize.height - self.previousTextFieldHeight];
     [self.buttonSend setEnabled:NO];
     [self.imageInput addSubview:self.placeholderLabel];
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Message Sent" properties:@{}];
 	//[self scrollToBottomAnimated:YES];
     
 }

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Docked-ios/CardCell.m"
-            timestampString = "406882718.668398"
+            timestampString = "407042989.311882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "+heightOfContent:"
             landmarkType = "5">
          </BreakpointContent>

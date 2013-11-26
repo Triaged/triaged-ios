@@ -81,7 +81,7 @@
     
     [providerIconView setFrame:CGRectMake(14, 22.0, 28.0, 28.0)];
     [propertyLabel setFrame:CGRectMake(56, 26.0, 200.0, 20.0)];
-    [timestampLabel setFrame:CGRectMake(220, 28.0, 70.0, 16.0)];
+    [timestampLabel setFrame:CGRectMake(220, 30.0, 70.0, 16.0)];
     
     [actionLabel setFrame:CGRectMake(14, 66.0, 280.0, 18.0)];
     
@@ -115,6 +115,15 @@
 {
     NSAssert(NO, @"ConfigureForItem must be overwritten in a subclass.");
     
+}
+
+-(NSString *)propertyFormatter:(NSString *)property {
+    if ([property length] > 26) {
+        NSRange range = [property rangeOfComposedCharacterSequencesForRange:(NSRange){0, 26}];
+        property = [property substringWithRange:range];
+        property = [property stringByAppendingString:@"…"];
+    }
+    return property;
 }
 
 + (NSAttributedString *) attributedBodyText:(NSString *)bodyText

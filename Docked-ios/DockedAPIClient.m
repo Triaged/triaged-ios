@@ -14,6 +14,7 @@
 #import "Mantle.h"
 #import "TRJSONResponseSerializerWithData.h"
 
+//static NSString * const DockedAPIBaseURLString = @"http://cwhite.local:3000/api/v1/";
 static NSString * const DockedAPIBaseURLString = @"https://www.triaged.co/api/v1/";
 
 @implementation DockedAPIClient

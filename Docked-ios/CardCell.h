@@ -34,4 +34,6 @@
 + (NSAttributedString *) attributedBodyText:(NSString *)bodyText;
 + (CGFloat) heightOfBody:(NSAttributedString *)bodyText;
 
+-(NSString *)propertyFormatter:(NSString *)property;
+
 @end

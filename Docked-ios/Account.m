@@ -221,6 +221,7 @@
 {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.predicate = [NSPredicate predicateWithFormat:@"userID != %@", _userID];
+    request.predicate = [NSPredicate predicateWithFormat:@"email != %@", @"team@triaged.co"];
     NSArray * fetchedObjects = [[AppDelegate sharedDelegate].store.managedObjectContext executeFetchRequest:request error:nil];
     return fetchedObjects;
 }

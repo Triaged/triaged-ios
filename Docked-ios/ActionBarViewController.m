@@ -133,17 +133,15 @@
 
 -(IBAction)didTapExternalLinkButton
 {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Safari Opened" properties:@{}];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[feedItem htmlUrl]]];
 }
 
 
 -(IBAction)didTapShareButton
 {
-//    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"<html><body><p></p><br />", screenShot, nil] applicationActivities:nil];
-//    activityVC.excludedActivityTypes = @[ UIActivityTypeAddToReadingList, UIActivityTypePostToTwitter, UIActivityTypePostToFacebook, UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
-//    [self presentViewController:activityVC animated:YES completion:nil];
-    
-    
+
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
 	picker.mailComposeDelegate = self;
 	
@@ -166,7 +164,12 @@
 - (void)mailComposeController:(MFMailComposeViewController*)controller
           didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
-	[self dismissViewControllerAnimated:YES completion:NULL];
+    if (result == MFMailComposeResultSaved) {
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        [mixpanel track:@"Card Shared" properties:@{}];
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (UIImage*)imageByCropping:(UIImage *)imageToCrop toRect:(CGRect)rect

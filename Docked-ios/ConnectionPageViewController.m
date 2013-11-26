@@ -30,14 +30,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(40,40, 240, 80)];
+    headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(40,20, 240, 80)];
     [headlineLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:27.0]];
     headlineLabel.textColor = [UIColor whiteColor];
     headlineLabel.numberOfLines = 2;
     headlineLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:headlineLabel];
     
-    connectionsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 140, 320, 300)];
+    connectionsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 120, 320, 340)];
     connectionsTable.dataSource = self;
     connectionsTable.delegate = self;
     connectionsTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -46,7 +46,7 @@
     [self.view addSubview:connectionsTable];
 
     
-    workWarningLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 420, 280, 40)];
+    workWarningLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 440, 280, 40)];
     [workWarningLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:12.0]];
     workWarningLabel.textColor = [UIColor whiteColor];
     workWarningLabel.text = @"Your colleagues at triaged.co share connections, so, please only connect work accounts.";
@@ -67,18 +67,22 @@
                      @"id", @"github", @"id", @"kiln"];
     }
     if (index == 1){
-        headlineLabel.text = @"How do you track exceptions?";
-        predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
-                     @"id", @"sentry", @"id", @"airbrake"];
+        headlineLabel.text = @"How do you track errors?";
+        predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@ OR %K == %@)",
+                     @"id", @"sentry", @"id", @"airbrake", @"id", @"crashlytics"];
     } else if (index == 2) {
-        headlineLabel.text = @"Where do you host your app?";
-        predicate = [NSPredicate predicateWithFormat:@"(%K == %@)",
-                     @"id", @"heroku"];
+        headlineLabel.text = @"How do you deploy your app?";
+        predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
+                     @"id", @"heroku", @"id", @"beanstalk"];
     } else if (index == 3) {
-        headlineLabel.text = @"How do you analyze your app?";
+        headlineLabel.text = @"Do you have a mobile app?";
+        predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
+                     @"id", @"appfigures", @"id", @"hockey_app"];
+    } else if (index == 4) {
+        headlineLabel.text = @"How do you analyze your data?";
         predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
                      @"id", @"google_analytics", @"id", @"new_relic"];
-    } else if (index == 4) {
+    } else if (index == 5) {
         headlineLabel.text = @"Do you accept payments online?";
         predicate = [NSPredicate predicateWithFormat:@"(%K == %@)",
                      @"id", @"stripe"];

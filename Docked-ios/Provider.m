@@ -16,6 +16,10 @@
 #import "HerokuSettingsViewController.h"
 #import "AirbrakeSettingsViewController.h"
 #import "KilnSettingsViewController.h"
+#import "BeanstalkSettingsViewController.h"
+#import "CrashlyticsSettingsViewController.h"
+#import "AppfiguresSettingsViewController.h"
+#import "HockeyAppSettingsViewController.h"
 
 
 @implementation Provider
@@ -142,6 +146,34 @@
         @"icon" : @"kiln.png",
         @"settings_icon" : @"kiln-s.png",
         @"settings_class" : KilnSettingsViewController.class
+    },
+    @{  @"name" : @"Crashlytics",
+        @"short_name" : @"crashlytics",
+        @"id"   : @"crashlytics",
+        @"icon" : @"crashlytics.png",
+        @"settings_icon" : @"crashlytics-s.png",
+        @"settings_class" : CrashlyticsSettingsViewController.class
+    },
+    @{  @"name" : @"AppFigures",
+        @"short_name" : @"AppFigures",
+        @"id"   : @"appfigures",
+        @"icon" : @"appfigures.png",
+        @"settings_icon" : @"appfigures-s.png",
+        @"settings_class" : AppfiguresSettingsViewController.class
+    },
+    @{  @"name" : @"HockeyApp",
+        @"short_name" : @"HockeyApp",
+        @"id"   : @"hockey_app",
+        @"icon" : @"hockey_app.png",
+        @"settings_icon" : @"hockey_app-s.png",
+        @"settings_class" : HockeyAppSettingsViewController.class
+    },
+    @{  @"name" : @"Beanstalk",
+        @"short_name" : @"Beanstalk",
+        @"id"   : @"beanstalk",
+        @"icon" : @"Beanstalk.png",
+        @"settings_icon" : @"Beanstalk-s.png",
+        @"settings_class" : BeanstalkSettingsViewController.class
     },
     nil];
     
