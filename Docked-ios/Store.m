@@ -183,6 +183,7 @@
 
 - (void) userLoggedIn
 {
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     [self fetchRemoteFeedItems];
 }
 

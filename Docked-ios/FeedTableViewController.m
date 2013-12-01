@@ -87,6 +87,7 @@
     [self setupFetchedResultsController];
     
     // Appearance
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
     self.tableView.backgroundColor = BG_COLOR;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
