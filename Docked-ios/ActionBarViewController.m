@@ -11,6 +11,7 @@
 #import "SVProgressHUD.h"
 #import "NSString+Inflections.h"
 #import "ActionCell.h"
+#import "SVWebViewController.h"
 
 @interface ActionBarViewController () {
     NSArray *actions;
@@ -135,7 +136,9 @@
 {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Safari Opened" properties:@{}];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[feedItem htmlUrl]]];
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:[feedItem htmlUrl]];
+    [self.navigationController pushViewController:webViewController animated:YES];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[feedItem htmlUrl]]];
 }
 
 
@@ -192,8 +195,7 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetRGBStrokeColor(context, 239.0/255.0, 240.0/255.0, 245.0/255.0, 1.0);
-    //[[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-
+   
     CGContextStrokeRect(context, rect);
     UIImage *testImg =  UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

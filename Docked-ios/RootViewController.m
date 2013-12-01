@@ -10,13 +10,15 @@
 #import "FeedTableViewController.h"
 #import "CredentialStore.h"
 #import "WelcomeViewController.h"
-#import "SettingsMenuViewController.h"
+#import "ProviderSettingsMenuViewController.h"
 #import "ConnectionWizardViewController.h"
 #import "ConnectionIntroViewController.h"
 #import "VerifyViewController.h"
+#import "PKRevealController.h"
+#import "UserSettingsMenuViewController.h"
 
 
-@interface RootViewController () {
+@interface RootViewController () <PKRevealing> {
     FeedTableViewController *feedTableView;
     ConnectionIntroViewController *connectionIntroVC;
 }
@@ -39,11 +41,8 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-//    self.navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
-    
-    
-    
+    self.view.backgroundColor = BG_COLOR;
+
     [self setupViewControllers];
     [self addSettingsButton];
 	// Do any additional setup after loading the view.
@@ -102,14 +101,35 @@
 
 - (void)setupViewControllers
 {
+    
+    ProviderSettingsMenuViewController *providerSettingsVC = [[ProviderSettingsMenuViewController alloc] init];
+    UserSettingsMenuViewController *userSettingsVC = [[UserSettingsMenuViewController alloc] init];
+
+    
     feedTableView = [[FeedTableViewController alloc] init];
-    feedTableView.view.frame = self.view.frame;//CGRectMake(8, 0, self.view.frame.size.width - 16, self.view.frame.size.height);
     feedTableView.navController = self.navigationController;
     feedTableView.rootController = self;
-
-    [self addChildViewController:feedTableView];
-    [self.view addSubview:feedTableView.view];
-    [feedTableView didMoveToParentViewController:self];
+    
+//    [self addChildViewController:feedTableView];
+//    [self.view addSubview:feedTableView.view];
+//    
+//    //[self followScrollView:feedTableView.tableView];
+//    [feedTableView didMoveToParentViewController:self];
+    
+    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:feedTableView leftViewController:providerSettingsVC rightViewController:userSettingsVC];
+    
+    //[PKRevealController revealControllerWithFrontViewController:feedTableView providerSettingsVC:settingsVC];
+    [revealController setMinimumWidth:280.0 maximumWidth:310.0 forViewController:providerSettingsVC];
+    [revealController setMinimumWidth:280.0 maximumWidth:310.0 forViewController:userSettingsVC];
+    [self.revealController enterPresentationModeAnimated:YES completion:nil];
+    self.revealController.disablesFrontViewInteraction = YES;
+    revealController.delegate = self;
+    //revealController.quickSwipeVelocity = 1000;
+    
+    
+    [self addChildViewController:revealController];
+    [self.view addSubview:revealController.view];
+    [revealController didMoveToParentViewController:self];
 }
 
 - (void)addSettingsButton
@@ -126,20 +146,8 @@
 
 - (void)presentSettingsView
 {
-    SettingsMenuViewController *settingsVC = [[SettingsMenuViewController alloc] init];
-    
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:settingsVC];
-    
-    for (UIView *view in nav.navigationBar.subviews) {
-        for (UIView *view2 in view.subviews) {
-            if ([view2 isKindOfClass:[UIImageView class]]) {
-                [view2 removeFromSuperview];
-            }
-        }
-    }
-    nav.navigationBar.barTintColor = [UIColor whiteColor];
-    
+    ProviderSettingsMenuViewController *settingsVC = [[ProviderSettingsMenuViewController alloc] init];
+    TRNavigationViewController *nav = [[TRNavigationViewController alloc] initWithRootViewController:settingsVC];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

@@ -54,8 +54,7 @@
     
     //self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    self.view.backgroundColor = [[UIColor alloc]
-                                 initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
+    self.view.backgroundColor = BG_COLOR;
     self.view.layer.zPosition = -9999;
     
     scrollView = [[UIScrollView alloc] init];
@@ -86,7 +85,7 @@
     // External Link View
     
     actionBarVC.feedItem = _feedItem;
-    actionBarVC.view.frame = CGRectMake(8, cell.frame.size.height, 304, 100);
+    actionBarVC.view.frame = CGRectMake(6, cell.frame.size.height, 308, 100);
     [self addChildViewController:actionBarVC];
     [contentView addSubview:actionBarVC.view];
     
@@ -118,6 +117,10 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden: NO animated:YES];
+}
+
 
 -(void)viewDidLayoutSubviews
 {
@@ -131,7 +134,7 @@
 
 -(void)setContentSize {
     
-    CGFloat height = (messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height + 20);
+    CGFloat height = (messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height + 64);
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, height);
     [self.view sendSubviewToBack:scrollView];
 }

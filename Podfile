@@ -11,3 +11,8 @@ pod 'MRProgress', '~> 0.2'
 pod 'HTCopyableLabel'
 pod 'UITableView-NXEmptyView'
 pod 'JazzHands'
+pod 'AMScrollingNavbar'
+pod 'PKRevealController'
+pod 'NJKWebViewProgress'
+pod 'SVWebViewController', :head
+pod 'MTLog'

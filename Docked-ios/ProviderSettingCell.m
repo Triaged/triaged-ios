@@ -23,17 +23,18 @@
         // Initialization code
 
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-        lineView.frame = CGRectMake(70, 0, 250, 1);
-        [self.contentView addSubview: lineView];
+        self.separatorInset = UIEdgeInsetsMake(0, 56, 0, 0);
+//        UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
+//        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
+//        lineView.frame = CGRectMake(56, 0, 250, 1);
+//        [self.contentView addSubview: lineView];
         
         providerIconView = [[UIImageView alloc] init];
         providerIconView.frame = CGRectMake(14, 10, 28, 28);
         [self.contentView addSubview: providerIconView];
         
         
-        providerLabel = [[UILabel alloc] initWithFrame: CGRectMake(70, 10, 160, 30)];
+        providerLabel = [[UILabel alloc] initWithFrame: CGRectMake(56, 10, 160, 30)];
         [providerLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
         providerLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
 
@@ -49,11 +50,10 @@
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setFrame:(CGRect)frame {
+    frame.origin.x = 6.0f;
+    frame.size.width = 308.0f;
+    [super setFrame:frame];
 }
 
 - (void)configureForItem:(Provider *)provider
@@ -67,6 +67,27 @@
     } else {
         [connectedView removeFromSuperview];
     }
+}
+
+- (void)configureForDict:(NSDictionary *)provider
+{
+    self.providerIconView.image = [UIImage imageNamed:[provider objectForKey:@"settings_icon"]];
+    self.providerLabel.text = [[provider objectForKey:@"short_name"] humanize];
+    
+    Provider *providerObject = [[AppDelegate sharedDelegate].store.account providerWithName:[provider objectForKey:@"id"]];
+    
+//    if (providerObject.connected) {
+//        self.providerLabel.text = [NSString stringWithFormat:@"%@ IS CONNECTED",
+//                                   [[provider objectForKey:@"short_name"] uppercaseString] ];
+//        self.providerLabel.textColor = [UIColor blackColor];
+//        //[dataView addSubview:connectedView];
+//    } else {
+//        self.backgroundColor = [UIColor clearColor];
+//        self.providerLabel.text = [NSString stringWithFormat:@"CONNECT TO %@",
+//                                   [[provider objectForKey:@"short_name"] uppercaseString] ];
+//        self.providerLabel.textColor = [UIColor whiteColor];
+//        
+//    }
 }
 
 

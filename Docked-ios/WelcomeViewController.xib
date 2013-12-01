@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeViewController">
             <connections>
-                <outlet property="loginButton" destination="8VO-6c-D9U" id="1JL-zr-JJZ"/>
                 <outlet property="scrollView" destination="B65-b3-f9k" id="Zzh-F5-r5L"/>
                 <outlet property="signupButton" destination="iYY-jj-EdE" id="VQ9-Cm-K29"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -21,29 +20,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VO-6c-D9U">
-                            <rect key="frame" x="0.0" y="508" width="320" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="320" id="Ld9-qX-LTR"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="UTf-OU-JBv"/>
-                                <constraint firstAttribute="height" constant="60" id="xRD-5A-GMK"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                            <state key="normal" title="Log In">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="presentLoginView" destination="-1" eventType="touchUpInside" id="nI4-7X-Qbw"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYY-jj-EdE">
-                            <rect key="frame" x="0.0" y="448" width="320" height="60"/>
+                            <rect key="frame" x="15" y="448" width="290" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="320" id="6dZ-JM-JOL"/>
                                 <constraint firstAttribute="height" constant="60" id="Izo-l3-Fc0"/>
+                                <constraint firstAttribute="width" constant="290" id="ddw-Nb-sFZ"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="rNN-c4-8gd"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
@@ -55,16 +37,33 @@
                                 <action selector="presentSignupView" destination="-1" eventType="touchUpInside" id="WTe-7t-gHM"/>
                             </connections>
                         </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Already have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lY-yP-XgV">
+                            <rect key="frame" x="15" y="527" width="199" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOh-X2-PB5">
+                            <rect key="frame" x="259" y="523" width="43" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Log In">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="presentLoginView" destination="-1" eventType="touchUpInside" id="qCg-MD-k9p"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="8VO-6c-D9U" firstAttribute="top" secondItem="iYY-jj-EdE" secondAttribute="bottom" id="AU2-CE-DB1"/>
                         <constraint firstAttribute="width" constant="320" id="BEJ-co-L3D"/>
-                        <constraint firstAttribute="trailing" secondItem="iYY-jj-EdE" secondAttribute="trailing" id="Lmh-91-WoU"/>
-                        <constraint firstAttribute="trailing" secondItem="8VO-6c-D9U" secondAttribute="trailing" id="Zf8-wg-FG8"/>
+                        <constraint firstAttribute="trailing" secondItem="iYY-jj-EdE" secondAttribute="trailing" constant="15" id="Fna-Kd-xwj"/>
+                        <constraint firstAttribute="bottom" secondItem="5lY-yP-XgV" secondAttribute="bottom" constant="20" id="bfH-ZO-zqr"/>
+                        <constraint firstItem="iYY-jj-EdE" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" constant="15" id="bkF-Kr-X4l"/>
                         <constraint firstItem="iYY-jj-EdE" firstAttribute="top" secondItem="B65-b3-f9k" secondAttribute="top" constant="448" id="boe-9h-ler"/>
-                        <constraint firstItem="8VO-6c-D9U" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="l7Q-pk-Um5"/>
-                        <constraint firstAttribute="bottom" secondItem="8VO-6c-D9U" secondAttribute="bottom" id="nz5-ho-7g4"/>
-                        <constraint firstItem="iYY-jj-EdE" firstAttribute="leading" secondItem="B65-b3-f9k" secondAttribute="leading" id="us9-gb-sNQ"/>
+                        <constraint firstItem="5lY-yP-XgV" firstAttribute="top" secondItem="iYY-jj-EdE" secondAttribute="bottom" constant="19" id="dHq-QQ-gmf"/>
+                        <constraint firstAttribute="bottom" secondItem="lOh-X2-PB5" secondAttribute="bottom" constant="15" id="wFe-qf-0Ef"/>
+                        <constraint firstItem="lOh-X2-PB5" firstAttribute="top" secondItem="iYY-jj-EdE" secondAttribute="bottom" constant="15" id="xHf-Vc-Gjq"/>
                     </constraints>
                 </scrollView>
             </subviews>

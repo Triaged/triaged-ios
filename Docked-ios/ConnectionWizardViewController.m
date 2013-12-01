@@ -30,6 +30,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor = BG_COLOR;
     
     UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[ConnectionWizardViewController class], nil];
     pageControl.pageIndicatorTintColor = [UIColor colorWithRed:76.0f/255.0f green:89.0f/255.0f blue:127.0f/255.0f alpha:1.0f];
@@ -40,7 +41,7 @@
     
     self.pageController.dataSource = self;
     self.pageController.delegate = self;
-    [[self.pageController view] setFrame:CGRectMake(0,40,320, self.view.frame.size.height - 50)];
+    [[self.pageController view] setFrame:CGRectMake(0,100,320, self.view.frame.size.height - 110)];
     
     ConnectionPageViewController *initialViewController = [self viewControllerAtIndex:0];
     
@@ -110,8 +111,6 @@
         ConnectionPageViewController *viewController = [pendingViewControllers firstObject];
         if (viewController.index == 5) {
             finishButton.hidden = NO;
-        } else {
-            finishButton.hidden = YES;
         }
     }
     

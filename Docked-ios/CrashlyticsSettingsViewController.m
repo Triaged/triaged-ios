@@ -48,7 +48,7 @@
     
     // Instructions
     UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 140, 240, 40)];
-    [instructionsLabel setText:@"Please login to Kiln.\nGo to your project settings and add a webhook with the url:"];
+    [instructionsLabel setText:@"Please login to Crashlytics.\nGo to Settings -> App -> Integrations and add your API Token:"];
     [instructionsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     instructionsLabel.textColor = [UIColor blackColor];
     instructionsLabel.numberOfLines = 0;
@@ -58,7 +58,7 @@
     
     // Service URL
     HTCopyableLabel *serviceUrlLabel = [[HTCopyableLabel alloc] initWithFrame:CGRectMake(20, 205, 280, 20)];
-    [serviceUrlLabel setText:self.provider.webhookUrl];
+    [serviceUrlLabel setText:[[AppDelegate sharedDelegate].store.account apiToken]];
     [serviceUrlLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     [serviceUrlLabel setTextAlignment:NSTextAlignmentCenter];
     serviceUrlLabel.textColor = [UIColor colorWithRed:100.0f/255.0f green:101.0f/255.0f blue:197.0f/255.0f alpha:1.0f];

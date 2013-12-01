@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface TeammateCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *avatarView;
 @property (strong, nonatomic) UILabel *nameLabel;
 @property  BOOL cellIsForInvite;
+
+- (void)configureForItem:(User *)user;
 
 
 @end

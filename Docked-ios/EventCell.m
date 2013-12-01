@@ -18,8 +18,11 @@
     if (self) {
         // Initialization code
         
+        self.backgroundColor = [UIColor clearColor];
+        
         UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
         UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
+        lineView.backgroundColor = [UIColor blackColor];
         lineView.frame = CGRectMake(20, 0, 300, 1);
         [self.contentView addSubview: lineView];
         
@@ -39,13 +42,6 @@
         [self.contentView addSubview:connectedView];
     }
     return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

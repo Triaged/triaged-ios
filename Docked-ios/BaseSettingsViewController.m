@@ -37,10 +37,14 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
+                                   initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSettingsView)];
+    [self.navigationItem setLeftBarButtonItem:doneButton];
+    
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:scrollView];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = BG_COLOR;
     
     self.providerHeroImageView = [[UIImageView alloc] init];
     self.providerHeroImageView.frame = CGRectMake(45, 0, 230, 125);
@@ -85,17 +89,6 @@
     ([self isConnected] ?  [self setupConnectedState] : [self setupUnconnectedState]);
 
     
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if (self.navigationController.navigationBar.backItem == NULL) {
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
-                                       initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSettingsView)];
-        [self.navigationItem setLeftBarButtonItem:doneButton];
-    }
 }
 
 -(void)setupConnectedState

@@ -30,7 +30,8 @@
       @"pushEnabled" : @"push_enabled",
       @"validatedCompany" : @"validated_belongs_to_company",
       @"personalAccount" : @"personal_account",
-      @"validationToken" : @"company_validation_token"
+      @"validationToken" : @"company_validation_token",
+      @"apiToken" : @"api_token"
     };
 }
 
@@ -220,8 +221,7 @@
 -(NSArray *)team
 {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-    request.predicate = [NSPredicate predicateWithFormat:@"userID != %@", _userID];
-    request.predicate = [NSPredicate predicateWithFormat:@"email != %@", @"team@triaged.co"];
+    request.predicate = [NSPredicate predicateWithFormat:@"userID != %@ && email != %@", _userID, @"team@triaged.co"];
     NSArray * fetchedObjects = [[AppDelegate sharedDelegate].store.managedObjectContext executeFetchRequest:request error:nil];
     return fetchedObjects;
 }

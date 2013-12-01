@@ -8,6 +8,7 @@
 
 #import "ConnectionPageViewController.h"
 #import "ProviderWizardCell.h"
+#import "ProviderSettingCell.h"
 #import "BaseSettingsViewController.h"
 #import "Provider.h"
 
@@ -30,32 +31,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(40,20, 240, 80)];
-    [headlineLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:27.0]];
-    headlineLabel.textColor = [UIColor whiteColor];
+    headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,40, 300, 80)];
+    [headlineLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:22.0]];
+    headlineLabel.textColor = TINT_COLOR;
     headlineLabel.numberOfLines = 2;
     headlineLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:headlineLabel];
     
-    connectionsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 120, 320, 340)];
+    connectionsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 120, 320, 340) style:UITableViewStyleGrouped];
+    
     connectionsTable.dataSource = self;
     connectionsTable.delegate = self;
-    connectionsTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    connectionsTable.separatorColor = BG_COLOR;
     connectionsTable.backgroundColor = [UIColor clearColor];
     connectionsTable.scrollEnabled = NO;
     [self.view addSubview:connectionsTable];
 
-    
-    workWarningLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 440, 280, 40)];
-    [workWarningLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:12.0]];
-    workWarningLabel.textColor = [UIColor whiteColor];
-    workWarningLabel.text = @"Your colleagues at triaged.co share connections, so, please only connect work accounts.";
-    workWarningLabel.numberOfLines = 2;
-    workWarningLabel.textAlignment = NSTextAlignmentCenter;
-
-    [self.view addSubview:workWarningLabel];
-
-}
+    }
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -84,14 +76,14 @@
                      @"id", @"google_analytics", @"id", @"new_relic"];
     } else if (index == 5) {
         headlineLabel.text = @"Do you accept payments online?";
-        predicate = [NSPredicate predicateWithFormat:@"(%K == %@)",
-                     @"id", @"stripe"];
+        predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
+                     @"id", @"stripe", @"id", @"braintree"];
     }
     
     providers = [[Provider currentProviders] filteredArrayUsingPredicate:predicate];
     [connectionsTable reloadData];
     [connectionsTable setNeedsDisplay];
-   [headlineLabel setNeedsDisplay];
+    [headlineLabel setNeedsDisplay];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
@@ -107,15 +99,15 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *CellIdentifier = @"ProviderCell";
-    ProviderWizardCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ] ;
+    ProviderSettingCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ] ;
     if ( !cell )
     {
-        cell = [ [ ProviderWizardCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
+        cell = [ [ ProviderSettingCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
     
     NSDictionary *provider = providers[indexPath.row];
     
-    [cell configureForItem:provider];
+    [cell configureForDict:provider];
     
     return cell;
 }
@@ -126,23 +118,13 @@
     Class providerSettingsClass = [provider objectForKey:@"settings_class"];
     
     BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:settingsVC ];
-    
-    for (UIView *view in nav.navigationBar.subviews) {
-        for (UIView *view2 in view.subviews) {
-            if ([view2 isKindOfClass:[UIImageView class]]) {
-                [view2 removeFromSuperview];
-            }
-        }
-    }
-    nav.navigationBar.barTintColor = [UIColor whiteColor];
-
-    
+    TRNavigationViewController *nav = [[TRNavigationViewController alloc] initWithRootViewController:settingsVC ];
+   
     [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 96;
+    return 44;
 }
 
 

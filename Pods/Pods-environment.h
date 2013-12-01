@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 0
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 3
 
+// AMScrollingNavbar
+#define COCOAPODS_POD_AVAILABLE_AMScrollingNavbar
+#define COCOAPODS_VERSION_MAJOR_AMScrollingNavbar 0
+#define COCOAPODS_VERSION_MINOR_AMScrollingNavbar 3
+#define COCOAPODS_VERSION_PATCH_AMScrollingNavbar 0
+
 // CorePlot
 #define COCOAPODS_POD_AVAILABLE_CorePlot
 #define COCOAPODS_VERSION_MAJOR_CorePlot 1
@@ -72,6 +78,12 @@
 #define COCOAPODS_VERSION_MINOR_MRProgress 2
 #define COCOAPODS_VERSION_PATCH_MRProgress 1
 
+// MTLog
+#define COCOAPODS_POD_AVAILABLE_MTLog
+#define COCOAPODS_VERSION_MAJOR_MTLog 0
+#define COCOAPODS_VERSION_MINOR_MTLog 6
+#define COCOAPODS_VERSION_PATCH_MTLog 1
+
 // Mantle
 #define COCOAPODS_POD_AVAILABLE_Mantle
 #define COCOAPODS_VERSION_MAJOR_Mantle 1
@@ -84,11 +96,23 @@
 #define COCOAPODS_VERSION_MINOR_Mantle_extobjc 3
 #define COCOAPODS_VERSION_PATCH_Mantle_extobjc 0
 
+// NJKWebViewProgress
+#define COCOAPODS_POD_AVAILABLE_NJKWebViewProgress
+#define COCOAPODS_VERSION_MAJOR_NJKWebViewProgress 0
+#define COCOAPODS_VERSION_MINOR_NJKWebViewProgress 1
+#define COCOAPODS_VERSION_PATCH_NJKWebViewProgress 8
+
 // NSDate+TimeAgo
 #define COCOAPODS_POD_AVAILABLE_NSDate_TimeAgo
 #define COCOAPODS_VERSION_MAJOR_NSDate_TimeAgo 1
 #define COCOAPODS_VERSION_MINOR_NSDate_TimeAgo 0
 #define COCOAPODS_VERSION_PATCH_NSDate_TimeAgo 2
+
+// PKRevealController
+#define COCOAPODS_POD_AVAILABLE_PKRevealController
+#define COCOAPODS_VERSION_MAJOR_PKRevealController 2
+#define COCOAPODS_VERSION_MINOR_PKRevealController 0
+#define COCOAPODS_VERSION_PATCH_PKRevealController 6
 
 // SGNavigationProgress
 #define COCOAPODS_POD_AVAILABLE_SGNavigationProgress
@@ -107,6 +131,12 @@
 #define COCOAPODS_VERSION_MAJOR_SVProgressHUD 0
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_SVProgressHUD 0
+
+// SVWebViewController
+#define COCOAPODS_POD_AVAILABLE_SVWebViewController
+#define COCOAPODS_VERSION_MAJOR_SVWebViewController 1
+#define COCOAPODS_VERSION_MINOR_SVWebViewController 0
+#define COCOAPODS_VERSION_PATCH_SVWebViewController 0
 
 // UITableView-NXEmptyView
 #define COCOAPODS_POD_AVAILABLE_UITableView_NXEmptyView

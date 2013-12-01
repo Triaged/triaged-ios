@@ -53,6 +53,7 @@
     eventsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, 320, 184)];
     eventsTableView.delegate = self;
     eventsTableView.dataSource = self;
+    eventsTableView.backgroundColor = [UIColor clearColor];
 
     eventsTableView.scrollEnabled = NO;
     eventsTableView.allowsSelection = NO;

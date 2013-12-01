@@ -93,7 +93,6 @@
     [self.textView setTextColor: [[UIColor alloc] initWithRed:76.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f]];
     [self.textView setKeyboardAppearance:UIKeyboardAppearanceDefault];
     [self.textView setKeyboardType:UIKeyboardTypeTwitter];
-    //[self.textView setReturnKeyType:UIReturnKeyDefault];
     [self.textView registerAutoCompleteCellClass:[AtReplyMessageCell class]
                                        forCellReuseIdentifier:@"AtReplyCellID"];
     self.textView.autoCompleteDataSource = self;

@@ -7,6 +7,7 @@
 //
 
 #import "TeammateCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation TeammateCell
 
@@ -17,20 +18,22 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.selectionStyle = UITableViewCellSeparatorStyleNone;
-        
-        UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-        lineView.frame = CGRectMake(70, 0, 250, .5);
-        [self.contentView addSubview: lineView];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.separatorInset = UIEdgeInsetsMake(0, 56, 0, 0);
+        self.userInteractionEnabled = NO;
+//        
+//        UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
+//        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
+//        lineView.frame = CGRectMake(70, 0, 250, .5);
+//        [self.contentView addSubview: lineView];
         
         // Avatar image
         UIImage *avatarIcon = [UIImage imageNamed:@"avatar.png"];
         avatarView = [[UIImageView alloc] initWithImage:avatarIcon];
-        avatarView.frame = CGRectMake(14, 6, 36, 36);
+        avatarView.frame = CGRectMake(14, 7, 30, 30);
         [self.contentView addSubview: avatarView];
         
-        nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(70, 10, 200, 30)];
+        nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(56, 7, 200, 30)];
         [nameLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
         nameLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
         [nameLabel setLineBreakMode: NSLineBreakByClipping];
@@ -39,6 +42,13 @@
 
     }
     return self;
+}
+
+
+- (void)setFrame:(CGRect)frame {
+    frame.origin.x = 6.0f;
+    frame.size.width = 272.0f;
+    [super setFrame:frame];
 }
 
 -(void) layoutSubviews {
@@ -52,12 +62,12 @@
     }
 }
 
+- (void)configureForItem:(User *)user {
+    
+    nameLabel.text = user.name;
+    NSURL *avatarUrl = [NSURL URLWithString:user.avatarUrl];
+    [avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

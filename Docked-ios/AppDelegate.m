@@ -11,7 +11,7 @@
 #import "Account.h"
 #import "PersistentStack.h"
 #import "RootViewController.h"
-#import "SettingsMenuViewController.h"
+#import "ProviderSettingsMenuViewController.h"
 #import "DetailViewController.h"
 #import "WelcomeViewController.h"
 #import "CredentialStore.h"
@@ -81,12 +81,12 @@
 
 - (void) setBaseStyles
 {
-    self.window.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-    self.window.tintColor = [[UIColor alloc] initWithRed:105.0f/255.0f green:125.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
+    self.window.backgroundColor = BG_COLOR;
+    self.window.tintColor = TINT_COLOR;
     
+    UIColor *tint = TINT_COLOR;
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
-                                                                           fontWithName:@"Avenir-Book" size:17], NSFontAttributeName,
-                                [[UIColor alloc] initWithRed:105.0f/255.0f green:125.0f/255.0f blue:165.0f/255.0f alpha:1.0f], NSForegroundColorAttributeName, nil];
+                                                                           fontWithName:@"Avenir-Book" size:17], NSFontAttributeName, tint,NSForegroundColorAttributeName, nil];
     
     [[UINavigationBar appearance] setTitleTextAttributes:attributes];
     [[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];

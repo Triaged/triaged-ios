@@ -51,7 +51,8 @@
         
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
         [bodyLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:14]];
-        bodyLabel.textColor = [[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
+        bodyLabel.textColor = BODY_COLOR;
+        //[[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
         [bodyLabel setLineBreakMode: NSLineBreakByWordWrapping];
         bodyLabel.numberOfLines = 0;
         [bodyLabel sizeToFit];
@@ -76,8 +77,8 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-    frame.origin.x = 8.0f;
-    frame.size.width = 304.0f;
+    frame.origin.x = 6.0f;
+    frame.size.width = 308.0f;
     [super setFrame:frame];
 }
 
@@ -98,7 +99,7 @@
     [super layoutSubviews];
     
     [authorLabel setFrame:CGRectMake(56.0, 14.0, 220.0, 18.0)];
-    [timestampLabel setFrame:CGRectMake(220.0, 16.0, 70.0, 12.0)];
+    [timestampLabel setFrame:CGRectMake(224.0, 16.0, 70.0, 12.0)];
 
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:bodyLabel.text];
     CGRect newFrame = CGRectMake(56.0, 34.0, 240, [MessageCell heightOfBody:attributedBodyText]);
@@ -116,8 +117,8 @@
 
 -(void) layoutMoreMessages
 {
-    [moreMessagesIcon setFrame:CGRectMake(218, bodyLabel.frame.size.height+39, 14, 14)];
-    [moreMessagesLabel setFrame:CGRectMake(235.0, bodyLabel.frame.size.height+36, 55.0, 20.0)];
+    [moreMessagesIcon setFrame:CGRectMake(222, bodyLabel.frame.size.height+39, 14, 14)];
+    [moreMessagesLabel setFrame:CGRectMake(239.0, bodyLabel.frame.size.height+36, 55.0, 20.0)];
     [self.contentView addSubview: moreMessagesIcon];
     [self.contentView addSubview: moreMessagesLabel];
 }

@@ -33,12 +33,6 @@
     
     self.navigationItem.hidesBackButton = YES;
     
-    //backButton = self.navigationItem.backBarButtonItem;
-    
-//    UIImage * backImage = [UIImage imageNamed:@"cog.png"];
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:nil action:nil];
-//    self.navigationItem.leftBarButtonItem.title = @"back";
-//    
     // Card View
     UIView* coverUpView = [[UIView alloc] initWithFrame:CGRectMake(0, _cardImageView.frame.size.height -1, _cardImageView.frame.size.width, 1)];/// change size as you need.
     coverUpView.backgroundColor = [UIColor whiteColor];
@@ -78,7 +72,7 @@
                             options: UIViewAnimationOptionCurveEaseOut
                          animations:^{
                              
-                            _cardImageView.frame = CGRectMake(8, 64, 304, _cardImageView.frame.size.height );
+                            _cardImageView.frame = CGRectMake(6, 64, 308, _cardImageView.frame.size.height );
                             messageToolbarView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height - 40, self.view.frame.size.width, 40);
 
                          }

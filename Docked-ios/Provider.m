@@ -20,6 +20,7 @@
 #import "CrashlyticsSettingsViewController.h"
 #import "AppfiguresSettingsViewController.h"
 #import "HockeyAppSettingsViewController.h"
+#import "BraintreeSettingsViewController.h"
 
 
 @implementation Provider
@@ -171,9 +172,16 @@
     @{  @"name" : @"Beanstalk",
         @"short_name" : @"Beanstalk",
         @"id"   : @"beanstalk",
-        @"icon" : @"Beanstalk.png",
+        @"icon" : @"beanstalk.png",
         @"settings_icon" : @"Beanstalk-s.png",
         @"settings_class" : BeanstalkSettingsViewController.class
+    },
+    @{  @"name" : @"Braintree",
+        @"short_name" : @"Braintree",
+        @"id"   : @"braintree",
+        @"icon" : @"braintree.png",
+        @"settings_icon" : @"braintree-s.png",
+        @"settings_class" : BraintreeSettingsViewController.class
     },
     nil];
     

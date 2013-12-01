@@ -43,6 +43,13 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
+                                   initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissAccountView)];
+    [self.navigationItem setRightBarButtonItem:doneButton];
+    
+    self.view.backgroundColor = BG_COLOR;
+
+    
     self.title = @"Account";
     
     nameLabel.text = currentAccount.name;
@@ -189,6 +196,12 @@
                        error:(NSError *)error{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(void) dismissAccountView
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 #pragma mark TeamTableView

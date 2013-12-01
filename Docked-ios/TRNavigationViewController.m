@@ -40,8 +40,9 @@
     
     //self.navigationBar.layer.opacity = 0.0;
     
-    self.navigationBar.barTintColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-    self.navigationController.navigationBar.translucent = NO;
+    self.navigationBar.barTintColor = BAR_TINT_COLOR;
+    self.navigationBar.translucent = NO;
+    
     
 //    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_navbar.png"] forBarMetrics:UIBarMetricsDefault];
 

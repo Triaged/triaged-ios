@@ -19,6 +19,7 @@
 @property (nonatomic, copy, readonly) NSString *email;
 @property (nonatomic, copy, readonly) NSString *avatarUrl;
 @property (nonatomic, copy, readonly) NSString *companyName;
+@property (nonatomic, copy, readonly) NSString *apiToken;
 @property (nonatomic, readonly) BOOL pushEnabled;
 @property (nonatomic, readonly) BOOL validatedCompany;
 @property (nonatomic, readonly) BOOL personalAccount;

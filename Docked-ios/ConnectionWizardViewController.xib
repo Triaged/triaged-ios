@@ -15,10 +15,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="welcome_bg" translatesAutoresizingMaskIntoConstraints="NO" id="uws-64-UfG">
-                    <rect key="frame" x="0.0" y="-6" width="320" height="574"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IQ-Ge-v8J">
                     <rect key="frame" x="259" y="518" width="50" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -35,17 +31,34 @@
                         <action selector="finishConnectionWizard:" destination="-1" eventType="touchUpInside" id="6zx-OW-iak"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect Accounts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9N5-ev-FWw">
+                    <rect key="frame" x="91" y="47" width="138" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                    <color key="textColor" red="0.19607843137254902" green="0.22352941176470587" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your team will share these connections, so please only connect work accounts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="Avv-Eu-ldL">
+                    <rect key="frame" x="27" y="77" width="267" height="39"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                    <color key="textColor" red="0.19607843137254902" green="0.22352941176470587" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Avv-Eu-ldL" secondAttribute="trailing" constant="26" id="2zm-9e-QhN"/>
+                <constraint firstItem="Avv-Eu-ldL" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="27" id="3wx-0a-7RA"/>
                 <constraint firstAttribute="trailing" secondItem="8IQ-Ge-v8J" secondAttribute="trailing" constant="11" id="54J-Fd-IKl"/>
+                <constraint firstItem="Avv-Eu-ldL" firstAttribute="top" secondItem="9N5-ev-FWw" secondAttribute="bottom" constant="8" id="CXs-Hg-SzU"/>
+                <constraint firstAttribute="trailing" secondItem="9N5-ev-FWw" secondAttribute="trailing" constant="91" id="FNa-AO-d5g"/>
+                <constraint firstItem="9N5-ev-FWw" firstAttribute="top" secondItem="1" secondAttribute="top" constant="47" id="hSx-KQ-0EJ"/>
                 <constraint firstAttribute="bottom" secondItem="8IQ-Ge-v8J" secondAttribute="bottom" constant="6" id="lE3-eB-RDm"/>
+                <constraint firstItem="9N5-ev-FWw" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="91" id="qJR-H3-s7q"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
-    <resources>
-        <image name="welcome_bg" width="320" height="568"/>
-    </resources>
 </document>

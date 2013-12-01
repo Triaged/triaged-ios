@@ -21,9 +21,8 @@
         shouldCache = YES;
         shouldDrawSeparator = YES;
 
-        separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 8)];/// change size as you need.
-        separatorLineView.backgroundColor = [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-        
+        separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 6)];/// change size as you need.
+        separatorLineView.backgroundColor = BG_COLOR;
 
         providerIconView = [[UIImageView alloc] initWithFrame: CGRectZero];
         providerIconView.contentMode = UIViewContentModeScaleAspectFit;
@@ -31,7 +30,8 @@
         
         propertyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
         [propertyLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:16.0]];
-        propertyLabel.textColor = [[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
+        propertyLabel.textColor = BODY_COLOR;
+//[[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
         [propertyLabel setLineBreakMode: NSLineBreakByClipping];
         propertyLabel.numberOfLines = 1;
         [self.contentView addSubview: propertyLabel];
@@ -54,7 +54,8 @@
         [self.contentView addSubview: actionLabel];
         
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        bodyLabel.textColor = [[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
+        bodyLabel.textColor = BODY_COLOR;
+        //[[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
         bodyLabel.numberOfLines = 0;
         [bodyLabel sizeToFit];
         [self.contentView addSubview: bodyLabel];
@@ -63,8 +64,8 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-    frame.origin.x = 8.0f;
-    frame.size.width = 304.0f;
+    frame.origin.x = 6.0f;
+    frame.size.width = 308.0f;
     [super setFrame:frame];
 }
 
@@ -81,7 +82,7 @@
     
     [providerIconView setFrame:CGRectMake(14, 22.0, 28.0, 28.0)];
     [propertyLabel setFrame:CGRectMake(56, 26.0, 200.0, 20.0)];
-    [timestampLabel setFrame:CGRectMake(220, 30.0, 70.0, 16.0)];
+    [timestampLabel setFrame:CGRectMake(224, 30.0, 70.0, 16.0)];
     
     [actionLabel setFrame:CGRectMake(14, 66.0, 280.0, 18.0)];
     

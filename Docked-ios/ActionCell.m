@@ -31,7 +31,7 @@
         
         actionLabel = [[UILabel alloc] initWithFrame: CGRectMake(50, 10, 160, 30)];
         actionLabel.font = [UIFont fontWithName:@"Avenir-Book" size:16.0];
-        actionLabel.textColor = [[UIColor alloc] initWithRed:105.0f/255.0f green:125.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
+        actionLabel.textColor = TINT_COLOR;
         [actionLabel setLineBreakMode: NSLineBreakByClipping];
         actionLabel.numberOfLines = 1;
         [self.contentView addSubview: actionLabel];

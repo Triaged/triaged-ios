@@ -36,7 +36,8 @@
     
     self.tableView.bounces = NO;
     self.tableView.backgroundColor  = [UIColor clearColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorColor = BG_COLOR;
     self.tableView.scrollEnabled = NO;
 }
 
@@ -98,7 +99,10 @@
     Class providerSettingsClass = [providerSettings objectForKey:@"settings_class"];
 
     BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
-    [self.navigationController pushViewController:settingsVC animated:YES];
+    
+    TRNavigationViewController *nav = [[TRNavigationViewController alloc] initWithRootViewController:settingsVC ];
+    [self presentViewController:nav animated:YES completion:nil];
+
     
 }
 
