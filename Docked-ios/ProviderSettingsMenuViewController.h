@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ProviderSettingsTableViewController.h"
 
-@interface ProviderSettingsMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ProviderSettingsMenuViewController : UIViewController
 
 @end

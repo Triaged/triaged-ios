@@ -30,6 +30,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.view.backgroundColor = BG_COLOR;
     }
     return self;
 }
@@ -42,30 +43,31 @@
     
     scrollView = [[UIScrollView alloc] init];
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-    scrollView.frame = self.view.frame;
+    CGRect scrollframe = self.view.frame;
+    scrollframe.size.width = 350;
+    scrollView.frame = scrollframe;
     [self.view addSubview:scrollView];
     
     // Connected Label
     settingsLabel = [[UILabel alloc] init];
-    settingsLabel.frame = CGRectMake(0, 30, 320, 20);
-    settingsLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:16.0];
-    settingsLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
-    settingsLabel.textAlignment = NSTextAlignmentCenter;
+    settingsLabel.frame = CGRectMake(50, 40, 276, 20);
+    settingsLabel.font = [UIFont fontWithName:@"Avenir-Book" size:14.0];
+    settingsLabel.textColor = [[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
     [scrollView addSubview:settingsLabel];
     
     // Account Button
     
-    UIButton *accountButton = [[UIButton alloc] initWithFrame:CGRectMake(280, 24, 30, 30)];
-    [accountButton setImage:[UIImage imageNamed:@"cog.png"] forState:UIControlStateNormal];
-    [accountButton addTarget:self action:@selector(showAccount) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:accountButton];
+//    UIButton *accountButton = [[UIButton alloc] initWithFrame:CGRectMake(280, 24, 30, 30)];
+//    [accountButton setImage:[UIImage imageNamed:@"cog.png"] forState:UIControlStateNormal];
+//    [accountButton addTarget:self action:@selector(showAccount) forControlEvents:UIControlEventTouchUpInside];
+//    [scrollView addSubview:accountButton];
     
     
     
     // Connected Providers TableView
     usersTableVC = [[UserSettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self addChildViewController:usersTableVC];
-    CGRect frame = CGRectMake(34, 70, 282, self.view.frame.size.height - 40);
+    CGRect frame = CGRectMake(34, 30, 282, self.view.frame.size.height - 40);
     usersTableVC.tableView.frame = frame;
     UITableView *usersTableView = usersTableVC.tableView;
     [scrollView  addSubview:usersTableView];
@@ -73,12 +75,12 @@
     
     
     usersTableVC.users = [[AppDelegate sharedDelegate].store.account team];
-    settingsLabel.text = (usersTableVC.users.count > 0) ? @"Teammates" : @"No Teammates yet";
+    
 
-    InviteUserButton = [[TRButton alloc] initWithFrame:CGRectMake(48, 320, 256, 40)];
-    [InviteUserButton setTitle:@"Invite Teammates" forState:UIControlStateNormal];
-    [InviteUserButton addTarget:self action:@selector(inviteUser) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:InviteUserButton];
+//    InviteUserButton = [[TRButton alloc] initWithFrame:CGRectMake(48, 320, 256, 40)];
+//    [InviteUserButton setTitle:@"Invite Teammates" forState:UIControlStateNormal];
+//    [InviteUserButton addTarget:self action:@selector(inviteUser) forControlEvents:UIControlEventTouchUpInside];
+//    [scrollView addSubview:InviteUserButton];
 
 }
 
@@ -94,10 +96,9 @@
 }
 
 -(void)refreshView {
-    //[accountSettingsTableView reloadData];
     usersTableVC.users = [[AppDelegate sharedDelegate].store.account team];
     [usersTableVC refreshTableView];
-    settingsLabel.text = (usersTableVC.users.count > 0) ? @"Teammates" : @"No Teammates yet";
+    settingsLabel.text = (usersTableVC.users.count > 0) ? @"Team Members" : @"No Team Members Yet";
     [self setContentSize];
 }
 
@@ -116,7 +117,7 @@
 
 -(void)showAccount {
     AccountViewController *accountVC = [[AccountViewController alloc] init];
-    TRNavigationViewController *nav = [[TRNavigationViewController alloc] initWithRootViewController:accountVC ];
+    TRNavigationController *nav = [[TRNavigationController alloc] initWithRootViewController:accountVC ];
     
     [self presentViewController:nav animated:YES completion:nil];
 

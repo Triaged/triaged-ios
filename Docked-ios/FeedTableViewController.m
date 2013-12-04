@@ -20,6 +20,8 @@
 #import "EmptyFeedViewController.h"
 #import "UIScrollView+UzysCircularProgressPullToRefresh.h"
 
+
+
 @interface FeedTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) FetchedFeedItemsDataSource *fetchedFeedItemsDataSource;
@@ -39,6 +41,7 @@
                                                  selector:@selector(refreshFeed)
                                                      name:@"feedUpdated"
                                                    object:nil];
+        
     }
     return self;
 }
@@ -47,18 +50,16 @@
 {
     [super viewDidLoad];
     
-
-    self.view.backgroundColor = BG_COLOR;
     [self setupTableView];
     self.tableView.delegate = self;
-
+    
     EmptyFeedViewController *emptyVC = [[EmptyFeedViewController alloc] init];
     self.tableView.nxEV_emptyView = emptyVC.view;
+    
 }
 
 -(void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    
     // Account for Status bar
     CGRect frame = self.view.frame;
     frame.origin.y = 20;
@@ -66,17 +67,20 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+
     [self.navigationController setNavigationBarHidden: YES animated:YES];
-    
+
+
     //Because of self.automaticallyAdjustsScrollViewInsets you must add code below in viewWillApper
     [self.tableView addPullToRefreshActionHandler:^{
         [[AppDelegate sharedDelegate].store fetchRemoteFeedItems];
     }];
     
-    [self.tableView.pullToRefreshView setImageIcon:[UIImage imageNamed:@"triangle.png"]];
+    [self.tableView.pullToRefreshView setImageIcon:[UIImage imageNamed:@"logo_triage.png"]];
     [self.tableView.pullToRefreshView setSize:CGSizeMake(30, 26.5)];
     [self.tableView.pullToRefreshView setBorderWidth:0];
-    
+
+
 
     
     }
@@ -91,15 +95,6 @@
     self.tableView.backgroundColor = BG_COLOR;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    
-    
-    
-    // Refresh control
-//    UIRefreshControl *refreshControl = [UIRefreshControl new];
-//    refreshControl.tintColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
-//    [refreshControl addTarget:[AppDelegate sharedDelegate].store action:@selector(fetchRemoteFeedItems) forControlEvents:UIControlEventValueChanged];
-//     self.refreshControl = refreshControl;
-    // Pull to refresh control
 }
 
 - (void)setupFetchedResultsController
@@ -150,11 +145,7 @@
     [ssVC setCardImageView:cardImageView];
     [ssVC setDetailViewController:detailVC];
     [ssVC setNavController:navController];
-    
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ssVC ];
-//    nav.navigationBar.barTintColor = [[UIColor alloc] initWithRed:252.0f/255.0f green:252.0f/255.0f blue:252.0f/255.0f alpha:1.0f];
 
-    
     [self.navController pushViewController:ssVC animated:NO];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
@@ -185,17 +176,16 @@
     return 140;
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    
-//    if( [scrollView.panGestureRecognizer translationInView:self.view].y  < 0.0f ) {
-//        [[self navigationController] setNavigationBarHidden:YES animated:YES];
-//    } else if ([scrollView.panGestureRecognizer translationInView:self.view].y  > 0.0f  ) {
-//            [[self navigationController] setNavigationBarHidden:NO animated:YES];
-//
-//    }
-//    
-//  
-//    
-//}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static int index = -1;
+    if (indexPath.row > index) {
+        [tableView sendSubviewToBack:cell];
+    }
+    else {
+        [tableView bringSubviewToFront:cell];
+    }
+    index = indexPath.row;
+}
 
 @end

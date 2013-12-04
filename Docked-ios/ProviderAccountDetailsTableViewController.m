@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = BG_COLOR;
+    
     self.navigationItem.title = accountDetailsTitle;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

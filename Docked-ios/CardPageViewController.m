@@ -39,8 +39,8 @@
     
     
     headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,324, 280, 60)];
-    [headlineLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:18.0]];
-    headlineLabel.textColor = [UIColor colorWithRed:181.0f/255.0f green:187.0f/255.0f blue:202.0f/255.0f alpha:1.0f];
+    [headlineLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:19.0]];
+    headlineLabel.textColor = [UIColor colorWithRed:105.0f/255.0f green:113.0f/255.0f blue:136.0f/255.0f alpha:1.0f];
 
     headlineLabel.textAlignment = NSTextAlignmentCenter;
     headlineLabel.numberOfLines = 3;
@@ -55,9 +55,18 @@
 {
     if (index == 0){
         headlineLabel.text = @"Everything that's happening at work, in one place.";
-
-        cardImageView.image = [UIImage imageNamed:@"triangle.png"];
-        cardImageView.frame = CGRectMake(109.5,130,101,89);
+        
+        UILabel *logoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,143, 320, 50)];
+        [logoLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:40.0]];
+        logoLabel.textColor = [UIColor colorWithRed:127.0f/255.0f green:147.0f/255.0f blue:212.0f/255.0f alpha:1.0f];
+        logoLabel.text = @"Triage";
+        logoLabel.textAlignment = NSTextAlignmentCenter;
+        logoLabel.numberOfLines = 1;
+        [self.view addSubview:logoLabel];
+        
+        
+        cardImageView.image = [UIImage imageNamed:@"logo_triage.png"];
+        cardImageView.frame = CGRectMake(129,67,62,54);
     }
     if (index == 1){
         headlineLabel.text = @"Triage monitors the services you already use,";
@@ -79,7 +88,7 @@
     } else if (index == 4) {
         cardImageView.image = [UIImage imageNamed:@"card_github.png"];
         cardImageView.frame = CGRectMake(7.5,48.5,305, 253);
-        headlineLabel.text = @"letting you explore, chat, resolve and share, in a single tap.";
+        headlineLabel.text = @"helping you explore, chat, resolve and share, in a single tap.";
     }
     
     [headlineLabel setNeedsDisplay];

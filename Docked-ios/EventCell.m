@@ -26,7 +26,7 @@
         lineView.frame = CGRectMake(20, 0, 300, 1);
         [self.contentView addSubview: lineView];
         
-        eventLabel = [[UILabel alloc] initWithFrame: CGRectMake(20, 8, 200, 30)];
+        eventLabel = [[UILabel alloc] initWithFrame: CGRectMake(20, 7, 200, 30)];
         [eventLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
         eventLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
 

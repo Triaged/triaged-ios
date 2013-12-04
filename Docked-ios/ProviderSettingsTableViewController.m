@@ -12,6 +12,7 @@
 #import "Store.h"
 #import "Provider.h"
 #import "BaseSettingsViewController.h"
+#import "ConnectionWizardViewController.h"
 
 @interface ProviderSettingsTableViewController ()
 
@@ -72,7 +73,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return providers.count;
+    return providers.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,29 +85,46 @@
         cell = [ [ ProviderSettingCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
     
-    Provider *provider = providers[indexPath.row];
-    
-    [cell configureForItem:provider];
+    if (indexPath.row == providers.count) {
+        [cell configureForAddService];
+    } else {
+        Provider *provider = providers[indexPath.row];
+        [cell configureForItem:provider];
+    }
+   
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Provider *provider = providers[indexPath.row];
+    if (indexPath.row == providers.count) {
+        [self showConnectionWizard];
+    } else {
     
-    NSDictionary *providerSettings = [Provider settingsDictForProvider:provider.name];
-    Class providerSettingsClass = [providerSettings objectForKey:@"settings_class"];
+        Provider *provider = providers[indexPath.row];
+        
+        NSDictionary *providerSettings = [Provider settingsDictForProvider:provider.name];
+        Class providerSettingsClass = [providerSettings objectForKey:@"settings_class"];
 
-    BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
-    
-    TRNavigationViewController *nav = [[TRNavigationViewController alloc] initWithRootViewController:settingsVC ];
-    [self presentViewController:nav animated:YES completion:nil];
+        BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
+        
+        TRNavigationController *nav = [[TRNavigationController alloc] initWithRootViewController:settingsVC ];
+        [self presentViewController:nav animated:YES completion:nil];
 
+    }
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 48;
+}
+
+- (void) showConnectionWizard
+{
+    ConnectionWizardViewController *connectionWizard = [[ConnectionWizardViewController alloc] init];
+    [self.navigationController presentViewController:connectionWizard animated:YES completion:^ {
+        [self.tableView reloadData];
+    }];
 }
 @end

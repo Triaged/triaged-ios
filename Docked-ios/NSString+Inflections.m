@@ -111,6 +111,44 @@
 	return _nonTitlecasedWords;
 }
 
+- (NSString *)titleize {
+    NSMutableString *ret = [NSMutableString string];
+    NSString *str = [self lowercaseString];
+    
+    NSRegularExpression *regex1 = [NSRegularExpression regularExpressionWithPattern:@"_"
+                                                                            options:NSRegularExpressionCaseInsensitive
+                                                                              error:nil];
+    str = [regex1 stringByReplacingMatchesInString:str
+                                           options:0
+                                             range:NSMakeRange(0, [str length])
+                                      withTemplate:@" "];
+    
+    
+    //str = [str stringByReplacingOccurrencesOfRegex:@"_" withString:@" "];
+    NSArray *strArr = [str componentsSeparatedByString:@" "];
+    
+    for (int x = 0; x <  [strArr count]; x++) {
+        NSString *word = [strArr objectAtIndex:x];
+        NSArray *subArr = [word componentsSeparatedByString:@"-"];
+        
+        for (int i = 0; i < [subArr count]; i++) {
+            NSString *part = [subArr objectAtIndex:i];
+           
+            [ret appendString:[part capitalize]];
+            
+            if (i < [subArr count] - 1) [ret appendString:@"-"];
+        }
+        
+        if (x < [strArr count] - 1) [ret appendString:@" "];
+    }
+    
+    unichar l = [ret characterAtIndex:0];
+    NSString *letter = [[NSString stringWithCharacters:&l length:1] uppercaseString];
+    NSString *rest = [ret substringFromIndex:1];
+    
+    return [NSString stringWithFormat:@"%@%@", letter, rest];
+}
+
 - (NSString *)humanize {
     NSString *ret = [self lowercaseString];
     

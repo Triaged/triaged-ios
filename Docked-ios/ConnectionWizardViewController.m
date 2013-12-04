@@ -33,9 +33,8 @@
     self.view.backgroundColor = BG_COLOR;
     
     UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[ConnectionWizardViewController class], nil];
-    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:76.0f/255.0f green:89.0f/255.0f blue:127.0f/255.0f alpha:1.0f];
-    
-    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:140.0f/255.0f green:156.0f/255.0f blue:201.0f/255.0f alpha:1.0f];
+    pageControl.pageIndicatorTintColor = [[UIColor alloc] initWithRed:233.0f/255.0f green:233.0f/255.0f blue:233.0f/255.0f alpha:1.0f];
+    pageControl.currentPageIndicatorTintColor = TINT_COLOR;
     pageControl.backgroundColor = [UIColor clearColor];
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     

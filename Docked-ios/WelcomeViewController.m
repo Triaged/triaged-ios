@@ -26,22 +26,27 @@
     
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = BG_COLOR;
     
     // buttons
-    signupButton.backgroundColor = [[UIColor alloc] initWithRed:140.0f/255.0f green:156.0f/255.0f blue:201.0f/255.0f alpha:1.0f];
-    loginButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
+    signupButton.backgroundColor = [[UIColor alloc] initWithRed:121.0f/255.0f green:147.0f/255.0f blue:212.0f/255.0f alpha:1.0f];
+    [signupButton.layer setCornerRadius:3.0f];
+    [signupButton.layer setMasksToBounds:YES];
+    
+
+//  loginButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     
     UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[WelcomeViewController class], nil];
-    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:76.0f/255.0f green:89.0f/255.0f blue:127.0f/255.0f alpha:1.0f];
-    
-    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:140.0f/255.0f green:156.0f/255.0f blue:201.0f/255.0f alpha:1.0f];
+    pageControl.pageIndicatorTintColor = [[UIColor alloc] initWithRed:233.0f/255.0f green:233.0f/255.0f blue:233.0f/255.0f alpha:1.0f];
+
+    pageControl.currentPageIndicatorTintColor = TINT_COLOR;
     pageControl.backgroundColor = [UIColor clearColor];
 
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     self.pageController.dataSource = self;
+    self.pageController.delegate = self;
     self.pageController.view.autoresizingMask = NO;
     [[self.pageController view] setFrame:CGRectMake(0,0,320, 428)];
     
@@ -80,7 +85,6 @@
     }
     
     index--;
-            //[timer invalidate];
     return [self viewControllerAtIndex:index];
     
 }
@@ -94,32 +98,37 @@
     if (index == 5) {
         return nil;
     }
-           // [timer invalidate];
     return [self viewControllerAtIndex:index];
     
 }
 
--(IBAction)pageGoto:(id)sender {
-    
-    //get current index of current page
-    CardPageViewController *theCurrentViewController = [self.pageController.viewControllers objectAtIndex:0];
-    NSUInteger index = [theCurrentViewController index];
-    
-    if (index < 4) {
-        [self.pageController setViewControllers:@[[self viewControllerAtIndex:(index+1)]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];
-        
-       // timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(pageGoto:) userInfo:nil repeats:NO];
-    }
-}
+//-(void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
+//    
+//        CardPageViewController *viewController = [pendingViewControllers firstObject];
+//        if (viewController.index == 0) {
+//            self.view.backgroundColor = [UIColor whiteColor];
+//        } else {
+//            self.view.backgroundColor = BG_COLOR;
+//        }
+//}
+
+
+
+
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     // The number of items reflected in the page indicator.
     return 5;
 }
+//
+//- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+//    // The selected item reflected in the page indicator.
+//    return [[self.pageController.viewControllers objectAtIndex:0] index];
+//}
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
     // The selected item reflected in the page indicator.
-    return [[self.pageController.viewControllers objectAtIndex:0] index];
+    return 0;
 }
 
 - (CardPageViewController *)viewControllerAtIndex:(NSUInteger)index {
@@ -145,45 +154,19 @@
     LoginViewController *loginVC = [[LoginViewController alloc] init];
     loginVC.welcomeVC = self;
     
-    
-    [UIView transitionFromView:self.view
-                        toView:loginVC.view
-                      duration:0.20f
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    completion:^(BOOL finished) {
-                        [self didMoveToParentViewController:loginVC];
-                        [self addChildViewController:loginVC];
-                    }];
-    
-    
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 - (IBAction) presentSignupView {
     
     SignupViewController *signupVC = [[SignupViewController alloc] init];
     signupVC.welcomeVC = self;
-
-    [UIView transitionFromView:self.view
-                        toView:signupVC.view
-                      duration:0.20f
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    completion:^(BOOL finished) {
-                        [self didMoveToParentViewController:signupVC];
-                        [self addChildViewController:signupVC];
-                    }];
+    [self presentViewController:signupVC animated:YES completion:nil];
 }
 
 -(void)dismissAuthScreens:(UIViewController *)sender
 {
-    [UIView transitionFromView:sender.view
-                        toView:self.view
-                      duration:0.20f
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    completion:nil];
-    
-    
-    
-    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

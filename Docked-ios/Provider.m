@@ -173,7 +173,7 @@
         @"short_name" : @"Beanstalk",
         @"id"   : @"beanstalk",
         @"icon" : @"beanstalk.png",
-        @"settings_icon" : @"Beanstalk-s.png",
+        @"settings_icon" : @"beanstalk-s.png",
         @"settings_class" : BeanstalkSettingsViewController.class
     },
     @{  @"name" : @"Braintree",

@@ -304,8 +304,10 @@
 - (void) hashtagMentionController:(GGHashtagMentionController *)hashtagMentionController onMentionWithText:(NSString *)text range:(NSRange)range {
     
     if (!self.shouldSearchForUser) {
-        UIImage *blurred = [self.detailView.view blurredSnapshot];
-        self.textView.blurredBackgroundView.image = blurred;
+        //UIImage *blurred = [self.detailView.view blurredSnapshot];
+        UIView *background = [[UIView alloc] initWithFrame:self.detailView.view.frame];
+        background.backgroundColor = BG_COLOR;
+        self.textView.blurredBackgroundView = background;
         self.detailView.scrollView.userInteractionEnabled = NO;
     }
     

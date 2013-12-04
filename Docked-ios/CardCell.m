@@ -103,12 +103,26 @@
 - (void) drawShadow
 {
     self.layer.shadowOffset = CGSizeMake(0, 0.5);
-    self.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.layer.shadowColor = [[[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f] CGColor];
     self.layer.shadowRadius = 2;
     self.layer.shadowOpacity = .05;
     CGRect shadowFrame =  CGRectMake(self.layer.bounds.origin.x, self.layer.bounds.origin.y + self.layer.bounds.size.height, self.layer.bounds.size.width, 1);
     CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
     [self.layer setShadowPath:shadowPath];
+    
+//    self.clipsToBounds = NO;
+//    self.layer.masksToBounds = NO;
+//    self.layer.shadowOffset = CGSizeMake(1, 1);
+//    self.layer.shadowColor = [[[UIColor alloc] initWithRed:212.0f/255.0f green:214.0f/255.0f blue:227.0f/255.0f alpha:1.0f] CGColor];
+//    //self.layer.shadowRadius = 2.0;
+//    self.layer.shadowOpacity = 0.5;
+//    CGRect shadowFrame =  CGRectMake(self.layer.bounds.origin.x - 1, self.layer.bounds.origin.y+6, self.layer.bounds.size.width + 2, self.layer.bounds.origin.y + self.layer.bounds.size.height - 5);
+//    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
+//    [self.layer setShadowPath:shadowPath];
+    
+//    CGRect shadowFrame = self.layer.bounds;
+//    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
+//    self.layer.shadowPath = shadowPath;
 
 }
 

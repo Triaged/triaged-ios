@@ -32,7 +32,7 @@
 	// Do any additional setup after loading the view.
     
     headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,40, 300, 80)];
-    [headlineLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:22.0]];
+    [headlineLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:21.0]];
     headlineLabel.textColor = TINT_COLOR;
     headlineLabel.numberOfLines = 2;
     headlineLabel.textAlignment = NSTextAlignmentCenter;
@@ -118,13 +118,13 @@
     Class providerSettingsClass = [provider objectForKey:@"settings_class"];
     
     BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
-    TRNavigationViewController *nav = [[TRNavigationViewController alloc] initWithRootViewController:settingsVC ];
-   
+    TRNavigationController *nav = [[TRNavigationController alloc] initWithRootViewController:settingsVC ];
+
     [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 48;
 }
 
 

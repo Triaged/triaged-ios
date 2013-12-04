@@ -15,6 +15,7 @@
 #import "UIButton+AFNetworking.h"
 #import "TeamMembersViewController.h"
 #import "MRProgress.h"
+#import "SVWebViewController.h"
 
 @interface AccountViewController ()  {
 
@@ -27,7 +28,7 @@
 
 @implementation AccountViewController
 
-@synthesize scrollView, upgradeButton, nameLabel, emailLabel, companyLabel, connectionCountLabel, pushNotificationSwitch, signOutButton, avatarButton, teamTableView, dynamicTVHeight;
+@synthesize scrollView, nameLabel, emailLabel, companyLabel, connectionCountLabel, pushNotificationSwitch, avatarButton, tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +36,7 @@
     if (self) {
         currentAccount = [AppDelegate sharedDelegate].store.account;
         team = [AppDelegate sharedDelegate].store.account.team;
+        
     }
     return self;
 }
@@ -45,11 +47,14 @@
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
                                    initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissAccountView)];
-    [self.navigationItem setRightBarButtonItem:doneButton];
+    [self.navigationItem setLeftBarButtonItem:doneButton];
     
     self.view.backgroundColor = BG_COLOR;
-
     
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    tableView.backgroundColor = [UIColor clearColor];
+
     self.title = @"Account";
     
     nameLabel.text = currentAccount.name;
@@ -57,7 +62,7 @@
     companyLabel.text = currentAccount.companyName;
     
     NSURL *avatarUrl = [NSURL URLWithString:currentAccount.avatarUrl];
-    [avatarButton setBackgroundImageForState:UIControlStateNormal withURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+    [avatarButton setBackgroundImageForState:UIControlStateNormal withURL:avatarUrl placeholderImage:[UIImage imageNamed:@"add_photo.png"]];
     [avatarButton addTarget:self action:@selector(updateProfilePicture) forControlEvents:UIControlEventTouchUpInside];
     
     // Connections
@@ -65,33 +70,6 @@
     // pushNotificationSwitch setOn
     pushNotificationSwitch.on = currentAccount.pushEnabled;
     
-    // Team Table View
-    // Team Members
-    teamTableView.scrollEnabled = NO;
-    teamTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [teamTableView setSeparatorInset:UIEdgeInsetsZero];
-
-    
-    
-    // Upgrade
-    upgradeButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
-    
-    // Signout
-    [signOutButton addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
-    
-}
-
-- (void) viewWillAppear:(BOOL)animated
-{
-    [teamTableView reloadData];
-}
-
-- (void) viewDidLayoutSubviews
-{
-    dynamicTVHeight.constant =  (teamTableView.contentSize.height > 100) ? teamTableView.contentSize.height : 100;
-    scrollView.contentSize = CGSizeMake(320, signOutButton.frame.origin.y + 80);
-    
-    [self.view layoutSubviews];
 }
 
 
@@ -165,14 +143,19 @@
     
 }
 
--(IBAction)logout:(id)sender
+-(void)logout
 {
     [[CredentialStore sharedClient] clearSavedCredentials];
-    [[AppDelegate sharedDelegate].navVC popToRootViewControllerAnimated:NO];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[AppDelegate sharedDelegate] setWindowAndRootVC];
 }
 
--(IBAction)contactUs:(id)sender
+-(void)terms {
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"https://www.triaged.co/terms"];
+    [self.navigationController pushViewController:webViewController animated:YES];
+    
+}
+
+-(void)contactUs
 {
     if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *mailComposer =
@@ -213,51 +196,53 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return team.count + 1;
+    return 3;
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+- (UITableViewCell*)tableView:(UITableView*)aTableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *CellIdentifier = @"teammateCell";
-    TeammateCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ] ;
+    UITableViewCell *cell = [ aTableView dequeueReusableCellWithIdentifier:CellIdentifier ] ;
     if ( !cell )
     {
-        cell = [ [ TeammateCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
+        cell = [ [ UITableViewCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
     
-    if (indexPath.row == team.count) {
-        cell.cellIsForInvite = YES;
+    [cell.textLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
+    cell.textLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
+    
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    cell.backgroundColor = [UIColor whiteColor];
+    
+    if(indexPath.row == 0) {
+        cell.textLabel.text = @"Send Us Feedback";
+    } else if(indexPath.row == 1) {
+        cell.textLabel.text = @"Terms And Service";
     } else {
-        cell.cellIsForInvite = NO;
-        cell.userInteractionEnabled = NO;
-        User *teammate = team[indexPath.row];
-        cell.nameLabel.text = teammate.name;
-        NSURL *avatarUrl = [NSURL URLWithString:teammate.avatarUrl];
-        [cell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+        cell.textLabel.text = @"Sign Out";
     }
     
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *mailComposer =
-        [[MFMailComposeViewController alloc] init];
-        [mailComposer setSubject:@"Check out Triage"];
-        NSString *message = [NSString stringWithFormat:@"Hey, <br><br> I've been using the Triage app to keep tabs of work when I'm on the go. I think you'd like it. <br /><br />Check it out at <a href='triaged.co'>triaged.co</a> <br /><br /> thanks!<br /> %@", currentAccount.name];
-        [mailComposer setMessageBody:message
-                              isHTML:YES];
-        mailComposer.mailComposeDelegate = self;
-        [self presentViewController:mailComposer animated:YES completion:nil];
+    [aTableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if(indexPath.row == 0) {
+        [self contactUs];
+    } else if(indexPath.row == 1) {
+        [self terms];
+    } else {
+        [self logout];
     }
     
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 46;
+    return 44;
 }
 
 @end

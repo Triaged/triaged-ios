@@ -16,6 +16,7 @@
 @property  BOOL cellIsForInvite;
 
 - (void)configureForItem:(User *)user;
+- (void)configureForAddTeamMember;
 
 
 @end

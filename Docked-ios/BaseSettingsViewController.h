@@ -12,23 +12,29 @@
 #import "Store.h"
 #import "SVProgressHUD.h"
 #import "SettingEventsViewController.h"
-#import "ProviderAccountTableViewController.h"
+#import "ProviderAccountTableViewDataSource.h"
+#import "HTCopyableLabel.h"
 
 @interface BaseSettingsViewController : UIViewController <UITableViewDelegate>
 
 @property (nonatomic, strong) Provider *provider;
+@property (nonatomic) BOOL oAuthController;
 @property (strong, nonatomic) NSArray *accountProperties;
 @property (strong, nonatomic) NSString *accountDetailsTitle;
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *providerHeroImageView;
 @property (strong, nonatomic) UILabel *connectedLabel;
-@property (strong, nonatomic) UIButton *ignoreButton;
-@property (strong, nonatomic) UIButton *connectButton;
-@property (strong, nonatomic) UIButton *emailInstructionsButton;
+@property (strong, nonatomic) TRButton *ignoreButton;
+@property (strong, nonatomic) TRButton *connectButton;
+
+@property (strong, nonatomic) NSString *instructionsText;
+@property (strong, nonatomic) UILabel *instructionsLabel;
+@property (strong, nonatomic) HTCopyableLabel *serviceUrlLabel;
+@property (strong, nonatomic) TRButton *emailInstructionsButton;
 
 @property (strong, nonatomic) SettingEventsViewController *eventsViewController;
-@property (strong, nonatomic) ProviderAccountTableViewController *providerAccountTableVC;
+@property (strong, nonatomic) ProviderAccountTableViewDataSource *providerAccountTableVC;
 
 
 - (BOOL)isConnected;

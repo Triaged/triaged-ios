@@ -29,7 +29,7 @@
 @interface MLPAutoCompleteTextField : UITextView <UITableViewDataSource, UITableViewDelegate, MLPAutoCompleteSortOperationDelegate, MLPAutoCompleteFetchOperationDelegate>
 
 @property (strong, readonly) UITableView *autoCompleteTableView;
-@property (strong, nonatomic) UIImageView *blurredBackgroundView;
+@property (strong, nonatomic) UIView *blurredBackgroundView;
 
 @property (strong) IBOutlet id <MLPAutoCompleteTextFieldDataSource> autoCompleteDataSource;
 @property (weak) IBOutlet id <MLPAutoCompleteTextFieldDelegate> autoCompleteDelegate;

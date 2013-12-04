@@ -12,14 +12,15 @@
 #import "UINavigationController+SGProgress.h"
 #import "ProviderAccountDetailsTableViewController.h"
 
+
 @interface BaseSettingsViewController ()
 
 @end
 
 @implementation BaseSettingsViewController
 
-@synthesize scrollView, providerHeroImageView, connectButton, connectedLabel, eventsViewController, providerAccountTableVC, ignoreButton, accountProperties, emailInstructionsButton, provider,
-    accountDetailsTitle;
+@synthesize scrollView, providerHeroImageView, connectButton, connectedLabel, eventsViewController, providerAccountTableVC, accountProperties, emailInstructionsButton, provider,
+    accountDetailsTitle, instructionsLabel, oAuthController, instructionsText, serviceUrlLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,9 +28,7 @@
     if (self) {
         // Custom initialization
         eventsViewController = [[SettingEventsViewController alloc] init];
-        providerAccountTableVC = [[ProviderAccountTableViewController alloc] init];
-        providerAccountTableVC.tableView.delegate = self;
-    }
+        }
     return self;
 }
 
@@ -51,43 +50,26 @@
     [scrollView addSubview:self.providerHeroImageView];
     
     // Connect Button
-    connectButton = [[UIButton alloc] init];
-    connectButton.frame = CGRectMake(24, 115, 272, 38);
-    connectButton.layer.cornerRadius = 6; // this value vary as per your desire
-    connectButton.clipsToBounds = YES;
+    connectButton = [[TRButton alloc] init];
+    connectButton.frame = CGRectMake(40, 115, 240, 38);
     [connectButton addTarget:self action:@selector(connect) forControlEvents:UIControlEventTouchUpInside];
     
-    // Ignore Button
-    ignoreButton = [[UIButton alloc] init];
-    ignoreButton.frame = CGRectMake(60, 125, 200, 38);
-    ignoreButton.clipsToBounds = YES;
-    [ignoreButton.layer setCornerRadius:20.0f];
-    [ignoreButton.layer setMasksToBounds:YES];
-    [ignoreButton.layer setBorderWidth:1.0f];
-    ignoreButton.layer.borderColor = [[[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f] CGColor];
-    [ignoreButton addTarget:self action:@selector(toggleIgnore) forControlEvents:UIControlEventTouchUpInside];
+//    // Ignore Button
+//    ignoreButton = [[TRButton alloc] init];
+//    ignoreButton.frame = CGRectMake(60, 125, 200, 38);
+//    [ignoreButton addTarget:self action:@selector(toggleIgnore) forControlEvents:UIControlEventTouchUpInside];
     
     
-    [self follows] ? [self setIgnoreButtonToIgnore] : [self setIgnoreButtonToFollow];
+    //[self follows] ? [self setIgnoreButtonToIgnore] : [self setIgnoreButtonToFollow];
     
     
     // Email Instructions
-    emailInstructionsButton = [[UIButton alloc] init];
-    [emailInstructionsButton.layer setCornerRadius:20.0f];
-    [emailInstructionsButton.layer setMasksToBounds:YES];
-    [emailInstructionsButton.layer setBorderWidth:1.0f];
-    emailInstructionsButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-    emailInstructionsButton.clipsToBounds = YES;
-    emailInstructionsButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
-    [emailInstructionsButton setTitle:@"Email These Directions" forState:UIControlStateNormal];
+    emailInstructionsButton = [[TRButton alloc] init];
+    [emailInstructionsButton setTitle:@"Email Me Directions" forState:UIControlStateNormal];
     [emailInstructionsButton addTarget:self action:@selector(emailProviderConnectInstructions) forControlEvents:UIControlEventTouchUpInside];
     
     // Provider Account
     providerAccountTableVC.tableView.scrollEnabled = NO;
-    
-    // Connected State
-    ([self isConnected] ?  [self setupConnectedState] : [self setupUnconnectedState]);
-
     
 }
 
@@ -96,25 +78,57 @@
     // remove views
     [connectButton removeFromSuperview];
     
-    UIImage *connectedStatusImage = [UIImage imageNamed:@"status_connected.png"];
-    UIImageView *connectedStatusView = [[UIImageView alloc] initWithImage:connectedStatusImage];
-    connectedStatusView.frame = CGRectMake(118, 100, 8, 8);
-    [scrollView addSubview:connectedStatusView];
+    [self.navigationItem setTitle:@"Connected"];
     
-    connectedLabel = [[UILabel alloc] initWithFrame:CGRectMake(127.5, 94, 65, 20)];
-    [connectedLabel setText:@"Connected"];
-    [connectedLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:13.0]];
-    connectedLabel.textColor = [[UIColor alloc] initWithRed:208.0f/255.0f green:208.0f/255.0f blue:208.0f/255.0f alpha:1.0f];
-    [scrollView addSubview:connectedLabel];
+    NSString *ignoreTitle = [self follows] ? @"Ignore" : @"Follow";
+    UIBarButtonItem *ignoreButton = [[UIBarButtonItem alloc] initWithTitle:ignoreTitle style:UIBarButtonItemStylePlain target:self action:@selector(toggleIgnore)];
+                                   
+    [self.navigationItem setRightBarButtonItem:ignoreButton];
     
-    [scrollView addSubview:ignoreButton];
-    
-    
+    if (oAuthController) {
+        self.providerAccountTableVC = [[ProviderAccountTableViewDataSource alloc] init];
+        self.providerAccountTableVC.accountText = self.provider.account.name;
+        UITableView *accountTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, 320, 100) style:UITableViewStyleGrouped];
+        accountTableView.scrollEnabled = NO;
+        accountTableView.bounces = NO;
+        accountTableView.backgroundColor = [UIColor clearColor];
+        accountTableView.sectionFooterHeight = 1;
+        accountTableView.sectionHeaderHeight = 1;
+        accountTableView.delegate = self;
+        accountTableView.dataSource = self.providerAccountTableVC;
+        
+        self.accountProperties  = self.provider.account.properties;
+        self.accountDetailsTitle = self.provider.account.propertyLabel;
+        [self.scrollView addSubview:accountTableView];
+    }
 }
 
 -(void)setupUnconnectedState
 {
+    [self.navigationItem setTitle:@"Connect Your Account"];
     
+    if (!oAuthController) {
+        // Instructions
+        instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 120, 240, 40)];
+        [instructionsLabel setText:instructionsText ];
+        [instructionsLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:15.0]];
+        instructionsLabel.textColor = [[UIColor alloc] initWithRed:89.0f/255.0f green:96.0f/255.0f blue:115.0f/255.0f alpha:1.0f];
+        instructionsLabel.numberOfLines = 0;
+        instructionsLabel.textAlignment = NSTextAlignmentCenter;
+        [instructionsLabel sizeToFit];
+        [self.scrollView addSubview:instructionsLabel];
+        
+        // Service URL
+        serviceUrlLabel = [[HTCopyableLabel alloc] initWithFrame:CGRectMake(20, 185, 280, 20)];
+        [serviceUrlLabel setText:provider.webhookUrl];
+        [serviceUrlLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
+        [serviceUrlLabel setTextAlignment:NSTextAlignmentCenter];
+        serviceUrlLabel.textColor = TINT_COLOR;
+        [self.scrollView addSubview:serviceUrlLabel];
+        
+        self.emailInstructionsButton.frame = CGRectMake(60, 220, 200, 40);
+        [self.scrollView addSubview:self.emailInstructionsButton];
+    }
 }
 
 - (void) viewWillLayoutSubviews
@@ -129,7 +143,9 @@
 
 -(void)setContentSize {
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, eventsViewController.view.frame.origin.y + eventsViewController.eventsTableView.frame.size.height + 50);
-    scrollView.frame = self.view.frame;
+    CGRect frame = self.view.frame;
+    frame.origin.y = 0;
+    scrollView.frame = frame;
 }
 
 - (BOOL) follows
@@ -153,12 +169,14 @@
 {
     if ([self isFollowing]) {
         [self.provider ignore];
-        [self setIgnoreButtonToFollow];
+        //[self setIgnoreButtonToFollow];
+        self.navigationItem.rightBarButtonItem.title = @"Follow";
     } else {
         [self.provider follow];
-        [self setIgnoreButtonToIgnore];
+        self.navigationItem.rightBarButtonItem.title = @"Ignore";
+        //[self setIgnoreButtonToIgnore];
     }
-    [ignoreButton setNeedsDisplay];
+    //[ignoreButton setNeedsDisplay];
     [self.navigationController showSGProgressWithDuration:1.5];
 
     
@@ -170,22 +188,22 @@
     return self.provider.follows;
 }
 
-- (void)setIgnoreButtonToFollow
-{
-    [ignoreButton setTitle:@"Follow" forState:UIControlStateNormal];
-    [ignoreButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [ignoreButton setBackgroundColor:
-    [UIColor colorWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f]];
-    
-}
-
-- (void)setIgnoreButtonToIgnore
-{
-    [ignoreButton setTitle:@"Unfollow" forState:UIControlStateNormal];
-    [ignoreButton setTitleColor:[[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    [ignoreButton setBackgroundColor:[UIColor whiteColor]];
-    
-}
+//- (void)setIgnoreButtonToFollow
+//{
+//    [ignoreButton setTitle:@"Follow" forState:UIControlStateNormal];
+//    [ignoreButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [ignoreButton setBackgroundColor:
+//    [UIColor colorWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f]];
+//    
+//}
+//
+//- (void)setIgnoreButtonToIgnore
+//{
+//    [ignoreButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+//    [ignoreButton setTitleColor:[[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+//    [ignoreButton setBackgroundColor:[UIColor whiteColor]];
+//    
+//}
 
 
 
@@ -197,7 +215,7 @@
 // Details View Controller
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ProviderAccountDetailsTableViewController *detailsVC = [[ProviderAccountDetailsTableViewController alloc] init];
     detailsVC.provider = provider;
     detailsVC.accountDetails = accountProperties;

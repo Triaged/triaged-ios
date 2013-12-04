@@ -21,6 +21,7 @@
     if (self) {
         // Custom initialization
         self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"appfigures"];
+        self.oAuthController = YES;
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"App Store Review", @YES], @[@"Daily Download count", @NO], @[@"Daily Revenue count", @NO], @[@"Daily Return count", @NO], nil];
     }
     return self;
@@ -32,7 +33,8 @@
     
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_appfigures.png"];
     
-    
+    // Connected State
+    ([self isConnected] ?  [self setupConnectedState] : [self setupUnconnectedState]);
     
 }
 

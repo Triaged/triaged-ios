@@ -40,15 +40,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
-    signupButton.backgroundColor = [[UIColor alloc] initWithRed:140.0f/255.0f green:156.0f/255.0f blue:201.0f/255.0f alpha:1.0f];
+    signupButton.backgroundColor = [[UIColor alloc] initWithRed:121.0f/255.0f green:147.0f/255.0f blue:212.0f/255.0f alpha:1.0f];
+    [signupButton.layer setCornerRadius:3.0f];
+    [signupButton.layer setMasksToBounds:YES];
     
-    UIColor *color = [UIColor whiteColor];
-    nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color}];
+    UIColor *color = [[UIColor alloc] initWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0f];
+    nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color, NSFontAttributeName: @"Avenir-light"}];
     
-    emailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Work Email" attributes:@{NSForegroundColorAttributeName: color}];
+    emailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Work Email" attributes:@{NSForegroundColorAttributeName: color, NSFontAttributeName: @"Avenir-light"}];
     
-    passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
+    passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color, NSFontAttributeName: @"Avenir-light"}];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,7 +98,7 @@
 
 - (IBAction)returnToWelcome:(id)sender
 {
-    [welcomeVC presentSelfFromVC:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)keyboardWillShow:(NSNotification*)notification  {
@@ -119,8 +122,6 @@
     //
     // Create animation.
     void (^animations)() = ^() {
-        // Login Button
-        signupButton.frame = CGRectMake(signupButton.frame.origin.x, signupButton.frame.origin.y-keyboardEndFrame.size.height, signupButton.frame.size.width, signupButton.frame.size.height);
         
         // Logo
         CGRect logoFrame = logoLabel.frame;
@@ -139,6 +140,10 @@
         CGRect divider3Frame = divider3.frame;
 
         if (IS_IPHONE5) {
+            // Login Button
+            signupButton.frame = CGRectMake(signupButton.frame.origin.x, signupButton.frame.origin.y-keyboardEndFrame.size.height, signupButton.frame.size.width, signupButton.frame.size.height);
+
+            
             usernameFrame.origin.y = usernameFrame.origin.y - keyboardEndFrame.size.height;
             emailTextFrame.origin.y = emailTextFrame.origin.y - keyboardEndFrame.size.height;
             passwordFrame.origin.y = passwordFrame.origin.y - keyboardEndFrame.size.height;
@@ -146,12 +151,16 @@
             divider2Frame.origin.y = divider2Frame.origin.y - keyboardEndFrame.size.height;
             divider3Frame.origin.y = divider3Frame.origin.y - keyboardEndFrame.size.height;
         } else {
-            usernameFrame.origin.y = usernameFrame.origin.y     - 200;
-            emailTextFrame.origin.y = emailTextFrame.origin.y   - 200;
-            passwordFrame.origin.y = passwordFrame.origin.y     - 200;
-            divider1Frame.origin.y = divider1Frame.origin.y     - 200;
-            divider2Frame.origin.y = divider2Frame.origin.y     - 200;
-            divider3Frame.origin.y = divider3Frame.origin.y     - 200;
+            // Login Button
+            signupButton.frame = CGRectMake(signupButton.frame.origin.x, signupButton.frame.origin.y-185, signupButton.frame.size.width, signupButton.frame.size.height);
+
+            
+            usernameFrame.origin.y = usernameFrame.origin.y     - 150;
+            emailTextFrame.origin.y = emailTextFrame.origin.y   - 150;
+            passwordFrame.origin.y = passwordFrame.origin.y     - 150;
+            divider1Frame.origin.y = divider1Frame.origin.y     - 150;
+            divider2Frame.origin.y = divider2Frame.origin.y     - 150;
+            divider3Frame.origin.y = divider3Frame.origin.y     - 150;
         }
         
         // Fields

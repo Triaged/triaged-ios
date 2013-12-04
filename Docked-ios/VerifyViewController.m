@@ -30,9 +30,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    verifyButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     
+    self.view.backgroundColor = BG_COLOR;
+    // Do any additional setup after loading the view from its nib.
+    verifyButton.backgroundColor = TINT_COLOR;
     UIColor *color = [UIColor whiteColor];
     verifyCodeLabel.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Verification Code" attributes:@{NSForegroundColorAttributeName: color}];
     
@@ -52,6 +53,7 @@
 - (IBAction)resendEmail:(id)sender {
     
     [[AppDelegate sharedDelegate].store.account resendVerifyEmail];
+    [verifyButton setTitle:@"Email Sent" forState:UIControlStateNormal];
 }
 
 - (IBAction)logout:(id)sender {

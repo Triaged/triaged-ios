@@ -19,8 +19,6 @@
         
         [self.layer setCornerRadius:4.0f];
         [self.layer setMasksToBounds:YES];
-        [self.layer setBorderWidth:1.0f];
-        [self.layer setBorderColor:[[UIColor whiteColor] CGColor]];
         
     }
     return self;

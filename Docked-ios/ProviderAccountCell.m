@@ -17,13 +17,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
-//        
-//        UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-//        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-//        lineView.frame = CGRectMake(0, 0, 320, 1);
-//        [self.contentView addSubview: lineView];
-        
+        self.backgroundColor = [UIColor whiteColor];
+
         accountLabel = [[UILabel alloc] initWithFrame: CGRectMake(20, 8, 200, 30)];
         [accountLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
         accountLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];

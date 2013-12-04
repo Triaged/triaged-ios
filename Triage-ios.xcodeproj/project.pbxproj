@@ -16,7 +16,7 @@
 		CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0E028B1810A87600484E69 /* WelcomeViewController.xib */; };
 		CB13946D1821F31100053086 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13946C1821F31100053086 /* libz.dylib */; };
 		CB1394751822F88C00053086 /* ProviderAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1394741822F88C00053086 /* ProviderAccountCell.m */; };
-		CB1394781822F96C00053086 /* ProviderAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1394771822F96C00053086 /* ProviderAccountTableViewController.m */; };
+		CB1394781822F96C00053086 /* ProviderAccountTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1394771822F96C00053086 /* ProviderAccountTableViewDataSource.m */; };
 		CB13948018231A7400053086 /* ProviderAccountDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */; };
 		CB1947B3182D71F500944E80 /* MTLProviderAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947B2182D71F500944E80 /* MTLProviderAccount.m */; };
 		CB1947B6182D720100944E80 /* MTLProviderProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1947B5182D720100944E80 /* MTLProviderProperty.m */; };
@@ -56,7 +56,7 @@
 		CB4F87AC180F532500B685E1 /* TeammateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4F87AB180F532500B685E1 /* TeammateCell.m */; };
 		CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4F87B2180F9A1B00B685E1 /* EventCell.m */; };
 		CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */; };
-		CB50F96F182968FD0074CA99 /* TRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB50F96E182968FD0074CA99 /* TRNavigationViewController.m */; };
+		CB50F96F182968FD0074CA99 /* TRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB50F96E182968FD0074CA99 /* TRNavigationController.m */; };
 		CB5A35C1180CD31200ECAB71 /* FetchedFeedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */; };
 		CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F20D317EB857800EBDC34 /* CoreData.framework */; };
 		CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECE917EE894000319223 /* CredentialStore.m */; };
@@ -117,9 +117,10 @@
 		CBA6D12918202C0E006B73AC /* ConnectionWizardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA6D12718202C0E006B73AC /* ConnectionWizardViewController.xib */; };
 		CBA6D12C18202C70006B73AC /* ConnectionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D12B18202C70006B73AC /* ConnectionPageViewController.m */; };
 		CBA6D12F18206E07006B73AC /* ProviderWizardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D12E18206E07006B73AC /* ProviderWizardCell.m */; };
+		CBB53808184E490D002408A1 /* libIntercom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB53807184E490D002408A1 /* libIntercom.a */; };
+		CBB5380B184E62A6002408A1 /* FeedBackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB5380A184E62A6002408A1 /* FeedBackgroundViewController.m */; };
 		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
 		CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC47C1810956C00876AC6 /* CardPageViewController.m */; };
-		CBC82A20184699AA00C96D3E /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC82A1F184699AA00C96D3E /* Reveal.framework */; };
 		CBC82A241846B34400C96D3E /* BraintreeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A231846B34400C96D3E /* BraintreeSettingsViewController.m */; };
 		CBC82A28184951CA00C96D3E /* UserSettingsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A27184951CA00C96D3E /* UserSettingsMenuViewController.m */; };
 		CBC82A2B1849521000C96D3E /* UserSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A2A1849521000C96D3E /* UserSettingsTableViewController.m */; };
@@ -128,6 +129,9 @@
 		CBC82A36184A768300C96D3E /* UIScrollView+UzysCircularProgressPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A33184A768300C96D3E /* UIScrollView+UzysCircularProgressPullToRefresh.m */; };
 		CBC82A37184A768300C96D3E /* UzysRadialProgressActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A35184A768300C96D3E /* UzysRadialProgressActivityIndicator.m */; };
 		CBC82A3B184AC4FD00C96D3E /* TRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A3A184AC4FD00C96D3E /* TRButton.m */; };
+		CBC82A43184ADBDD00C96D3E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC82A3D184ADBDD00C96D3E /* libTestFlight.a */; };
+		CBC82A44184ADBDD00C96D3E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CBC82A3E184ADBDD00C96D3E /* README.md */; };
+		CBC82A45184ADBDD00C96D3E /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = CBC82A3F184ADBDD00C96D3E /* release_notes.md */; };
 		CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C8F18199D71001030C2 /* MLPAutoCompleteTextField.m */; };
 		CBCC6C9618199D71001030C2 /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C9418199D71001030C2 /* NSString+Levenshtein.m */; };
 		CBCC6C9F1819B90C001030C2 /* AtReplyMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C9E1819B90C001030C2 /* AtReplyMessageCell.m */; };
@@ -145,6 +149,8 @@
 		CBDCEC701805E9370024860B /* ProviderSettingsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC6F1805E9370024860B /* ProviderSettingsMenuViewController.m */; };
 		CBDCEC731805ED5B0024860B /* ProviderSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC721805ED5B0024860B /* ProviderSettingsTableViewController.m */; };
 		CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC77180629480024860B /* ProviderSettingCell.m */; };
+		CBDE2937184CF11D00C3D33D /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDE2935184CF11D00C3D33D /* ResetPasswordViewController.m */; };
+		CBDE2938184CF11D00C3D33D /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDE2936184CF11D00C3D33D /* ResetPasswordViewController.xib */; };
 		CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */; };
 		CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637917FC9F9C00EF6E73 /* CoreText.framework */; };
 		CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE8637B17FC9FA600EF6E73 /* Security.framework */; };
@@ -180,8 +186,8 @@
 		CB13946C1821F31100053086 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CB1394731822F88C00053086 /* ProviderAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountCell.h; sourceTree = "<group>"; };
 		CB1394741822F88C00053086 /* ProviderAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountCell.m; sourceTree = "<group>"; };
-		CB1394761822F96C00053086 /* ProviderAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountTableViewController.h; sourceTree = "<group>"; };
-		CB1394771822F96C00053086 /* ProviderAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountTableViewController.m; sourceTree = "<group>"; };
+		CB1394761822F96C00053086 /* ProviderAccountTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountTableViewDataSource.h; sourceTree = "<group>"; };
+		CB1394771822F96C00053086 /* ProviderAccountTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountTableViewDataSource.m; sourceTree = "<group>"; };
 		CB13947E18231A7400053086 /* ProviderAccountDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderAccountDetailsTableViewController.h; sourceTree = "<group>"; };
 		CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderAccountDetailsTableViewController.m; sourceTree = "<group>"; };
 		CB1947B1182D71F500944E80 /* MTLProviderAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLProviderAccount.h; sourceTree = "<group>"; };
@@ -249,8 +255,8 @@
 		CB4F87B2180F9A1B00B685E1 /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		CB4FDD4B17FF75B700EEE7F6 /* PersistentStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStack.h; sourceTree = "<group>"; };
 		CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStack.m; sourceTree = "<group>"; };
-		CB50F96D182968FD0074CA99 /* TRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNavigationViewController.h; sourceTree = "<group>"; };
-		CB50F96E182968FD0074CA99 /* TRNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNavigationViewController.m; sourceTree = "<group>"; };
+		CB50F96D182968FD0074CA99 /* TRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNavigationController.h; sourceTree = "<group>"; };
+		CB50F96E182968FD0074CA99 /* TRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNavigationController.m; sourceTree = "<group>"; };
 		CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedFeedItemsDataSource.h; sourceTree = "<group>"; };
 		CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedFeedItemsDataSource.m; sourceTree = "<group>"; };
 		CB5AECE817EE894000319223 /* CredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialStore.h; sourceTree = "<group>"; };
@@ -352,11 +358,14 @@
 		CBA6D12B18202C70006B73AC /* ConnectionPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionPageViewController.m; sourceTree = "<group>"; };
 		CBA6D12D18206E07006B73AC /* ProviderWizardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderWizardCell.h; sourceTree = "<group>"; };
 		CBA6D12E18206E07006B73AC /* ProviderWizardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderWizardCell.m; sourceTree = "<group>"; };
+		CBB53806184E490D002408A1 /* Intercom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Intercom.h; sourceTree = "<group>"; };
+		CBB53807184E490D002408A1 /* libIntercom.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIntercom.a; sourceTree = "<group>"; };
+		CBB53809184E62A6002408A1 /* FeedBackgroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackgroundViewController.h; sourceTree = "<group>"; };
+		CBB5380A184E62A6002408A1 /* FeedBackgroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackgroundViewController.m; sourceTree = "<group>"; };
 		CBB89E0F17FE4F0600402973 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		CBB89E1017FE4F0600402973 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
 		CBBCC47B1810956C00876AC6 /* CardPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardPageViewController.h; sourceTree = "<group>"; };
 		CBBCC47C1810956C00876AC6 /* CardPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardPageViewController.m; sourceTree = "<group>"; };
-		CBC82A1F184699AA00C96D3E /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		CBC82A221846B34400C96D3E /* BraintreeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BraintreeSettingsViewController.h; sourceTree = "<group>"; };
 		CBC82A231846B34400C96D3E /* BraintreeSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BraintreeSettingsViewController.m; sourceTree = "<group>"; };
 		CBC82A26184951CA00C96D3E /* UserSettingsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsMenuViewController.h; sourceTree = "<group>"; };
@@ -372,6 +381,12 @@
 		CBC82A35184A768300C96D3E /* UzysRadialProgressActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysRadialProgressActivityIndicator.m; sourceTree = "<group>"; };
 		CBC82A39184AC4FD00C96D3E /* TRButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRButton.h; sourceTree = "<group>"; };
 		CBC82A3A184AC4FD00C96D3E /* TRButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRButton.m; sourceTree = "<group>"; };
+		CBC82A3D184ADBDD00C96D3E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		CBC82A3E184ADBDD00C96D3E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		CBC82A3F184ADBDD00C96D3E /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		CBC82A40184ADBDD00C96D3E /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		CBC82A41184ADBDD00C96D3E /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		CBC82A42184ADBDD00C96D3E /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		CBCC6C8E18199D71001030C2 /* MLPAutoCompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompleteTextField.h; sourceTree = "<group>"; };
 		CBCC6C8F18199D71001030C2 /* MLPAutoCompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLPAutoCompleteTextField.m; sourceTree = "<group>"; };
 		CBCC6C9018199D71001030C2 /* MLPAutoCompleteTextFieldDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompleteTextFieldDataSource.h; sourceTree = "<group>"; };
@@ -409,6 +424,9 @@
 		CBDCEC721805ED5B0024860B /* ProviderSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderSettingsTableViewController.m; sourceTree = "<group>"; };
 		CBDCEC76180629480024860B /* ProviderSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderSettingCell.h; sourceTree = "<group>"; };
 		CBDCEC77180629480024860B /* ProviderSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderSettingCell.m; sourceTree = "<group>"; };
+		CBDE2934184CF11D00C3D33D /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
+		CBDE2935184CF11D00C3D33D /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
+		CBDE2936184CF11D00C3D33D /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		CBE8637517FC9F8800EF6E73 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
 		CBE8637717FC9F9300EF6E73 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		CBE8637917FC9F9C00EF6E73 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -440,10 +458,10 @@
 				CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */,
 				CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */,
 				CB2F9F9B1808B2EA00F5F97C /* SystemConfiguration.framework in Frameworks */,
+				CBC82A43184ADBDD00C96D3E /* libTestFlight.a in Frameworks */,
 				CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */,
 				CB96D9BB18353997003DD13E /* Crashlytics.framework in Frameworks */,
 				CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */,
-				CBC82A20184699AA00C96D3E /* Reveal.framework in Frameworks */,
 				CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */,
 				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
 				CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */,
@@ -452,6 +470,7 @@
 				CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */,
 				CB70536E183E77A4002A377F /* Appsee.framework in Frameworks */,
 				CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */,
+				CBB53808184E490D002408A1 /* libIntercom.a in Frameworks */,
 				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
 				CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */,
 				CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */,
@@ -505,6 +524,8 @@
 			isa = PBXGroup;
 			children = (
 				CB429B9317EFDAA8002273D6 /* services */,
+				CBA676B518085D520035368A /* BaseSettingsViewController.h */,
+				CBA676B618085D520035368A /* BaseSettingsViewController.m */,
 				CB8157A617F0E0B3006AA14A /* AccountViewController.h */,
 				CB8157A717F0E0B3006AA14A /* AccountViewController.m */,
 				CB4F87A8180F428300B685E1 /* AccountViewController.xib */,
@@ -512,15 +533,13 @@
 				CBDCEC6F1805E9370024860B /* ProviderSettingsMenuViewController.m */,
 				CBDCEC711805ED5B0024860B /* ProviderSettingsTableViewController.h */,
 				CBDCEC721805ED5B0024860B /* ProviderSettingsTableViewController.m */,
-				CBA676B518085D520035368A /* BaseSettingsViewController.h */,
-				CBA676B618085D520035368A /* BaseSettingsViewController.m */,
 				CB2D00A8181215E6005350D5 /* SettingEventsViewController.h */,
 				CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */,
 				CBA6D120181F66DC006B73AC /* TeamMembersViewController.h */,
 				CBA6D121181F66DC006B73AC /* TeamMembersViewController.m */,
 				CBA6D122181F66DC006B73AC /* TeamMembersViewController.xib */,
-				CB1394761822F96C00053086 /* ProviderAccountTableViewController.h */,
-				CB1394771822F96C00053086 /* ProviderAccountTableViewController.m */,
+				CB1394761822F96C00053086 /* ProviderAccountTableViewDataSource.h */,
+				CB1394771822F96C00053086 /* ProviderAccountTableViewDataSource.m */,
 				CB13947E18231A7400053086 /* ProviderAccountDetailsTableViewController.h */,
 				CB13947F18231A7400053086 /* ProviderAccountDetailsTableViewController.m */,
 				CBC82A26184951CA00C96D3E /* UserSettingsMenuViewController.h */,
@@ -537,7 +556,8 @@
 		CB1394811823440E00053086 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
-				CBC82A31184A767200C96D3E /* refreshControl */,
+				CBB53805184E490D002408A1 /* Intercom */,
+				CBC82A3C184ADBDD00C96D3E /* TestFlightSDK2.0.2 */,
 				CBF387271812535500554730 /* HockeySDK.embeddedframework */,
 				CB2F9F9C1808B40A00F5F97C /* Mixpanel */,
 			);
@@ -700,6 +720,7 @@
 		CB5AECE717EE88B900319223 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CBC82A31184A767200C96D3E /* refreshControl */,
 				CB1947BD183077B400944E80 /* CSNotificationView.h */,
 				CB1947BE183077B400944E80 /* CSNotificationView.m */,
 				CB1947BA182F13E500944E80 /* CustomPullToRefreshControl.h */,
@@ -747,6 +768,9 @@
 				CB30E097183FC42F0067F5E1 /* ConnectionIntroViewController.h */,
 				CB30E098183FC42F0067F5E1 /* ConnectionIntroViewController.m */,
 				CB30E099183FC42F0067F5E1 /* ConnectionIntroViewController.xib */,
+				CBDE2934184CF11D00C3D33D /* ResetPasswordViewController.h */,
+				CBDE2935184CF11D00C3D33D /* ResetPasswordViewController.m */,
+				CBDE2936184CF11D00C3D33D /* ResetPasswordViewController.xib */,
 			);
 			name = welcome;
 			sourceTree = "<group>";
@@ -761,6 +785,8 @@
 				CB9886A7183408EC00BA37C9 /* EmptyFeedViewController.h */,
 				CB9886A8183408EC00BA37C9 /* EmptyFeedViewController.m */,
 				CB9886A9183408EC00BA37C9 /* EmptyFeedViewController.xib */,
+				CBB53809184E62A6002408A1 /* FeedBackgroundViewController.h */,
+				CBB5380A184E62A6002408A1 /* FeedBackgroundViewController.m */,
 			);
 			name = feed;
 			sourceTree = "<group>";
@@ -788,7 +814,6 @@
 		CB8F208F17EB5D6300EBDC34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CBC82A1F184699AA00C96D3E /* Reveal.framework */,
 				CB70536D183E77A4002A377F /* Appsee.framework */,
 				CB96D9BA18353997003DD13E /* Crashlytics.framework */,
 				CB1947C61830999D00944E80 /* CoreVideo.framework */,
@@ -822,7 +847,6 @@
 		CB8F209617EB5D6300EBDC34 /* Triage-ios */ = {
 			isa = PBXGroup;
 			children = (
-				CBC82A38184AC4E500C96D3E /* views */,
 				CB1394811823440E00053086 /* vendor */,
 				CBA6D0FE181EF83C006B73AC /* Triage-ios.entitlements */,
 				CBD43EF817F8B200001AC849 /* cells */,
@@ -830,6 +854,7 @@
 				CB06CB6617EBA4EE007323AA /* networking */,
 				CB8F20C017EB5F8300EBDC34 /* models */,
 				CB8F20BF17EB5F7700EBDC34 /* controllers */,
+				CBC82A38184AC4E500C96D3E /* views */,
 				CB8F209F17EB5D6300EBDC34 /* AppDelegate.h */,
 				CB8F20A017EB5D6300EBDC34 /* AppDelegate.m */,
 				CB8F209717EB5D6300EBDC34 /* Supporting Files */,
@@ -881,8 +906,8 @@
 				CB5AECF017EF7D8A00319223 /* welcome */,
 				CB84B41D17EBBF1500C8B00D /* RootViewController.h */,
 				CB84B41E17EBBF1500C8B00D /* RootViewController.m */,
-				CB50F96D182968FD0074CA99 /* TRNavigationViewController.h */,
-				CB50F96E182968FD0074CA99 /* TRNavigationViewController.m */,
+				CB50F96D182968FD0074CA99 /* TRNavigationController.h */,
+				CB50F96E182968FD0074CA99 /* TRNavigationController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -969,6 +994,15 @@
 			name = Mantle;
 			sourceTree = "<group>";
 		};
+		CBB53805184E490D002408A1 /* Intercom */ = {
+			isa = PBXGroup;
+			children = (
+				CBB53806184E490D002408A1 /* Intercom.h */,
+				CBB53807184E490D002408A1 /* libIntercom.a */,
+			);
+			path = Intercom;
+			sourceTree = "<group>";
+		};
 		CBC82A211846B33600C96D3E /* braintree */ = {
 			isa = PBXGroup;
 			children = (
@@ -996,6 +1030,19 @@
 				CBC82A3A184AC4FD00C96D3E /* TRButton.m */,
 			);
 			name = views;
+			sourceTree = "<group>";
+		};
+		CBC82A3C184ADBDD00C96D3E /* TestFlightSDK2.0.2 */ = {
+			isa = PBXGroup;
+			children = (
+				CBC82A3D184ADBDD00C96D3E /* libTestFlight.a */,
+				CBC82A3E184ADBDD00C96D3E /* README.md */,
+				CBC82A3F184ADBDD00C96D3E /* release_notes.md */,
+				CBC82A40184ADBDD00C96D3E /* TestFlight+AsyncLogging.h */,
+				CBC82A41184ADBDD00C96D3E /* TestFlight+ManualSessions.h */,
+				CBC82A42184ADBDD00C96D3E /* TestFlight.h */,
+			);
+			path = TestFlightSDK2.0.2;
 			sourceTree = "<group>";
 		};
 		CBCC6C8D18199D5F001030C2 /* AutoCompleteTextField */ = {
@@ -1175,8 +1222,11 @@
 				CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */,
 				CB30E09B183FC42F0067F5E1 /* ConnectionIntroViewController.xib in Resources */,
 				CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */,
+				CBDE2938184CF11D00C3D33D /* ResetPasswordViewController.xib in Resources */,
 				CBA6D124181F66DC006B73AC /* TeamMembersViewController.xib in Resources */,
+				CBC82A44184ADBDD00C96D3E /* README.md in Resources */,
 				CBF3872D1812535500554730 /* HockeySDK.xcconfig in Resources */,
+				CBC82A45184ADBDD00C96D3E /* release_notes.md in Resources */,
 				CBA6D12918202C0E006B73AC /* ConnectionWizardViewController.xib in Resources */,
 				CB0E028D1810A87600484E69 /* WelcomeViewController.xib in Resources */,
 				CB429BB617F09882002273D6 /* OAuthViewController.xib in Resources */,
@@ -1265,7 +1315,7 @@
 				CBA6D110181F1EF7006B73AC /* MTLGraphDataSet.m in Sources */,
 				CBFDFBC9182868980013BBA2 /* ActionCell.m in Sources */,
 				CB27B51B184420F1000B4D55 /* BeanstalkSettingsViewController.m in Sources */,
-				CB1394781822F96C00053086 /* ProviderAccountTableViewController.m in Sources */,
+				CB1394781822F96C00053086 /* ProviderAccountTableViewDataSource.m in Sources */,
 				CB1947B3182D71F500944E80 /* MTLProviderAccount.m in Sources */,
 				CBC82A36184A768300C96D3E /* UIScrollView+UzysCircularProgressPullToRefresh.m in Sources */,
 				CBCC6CA21819C1FF001030C2 /* UIView+BlurredSnapshot.m in Sources */,
@@ -1322,12 +1372,14 @@
 				CBA6D0FD181ECF6C006B73AC /* DetailView.m in Sources */,
 				CBFDFBC6182821980013BBA2 /* DockedRequestAPIClient.m in Sources */,
 				CBA6D113181F1F05006B73AC /* MTLGraphDataDetail.m in Sources */,
-				CB50F96F182968FD0074CA99 /* TRNavigationViewController.m in Sources */,
+				CB50F96F182968FD0074CA99 /* TRNavigationController.m in Sources */,
 				CBD43F4317FA12BE001AC849 /* MessagesTableViewController.m in Sources */,
 				CBA676B718085D520035368A /* BaseSettingsViewController.m in Sources */,
+				CBB5380B184E62A6002408A1 /* FeedBackgroundViewController.m in Sources */,
 				CBA6D12F18206E07006B73AC /* ProviderWizardCell.m in Sources */,
 				CBA6D0F4181DF4EE006B73AC /* TextItem.m in Sources */,
 				CBDCEC78180629480024860B /* ProviderSettingCell.m in Sources */,
+				CBDE2937184CF11D00C3D33D /* ResetPasswordViewController.m in Sources */,
 				CB27B52418442115000B4D55 /* CrashlyticsSettingsViewController.m in Sources */,
 				CB8F209D17EB5D6300EBDC34 /* main.m in Sources */,
 				CB1947BF183077B400944E80 /* CSNotificationView.m in Sources */,
@@ -1486,6 +1538,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
+					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/TestFlightSDK2.0.2",
+					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/Intercom",
 				);
 				PRODUCT_NAME = "Triage-ios";
 				PROVISIONING_PROFILE = "";
@@ -1516,6 +1570,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
+					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/TestFlightSDK2.0.2",
+					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/Intercom",
 				);
 				PRODUCT_NAME = "Triage-ios";
 				PROVISIONING_PROFILE = "";

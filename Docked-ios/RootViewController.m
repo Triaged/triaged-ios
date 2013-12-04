@@ -16,10 +16,12 @@
 #import "VerifyViewController.h"
 #import "PKRevealController.h"
 #import "UserSettingsMenuViewController.h"
+#import "FeedBackgroundViewController.h"
+
 
 
 @interface RootViewController () <PKRevealing> {
-    FeedTableViewController *feedTableView;
+    FeedBackgroundViewController *feedVC;
     ConnectionIntroViewController *connectionIntroVC;
 }
 
@@ -40,11 +42,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = BG_COLOR;
 
     [self setupViewControllers];
-    [self addSettingsButton];
 	// Do any additional setup after loading the view.
 }
 
@@ -68,24 +67,17 @@
     if (account.personalAccount) {
         if (shouldSeeTutorial) [self displayConnectionIntro];
     } else {
-        if (account.connectedProviderCount == 0) {
-            // Show connection Wizard first
-            if (shouldSeeTutorial) [self displayConnectionIntro];
-            if (needsValidation)
-                if (!account.validatedCompany) [self displayCompanyValidation]; // Show validation screen
-        } else {
-            // Show validate company first
-            if (needsValidation)
-                if (!account.validatedCompany) [self displayCompanyValidation];// Show Validated Company
-            if (shouldSeeTutorial) [self displayConnectionIntro];
-        }
+        // Show validate company first
+        if (needsValidation)
+            if (!account.validatedCompany) [self displayCompanyValidation];// Show Validated Company
+        if (shouldSeeTutorial) [self displayConnectionIntro];
     }
 }
 
 -(void) displayConnectionIntro {
-    connectionIntroVC = [[ConnectionIntroViewController alloc] init];
-    connectionIntroVC.rootController = self;
-    [self presentViewController:connectionIntroVC animated:NO completion:nil];
+    ConnectionWizardViewController *connectionWizardVC = [[ConnectionWizardViewController alloc] init];
+    connectionWizardVC.showingWelcomeTour = YES;
+    [self presentViewController:connectionWizardVC animated:NO completion:nil];
 }
 
 -(void) displayCompanyValidation
@@ -104,51 +96,24 @@
     
     ProviderSettingsMenuViewController *providerSettingsVC = [[ProviderSettingsMenuViewController alloc] init];
     UserSettingsMenuViewController *userSettingsVC = [[UserSettingsMenuViewController alloc] init];
-
+//    feedVC = [[FeedTableViewController alloc] init];
+//    feedVC.navController = self.navigationController;
     
-    feedTableView = [[FeedTableViewController alloc] init];
-    feedTableView.navController = self.navigationController;
-    feedTableView.rootController = self;
+    feedVC = [[FeedBackgroundViewController alloc] init];
+    feedVC.feedTableView.navController = self.navigationController;
     
-//    [self addChildViewController:feedTableView];
-//    [self.view addSubview:feedTableView.view];
-//    
-//    //[self followScrollView:feedTableView.tableView];
-//    [feedTableView didMoveToParentViewController:self];
+    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:feedVC leftViewController:providerSettingsVC rightViewController:userSettingsVC];
     
-    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:feedTableView leftViewController:providerSettingsVC rightViewController:userSettingsVC];
-    
-    //[PKRevealController revealControllerWithFrontViewController:feedTableView providerSettingsVC:settingsVC];
     [revealController setMinimumWidth:280.0 maximumWidth:310.0 forViewController:providerSettingsVC];
     [revealController setMinimumWidth:280.0 maximumWidth:310.0 forViewController:userSettingsVC];
     [self.revealController enterPresentationModeAnimated:YES completion:nil];
     self.revealController.disablesFrontViewInteraction = YES;
+    self.revealController.view.backgroundColor = BG_COLOR;
     revealController.delegate = self;
-    //revealController.quickSwipeVelocity = 1000;
-    
     
     [self addChildViewController:revealController];
     [self.view addSubview:revealController.view];
     [revealController didMoveToParentViewController:self];
-}
-
-- (void)addSettingsButton
-{
-
-    UIImage *menuImage = [UIImage imageNamed:@"menu-1.png"];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:menuImage style:UIBarButtonItemStyleDone target:self action:@selector(presentSettingsView)];
-    self.navigationItem.leftBarButtonItem = settingsButton;
-    
-    UIImage *logoImage = [[UIImage imageNamed:@"logo_navbar.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:logoImage];
-    self.navigationItem.titleView = logoImageView;
-}
-
-- (void)presentSettingsView
-{
-    ProviderSettingsMenuViewController *settingsVC = [[ProviderSettingsMenuViewController alloc] init];
-    TRNavigationViewController *nav = [[TRNavigationViewController alloc] initWithRootViewController:settingsVC];
-    [self presentViewController:nav animated:YES completion:nil];
 }
 
 

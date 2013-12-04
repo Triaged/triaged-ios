@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <HockeySDK/HockeySDK.h>
 #import "UIDebugWindow.h"
-#import "TRNavigationViewController.h"
+#import "TRNavigationController.h"
 
 @class Store;
 @class PersistentStack;
@@ -20,8 +20,10 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) PersistentStack* persistentStack;
 @property (nonatomic, strong) Store* store;
-@property (strong, nonatomic) TRNavigationViewController *navVC;
+@property (strong, nonatomic) TRNavigationController *navVC;
 
 + (instancetype)sharedDelegate;
+
+- (void)setWindowAndRootVC;
 
 @end

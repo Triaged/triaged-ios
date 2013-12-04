@@ -20,7 +20,7 @@
         // Initialization code
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.separatorInset = UIEdgeInsetsMake(0, 56, 0, 0);
-        self.userInteractionEnabled = NO;
+        
 //        
 //        UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
 //        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
@@ -30,11 +30,11 @@
         // Avatar image
         UIImage *avatarIcon = [UIImage imageNamed:@"avatar.png"];
         avatarView = [[UIImageView alloc] initWithImage:avatarIcon];
-        avatarView.frame = CGRectMake(14, 7, 30, 30);
+        avatarView.frame = CGRectMake(14, 9, 30, 30);
         [self.contentView addSubview: avatarView];
         
-        nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(56, 7, 200, 30)];
-        [nameLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
+        nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(56, 9, 200, 30)];
+        [nameLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:17.0]];
         nameLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
         [nameLabel setLineBreakMode: NSLineBreakByClipping];
         nameLabel.numberOfLines = 1;
@@ -69,5 +69,15 @@
     [avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
 
 }
+
+- (void)configureForAddTeamMember {
+    
+    nameLabel.text = @"Invite New Member";
+    nameLabel.textColor = TINT_COLOR;
+    [avatarView setImage:[UIImage imageNamed:@"icn_newmember.png"]];
+    
+}
+
+
 
 @end

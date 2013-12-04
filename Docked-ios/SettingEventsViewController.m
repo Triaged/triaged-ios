@@ -31,22 +31,13 @@
     [super viewDidLoad];
     
     // events
-    eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, 100, 20)];
-    eventLabel.text = @"Events";
+    eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, 260, 20)];
+    eventLabel.text = @"These events will show up in your feed.";
     [eventLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
     eventLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
     [eventLabel setLineBreakMode: NSLineBreakByClipping];
     eventLabel.numberOfLines = 1;
     [self.view addSubview: eventLabel];
-    
-    pushLabel = [[UILabel alloc] initWithFrame:CGRectMake(281, 0, 40, 20)];
-    pushLabel.text = @"Push";
-    [pushLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
-    pushLabel.textColor = [[UIColor alloc]
-                           initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
-    [pushLabel setLineBreakMode: NSLineBreakByClipping];
-    pushLabel.numberOfLines = 1;
-    [self.view addSubview: pushLabel];
     
     
     // Events
@@ -102,14 +93,14 @@
     NSArray *event = events[indexPath.row];
     cell.eventLabel.text = event[0];
     
-    bool showConnected = ([event[1] boolValue] ? NO : YES);
-    cell.connectedView.hidden = showConnected;
+    //bool showConnected = ([event[1] boolValue] ? NO : YES);
+    cell.connectedView.hidden = YES;
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 46;
+    return 44;
 }
 
 @end

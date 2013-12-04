@@ -15,11 +15,13 @@
     #import "Store.h"
     #import "CSNotificationView.h"
     #import "TRButton.h"
+    #import "Intercom.h"
 
     #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
-    #define BG_COLOR [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
-    #define TINT_COLOR [[UIColor alloc] initWithRed:105.0f/255.0f green:125.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
-    #define BAR_TINT_COLOR [[UIColor alloc] initWithRed:239.0f/255.0f green:240.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
+    #define BG_COLOR [[UIColor alloc] initWithRed:242.0f/255.0f green:244.0f/255.0f blue:248.0f/255.0f alpha:1.0f];
+//    #define TINT_COLOR [[UIColor alloc] initWithRed:105.0f/255.0f green:125.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
+#define TINT_COLOR [[UIColor alloc] initWithRed:121.0f/255.0f green:147.0f/255.0f blue:212.0f/255.0f alpha:1.0f];
+    #define BAR_TINT_COLOR [[UIColor alloc] initWithRed:242.0f/255.0f green:244.0f/255.0f blue:248.0f/255.0f alpha:1.0f];
     #define BODY_COLOR [[UIColor alloc] initWithRed:104.0f/255.0f green:109.0f/255.0f blue:122.0f/255.0f alpha:1.0f];
 #endif

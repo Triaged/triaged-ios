@@ -596,7 +596,7 @@ withAutoCompleteString:(NSString *)string
 
 + (CGRect)autoCompleteTableViewFrameForTextField:(MLPAutoCompleteTextField *)textField
 {
-    CGRect frame = CGRectMake(0,63.5,320, 250);
+    CGRect frame = CGRectMake(0,0,320, 250);
     frame = CGRectInset(frame, 1, 0);
     
     return frame;

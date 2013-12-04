@@ -11,6 +11,7 @@
 #import "SVProgressHUD.h"
 #import "SignupViewController.h"
 #import "AppDelegate.h"
+#import "ResetPasswordViewController.h"
 
 @interface LoginViewController ()
 
@@ -40,14 +41,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    loginButton.backgroundColor = [[UIColor alloc] initWithRed:163.0f/255.0f green:177.0f/255.0f blue:217.0f/255.0f alpha:1.0f];
     
-    UIColor *color = [UIColor whiteColor];
-    usernameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Work Email" attributes:@{NSForegroundColorAttributeName: color}];
+    // Do any additional setup after loading the view from its nib.
+    loginButton.backgroundColor = [[UIColor alloc] initWithRed:121.0f/255.0f green:147.0f/255.0f blue:212.0f/255.0f alpha:1.0f];
+    [loginButton.layer setCornerRadius:3.0f];
+    [loginButton.layer setMasksToBounds:YES];
+    
+    UIColor *color = [[UIColor alloc] initWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0f];
+;
+    usernameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Work Email" attributes:@{NSForegroundColorAttributeName: color, NSFontAttributeName: @"Avenir-light"}];
 
 
-    passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
+    passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color, NSFontAttributeName: @"Avenir-light"}];
+    
+    divider2.hidden = YES;
 
 }
 
@@ -97,7 +104,12 @@
 
 - (IBAction)returnToWelcome:(id)sender
 {
-    [welcomeVC presentSelfFromVC:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)resetPassword:(id)sender {
+    ResetPasswordViewController *resetVC = [[ResetPasswordViewController alloc] init];
+    [self presentViewController:resetVC animated:YES completion:nil];
 }
 
 -(void)keyboardWillShow:(NSNotification*)notification  {
@@ -121,8 +133,8 @@
     //
     // Create animation.
     void (^animations)() = ^() {
-        // Login Button
-       loginButton.frame = CGRectMake(loginButton.frame.origin.x, loginButton.frame.origin.y-keyboardEndFrame.size.height, loginButton.frame.size.width, loginButton.frame.size.height);
+        
+       
         
         // Logo
         CGRect logoFrame = logoLabel.frame;
@@ -141,15 +153,21 @@
         
         CGRect divider2Frame = divider2.frame;
         if (IS_IPHONE5) {
+            loginButton.frame = CGRectMake(loginButton.frame.origin.x, loginButton.frame.origin.y-keyboardEndFrame.size.height, loginButton.frame.size.width, loginButton.frame.size.height);
+            
             usernameFrame.origin.y = usernameFrame.origin.y - keyboardEndFrame.size.height;
             passwordFrame.origin.y = passwordFrame.origin.y - keyboardEndFrame.size.height;
             divider1Frame.origin.y = divider1Frame.origin.y - keyboardEndFrame.size.height;
             divider2Frame.origin.y = divider2Frame.origin.y - keyboardEndFrame.size.height;
         } else {
-            usernameFrame.origin.y = usernameFrame.origin.y - 200;
-            passwordFrame.origin.y = passwordFrame.origin.y - 200;
-            divider1Frame.origin.y = divider1Frame.origin.y - 200;
-            divider2Frame.origin.y = divider2Frame.origin.y - 200;
+            
+            loginButton.frame = CGRectMake(loginButton.frame.origin.x, loginButton.frame.origin.y-150, loginButton.frame.size.width, loginButton.frame.size.height);
+            
+            
+            usernameFrame.origin.y = usernameFrame.origin.y - 150;
+            passwordFrame.origin.y = passwordFrame.origin.y - 150;
+            divider1Frame.origin.y = divider1Frame.origin.y - 150;
+            divider2Frame.origin.y = divider2Frame.origin.y - 150;
 
         }
         
@@ -171,5 +189,6 @@
     self.view.translatesAutoresizingMaskIntoConstraints = YES;
     
 }
+
 
 @end

@@ -44,7 +44,7 @@
 + (NSArray *)nonTitlecasedWords;
 
 - (NSString *)humanize;
-
+- (NSString *)titleize;
 - (NSString *)camelize;
 - (NSString *)camelizeWithLowerFirstLetter;
 

@@ -17,5 +17,6 @@
 
 - (void)configureForItem:(Provider *)provider;
 - (void)configureForDict:(NSDictionary *)provider;
+- (void)configureForAddService;
 
 @end

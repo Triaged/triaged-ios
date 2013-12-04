@@ -24,6 +24,7 @@
     if (self) {
         // Custom initialization
         self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"github"];
+        self.oAuthController = YES;
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Push", @NO], @[@"Commits", @NO], @[@"Issue opened", @YES], @[@"Issue closed", @NO], nil];
     }
     return self;
@@ -34,6 +35,9 @@
     [super viewDidLoad];
     
     self.providerHeroImageView.image = [UIImage imageNamed:@"logo_github.png"];
+    
+    // Connected State
+    ([self isConnected] ?  [self setupConnectedState] : [self setupUnconnectedState]);
     
     }
 
@@ -56,19 +60,8 @@
 {
     [super setupConnectedState];
     
-    self.providerAccountTableVC.view.frame = CGRectMake(0, 190, 320, 44);
-    self.providerAccountTableVC.accountText = self.provider.account.name;
-    self.accountProperties  = self.provider.account.properties;
-    self.accountDetailsTitle = self.provider.account.propertyLabel;
-    [self.scrollView addSubview:self.providerAccountTableVC.view];
-    
     self.eventsViewController.view.frame = CGRectMake(0, 260, 320, 200);
     [self.scrollView addSubview:self.eventsViewController.view];
-    
-    UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-    UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-    lineView.frame = CGRectMake(0, self.providerAccountTableVC.tableView.frame.origin.y, 320, 1);
-    [self.scrollView addSubview: lineView];
 }
 
 

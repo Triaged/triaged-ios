@@ -9,13 +9,11 @@
 #import "ConnectionIntroViewController.h"
 #import "ConnectionWizardViewController.h"
 #import "RootViewController.h"
-#import "IFTTTJazzHands.h"
 
 @interface ConnectionIntroViewController () {
     int animationCount;
 }
 
-@property (nonatomic, strong) IFTTTAnimator *animator;
 @property (nonatomic, strong) UIImageView *providersList;
 
 @end
@@ -88,28 +86,8 @@
     
     animationCount = 10;
 
-    
-
-    
-    
-    
-    
-    
-//    self.animator = [IFTTTAnimator new];
-//    IFTTTFrameAnimation *frameAnimation = [IFTTTFrameAnimation new];
-//    frameAnimation.view = providersList;
-//    [frameAnimation addKeyFrame:[[IFTTTAnimationKeyFrame alloc] initWithTime:0 andFrame:CGRectMake(320, 360, 30, 30)]];
-//    [frameAnimation addKeyFrame:[[IFTTTAnimationKeyFrame alloc] initWithTime:3 andFrame:CGRectMake(130, 340, 60, 60)]];
-//    [frameAnimation addKeyFrame:[[IFTTTAnimationKeyFrame alloc] initWithTime:6 andFrame:CGRectMake(-60, 360, 30, 30)]];
-//    [self.animator addAnimation:frameAnimation];
-//    
-//    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(animate:) userInfo:nil repeats:YES];
 }
 
--(void) animate:(NSTimer*)theTimer {
-    animationCount ++;
-    [self.animator animate:animationCount];
-}
 
 -(void) viewDidAppear:(BOOL)animated {
     [self animateProvider:10];

@@ -29,5 +29,6 @@
 
 - (IBAction)login;
 - (IBAction)returnToWelcome:(id)sender;
+- (IBAction)resetPassword:(id)sender;
 
 @end

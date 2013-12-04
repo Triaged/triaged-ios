@@ -49,22 +49,22 @@ static NSString *kShadowTransitionAnimationKey = @"shadowTransitionAnimation";
 {
 //    if (shadow)
 //    {
-//        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.bounds];
-//        self.layer.masksToBounds = NO;
-//        self.layer.shadowColor = [UIColor blackColor].CGColor;
-//        self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-//        self.layer.shadowOpacity = 0.5;
-//        self.layer.shadowRadius = 2.5;
-//        self.layer.shadowPath = shadowPath.CGPath;
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.bounds];
+        self.layer.masksToBounds = NO;
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+        self.layer.shadowOpacity = 0.5;
+        self.layer.shadowRadius = 2.5;
+        self.layer.shadowPath = shadowPath.CGPath;
 //    }
 //    else
 //    {
-        self.layer.masksToBounds = YES;
-        self.layer.shadowColor = nil;
-        self.layer.shadowOffset = CGSizeZero;
-        self.layer.shadowOpacity = 0.0;
-        self.layer.shadowRadius = 0.0;
-        self.layer.shadowPath = nil;
+//        self.layer.masksToBounds = YES;
+//        self.layer.shadowColor = nil;
+//        self.layer.shadowOffset = CGSizeZero;
+//        self.layer.shadowOpacity = 0.0;
+//        self.layer.shadowRadius = 0.0;
+//        self.layer.shadowPath = nil;
     //}
 }
 

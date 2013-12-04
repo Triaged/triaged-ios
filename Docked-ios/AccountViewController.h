@@ -17,15 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *connectionCountLabel;
-@property (weak, nonatomic) IBOutlet UIButton *upgradeButton;
-@property (weak, nonatomic) IBOutlet UIButton *signOutButton;
 @property (weak, nonatomic) IBOutlet UISwitch *pushNotificationSwitch;
-@property (weak, nonatomic) IBOutlet UIButton *teamButton;
-@property (weak, nonatomic) IBOutlet UITableView *teamTableView;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *dynamicTVHeight;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
--(IBAction)logout:(id)sender;
--(IBAction)contactUs:(id)sender;
+
 - (IBAction)pushSwitchValueChanged:(id)sender;
 
 @end

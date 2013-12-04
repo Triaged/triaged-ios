@@ -64,17 +64,27 @@
     
     // Connected Label
     connectedLabel = [[UILabel alloc] init];
-    connectedLabel.frame = CGRectMake(0, 30, 270, 20);
-    connectedLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:16.0];
-    connectedLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
-    connectedLabel.textAlignment = NSTextAlignmentCenter;
+    connectedLabel.frame = CGRectMake(12, 40, 270, 20);
+    connectedLabel.font = [UIFont fontWithName:@"Avenir-Book" size:14.0];
+    connectedLabel.textColor = [[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
     [scrollView addSubview:connectedLabel];
+    
+    // Account Button
+    
+    UIButton *accountButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-44, 140, 40)];
+    [accountButton setImage:[UIImage imageNamed:@"cog.png"] forState:UIControlStateNormal];
+    UIColor *buttonColor = TINT_COLOR;
+    [accountButton setTitleColor:buttonColor forState:UIControlStateNormal];
+    [accountButton setTitle:@"   Account" forState:UIControlStateNormal];
+    accountButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:17.0];
+    [accountButton addTarget:self action:@selector(showAccount) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:accountButton];
     
     
     // Connected Providers TableView
     providersTableVC = [[ProviderSettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self addChildViewController:providersTableVC];
-    CGRect frame = CGRectMake(0, 70, 320, self.view.frame.size.height - 40);
+    CGRect frame = CGRectMake(0, 30, 320, self.view.frame.size.height - 40);
     providersTableVC.tableView.frame = frame;
     UITableView *providersTableView = providersTableVC.tableView;
     [scrollView  addSubview:providersTableView];
@@ -86,28 +96,11 @@
     
     
     
-    connectProviderButton = [[TRButton alloc] initWithFrame:CGRectMake(14, 320, 256, 40)];
-    [connectProviderButton setTitle:@"Connect Services" forState:UIControlStateNormal];
-    [connectProviderButton addTarget:self action:@selector(showConnectionWizard) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:connectProviderButton];
+//    connectProviderButton = [[TRButton alloc] initWithFrame:CGRectMake(14, 320, 256, 40)];
+//    [connectProviderButton setTitle:@"Connect Services" forState:UIControlStateNormal];
+//    [connectProviderButton addTarget:self action:@selector(showConnectionWizard) forControlEvents:UIControlEventTouchUpInside];
+//    [scrollView addSubview:connectProviderButton];
     
-    
-    
-//    // Account Settings
-//    settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 330, 260, 20)];
-//    settingsLabel.text = @"Account Settings";
-//    [settingsLabel setFont: [UIFont fontWithName:@"Avenir-Light" size:14.0]];
-//    settingsLabel.textColor = [[UIColor alloc] initWithRed:79.0f/255.0f green:79.0f/255.0f blue:79.0f/255.0f alpha:1.0f];
-//    [scrollView addSubview:settingsLabel];
-//
-//    
-//    accountSettingsTableView = [[UITableView alloc] init];
-//    accountSettingsTableView.frame = CGRectMake(0, 350, 320, 44);
-//    accountSettingsTableView.delegate = self;
-//    accountSettingsTableView.dataSource = self;
-//    accountSettingsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    accountSettingsTableView.scrollEnabled = NO;
-//    [scrollView addSubview:accountSettingsTableView];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -137,24 +130,6 @@
     CGRect  buttonFrame = CGRectMake(connectProviderButton.frame.origin.x, providersTableVCHeight, connectProviderButton.frame.size.width, connectProviderButton.frame.size.height);
     connectProviderButton.frame = buttonFrame;
     
-//    // Settings Label
-//    CGRect  accountSettingsFrame = CGRectMake(settingsLabel.frame.origin.x, buttonFrame.origin.y + 80, settingsLabel.frame.size.width, settingsLabel.frame.size.height);
-//    settingsLabel.frame = accountSettingsFrame;
-    
-//    // Set Accounts tableView
-//    CGRect  accountTableFrame = CGRectMake(accountSettingsTableView.frame.origin.x, buttonFrame.origin.y + 100, accountSettingsTableView.frame.size.width, accountSettingsTableView.frame.size.height);
-//    accountSettingsTableView.frame = accountTableFrame;
-//    
-//
-//    
-//    UIImageView *lineView1 = [[UIImageView alloc] initWithImage:lineSeparator];
-//    lineView1.frame = CGRectMake(0, accountSettingsTableView.frame.origin.y, 320, 1);
-//    [scrollView addSubview: lineView1];
-//    
-//    UIImageView *lineView2 = [[UIImageView alloc] initWithImage:lineSeparator];
-//    lineView2.frame = CGRectMake(0, accountSettingsTableView.frame.origin.y + accountSettingsTableView.frame.size.height+2, 320, 1);
-//    [scrollView addSubview: lineView2];
-    
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, buttonFrame.origin.y + buttonFrame.size.height+ 30);
     [self.view sendSubviewToBack:scrollView];
 }
@@ -167,59 +142,13 @@
     }];
 }
 
-
-
-
-#pragma mark UITableViewDelegate
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
-//{
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
-//{
-//    return 1;
-//}
-//
-//- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
-//{
-//    static NSString *CellIdentifier = @"teammateCell";
-//    TeammateCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ];
-//    if ( !cell )
-//    {
-//        cell = [ [ TeammateCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
-//    }
-//    
-//    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//
-//    
-//    if (indexPath.row == 0) {
-//        cell.cellIsForInvite = NO;
-//        //User *user = account.currentUser;
-//        cell.nameLabel.text = account.name;
-//        NSURL *avatarUrl = [NSURL URLWithString:account.avatarUrl];
-//        [cell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
-//    } else {
-//        cell.nameLabel.text = @"Team Members";
-//        cell.avatarView.image = [UIImage imageNamed:@"avatar"];
-//    }
-//    
-//    return cell;
-//}
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//        AccountViewController *accountVC = [[AccountViewController alloc] init];
-//        TRNavigationViewController *nav = [[TRNavigationViewController alloc] initWithRootViewController:accountVC ];
-//        
-//        [self presentViewController:nav animated:YES completion:nil];
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 46;
-//}
+-(void)showAccount {
+    AccountViewController *accountVC = [[AccountViewController alloc] init];
+    TRNavigationController *nav = [[TRNavigationController alloc] initWithRootViewController:accountVC ];
+    
+    [self presentViewController:nav animated:YES completion:nil];
+    
+}
 
 - (void)dismissSettingsView
 {

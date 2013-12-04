@@ -23,7 +23,7 @@
     if (self) {
         // Custom initialization
         self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"stripe"];
-        
+        self.oAuthController = YES;
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Charge succeeded", @NO], @[@"Charge refunded", @NO], @[@"Dispute created", @YES], @[@"Invoice failed", @YES], @[@"Subscription deleted", @YES], nil];
     }
     return self;
@@ -37,6 +37,9 @@
     
     self.eventsViewController.view.frame = CGRectMake(0, 200, 240, 200);
     [self.scrollView addSubview:self.eventsViewController.view];
+    
+    // Connected State
+    ([self isConnected] ?  [self setupConnectedState] : [self setupUnconnectedState]);
 }
 
 - (void) setupUnconnectedState

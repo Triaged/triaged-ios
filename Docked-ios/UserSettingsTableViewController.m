@@ -9,8 +9,9 @@
 #import "UserSettingsTableViewController.h"
 #import "TeammateCell.h"
 #import "UIImageView+AFNetworking.h"
+#import <MessageUI/MessageUI.h>
 
-@interface UserSettingsTableViewController ()
+@interface UserSettingsTableViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -43,7 +44,7 @@
 {
     [self.tableView reloadData];
     [self.tableView layoutIfNeeded];
-    CGRect frame =  CGRectMake(34, 70, 282, [self.tableView contentSize].height);
+    CGRect frame =  CGRectMake(34, 30, 282, [self.tableView contentSize].height);
     self.tableView.frame = frame;
 }
 
@@ -70,7 +71,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return users.count;
+    return users.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,9 +83,14 @@
         cell = [ [ TeammateCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
     
-    User *user = users[indexPath.row];
-    
-    [cell configureForItem:user];
+    if (indexPath.row == users.count) {
+        [cell configureForAddTeamMember];
+    } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.userInteractionEnabled = NO;
+        User *user = users[indexPath.row];
+        [cell configureForItem:user];
+    }
     
     return cell;
 }
@@ -104,8 +110,35 @@
 //    
 //}
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == users.count) {
+        [self inviteUser];
+    }
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 48;
+}
+
+-(void) inviteUser {
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailComposer =
+        [[MFMailComposeViewController alloc] init];
+        [mailComposer setSubject:@"Join me on Triage!"];
+        NSString *message = [NSString stringWithFormat:@"Hey, <br><br> I've been using the Triage app to keep tabs of work when I'm on the go. I think you'd like it. <br /><br />Check it out at <a href='triaged.co'>triaged.co</a> <br /><br /> thanks!<br /> %@", [[AppDelegate sharedDelegate].store.account name]];
+        [mailComposer setMessageBody:message
+                              isHTML:YES];
+        mailComposer.mailComposeDelegate = self;
+        [self presentViewController:mailComposer animated:YES completion:nil];
+    }
+}
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller
+         didFinishWithResult:(MFMailComposeResult)result
+                       error:(NSError *)error{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

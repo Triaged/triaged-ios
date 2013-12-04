@@ -22,20 +22,15 @@
     if (self) {
         // Initialization code
 
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        //self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.separatorInset = UIEdgeInsetsMake(0, 56, 0, 0);
-//        UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-//        UIImageView *lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-//        lineView.frame = CGRectMake(56, 0, 250, 1);
-//        [self.contentView addSubview: lineView];
-        
+
         providerIconView = [[UIImageView alloc] init];
         providerIconView.frame = CGRectMake(14, 10, 28, 28);
         [self.contentView addSubview: providerIconView];
         
-        
-        providerLabel = [[UILabel alloc] initWithFrame: CGRectMake(56, 10, 160, 30)];
-        [providerLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:17.0]];
+        providerLabel = [[UILabel alloc] initWithFrame: CGRectMake(56, 10, 200, 30)];
+        [providerLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:17.0]];
         providerLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
 
         [providerLabel setLineBreakMode: NSLineBreakByClipping];
@@ -43,7 +38,7 @@
         [self.contentView addSubview: providerLabel];
         
         connectedView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings_connected.png"]];
-        connectedView.frame = CGRectMake(288, 14, 24, 20);
+        connectedView.frame = CGRectMake(270, 12, 25, 25);
         
 
     }
@@ -59,35 +54,38 @@
 - (void)configureForItem:(Provider *)provider
 {
     self.providerIconView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", provider.name]];
-    self.providerLabel.text = [provider.name humanize];
+    self.providerLabel.text = [provider.name titleize];
     
-    bool connected = provider.follows;
-    if (connected) {
-     [self.contentView addSubview: connectedView];
-    } else {
-        [connectedView removeFromSuperview];
-    }
+    connectedView.frame = CGRectMake(240, 14, 24, 20);
+    
+//    bool connected = provider.follows;
+//    if (connected) {
+//     [self.contentView addSubview: connectedView];
+//    } else {
+//        [connectedView removeFromSuperview];
+//    }
 }
 
 - (void)configureForDict:(NSDictionary *)provider
 {
     self.providerIconView.image = [UIImage imageNamed:[provider objectForKey:@"settings_icon"]];
-    self.providerLabel.text = [[provider objectForKey:@"short_name"] humanize];
+    self.providerLabel.text = [[provider objectForKey:@"name"] titleize];
     
     Provider *providerObject = [[AppDelegate sharedDelegate].store.account providerWithName:[provider objectForKey:@"id"]];
     
-//    if (providerObject.connected) {
-//        self.providerLabel.text = [NSString stringWithFormat:@"%@ IS CONNECTED",
-//                                   [[provider objectForKey:@"short_name"] uppercaseString] ];
-//        self.providerLabel.textColor = [UIColor blackColor];
-//        //[dataView addSubview:connectedView];
-//    } else {
-//        self.backgroundColor = [UIColor clearColor];
-//        self.providerLabel.text = [NSString stringWithFormat:@"CONNECT TO %@",
-//                                   [[provider objectForKey:@"short_name"] uppercaseString] ];
-//        self.providerLabel.textColor = [UIColor whiteColor];
-//        
-//    }
+    if (providerObject.connected) {
+        [self.contentView addSubview: connectedView];
+    } else {
+        [connectedView removeFromSuperview];
+    }
+}
+
+- (void)configureForAddService {
+    
+    self.providerLabel.text = @"Connect New Service";
+    self.providerLabel.textColor = TINT_COLOR;
+    [self.providerIconView setImage:[UIImage imageNamed:@"icn_connect.png"]];
+    
 }
 
 
