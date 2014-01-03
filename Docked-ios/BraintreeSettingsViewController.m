@@ -23,7 +23,7 @@
         self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"braintree"];
         
         
-        self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Deploy", @NO], nil];
+        self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Subscription Active", @NO], @[@"Subscription Canceled", @YES], @[@"Subscription Charge Failed", @YES], @[@"Transaction Disbursed", @NO], nil];
     }
     return self;
 }

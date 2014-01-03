@@ -21,6 +21,7 @@
 #import "AppfiguresSettingsViewController.h"
 #import "HockeyAppSettingsViewController.h"
 #import "BraintreeSettingsViewController.h"
+#import "BitbucketSettingsViewController.h"
 
 
 @implementation Provider
@@ -127,8 +128,8 @@
         @"settings_icon" : @"airbrake-s.png",
         @"settings_class" : AirbrakeSettingsViewController.class
     },
-    @{  @"name" : @"Github",
-        @"short_name" : @"Github",
+    @{  @"name" : @"GitHub",
+        @"short_name" : @"GitHub",
         @"id"   : @"github",
         @"icon" : @"github.png",
         @"settings_icon" : @"github-s.png",
@@ -183,6 +184,13 @@
         @"settings_icon" : @"braintree-s.png",
         @"settings_class" : BraintreeSettingsViewController.class
     },
+    @{  @"name" : @"Bitbucket",
+        @"short_name" : @"Bitbucket",
+        @"id"   : @"bitbucket",
+        @"icon" : @"bitbucket.png",
+        @"settings_icon" : @"bitbucket-s.png",
+        @"settings_class" : BitbucketSettingsViewController.class
+        },
     nil];
     
 

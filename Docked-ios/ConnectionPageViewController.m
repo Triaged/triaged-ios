@@ -55,8 +55,8 @@
     
     if (index == 0){
         headlineLabel.text = @"Where do you host code?";
-        predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
-                     @"id", @"github", @"id", @"kiln"];
+        predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@ OR %K == %@)",
+                     @"id", @"github", @"id", @"kiln", @"id", @"bitbucket"];
     }
     if (index == 1){
         headlineLabel.text = @"How do you track errors?";

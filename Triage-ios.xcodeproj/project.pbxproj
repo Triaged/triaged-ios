@@ -64,6 +64,7 @@
 		CB5AECEF17EE922C00319223 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECED17EE922C00319223 /* LoginViewController.xib */; };
 		CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECF217EF7DAA00319223 /* SignupViewController.m */; };
 		CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECF317EF7DAA00319223 /* SignupViewController.xib */; };
+		CB5FF744185A449700FEB6BC /* BitbucketSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5FF743185A449700FEB6BC /* BitbucketSettingsViewController.m */; };
 		CB70536E183E77A4002A377F /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB70536D183E77A4002A377F /* Appsee.framework */; };
 		CB742D1A180EFF2F0068A301 /* GraphCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB742D19180EFF2F0068A301 /* GraphCardCell.m */; };
 		CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4417F251A400BD858D /* CFNetwork.framework */; };
@@ -267,6 +268,8 @@
 		CB5AECF117EF7DAA00319223 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		CB5AECF217EF7DAA00319223 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		CB5AECF317EF7DAA00319223 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
+		CB5FF742185A449700FEB6BC /* BitbucketSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitbucketSettingsViewController.h; sourceTree = "<group>"; };
+		CB5FF743185A449700FEB6BC /* BitbucketSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitbucketSettingsViewController.m; sourceTree = "<group>"; };
 		CB70536D183E77A4002A377F /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
 		CB742D18180EFF2F0068A301 /* GraphCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphCardCell.h; sourceTree = "<group>"; };
 		CB742D19180EFF2F0068A301 /* GraphCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphCardCell.m; sourceTree = "<group>"; };
@@ -664,6 +667,7 @@
 		CB429B9317EFDAA8002273D6 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				CB5FF741185A448500FEB6BC /* bitbucket */,
 				CBC82A211846B33600C96D3E /* braintree */,
 				CB27B518184420CC000B4D55 /* beanstalk */,
 				CB27B517184420C8000B4D55 /* hockey_app */,
@@ -773,6 +777,15 @@
 				CBDE2936184CF11D00C3D33D /* ResetPasswordViewController.xib */,
 			);
 			name = welcome;
+			sourceTree = "<group>";
+		};
+		CB5FF741185A448500FEB6BC /* bitbucket */ = {
+			isa = PBXGroup;
+			children = (
+				CB5FF742185A449700FEB6BC /* BitbucketSettingsViewController.h */,
+				CB5FF743185A449700FEB6BC /* BitbucketSettingsViewController.m */,
+			);
+			name = bitbucket;
 			sourceTree = "<group>";
 		};
 		CB8E0B6C1814A3CA0020E426 /* feed */ = {
@@ -1342,6 +1355,7 @@
 				CBCC6C9618199D71001030C2 /* NSString+Levenshtein.m in Sources */,
 				CBA6D12C18202C70006B73AC /* ConnectionPageViewController.m in Sources */,
 				CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */,
+				CB5FF744185A449700FEB6BC /* BitbucketSettingsViewController.m in Sources */,
 				CBA6D0D9181DDE03006B73AC /* MTLTextItem.m in Sources */,
 				CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */,
 				CBA676AE18085B150035368A /* NewRelicSettingsViewController.m in Sources */,
@@ -1522,8 +1536,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Richardson White (G3JFES9DV5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1542,7 +1556,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/Intercom",
 				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A8410EAE-7CAF-450F-BCD6-F742E92CB896";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1554,8 +1568,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Richardson White (G3JFES9DV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Richardson White (G3JFES9DV5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1574,7 +1588,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/Intercom",
 				);
 				PRODUCT_NAME = "Triage-ios";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A8410EAE-7CAF-450F-BCD6-F742E92CB896";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

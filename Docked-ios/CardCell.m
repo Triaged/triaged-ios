@@ -80,17 +80,17 @@
 {
     [super layoutSubviews];
     
-    [providerIconView setFrame:CGRectMake(14, 22.0, 28.0, 28.0)];
-    [propertyLabel setFrame:CGRectMake(56, 26.0, 200.0, 20.0)];
-    [timestampLabel setFrame:CGRectMake(224, 30.0, 70.0, 16.0)];
+    [providerIconView setFrame:CGRectMake(14, 20.0, 28.0, 28.0)];
+    [propertyLabel setFrame:CGRectMake(56, 24.0, 200.0, 20.0)];
+    [timestampLabel setFrame:CGRectMake(224, 28.0, 70.0, 16.0)];
     
-    [actionLabel setFrame:CGRectMake(14, 66.0, 280.0, 18.0)];
+    [actionLabel setFrame:CGRectMake(14, 64.0, 280.0, 18.0)];
     
     NSAttributedString *attributedBodyText = [CardCell attributedBodyText:bodyLabel.text];
-    CGRect newFrame = CGRectMake(14, 100.0, 280, [CardCell heightOfBody:attributedBodyText]);
+    CGRect newFrame = CGRectMake(14, 98.0, 280, [CardCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
     
-    [self drawShadow];
+    if (shouldDrawShadow) [self drawShadow];
     
     if (shouldDrawSeparator) {
         [self.contentView addSubview:separatorLineView];
@@ -143,6 +143,11 @@
 
 + (NSAttributedString *) attributedBodyText:(NSString *)bodyText
 {
+    
+    if(bodyText == nil) {
+        bodyText = @"";
+    }
+    
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;

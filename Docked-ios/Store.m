@@ -181,11 +181,6 @@
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     [self fetchRemoteFeedItems];
     [Intercom beginSessionForUserWithUserId:_account.userID andEmail:_account.email];
-//    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-//    [mixpanel identify:_account.userID];
-//    [mixpanel track:@"login" properties:@{@"id": _account.userID,
-//                                          @"email" : _account.email,
-//                                          @"company" : _account.companyName}];
 }
 
 - (void) userSignedOut
