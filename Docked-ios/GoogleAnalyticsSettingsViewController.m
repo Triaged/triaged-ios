@@ -65,7 +65,8 @@
 
 - (void)connect
 {
-    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:@"https://www.triaged.co/services/authenticate_for/google_oauth2"];
+    NSString *url = [NSString stringWithFormat:@"%@%@", BASE_URL, @"/services/authenticate_for/google_oauth2"];
+    OAuthViewController * oAuthVC = [[OAuthViewController alloc] initWitURL:url];
     oAuthVC.delegate = self;
     [self.navigationController presentViewController:oAuthVC animated:YES completion:nil];
 }

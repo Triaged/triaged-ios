@@ -33,7 +33,12 @@
      @"connected" : @"connected",
      @"follows" : @"follows",
      @"webhookUrl" : @"webhook_url",
-     @"account" : @"account"
+     @"account" : @"account",
+     @"title" : @"title",
+     @"shortTitle" : @"short_title",
+     @"icon" : @"icon",
+     @"settingsIcon" : @"settings_icon",
+     @"oauth" : @"oauth"
     };
 }
 

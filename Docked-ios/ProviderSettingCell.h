@@ -16,7 +16,7 @@
 @property (strong, nonatomic) UIImageView *connectedView;
 
 - (void)configureForItem:(Provider *)provider;
-- (void)configureForDict:(NSDictionary *)provider;
+- (void)configureForSettings:(Provider *)provider;
 - (void)configureForAddService;
 
 @end

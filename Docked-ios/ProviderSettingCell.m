@@ -53,8 +53,8 @@
 
 - (void)configureForItem:(Provider *)provider
 {
-    self.providerIconView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", provider.name]];
-    self.providerLabel.text = [provider.name titleize];
+    self.providerIconView.image = [UIImage imageNamed:provider.icon];
+    self.providerLabel.text = provider.name;
     
     connectedView.frame = CGRectMake(240, 14, 24, 20);
     
@@ -66,14 +66,13 @@
 //    }
 }
 
-- (void)configureForDict:(NSDictionary *)provider
+- (void)configureForSettings:(Provider *)provider
 {
-    self.providerIconView.image = [UIImage imageNamed:[provider objectForKey:@"settings_icon"]];
-    self.providerLabel.text = [[provider objectForKey:@"name"] titleize];
+    self.providerIconView.image = [UIImage imageNamed:provider.settingsIcon];
+    self.providerLabel.text = provider.title;
     
-    Provider *providerObject = [[AppDelegate sharedDelegate].store.account providerWithName:[provider objectForKey:@"id"]];
     
-    if (providerObject.connected) {
+    if (provider.connected) {
         [self.contentView addSubview: connectedView];
     } else {
         [connectedView removeFromSuperview];

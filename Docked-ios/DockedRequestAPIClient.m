@@ -10,7 +10,8 @@
 #import "CredentialStore.h"
 
 
-static NSString * const DockedAPIBaseURLString = @"https://www.triaged.co/api/v1/";
+//static NSString * const DockedAPIBaseURLString = @"https://www.triaged.co/api/v1/";
+static NSString * const DockedAPIBaseURLString = @"https://www.docked.io/api/v1/";
 
 @implementation DockedRequestAPIClient
 

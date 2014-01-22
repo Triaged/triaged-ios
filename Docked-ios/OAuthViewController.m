@@ -56,7 +56,8 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    if ([[request.URL.absoluteString lowercaseString] isEqualToString:@"https://www.triaged.co/services/oauth_complete"]) {
+    NSString *completeUrl = [NSString stringWithFormat:@"%@%@", BASE_URL, @"/services/oauth_complete"];
+    if ([[request.URL.absoluteString lowercaseString] isEqualToString:completeUrl]) {
         
         //update our store account from the server
         [Account fetchRemoteUserAccountWithBlock:^(Account * account) {

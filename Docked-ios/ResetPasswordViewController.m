@@ -59,7 +59,7 @@
     
     id params = @{@"email": self.emailField.text};
     
-    [[DockedAPIClient sharedClient] POST:@"account/password_reset.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
+    [[DockedAPIClient sharedClient] POST:@"account/reset_password.json" parameters:params success:^(NSURLSessionDataTask *task, id JSON) {
         
         [resetButton setEnabled:NO];
         [resetButton setTitle:@"Check your email" forState:UIControlStateDisabled];

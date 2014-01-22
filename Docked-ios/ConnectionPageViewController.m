@@ -7,7 +7,6 @@
 //
 
 #import "ConnectionPageViewController.h"
-#import "ProviderWizardCell.h"
 #import "ProviderSettingCell.h"
 #import "BaseSettingsViewController.h"
 #import "Provider.h"
@@ -56,31 +55,31 @@
     if (index == 0){
         headlineLabel.text = @"Where do you host code?";
         predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@ OR %K == %@)",
-                     @"id", @"github", @"id", @"kiln", @"id", @"bitbucket"];
+                     @"name", @"github", @"name", @"kiln", @"name", @"bitbucket"];
     }
     if (index == 1){
         headlineLabel.text = @"How do you track errors?";
         predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@ OR %K == %@)",
-                     @"id", @"sentry", @"id", @"airbrake", @"id", @"crashlytics"];
+                     @"name", @"sentry", @"name", @"airbrake", @"name", @"crashlytics"];
     } else if (index == 2) {
         headlineLabel.text = @"How do you deploy your app?";
         predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
-                     @"id", @"heroku", @"id", @"beanstalk"];
+                     @"name", @"heroku", @"name", @"beanstalk"];
     } else if (index == 3) {
         headlineLabel.text = @"Do you have a mobile app?";
         predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
-                     @"id", @"appfigures", @"id", @"hockey_app"];
+                     @"name", @"appfigures", @"name", @"hockey_app"];
     } else if (index == 4) {
         headlineLabel.text = @"How do you analyze your data?";
         predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
-                     @"id", @"google_analytics", @"id", @"new_relic"];
+                     @"name", @"google_analytics", @"name", @"new_relic"];
     } else if (index == 5) {
         headlineLabel.text = @"Do you accept payments online?";
         predicate = [NSPredicate predicateWithFormat:@"(%K == %@ OR %K == %@)",
-                     @"id", @"stripe", @"id", @"braintree"];
+                     @"name", @"stripe", @"name", @"braintree"];
     }
     
-    providers = [[Provider currentProviders] filteredArrayUsingPredicate:predicate];
+    providers = [[AppDelegate sharedDelegate].store.account.providers filteredArrayUsingPredicate:predicate];
     [connectionsTable reloadData];
     [connectionsTable setNeedsDisplay];
     [headlineLabel setNeedsDisplay];
@@ -105,9 +104,9 @@
         cell = [ [ ProviderSettingCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
     
-    NSDictionary *provider = providers[indexPath.row];
+    Provider *provider = providers[indexPath.row];
     
-    [cell configureForDict:provider];
+    [cell configureForSettings:provider];
     
     return cell;
 }

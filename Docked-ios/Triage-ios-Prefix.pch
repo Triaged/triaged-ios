@@ -24,4 +24,8 @@
 #define TINT_COLOR [[UIColor alloc] initWithRed:121.0f/255.0f green:147.0f/255.0f blue:212.0f/255.0f alpha:1.0f];
     #define BAR_TINT_COLOR [[UIColor alloc] initWithRed:242.0f/255.0f green:244.0f/255.0f blue:248.0f/255.0f alpha:1.0f];
     #define BODY_COLOR [[UIColor alloc] initWithRed:104.0f/255.0f green:109.0f/255.0f blue:122.0f/255.0f alpha:1.0f];
+
+//#define BASE_URL @"https://www.triaged.co"
+#define BASE_URL  @"http://www.docked.io"
+
 #endif

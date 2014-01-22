@@ -142,6 +142,11 @@
 
 + (NSAttributedString *) attributedBodyText:(NSString *)bodyText
 {
+    
+    if(bodyText == nil) {
+        bodyText = @"";
+    }
+    
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;

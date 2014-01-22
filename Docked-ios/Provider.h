@@ -15,7 +15,12 @@
 @property (nonatomic, copy, readonly) NSString *providerID;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *webhookUrl;
+@property (nonatomic, copy, readonly) NSString *title;
+@property (nonatomic, copy, readonly) NSString *shortTitle;
+@property (nonatomic, copy, readonly) NSString *icon;
+@property (nonatomic, copy, readonly) NSString *settingsIcon;
 @property (nonatomic, copy, readonly) MTLProviderAccount *account;
+@property (nonatomic, readonly) BOOL oauth;
 @property (nonatomic, readonly) BOOL connected;
 @property (nonatomic, readonly) BOOL follows;
 

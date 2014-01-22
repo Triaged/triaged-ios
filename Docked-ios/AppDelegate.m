@@ -11,6 +11,7 @@
 #import "Account.h"
 #import "PersistentStack.h"
 #import "RootViewController.h"
+#import "TRTabBarController.h"
 #import "ProviderSettingsMenuViewController.h"
 #import "DetailViewController.h"
 #import "WelcomeViewController.h"
@@ -18,6 +19,7 @@
 #import <Appsee/Appsee.h>
 #import <Crashlytics/Crashlytics.h>
 #import "TestFlight.h"
+#import "Flurry.h"
 
 // STAGING
 //#define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
@@ -29,6 +31,7 @@
 // RELEASE
 #define MIXPANEL_TOKEN @"392cf507394a7b630ad9e6b878003f3d"
 #define APPSEE_TOKEN @"13389247ea0b457e837f7aec5d80acb8"
+#define FLURRY_TOKEN @"3XM3RXRX5KGJNGFK8S9X"
 
 
 @interface AppDelegate () 
@@ -74,10 +77,13 @@
 
 - (void)setWindowAndRootVC {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    RootViewController *rootVC = [[RootViewController alloc] init];
-    navVC = [[TRNavigationController alloc] initWithRootViewController:rootVC];
     
-    [self.window setRootViewController:navVC];
+    //RootViewController *rootVC = [[RootViewController alloc] init];
+    //navVC = [[TRNavigationController alloc] initWithRootViewController:rootVC];
+    
+    TRTabBarController *tabBarController = [[TRTabBarController alloc] init];
+    
+    [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
 }
 
@@ -115,6 +121,9 @@
     [Crashlytics startWithAPIKey:CRASHLYTICS_TOKEN];
     
     [Intercom setApiKey:@"ios-470c22eb9b8bc927db5c6c2c9721988cba08022c" forAppId:@"254713b22c6841aa49aa91b356f3ac288bfa14b1"];
+    
+    [Flurry setCrashReportingEnabled:NO];
+    [Flurry startSession:FLURRY_TOKEN];
     
 }
 
