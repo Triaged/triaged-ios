@@ -47,7 +47,7 @@
 {
     [super layoutSubviews];
     
-    imageView.frame = CGRectMake(0, 92, 308, 231);
+    imageView.frame = CGRectMake(0, 92, 320, 231);
     
     NSAttributedString *attributedBodyText = [EventCardCell attributedBodyText:bodyLabel.text];
     CGRect newFrame = CGRectMake(16, 92.0, 280, [EventCardCell heightOfBody:attributedBodyText]);

@@ -18,6 +18,10 @@
     if (self) {
         // Initialization code
         
+        [self.layer setBorderWidth:1.0f];
+        UIColor *borderColor = BORDER_COLOR;
+        [self.layer setBorderColor:borderColor.CGColor];
+        
         avatarView = [[UIImageView alloc] initWithFrame: CGRectZero];
         avatarView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview: avatarView];
@@ -57,23 +61,23 @@
     return self;
 }
 
-- (void)setFrame:(CGRect)frame {
-    
-    if (shouldSetFrame) {
-    
-        frame.origin.x = 6.0f;
-        frame.size.width = 308.0f;
-        [super setFrame:frame];
-        
-        [self.layer setCornerRadius:7.0f];
-        [self.layer setMasksToBounds:YES];
-        [self.layer setBorderWidth:0.5f];
-        UIColor *borderColor = BORDER_COLOR;
-        [self.layer setBorderColor:borderColor.CGColor];
-    } else {
-        [super setFrame:frame];
-    }
-}
+//- (void)setFrame:(CGRect)frame {
+//    
+//    if (shouldSetFrame) {
+//    
+////        frame.origin.x = 6.0f;
+////        frame.size.width = 308.0f;
+////        [super setFrame:frame];
+////        
+////        [self.layer setCornerRadius:7.0f];
+////        [self.layer setMasksToBounds:YES];
+//        [self.layer setBorderWidth:1.0f];
+//        UIColor *borderColor = BORDER_COLOR;
+//        [self.layer setBorderColor:borderColor.CGColor];
+//    } else {
+//        [super setFrame:frame];
+//    }
+//}
 
 -(void) layoutSubviews
 {
