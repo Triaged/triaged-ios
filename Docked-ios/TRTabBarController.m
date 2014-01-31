@@ -7,10 +7,16 @@
 //
 
 #import "TRTabBarController.h"
+#import "TRNavigationController.h"
 #import "FeedTableViewController.h"
-#import "ProviderSettingsTableViewController.h"
-#import "TeamMembersViewController.h"
+#import "ProvidersTableViewController.h"
+#import "TeamTableViewController.h"
+#import "NotificationsTableViewController.h"
 #import "AccountViewController.h"
+#import "CredentialStore.h"
+#import "WelcomeViewController.h"
+#import "RDVTabBarItem.h"
+#import "Masonry.h"
 
 @interface TRTabBarController ()
 
@@ -35,32 +41,72 @@
     
     // Home
     FeedTableViewController *feedTableView = [[FeedTableViewController alloc] init];
-    UINavigationController *homeNav = [[UINavigationController alloc] initWithRootViewController:feedTableView];
-    homeNav.tabBarItem.image = [UIImage imageNamed:@"icn_settings.png"];
+    TRNavigationController *homeNav = [[TRNavigationController alloc] initWithRootViewController:feedTableView];
+    UIView *blockade = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    blockade.backgroundColor = [UIColor whiteColor];
+    [homeNav.view addSubview:blockade];
     
     // Providers
-    ProviderSettingsTableViewController *providerList = [[ProviderSettingsTableViewController alloc] init];
-    UINavigationController *providerNav = [[UINavigationController alloc] initWithRootViewController:providerList];
-    providerNav.tabBarItem.image = [UIImage imageNamed:@"icn_settings.png"];
+    ProvidersTableViewController *providerList = [[ProvidersTableViewController alloc] init];
+    TRNavigationController *providerNav = [[TRNavigationController alloc] initWithRootViewController:providerList];
+    
     
     // Users
-    TeamMembersViewController *teamList = [[TeamMembersViewController alloc] init];
-    UINavigationController *teamNav = [[UINavigationController alloc] initWithRootViewController:teamList];
-    teamNav.tabBarItem.image = [UIImage imageNamed:@"icn_settings.png"];
+    TeamTableViewController *teamList = [[TeamTableViewController alloc] init];
+    TRNavigationController *teamNav = [[TRNavigationController alloc] initWithRootViewController:teamList];
     
-//    // Notifications
-//    FeedTableViewController *feedTableView = [[FeedTableViewController alloc] init];
-//    UINavigationController *homeNav = [[UINavigationController alloc] initWithRootViewController:feedTableView];
-//    homeNav.tabBarItem.image = [UIImage imageNamed:@"icn_settings.png"];
+    
+    // Notifications
+    NotificationsTableViewController *notificationsList = [[NotificationsTableViewController alloc] init];
+    TRNavigationController *notificationsNav = [[TRNavigationController alloc] initWithRootViewController:notificationsList];
+    
     
     // Settings
     AccountViewController *accountVC = [[AccountViewController alloc] init];
-    UINavigationController *accountNav = [[UINavigationController alloc] initWithRootViewController:accountVC];
-    accountNav.tabBarItem.image = [UIImage imageNamed:@"icn_settings.png"];
+    TRNavigationController *accountNav = [[TRNavigationController alloc] initWithRootViewController:accountVC];
     
     
-    self.viewControllers = [NSArray arrayWithObjects:homeNav, providerNav, teamNav, accountNav, nil];
+    self.tabBar.opaque = NO;
+    
+    
+    [self  setViewControllers:[NSArray arrayWithObjects:homeNav, providerNav, teamNav, notificationsNav, accountNav, nil]];
+    
+//    
+    UIImage *finishedImage = [UIImage imageNamed:@"nav_bg_on"];
+    UIImage *unfinishedImage = [UIImage imageNamed:@"nav_bg_off"];
+    NSArray *tabBarItemImages = @[@"home", @"providers", @"team", @"notification", @"account"];
+    
+    
+    NSInteger index = 0;
+    for (RDVTabBarItem *item in [[self tabBar] items]) {
+        [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
+        UIImage *selectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"nav_icon_%@_on",
+                                                      [tabBarItemImages objectAtIndex:index]]];
+        UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"nav_icon_%@_off",
+                                                        [tabBarItemImages objectAtIndex:index]]];
+        [item setFinishedSelectedImage:selectedimage withFinishedUnselectedImage:unselectedimage];
+        
+        index++;
+    }
+    
+//    [homeNav.view makeConstraints:^(MASConstraintMaker *make) {
+//        //UIView *topLayoutGuide = (id)self.topLayoutGuide;
+//        make.bottom.equalTo(@300);
+//    }];
+
+
+    
 	// Do any additional setup after loading the view.
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    // Check for authentication
+    if (![[CredentialStore sharedClient] isLoggedIn]) {
+        WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];
+        [self presentViewController:welcomeVC animated:NO completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning

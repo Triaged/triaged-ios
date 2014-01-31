@@ -138,7 +138,7 @@
 {
     // detail view
     self.detailView.gestureRecognizer.enabled = YES;
-    [self.detailView.actionBarVC disableAllActions];
+    //[self.detailView.actionBarVC disableAllActions];
     
     [self.placeholderLabel removeFromSuperview];
 	[self resizeView:notification];
@@ -153,7 +153,7 @@
 {
 	//detail view
     self.detailView.gestureRecognizer.enabled = NO;
-    [self.detailView.actionBarVC enableAllActions];
+    //[self.detailView.actionBarVC enableAllActions];
     
     [self resizeView:notification];
     if (![@"" isEqualToString:self.textView.text]) {

@@ -10,18 +10,15 @@
 #import "FeedTableViewController.h"
 #import "CredentialStore.h"
 #import "WelcomeViewController.h"
-#import "ProviderSettingsMenuViewController.h"
 #import "ConnectionWizardViewController.h"
 #import "ConnectionIntroViewController.h"
 #import "VerifyViewController.h"
 #import "PKRevealController.h"
 #import "UserSettingsMenuViewController.h"
-#import "FeedBackgroundViewController.h"
 
 
 
 @interface RootViewController () <PKRevealing> {
-    FeedBackgroundViewController *feedVC;
     ConnectionIntroViewController *connectionIntroVC;
 }
 
@@ -94,28 +91,15 @@
 - (void)setupViewControllers
 {
     
-    ProviderSettingsMenuViewController *providerSettingsVC = [[ProviderSettingsMenuViewController alloc] init];
+    
     UserSettingsMenuViewController *userSettingsVC = [[UserSettingsMenuViewController alloc] init];
 //    feedVC = [[FeedTableViewController alloc] init];
 //    feedVC.navController = self.navigationController;
     
-    feedVC = [[FeedBackgroundViewController alloc] init];
-    feedVC.feedTableView.navController = self.navigationController;
     
-    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:feedVC leftViewController:providerSettingsVC rightViewController:userSettingsVC];
     
-    [revealController setMinimumWidth:280.0 maximumWidth:310.0 forViewController:providerSettingsVC];
-    [revealController setMinimumWidth:280.0 maximumWidth:310.0 forViewController:userSettingsVC];
-    [self.revealController enterPresentationModeAnimated:YES completion:nil];
-    self.revealController.disablesFrontViewInteraction = YES;
-    self.revealController.view.backgroundColor = BG_COLOR;
-    revealController.delegate = self;
     
-    [self addChildViewController:revealController];
-    [self.view addSubview:revealController.view];
-    [revealController didMoveToParentViewController:self];
 }
-
 
 - (void)didReceiveMemoryWarning
 {

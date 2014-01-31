@@ -82,11 +82,11 @@
         NSString *authToken = [JSON valueForKeyPath:@"authentication_token"];
         [[CredentialStore sharedClient] setAuthToken:authToken];
         
-        // Set current user
-        NSValueTransformer *transformer;
-        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
-        [[AppDelegate sharedDelegate].store setCurrentAccount:[transformer transformedValue:JSON]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
+//        // Set current user
+//        NSValueTransformer *transformer;
+//        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
+//        [[AppDelegate sharedDelegate].store setCurrentAccount:[transformer transformedValue:JSON]];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
         
         [SVProgressHUD dismiss];
         [welcomeVC dismissAuthScreens:self];

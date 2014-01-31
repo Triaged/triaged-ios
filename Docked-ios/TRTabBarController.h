@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RDVTabBarController.h"
 
-@interface TRTabBarController : UITabBarController <UITabBarControllerDelegate>
+@interface TRTabBarController : RDVTabBarController <RDVTabBarControllerDelegate>
 
 @end

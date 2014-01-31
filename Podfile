@@ -13,3 +13,6 @@ pod 'UITableView-NXEmptyView'
 pod 'PKRevealController'
 pod 'NJKWebViewProgress'
 pod 'SVWebViewController', :head
+pod 'RDVTabBarController'
+pod 'Masonry'
+pod 'UIView+AutoLayout'

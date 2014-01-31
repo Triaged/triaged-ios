@@ -17,6 +17,7 @@
 
 @property (readonly, nonatomic, strong) NSArray* feedItems;
 @property (readonly, nonatomic, strong) NSArray* users;
+@property (readonly, nonatomic, strong) NSArray* providers;
 @property (nonatomic, strong) Account* account;
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 

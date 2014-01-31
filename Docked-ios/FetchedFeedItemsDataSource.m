@@ -7,7 +7,7 @@
 //
 
 #import "FetchedFeedItemsDataSource.h"
-#import "MTLFeedItem.h"
+#import "MTLOldFeedItem.h"
 #import "FeedItem.h"
 #import "CardCell.h"
 #import "NSDate+TimeAgo.h"

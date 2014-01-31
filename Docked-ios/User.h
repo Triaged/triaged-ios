@@ -1,32 +1,24 @@
 //
 //  User.h
-//  Triage-ios
+//  Docked-ios
 //
-//  Created by Charlie White on 10/27/13.
+//  Created by Charlie White on 9/23/13.
 //  Copyright (c) 2013 Charlie White. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-#import "MLPAutoCompletionObject.h"
+#import "Mantle.h"
 
-@class Message;
+@interface User : MTLModel <MTLJSONSerializing>
 
-@interface User : NSManagedObject <MLPAutoCompletionObject>
+@property (nonatomic, copy, readonly) NSString *userID;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *slug;
+@property (nonatomic, copy, readonly) NSString *email;
+@property (nonatomic, copy, readonly) NSString *avatarUrl;
+@property (nonatomic, readonly) BOOL registered;
 
-@property (nonatomic, retain) NSString * avatarUrl;
-@property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * slug;
-@property (nonatomic, retain) NSString * userID;
-@property (nonatomic, retain) NSSet *authoredMessages;
-@end
-
-@interface User (CoreDataGeneratedAccessors)
-
-- (void)addAuthoredMessagesObject:(Message *)value;
-- (void)removeAuthoredMessagesObject:(Message *)value;
-- (void)addAuthoredMessages:(NSSet *)values;
-- (void)removeAuthoredMessages:(NSSet *)values;
++ (void)fetchRemoteTeamWithBlock:(void (^)(NSArray *))block;
+- (void)fetchTeammateFeedItemsWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *))block;
 
 @end

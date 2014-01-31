@@ -44,7 +44,7 @@
 }
 
 + (NSDictionary *)relationshipModelClassesByPropertyKey {
-    return @{@"feedItem" : MTLFeedItem.class, @"author" : MTLUser.class};
+    return @{@"feedItem" : MTLOldFeedItem.class, @"author" : User.class};
 }
 
 + (NSSet *)propertyKeysForManagedObjectUniquing {
@@ -53,7 +53,7 @@
 
 + (NSValueTransformer *)authorJSONTransformer
 {
-    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[MTLUser class]];
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[User class]];
 }
 
 

@@ -45,10 +45,10 @@
 
 - (void)setupFetchedResultsController
 {
-    self.fetchedMessagesDataSource = [[FetchedMessagesDataSource alloc] init];
-    self.fetchedMessagesDataSource.fetchedResultsController = feedItem.messagesFetchedResultsController;
-    self.tableView.dataSource = self.fetchedMessagesDataSource;
-    self.fetchedMessagesDataSource.fetchedResultsController.delegate = self;
+//    self.fetchedMessagesDataSource = [[FetchedMessagesDataSource alloc] init];
+//    self.fetchedMessagesDataSource.fetchedResultsController = feedItem.messagesFetchedResultsController;
+//    self.tableView.dataSource = self.fetchedMessagesDataSource;
+//    self.fetchedMessagesDataSource.fetchedResultsController.delegate = self;
 }
 
 

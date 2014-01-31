@@ -10,7 +10,7 @@
 #import "DockedRequestAPIClient.h"
 #import "DockedAPIClient.h"
 #import "CredentialStore.h"
-#import "MTLUser.h"
+#import "User.h"
 #import "AppDelegate.h"
 #import "Store.h"
 
@@ -50,7 +50,7 @@
 
 + (NSValueTransformer *)teammatesJSONTransformer
 {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[MTLUser class]];
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[User class]];
 }
 
 + (NSValueTransformer *)providersJSONTransformer
@@ -196,15 +196,15 @@
                                  // @"slug" : self.slug
                                  };
     
-    MTLUser *user = [[MTLUser alloc] initWithDictionary:attributes error:nil];
+    User *user = [[User alloc] initWithDictionary:attributes error:nil];
     NSManagedObjectContext *context = [AppDelegate sharedDelegate].store.managedObjectContext;
     
-    [MTLManagedObjectAdapter managedObjectFromModel:user insertingIntoContext:context error:nil];
+    //[MTLManagedObjectAdapter managedObjectFromModel:user insertingIntoContext:context error:nil];
     
     // Save teammates to CoreData
-    for( MTLUser* teammate in self.teammates) {
+    for(User* teammate in self.teammates) {
         NSError *error = nil;
-        [MTLManagedObjectAdapter managedObjectFromModel:teammate insertingIntoContext:context error:&error];
+        //[MTLManagedObjectAdapter managedObjectFromModel:teammate insertingIntoContext:context error:&error];
     }
     
     [context save:nil];

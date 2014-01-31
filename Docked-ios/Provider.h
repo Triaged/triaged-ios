@@ -19,6 +19,8 @@
 @property (nonatomic, copy, readonly) NSString *shortTitle;
 @property (nonatomic, copy, readonly) NSString *icon;
 @property (nonatomic, copy, readonly) NSString *settingsIcon;
+@property (nonatomic, copy, readonly) NSString *largeIcon;
+@property (nonatomic, copy, readonly) NSString *smallIcon;
 @property (nonatomic, copy, readonly) MTLProviderAccount *account;
 @property (nonatomic, readonly) BOOL oauth;
 @property (nonatomic, readonly) BOOL connected;
@@ -26,6 +28,10 @@
 
 + (NSArray *)currentProviders;
 + (NSDictionary *)settingsDictForProvider:(NSString *)providerName;
+
++ (void)fetchRemoteProvidersWithBlock:(void (^)(NSArray *))block;
++ (void)fetchRemoteConnectedProvidersWithBlock:(void (^)(NSArray *))block;
+- (void)fetchProviderFeedItemsWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *))block;
 
 - (void) connect;
 - (void) follow;

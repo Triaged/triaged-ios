@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F29F8999BAAB4CD2A7CBA77A"
+               BlueprintIdentifier = "C14A64A7F09D4E40BB7B7F56"
                BuildableName = "libPods-UITableView-NXEmptyView.a"
                BlueprintName = "Pods-UITableView-NXEmptyView"
                ReferencedContainer = "container:Pods.xcodeproj">

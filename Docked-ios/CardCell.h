@@ -29,7 +29,7 @@
 
 - (void)configureForItem:(FeedItem *)item;
 + (CGFloat) estimatedHeightOfContent;
-+ (CGFloat) heightOfContent: (FeedItem *)item;
+//+ (CGFloat) heightOfContent: (FeedItem *)item;
 
 + (NSAttributedString *) attributedBodyText:(NSString *)bodyText;
 + (CGFloat) heightOfBody:(NSAttributedString *)bodyText;

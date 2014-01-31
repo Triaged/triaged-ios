@@ -22,6 +22,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+//        
+//        [self.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"navbar_icon_back.png"]];
+//        [self.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"navbar_icon_back.png"]];
     }
     return self;
 }
@@ -30,21 +33,25 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    for (UIView *view in self.navigationBar.subviews) {
-        for (UIView *view2 in view.subviews) {
-            if ([view2 isKindOfClass:[UIImageView class]]) {
-                [view2 removeFromSuperview];
-            }
-        }
-    }
+//    for (UIView *view in self.navigationBar.subviews) {
+//        for (UIView *view2 in view.subviews) {
+//            if ([view2 isKindOfClass:[UIImageView class]]) {
+//                [view2 removeFromSuperview];
+//            }
+//        }
+//    }
     
     //self.navigationBar.layer.opacity = 0.0;
     
-    self.navigationBar.barTintColor = BAR_TINT_COLOR;
-    self.navigationBar.translucent = NO;
-
+    self.navigationBar.barTintColor = [UIColor whiteColor];//BAR_TINT_COLOR;
+    self.navigationBar.translucent = YES;
+//
+//    [self.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"navbar_icn_back.png"]];
+//    [self.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"navbar_icn_back.png"]];
     
 }
+
+
 
 -(void)popToRoot{
     [self popToRootViewControllerAnimated:YES];

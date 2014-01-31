@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
-#import "MTLFeedItem.h"
+#import "MTLOldFeedItem.h"
 #import "Account.h"
-#import "MTLUser.h"
+#import "User.h"
 #import "Message.h"
 
-@class MTLFeedItem;
+@class MTLOldFeedItem;
 
 @interface MTLMessage : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
@@ -21,8 +21,8 @@
 @property (nonatomic, copy, readonly) NSString *uuid;
 @property (nonatomic, copy, readonly) NSString *body;
 @property (nonatomic, copy, readonly) NSDate *timestamp;
-@property (nonatomic, copy, readonly) MTLUser *author;
-@property (nonatomic, copy, readonly) MTLFeedItem *feedItem;
+@property (nonatomic, copy, readonly) User *author;
+@property (nonatomic, copy, readonly) MTLOldFeedItem *feedItem;
 
 + (NSURLSessionDataTask *)saveRemote:(Message *)message;
 

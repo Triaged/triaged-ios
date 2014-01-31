@@ -7,7 +7,7 @@
 //
 
 #import "ConnectionPageViewController.h"
-#import "ProviderSettingCell.h"
+#import "ListCell.h"
 #import "BaseSettingsViewController.h"
 #import "Provider.h"
 
@@ -79,7 +79,7 @@
                      @"name", @"stripe", @"name", @"braintree"];
     }
     
-    providers = [[AppDelegate sharedDelegate].store.account.providers filteredArrayUsingPredicate:predicate];
+    providers = [[AppDelegate sharedDelegate].store.providers filteredArrayUsingPredicate:predicate];
     [connectionsTable reloadData];
     [connectionsTable setNeedsDisplay];
     [headlineLabel setNeedsDisplay];
@@ -98,10 +98,10 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *CellIdentifier = @"ProviderCell";
-    ProviderSettingCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ] ;
+    ListCell *cell = [ tableView dequeueReusableCellWithIdentifier:CellIdentifier ] ;
     if ( !cell )
     {
-        cell = [ [ ProviderSettingCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
+        cell = [ [ ListCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] ;
     }
     
     Provider *provider = providers[indexPath.row];

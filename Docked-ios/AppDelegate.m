@@ -12,8 +12,7 @@
 #import "PersistentStack.h"
 #import "RootViewController.h"
 #import "TRTabBarController.h"
-#import "ProviderSettingsMenuViewController.h"
-#import "DetailViewController.h"
+#import "CardViewController.h"
 #import "WelcomeViewController.h"
 #import "CredentialStore.h"
 #import <Appsee/Appsee.h>
@@ -92,20 +91,29 @@
     self.window.backgroundColor = BG_COLOR;
     self.window.tintColor = TINT_COLOR;
     
-    UIColor *tint = [[UIColor alloc] initWithRed:38.0f/255.0f green:40.0f/255.0f blue:50.0f/255.0f alpha:1.0f];
+    UIColor *tint = [UIColor blackColor];
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
-                                                                           fontWithName:@"Avenir-Medium" size:16], NSFontAttributeName, tint,NSForegroundColorAttributeName, nil];
+                                                                           fontWithName:@"Avenir-Book" size:17], NSFontAttributeName, tint,NSForegroundColorAttributeName, nil];
     
     [[UINavigationBar appearance] setTitleTextAttributes:attributes];
     
     UIColor *buttonTint = TINT_COLOR;
     NSDictionary *buttonAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
-                                                                           fontWithName:@"Avenir-Medium" size:16], NSFontAttributeName, buttonTint,NSForegroundColorAttributeName, nil];
+                                                                           fontWithName:@"Avenir-Book" size:17], NSFontAttributeName, buttonTint,NSForegroundColorAttributeName, nil];
     
     [[UIBarButtonItem appearance] setTitleTextAttributes:buttonAttributes forState:UIControlStateNormal];
     
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+
+//    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"navbar_icon_back.png"]
+//                                                      forState:UIControlStateNormal
+//                                                    barMetrics:UIBarMetricsDefault];
+//    
+//    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"navbar_icon_back.png"]
+//                                                      forState:UIControlStateHighlighted
+//                                                    barMetrics:UIBarMetricsDefault];
 }
 
 - (void) setAnalytics {
@@ -199,7 +207,7 @@
     request.predicate = [NSPredicate predicateWithFormat:@"externalID = %@", externalID];
     NSArray * fetchedObjects = [self.store.managedObjectContext executeFetchRequest:request error:nil];
    
-    DetailViewController *detailVC = [[DetailViewController alloc] init];
+    CardViewController *detailVC = [[CardViewController alloc] init];
     [detailVC setFeedItem:[fetchedObjects firstObject]];
     [navVC pushViewController:detailVC animated:NO];
 }

@@ -7,13 +7,14 @@
 //
 
 #import "Store.h"
-#import "MTLFeedItem.h"
+#import "MTLOldFeedItem.h"
 #import "Account.h"
 #import "DockedAPIClient.h"
 #import "AppDelegate.h"
 #import "PersistentStack.h"
 #import "ConnectionWizardViewController.h"
 #import "CredentialStore.h"
+#import "MTLFeedItem.h"
 
 //-com.apple.CoreData.SQLDebug 1
 
@@ -23,7 +24,7 @@
 
 @implementation Store
 
-@synthesize managedObjectContext;
+@synthesize managedObjectContext, providers;
 
 + (instancetype)store
 {
@@ -35,11 +36,13 @@
     self = [super init];
     if (self) {
         
-        if ([[CredentialStore sharedClient] isLoggedIn]) {
-            [self readAccountArchive];
-            [self userLoggedIn];
-
-        }
+        [self fetchProviders];
+        
+//        if ([[CredentialStore sharedClient] isLoggedIn]) {
+//            [self readAccountArchive];
+//            [self userLoggedIn];
+//
+//        }
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(userLoggedIn)
@@ -72,6 +75,14 @@
 //    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO]];
 //    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"externalID" cacheName:nil];
 //}
+
+- (void) fetchProviders {
+    
+    [Provider fetchRemoteConnectedProvidersWithBlock:^(NSArray * fetchedProviders) {
+        providers = fetchedProviders;
+    }];
+    
+}
 
 #pragma mark - Remote Updates
 
@@ -127,7 +138,7 @@
                 NSLog(@"%@", [error localizedDescription]);
             }
             
-            MTLFeedItem *latestItem = [newItems firstObject];
+            MTLOldFeedItem *latestItem = [newItems firstObject];
             NSString *minUpdated = [Store.dateFormatter stringFromDate:latestItem.updatedAt];
             [standardDefaults setObject:minUpdated forKey:@"min_updated_at"];
             [standardDefaults synchronize];
@@ -146,7 +157,7 @@
     NSArray *sortedFeedItems = [self sortFeedItems];
     NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:sortedFeedItems.count];
     
-    for (MTLFeedItem *item in sortedFeedItems) {
+    for (MTLOldFeedItem *item in sortedFeedItems) {
         [feed addObject:[self buildGroupedFeedItem:item]];
     }
     
@@ -160,12 +171,12 @@
 
 - (NSArray *)sortFeedItems
 {
-    return [self.feedItems sortedArrayUsingComparator:^NSComparisonResult(MTLFeedItem *feedItem1, MTLFeedItem *feedItem2) {
+    return [self.feedItems sortedArrayUsingComparator:^NSComparisonResult(MTLOldFeedItem *feedItem1, MTLOldFeedItem *feedItem2) {
         return [feedItem2.updatedAt compare:feedItem1.updatedAt];
     }];
 }
 
-- (NSArray *)buildGroupedFeedItem:(MTLFeedItem *)feedItem
+- (NSArray *)buildGroupedFeedItem:(MTLOldFeedItem *)feedItem
 {
     NSMutableArray *groupedFeedItem = [[NSMutableArray alloc] initWithObjects:feedItem, nil];
     if (feedItem.messages.count > 0) {

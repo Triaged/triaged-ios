@@ -1,18 +1,13 @@
 //
-//  FeedItem.m
-//  Docked-ios
+//  MTLFeedItem.m
+//  Triage-ios
 //
-//  Created by Charlie White on 9/19/13.
-//  Copyright (c) 2013 Charlie White. All rights reserved.
+//  Created by Charlie White on 1/23/14.
+//  Copyright (c) 2014 Charlie White. All rights reserved.
 //
 
 #import "MTLFeedItem.h"
-#import "DockedAPIClient.h"
-#import "TextCardCell.h"
 #import "NSString+Inflections.h"
-#import "AppDelegate.h"
-#import "Store.h"
-
 
 @implementation MTLFeedItem
 
@@ -32,40 +27,13 @@
     return dateFormatter;
 }
 
-+ (Class)classForDeserializingManagedObject:(NSManagedObject *)managedObject {
-    return NSClassFromString(managedObject.entity.name);
-}
-
-
-
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"provider": @"provider",
-             @"action": @"action",
-             @"event": @"event",
-             @"property": @"property",
-             @"externalID": @"id",
-             @"htmlUrl": @"html_url",
+             @"ID" : @"id",
              @"messages": @"messages",
              @"timestamp": @"timestamp",
              @"updatedAt": @"updated_at"
              };
-}
-
-+ (NSString *)managedObjectEntityName {
-    return @"FeedItem";
-}
-
-+ (NSDictionary *)managedObjectKeysByPropertyKey {
-    return @{};
-}
-
-+ (NSDictionary *)relationshipModelClassesByPropertyKey {
-    return @{@"messages" : MTLMessage.class};
-}
-
-+ (NSSet *)propertyKeysForManagedObjectUniquing {
-    return [NSSet setWithObject:@"externalID"];
 }
 
 + (NSDictionary *)JSONKeyPathsWithSuper:(NSDictionary *)JSONKeyPaths
@@ -75,18 +43,11 @@
     return ret;
 }
 
-+ (NSDictionary *)relationshipModelClassesWith:(NSDictionary *)relationshipModels
-{
-    NSMutableDictionary *ret = [[NSMutableDictionary alloc] initWithDictionary:@{@"messages" : MTLMessage.class}];
-    [ret addEntriesFromDictionary:relationshipModels];
-    return ret;
-}
-
 + (NSValueTransformer *)timestampJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
         return [self.timestampDateFormatter dateFromString:str];
-
+        
     } reverseBlock:^(NSDate *date) {
         return [self.timestampDateFormatter stringFromDate:date];
     }];
@@ -105,39 +66,11 @@
 + (Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary
 {
     
-    NSString *cardType = [JSONDictionary[@"card_type"] camelize];
-    NSString *cardTypeClassString = [cardType stringByAppendingString:@"Item"];
-    NSString *mantleCardTypeClassString = [@"MTL" stringByAppendingString:cardTypeClassString];
+    NSString *cardType = [JSONDictionary[@"type"] camelize];
+    NSString *cardTypeClassString = [cardType stringByAppendingString:@"Card"];
+    //NSString *mantleCardTypeClassString = [@"MTL" stringByAppendingString:cardTypeClassString];
     
-    return NSClassFromString(mantleCardTypeClassString);
-}
-
--(NSArray *)sortedMessages {
-    return [_messages sortedArrayUsingComparator:^NSComparisonResult(MTLMessage *message1, MTLFeedItem *message2) {
-        return [message2.timestamp compare:message1.timestamp];
-    }];
-}
-
-- (bool)hasMessages
-{
-    return (_messages.count > 0);
-}
-
-
-- (bool)hasMultipleMessages
-{
-    return (_messages.count > 1);
-}
-
-- (MTLMessage *)previewMessage
-{
-    return [_messages lastObject];
-}
-
-
-+ (NSValueTransformer *)messagesJSONTransformer
-{
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[MTLMessage class]];
+    return NSClassFromString(cardTypeClassString);
 }
 
 + (void)fetchNewRemoteFeedItemsWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *))block
@@ -154,22 +87,34 @@
                                            style:CSNotificationViewStyleError
                                          message:@"Feed failed to load."];
         block(nil);
-
+        
     }];
 }
 
-- (NSManagedObject *)managedItem
-{
-    return [MTLManagedObjectAdapter managedObjectFromModel:self insertingIntoContext:[AppDelegate sharedDelegate].store.managedObjectContext error:nil];
++ (void)fetchRemoteFeedItemWithID:(NSString*)feedItemID andBlock:(void (^)(MTLFeedItem *))block {
+    
+    NSString *path = [NSString stringWithFormat:@"feed/%@.json",feedItemID];
+    
+    [[DockedAPIClient sharedClient] GET:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
+        NSValueTransformer *transformer;
+        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:MTLFeedItem.class];
+        MTLFeedItem *newFeedItem = [transformer transformedValue:JSON];
+        
+        block(newFeedItem);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [CSNotificationView showInViewController:[AppDelegate sharedDelegate].navVC
+                                           style:CSNotificationViewStyleError
+                                         message:@"FeedItem failed to load."];
+        block(nil);
+        
+    }];
 }
 
-- (NSFetchedResultsController*)messagesFetchedResultsController
-{
-    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
-    [request setRelationshipKeyPathsForPrefetching:@[@"author"]];
-    request.predicate = [NSPredicate predicateWithFormat:@"feedItem = %@", [self managedItem]];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]];
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[AppDelegate sharedDelegate].store.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+
+- (id)itemCellClass {
+    assert("cell class must be overriden in sub class");
+    return nil;
 }
 
 

@@ -13,7 +13,6 @@
 #import "TeammateCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIButton+AFNetworking.h"
-#import "TeamMembersViewController.h"
 #import "MRProgress.h"
 #import "SVWebViewController.h"
 
@@ -70,6 +69,10 @@
     // pushNotificationSwitch setOn
     pushNotificationSwitch.on = currentAccount.pushEnabled;
     
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden: YES animated:YES];
 }
 
 

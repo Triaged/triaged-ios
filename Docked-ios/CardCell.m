@@ -176,9 +176,9 @@
     return 88;
 }
 
-+ (CGFloat) heightOfContent:(FeedItem *)item
-{
-    return 120;
-}
+//+ (CGFloat) heightOfContent:(FeedItem *)item
+//{
+//    return 120;
+//}
 
 @end
