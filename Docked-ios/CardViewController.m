@@ -59,24 +59,25 @@
     
     scrollView = [[UIScrollView alloc] init];
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-    scrollView.frame = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y,self.view.frame.size.width,self.view.frame.size.height - 40);
+//    scrollView.frame = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y,self.view.frame.size.width,self.view.frame.size.height - 40);
     scrollView.layer.zPosition = -9999;
     scrollView.userInteractionEnabled=YES;
     [self.view addSubview:scrollView];
     
-    UIView *contentView;
-    contentView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,self.view.frame.size.height-45)];
-    [scrollView addSubview:contentView];
+//    UIView *contentView;
+//    contentView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,self.view.frame.size.height-45)];
+//    [scrollView addSubview:contentView];
     
 
     Class cellClass = _feedItem.itemCellClass;
-    FeedItemCell *cell = [ [ cellClass alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FeedItemCell" ] ;
-    
-    cell.frame = CGRectMake(0, 0, 320, [cellClass heightOfContent:_feedItem] );
-    cell.backgroundColor = [UIColor whiteColor];
-    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    FeedItemCell *cell = [ [ cellClass alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FeedItemCell" ];
+    cell.translatesAutoresizingMaskIntoConstraints = NO;
     [cell configureForItem:_feedItem];
-    [contentView addSubview:cell];
+    // Make sure the constraints have been added to this cell, since it may have just been created from scratch
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    [scrollView addSubview:cell];
+    
     
     // External Link View
     
@@ -86,13 +87,31 @@
 //
 //
     // Messages Table View
-    messagesVC = [[MessagesTableViewController alloc] init];
-    messagesVC.feedItem = _feedItem;
-    [self addChildViewController:messagesVC];
-    CGRect frame = CGRectMake(0, cell.frame.size.height + 96, 320.0, self.view.frame.size.height - (cell.frame.size.height + 44));
-    messagesVC.tableView.frame = frame;
-    [contentView  addSubview:messagesVC.tableView];
-    [messagesVC didMoveToParentViewController:self];
+//    messagesVC = [[MessagesTableViewController alloc] init];
+//    messagesVC.feedItem = _feedItem;
+//    messagesVC.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self addChildViewController:messagesVC];
+//    [scrollView  addSubview:messagesVC.tableView];
+//    [messagesVC didMoveToParentViewController:self];
+    
+    [scrollView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
+    [scrollView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
+    [scrollView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+    [scrollView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+    
+    
+    [cell setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [cell autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
+    [cell autoSetDimension:ALDimensionWidth toSize:320];
+    [cell autoSetDimension:ALDimensionHeight toSize:[cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height];
+    
+//    [messagesVC.tableView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+//    [messagesVC.tableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:cell  withOffset:0];
+//    [messagesVC.tableView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+//    [messagesVC.tableView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+//    [messagesVC.tableView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
+    
+    
     
     
     gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -113,25 +132,14 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden: NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 
--(void)viewDidLayoutSubviews
-{
-    [self setContentSize];
-}
+
 
 -(void)refreshView {
     [messagesVC refreshTableView];
-    [self setContentSize];
-}
-
--(void)setContentSize {
-    
-    CGFloat height = (messagesVC.tableView.frame.origin.y + messagesVC.tableView.contentSize.height + 64);
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, height);
-    [self.view sendSubviewToBack:scrollView];
 }
 
 -(void)scrollToBottomAnimated:(BOOL)animated
@@ -141,7 +149,6 @@
         [scrollView setContentOffset:bottomOffset animated:YES];
     }
 }
-
 
 -(void) didSendText:(NSString *)text
 {

@@ -33,6 +33,7 @@ PODS:
   - SVProgressHUD (0.9)
   - SVWebViewController (HEAD based on 1.0)
   - UITableView-NXEmptyView (0.1.4)
+  - UIView+AutoLayout (1.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0.3)
@@ -50,10 +51,11 @@ DEPENDENCIES:
   - SVProgressHUD
   - SVWebViewController (HEAD)
   - UITableView-NXEmptyView
+  - UIView+AutoLayout
 
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
-  CorePlot: 620ec9763d92cc0478eae469c515132df317e24e
+  CorePlot: 0c6cfe42f4cc458062dfd765d5b8f59a0d0fdddf
   HTCopyableLabel: c892c2542906118b9fc731bf6b0dd65e1767e647
   Mantle: c3e963daaad6f1418feacce974d789b2d0465539
   Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
@@ -67,5 +69,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
   SVWebViewController: e576371f7015bce92c97c304c32336700064847b
   UITableView-NXEmptyView: 034e5162ce7b8e3584d720d0d925c27ea7711220
+  UIView+AutoLayout: 94cea4d2f3ed095434afdf6ed2a6d288f7f2d611
 
 COCOAPODS: 0.26.2

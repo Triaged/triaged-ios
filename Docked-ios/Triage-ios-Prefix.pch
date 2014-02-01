@@ -17,8 +17,7 @@
     #import "TRButton.h"
     #import "Intercom.h"
     #import "DockedAPIClient.h"
-    #define MAS_SHORTHAND
-    #import "Masonry.h"
+    #import "UIView+AutoLayout.h"
 
 
     #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)

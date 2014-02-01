@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "MTLFeedItem.h"
 
-@interface FeedItemsDataSource : NSObject <UITableViewDataSource>
+@interface FeedItemsDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *sections;
 @property (strong, nonatomic) NSArray *sortedDays;
 @property (strong, nonatomic) NSDateFormatter *sectionDateFormatter;
+@property (strong, nonatomic) UITableViewController *tableViewController;
+
 
 - (void) setFeedItems:(NSArray *)feedItems;
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;

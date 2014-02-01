@@ -10,6 +10,9 @@
 #import "MTLFeedItem.h"
 #import "NSDate+TimeAgo.h"
 
+#define kLabelHorizontalInsets      15.0f
+#define kLabelVerticalInsets        10.0f
+
 @interface FeedItemCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *avatarView;
@@ -19,7 +22,8 @@
 @property (strong, nonatomic) UIView* separatorLineView;
 @property (strong, nonatomic) UIImageView *timestampIcon;
 @property (strong, nonatomic) UILabel *timestampLabel;
-@property  BOOL shouldSetFrame;
+
+@property (nonatomic, assign) BOOL didSetupConstraints;
 
 
 

@@ -25,7 +25,7 @@
 
 
 
-@interface FeedTableViewController () <UITableViewDelegate>
+@interface FeedTableViewController () 
 
 @property (nonatomic, strong) FeedItemsDataSource *feedItemsDataSource;
 @property (nonatomic, strong) UIImageView* refreshIV;
@@ -54,9 +54,9 @@
     [super viewDidLoad];
     
     self.title = @"Home";
-    [self setupTableView];
-    self.tableView.delegate = self;
     
+    [self setupTableView];
+
     EmptyFeedViewController *emptyVC = [[EmptyFeedViewController alloc] init];
     self.tableView.nxEV_emptyView = emptyVC.view;
     
@@ -74,15 +74,14 @@
 
 - (void)setupTableView
 {
+    self.feedItemsDataSource = [[FeedItemsDataSource alloc] init];
+    self.feedItemsDataSource.tableViewController = self;
+    self.tableView.dataSource = self.feedItemsDataSource;
+    self.tableView.delegate = self.feedItemsDataSource;
     
-        
-    [self setupFetchedResultsController];
-    
-    // Appearance
-    //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
     self.tableView.backgroundColor = BG_COLOR;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //[self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    
 }
 
 - (void) fetchFeedItems {
@@ -98,58 +97,5 @@
 
 
 
-
-
-
-- (void)setupFetchedResultsController
-{
-    self.feedItemsDataSource = [[FeedItemsDataSource alloc] init];
-    self.tableView.dataSource = self.feedItemsDataSource;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    MTLFeedItem * item = [self.feedItemsDataSource itemAtIndexPath:indexPath];
-    
-    CardViewController *detailVC = [[CardViewController alloc] init];
-    [detailVC setFeedItem:item];
-    
-    [self.navigationController pushViewController:detailVC animated:YES];
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSDate *dateRepresentingThisDay = [self.feedItemsDataSource.sortedDays objectAtIndex:section];
-    
-    FeedSectionViewController *feedSectionVC = [[FeedSectionViewController alloc] initWithDate:dateRepresentingThisDay];
-
-    return feedSectionVC.view;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row % 2 != 1)
-        return 6;
-    
-    MTLFeedItem *item = [self.feedItemsDataSource itemAtIndexPath:indexPath];
-    Class cellClass = item.itemCellClass;
-    
-    return [cellClass heightOfContent:item];
-   
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row % 2 != 1)
-        return 6;
-    return 180;
-}
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 42;
-}
 
 @end

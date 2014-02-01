@@ -8,9 +8,15 @@
 
 #import "FeedItemCell.h"
 
+@interface FeedItemCell ()
+
+
+
+@end
+
 @implementation FeedItemCell
 
-@synthesize titleLabel, avatarView, lineDivider, propertyLabel, timestampLabel, separatorLineView, timestampIcon, shouldSetFrame;
+@synthesize titleLabel, avatarView, lineDivider, propertyLabel, timestampLabel, separatorLineView, timestampIcon;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,35 +28,41 @@
         UIColor *borderColor = BORDER_COLOR;
         [self.layer setBorderColor:borderColor.CGColor];
         
-        avatarView = [[UIImageView alloc] initWithFrame: CGRectZero];
+        self.backgroundColor = [UIColor whiteColor];
+        
+        avatarView = [UIImageView newAutoLayoutView];
         avatarView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview: avatarView];
         
-        titleLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+        titleLabel = [UILabel newAutoLayoutView];
+        titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [titleLabel setFont: [UIFont fontWithName:@"Avenir-Medium" size:17.0]];
         titleLabel.textColor = TITLE_COLOR;
-        //[[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
         [titleLabel setLineBreakMode: NSLineBreakByClipping];
         titleLabel.numberOfLines = 1;
         [self.contentView addSubview: titleLabel];
         
-        propertyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+        propertyLabel = [UILabel newAutoLayoutView];
+        propertyLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [propertyLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:13]];
         propertyLabel.textColor = [[UIColor alloc] initWithRed:140.0f/255.0f green:149.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
         [propertyLabel setLineBreakMode: NSLineBreakByClipping];
         propertyLabel.numberOfLines = 1;
         [self.contentView addSubview: propertyLabel];
         
-        separatorLineView = [[UIView alloc] initWithFrame: CGRectZero];/// change size as you need.
+        separatorLineView = [UIView newAutoLayoutView];/// change size as you need.
+        separatorLineView.translatesAutoresizingMaskIntoConstraints = NO;
         separatorLineView.backgroundColor = BG_COLOR;
         [self.contentView addSubview:separatorLineView];
         
-        timestampIcon = [[UIImageView alloc] initWithFrame: CGRectZero];
+        timestampIcon = [UIImageView newAutoLayoutView];
+        timestampIcon.translatesAutoresizingMaskIntoConstraints = NO;
         timestampIcon.image = [UIImage imageNamed:@"feed_icon_time.png"];
         [self.contentView addSubview:timestampIcon];
     
         
-        timestampLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+        timestampLabel = [UILabel newAutoLayoutView];
+        timestampLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [timestampLabel setFont: [UIFont fontWithName:@"Avenir-Book" size:11.0]];
         timestampLabel.textColor = [[UIColor alloc] initWithRed:168.0f/255.0f green:175.0f/255.0f blue:188.0f/255.0f alpha:1.0f];
         [timestampLabel setLineBreakMode: NSLineBreakByClipping];
@@ -61,32 +73,56 @@
     return self;
 }
 
-//- (void)setFrame:(CGRect)frame {
-//    
-//    if (shouldSetFrame) {
-//    
-////        frame.origin.x = 6.0f;
-////        frame.size.width = 308.0f;
-////        [super setFrame:frame];
-////        
-////        [self.layer setCornerRadius:7.0f];
-////        [self.layer setMasksToBounds:YES];
-//        [self.layer setBorderWidth:1.0f];
-//        UIColor *borderColor = BORDER_COLOR;
-//        [self.layer setBorderColor:borderColor.CGColor];
-//    } else {
-//        [super setFrame:frame];
-//    }
-//}
+- (void)updateConstraints
+{
+    [super updateConstraints];
+    
+    if (self.didSetupConstraints) {
+        return;
+    }
+    
+    // Note: if the constraints you add below require a larger cell size than the current size (which is likely to be the default size {320, 44}), you'll get an exception.
+    // As a fix, you can temporarily increase the size of the cell's contentView so that this does not occur using code similar to the line below.
+    //      See here for further discussion: https://github.com/Alex311/TableCellWithAutoLayout/commit/bde387b27e33605eeac3465475d2f2ff9775f163#commitcomment-4633188
+    self.contentView.bounds = CGRectMake(0.0f, 0.0f, 99999.0f, 99999.0f);
+    
+    [self.avatarView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.avatarView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:kLabelVerticalInsets];
+    [self.avatarView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:kLabelHorizontalInsets];
+
+    
+    [self.titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.titleLabel autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:kLabelVerticalInsets];
+    [self.titleLabel autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.avatarView withOffset:kLabelHorizontalInsets];
+    [self.titleLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kLabelHorizontalInsets];
+    
+    
+    [self.propertyLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.propertyLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.titleLabel withOffset:kLabelVerticalInsets];
+    [self.propertyLabel autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.avatarView withOffset:kLabelHorizontalInsets];
+    [self.propertyLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kLabelHorizontalInsets];
+    
+    [self.separatorLineView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.separatorLineView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.propertyLabel withOffset:kLabelVerticalInsets];
+    [self.separatorLineView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:kLabelHorizontalInsets];
+    [self.separatorLineView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kLabelHorizontalInsets];
+
+    
+}
+
 
 -(void) layoutSubviews
 {
     [super layoutSubviews];
     
-    [avatarView setFrame:CGRectMake(12, 12, 40, 40)];
-    [titleLabel setFrame:CGRectMake(65, 12.0, 200.0, 34.0)];
-    [propertyLabel setFrame:CGRectMake(65, 46.0, 200.0, 18.0)];
-    [separatorLineView setFrame:CGRectMake(16.0, 78.0, 292.0, 1)];
+    // Make sure the contentView does a layout pass here so that its subviews have their frames set, which we
+    // need to use to set the preferredMaxLayoutWidth below.
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
+    
+    // Set the preferredMaxLayoutWidth of the mutli-line bodyLabel based on the evaluated width of the label's frame,
+    // as this will allow the text to wrap correctly, and as a result allow the label to take on the correct height.
+    //self.bodyLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.bodyLabel.frame);
     
 }
 

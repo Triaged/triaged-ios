@@ -11,6 +11,9 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ImageUtility.h"
 
+#define kImageViewHeight      231.0f
+#define kLImageViewHorizontalInsets      0.0f
+
 @implementation EventCardCell
 
 @synthesize bodyLabel, footerLabel, imageView;
@@ -21,136 +24,106 @@
     if (self) {
         // Initialization code
         
-        imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        imageView = [UIImageView newAutoLayoutView];
+        imageView.translatesAutoresizingMaskIntoConstraints = NO;
         imageView.backgroundColor = BG_COLOR;
         imageView.contentMode = UIViewContentModeCenter;
+        [self.contentView addSubview: imageView];
         
-        bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+        bodyLabel = [UILabel newAutoLayoutView];
+        bodyLabel.translatesAutoresizingMaskIntoConstraints = NO;
         bodyLabel.textColor = BODY_COLOR;
-        //[[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
+        [bodyLabel setFont: [UIFont fontWithName:@"Avenir-Lightn" size:15]];
         bodyLabel.numberOfLines = 0;
         [bodyLabel sizeToFit];
         [self.contentView addSubview: bodyLabel];
         
-        footerLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        footerLabel.textColor = BODY_COLOR;
-        //[[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
-        footerLabel.numberOfLines = 0;
-        [footerLabel sizeToFit];
-        [self.contentView addSubview: footerLabel];
+//        footerLabel = [UILabel newAutoLayoutView];
+//        footerLabel.textColor = BODY_COLOR;
+//        //[[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
+//        footerLabel.numberOfLines = 0;
+//        [footerLabel sizeToFit];
+//        [self.contentView addSubview: footerLabel];
         
     }
     return self;
+}
+
+- (void)updateConstraints
+{
+    [super updateConstraints];
+    
+    if (self.didSetupConstraints) {
+        return;
+    }
+    
+    // Note: if the constraints you add below require a larger cell size than the current size (which is likely to be the default size {320, 44}), you'll get an exception.
+    // As a fix, you can temporarily increase the size of the cell's contentView so that this does not occur using code similar to the line below.
+    //      See here for further discussion: https://github.com/Alex311/TableCellWithAutoLayout/commit/bde387b27e33605eeac3465475d2f2ff9775f163#commitcomment-4633188
+    // self.contentView.bounds = CGRectMake(0.0f, 0.0f, 99999.0f, 99999.0f);
+    
+    
+    [self.imageView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.imageView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.separatorLineView withOffset:kLabelVerticalInsets];
+    [self.imageView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:kLImageViewHorizontalInsets];
+    [self.imageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kLImageViewHorizontalInsets];
+    [self.imageView autoSetDimension:ALDimensionHeight toSize:kImageViewHeight];
+    
+    [self.bodyLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.bodyLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.imageView  withOffset:kLabelVerticalInsets];
+    [self.bodyLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:kLabelHorizontalInsets];
+    [self.bodyLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kLabelHorizontalInsets];
+
+    
+    [self.timestampIcon setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.timestampIcon autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.bodyLabel  withOffset:kLabelVerticalInsets];
+    [self.timestampIcon autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:kLabelHorizontalInsets];
+    [self.timestampIcon autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:kLabelVerticalInsets];
+    [self.timestampIcon autoSetDimension:ALDimensionWidth toSize:kLabelVerticalInsets];
+    
+    [self.timestampLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.timestampLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.bodyLabel  withOffset:kLabelVerticalInsets];
+    [self.timestampLabel autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.timestampIcon  withOffset:0];
+    [self.timestampLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kLabelHorizontalInsets];
+    [self.timestampLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:kLabelVerticalInsets];
+    
+    self.didSetupConstraints = YES;
 }
 
 -(void) layoutSubviews
 {
     [super layoutSubviews];
     
-    imageView.frame = CGRectMake(0, 92, 320, 231);
-    
-    NSAttributedString *attributedBodyText = [EventCardCell attributedBodyText:bodyLabel.text];
-    CGRect newFrame = CGRectMake(16, 92.0, 280, [EventCardCell heightOfBody:attributedBodyText]);
-    [bodyLabel setFrame:newFrame];
-    
-//    NSAttributedString *attributedFooterText = [EventCardCell attributedBodyText:footerLabel.text];
-//    CGRect footerFrame = CGRectMake(16, newFrame.origin.y + newFrame.size.height + 20, 280, [EventCardCell heightOfBody:attributedFooterText]);
-//    [footerLabel setFrame:footerFrame];
+    // Make sure the contentView does a layout pass here so that its subviews have their frames set, which we
+    // need to use to set the preferredMaxLayoutWidth below.
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
 
-    [self.timestampIcon setFrame:CGRectMake(16, newFrame.origin.y + newFrame.size.height + 31, 12.0, 12.0)];
-    [self.timestampLabel setFrame:CGRectMake(36, newFrame.origin.y + newFrame.size.height + 30, 70.0, 16.0)];
+    
+    
+    // Set the preferredMaxLayoutWidth of the mutli-line bodyLabel based on the evaluated width of the label's frame,
+    // as this will allow the text to wrap correctly, and as a result allow the label to take on the correct height.
+    self.bodyLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.bodyLabel.frame);
+    
 }
-
 
 - (void)configureForItem:(MTLFeedItem *)item
 {
     EventCard *event = (EventCard *)item;
     
-    NSURL *iconUrl = [NSURL URLWithString:event.provider.largeIcon];
-    [self.avatarView setImageWithURL:iconUrl];
+    [self.avatarView setImageWithURL:[NSURL URLWithString:event.provider.largeIcon]
+                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+    if (event.imageUrl != nil) {
+        [self.contentView addSubview:imageView];
+        [self.imageView setImageWithURL:[NSURL URLWithString:event.imageUrl]
+                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    }
     
     self.titleLabel.text = [event.title capitalizedString];
     self.propertyLabel.text = [event.propertyName lowercaseString];
-    
-    if (event.imageUrl != nil) {
-        [imageView setImageWithURL:[NSURL URLWithString:event.imageUrl]
-                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]
-                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                    
-                    [self.contentView addSubview:imageView];
-        }];
-    } else {
-        [imageView removeFromSuperview];
-    }
-    
-    self.bodyLabel.attributedText = [EventCardCell attributedBodyText:event.body];
-    
+    self.bodyLabel.text = event.body;
     self.timestampLabel.text = [item.timestamp timeAgo];
-}
-
-
-+ (NSAttributedString *) attributedBodyText:(NSString *)bodyText
-{
-    
-    if(bodyText == nil) {
-        bodyText = @"";
-    }
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraphStyle.alignment = NSTextAlignmentLeft;
-    paragraphStyle.lineSpacing = .5;
-    UIFont *font = [UIFont fontWithName:@"Avenir-Light" size:15];
-    
-    NSAttributedString *attributedBodyText = [[NSAttributedString alloc] initWithString:bodyText
-                                                                             attributes:[NSDictionary
-                                                                                         dictionaryWithObjectsAndKeys:font,
-                                                                                         NSFontAttributeName,
-                                                                                         paragraphStyle, NSParagraphStyleAttributeName,nil]];
-    return attributedBodyText;
-}
-
-+ (CGFloat) heightOfBody:(NSAttributedString *)bodyText
-{
-    CGRect paragraphRect =
-    [bodyText boundingRectWithSize:CGSizeMake(280.0, CGFLOAT_MAX)
-                           options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                           context:nil];
-    return paragraphRect.size.height;
-}
-
-
-
-+ (CGFloat) estimatedHeightOfContent
-{
-    return 160;
-}
-
-+ (CGFloat) heightOfContent: (MTLFeedItem *)item {
-    
-    EventCard *event = (EventCard *)item;
-    
-    static NSCache* heightCache = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        heightCache = [NSCache new];
-    });
-    
-    NSAssert(heightCache, @"Height cache must exist");
-    
-    NSString* key = event.ID; //Create a unique key here
-    NSNumber* cachedValue = [heightCache objectForKey: key];
-    
-    if( cachedValue )
-        return [cachedValue floatValue];
-    else {
-        NSAttributedString *attributedBodyText = [EventCardCell attributedBodyText:event.body];
-        CGFloat bodyHeight = [EventCardCell heightOfBody:attributedBodyText];
-        CGFloat height = (400 + bodyHeight);
-        
-        [heightCache setObject: [NSNumber numberWithFloat: height] forKey: key];
-        return height;
-    }
 }
 
 @end

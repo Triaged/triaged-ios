@@ -58,7 +58,6 @@
 		CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4F87B2180F9A1B00B685E1 /* EventCell.m */; };
 		CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */; };
 		CB50F96F182968FD0074CA99 /* TRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB50F96E182968FD0074CA99 /* TRNavigationController.m */; };
-		CB5A35C1180CD31200ECAB71 /* FetchedFeedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */; };
 		CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8F20D317EB857800EBDC34 /* CoreData.framework */; };
 		CB5AECEA17EE894000319223 /* CredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECE917EE894000319223 /* CredentialStore.m */; };
 		CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECEC17EE922C00319223 /* LoginViewController.m */; };
@@ -275,8 +274,6 @@
 		CB4FDD4C17FF75B700EEE7F6 /* PersistentStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStack.m; sourceTree = "<group>"; };
 		CB50F96D182968FD0074CA99 /* TRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNavigationController.h; sourceTree = "<group>"; };
 		CB50F96E182968FD0074CA99 /* TRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNavigationController.m; sourceTree = "<group>"; };
-		CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedFeedItemsDataSource.h; sourceTree = "<group>"; };
-		CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedFeedItemsDataSource.m; sourceTree = "<group>"; };
 		CB5AECE817EE894000319223 /* CredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialStore.h; sourceTree = "<group>"; };
 		CB5AECE917EE894000319223 /* CredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialStore.m; sourceTree = "<group>"; };
 		CB5AECEB17EE922C00319223 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -811,15 +808,13 @@
 		CB8E0B6C1814A3CA0020E426 /* feed */ = {
 			isa = PBXGroup;
 			children = (
-				CB5A35BF180CD31200ECAB71 /* FetchedFeedItemsDataSource.h */,
-				CB5A35C0180CD31200ECAB71 /* FetchedFeedItemsDataSource.m */,
+				CBB491481896CBDF0023246D /* FeedItemsDataSource.h */,
+				CBB491491896CBDF0023246D /* FeedItemsDataSource.m */,
 				CB8F20C117EB5FBA00EBDC34 /* FeedTableViewController.h */,
 				CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */,
 				CB9886A7183408EC00BA37C9 /* EmptyFeedViewController.h */,
 				CB9886A8183408EC00BA37C9 /* EmptyFeedViewController.m */,
 				CB9886A9183408EC00BA37C9 /* EmptyFeedViewController.xib */,
-				CBB491481896CBDF0023246D /* FeedItemsDataSource.h */,
-				CBB491491896CBDF0023246D /* FeedItemsDataSource.m */,
 				CBF323991899797F00BF8FFE /* FeedSectionViewController.h */,
 				CBF3239A1899797F00BF8FFE /* FeedSectionViewController.m */,
 				CBF3239B1899797F00BF8FFE /* FeedSectionViewController.xib */,
@@ -1549,7 +1544,6 @@
 				CB2F9FB01808B40A00F5F97C /* NSData+MPBase64.m in Sources */,
 				CB2D00AB181215E6005350D5 /* SettingEventsViewController.m in Sources */,
 				CBF3239C1899797F00BF8FFE /* FeedSectionViewController.m in Sources */,
-				CB5A35C1180CD31200ECAB71 /* FetchedFeedItemsDataSource.m in Sources */,
 				CB81579F17F0D568006AA14A /* Account.m in Sources */,
 				CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */,
 				CBD43F0017F8B54B001AC849 /* DataCardCell.m in Sources */,
