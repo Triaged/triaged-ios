@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"heroku"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"heroku"];
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Deployment", @NO], nil];
     }

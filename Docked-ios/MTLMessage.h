@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
 #import "MTLOldFeedItem.h"
-#import "Account.h"
-#import "User.h"
+#import "MTLAccount.h"
 #import "Message.h"
 
 @class MTLOldFeedItem;
@@ -21,7 +20,6 @@
 @property (nonatomic, copy, readonly) NSString *uuid;
 @property (nonatomic, copy, readonly) NSString *body;
 @property (nonatomic, copy, readonly) NSDate *timestamp;
-@property (nonatomic, copy, readonly) User *author;
 @property (nonatomic, copy, readonly) MTLOldFeedItem *feedItem;
 
 + (NSURLSessionDataTask *)saveRemote:(Message *)message;

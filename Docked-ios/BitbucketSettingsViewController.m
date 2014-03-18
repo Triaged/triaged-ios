@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"bitbucket"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"bitbucket"];
         self.oAuthController = YES;
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Commits", @YES], nil];
     }
@@ -57,9 +57,9 @@
     [super setupConnectedState];
     
     self.providerAccountTableVC.view.frame = CGRectMake(0, 190, 320, 44);
-    self.providerAccountTableVC.accountText = self.provider.account.name;
-    self.accountProperties  = self.provider.account.properties;
-    self.accountDetailsTitle = self.provider.account.propertyLabel;
+//    self.providerAccountTableVC.accountText = self.provider.account.name;
+//    self.accountProperties  = self.provider.account.properties;
+//    self.accountDetailsTitle = self.provider.account.propertyLabel;
     
     [self.scrollView addSubview:self.providerAccountTableVC.view];
     

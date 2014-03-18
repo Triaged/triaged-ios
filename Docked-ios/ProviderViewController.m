@@ -10,6 +10,8 @@
 
 @interface ProviderViewController ()
 
+@property (nonatomic, retain) UIImageView *navBarHairlineImageView;
+
 @end
 
 @implementation ProviderViewController
@@ -32,9 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    self.title = provider.shortTitle;
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    self.navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
     
     UIBarButtonItem *ignoreButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(displaySettings)];
     [self.navigationItem setRightBarButtonItem:ignoreButton];
@@ -47,6 +50,29 @@
     [self.view addSubview:providerFeedTableVC.view];
     [providerFeedTableVC didMoveToParentViewController:self];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navBarHairlineImageView.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navBarHairlineImageView.hidden = NO;
+}
+
+- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
+    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
+        return (UIImageView *)view;
+    }
+    for (UIView *subview in view.subviews) {
+        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
+        if (imageView) {
+            return imageView;
+        }
+    }
+    return nil;
 }
 
 -(void)displaySettings {

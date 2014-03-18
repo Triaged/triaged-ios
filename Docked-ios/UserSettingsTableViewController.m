@@ -123,16 +123,16 @@
 }
 
 -(void) inviteUser {
-    if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *mailComposer =
-        [[MFMailComposeViewController alloc] init];
-        [mailComposer setSubject:@"Join me on Triage!"];
-        NSString *message = [NSString stringWithFormat:@"Hey, <br><br> I've been using the Triage app to keep tabs of work when I'm on the go. I think you'd like it. <br /><br />Check it out at <a href='triaged.co'>triaged.co</a> <br /><br /> thanks!<br /> %@", [[AppDelegate sharedDelegate].store.account name]];
-        [mailComposer setMessageBody:message
-                              isHTML:YES];
-        mailComposer.mailComposeDelegate = self;
-        [self presentViewController:mailComposer animated:YES completion:nil];
-    }
+//    if ([MFMailComposeViewController canSendMail]) {
+//        MFMailComposeViewController *mailComposer =
+//        [[MFMailComposeViewController alloc] init];
+//        [mailComposer setSubject:@"Join me on Triage!"];
+//        NSString *message = [NSString stringWithFormat:@"Hey, <br><br> I've been using the Triage app to keep tabs of work when I'm on the go. I think you'd like it. <br /><br />Check it out at <a href='triaged.co'>triaged.co</a> <br /><br /> thanks!<br /> %@", [[AppDelegate sharedDelegate].store.account name]];
+//        [mailComposer setMessageBody:message
+//                              isHTML:YES];
+//        mailComposer.mailComposeDelegate = self;
+//        [self presentViewController:mailComposer animated:YES completion:nil];
+//    }
 }
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller

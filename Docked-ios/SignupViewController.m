@@ -74,21 +74,7 @@
         // Set Auth Code
         NSString *authToken = [JSON valueForKeyPath:@"authentication_token"];
         [[CredentialStore sharedClient] setAuthToken:authToken];
-        
-        // Set current user
-        NSValueTransformer *transformer;
-        transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Account.class];
-        Account *account = [transformer transformedValue:JSON];
-        [[AppDelegate sharedDelegate].store setCurrentAccount:account];
-        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
-        
-        Mixpanel *mixpanel = [Mixpanel sharedInstance];
-
-        [mixpanel identify:account.userID];
-        [mixpanel track:@"signup" properties:@{@"id": account.userID,
-                                                  @"email" : account.email,
-                                                  @"company" : account.companyName}];
         
         [SVProgressHUD dismiss];
         [welcomeVC dismissAuthScreens:self];

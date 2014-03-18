@@ -7,20 +7,22 @@
 //
 
 #import "TeammateFeedTableViewController.h"
-#import "FeedItemsDataSource.h"
+#import "FetchedFeedItemsDataSource.h"
 #import "MTLFeedItem.h"
 #import "FeedSectionViewController.h"
 #import "CardViewController.h"
+#import "TeammateHeaderViewController.h"
 
 @interface TeammateFeedTableViewController () <UITableViewDelegate>
 
-@property (nonatomic, strong) FeedItemsDataSource *feedItemsDataSource;
+@property (nonatomic, strong) FetchedFeedItemsDataSource *feedItemsDataSource;
+@property (nonatomic, strong) NSFetchedResultsController *_fetchedResultsController;
 
 @end
 
 @implementation TeammateFeedTableViewController
 
-@synthesize user;
+@synthesize user, _fetchedResultsController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,8 +40,14 @@
     self.tableView.backgroundColor = BG_COLOR;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.feedItemsDataSource = [[FeedItemsDataSource alloc] init];
-    self.feedItemsDataSource.tableViewController = self;
+    
+    TeammateHeaderViewController *headerView = [[TeammateHeaderViewController alloc] init];
+    headerView.user = user;
+    self.tableView.tableHeaderView = headerView.view;
+    
+    self.feedItemsDataSource = [[FetchedFeedItemsDataSource alloc] init];
+    self.feedItemsDataSource.fetchedResultsController = [self fetchedResultsController];
+        self.feedItemsDataSource.tableViewController = self;
     self.tableView.dataSource = self.feedItemsDataSource;
     self.tableView.delegate = self.feedItemsDataSource;
     
@@ -50,14 +58,27 @@
 }
 
 - (void) fetchFeedItems {
-    [self.refreshControl beginRefreshing];
-    
-    [user fetchTeammateFeedItemsWithParams:nil andBlock:^(NSArray * feedItems) {
-        [self.feedItemsDataSource setFeedItems:feedItems];
+    [user feedItemsWithCompletionHandler:^(NSArray *feedItems, NSError *error) {
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];
 }
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (!_fetchedResultsController) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(user == %@)", user];
+        
+        _fetchedResultsController = [FeedItem MR_fetchAllSortedBy:@"timestamp"
+                                                        ascending:NO
+                                                    withPredicate:predicate
+                                                          groupBy:@"sectionIdentifier"
+                                                         delegate:self.feedItemsDataSource];
+        _fetchedResultsController.fetchRequest.fetchBatchSize = 100;
+    }
+    return _fetchedResultsController;
+}
+
 
 
 @end

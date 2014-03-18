@@ -2,46 +2,51 @@
 //  FeedItem.h
 //  Triage-ios
 //
-//  Created by Charlie White on 10/27/13.
-//  Copyright (c) 2013 Charlie White. All rights reserved.
+//  Created by Charlie White on 2/10/14.
+//  Copyright (c) 2014 Charlie White. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Provider.h"
+#import "User.h"
 
-@class Message;
+@protocol FeedItemCellProtocol
 
-@interface FeedItem : NSManagedObject
+- (id)itemCellClass;
 
-@property (nonatomic, retain) NSString * provider;
-@property (nonatomic, retain) NSString * property;
-@property (nonatomic, retain) NSString * action;
-@property (nonatomic, retain) NSString * event;
-@property (nonatomic, retain) NSString * externalID;
-@property (nonatomic, retain) NSString * htmlUrl;
+@end
+
+
+@class Message, Provider, User;
+
+@interface FeedItem : NSManagedObject <FeedItemCellProtocol>
+
+@property (nonatomic, retain) NSString * identifier;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSArray *messages;
+@property (nonatomic, retain) NSString * imageUrl;
+@property (nonatomic, retain) NSOrderedSet *messages;
+@property (nonatomic, retain) NSString *sectionIdentifier;
+@property (nonatomic, retain) Provider *provider;
+@property (nonatomic, retain) User *user;
 
-- (bool)hasMessages;
-- (bool)hasMultipleMessages;
-- (Message *)previewMessage;
-
-- (NSFetchedResultsController*)messagesFetchedResultsController;
-
-
++ (void)feedItemsWithCompletionHandler:(void(^)(NSArray *feedItems, NSError *error))completionHandler;
 @end
 
 @interface FeedItem (CoreDataGeneratedAccessors)
 
-- (void)insertObject:(NSManagedObject *)value inMessagesAtIndex:(NSUInteger)idx;
+
+- (void)addMessagesObject:(Message *)message withCompletionHandler:(void(^)(Message *message, NSError *error))completionHandler;
+
+- (void)insertObject:(Message *)value inMessagesAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromMessagesAtIndex:(NSUInteger)idx;
 - (void)insertMessages:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
 - (void)removeMessagesAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInMessagesAtIndex:(NSUInteger)idx withObject:(NSManagedObject *)value;
+- (void)replaceObjectInMessagesAtIndex:(NSUInteger)idx withObject:(Message *)value;
 - (void)replaceMessagesAtIndexes:(NSIndexSet *)indexes withMessages:(NSArray *)values;
-- (void)addMessagesObject:(NSManagedObject *)value;
-- (void)removeMessagesObject:(NSManagedObject *)value;
+- (void)addMessagesObject:(Message *)value;
+- (void)removeMessagesObject:(Message *)value;
 - (void)addMessages:(NSOrderedSet *)values;
 - (void)removeMessages:(NSOrderedSet *)values;
 @end

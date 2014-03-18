@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MTLFeedItem.h"
+#import "FeedItem.h"
 
-@interface FeedItemsDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface FeedItemsDataSource : NSObject <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *sections;
 @property (strong, nonatomic) NSArray *sortedDays;
@@ -17,7 +17,7 @@
 @property (strong, nonatomic) UITableViewController *tableViewController;
 
 
-- (void) setFeedItems:(NSArray *)feedItems;
+- (void) setFeedItems:(NSMutableArray *)feedItems;
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

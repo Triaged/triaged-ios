@@ -23,7 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"github"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"github"];
         self.oAuthController = YES;
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Push", @NO], @[@"Commits", @NO], @[@"Issue opened", @YES], @[@"Issue closed", @NO], nil];
     }

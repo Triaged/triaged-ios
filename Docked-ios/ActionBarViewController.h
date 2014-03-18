@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedItem.h"
 
 @interface ActionBarViewController : UIViewController
+
+@property (strong, nonatomic) FeedItem *feedItem;
 
 @end

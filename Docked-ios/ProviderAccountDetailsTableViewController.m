@@ -89,11 +89,11 @@
 - (void)updateSwitchAtIndexPath:(UISwitch *)aswitch{
     MTLProviderProperty *property = [accountDetails objectAtIndex:aswitch.tag];
     
-    if (property.follows) {
-        [property ignoreWithProvider:provider andAccount:provider.account];
-    } else {
-        [property followWithProvider:provider andAccount:provider.account];
-    }
+//    if (property.follows) {
+//        [property ignoreWithProvider:provider andAccount:provider.account];
+//    } else {
+//        [property followWithProvider:provider andAccount:provider.account];
+//    }
 }
 
 @end

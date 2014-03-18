@@ -14,7 +14,6 @@
 #import "ConnectionIntroViewController.h"
 #import "VerifyViewController.h"
 #import "PKRevealController.h"
-#import "UserSettingsMenuViewController.h"
 
 
 
@@ -57,18 +56,18 @@
 
 -(void) shouldShowWelcomeScreens
 {
-    Account *account = [AppDelegate sharedDelegate].store.account;
-    bool shouldSeeTutorial = ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenTutorial"];
-    bool needsValidation = ![[NSUserDefaults standardUserDefaults] boolForKey:@"companyValidated"];
-    
-    if (account.personalAccount) {
-        if (shouldSeeTutorial) [self displayConnectionIntro];
-    } else {
-        // Show validate company first
-        if (needsValidation)
-            if (!account.validatedCompany) [self displayCompanyValidation];// Show Validated Company
-        if (shouldSeeTutorial) [self displayConnectionIntro];
-    }
+//    MTLAccount *account = [AppDelegate sharedDelegate].store.account;
+//    bool shouldSeeTutorial = ![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenTutorial"];
+//    bool needsValidation = ![[NSUserDefaults standardUserDefaults] boolForKey:@"companyValidated"];
+//    
+//    if (account.personalAccount) {
+//        if (shouldSeeTutorial) [self displayConnectionIntro];
+//    } else {
+//        // Show validate company first
+//        if (needsValidation)
+//            if (!account.validatedCompany) [self displayCompanyValidation];// Show Validated Company
+//        if (shouldSeeTutorial) [self displayConnectionIntro];
+//    }
 }
 
 -(void) displayConnectionIntro {
@@ -92,7 +91,7 @@
 {
     
     
-    UserSettingsMenuViewController *userSettingsVC = [[UserSettingsMenuViewController alloc] init];
+    //UserSettingsMenuViewController *userSettingsVC = [[UserSettingsMenuViewController alloc] init];
 //    feedVC = [[FeedTableViewController alloc] init];
 //    feedVC.navController = self.navigationController;
     

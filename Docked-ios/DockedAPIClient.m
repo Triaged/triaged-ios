@@ -10,7 +10,7 @@
 #import "CredentialStore.h"
 #import "AppDelegate.h"
 #import "Store.h"
-#import "Account.h"
+#import "MTLAccount.h"
 #import "Mantle.h"
 #import "TRJSONResponseSerializerWithData.h"
 

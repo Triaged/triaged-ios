@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TeamTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TeamTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource,
+                                                                                NSFetchedResultsControllerDelegate>
 
- @property (nonatomic, retain) NSArray *team;
+    @property (nonatomic, retain) NSMutableArray *team;
+    @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+    @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

@@ -15,25 +15,10 @@
 
 + (instancetype)store;
 
-@property (readonly, nonatomic, strong) NSArray* feedItems;
-@property (readonly, nonatomic, strong) NSArray* users;
-@property (readonly, nonatomic, strong) NSArray* providers;
-@property (nonatomic, strong) Account* account;
-@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
-
-- (NSFetchedResultsController*)feedItemsFetchedResultsController;
-
-- (void)fetchRemoteFeedItems;
-- (void)fetchNewRemoteFeedItemsWithBlock:(void (^)(NSArray *))block;
-
-- (void)setCurrentAccount: (Account *)account;
-- (void)fetchRemoteUserAccount;
-- (void)readAccountArchive;
-- (void)saveAccountToArchive;
-
-
-- (NSArray*)sortFeedItems;
-- (NSArray*)sortedTableFeed;
+- (Account *) currentAccount;
+- (void) fetchRemoteUserAccount;
+- (void) setCurrentAccount: (Account *)account;
+- (void) fetchRemoteUserAccount;
 
 
 @end

@@ -2,55 +2,72 @@
 //  FeedItem.m
 //  Triage-ios
 //
-//  Created by Charlie White on 10/27/13.
-//  Copyright (c) 2013 Charlie White. All rights reserved.
+//  Created by Charlie White on 2/10/14.
+//  Copyright (c) 2014 Charlie White. All rights reserved.
 //
 
 #import "FeedItem.h"
-#import "AppDelegate.h"
-#import "Store.h"
+#import "Message.h"
+#import "Provider.h"
+#import "EventCard.h"
+#import "SLRESTfulCoreData.h"
+
+@interface FeedItem ()
+
+@property (nonatomic) NSString *primitiveSectionIdentifier;
+
+@end
 
 
 @implementation FeedItem
 
-@dynamic provider;
-@dynamic action;
-@dynamic event;
-@dynamic externalID;
-@dynamic htmlUrl;
-@dynamic property;
+@dynamic identifier;
 @dynamic timestamp;
 @dynamic updatedAt;
+@dynamic imageUrl;
 @dynamic messages;
+@dynamic provider, sectionIdentifier, primitiveSectionIdentifier;
 
-- (bool)hasMessages
++ (void)initialize
 {
-    return (self.messages.count > 0);
+    [self registerSubclass:EventCard.class forManagedObjectAttributeName:@"type" withValue:@"event"];
+    [self registerCRUDBaseURL:[NSURL URLWithString:@"feed/:id/messages"] forRelationship:@"messages"];
+
+}
+
++ (void)feedItemsWithCompletionHandler:(void(^)(NSArray *feedItems, NSError *error))completionHandler {
+    NSURL *URL = [NSURL URLWithString:@"feed.json"];
+    [self fetchObjectsFromURL:URL completionHandler:completionHandler];
+}
+
+- (id)itemCellClass {
+    return nil;
+}
+
+- (NSString *)sectionIdentifier
+{
+    // Create and cache the section identifier on demand.
+    
+    [self willAccessValueForKey:@"sectionIdentifier"];
+    NSString *tmp = [self primitiveSectionIdentifier];
+    [self didAccessValueForKey:@"sectionIdentifier"];
+    
+    if (!tmp)
+    {
+        /*
+         Sections are organized by month and year. Create the section identifier as a string representing the number (year * 1000) + month; this way they will be correctly ordered chronologically regardless of the actual name of the month.
+         */
+        tmp = [FeedItem.timestampDateFormatter stringFromDate:[self timestamp]];
+        [self setPrimitiveSectionIdentifier:tmp];
+    }
+    return tmp;
 }
 
 
-- (bool)hasMultipleMessages
-{
-    return (self.messages.count > 1);
-}
-
-- (Message *)previewMessage
-{
-    NSArray * fetchedObjects =[[AppDelegate sharedDelegate].store.managedObjectContext executeFetchRequest:[self messageFetchRequest] error:nil];
-    return (Message *)[fetchedObjects lastObject];
-}
-
-- (NSFetchedResultsController*)messagesFetchedResultsController
-{
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:[self messageFetchRequest] managedObjectContext:[AppDelegate sharedDelegate].store.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-}
-
-- (NSFetchRequest *)messageFetchRequest {
-    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
-    [request setRelationshipKeyPathsForPrefetching:@[@"author"]];
-    request.predicate = [NSPredicate predicateWithFormat:@"feedItem = %@", self];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]];
-    return request;
++ (NSDateFormatter *)timestampDateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"MMMM dd, YYYY";
+    return dateFormatter;
 }
 
 

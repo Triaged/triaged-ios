@@ -43,7 +43,7 @@
 
 
 - (void) checkVerificationStatus {
-    if ([AppDelegate sharedDelegate].store.account.validatedCompany) {
+    if ([AppDelegate sharedDelegate].store.currentAccount.validatedCompany) {
         [self dismissViewControllerAnimated:NO completion:nil];
     } else {
         [[AppDelegate sharedDelegate].store fetchRemoteUserAccount];
@@ -52,7 +52,7 @@
 
 - (IBAction)resendEmail:(id)sender {
     
-    [[AppDelegate sharedDelegate].store.account resendVerifyEmail];
+    //[[AppDelegate sharedDelegate].store.account resendVerifyEmail];
     [verifyButton setTitle:@"Email Sent" forState:UIControlStateNormal];
 }
 

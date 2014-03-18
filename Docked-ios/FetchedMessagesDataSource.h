@@ -11,6 +11,7 @@
 @interface FetchedMessagesDataSource : NSObject <UITableViewDataSource>
 
 @property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
+@property (nonatomic, strong) NSMutableArray *messages;
 
 - (id)messageAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex;

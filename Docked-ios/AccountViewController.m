@@ -33,8 +33,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        currentAccount = [AppDelegate sharedDelegate].store.account;
-        team = [AppDelegate sharedDelegate].store.account.team;
+        currentAccount = [AppDelegate sharedDelegate].store.currentAccount;
+        team =  [[AppDelegate sharedDelegate].store.currentAccount.teammates allObjects];
         
     }
     return self;
@@ -56,16 +56,16 @@
 
     self.title = @"Account";
     
-    nameLabel.text = currentAccount.name;
-    emailLabel.text = currentAccount.email;
+    nameLabel.text = currentAccount.currentUser.name;
+    emailLabel.text = currentAccount.currentUser.email;
     companyLabel.text = currentAccount.companyName;
     
-    NSURL *avatarUrl = [NSURL URLWithString:currentAccount.avatarUrl];
+    NSURL *avatarUrl = [NSURL URLWithString:currentAccount.currentUser.avatarUrl];
     [avatarButton setBackgroundImageForState:UIControlStateNormal withURL:avatarUrl placeholderImage:[UIImage imageNamed:@"add_photo.png"]];
     [avatarButton addTarget:self action:@selector(updateProfilePicture) forControlEvents:UIControlEventTouchUpInside];
     
     // Connections
-    connectionCountLabel.text = [[currentAccount connectedProviderCount] stringValue];
+    connectionCountLabel.text = currentAccount.followedProvidersCount;
     // pushNotificationSwitch setOn
     pushNotificationSwitch.on = currentAccount.pushEnabled;
     
@@ -124,23 +124,23 @@
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     
     
-    [currentAccount uploadAvatar:chosenImage WithBlock:^(bool block) {
-        if (block) {
-            currentAccount = [AppDelegate sharedDelegate].store.account;
-            NSURL *avatarUrl = [NSURL URLWithString:currentAccount.avatarUrl];
-            [avatarButton setBackgroundImageForState:UIControlStateNormal withURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
-            [avatarButton setNeedsDisplay];
-            [currentAccount createUserFromAccount];
-            [progressView dismiss:YES];
-        }
-            else {
-                [progressView dismiss:YES];
-                [CSNotificationView showInViewController:self
-                                                   style:CSNotificationViewStyleError
-                                                 message:@"Avatar failed to upload."];
-            }
-        
-    }];
+//    [currentAccount uploadAvatar:chosenImage WithBlock:^(bool block) {
+//        if (block) {
+//            currentAccount = [AppDelegate sharedDelegate].store.account;
+//            NSURL *avatarUrl = [NSURL URLWithString:currentAccount.avatarUrl];
+//            [avatarButton setBackgroundImageForState:UIControlStateNormal withURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+//            [avatarButton setNeedsDisplay];
+//            [currentAccount createUserFromAccount];
+//            [progressView dismiss:YES];
+//        }
+//            else {
+//                [progressView dismiss:YES];
+//                [CSNotificationView showInViewController:self
+//                                                   style:CSNotificationViewStyleError
+//                                                 message:@"Avatar failed to upload."];
+//            }
+//        
+//    }];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
@@ -174,7 +174,7 @@
 }
 
 - (IBAction)pushSwitchValueChanged:(id)sender {
-    [currentAccount updatePushEnabled:pushNotificationSwitch.on];
+    //[currentAccount updatePushEnabled:pushNotificationSwitch.on];
 }
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller

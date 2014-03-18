@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"braintree"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"braintree"];
         
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Subscription Active", @NO], @[@"Subscription Canceled", @YES], @[@"Subscription Charge Failed", @YES], @[@"Transaction Disbursed", @NO], nil];

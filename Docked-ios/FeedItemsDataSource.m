@@ -14,6 +14,8 @@
 #import "CardViewController.h"
 #import "FeedSectionViewController.h"
 
+#define kLCellSpacerHeight      16.0f
+
 
 @implementation FeedItemsDataSource
 
@@ -26,9 +28,9 @@
     return [eventsOnThisDay objectAtIndex:(indexPath.row / 2)];
 }
 
-- (void) setFeedItems:(NSArray *)feedItems {
+- (void) setFeedItems:(NSMutableArray *)feedItems {
     self.sections = [NSMutableDictionary dictionary];
-    for (MTLFeedItem *event in feedItems)
+    for (FeedItem *event in feedItems)
     {
         // Reduce event start date to date components (year, month, day)
         NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:event.timestamp];
@@ -109,10 +111,14 @@
 }
 
 - (UITableViewCell*) cellForFeedItemWith:(UITableView*)tableView andIndexPath:(NSIndexPath *)indexPath {
-    MTLFeedItem *item = [self itemAtIndexPath:indexPath];
+    FeedItem *item = [self itemAtIndexPath:indexPath];
     
     Class cellClass = item.itemCellClass;
     NSString *cellID = NSStringFromClass(cellClass);
+    
+    if (item.imageUrl) {
+        cellID = [NSString stringWithFormat:@"%@-image",cellID];
+    }
     
     FeedItemCell *cell = [ tableView dequeueReusableCellWithIdentifier:cellID ] ;
     if ( !cell )
@@ -131,7 +137,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    MTLFeedItem * item = [self itemAtIndexPath:indexPath];
+    FeedItem * item = [self itemAtIndexPath:indexPath];
     
     CardViewController *detailVC = [[CardViewController alloc] init];
     [detailVC setFeedItem:item];
@@ -153,12 +159,17 @@
 {
     
     if (indexPath.row % 2 != 1)
-        return 10;
+        return kLCellSpacerHeight;
     
-    MTLFeedItem *item = [self itemAtIndexPath:indexPath];
+    FeedItem *item = [self itemAtIndexPath:indexPath];
     Class cellClass = item.itemCellClass;
     
     NSString *cellID = NSStringFromClass(cellClass);
+    
+    if (item.imageUrl) {
+        cellID = [NSString stringWithFormat:@"%@-image",cellID];
+    }
+    
     FeedItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if ( !cell )
     {
@@ -195,14 +206,22 @@
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row % 2 != 1)
-        return 10;
-    return 180;
+        return kLCellSpacerHeight;
+    return 200;
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 42;
 }
+
+//- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+//    if ([tableViewController.tableView visibleCells].count > 0) {
+//        //NSLog(@"%ld", (long)[[tableViewController.tableView indexPathForCell:[[tableViewController.tableView visibleCells] objectAtIndex:0]] section]);
+//        //FeedSectionViewController *section = (FeedSectionViewController *)[tableViewController.tableView headerViewForSection:[[[tableViewController.tableView visibleCells] objectAtIndex:0] section]];
+//        
+//    }
+//}
 
 
 

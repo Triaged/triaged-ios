@@ -76,11 +76,7 @@
     return self;
 }
 
-- (void)setFrame:(CGRect)frame {
-    frame.origin.x = 6.0f;
-    frame.size.width = 308.0f;
-    [super setFrame:frame];
-}
+
 
 - (void)configureForMessage:(Message *)message
 {

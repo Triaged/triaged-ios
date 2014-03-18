@@ -52,7 +52,7 @@
     // Connect Button
     connectButton = [[TRButton alloc] init];
     connectButton.frame = CGRectMake(40, 115, 240, 38);
-    [connectButton addTarget:self action:@selector(connect) forControlEvents:UIControlEventTouchUpInside];
+    //[connectButton addTarget:self action:@selector(connect) forControlEvents:UIControlEventTouchUpInside];
     
 //    // Ignore Button
 //    ignoreButton = [[TRButton alloc] init];
@@ -87,7 +87,7 @@
     
     if (oAuthController) {
         self.providerAccountTableVC = [[ProviderAccountTableViewDataSource alloc] init];
-        self.providerAccountTableVC.accountText = self.provider.account.name;
+        //self.providerAccountTableVC.accountText = self.provider.account.name;
         UITableView *accountTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, 320, 100) style:UITableViewStyleGrouped];
         accountTableView.scrollEnabled = NO;
         accountTableView.bounces = NO;
@@ -97,8 +97,8 @@
         accountTableView.delegate = self;
         accountTableView.dataSource = self.providerAccountTableVC;
         
-        self.accountProperties  = self.provider.account.properties;
-        self.accountDetailsTitle = self.provider.account.propertyLabel;
+        //self.accountProperties  = self.provider.account.properties;
+        //self.accountDetailsTitle = self.provider.account.propertyLabel;
         [self.scrollView addSubview:accountTableView];
     }
 }
@@ -162,17 +162,17 @@
 {
     [self.navigationController showSGProgressWithDuration:1.5];
     [emailInstructionsButton setTitle:@"Emailed" forState:UIControlStateNormal];
-    [provider emailConnectInstructions];
+    //[provider emailConnectInstructions];
 }
 
 - (void) toggleIgnore
 {
     if ([self isFollowing]) {
-        [self.provider ignore];
+       // [self.provider ignore];
         //[self setIgnoreButtonToFollow];
         self.navigationItem.rightBarButtonItem.title = @"Follow";
     } else {
-        [self.provider follow];
+        //[self.provider follow];
         self.navigationItem.rightBarButtonItem.title = @"Ignore";
         //[self setIgnoreButtonToIgnore];
     }

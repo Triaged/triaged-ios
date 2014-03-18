@@ -21,7 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"kiln"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"kiln"];
         self.oAuthController = NO;
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Push", @NO], nil];

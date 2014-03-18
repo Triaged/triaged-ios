@@ -7,14 +7,13 @@
 //
 
 #import "Store.h"
-#import "MTLOldFeedItem.h"
-#import "Account.h"
+#import "MTLAccount.h"
 #import "DockedAPIClient.h"
 #import "AppDelegate.h"
 #import "PersistentStack.h"
 #import "ConnectionWizardViewController.h"
 #import "CredentialStore.h"
-#import "MTLFeedItem.h"
+#import "FeedItem.h"
 
 //-com.apple.CoreData.SQLDebug 1
 
@@ -23,8 +22,6 @@
 @end
 
 @implementation Store
-
-@synthesize managedObjectContext, providers;
 
 + (instancetype)store
 {
@@ -35,14 +32,9 @@
 {
     self = [super init];
     if (self) {
-        
-        [self fetchProviders];
-        
-//        if ([[CredentialStore sharedClient] isLoggedIn]) {
-//            [self readAccountArchive];
-//            [self userLoggedIn];
-//
-//        }
+        if ([[CredentialStore sharedClient] isLoggedIn]) {
+            [self userLoggedIn];
+        }
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(userLoggedIn)
@@ -56,142 +48,38 @@
     return self;
 }
 
-- (NSFetchedResultsController*)feedItemsFetchedResultsController
-{
-    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
-    [request setFetchBatchSize:200];
-    [request setRelationshipKeyPathsForPrefetching:@[@"dataSets"]];
-    [request setRelationshipKeyPathsForPrefetching:@[@"dataDetails"]];
-    [request setRelationshipKeyPathsForPrefetching:@[@"messages"]];
-    [request setRelationshipKeyPathsForPrefetching:@[@"author"]];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO]];
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"externalID" cacheName:nil];
-}
-
-//- (FeedItem*)fetchFeedItemWithId:(NSString *)feedItemId;
-//{
-//    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
-//    request.predicate = [NSPredicate predicateWithFormat:@"externalID = %@", feedItemId];
-//    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO]];
-//    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"externalID" cacheName:nil];
-//}
-
-- (void) fetchProviders {
-    
-    [Provider fetchRemoteConnectedProvidersWithBlock:^(NSArray * fetchedProviders) {
-        providers = fetchedProviders;
-    }];
-    
-}
 
 #pragma mark - Remote Updates
 
 - (void) fetchRemoteUserAccount
 {
-    [Account fetchRemoteUserAccountWithBlock:^(Account *account) {
-        [self setCurrentAccount:account];
-    }];
+    [Account currentAccountWithCompletionHandler:^(Account *account, NSError *error) {}];
 }
 
-- (void) setCurrentAccount: (Account *)account {
-    _account = account;
-    
-    [_account createUserFromAccount];
-    
-    [[NSUserDefaults standardUserDefaults] setBool:_account.validatedCompany forKey:@"companyValidated"];
-    [self saveAccountToArchive];
-    
+- (Account *)currentAccount {
+    return [Account MR_findFirst];
 }
 
-- (void)fetchRemoteFeedItems
-{
-    [self fetchNewRemoteFeedItemsWithBlock:nil];
-}
-
-- (void)fetchNewRemoteFeedItemsWithBlock:(void (^)(NSArray *))block {
-    NSDictionary *params;
-    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
-    
-    NSString *minUpdatedAt = [standardDefaults stringForKey:@"min_updated_at"];
-    
-    if (minUpdatedAt != nil){
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:minUpdatedAt, @"min_updated_at", nil];
-    }
-    
-    [MTLFeedItem fetchNewRemoteFeedItemsWithParams:params andBlock:^(NSArray *newItems) {
-        
-        if (newItems.count > 0) {
-            
-            for( MTLFeedItem *item in newItems) {
-                NSError *error = nil;
-                [MTLManagedObjectAdapter managedObjectFromModel:item insertingIntoContext:self.managedObjectContext error:&error];
-                
-                if (error != nil) {
-                    NSLog(@"%@", [error localizedDescription]);
-                }
-                
-            }
-            
-            NSError *error = nil;
-            [self.managedObjectContext save:&error];
-            if (error != nil) {
-                NSLog(@"%@", [error localizedDescription]);
-            }
-            
-            MTLOldFeedItem *latestItem = [newItems firstObject];
-            NSString *minUpdated = [Store.dateFormatter stringFromDate:latestItem.updatedAt];
-            [standardDefaults setObject:minUpdated forKey:@"min_updated_at"];
-            [standardDefaults synchronize];
-        }
-        
-        // Need to call to ensure table views stop refreshing
-        [self feedWasUpdated];
-        
-        if (block) block(newItems);
-    }];
-}
-
-#pragma mark - Feed methods
-
-- (NSArray *)sortedTableFeed {
-    NSArray *sortedFeedItems = [self sortFeedItems];
-    NSMutableArray *feed = [[NSMutableArray alloc] initWithCapacity:sortedFeedItems.count];
-    
-    for (MTLOldFeedItem *item in sortedFeedItems) {
-        [feed addObject:[self buildGroupedFeedItem:item]];
-    }
-    
-    return [NSArray arrayWithArray:feed];
-}
-
-- (void) feedWasUpdated {
-    // Send notification
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
-}
-
-- (NSArray *)sortFeedItems
-{
-    return [self.feedItems sortedArrayUsingComparator:^NSComparisonResult(MTLOldFeedItem *feedItem1, MTLOldFeedItem *feedItem2) {
-        return [feedItem2.updatedAt compare:feedItem1.updatedAt];
-    }];
-}
-
-- (NSArray *)buildGroupedFeedItem:(MTLOldFeedItem *)feedItem
-{
-    NSMutableArray *groupedFeedItem = [[NSMutableArray alloc] initWithObjects:feedItem, nil];
-    if (feedItem.messages.count > 0) {
-        [groupedFeedItem addObject:[feedItem.sortedMessages firstObject]];
-    }
-    return [NSArray arrayWithArray:groupedFeedItem];
-}
 
 #pragma mark - User Authentication
 
 - (void) userLoggedIn
 {
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    [self fetchRemoteFeedItems];
-    [Intercom beginSessionForUserWithUserId:_account.userID andEmail:_account.email];
+    [Account currentAccountWithCompletionHandler:^(Account *account, NSError *error) {
+//        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+//        [mixpanel identify:account.identifier];
+//        [mixpanel track:@"signup" properties:@{@"id": account.identifier,
+//                                               @"email" : account.currentUser.email,
+//                                               @"company" : account.companyName}];
+        
+        [Intercom beginSessionForUserWithUserId:account.identifier andEmail:account.currentUser.email];
+        
+    }];
+
+    [FeedItem feedItemsWithCompletionHandler:^(NSArray *feedItems, NSError *error) {}];
+    
+    
 }
 
 - (void) userSignedOut
@@ -204,54 +92,10 @@
     
     [Intercom endSession];
     
-    [[AppDelegate sharedDelegate].persistentStack resetPersistentStore];
+    //[[AppDelegate sharedDelegate].persistentStack resetPersistentStore];
 }
 
 
-
-#pragma mark - NSKeyArchiving
-
-
-
-- (void)readAccountArchive
-{
-    NSString     * path         = [self pathForAccountFile];
-    NSDictionary * rootObject;
-    rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    _account = [rootObject valueForKey:@"account"];
-    
-    [self fetchRemoteUserAccount];
-}
-
-- (void)saveAccountToArchive
-{
-    NSString * path = [self pathForAccountFile];
-    NSMutableDictionary * rootObject = [NSMutableDictionary dictionary];
-    [rootObject setValue:_account forKey:@"account"];
-    [NSKeyedArchiver archiveRootObject: rootObject toFile: path];
-}
-
-- (BOOL)deleteAccountArchive
-{
-    NSString * path = [self pathForAccountFile];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    BOOL exists = [fm fileExistsAtPath:path];
-    if(exists == YES) return [fm removeItemAtPath:path error:nil];
-    return exists;
-}
-
-- (NSString *) pathForAccountFile
-{
-    NSArray*	documentDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString*	path = nil;
-	
-    if (documentDir) {
-        path = [documentDir objectAtIndex:0];
-    }
-	
-    return [NSString stringWithFormat:@"%@/%@", path, @"account.bin"];
-}
-        
 + (NSDateFormatter *)dateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];

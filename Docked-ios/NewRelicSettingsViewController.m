@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"new_relic"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"new_relic"];
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"App Alert", @YES], @[@"Appdex Alert", @YES], @[@"Deployment", @NO], @[@"Downtime", @YES], @[@"Error Threshold", @YES], nil];
     }

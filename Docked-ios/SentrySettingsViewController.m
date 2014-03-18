@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"sentry"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"sentry"];
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Exception", @YES], nil];
     }

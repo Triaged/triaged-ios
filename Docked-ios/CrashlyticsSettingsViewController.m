@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"crashlytics"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"crashlytics"];
         
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Issue", @YES], nil];
@@ -46,7 +46,7 @@
     self.eventsViewController.view.frame = CGRectMake(0, 300, 320, 200);
     [self.scrollView addSubview:self.eventsViewController.view];
     
-    [self.serviceUrlLabel setText:[[AppDelegate sharedDelegate].store.account apiToken]];
+    [self.serviceUrlLabel setText:[[AppDelegate sharedDelegate].store.currentAccount apiToken]];
     
 }
 

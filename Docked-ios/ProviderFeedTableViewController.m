@@ -7,20 +7,22 @@
 //
 
 #import "ProviderFeedTableViewController.h"
-#import "FeedItemsDataSource.h"
+#import "FetchedFeedItemsDataSource.h"
 #import "MTLFeedItem.h"
 #import "FeedSectionViewController.h"
 #import "CardViewController.h"
+#import "ProviderHeaderViewController.h"
 
 @interface ProviderFeedTableViewController () <UITableViewDelegate>
 
-@property (nonatomic, strong) FeedItemsDataSource *feedItemsDataSource;
+@property (nonatomic, strong) FetchedFeedItemsDataSource *feedItemsDataSource;
+@property (nonatomic, strong) NSFetchedResultsController *_fetchedResultsController;
 
 @end
 
 @implementation ProviderFeedTableViewController
 
-@synthesize provider;
+@synthesize provider, _fetchedResultsController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,28 +37,49 @@
 {
     [super viewDidLoad];
     
+    
+    
     self.tableView.backgroundColor = BG_COLOR;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.feedItemsDataSource = [[FeedItemsDataSource alloc] init];
+    self.feedItemsDataSource = [[FetchedFeedItemsDataSource alloc] init];
+    self.feedItemsDataSource.fetchedResultsController = [self fetchedResultsController];
     self.feedItemsDataSource.tableViewController = self;
     self.tableView.dataSource = self.feedItemsDataSource;
     self.tableView.delegate = self.feedItemsDataSource;
     
+    ProviderHeaderViewController *providerHeaderVC = [[ProviderHeaderViewController alloc] init];
+    providerHeaderVC.provider = provider;
+    self.tableView.tableHeaderView = providerHeaderVC.view;
+    
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchFeedItems) forControlEvents:UIControlEventValueChanged];
-
+    
+    // Load local records first, then find new items
     [self fetchFeedItems];
 }
 
 - (void) fetchFeedItems {
-    [self.refreshControl beginRefreshing];
-    
-    [provider fetchProviderFeedItemsWithParams:nil andBlock:^(NSArray * feedItems) {
-        [self.feedItemsDataSource setFeedItems:feedItems];
+    [provider feedItemsWithCompletionHandler:^(NSArray *feedItems, NSError *error) {
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];
+}
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (!_fetchedResultsController) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(provider == %@)", provider];
+        
+        _fetchedResultsController = [FeedItem MR_fetchAllSortedBy:@"timestamp"
+                                                        ascending:NO
+                                                    withPredicate:predicate
+                                                          groupBy:@"sectionIdentifier"
+                                                         delegate:self.feedItemsDataSource];
+        _fetchedResultsController.fetchRequest.fetchBatchSize = 100;
+    }
+    return _fetchedResultsController;
 }
 
 

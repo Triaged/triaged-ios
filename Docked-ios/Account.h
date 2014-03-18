@@ -1,54 +1,41 @@
 //
 //  Account.h
-//  Docked-ios
+//  Triage-ios
 //
-//  Created by Charlie White on 9/23/13.
-//  Copyright (c) 2013 Charlie White. All rights reserved.
+//  Created by Charlie White on 2/10/14.
+//  Copyright (c) 2014 Charlie White. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "Mantle.h"
+#import <CoreData/CoreData.h>
 #import "User.h"
-#import "Provider.h"
 
-@interface Account : MTLModel <MTLJSONSerializing>
+@class User;
 
-@property (nonatomic, copy, readonly) NSString *userID;
-@property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *slug;
-@property (nonatomic, copy, readonly) NSString *email;
-@property (nonatomic, copy, readonly) NSString *avatarUrl;
-@property (nonatomic, copy, readonly) NSString *companyName;
-@property (nonatomic, copy, readonly) NSString *apiToken;
-@property (nonatomic, readonly) BOOL pushEnabled;
-@property (nonatomic, readonly) BOOL validatedCompany;
-@property (nonatomic, readonly) BOOL personalAccount;
-@property (nonatomic, copy, readonly) NSString *validationToken;
-@property (nonatomic, copy, readonly) NSNumber *followedProviderCount;
-@property (nonatomic, copy, readonly) NSArray *providers;
-@property (nonatomic, copy, readonly) NSArray *teammates;
+@interface Account : NSManagedObject
 
+@property (nonatomic, retain) NSString * companyName;
+@property (nonatomic, retain) NSString * apiToken;
+@property (nonatomic, retain) NSString * followedProvidersCount;
+@property (nonatomic, retain) NSString * identifier;
+@property (nonatomic, retain) NSString * personalAccount;
+@property (nonatomic, retain) NSString * pushEnabled;
+@property (nonatomic, retain) NSString * validatedCompany;
+@property (nonatomic, retain) NSString * validationToken;
+@property (nonatomic, retain) User *currentUser;
+@property (nonatomic, retain) NSSet *teammates;
+@property (nonatomic, retain) NSSet *providers;
 
-+(void)fetchRemoteUserAccountWithBlock:(void (^)(Account *))block;
-
--(User *)currentUser;
--(void) createUserFromAccount;
--(NSArray *)team;
-
--(BOOL)isLoggedIn;
--(void)updateAPNSPushTokenWithToken:(NSString *)token;
--(void)resetAPNSPushCount;
--(void)welcomeComplete;
--(void)resendVerifyEmail;
--(void)setValidated;
-
--(void)uploadAvatar:(UIImage *)avatar WithBlock:(void (^)(bool))block;
-- (void)updatePushEnabled:(BOOL)pushValue;
-
--(NSArray *)connectedProviders;
--(NSNumber *)connectedProviderCount;
--(Provider *)providerWithName:(NSString *)name;
++ (void)currentAccountWithCompletionHandler:(void(^)(Account *account, NSError *error))completionHandler;
 
 
+@end
+
+@interface Account (CoreDataGeneratedAccessors)
+
+- (void)addTeammatesObject:(User *)value;
+- (void)removeTeammatesObject:(User *)value;
+- (void)addTeammates:(NSSet *)values;
+- (void)removeTeammates:(NSSet *)values;
 
 @end

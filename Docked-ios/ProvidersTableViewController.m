@@ -36,8 +36,12 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Providers";
+    // Do any additional setup after loading the view.
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    self.title = @"PROVIDERS";
     self.navigationController.navigationBar.translucent = NO;
+    self.view.backgroundColor = BG_COLOR;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -48,18 +52,18 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchProviders) forControlEvents:UIControlEventValueChanged];
     
+    providers = [NSMutableArray arrayWithArray:[Provider MR_findByAttribute:@"connected" withValue:@YES andOrderBy:@"name" ascending:YES]];
     
     [self fetchProviders];
 }
 
 - (void) fetchProviders {
-    [self.refreshControl beginRefreshing];
-    
-    [Provider fetchRemoteConnectedProvidersWithBlock:^(NSArray * fetchedProviders) {
-        providers = fetchedProviders;
+    [Provider providersWithCompletionHandler:^(NSArray *newProviders, NSError *error) {
+        providers = [NSMutableArray arrayWithArray:[Provider MR_findByAttribute:@"connected" withValue:@YES andOrderBy:@"name" ascending:YES]];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];
+    
 }
 
 - (void) connectProvider {

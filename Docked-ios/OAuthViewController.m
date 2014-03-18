@@ -60,12 +60,12 @@
     if ([[request.URL.absoluteString lowercaseString] isEqualToString:completeUrl]) {
         
         //update our store account from the server
-        [Account fetchRemoteUserAccountWithBlock:^(Account * account) {
-            [AppDelegate sharedDelegate].store.account = account;
-            [self dismissViewControllerAnimated:YES completion:nil];
-            [self.delegate oAuthRequestDidSucceed];
-            
-        }];
+//        [MTLAccount fetchRemoteUserAccountWithBlock:^(MTLAccount * account) {
+//            [AppDelegate sharedDelegate].store.account = account;
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//            [self.delegate oAuthRequestDidSucceed];
+//            
+//        }];
     } else {
         // @TODO: Check for success: false
         //[self dismissViewControllerAnimated:YES completion:nil];

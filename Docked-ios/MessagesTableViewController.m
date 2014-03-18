@@ -18,7 +18,7 @@
 
 @implementation MessagesTableViewController
 
-@synthesize feedItem;
+@synthesize messages;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,7 +33,6 @@
 {
     [super viewDidLoad];
     
-    [self setupFetchedResultsController];
     self.view.backgroundColor = [[UIColor alloc]
                                  initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
 
@@ -41,31 +40,24 @@
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     self.tableView.scrollEnabled = NO;
     
+    [self setupFetchedResultsController];
+    [self refreshDataSource];
+    
 }
 
 - (void)setupFetchedResultsController
 {
-//    self.fetchedMessagesDataSource = [[FetchedMessagesDataSource alloc] init];
-//    self.fetchedMessagesDataSource.fetchedResultsController = feedItem.messagesFetchedResultsController;
-//    self.tableView.dataSource = self.fetchedMessagesDataSource;
-//    self.fetchedMessagesDataSource.fetchedResultsController.delegate = self;
+    self.fetchedMessagesDataSource = [[FetchedMessagesDataSource alloc] init];
+
+    self.tableView.dataSource = self.fetchedMessagesDataSource;
+    self.fetchedMessagesDataSource.fetchedResultsController.delegate = self;
 }
 
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [self.tableView layoutIfNeeded];
-    CGRect frame = CGRectMake(0, self.tableView.frame.origin.y, 320.0, [self.tableView contentSize].height);
-    self.tableView.frame = frame;
-}
-
--(void)refreshTableView
-{
+- (void)refreshDataSource {
+    self.fetchedMessagesDataSource.messages = messages;
     [self.tableView reloadData];
-    [self.tableView layoutIfNeeded];
-    CGRect frame = CGRectMake(0, self.tableView.frame.origin.y, 320.0, [self.tableView contentSize].height);
-    self.tableView.frame = frame;
 }
+
 
 - (void)didReceiveMemoryWarning
 {

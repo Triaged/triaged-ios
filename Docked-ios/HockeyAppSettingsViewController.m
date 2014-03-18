@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"hockey_app"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"hockey_app"];
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"New Build", @NO],@[@"Crash", @YES], nil];
     }
     return self;

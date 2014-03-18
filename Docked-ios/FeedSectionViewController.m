@@ -11,12 +11,13 @@
 @interface FeedSectionViewController ()
 
 @property (nonatomic, strong) NSDate* date;
+@property (nonatomic, strong) NSString* dateString;
 
 @end
 
 @implementation FeedSectionViewController
 
-@synthesize date, dateLabel;
+@synthesize date, dateString, dateLabel;
 
 - (id)initWithDate:(NSDate *)currentDate
 {
@@ -28,22 +29,37 @@
     return self;
 }
 
+- (id)initWithDateString:(NSString *)currentDate
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        // Custom initialization
+        dateString = currentDate;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    dateLabel.text = [[FeedSectionViewController dateFormatter] stringFromDate:date];
+    //dateLabel.text = [[FeedSectionViewController dateFormatter] stringFromDate:date];
+    dateLabel.text = dateString;
+    dateLabel.backgroundColor = [UIColor colorWithRed:236.00f green:237.00f blue:238.00f alpha:0.9];
     
-    self.view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.9];
+    self.view.backgroundColor = [UIColor colorWithRed:236.00f green:237.00f blue:238.00f alpha:0.9];
+//    CALayer *bottomBorder = [CALayer layer];
+//    
+//    bottomBorder.frame = CGRectMake(0.0f, 41.5f, self.view.frame.size.width, 0.5f);
+//    
+//    UIColor *borderColor = BORDER_COLOR;
+//    bottomBorder.backgroundColor = borderColor.CGColor;
+//    
+//    [self.view.layer addSublayer:bottomBorder];
     
-    CALayer *bottomBorder = [CALayer layer];
-    
-    bottomBorder.frame = CGRectMake(0.0f, 41.5f, self.view.frame.size.width, 0.5f);
-    
+    [self.view.layer setBorderWidth:0.5f];
     UIColor *borderColor = BORDER_COLOR;
-    bottomBorder.backgroundColor = borderColor.CGColor;
-    
-    [self.view.layer addSublayer:bottomBorder];
+    [self.view.layer setBorderColor:borderColor.CGColor];
 }
 
 - (void)didReceiveMemoryWarning

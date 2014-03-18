@@ -1,6 +1,5 @@
 platform :ios, '7.0'
 
-pod "AFNetworking", "~> 2.0.3"
 pod 'Mantle', '~> 1.3'
 pod 'SSKeychain'
 pod 'SVProgressHUD'
@@ -16,3 +15,6 @@ pod 'SVWebViewController', :head
 pod 'RDVTabBarController'
 pod 'Masonry'
 pod 'UIView+AutoLayout'
+pod 'SLRESTfulCoreData'
+pod "MagicalRecord"
+pod 'Vertigo'

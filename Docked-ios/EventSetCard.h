@@ -1,15 +1,15 @@
+////
+////  EventSetCard.h
+////  Triage-ios
+////
+////  Created by Charlie White on 1/23/14.
+////  Copyright (c) 2014 Charlie White. All rights reserved.
+////
 //
-//  EventSetCard.h
-//  Triage-ios
+//#import <Foundation/Foundation.h>
+//#import "BaseCard.h"
 //
-//  Created by Charlie White on 1/23/14.
-//  Copyright (c) 2014 Charlie White. All rights reserved.
+//@interface EventSetCard : BaseCard <MTLJSONSerializing>
 //
-
-#import <Foundation/Foundation.h>
-#import "BaseCard.h"
-
-@interface EventSetCard : BaseCard <MTLJSONSerializing>
-
-
-@end
+//
+//@end

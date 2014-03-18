@@ -79,7 +79,7 @@
                      @"name", @"stripe", @"name", @"braintree"];
     }
     
-    providers = [[AppDelegate sharedDelegate].store.providers filteredArrayUsingPredicate:predicate];
+    providers = [[Provider MR_findAll] filteredArrayUsingPredicate:predicate];
     [connectionsTable reloadData];
     [connectionsTable setNeedsDisplay];
     [headlineLabel setNeedsDisplay];

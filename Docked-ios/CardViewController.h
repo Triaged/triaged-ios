@@ -7,21 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MTLFeedItem.h"
+#import "FeedItem.h"
 #import "ActionBarViewController.h"
 
 @interface CardViewController : UIViewController <UIGestureRecognizerDelegate>
 
-@property (strong, nonatomic) MTLFeedItem *feedItem;
+@property (strong, nonatomic) FeedItem *feedItem;
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) ActionBarViewController *actionBarVC;
 @property (strong, nonatomic) UITapGestureRecognizer *gestureRecognizer;
+@property (nonatomic) NSLayoutConstraint *dynamicTVHeight;
 
 
 -(void)scrollToBottomAnimated:(BOOL)animated;
 -(void)didSendText:(NSString *)text;
 
-- (void)setFeedItem:(MTLFeedItem *)newFeedItem;
+- (void)setFeedItem:(FeedItem *)newFeedItem;
 
 @end

@@ -187,6 +187,10 @@
 	void (^completition)(void) = ^{
 		CGFloat inputViewFrameY = keyboardY - self.view.frame.size.height;
         
+        if (diff < 0) {
+           //inputViewFrameY = inputViewFrameY - 49.0;
+        }
+        
         self.view.frame = CGRectMake(self.view.frame.origin.x,
                                      inputViewFrameY,
                                      self.view.frame.size.width,
@@ -351,7 +355,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
         NSArray *completions;
-        completions = [AppDelegate sharedDelegate].store.account.team;
+        completions = [[AppDelegate sharedDelegate].store.currentAccount.teammates allObjects];
         
         handler(completions);
     });
@@ -372,12 +376,12 @@
     filename = [filename stringByReplacingOccurrencesOfString:@" " withString:@"-"];
     filename = [filename stringByReplacingOccurrencesOfString:@"&" withString:@"and"];
     
-    User *teammate = (User *)autocompleteObject;
-    
-    AtReplyMessageCell *messageCell = (AtReplyMessageCell *)cell;
-    messageCell.nameLabel.text = teammate.name;
-    NSURL *avatarUrl = [NSURL URLWithString:teammate.avatarUrl];
-    [messageCell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+//    MTLUser *teammate = (MTLUser *)autocompleteObject;
+//    
+//    AtReplyMessageCell *messageCell = (AtReplyMessageCell *)cell;
+//    messageCell.nameLabel.text = teammate.name;
+//    NSURL *avatarUrl = [NSURL URLWithString:teammate.avatarUrl];
+//    [messageCell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
     
     return YES;
 }

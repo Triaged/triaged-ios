@@ -69,12 +69,12 @@
     self.tabBar.opaque = NO;
     
     
-    [self  setViewControllers:[NSArray arrayWithObjects:homeNav, providerNav, teamNav, notificationsNav, accountNav, nil]];
+    [self  setViewControllers:[NSArray arrayWithObjects:homeNav, teamNav, providerNav, notificationsNav, accountNav, nil]];
     
 //    
     UIImage *finishedImage = [UIImage imageNamed:@"nav_bg_on"];
     UIImage *unfinishedImage = [UIImage imageNamed:@"nav_bg_off"];
-    NSArray *tabBarItemImages = @[@"home", @"providers", @"team", @"notification", @"account"];
+    NSArray *tabBarItemImages = @[@"home", @"team", @"providers", @"notification", @"account"];
     
     
     NSInteger index = 0;

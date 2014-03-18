@@ -1,41 +1,45 @@
 //
 //  Provider.h
-//  Docked-ios
+//  Triage-ios
 //
-//  Created by Charlie White on 9/23/13.
-//  Copyright (c) 2013 Charlie White. All rights reserved.
+//  Created by Charlie White on 2/10/14.
+//  Copyright (c) 2014 Charlie White. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "Mantle.h"
-#import "MTLProviderAccount.h"
+#import <CoreData/CoreData.h>
 
-@interface Provider : MTLModel <MTLJSONSerializing>
+@class FeedItem;
+@class Account;
 
-@property (nonatomic, copy, readonly) NSString *providerID;
-@property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *webhookUrl;
-@property (nonatomic, copy, readonly) NSString *title;
-@property (nonatomic, copy, readonly) NSString *shortTitle;
-@property (nonatomic, copy, readonly) NSString *icon;
-@property (nonatomic, copy, readonly) NSString *settingsIcon;
-@property (nonatomic, copy, readonly) NSString *largeIcon;
-@property (nonatomic, copy, readonly) NSString *smallIcon;
-@property (nonatomic, copy, readonly) MTLProviderAccount *account;
-@property (nonatomic, readonly) BOOL oauth;
-@property (nonatomic, readonly) BOOL connected;
-@property (nonatomic, readonly) BOOL follows;
+@interface Provider : NSManagedObject
 
-+ (NSArray *)currentProviders;
-+ (NSDictionary *)settingsDictForProvider:(NSString *)providerName;
+@property (nonatomic, retain) NSNumber * connected;
+@property (nonatomic, retain) NSNumber * follows;
+@property (nonatomic, retain) NSString * identifier;
+@property (nonatomic, retain) NSString * largeIcon;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * oauth;
+@property (nonatomic, retain) NSString * shortTitle;
+@property (nonatomic, retain) NSString * smallIcon;
+@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * webhookUrl;
+@property (nonatomic, retain) NSSet *feedItems;
+@property (nonatomic, retain) Account *account;
 
-+ (void)fetchRemoteProvidersWithBlock:(void (^)(NSArray *))block;
-+ (void)fetchRemoteConnectedProvidersWithBlock:(void (^)(NSArray *))block;
-- (void)fetchProviderFeedItemsWithParams:(NSDictionary*)params andBlock:(void (^)(NSArray *))block;
++ (void)providersWithCompletionHandler:(void(^)(NSArray *providers, NSError *error))completionHandler;
 
-- (void) connect;
-- (void) follow;
-- (void) ignore;
-- (void) emailConnectInstructions;
+
+@end
+
+
+@interface Provider (CoreDataGeneratedAccessors)
+
+- (void)feedItemsWithCompletionHandler:(void(^)(NSArray *feedItems, NSError *error))completionHandler;
+
+- (void)addFeedItemsObject:(FeedItem *)value;
+- (void)removeFeedItemsObject:(FeedItem *)value;
+- (void)addFeedItems:(NSSet *)values;
+- (void)removeFeedItems:(NSSet *)values;
 
 @end

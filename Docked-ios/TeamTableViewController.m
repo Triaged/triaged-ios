@@ -11,7 +11,10 @@
 #import "TeammateViewController.h"
 #import "ListCell.h"
 
+
 @interface TeamTableViewController ()
+
+   @property (nonatomic, retain) NSPredicate *teamPredicate;
 
 @end
 
@@ -24,6 +27,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        self.teamPredicate = [NSPredicate predicateWithFormat:@"(identifier != %@)",
+                              [AppDelegate sharedDelegate].store.currentAccount.currentUser.identifier];
     }
     return self;
 }
@@ -32,8 +37,12 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Team";
+    // Do any additional setup after loading the view.
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    self.title = @"TEAM";
     self.navigationController.navigationBar.translucent = NO;
+    self.view.backgroundColor = BG_COLOR;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -49,22 +58,26 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTeam) forControlEvents:UIControlEventValueChanged];
     
+   
+    team = [NSMutableArray arrayWithArray:[User MR_findAllWithPredicate:self.teamPredicate]];
+
     [self fetchTeam];
 }
 
 - (void) fetchTeam {
-    [self.refreshControl beginRefreshing];
-    
-    [User fetchRemoteTeamWithBlock:^(NSArray * fetchedTeam) {
-        team = fetchedTeam;
+    [User teammatesWithCompletionHandler:^(NSArray *users, NSError *error) {
+        team = [NSMutableArray arrayWithArray:[User MR_findAllWithPredicate:self.teamPredicate]];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];
+    
+    
 }
 
 - (void) inviteTeammate {
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -83,6 +96,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    
     return team.count;
 }
 
@@ -96,7 +110,7 @@
     }
     
     // Configure the cell...
-    User * teammate = [team objectAtIndex:indexPath.row];
+    User *teammate = [team objectAtIndex:[indexPath row]];
     [cell configureForUser:teammate];
     
     return cell;
@@ -104,7 +118,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    User *user = team[indexPath.row];
+    User *user = [team objectAtIndex:[indexPath row]];
     
     TeammateViewController *teammateVC = [[TeammateViewController alloc] initWithUser:user];
     [self.navigationController pushViewController:teammateVC animated:YES];

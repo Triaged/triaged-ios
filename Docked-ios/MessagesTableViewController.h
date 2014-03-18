@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Message.h"
-#import "MTLFeedItem.h"
+#import "FeedItem.h"
 
 @interface MessagesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) MTLFeedItem *feedItem;
+@property (strong, nonatomic) NSMutableArray *messages;
 
--(void)refreshTableView;
-
+- (void)refreshDataSource;
 
 @end

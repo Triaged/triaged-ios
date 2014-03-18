@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"airbrake"];
+        //self.provider = [[AppDelegate sharedDelegate].store.account providerWithName:@"airbrake"];
         
         self.eventsViewController.events = [NSArray arrayWithObjects:@[@"Exception", @YES], nil];
     }

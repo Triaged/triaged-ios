@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "EventCard.h"
 #import "FeedItemCell.h"
+#import "TGRImageViewController.h"
+#import "TGRImageZoomAnimationController.h"
 
-@interface EventCardCell : FeedItemCell
+
+@interface EventCardCell : FeedItemCell <UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UILabel *bodyLabel;
 @property (strong, nonatomic) UILabel *footerLabel;
+@property BOOL imageExists;
 
 
 

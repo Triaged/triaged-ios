@@ -17,23 +17,26 @@
 #import "UITableView+NXEmptyView.h"
 #import "EmptyFeedViewController.h"
 #import "BaseCard.h"
-#import "Provider.h"
+#import "MTLProvider.h"
 #import "FeedItemCell.h"
 #import "ProviderViewController.h"
 #import "FeedSectionViewController.h"
+#import "FetchedFeedItemsDataSource.h"
 
 
 
 
 @interface FeedTableViewController () 
 
-@property (nonatomic, strong) FeedItemsDataSource *feedItemsDataSource;
+@property (nonatomic, strong) FetchedFeedItemsDataSource *feedItemsDataSource;
 @property (nonatomic, strong) UIImageView* refreshIV;
-
-
 @end
 
-@implementation FeedTableViewController 
+@implementation FeedTableViewController{
+    NSFetchedResultsController *_fetchedResultsController;
+}
+
+
 
 @synthesize navController, rootController;
 
@@ -53,7 +56,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Home";
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     [self setupTableView];
 
@@ -74,7 +77,8 @@
 
 - (void)setupTableView
 {
-    self.feedItemsDataSource = [[FeedItemsDataSource alloc] init];
+    self.feedItemsDataSource = [[FetchedFeedItemsDataSource alloc] init];
+    self.feedItemsDataSource.fetchedResultsController = [self fetchedResultsController];
     self.feedItemsDataSource.tableViewController = self;
     self.tableView.dataSource = self.feedItemsDataSource;
     self.tableView.delegate = self.feedItemsDataSource;
@@ -85,14 +89,24 @@
 }
 
 - (void) fetchFeedItems {
-    [self.refreshControl beginRefreshing];
-    
-    NSDictionary *params;
-    [MTLFeedItem fetchNewRemoteFeedItemsWithParams:params andBlock:^(NSArray * feedItems) {
-        [self.feedItemsDataSource setFeedItems:feedItems];
+    [FeedItem feedItemsWithCompletionHandler:^(NSArray *feedItems, NSError *error) {
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];
+}
+
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (!_fetchedResultsController) {
+        _fetchedResultsController = [FeedItem MR_fetchAllSortedBy:@"timestamp"
+                                                   ascending:NO
+                                               withPredicate:nil
+                                                     groupBy:@"sectionIdentifier"
+                                                    delegate:self.feedItemsDataSource];
+        _fetchedResultsController.fetchRequest.fetchBatchSize = 100;
+    }
+    return _fetchedResultsController;
 }
 
 

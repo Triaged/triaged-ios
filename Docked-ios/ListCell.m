@@ -7,7 +7,6 @@
 //
 
 #import "ListCell.h"
-#import "Provider.h"
 #import "AppDelegate.h"
 #import "Store.h"
 #import "NSString+Inflections.h"
@@ -24,6 +23,7 @@
         // Initialization code
 
         //self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundColor = [UIColor clearColor];
         self.separatorInset = UIEdgeInsetsMake(0, 65, 0, 0);
 
         providerIconView = [[UIImageView alloc] init];
@@ -63,11 +63,12 @@
 
 - (void)configureForSettings:(Provider *)provider
 {
-    self.providerIconView.image = [UIImage imageNamed:provider.settingsIcon];
+    NSURL *iconUrl = [NSURL URLWithString:provider.largeIcon];
+    [self.providerIconView setImageWithURL:iconUrl];
     self.providerLabel.text = provider.title;
     
     
-    if (provider.connected) {
+    if ([provider.connected  isEqual:@YES]) {
         [self.contentView addSubview: connectedView];
     } else {
         [connectedView removeFromSuperview];

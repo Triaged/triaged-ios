@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 - (id)initWithDate:(NSDate *)currentDate;
+- (id)initWithDateString:(NSString *)currentDate;
 
 @end

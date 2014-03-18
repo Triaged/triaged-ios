@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CardViewController.h"
+#import "DetailViewController.h"
 #import "MLPAutoCompleteTextFieldDataSource.h"
 #import "MLPAutoCompleteTextFieldDelegate.h"
 #import "GGHashtagMentionController.h"
 
 @class MLPAutoCompleteTextField;
+@class DetailViewController;
+
 @interface MessageToolbarViewController : UIViewController <MLPAutoCompleteTextFieldDataSource, MLPAutoCompleteTextFieldDelegate, UIGestureRecognizerDelegate, GGHashtagMentionDelegate>
 
-@property (nonatomic, strong) CardViewController*	detailView;
+@property (nonatomic, strong) DetailViewController*	detailView;
 @property (nonatomic, strong) UIButton*		buttonSend;
 
 - (void)handleTapGesture:(UIGestureRecognizer*)gesture;

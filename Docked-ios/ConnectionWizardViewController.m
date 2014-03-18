@@ -121,7 +121,7 @@
 
     if (!hasSeenTutorial) {
         // Once we get through all the welcome screens, ask for push notifications
-        [[AppDelegate sharedDelegate].store.account welcomeComplete];
+        //[[AppDelegate sharedDelegate].store.account welcomeComplete];
         
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
         

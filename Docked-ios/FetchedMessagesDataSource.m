@@ -15,26 +15,24 @@
 
 @implementation FetchedMessagesDataSource
 
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [self.fetchedResultsController objectAtIndexPath:indexPath];
-}
+@synthesize messages;
+
 
 - (id)messageAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return [messages objectAtIndex:indexPath.row];
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
-    return self.fetchedResultsController.sections.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    id<NSFetchedResultsSectionInfo> section = self.fetchedResultsController.sections[sectionIndex];
-    return section.numberOfObjects;
+    
+    return messages.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath

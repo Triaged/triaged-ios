@@ -18,34 +18,34 @@
              @"follows" : @"follows"
              };
 }
-
-- (void) followWithProvider:(Provider *)provider andAccount:(MTLProviderAccount *)account {
-    
-    // set this locally first
-    _follows = true;
-    
-    NSString *path = [NSString stringWithFormat:@"provider_accounts/%@/provider_properties/%@/follow", account.accountID, _propertyID];
-    
-    [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
-        // reset back if the post fails
-        _follows = false;
-    }];
-}
-
-- (void)  ignoreWithProvider:(Provider *)provider andAccount:(MTLProviderAccount *)account {
-    _follows = false;
-    
-     NSString *path = [NSString stringWithFormat:@"provider_accounts/%@/provider_properties/%@/ignore", account.accountID, _propertyID];
-    
-    [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
-        // Reset back, if the post fails
-        _follows = true;
-    }];
-}
+//
+//- (void) followWithProvider:(Provider *)provider andAccount:(MTLProviderAccount *)account {
+//    
+//    // set this locally first
+//    _follows = true;
+//    
+//    NSString *path = [NSString stringWithFormat:@"provider_accounts/%@/provider_properties/%@/follow", account.accountID, _propertyID];
+//    
+//    [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
+//        
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        NSLog(@"%@",[error localizedDescription]);
+//        // reset back if the post fails
+//        _follows = false;
+//    }];
+//}
+//
+//- (void)  ignoreWithProvider:(Provider *)provider andAccount:(MTLProviderAccount *)account {
+//    _follows = false;
+//    
+//     NSString *path = [NSString stringWithFormat:@"provider_accounts/%@/provider_properties/%@/ignore", account.accountID, _propertyID];
+//    
+//    [[DockedAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id JSON) {
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        NSLog(@"%@",[error localizedDescription]);
+//        // Reset back, if the post fails
+//        _follows = true;
+//    }];
+//}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Provider.h"
 
 @interface ProviderFeedTableViewController : UITableViewController
 

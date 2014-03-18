@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import "Store.h"
-#import "Account.h"
-#import "PersistentStack.h"
+#import "MTLAccount.h"
+#import "TRDataStoreManager.h"
+#import "TRBackgroundQueue.h"
 #import "RootViewController.h"
 #import "TRTabBarController.h"
 #import "CardViewController.h"
@@ -19,6 +20,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "TestFlight.h"
 #import "Flurry.h"
+#import "TRDataStoreManager.h"
 
 // STAGING
 //#define MIXPANEL_TOKEN @"f1bc2a39131c2de857c04fdf4d236eed"
@@ -32,6 +34,10 @@
 #define APPSEE_TOKEN @"13389247ea0b457e837f7aec5d80acb8"
 #define FLURRY_TOKEN @"3XM3RXRX5KGJNGFK8S9X"
 
+@interface NSManagedObjectContext ()
++ (void)MR_setRootSavingContext:(NSManagedObjectContext *)context;
++ (void)MR_setDefaultContext:(NSManagedObjectContext *)moc;
+@end
 
 @interface AppDelegate () 
 
@@ -53,13 +59,9 @@
     //[[CredentialStore sharedClient] clearSavedCredentials];
     
     [self setAnalytics];
-    
-    self.persistentStack = [[PersistentStack alloc] init];
-    self.store = [[Store alloc] init];
-    self.store.managedObjectContext = self.persistentStack.managedObjectContext;
-    
-    [self setWindowAndRootVC];
+    [self setDataStore];
     [self setBaseStyles];
+    [self setWindowAndRootVC];
     [self addObservers];
     [self setupLoggedInUser];
     
@@ -86,6 +88,31 @@
     [self.window makeKeyAndVisible];
 }
 
+-(void)setDataStore{
+    
+    
+    [NSManagedObject setDefaultBackgroundQueue:[TRBackgroundQueue sharedInstance]];
+    
+    [NSManagedObject registerDefaultBackgroundThreadManagedObjectContextWithAction:^NSManagedObjectContext *{
+        return [TRDataStoreManager sharedInstance].backgroundThreadManagedObjectContext;
+    }];
+    
+    [NSManagedObject registerDefaultMainThreadManagedObjectContextWithAction:^NSManagedObjectContext *{
+        return [TRDataStoreManager sharedInstance].mainThreadManagedObjectContext;
+    }];
+    
+    [SLObjectConverter setDefaultDateTimeFormat:@"yyyy-MM-dd'T'HH:mm:ss.sssZ"]; 
+    [SLAttributeMapping registerDefaultObjcNamingConvention:@"identifier" forJSONNamingConvention:@"id"];
+    
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Triage-ios.sqlite"];
+    [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:[TRDataStoreManager sharedInstance].persistentStoreCoordinator];
+    [NSManagedObjectContext MR_setRootSavingContext:[TRDataStoreManager sharedInstance].mainThreadManagedObjectContext];
+    [NSManagedObjectContext MR_setDefaultContext:[TRDataStoreManager sharedInstance].mainThreadManagedObjectContext];
+
+    
+
+}
+
 - (void) setBaseStyles
 {
     self.window.backgroundColor = BG_COLOR;
@@ -93,18 +120,20 @@
     
     UIColor *tint = [UIColor blackColor];
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
-                                                                           fontWithName:@"Avenir-Book" size:17], NSFontAttributeName, tint,NSForegroundColorAttributeName, nil];
+                                                                           fontWithName:@"HelveticaNeue-Medium" size:14], NSFontAttributeName, tint,NSForegroundColorAttributeName, nil];
     
     [[UINavigationBar appearance] setTitleTextAttributes:attributes];
     
     UIColor *buttonTint = TINT_COLOR;
     NSDictionary *buttonAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
-                                                                           fontWithName:@"Avenir-Book" size:17], NSFontAttributeName, buttonTint,NSForegroundColorAttributeName, nil];
+                                                                           fontWithName:@"HelveticaNeue-Medium" size:14], NSFontAttributeName, buttonTint,NSForegroundColorAttributeName, nil];
     
     [[UIBarButtonItem appearance] setTitleTextAttributes:buttonAttributes forState:UIControlStateNormal];
     
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    [UINavigationBar appearance].backIndicatorImage = [[UIImage imageNamed:@"navbar_icon_back.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [UINavigationBar appearance].backIndicatorTransitionMaskImage = [[UIImage imageNamed:@"navbar_icon_back.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
 
 //    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"navbar_icon_back.png"]
@@ -137,14 +166,14 @@
 
 - (void)setupLoggedInUser
 {
-    if ([self.store.account isLoggedIn]) {
-        if([UIApplication sharedApplication].applicationIconBadgeNumber > 0) {
-            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-            [self.store.account resetAPNSPushCount];
-            [self.store readAccountArchive];
-            [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-        }
-    }
+//    if ([self.store.account isLoggedIn]) {
+//        if([UIApplication sharedApplication].applicationIconBadgeNumber > 0) {
+//            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+//            [self.store.account resetAPNSPushCount];
+//            
+//            [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+//        }
+//    }
 }
 
 - (Store *)store
@@ -157,7 +186,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [self.store saveAccountToArchive];
+   
 }
 
 
@@ -166,7 +195,7 @@
     deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     // @TODO: Optimize this:
-    [self.store.account updateAPNSPushTokenWithToken:deviceToken];
+    //[self.store.account updateAPNSPushTokenWithToken:deviceToken];
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
@@ -176,50 +205,50 @@
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     UIApplicationState state = [application applicationState];
     
-    [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
-        if (newFeedItems) {
-            if (state == UIApplicationStateInactive) {
-                [self navigateToDetailViewWithFeedItem:[userInfo objectForKey:@"external_id"]];
-            }
-            completionHandler(UIBackgroundFetchResultNewData);
-        } else {
-            completionHandler(UIBackgroundFetchResultNoData);
-        }
-    }];
-    completionHandler(UIBackgroundFetchResultFailed);
+//    [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
+//        if (newFeedItems) {
+//            if (state == UIApplicationStateInactive) {
+//                [self navigateToDetailViewWithFeedItem:[userInfo objectForKey:@"external_id"]];
+//            }
+//            completionHandler(UIBackgroundFetchResultNewData);
+//        } else {
+//            completionHandler(UIBackgroundFetchResultNoData);
+//        }
+//    }];
+//    completionHandler(UIBackgroundFetchResultFailed);
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-    [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
-        if (newFeedItems) {
-            completionHandler(UIBackgroundFetchResultNewData);
-        } else {
-            completionHandler(UIBackgroundFetchResultNoData);
-        }
-    }];
-    completionHandler(UIBackgroundFetchResultFailed);
+//    [_store fetchNewRemoteFeedItemsWithBlock:^(NSArray * newFeedItems) {
+//        if (newFeedItems) {
+//            completionHandler(UIBackgroundFetchResultNewData);
+//        } else {
+//            completionHandler(UIBackgroundFetchResultNoData);
+//        }
+//    }];
+//    completionHandler(UIBackgroundFetchResultFailed);
 }
 
 - (void) navigateToDetailViewWithFeedItem:(NSString *)externalID
 {
-    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
-    request.predicate = [NSPredicate predicateWithFormat:@"externalID = %@", externalID];
-    NSArray * fetchedObjects = [self.store.managedObjectContext executeFetchRequest:request error:nil];
-   
-    CardViewController *detailVC = [[CardViewController alloc] init];
-    [detailVC setFeedItem:[fetchedObjects firstObject]];
-    [navVC pushViewController:detailVC animated:NO];
+//    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FeedItem"];
+//    request.predicate = [NSPredicate predicateWithFormat:@"externalID = %@", externalID];
+//    NSArray * fetchedObjects = [self.store.managedObjectContext executeFetchRequest:request error:nil];
+//   
+//    CardViewController *detailVC = [[CardViewController alloc] init];
+//    [detailVC setFeedItem:[fetchedObjects firstObject]];
+//    [navVC pushViewController:detailVC animated:NO];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     if ([[url scheme] isEqualToString:@"triage"]) {
 
-        NSString *token = [url query];
-        if ([token isEqual:self.store.account.validationToken]) {
-            [self.store.account setValidated];
-        }
+//        NSString *token = [url query];
+//        if ([token isEqual:self.store.account.validationToken]) {
+//            [self.store.account setValidated];
+//        }
         
         
         return YES;
@@ -252,13 +281,9 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [self.store saveAccountToArchive];
+    //[self.store saveAccountToArchive];
     
-    NSError *error = nil;
-    [self.store.managedObjectContext save:&error];
-    if (error != nil) {
-        NSLog(@"%@", [error localizedDescription]);
-    }
+    [MagicalRecord cleanUp];
 }
 
 @end

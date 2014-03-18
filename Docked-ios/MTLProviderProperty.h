@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
-#import "Provider.h"
+#import "MTLProvider.h"
 #import "MTLProviderAccount.h"
 
-@class Provider;
+@class MTLProvider;
 @class MTLProviderAccount;
 
 @interface MTLProviderProperty : MTLModel <MTLJSONSerializing>
@@ -20,8 +20,8 @@
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, readonly) BOOL follows;
 
-- (void) followWithProvider:(Provider *)provider andAccount:(MTLProviderAccount *)account;
-- (void) ignoreWithProvider:(Provider *)provider andAccount:(MTLProviderAccount *)account;
+- (void) followWithProvider:(MTLProvider *)provider andAccount:(MTLProviderAccount *)account;
+- (void) ignoreWithProvider:(MTLProvider *)provider andAccount:(MTLProviderAccount *)account;
 
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Provider.h"
+#import "MTLProvider.h"
 
 @interface ProvidersTableViewController : UITableViewController
 

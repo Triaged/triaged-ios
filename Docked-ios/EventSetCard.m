@@ -1,13 +1,13 @@
+////
+////  EventSetCard.m
+////  Triage-ios
+////
+////  Created by Charlie White on 1/23/14.
+////  Copyright (c) 2014 Charlie White. All rights reserved.
+////
 //
-//  EventSetCard.m
-//  Triage-ios
+//#import "EventSetCard.h"
 //
-//  Created by Charlie White on 1/23/14.
-//  Copyright (c) 2014 Charlie White. All rights reserved.
+//@implementation EventSetCard
 //
-
-#import "EventSetCard.h"
-
-@implementation EventSetCard
-
-@end
+//@end
