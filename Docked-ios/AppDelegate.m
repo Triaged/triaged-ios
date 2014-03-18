@@ -151,8 +151,8 @@
     [TestFlight takeOff:TESTFLIGHT_TOKEN];
     
     
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEYAPP_TOKEN delegate:self];
-    [[BITHockeyManager sharedHockeyManager] startManager];
+//    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEYAPP_TOKEN delegate:self];
+//    [[BITHockeyManager sharedHockeyManager] startManager];
     [Appsee start:APPSEE_TOKEN];
     
     [Crashlytics startWithAPIKey:CRASHLYTICS_TOKEN];

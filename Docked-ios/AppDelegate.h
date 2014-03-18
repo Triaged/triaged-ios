@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <HockeySDK/HockeySDK.h>
+//#import <HockeySDK/HockeySDK.h>
 #import "UIDebugWindow.h"
 #import "TRNavigationController.h"
 
