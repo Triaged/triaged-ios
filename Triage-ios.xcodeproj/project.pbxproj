@@ -110,7 +110,6 @@
 		CBA6D12C18202C70006B73AC /* ConnectionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA6D12B18202C70006B73AC /* ConnectionPageViewController.m */; };
 		CBB4914A1896CBDF0023246D /* FeedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB491491896CBDF0023246D /* FeedItemsDataSource.m */; };
 		CBB4914D1896D5BB0023246D /* EventCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4914C1896D5BB0023246D /* EventCardCell.m */; };
-		CBB491501896DB9D0023246D /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB4914F1896DB9D0023246D /* Reveal.framework */; };
 		CBB4917C189714B30023246D /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4917B189714B30023246D /* NotificationsTableViewController.m */; };
 		CBB4917F18971C210023246D /* FeedItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4917E18971C210023246D /* FeedItemCell.m */; };
 		CBB4918318971EAC0023246D /* SummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4918218971EAC0023246D /* SummaryTableViewController.m */; };
@@ -491,7 +490,6 @@
 				CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */,
 				CB13946D1821F31100053086 /* libz.dylib in Frameworks */,
 				CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */,
-				CBB491501896DB9D0023246D /* Reveal.framework in Frameworks */,
 				CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */,
 				CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */,
 				CB2F9F9B1808B2EA00F5F97C /* SystemConfiguration.framework in Frameworks */,
