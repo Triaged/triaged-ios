@@ -35,7 +35,6 @@
 		CB27B52118442108000B4D55 /* AppfiguresSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB27B52018442108000B4D55 /* AppfiguresSettingsViewController.m */; };
 		CB27B52418442115000B4D55 /* CrashlyticsSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB27B52318442115000B4D55 /* CrashlyticsSettingsViewController.m */; };
 		CB2D00AB181215E6005350D5 /* SettingEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2D00A9181215E6005350D5 /* SettingEventsViewController.m */; };
-		CB2DCDCD187B356700070FD1 /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2DCDCC187B356700070FD1 /* libFlurry_4.3.0.a */; };
 		CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F941808B2B800F5F97C /* Accelerate.framework */; };
 		CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F961808B2C000F5F97C /* AdSupport.framework */; };
 		CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2F9F981808B2CB00F5F97C /* CoreTelephony.framework */; };
@@ -70,7 +69,6 @@
 		CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AECF217EF7DAA00319223 /* SignupViewController.m */; };
 		CB5AECF517EF7DAA00319223 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AECF317EF7DAA00319223 /* SignupViewController.xib */; };
 		CB5FF744185A449700FEB6BC /* BitbucketSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5FF743185A449700FEB6BC /* BitbucketSettingsViewController.m */; };
-		CB70536E183E77A4002A377F /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB70536D183E77A4002A377F /* Appsee.framework */; };
 		CB71C9B31899D05900125BEA /* ActionBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB71C9B11899D05900125BEA /* ActionBarViewController.m */; };
 		CB71C9B41899D05900125BEA /* ActionBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB71C9B21899D05900125BEA /* ActionBarViewController.xib */; };
 		CB71C9B6189C0DC200125BEA /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB71C9B5189C0DC200125BEA /* SDWebImage.framework */; };
@@ -116,7 +114,6 @@
 		CBB4917C189714B30023246D /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4917B189714B30023246D /* NotificationsTableViewController.m */; };
 		CBB4917F18971C210023246D /* FeedItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4917E18971C210023246D /* FeedItemCell.m */; };
 		CBB4918318971EAC0023246D /* SummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4918218971EAC0023246D /* SummaryTableViewController.m */; };
-		CBB53808184E490D002408A1 /* libIntercom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB53807184E490D002408A1 /* libIntercom.a */; };
 		CBB89E1117FE4F0600402973 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB89E1017FE4F0600402973 /* Store.m */; };
 		CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBCC47C1810956C00876AC6 /* CardPageViewController.m */; };
 		CBC82A241846B34400C96D3E /* BraintreeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A231846B34400C96D3E /* BraintreeSettingsViewController.m */; };
@@ -124,7 +121,6 @@
 		CBC82A36184A768300C96D3E /* UIScrollView+UzysCircularProgressPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A33184A768300C96D3E /* UIScrollView+UzysCircularProgressPullToRefresh.m */; };
 		CBC82A37184A768300C96D3E /* UzysRadialProgressActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A35184A768300C96D3E /* UzysRadialProgressActivityIndicator.m */; };
 		CBC82A3B184AC4FD00C96D3E /* TRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC82A3A184AC4FD00C96D3E /* TRButton.m */; };
-		CBC82A43184ADBDD00C96D3E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC82A3D184ADBDD00C96D3E /* libTestFlight.a */; };
 		CBC82A44184ADBDD00C96D3E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CBC82A3E184ADBDD00C96D3E /* README.md */; };
 		CBC82A45184ADBDD00C96D3E /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = CBC82A3F184ADBDD00C96D3E /* release_notes.md */; };
 		CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCC6C8F18199D71001030C2 /* MLPAutoCompleteTextField.m */; };
@@ -168,7 +164,6 @@
 		CBF323A018998A2700BF8FFE /* SpacerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF3239F18998A2700BF8FFE /* SpacerCell.m */; };
 		CBF323A31899B7DC00BF8FFE /* ProviderFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF323A21899B7DC00BF8FFE /* ProviderFeedTableViewController.m */; };
 		CBF323A61899C66300BF8FFE /* TeammateFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF323A51899C66300BF8FFE /* TeammateFeedTableViewController.m */; };
-		CBF3872C1812535500554730 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF387281812535500554730 /* HockeySDK.framework */; };
 		CBF3872D1812535500554730 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CBF3872A1812535500554730 /* HockeySDK.xcconfig */; };
 		CBF3872E1812535500554730 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CBF3872B1812535500554730 /* HockeySDKResources.bundle */; };
 		CBF3873118125C8F00554730 /* TRJSONResponseSerializerWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF3873018125C8F00554730 /* TRJSONResponseSerializerWithData.m */; };
@@ -492,7 +487,6 @@
 				CB71C9B8189C0DE200125BEA /* ImageIO.framework in Frameworks */,
 				CB1947C71830999D00944E80 /* CoreVideo.framework in Frameworks */,
 				CB1947C51830999400944E80 /* CoreMedia.framework in Frameworks */,
-				CB2DCDCD187B356700070FD1 /* libFlurry_4.3.0.a in Frameworks */,
 				CB1947C31830998A00944E80 /* AVFoundation.framework in Frameworks */,
 				CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */,
 				CB13946D1821F31100053086 /* libz.dylib in Frameworks */,
@@ -501,19 +495,15 @@
 				CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */,
 				CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */,
 				CB2F9F9B1808B2EA00F5F97C /* SystemConfiguration.framework in Frameworks */,
-				CBC82A43184ADBDD00C96D3E /* libTestFlight.a in Frameworks */,
 				CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */,
 				CB96D9BB18353997003DD13E /* Crashlytics.framework in Frameworks */,
 				CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */,
 				CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */,
 				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
 				CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */,
-				CBF3872C1812535500554730 /* HockeySDK.framework in Frameworks */,
 				CBE8637C17FC9FA600EF6E73 /* Security.framework in Frameworks */,
 				CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */,
-				CB70536E183E77A4002A377F /* Appsee.framework in Frameworks */,
 				CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */,
-				CBB53808184E490D002408A1 /* libIntercom.a in Frameworks */,
 				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
 				CB71C9B6189C0DC200125BEA /* SDWebImage.framework in Frameworks */,
 				CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */,

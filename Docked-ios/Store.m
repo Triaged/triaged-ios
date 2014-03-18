@@ -73,7 +73,7 @@
 //                                               @"email" : account.currentUser.email,
 //                                               @"company" : account.companyName}];
         
-        [Intercom beginSessionForUserWithUserId:account.identifier andEmail:account.currentUser.email];
+        //[Intercom beginSessionForUserWithUserId:account.identifier andEmail:account.currentUser.email];
         
     }];
 
@@ -90,7 +90,7 @@
     [standardDefaults removeObjectForKey:@"companyValidated"];
     [standardDefaults synchronize];
     
-    [Intercom endSession];
+    //[Intercom endSession];
     
     //[[AppDelegate sharedDelegate].persistentStack resetPersistentStore];
 }
