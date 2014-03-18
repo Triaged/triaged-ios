@@ -17,9 +17,9 @@
 #import "WelcomeViewController.h"
 #import "CredentialStore.h"
 //#import <Appsee/Appsee.h>
-#import <Crashlytics/Crashlytics.h>
-#import "TestFlight.h"
-#import "Flurry.h"
+//#import <Crashlytics/Crashlytics.h>
+//#import "TestFlight.h"
+//#import "Flurry.h"
 #import "TRDataStoreManager.h"
 
 // STAGING
@@ -146,21 +146,21 @@
 }
 
 - (void) setAnalytics {
-    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    //[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
-    [TestFlight takeOff:TESTFLIGHT_TOKEN];
+    //[TestFlight takeOff:TESTFLIGHT_TOKEN];
     
     
 //    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEYAPP_TOKEN delegate:self];
 //    [[BITHockeyManager sharedHockeyManager] startManager];
     //[Appsee start:APPSEE_TOKEN];
     
-    [Crashlytics startWithAPIKey:CRASHLYTICS_TOKEN];
+    //[Crashlytics startWithAPIKey:CRASHLYTICS_TOKEN];
     
-    [Intercom setApiKey:@"ios-470c22eb9b8bc927db5c6c2c9721988cba08022c" forAppId:@"254713b22c6841aa49aa91b356f3ac288bfa14b1"];
+    //[Intercom setApiKey:@"ios-470c22eb9b8bc927db5c6c2c9721988cba08022c" forAppId:@"254713b22c6841aa49aa91b356f3ac288bfa14b1"];
     
-    [Flurry setCrashReportingEnabled:NO];
-    [Flurry startSession:FLURRY_TOKEN];
+    //[Flurry setCrashReportingEnabled:NO];
+    //[Flurry startSession:FLURRY_TOKEN];
     
 }
 
