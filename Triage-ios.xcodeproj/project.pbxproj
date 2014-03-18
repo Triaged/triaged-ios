@@ -98,7 +98,6 @@
 		CB8F20C317EB5FBA00EBDC34 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F20C217EB5FBA00EBDC34 /* FeedTableViewController.m */; };
 		CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8F20D117EB851D00EBDC34 /* Media.xcassets */; };
 		CB8F212117EB869E00EBDC34 /* Triage-ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8F211F17EB869E00EBDC34 /* Triage-ios.xcdatamodeld */; };
-		CB96D9BB18353997003DD13E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB96D9BA18353997003DD13E /* Crashlytics.framework */; };
 		CB9886AA183408EC00BA37C9 /* EmptyFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9886A8183408EC00BA37C9 /* EmptyFeedViewController.m */; };
 		CB9886AB183408EC00BA37C9 /* EmptyFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9886A9183408EC00BA37C9 /* EmptyFeedViewController.xib */; };
 		CBA676AE18085B150035368A /* NewRelicSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA676AD18085B150035368A /* NewRelicSettingsViewController.m */; };
@@ -494,7 +493,6 @@
 				CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */,
 				CB2F9F9B1808B2EA00F5F97C /* SystemConfiguration.framework in Frameworks */,
 				CB2F9F991808B2CB00F5F97C /* CoreTelephony.framework in Frameworks */,
-				CB96D9BB18353997003DD13E /* Crashlytics.framework in Frameworks */,
 				CB2F9F971808B2C000F5F97C /* AdSupport.framework in Frameworks */,
 				CB2F9F951808B2B800F5F97C /* Accelerate.framework in Frameworks */,
 				CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */,
