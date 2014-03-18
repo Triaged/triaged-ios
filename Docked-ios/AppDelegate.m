@@ -16,7 +16,7 @@
 #import "CardViewController.h"
 #import "WelcomeViewController.h"
 #import "CredentialStore.h"
-#import <Appsee/Appsee.h>
+//#import <Appsee/Appsee.h>
 #import <Crashlytics/Crashlytics.h>
 #import "TestFlight.h"
 #import "Flurry.h"
@@ -153,7 +153,7 @@
     
 //    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEYAPP_TOKEN delegate:self];
 //    [[BITHockeyManager sharedHockeyManager] startManager];
-    [Appsee start:APPSEE_TOKEN];
+    //[Appsee start:APPSEE_TOKEN];
     
     [Crashlytics startWithAPIKey:CRASHLYTICS_TOKEN];
     
