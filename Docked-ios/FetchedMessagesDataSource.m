@@ -20,7 +20,7 @@
 
 - (id)messageAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [messages objectAtIndex:indexPath.row];
+    return [_fetchedResultsController objectAtIndexPath:indexPath];
 }
 
 
@@ -32,7 +32,9 @@
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
     
-    return messages.count;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:sectionIndex];
+    int number = [sectionInfo numberOfObjects];
+    return number;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -47,10 +49,18 @@
     Message *message = [self messageAtIndexPath:indexPath];
     
     [cell configureForMessage:message];
-    cell.shouldDrawSeparator = (indexPath.row == 0) ? NO : YES;
-    
+   
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    Message *message = [self messageAtIndexPath:indexPath];
+    return [MessageCell heightOfContent:message hasMultipleMessages:NO];
+    
+}
+
 
 - (void)setFetchedResultsController:(NSFetchedResultsController*)fetchedResultsController
 {

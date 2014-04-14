@@ -27,7 +27,9 @@
 @property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSString * imageUrl;
 @property (nonatomic, retain) NSOrderedSet *messages;
+@property (nonatomic, retain) NSOrderedSet *thumbsups;
 @property (nonatomic, retain) NSString *sectionIdentifier;
+@property (nonatomic, retain) NSNumber *messagesCount;
 @property (nonatomic, retain) Provider *provider;
 @property (nonatomic, retain) User *user;
 

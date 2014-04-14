@@ -10,9 +10,10 @@
 #import "Message.h"
 #import "FeedItem.h"
 
-@interface MessagesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface MessagesTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *messages;
+@property (strong, nonatomic) FeedItem *feedItem;
 
 - (void)refreshDataSource;
 

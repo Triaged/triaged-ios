@@ -13,6 +13,7 @@
 #import "NSDate+TimeAgo.h"
 #import "CardViewController.h"
 #import "FeedSectionViewController.h"
+#import "UIView+BlurredSnapshot.h"
 
 
 #define kLCellSpacerHeight      16.0f
@@ -69,6 +70,10 @@
         cellID = [NSString stringWithFormat:@"%@-image",cellID];
     }
     
+    if (item.user) {
+        cellID = [NSString stringWithFormat:@"%@-user",cellID];
+    }
+    
     FeedItemCell *cell = [ tableView dequeueReusableCellWithIdentifier:cellID ] ;
     if ( !cell )
     {
@@ -100,21 +105,32 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     FeedItemCell *cell = (id)[tableView cellForRowAtIndexPath:indexPath];
+    FeedItem *item = [self itemAtIndexPath:indexPath];
     
     // create subview to obscure the table view behind us
     
-    detail = [[DetailViewController alloc] init];
-    detail.view.frame = [AppDelegate sharedDelegate].window.frame;
+    // Set blurred view
+    UIImage *blurred = [[AppDelegate sharedDelegate].window blurredSnapshot];
+    self.blurredBG = [[UIImageView alloc] initWithImage:blurred];
+    self.blurredBG.frame = [AppDelegate sharedDelegate].window.frame;
+    [[AppDelegate sharedDelegate].window addSubview:self.blurredBG];
     
-    //[self.tableViewController.tableView addSubview:detail.view];
+    detail = [[DetailViewController alloc] init];
+    detail.feedItem = item;
+    detail.view.frame = [AppDelegate sharedDelegate].window.frame;
     [[AppDelegate sharedDelegate].window addSubview:detail.view];
-//    self.backdropView = backdropView;
+    
+    self.back = [[UIButton alloc] initWithFrame:CGRectMake(4.0, 24.0, 28.0, 25.0)];
+    [self.back setImage:[UIImage imageNamed:@"navbar_icon_back_card.png"] forState:UIControlStateNormal];
+    [self.back addTarget:self action:@selector(dismissCard) forControlEvents:UIControlEventTouchUpInside];
+
+
     
     
     // move the cell's container view to the backdrop view, preserving its location on the screen
     // (so it doesn't look like it moved)
     
-    [cell.contentView setBackgroundColor:[UIColor whiteColor]];
+    //[cell.contentView setBackgroundColor:[UIColor whiteColor]];
     
     self.viewToMove = cell.containerView;
     cell.containerView.tableViewController = self.tableViewController;
@@ -123,7 +139,7 @@
     
     // figure out where this goes on the backdrop
     
-    [self.viewToMove setBottomCornersStraight];
+
     CGRect frame = [self.viewToMoveOriginalCell convertRect:cell.containerView.frame
                                                      toView:detail.view];
     
@@ -141,28 +157,38 @@
                      animations:^{
                          
                          // first shrinking it a bit
-                         
                          self.viewToMove.transform = CGAffineTransformMakeScale(0.95, 0.95);
+                         
+                         // Hide separater bar
+                         cell.separatorLineView.hidden = YES;
+
                      }
                      completion:^(BOOL finished) {
                          
                          // finally restoring the size and making it bigger
                          // (and reveal the backdrop that obscures the tableview)
+                         [detail.view addSubview:self.back];
+                         //[detail.view insertSubview:self.back belowSubview:detail.scrollView];
                          
-                         [UIView animateWithDuration:0.25 animations:^{
+                         [UIView animateWithDuration:0.15 animations:^{
                              CGFloat horizontalMargin = (tableViewController.tableView.bounds.size.width - frame.size.width) / 2.0;
-                             detail.view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9];
+                             //detail.view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6];
+                             
+
                              self.viewToMove.transform = CGAffineTransformIdentity;
-                             self.viewToMove.frame = CGRectMake(horizontalMargin, 60.0f, tableViewController.tableView.bounds.size.width - 2.0 * horizontalMargin, self.viewToMove.frame.size.height);
+                             self.viewToMove.frame = CGRectMake(4, 60.0f, 312, self.viewToMove.frame.size.height);
+                         } completion:^(BOOL finished) {
+                             [self.viewToMove setBottomCornersStraight];
+                             [detail setupViewDetails];
                          }];
+                         
                          
                          self.viewToMove.userInteractionEnabled = YES;
                          [tableViewController addChildViewController:detail];
                          [detail didMoveToParentViewController:tableViewController];
                          detail.tableViewController = self.tableViewController;
-                         [detail setupViewDetails];
-                         self.showingDetail = YES;
                          
+                         self.showingDetail = YES;
                      }];
 }
 
@@ -176,7 +202,7 @@
 
 - (void)dismissCard
 {
-    [UIView animateWithDuration:0.25
+    [UIView animateWithDuration:0.15
                           delay:0.0
                         options:0
                      animations:^{
@@ -198,14 +224,19 @@
                          
                          // make the back drop appear to gracefully disappear
                          
-                         detail.view.backgroundColor = [UIColor clearColor];
+                         [self.back removeFromSuperview];
+                         //detail.view.backgroundColor = [UIColor clearColor];
+                         [self.blurredBG removeFromSuperview];
                          
                          // Set all corners rounded
                          [self.viewToMove setAllCornersRounded];
                          
+                         // Show separater bar
+                         ((FeedItemCell*)self.viewToMoveOriginalCell).separatorLineView.hidden = NO;
+                         
                          // shrink content view a tad in the process
                          
-                         self.viewToMove.transform = CGAffineTransformMakeScale(0.98, 0.98);
+                         self.viewToMove.transform = CGAffineTransformMakeScale(0.95, 0.95);
                      }
                      completion:^(BOOL finished) {
                          
@@ -219,6 +250,7 @@
                                               // restore the size of the content view
                                               
                                               self.viewToMove.transform = CGAffineTransformIdentity;
+                                              
                                           }
                                           completion:^(BOOL finished) {
                                               
@@ -250,6 +282,7 @@
     id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
     
     FeedSectionViewController *feedSectionVC = [[FeedSectionViewController alloc] initWithDateString:[theSection name]];
+    //feedSectionVC.view.backgroundColor = [UIColor colorWithRed:121.00f green:159.00f blue:235.00f alpha:1];
     
     return feedSectionVC.view;
 }
@@ -322,6 +355,8 @@
         return height;
     }
 }
+
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 42;

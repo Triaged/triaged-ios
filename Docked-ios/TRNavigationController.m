@@ -40,7 +40,7 @@
     
     //self.navigationBar.layer.opacity = 0.0;
     
-    self.navigationBar.barTintColor = BAR_TINT_COLOR;
+    self.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationBar.translucent = YES;
     
 }

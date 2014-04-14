@@ -110,11 +110,10 @@ static NSString *kDefaultAutoCompleteCellIdentifier = @"_DefaultAutoCompleteCell
     [self setDefaultValuesForVariables];
     
     UITableView *newTableView = [[self class] newAutoCompleteTableViewForTextField:self];
-    newTableView.backgroundColor = [UIColor clearColor];
+    newTableView.backgroundColor = [UIColor whiteColor];
+    newTableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
     [self setAutoCompleteTableView:newTableView];
     
-    self.blurredBackgroundView = [[UIImageView alloc] init];
-    self.blurredBackgroundView.frame = CGRectMake(0,-248,320, 260);
 }
 
 
@@ -372,7 +371,6 @@ withAutoCompleteString:(NSString *)string
             }
         }
         
-        self.autoCompleteTableView.backgroundView = self.blurredBackgroundView;
         [self.superview.superview.superview addSubview:self.autoCompleteTableView];
         [self.autoCompleteTableView setUserInteractionEnabled:YES];
         
@@ -385,7 +383,6 @@ withAutoCompleteString:(NSString *)string
 - (void)closeAutoCompleteTableView
 {
     [self.autoCompleteTableView removeFromSuperview];
-    [self.blurredBackgroundView removeFromSuperview];
 }
 
 
@@ -591,12 +588,12 @@ withAutoCompleteString:(NSString *)string
 + (CGFloat)autoCompleteTableHeightForTextField:(MLPAutoCompleteTextField *)textField
                               withNumberOfRows:(NSInteger)numberOfRows
 {
-    return 250;
+    return 320;
 }
 
 + (CGRect)autoCompleteTableViewFrameForTextField:(MLPAutoCompleteTextField *)textField
 {
-    CGRect frame = CGRectMake(0,0,320, 250);
+    CGRect frame = CGRectMake(0,0,320, 320);
     frame = CGRectInset(frame, 1, 0);
     
     return frame;

@@ -22,7 +22,7 @@
 @dynamic feedItem;
 
 + (void)initialize {
-    //[self registerJSONPrefix:@"message"];
+     [self registerJSONPrefix:@"message"];
      [self registerCRUDBaseURL:[NSURL URLWithString:@"feed/:feed_item.id/messages"]];
 }
 

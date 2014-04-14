@@ -26,7 +26,7 @@
 @dynamic updatedAt;
 @dynamic imageUrl;
 @dynamic messages;
-@dynamic provider, sectionIdentifier, primitiveSectionIdentifier;
+@dynamic provider, sectionIdentifier, primitiveSectionIdentifier, messagesCount;
 
 + (void)initialize
 {
@@ -57,7 +57,18 @@
         /*
          Sections are organized by month and year. Create the section identifier as a string representing the number (year * 1000) + month; this way they will be correctly ordered chronologically regardless of the actual name of the month.
          */
-        tmp = [FeedItem.timestampDateFormatter stringFromDate:[self timestamp]];
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+        NSDate *today = [cal dateFromComponents:components];
+        components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[self timestamp]];
+        NSDate *otherDate = [cal dateFromComponents:components];
+        
+        if([today isEqualToDate:otherDate]) {
+            tmp = @"TODAY";
+        } else {
+           tmp = [FeedItem.timestampDateFormatter stringFromDate:[self timestamp]];
+        }
+        
         [self setPrimitiveSectionIdentifier:tmp];
     }
     return tmp;

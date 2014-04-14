@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "MLPAutoCompletionObject.h"
 
 @class Message;
 @class FeedItem;
 
-@interface User : NSManagedObject
+@interface User : NSManagedObject <MLPAutoCompletionObject>
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * avatarUrl;

@@ -66,28 +66,28 @@
         
         
         cardImageView.image = [UIImage imageNamed:@"logo_triage.png"];
-        cardImageView.frame = CGRectMake(129,67,62,54);
+        cardImageView.frame = CGRectMake(110,47,100,100);
     }
     if (index == 1){
         headlineLabel.text = @"Triage monitors the services you already use,";
 
-        cardImageView.image = [UIImage imageNamed:@"card_ga.png"];
+        cardImageView.image = [UIImage imageNamed:@"walkthrough_1.png"];
         cardImageView.frame = CGRectMake(7.5,34,305, 282);
 
     } else if (index == 2) {
         headlineLabel.text = @"and pulls every important event into one simple feed.";
-        cardImageView.image = [UIImage imageNamed:@"card_stripe.png"];
-        cardImageView.frame = CGRectMake(7.5,101.5,305, 153);
+        cardImageView.image = [UIImage imageNamed:@"walkthrough_2.png"];
+        cardImageView.frame = CGRectMake(0,34,320, 282);
 
     } else if (index == 3) {
         headlineLabel.text = @"Intelligent alerts notify you when action is needed,";
-        cardImageView.image = [UIImage imageNamed:@"card_sentry.png"];
-        cardImageView.frame = CGRectMake(7.5,101.5,305, 153);
+        cardImageView.image = [UIImage imageNamed:@"walkthrough_3.png"];
+        cardImageView.frame = CGRectMake(7.5,34,305, 282);
 
         
     } else if (index == 4) {
-        cardImageView.image = [UIImage imageNamed:@"card_github.png"];
-        cardImageView.frame = CGRectMake(7.5,48.5,305, 253);
+        cardImageView.image = [UIImage imageNamed:@"walkthrough_4.png"];
+        cardImageView.frame = CGRectMake(7.5,34,305, 282);
         headlineLabel.text = @"helping you explore, chat, resolve and share, in a single tap.";
     }
     

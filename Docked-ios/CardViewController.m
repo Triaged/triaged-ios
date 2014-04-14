@@ -106,7 +106,7 @@
     // Messages Table View
             NSLog(@"%d", _feedItem.messages.count);
     messagesVC = [[MessagesTableViewController alloc] init];
-    messagesVC.messages = [NSMutableArray arrayWithArray:[_feedItem.messages array]];
+    //messagesVC.messages = [NSMutableArray arrayWithArray:[_feedItem.messages array]];
     messagesVC.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addChildViewController:messagesVC];
     [scrollView  addSubview:messagesVC.tableView];
@@ -201,7 +201,7 @@
 
     
     [message createWithCompletionHandler:^(Message *message, NSError *error) {
-        messagesVC.messages = [NSMutableArray arrayWithArray:[_feedItem.messages array]];
+        //messagesVC.messages = [NSMutableArray arrayWithArray:[_feedItem.messages array]];
         [messagesVC refreshDataSource];
         [self.dynamicTVHeight autoRemove];
         [self viewDidLayoutSubviews];

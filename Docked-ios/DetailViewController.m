@@ -8,6 +8,8 @@
 
 #import "DetailViewController.h"
 
+#define kActionBarHeight      71.0f
+
 @interface DetailViewController ()
 
 @end
@@ -34,12 +36,13 @@
     self.view.backgroundColor = [UIColor clearColor];
     
     scrollView = [[UIScrollView alloc] init];
-    scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-    scrollView.layer.zPosition = -9999;
-    scrollView.userInteractionEnabled=YES;
+    scrollView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - 40.0);
+    scrollView.userInteractionEnabled = YES;
     scrollView.bounces = YES;
     scrollView.alwaysBounceVertical = YES;
     [self.view addSubview:scrollView];
+    
+    
     
     detailView = [[UIView alloc] init];
     detailView.backgroundColor = [UIColor whiteColor];
@@ -51,9 +54,8 @@
     [actionBarVC.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     // Messages Table View
-    NSLog(@"%d", _feedItem.messages.count);
     messagesVC = [[MessagesTableViewController alloc] init];
-    messagesVC.messages = [NSMutableArray arrayWithArray:[_feedItem.messages array]];
+    messagesVC.feedItem = self.feedItem;
     messagesVC.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     
@@ -97,39 +99,79 @@
     
     float containerBottom = self.containerView.frame.origin.y + self.containerView.frame.size.height;
     float detailHeight = self.view.bounds.size.height - containerBottom;
-    CGRect detailFrame = CGRectMake(5.0f, containerBottom, 310.0f, 0.0f);
+    CGRect detailFrame = CGRectMake(5.0f, containerBottom-71.0, 310.0f, kActionBarHeight);
+    //detailView.alpha = 0.0;
     detailView.frame = detailFrame;
     
+    [self drawActionBarBottomBorder];
+    
+    [detailView addSubview:actionBarVC.view];
+    [actionBarVC.view setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [actionBarVC.view autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
+    [actionBarVC.view autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+    [actionBarVC.view  autoSetDimension:ALDimensionWidth toSize:310];
+    [actionBarVC.view  autoSetDimension:ALDimensionHeight toSize:kActionBarHeight];
+    
+    [self addChildViewController:messagesVC];
+    [messagesVC.tableView layoutIfNeeded];
+    [detailView  addSubview:messagesVC.tableView];
+    float tableHeight = [messagesVC.tableView contentSize].height;
+
+    [messagesVC didMoveToParentViewController:self];
+    [messagesVC.tableView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [messagesVC.tableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:actionBarVC.view  withOffset:0];
+    [messagesVC.tableView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+    [messagesVC.tableView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+    [messagesVC.tableView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
+    [messagesVC.tableView autoSetDimension:ALDimensionWidth toSize:310];
     
     // Animate Drawer Open
-    [UIView animateWithDuration:0.3f animations:^{
-        CGRect detailFrame = CGRectMake(5.0f, containerBottom, 310.0f, detailHeight);
+    [UIView animateWithDuration:0.15f animations:^{
+        
+        CGRect detailFrame = CGRectMake(5.0f, containerBottom, 310.0f, tableHeight + kActionBarHeight);
         detailView.frame = detailFrame;
         
+        [self setDetailMaskPath];
+        [self setScrollViewContentSize];
         
-        [detailView addSubview:actionBarVC.view];
-        [actionBarVC.view setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-        [actionBarVC.view autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
-        [actionBarVC.view autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
-        [actionBarVC.view  autoSetDimension:ALDimensionWidth toSize:310];
-        [actionBarVC.view  autoSetDimension:ALDimensionHeight toSize:71];
-        
-        [self addChildViewController:messagesVC];
-        [scrollView  addSubview:messagesVC.tableView];
-        [messagesVC didMoveToParentViewController:self];
-        [messagesVC.tableView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-        [messagesVC.tableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:actionBarVC.view  withOffset:0];
-        [messagesVC.tableView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
-        [messagesVC.tableView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
-        [messagesVC.tableView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
-        [messagesVC.tableView autoSetDimension:ALDimensionWidth toSize:310];
 
-        
         messageToolbarVC.view.frame = CGRectMake(0, self.view.bounds.size.height - 40, 320, 40);
     } completion:^(BOOL finished) {
         // this gives us a nice callback when it finishes the animation :)
     }];
 }
+
+- (void) setDetailMaskPath {
+    UIBezierPath *maskPath;
+    maskPath = [UIBezierPath bezierPathWithRoundedRect:detailView.bounds byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight) cornerRadii:CGSizeMake(4.0, 4.0)];
+    
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = detailView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    detailView.layer.mask = maskLayer;
+}
+
+- (void) setScrollViewContentSize {
+    
+    CGFloat detailSize = detailView.frame.origin.y + detailView.frame.size.height;
+    NSLog(@"%f", detailSize);
+    NSLog(@"%f", scrollView.frame.size.height);
+    
+    if (detailSize > scrollView.frame.size.height) {
+        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, detailSize + 20);
+    } else {
+        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, scrollView.frame.size.height);
+    }
+    
+
+}
+
+-(void)drawActionBarBottomBorder {
+    if ([_feedItem.messages count] > 0) {
+        [actionBarVC drawBottomBorder];
+    }
+}
+
 
 - (void)teardownViewDetails {
     actionBarVC.view.hidden = YES;
@@ -139,7 +181,7 @@
     [UIView animateWithDuration:0.3f animations:^{
         
         float containerBottom = self.containerView.frame.origin.y + self.containerView.frame.size.height;
-        CGRect detailFrame = CGRectMake(4.0f, containerBottom, 312.0f, 0);
+        CGRect detailFrame = CGRectMake(5.0f, containerBottom, 310.0f, 0);
         detailView.frame = detailFrame;
         
         messageToolbarVC.view.frame = CGRectMake(0, self.view.bounds.size.height, 320, 40);
@@ -147,8 +189,6 @@
         // this gives us a nice callback when it finishes the animation :)
     }];
 }
-
-
 
 -(void)scrollToBottomAnimated:(BOOL)animated
 {
@@ -160,29 +200,42 @@
 
 -(void) didSendText:(NSString *)text
 {
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
     
-//    //Message *message = [Message MR_createEntity];
-//    
-//    Message *message = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Message class])
-//                                                     inManagedObjectContext:[TRDataStoreManager sharedInstance].mainThreadManagedObjectContext];
-//    
-//    message.feedItem    = _feedItem;
-//    message.body        = text;
-//    message.timestamp   = [NSDate date];
-//    message.author      = [AppDelegate sharedDelegate].store.currentAccount.currentUser;
-//    message.uuid        = [[NSUUID UUID] UUIDString];
-//    
-//    
-//    
-//    [message createWithCompletionHandler:^(Message *message, NSError *error) {
-//        messagesVC.messages = [NSMutableArray arrayWithArray:[_feedItem.messages array]];
-//        [messagesVC refreshDataSource];
-//        [self.dynamicTVHeight autoRemove];
-//        [self viewDidLayoutSubviews];
-//    }];
+    Message *message = [Message MR_createEntity];
+
+    message.feedItem    = _feedItem;
+    message.body        = text;
+    message.timestamp   = [NSDate date];
+    message.author      = [AppDelegate sharedDelegate].store.currentAccount.currentUser;
+    message.uuid        = [[NSUUID UUID] UUIDString];
     
-    //[Message buildNewMessageWithBody:text forFeedItem:_feedItem];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"feedUpdated" object:self];
+    [messagesVC refreshDataSource];
+    
+    // Update Message Count
+    //_feedItem.messagesCount = [NSNumber numberWithInt:[_feedItem.messagesCount intValue] + 1];
+    //[localContext MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {}];
+
+    
+    
+    [UIView animateWithDuration:1.15f animations:^{
+        [self drawActionBarBottomBorder];
+        float tableHeight = [messagesVC.tableView contentSize].height;
+        CGRect detailFrame = CGRectMake(detailView.frame.origin.x, detailView.frame.origin.y, detailView.frame.size.width, tableHeight + kActionBarHeight);
+        detailView.frame = detailFrame;
+        
+        [self setDetailMaskPath];
+        [self setScrollViewContentSize];
+        
+    } completion:^(BOOL finished) {
+        // this gives us a nice callback when it finishes the animation :)
+    }];
+
+    [message createWithCompletionHandler:^(Message *message, NSError *error) {
+    }];
+    
+   
+   
 }
 
 - (void)handleTapGesture:(UIGestureRecognizer*)gesture {

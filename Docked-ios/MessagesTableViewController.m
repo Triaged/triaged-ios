@@ -9,16 +9,18 @@
 #import "MessagesTableViewController.h"
 #import "MessageCell.h"
 #import "FetchedMessagesDataSource.h"
+#import "NiceJobViewController.h"
 
 @interface MessagesTableViewController ()
 
 @property (nonatomic, strong) FetchedMessagesDataSource *fetchedMessagesDataSource;
+@property (nonatomic, strong) NSFetchedResultsController *_fetchedResultsController;
 
 @end
 
 @implementation MessagesTableViewController
 
-@synthesize messages;
+@synthesize messages, _fetchedResultsController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,26 +37,71 @@
     
     self.view.backgroundColor = [[UIColor alloc]
                                  initWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
-
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    self.tableView.scrollEnabled = NO;
     
+    UIColor *borderColor = BORDER_COLOR;
+    [self.tableView setSeparatorColor:borderColor];
+    
+    NiceJobViewController *niceJob = [[NiceJobViewController alloc] init];
+    niceJob.view.backgroundColor = [UIColor whiteColor];
+    //[niceJob.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+//    [niceJob.view setNeedsLayout];
+//    [niceJob.view layoutIfNeeded];
+    //CGRect headerFrame = CGRectMake(0.0, 0.0, 310.0, 44.0);
+    //niceJob.view.frame = headerFrame;
+//
+    //[niceJob.view autoSetDimension:ALDimensionHieght toSize:44];
+    self.tableView.tableHeaderView = niceJob.view;
+   // [niceJob.view autoSetDimension:ALDimensionHeight toSize:44.0];
+    
+    
+//    
     [self setupFetchedResultsController];
-    [self refreshDataSource];
-    
 }
+
+- (void)sizeHeaderToFit
+{
+    UIView *header = self.tableView.tableHeaderView;
+    
+    [header setNeedsLayout];
+    [header layoutIfNeeded];
+    
+    CGFloat height = [header systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    CGRect frame = header.frame;
+    
+    frame.size.height = height;
+    header.frame = frame;
+    
+    self.tableView.tableHeaderView = header;
+}
+
+
 
 - (void)setupFetchedResultsController
 {
     self.fetchedMessagesDataSource = [[FetchedMessagesDataSource alloc] init];
+    self.fetchedMessagesDataSource.fetchedResultsController = [self fetchedResultsController];
 
     self.tableView.dataSource = self.fetchedMessagesDataSource;
-    self.fetchedMessagesDataSource.fetchedResultsController.delegate = self;
+    self.tableView.delegate = self.fetchedMessagesDataSource;
+
+}
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (!_fetchedResultsController) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(feedItem == %@)", self.feedItem];
+        
+        _fetchedResultsController = [Message MR_fetchAllSortedBy:@"timestamp"
+                                                        ascending:YES
+                                                    withPredicate:predicate
+                                                          groupBy:nil
+                                                         delegate:self.fetchedMessagesDataSource];
+    }
+    return _fetchedResultsController;
 }
 
 - (void)refreshDataSource {
-    self.fetchedMessagesDataSource.messages = messages;
+    [self.fetchedResultsController performFetch:nil];
     [self.tableView reloadData];
 }
 
@@ -65,18 +112,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    Message *message = [self.fetchedMessagesDataSource messageAtIndexPath:indexPath];
-    return [MessageCell heightOfContent:message hasMultipleMessages:NO];
-    
-}
+
 
 #pragma mark NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView reloadData];
 }
+
+
 
 @end

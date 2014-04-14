@@ -19,6 +19,8 @@
 @property (strong, nonatomic) ContainerViewCell *viewToMove;
 @property (strong, nonatomic) UITableViewCell *viewToMoveOriginalCell;
 @property (nonatomic) CGRect viewToMoveOriginalFrame;
+@property (strong, nonatomic) UIImageView *blurredBG;
+@property (strong, nonatomic) UIButton *back;
 @property BOOL showingDetail;
 
 @end

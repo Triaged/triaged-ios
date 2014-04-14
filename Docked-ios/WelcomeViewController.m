@@ -26,7 +26,7 @@
     
     [super viewDidLoad];
     
-    self.view.backgroundColor = BG_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     // buttons
     signupButton.backgroundColor = [[UIColor alloc] initWithRed:121.0f/255.0f green:147.0f/255.0f blue:212.0f/255.0f alpha:1.0f];

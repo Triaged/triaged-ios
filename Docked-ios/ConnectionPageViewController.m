@@ -112,14 +112,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSDictionary *provider = providers[indexPath.row];
-    Class providerSettingsClass = [provider objectForKey:@"settings_class"];
-    
-    BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
-    TRNavigationController *nav = [[TRNavigationController alloc] initWithRootViewController:settingsVC ];
-
-    [self presentViewController:nav animated:YES completion:nil];
+//    
+//    NSDictionary *provider = providers[indexPath.row];
+//    Class providerSettingsClass = [provider objectForKey:@"settings_class"];
+//    
+//    BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
+//    TRNavigationController *nav = [[TRNavigationController alloc] initWithRootViewController:settingsVC ];
+//
+//    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

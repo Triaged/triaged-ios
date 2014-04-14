@@ -23,7 +23,8 @@
     UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
     
     // Now apply the blur effect using Apple's UIImageEffect category
-    UIImage *blurredSnapshotImage = [snapshotImage applyLightEffect];
+    UIColor *tintColor = [UIColor colorWithWhite:0.40 alpha:0.83];
+    UIImage *blurredSnapshotImage = [snapshotImage applyBlurWithRadius:10 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
     
     // Or apply any other effects available in "UIImage+ImageEffects.h"
     //UIImage *blurredSnapshotImage = [snapshotImage applyDarkEffect];

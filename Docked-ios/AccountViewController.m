@@ -48,7 +48,7 @@
                                    initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissAccountView)];
     [self.navigationItem setLeftBarButtonItem:doneButton];
     
-    self.view.backgroundColor = BG_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     tableView.dataSource = self;
     tableView.delegate = self;

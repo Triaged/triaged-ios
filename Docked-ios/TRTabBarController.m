@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     
-    self.delegate = self;
+    //self.delegate = self;
     
     // Home
     FeedTableViewController *feedTableView = [[FeedTableViewController alloc] init];
@@ -67,6 +67,7 @@
     
     
     self.tabBar.opaque = NO;
+    [self.tabBar setTintColor:[UIColor colorWithRed:165.00f green:171.00f blue:184.00f alpha:1.0f]];
     
     
     [self  setViewControllers:[NSArray arrayWithObjects:homeNav, teamNav, providerNav, notificationsNav, accountNav, nil]];
@@ -74,12 +75,13 @@
 //    
     UIImage *finishedImage = [UIImage imageNamed:@"nav_bg_on"];
     UIImage *unfinishedImage = [UIImage imageNamed:@"nav_bg_off"];
-    NSArray *tabBarItemImages = @[@"home", @"team", @"providers", @"notification", @"account"];
+    NSArray *tabBarItemImages = @[@"home", @"team", @"providers", @"inbox", @"account"];
     
     
     NSInteger index = 0;
     for (RDVTabBarItem *item in [[self tabBar] items]) {
         [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
+        
         UIImage *selectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"nav_icon_%@_on",
                                                       [tabBarItemImages objectAtIndex:index]]];
         UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"nav_icon_%@_off",
@@ -88,6 +90,8 @@
         
         index++;
     }
+    
+    
     
 //    [homeNav.view makeConstraints:^(MASConstraintMaker *make) {
 //        //UIView *topLayoutGuide = (id)self.topLayoutGuide;

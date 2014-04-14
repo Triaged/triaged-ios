@@ -11,6 +11,7 @@
 #import "AtReplyMessageCell.h"
 #import "AppDelegate.h"
 #import "Store.h"
+#import "User.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIView+BlurredSnapshot.h"
 
@@ -70,7 +71,8 @@
 	// Input background
     CGRect inputFrame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, kInputHeight);
 	self.imageInput = [[UIView alloc] init];
-    self.imageInput.backgroundColor = [[UIColor alloc] initWithRed:247.0f/255.0f green:247.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
+    self.imageInput.backgroundColor = [UIColor whiteColor];
+    //[[UIColor alloc] initWithRed:247.0f/255.0f green:247.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
 	[self.imageInput setFrame:inputFrame];
 	[self.imageInput setUserInteractionEnabled:YES];
 	[self.view addSubview:self.imageInput];
@@ -88,8 +90,9 @@
     [self.textView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
     [self.textView setScrollsToTop:NO];
     [self.textView setUserInteractionEnabled:YES];
-    self.textView.backgroundColor = [[UIColor alloc] initWithRed:247.0f/255.0f green:247.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
-    [self.textView setFont:[UIFont fontWithName:@"Avenir-Roman" size:15.0]];
+    self.textView.backgroundColor = [UIColor whiteColor];
+    //[[UIColor alloc] initWithRed:247.0f/255.0f green:247.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
+    [self.textView setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0]];
     [self.textView setTextColor: [[UIColor alloc] initWithRed:76.0f/255.0f green:76.0f/255.0f blue:76.0f/255.0f alpha:1.0f]];
     [self.textView setKeyboardAppearance:UIKeyboardAppearanceDefault];
     [self.textView setKeyboardType:UIKeyboardTypeTwitter];
@@ -104,15 +107,15 @@
     
     self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.0f, 6.0f, width, kLineHeight)];
     self.placeholderLabel.text = @"Discuss...";
-    [self.placeholderLabel setFont:[UIFont fontWithName:@"Avenir-Roman" size:15.0]];
-    [self.placeholderLabel setTextColor:[[UIColor alloc] initWithRed:158.0f/255.0f green:158.0f/255.0f blue:158.0f/255.0f alpha:1.0f]];
+    [self.placeholderLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0]];
+    [self.placeholderLabel setTextColor:[[UIColor alloc] initWithRed:200.0f/255.0f green:201.0f/255.0f blue:205.0f/255.0f alpha:1.0f]];
     [self.imageInput addSubview:self.placeholderLabel];
 
     
     // This text view is used to get the content size
 	self.tempTextView = [[UITextView alloc] init];
     self.tempTextView.font = self.textView.font;
-    [self.tempTextView setFont:[UIFont fontWithName:@"Avenir-Roman" size:15.0]];
+    [self.tempTextView setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0]];
     [self.tempTextView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     self.tempTextView.text = @"";
     CGSize size = [self.tempTextView sizeThatFits:CGSizeMake(self.textView.frame.size.width - 10, FLT_MAX)];
@@ -122,11 +125,11 @@
     self.buttonSend = [UIButton buttonWithType:UIButtonTypeCustom];
     NSString *title = NSLocalizedString(@"Send",);
     [self.buttonSend setTitle:title forState:UIControlStateNormal];
-    self.buttonSend.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:15.0];
-    [self.buttonSend setTitleColor:[[UIColor alloc] initWithRed:200.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1.0f] forState:UIControlStateDisabled];
+    self.buttonSend.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0];
+    [self.buttonSend setTitleColor:[[UIColor alloc] initWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0f] forState:UIControlStateDisabled];
     [self.buttonSend setTitleColor:[[UIColor alloc] initWithRed:122.0f/255.0f green:141.0f/255.0f blue:196.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     [self.buttonSend setEnabled:NO];
-    [self.buttonSend setFrame:CGRectMake(self.imageInput.frame.size.width - 65.0f, 8.0f, 59.0f, kLineHeight)];
+    [self.buttonSend setFrame:CGRectMake(self.imageInput.frame.size.width - 65.0f, 6.0f, 59.0f, kLineHeight)];
     [self.buttonSend addTarget:self	action:@selector(sendPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.imageInput addSubview:self.buttonSend];
     
@@ -142,7 +145,7 @@
     
     [self.placeholderLabel removeFromSuperview];
 	[self resizeView:notification];
-	[self scrollToBottomAnimated:YES];
+	//[self scrollToBottomAnimated:YES];
     
     if ([@"Write a message..." isEqualToString:self.textView.text]) {
         self.textView.text = @"";
@@ -355,7 +358,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
         NSArray *completions;
-        completions = [[AppDelegate sharedDelegate].store.currentAccount.teammates allObjects];
+        completions = [User MR_findAll];
         
         handler(completions);
     });
@@ -376,12 +379,12 @@
     filename = [filename stringByReplacingOccurrencesOfString:@" " withString:@"-"];
     filename = [filename stringByReplacingOccurrencesOfString:@"&" withString:@"and"];
     
-//    MTLUser *teammate = (MTLUser *)autocompleteObject;
-//    
-//    AtReplyMessageCell *messageCell = (AtReplyMessageCell *)cell;
-//    messageCell.nameLabel.text = teammate.name;
-//    NSURL *avatarUrl = [NSURL URLWithString:teammate.avatarUrl];
-//    [messageCell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
+    User *teammate = (User *)autocompleteObject;
+    
+    AtReplyMessageCell *messageCell = (AtReplyMessageCell *)cell;
+    messageCell.nameLabel.text = teammate.name;
+    NSURL *avatarUrl = [NSURL URLWithString:teammate.avatarUrl];
+    [messageCell.avatarView setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"avatar"]];
     
     return YES;
 }

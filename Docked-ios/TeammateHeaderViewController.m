@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = BG_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     nameLabel.text = user.name;
     NSURL *avatarUrl = [NSURL URLWithString:user.avatarUrl];

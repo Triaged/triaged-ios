@@ -38,9 +38,9 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     self.navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
-    
-    UIBarButtonItem *ignoreButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(displaySettings)];
-    [self.navigationItem setRightBarButtonItem:ignoreButton];
+//    
+//    UIBarButtonItem *ignoreButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(displaySettings)];
+//    [self.navigationItem setRightBarButtonItem:ignoreButton];
     
     providerFeedTableVC = [[ProviderFeedTableViewController alloc] init];
     providerFeedTableVC.provider = provider;

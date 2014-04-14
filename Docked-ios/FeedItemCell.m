@@ -16,7 +16,7 @@
 
 @implementation FeedItemCell
 
-@synthesize containerView, titleLabel, avatarView, lineDivider, propertyLabel, timestampLabel, separatorLineView, timestampIcon, titleBlockView;
+@synthesize containerView, titleLabel, avatarView, lineDivider, propertyLabel, timestampLabel, separatorLineView, timestampIcon, titleBlockView, messagesIcon, messagesLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -26,16 +26,18 @@
         
         self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = BG_COLOR;
         [self.layer setMasksToBounds:YES];
 
-        self.contentView.layer.shadowOffset = CGSizeMake(0,0);
+        self.contentView.layer.shadowOffset = CGSizeMake(0,1);
         UIColor *shadowColor = SHADOW_COLOR;
         self.containerView.backgroundColor = shadowColor;
         self.contentView.layer.shadowColor = [shadowColor CGColor];
-        self.contentView.layer.shadowRadius = 4;
-        self.contentView.layer.shadowOpacity = 0.75;
-        [self.contentView.layer setCornerRadius:4.0f];
+        self.contentView.layer.shadowRadius = 2;
+        self.contentView.layer.shadowOpacity = 0.25;
+        [self.contentView.layer setCornerRadius:0.0f];
+        self.contentView.layer.shouldRasterize = YES;
+        self.contentView.layer.rasterizationScale = [UIScreen mainScreen].scale;
         
         containerView = [[ContainerViewCell alloc] initForAutoLayout];
         [self.contentView addSubview:containerView];
@@ -84,13 +86,34 @@
         timestampLabel.textAlignment = NSTextAlignmentLeft;
         timestampLabel.backgroundColor = [UIColor whiteColor];
         [containerView addSubview: timestampLabel];
+        
+        
+        messagesIcon = [UIImageView newAutoLayoutView];
+        messagesIcon.translatesAutoresizingMaskIntoConstraints = NO;
+        messagesIcon.image = [UIImage imageNamed:@"feed_icon_comments.png"];
+        messagesIcon.backgroundColor = [UIColor whiteColor];
+        [containerView addSubview:messagesIcon];
+        
+        
+        messagesLabel = [UILabel newAutoLayoutView];
+        messagesLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [messagesLabel setFont: [UIFont fontWithName:@"HelveticaNeue" size:11.0]];
+        messagesLabel.textColor = [[UIColor alloc] initWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0f];
+        [messagesLabel setLineBreakMode: NSLineBreakByClipping];
+        messagesLabel.numberOfLines = 1;
+        messagesLabel.textAlignment = NSTextAlignmentLeft;
+        messagesLabel.backgroundColor = [UIColor whiteColor];
+        [containerView addSubview: messagesLabel];
+        
+        
+        
     }
     return self;
 }
 
 - (void)setFrame:(CGRect)frame {
-    frame.origin.x = 4.0f;
-    frame.size.width = 312.0f;
+    frame.origin.x = 2.0f;
+    frame.size.width = 316.0f;
     [super setFrame:frame];
 }
 
@@ -132,8 +155,8 @@
     self.contentView.bounds = CGRectMake(0.0f, 0.0f, 99999.0f, 99999.0f);
     
     [self.containerView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.containerView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0.5];
-    [self.containerView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:1];
+    [self.containerView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:3.0];
+    [self.containerView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:3.0];
     [self.containerView autoSetDimension:ALDimensionWidth toSize:310.0];
     self.bottomContainerViewContrainst = [self.containerView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:1];
 
@@ -179,7 +202,7 @@
     
     //self.contentView.layer.shadowPath = [[UIBezierPath bezierPathWithRect:self.contentView.bounds] CGPath];
 //    [self.contentView.layer setMasksToBounds:YES];
-      self.contentView.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds cornerRadius:4] CGPath];
+     // self.contentView.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:self.containerView.bounds cornerRadius:4] CGPath];
     [self.contentView.layer setMasksToBounds:YES];
     
     // Set the preferredMaxLayoutWidth of the mutli-line bodyLabel based on the evaluated width of the label's frame,

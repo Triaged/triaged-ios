@@ -32,6 +32,11 @@
     [self fetchObjectsFromURL:URL completionHandler:completionHandler];
 }
 
+- (NSString *)autocompleteString
+{
+    return self.name;
+}
+
 
 //
 //+ (void)fetchRemoteTeamWithBlock:(void (^)(NSArray *))block

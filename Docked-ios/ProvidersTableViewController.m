@@ -41,7 +41,7 @@
     
     self.title = @"PROVIDERS";
     self.navigationController.navigationBar.translucent = NO;
-    self.view.backgroundColor = BG_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     

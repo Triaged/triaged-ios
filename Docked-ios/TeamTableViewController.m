@@ -42,7 +42,7 @@
     
     self.title = @"TEAM";
     self.navigationController.navigationBar.translucent = NO;
-    self.view.backgroundColor = BG_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -59,14 +59,16 @@
     [self.refreshControl addTarget:self action:@selector(fetchTeam) forControlEvents:UIControlEventValueChanged];
     
    
-    team = [NSMutableArray arrayWithArray:[User MR_findAllWithPredicate:self.teamPredicate]];
+    //team = [NSMutableArray arrayWithArray:[User MR_findAllWithPredicate:self.teamPredicate]];
+    team = [NSMutableArray arrayWithArray:[User MR_findAll]];
 
     [self fetchTeam];
 }
 
 - (void) fetchTeam {
     [User teammatesWithCompletionHandler:^(NSArray *users, NSError *error) {
-        team = [NSMutableArray arrayWithArray:[User MR_findAllWithPredicate:self.teamPredicate]];
+        //team = [NSMutableArray arrayWithArray:[User MR_findAllWithPredicate:self.teamPredicate]];
+        team = [NSMutableArray arrayWithArray:[User MR_findAll]];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];

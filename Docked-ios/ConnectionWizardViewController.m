@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = BG_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[ConnectionWizardViewController class], nil];
     pageControl.pageIndicatorTintColor = [[UIColor alloc] initWithRed:233.0f/255.0f green:233.0f/255.0f blue:233.0f/255.0f alpha:1.0f];

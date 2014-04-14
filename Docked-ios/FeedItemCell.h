@@ -30,6 +30,8 @@
 @property (strong, nonatomic) UIView* separatorLineView;
 @property (strong, nonatomic) UIImageView *timestampIcon;
 @property (strong, nonatomic) UILabel *timestampLabel;
+@property (strong, nonatomic) UIImageView *messagesIcon;
+@property (strong, nonatomic) UILabel *messagesLabel;
 @property (strong, nonatomic) NSLayoutConstraint *bottomContainerViewContrainst;
 
 @property (nonatomic, assign) BOOL didSetupConstraints;

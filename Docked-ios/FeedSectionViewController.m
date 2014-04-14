@@ -25,6 +25,7 @@
     if (self) {
         // Custom initialization
         date = currentDate;
+            self.view.backgroundColor = [UIColor colorWithRed:121.00f green:159.00f blue:235.00f alpha:1];
     }
     return self;
 }
@@ -42,12 +43,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
     // Do any additional setup after loading the view from its nib.
     //dateLabel.text = [[FeedSectionViewController dateFormatter] stringFromDate:date];
     dateLabel.text = dateString;
-    dateLabel.backgroundColor = [UIColor colorWithRed:236.00f green:237.00f blue:238.00f alpha:0.9];
+    //dateLabel.backgroundColor = [UIColor colorWithRed:236.00f green:237.00f blue:238.00f alpha:0.9];
     
-    self.view.backgroundColor = [UIColor colorWithRed:236.00f green:237.00f blue:238.00f alpha:0.9];
+    //self.view.backgroundColor = [UIColor colorWithRed:236.00f green:237.00f blue:238.00f alpha:0.9];
 //    CALayer *bottomBorder = [CALayer layer];
 //    
 //    bottomBorder.frame = CGRectMake(0.0f, 41.5f, self.view.frame.size.width, 0.5f);

@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = BG_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     // Do any additional setup after loading the view from its nib.
     NSURL *iconUrl = [NSURL URLWithString:self.provider.largeIcon];

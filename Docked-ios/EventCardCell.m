@@ -107,8 +107,21 @@
     [self.timestampLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.timestampLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.separatorLineView  withOffset:7.0];
     [self.timestampLabel autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.timestampIcon  withOffset:6.0];
-    [self.timestampLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kLabelFifteenInsets];
     [self.timestampLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:kLabelVerticalInsets];
+    
+    
+    [self.messagesIcon setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.messagesIcon autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.separatorLineView  withOffset:kLabelVerticalInsets];
+    [self.messagesIcon autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:12.0];
+    [self.messagesIcon autoSetDimension:ALDimensionWidth toSize:12.0];
+    [self.messagesIcon autoSetDimension:ALDimensionHeight toSize:12.0];
+    
+    [self.messagesLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.messagesLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.separatorLineView  withOffset:7.0];
+    [self.messagesLabel autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.messagesIcon  withOffset:6.0];
+    [self.messagesLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kLabelFifteenInsets];
+    [self.messagesLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:kLabelVerticalInsets];
+
     
     self.didSetupConstraints = YES;
 }
@@ -154,7 +167,8 @@
     self.titleLabel.text = [event.title capitalizedString];
     self.propertyLabel.text = [event.propertyName lowercaseString];
     self.bodyLabel.text = event.body;
-    self.timestampLabel.text = [item.timestamp timeAgo];
+    self.timestampLabel.text = [event.timestamp timeAgo];
+    self.messagesLabel.text = [NSString stringWithFormat:@"%@ Messages", event.messagesCount];
 }
 
 //- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {

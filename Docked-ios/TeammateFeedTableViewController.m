@@ -12,6 +12,8 @@
 #import "FeedSectionViewController.h"
 #import "CardViewController.h"
 #import "TeammateHeaderViewController.h"
+#import "UITableView+NXEmptyView.h"
+#import "EmptyTeammateViewController.h"
 
 @interface TeammateFeedTableViewController () <UITableViewDelegate>
 
@@ -40,10 +42,14 @@
     self.tableView.backgroundColor = BG_COLOR;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    EmptyTeammateViewController *emptyVC = [[EmptyTeammateViewController alloc] init];
+    self.tableView.nxEV_emptyView = emptyVC.view;
+    
     
     TeammateHeaderViewController *headerView = [[TeammateHeaderViewController alloc] init];
     headerView.user = user;
     self.tableView.tableHeaderView = headerView.view;
+    [headerView.view autoSetDimension:ALDimensionHeight toSize:182.0];
     
     self.feedItemsDataSource = [[FetchedFeedItemsDataSource alloc] init];
     self.feedItemsDataSource.fetchedResultsController = [self fetchedResultsController];
@@ -59,6 +65,7 @@
 
 - (void) fetchFeedItems {
     [user feedItemsWithCompletionHandler:^(NSArray *feedItems, NSError *error) {
+        [[self fetchedResultsController] performFetch:nil];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FetchedMessagesDataSource : NSObject <UITableViewDataSource>
+@interface FetchedMessagesDataSource : NSObject <UITableViewDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
 @property (nonatomic, strong) NSMutableArray *messages;

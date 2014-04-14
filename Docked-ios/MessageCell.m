@@ -12,7 +12,7 @@
 
 @implementation MessageCell
 
-@synthesize authorLabel, bodyLabel, moreMessagesLabel, moreMessagesIcon, shouldDrawShadow, shouldDrawMoreMessages, shouldDrawSeparator, lineView, timestampLabel, avatarView;
+@synthesize authorLabel, bodyLabel, moreMessagesLabel, moreMessagesIcon, shouldDrawShadow, shouldDrawMoreMessages, timestampLabel, avatarView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,10 +22,9 @@
         // Line Separator
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.contentView.backgroundColor = [UIColor whiteColor];
+        self.separatorInset = UIEdgeInsetsMake(0, 56, 0, 0);
+
         
-        UIImage *lineSeparator = [UIImage imageNamed:@"line.png"];
-        lineView = [[UIImageView alloc] initWithImage:lineSeparator];
-        [self.contentView addSubview: lineView];
         
         // Avatar image
         avatarView = [[UIImageView alloc] init];
@@ -34,15 +33,15 @@
         
         
         authorLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [authorLabel setFont: [UIFont fontWithName:@"Avenir-Medium" size:15]];
-        authorLabel.textColor = [[UIColor alloc] initWithRed:50.0f/255.0f green:57.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
+        [authorLabel setFont: [UIFont fontWithName:@"HelveticaNeue" size:13]];
+        authorLabel.textColor = [[UIColor alloc] initWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f];
         [authorLabel setLineBreakMode: NSLineBreakByClipping];
         authorLabel.numberOfLines = 1;
         [self.contentView addSubview: authorLabel];
         
         timestampLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [timestampLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:11.0]];
-        timestampLabel.textColor = [[UIColor alloc] initWithRed:191.0f/255.0f green:198.0f/255.0f blue:208.0f/255.0f alpha:1.0f];
+        [timestampLabel setFont: [UIFont fontWithName:@"HelveticaNeue" size:10.0]];
+        timestampLabel.textColor = [[UIColor alloc] initWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0f];
         [timestampLabel setLineBreakMode: NSLineBreakByClipping];
         timestampLabel.numberOfLines = 1;
         timestampLabel.textAlignment = NSTextAlignmentRight;
@@ -50,9 +49,8 @@
         
         
         bodyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-        [bodyLabel setFont: [UIFont fontWithName:@"Avenir-Roman" size:14]];
-        bodyLabel.textColor = BODY_COLOR;
-        //[[UIColor alloc] initWithRed:134.0f/255.0f green:139.0f/255.0f blue:152.0f/255.0f alpha:1.0f];
+        [bodyLabel setFont: [UIFont fontWithName:@"HelveticaNeue" size:13]];
+        bodyLabel.textColor = [[UIColor alloc] initWithRed:120.0f/255.0f green:120.0f/255.0f blue:120.0f/255.0f alpha:1.0f];
         [bodyLabel setLineBreakMode: NSLineBreakByWordWrapping];
         bodyLabel.numberOfLines = 0;
         [bodyLabel sizeToFit];
@@ -98,10 +96,10 @@
     [timestampLabel setFrame:CGRectMake(224.0, 16.0, 70.0, 12.0)];
 
     NSAttributedString *attributedBodyText = [MessageCell attributedBodyText:bodyLabel.text];
-    CGRect newFrame = CGRectMake(56.0, 34.0, 240, [MessageCell heightOfBody:attributedBodyText]);
+    CGRect newFrame = CGRectMake(56.0, 30.0, 240, [MessageCell heightOfBody:attributedBodyText]);
     [bodyLabel setFrame:newFrame];
     
-    if (shouldDrawSeparator) lineView.frame = CGRectMake(6, 1, 296, 1);
+
     if (shouldDrawShadow) [self drawShadow];
     
     if (shouldDrawMoreMessages) {

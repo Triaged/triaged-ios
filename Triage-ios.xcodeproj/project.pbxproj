@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6012FCB77A64332A79F84F4 /* libPods.a */; };
 		CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CB06CB6817EBA50B007323AA /* DockedAPIClient.m */; };
+		CB08E89718E76290008EC9BD /* Thumbsup.m in Sources */ = {isa = PBXBuildFile; fileRef = CB08E89618E76290008EC9BD /* Thumbsup.m */; };
+		CB08E89B18E9F7C1008EC9BD /* NiceJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB08E89918E9F7C1008EC9BD /* NiceJobViewController.m */; };
+		CB08E89C18E9F7C1008EC9BD /* NiceJobViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB08E89A18E9F7C1008EC9BD /* NiceJobViewController.xib */; };
+		CB08E8A318ECC7D5008EC9BD /* EmptyTeammateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB08E8A118ECC7D5008EC9BD /* EmptyTeammateViewController.m */; };
+		CB08E8A418ECC7D5008EC9BD /* EmptyTeammateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB08E8A218ECC7D5008EC9BD /* EmptyTeammateViewController.xib */; };
+		CB08E8A818ECC95D008EC9BD /* EmptyInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB08E8A618ECC95D008EC9BD /* EmptyInboxViewController.m */; };
+		CB08E8A918ECC95D008EC9BD /* EmptyInboxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB08E8A718ECC95D008EC9BD /* EmptyInboxViewController.xib */; };
 		CB0AAF9A17FCA15100695707 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0AAF9917FCA15100695707 /* libstdc++.6.0.9.dylib */; };
 		CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B906317F34E8500F706BE /* StoreKit.framework */; };
 		CB0B906C17F4F47E00F706BE /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0B906B17F4F47E00F706BE /* CardViewController.m */; };
@@ -71,7 +78,6 @@
 		CB5FF744185A449700FEB6BC /* BitbucketSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5FF743185A449700FEB6BC /* BitbucketSettingsViewController.m */; };
 		CB71C9B31899D05900125BEA /* ActionBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB71C9B11899D05900125BEA /* ActionBarViewController.m */; };
 		CB71C9B41899D05900125BEA /* ActionBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB71C9B21899D05900125BEA /* ActionBarViewController.xib */; };
-		CB71C9B6189C0DC200125BEA /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB71C9B5189C0DC200125BEA /* SDWebImage.framework */; };
 		CB71C9B8189C0DE200125BEA /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB71C9B7189C0DE200125BEA /* ImageIO.framework */; };
 		CB71C9BB189C10F000125BEA /* ImageUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CB71C9BA189C10F000125BEA /* ImageUtility.m */; };
 		CB7C2E4517F251A400BD858D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7C2E4417F251A400BD858D /* CFNetwork.framework */; };
@@ -138,6 +144,7 @@
 		CBDCEC78180629480024860B /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDCEC77180629480024860B /* ListCell.m */; };
 		CBDE2937184CF11D00C3D33D /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDE2935184CF11D00C3D33D /* ResetPasswordViewController.m */; };
 		CBDE2938184CF11D00C3D33D /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDE2936184CF11D00C3D33D /* ResetPasswordViewController.xib */; };
+		CBE3F50618DA01D200E6F7B7 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE3F50518DA01D200E6F7B7 /* Reveal.framework */; };
 		CBE446241890816400B18039 /* TRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE446231890816400B18039 /* TRTabBarController.m */; };
 		CBE4463418917E3800B18039 /* ProviderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE4463318917E3800B18039 /* ProviderViewController.m */; };
 		CBE4463718917E7C00B18039 /* TeammateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE4463618917E7C00B18039 /* TeammateViewController.m */; };
@@ -184,6 +191,17 @@
 		B6012FCB77A64332A79F84F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB06CB6717EBA50B007323AA /* DockedAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockedAPIClient.h; sourceTree = "<group>"; };
 		CB06CB6817EBA50B007323AA /* DockedAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockedAPIClient.m; sourceTree = "<group>"; };
+		CB08E89518E76290008EC9BD /* Thumbsup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thumbsup.h; sourceTree = "<group>"; };
+		CB08E89618E76290008EC9BD /* Thumbsup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thumbsup.m; sourceTree = "<group>"; };
+		CB08E89818E9F7C1008EC9BD /* NiceJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiceJobViewController.h; sourceTree = "<group>"; };
+		CB08E89918E9F7C1008EC9BD /* NiceJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NiceJobViewController.m; sourceTree = "<group>"; };
+		CB08E89A18E9F7C1008EC9BD /* NiceJobViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NiceJobViewController.xib; sourceTree = "<group>"; };
+		CB08E8A018ECC7D5008EC9BD /* EmptyTeammateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyTeammateViewController.h; sourceTree = "<group>"; };
+		CB08E8A118ECC7D5008EC9BD /* EmptyTeammateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyTeammateViewController.m; sourceTree = "<group>"; };
+		CB08E8A218ECC7D5008EC9BD /* EmptyTeammateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyTeammateViewController.xib; sourceTree = "<group>"; };
+		CB08E8A518ECC95D008EC9BD /* EmptyInboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyInboxViewController.h; sourceTree = "<group>"; };
+		CB08E8A618ECC95D008EC9BD /* EmptyInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyInboxViewController.m; sourceTree = "<group>"; };
+		CB08E8A718ECC95D008EC9BD /* EmptyInboxViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyInboxViewController.xib; sourceTree = "<group>"; };
 		CB0AAF9917FCA15100695707 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		CB0B906317F34E8500F706BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CB0B906A17F4F47E00F706BE /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
@@ -417,6 +435,7 @@
 		CBDE2934184CF11D00C3D33D /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		CBDE2935184CF11D00C3D33D /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		CBDE2936184CF11D00C3D33D /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
+		CBE3F50518DA01D200E6F7B7 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../Downloads/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		CBE446221890816400B18039 /* TRTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTabBarController.h; sourceTree = "<group>"; };
 		CBE446231890816400B18039 /* TRTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTabBarController.m; sourceTree = "<group>"; };
 		CBE4463218917E3800B18039 /* ProviderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderViewController.h; sourceTree = "<group>"; };
@@ -489,6 +508,7 @@
 				CB24D08C1811D1E100DF0D19 /* MessageUI.framework in Frameworks */,
 				CB13946D1821F31100053086 /* libz.dylib in Frameworks */,
 				CBE8637A17FC9F9C00EF6E73 /* CoreText.framework in Frameworks */,
+				CBE3F50618DA01D200E6F7B7 /* Reveal.framework in Frameworks */,
 				CB8F209317EB5D6300EBDC34 /* CoreGraphics.framework in Frameworks */,
 				CB5A35C2180CD3A600ECAB71 /* CoreData.framework in Frameworks */,
 				CB2F9F9B1808B2EA00F5F97C /* SystemConfiguration.framework in Frameworks */,
@@ -501,7 +521,6 @@
 				CBE8637817FC9F9300EF6E73 /* OpenGLES.framework in Frameworks */,
 				CB0B906417F34E8500F706BE /* StoreKit.framework in Frameworks */,
 				CB7C2E4717F251AE00BD858D /* QuartzCore.framework in Frameworks */,
-				CB71C9B6189C0DC200125BEA /* SDWebImage.framework in Frameworks */,
 				CB8F209517EB5D6300EBDC34 /* UIKit.framework in Frameworks */,
 				CB8F209117EB5D6300EBDC34 /* Foundation.framework in Frameworks */,
 				C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */,
@@ -829,6 +848,7 @@
 		CB8F208F17EB5D6300EBDC34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBE3F50518DA01D200E6F7B7 /* Reveal.framework */,
 				CB71C9B7189C0DE200125BEA /* ImageIO.framework */,
 				CB70536D183E77A4002A377F /* Appsee.framework */,
 				CB96D9BA18353997003DD13E /* Crashlytics.framework */,
@@ -938,6 +958,8 @@
 		CB8F20C017EB5F8300EBDC34 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				CB08E89518E76290008EC9BD /* Thumbsup.h */,
+				CB08E89618E76290008EC9BD /* Thumbsup.m */,
 				CBEB66DB18A9546800622D7E /* Account.h */,
 				CBEB66DC18A9546800622D7E /* Account.m */,
 				CBEB66D518A9546800622D7E /* Provider.h */,
@@ -1037,6 +1059,9 @@
 			children = (
 				CBB4917A189714B30023246D /* NotificationsTableViewController.h */,
 				CBB4917B189714B30023246D /* NotificationsTableViewController.m */,
+				CB08E8A518ECC95D008EC9BD /* EmptyInboxViewController.h */,
+				CB08E8A618ECC95D008EC9BD /* EmptyInboxViewController.m */,
+				CB08E8A718ECC95D008EC9BD /* EmptyInboxViewController.xib */,
 			);
 			name = notifications;
 			sourceTree = "<group>";
@@ -1157,6 +1182,9 @@
 				CB8D0EC2180DAA9C004FABBC /* FetchedMessagesDataSource.m */,
 				CBD2CF0B181824D1009B3B71 /* MessageToolbarViewController.h */,
 				CBD2CF0C181824D1009B3B71 /* MessageToolbarViewController.m */,
+				CB08E89818E9F7C1008EC9BD /* NiceJobViewController.h */,
+				CB08E89918E9F7C1008EC9BD /* NiceJobViewController.m */,
+				CB08E89A18E9F7C1008EC9BD /* NiceJobViewController.xib */,
 			);
 			name = messages;
 			sourceTree = "<group>";
@@ -1190,6 +1218,9 @@
 				CB52169418C53D2A00D99D4B /* TeammateHeaderViewController.h */,
 				CB52169518C53D2B00D99D4B /* TeammateHeaderViewController.m */,
 				CB52169618C53D2B00D99D4B /* TeammateHeaderViewController.xib */,
+				CB08E8A018ECC7D5008EC9BD /* EmptyTeammateViewController.h */,
+				CB08E8A118ECC7D5008EC9BD /* EmptyTeammateViewController.m */,
+				CB08E8A218ECC7D5008EC9BD /* EmptyTeammateViewController.xib */,
 			);
 			name = team;
 			sourceTree = "<group>";
@@ -1343,6 +1374,7 @@
 				CB30E09B183FC42F0067F5E1 /* ConnectionIntroViewController.xib in Resources */,
 				CB4F87A9180F428300B685E1 /* AccountViewController.xib in Resources */,
 				CBDE2938184CF11D00C3D33D /* ResetPasswordViewController.xib in Resources */,
+				CB08E89C18E9F7C1008EC9BD /* NiceJobViewController.xib in Resources */,
 				CBC82A44184ADBDD00C96D3E /* README.md in Resources */,
 				CBF3872D1812535500554730 /* HockeySDK.xcconfig in Resources */,
 				CBC82A45184ADBDD00C96D3E /* release_notes.md in Resources */,
@@ -1355,7 +1387,9 @@
 				CB8F209B17EB5D6300EBDC34 /* InfoPlist.strings in Resources */,
 				CB9886AB183408EC00BA37C9 /* EmptyFeedViewController.xib in Resources */,
 				CBF3872E1812535500554730 /* HockeySDKResources.bundle in Resources */,
+				CB08E8A418ECC7D5008EC9BD /* EmptyTeammateViewController.xib in Resources */,
 				CB8F20D217EB851D00EBDC34 /* Media.xcassets in Resources */,
+				CB08E8A918ECC95D008EC9BD /* EmptyInboxViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1436,6 +1470,7 @@
 				CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */,
 				CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */,
 				CB2F9FAD1808B40A00F5F97C /* MPCJSONDataSerializer.m in Sources */,
+				CB08E8A318ECC7D5008EC9BD /* EmptyTeammateViewController.m in Sources */,
 				CB1394751822F88C00053086 /* ProviderAccountCell.m in Sources */,
 				CBFDFBC9182868980013BBA2 /* ActionCell.m in Sources */,
 				CB27B51B184420F1000B4D55 /* BeanstalkSettingsViewController.m in Sources */,
@@ -1451,6 +1486,7 @@
 				CBE4463D189215A100B18039 /* MTLFeedItem.m in Sources */,
 				CB71C9BB189C10F000125BEA /* ImageUtility.m in Sources */,
 				CB2F9FAE1808B40A00F5F97C /* MPCJSONSerializer.m in Sources */,
+				CB08E89B18E9F7C1008EC9BD /* NiceJobViewController.m in Sources */,
 				CBC82A241846B34400C96D3E /* BraintreeSettingsViewController.m in Sources */,
 				CBB4914A1896CBDF0023246D /* FeedItemsDataSource.m in Sources */,
 				CBC82A37184A768300C96D3E /* UzysRadialProgressActivityIndicator.m in Sources */,
@@ -1467,6 +1503,7 @@
 				CBA6D12C18202C70006B73AC /* ConnectionPageViewController.m in Sources */,
 				CBCFCD1518D7C8ED0037F5CA /* ContainerViewCell.m in Sources */,
 				CBD43F5117FA63E9001AC849 /* MessageCell.m in Sources */,
+				CB08E8A818ECC95D008EC9BD /* EmptyInboxViewController.m in Sources */,
 				CB5FF744185A449700FEB6BC /* BitbucketSettingsViewController.m in Sources */,
 				CB5AECEE17EE922C00319223 /* LoginViewController.m in Sources */,
 				CBA676AE18085B150035368A /* NewRelicSettingsViewController.m in Sources */,
@@ -1525,6 +1562,7 @@
 				CBBCC47D1810956C00876AC6 /* CardPageViewController.m in Sources */,
 				CB2F9FB01808B40A00F5F97C /* NSData+MPBase64.m in Sources */,
 				CB2D00AB181215E6005350D5 /* SettingEventsViewController.m in Sources */,
+				CB08E89718E76290008EC9BD /* Thumbsup.m in Sources */,
 				CBF3239C1899797F00BF8FFE /* FeedSectionViewController.m in Sources */,
 				CB81579F17F0D568006AA14A /* MTLAccount.m in Sources */,
 				CB5AECF417EF7DAA00319223 /* SignupViewController.m in Sources */,
@@ -1652,8 +1690,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Richardson White (4AM4VLZM5Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Richardson White (4AM4VLZM5Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1662,6 +1700,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios/vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework",
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
 					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios",
+					"/Users/charlie/Downloads/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";
@@ -1686,8 +1725,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Richardson White (4AM4VLZM5Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Richardson White (4AM4VLZM5Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
@@ -1696,6 +1735,7 @@
 					"/Users/charlie/Sites/Triage/client/Triage-ios/vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework",
 					"/Users/charlie/Sites/Triage/client/Triage-ios",
 					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios",
+					"/Users/charlie/Downloads/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";

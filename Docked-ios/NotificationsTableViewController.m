@@ -7,6 +7,8 @@
 //
 
 #import "NotificationsTableViewController.h"
+#import "UITableView+NXEmptyView.h"
+#import "EmptyInboxViewController.h"
 
 @interface NotificationsTableViewController ()
 
@@ -28,6 +30,11 @@
     [super viewDidLoad];
     
     self.title = @"INBOX";
+    
+    EmptyInboxViewController *emptyVC = [[EmptyInboxViewController alloc] init];
+    self.tableView.nxEV_emptyView = emptyVC.view;
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

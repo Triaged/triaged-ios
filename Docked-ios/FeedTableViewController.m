@@ -90,6 +90,7 @@
 
 - (void) fetchFeedItems {
     [FeedItem feedItemsWithCompletionHandler:^(NSArray *feedItems, NSError *error) {
+        [[self fetchedResultsController] performFetch:nil];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];
