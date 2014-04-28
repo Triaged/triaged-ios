@@ -1526,20 +1526,15 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"/Users/charlie/Sites/Triage/client/Docked-ios",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework",
-					"/Users/charlie/Sites/Triage/client/Triage-ios",
+					"$(DEVELOPER_FRAMEWORKS_DIR)/**",
+					"../**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";
 				INFOPLIST_FILE = "Docked-ios/Triage-ios-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/charlie/Sites/Triage/client/Triage-ios",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/TestFlightSDK2.0.2",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/Intercom",
+					"../**",
 				);
 				PRODUCT_NAME = "Triage-ios";
 				PROVISIONING_PROFILE = "";
@@ -1558,20 +1553,15 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"/Users/charlie/Sites/Triage/client/Docked-ios",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework",
-					"/Users/charlie/Sites/Triage/client/Triage-ios",
+					"$(DEVELOPER_FRAMEWORKS_DIR)/**",
+					"../**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";
 				INFOPLIST_FILE = "Docked-ios/Triage-ios-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/charlie/Sites/Triage/client/Triage-ios",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/TestFlightSDK2.0.2",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios/Intercom",
+					"../**",
 				);
 				PRODUCT_NAME = "Triage-ios";
 				PROVISIONING_PROFILE = "";
