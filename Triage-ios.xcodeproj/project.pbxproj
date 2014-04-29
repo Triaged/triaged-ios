@@ -1694,13 +1694,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Richardson White (4AM4VLZM5Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"/Users/charlie/Sites/Triage/client/Docked-ios",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework",
-					"/Users/charlie/Sites/Triage/client/Triage-ios",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios",
-					"/Users/charlie/Downloads/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+					"../**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";
@@ -1729,13 +1724,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Richardson White (4AM4VLZM5Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/charlie/Sites/Datafeed/client/Docked-ios",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"/Users/charlie/Sites/Triage/client/Docked-ios",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/vendor/HockeySDK-iOS-3/HockeySDK.embeddedframework",
-					"/Users/charlie/Sites/Triage/client/Triage-ios",
-					"/Users/charlie/Sites/Triage/client/Triage-ios/Docked-ios",
-					"/Users/charlie/Downloads/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+					"../**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Docked-ios/Triage-ios-Prefix.pch";
