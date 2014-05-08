@@ -52,7 +52,7 @@
     // Connect Button
     connectButton = [[TRButton alloc] init];
     connectButton.frame = CGRectMake(40, 115, 240, 38);
-    //[connectButton addTarget:self action:@selector(connect) forControlEvents:UIControlEventTouchUpInside];
+    [connectButton addTarget:self action:@selector(connect) forControlEvents:UIControlEventTouchUpInside];
     
 //    // Ignore Button
 //    ignoreButton = [[TRButton alloc] init];

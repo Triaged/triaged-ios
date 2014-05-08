@@ -24,6 +24,7 @@
 @property (nonatomic, retain) NSString * smallIcon;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * webhookUrl;
+@property (nonatomic, retain) NSString * oauthPath;
 @property (nonatomic, retain) NSSet *feedItems;
 @property (nonatomic, retain) Account *account;
 

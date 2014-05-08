@@ -10,6 +10,7 @@
 #import "ListCell.h"
 #import "BaseSettingsViewController.h"
 #import "Provider.h"
+#import "ProviderSettingsViewController.h"
 
 @interface ConnectionPageViewController () {
     UILabel *headlineLabel;
@@ -112,14 +113,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    NSDictionary *provider = providers[indexPath.row];
+    
+    Provider *provider = providers[indexPath.row];
 //    Class providerSettingsClass = [provider objectForKey:@"settings_class"];
-//    
+    
 //    BaseSettingsViewController *settingsVC = [[providerSettingsClass alloc] init];
-//    TRNavigationController *nav = [[TRNavigationController alloc] initWithRootViewController:settingsVC ];
-//
-//    [self presentViewController:nav animated:YES completion:nil];
+    ProviderSettingsViewController *settingsVC = [[ProviderSettingsViewController alloc] init];
+    settingsVC.provider = provider;
+    TRNavigationController *nav = [[TRNavigationController alloc] initWithRootViewController:settingsVC ];
+
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

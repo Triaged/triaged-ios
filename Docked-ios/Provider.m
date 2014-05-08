@@ -23,6 +23,7 @@
 @dynamic smallIcon;
 @dynamic title;
 @dynamic webhookUrl;
+@dynamic oauthPath;
 @dynamic feedItems;
 @dynamic account;
 
@@ -32,8 +33,11 @@
 }
 
 + (void)providersWithCompletionHandler:(void(^)(NSArray *providers, NSError *error))completionHandler {
-    NSURL *URL = [NSURL URLWithString:@"providers.json"];
+//    NSURL *URL = [NSURL URLWithString:@"providers.json"];
+    NSURL *URL = [NSURL URLWithString:@"apps/2/providers.json"];
     [self fetchObjectsFromURL:URL completionHandler:completionHandler];
+
+//apps/2/providers.json
 }
 
 @end

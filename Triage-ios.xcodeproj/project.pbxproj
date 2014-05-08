@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36C82D54191AE01C00D21DD5 /* ProviderSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C82D52191AE01C00D21DD5 /* ProviderSettingsViewController.m */; };
 		C17B5DC0194D4BAA8A720CBF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6012FCB77A64332A79F84F4 /* libPods.a */; };
 		CB06CB6917EBA50B007323AA /* DockedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CB06CB6817EBA50B007323AA /* DockedAPIClient.m */; };
 		CB08E89718E76290008EC9BD /* Thumbsup.m in Sources */ = {isa = PBXBuildFile; fileRef = CB08E89618E76290008EC9BD /* Thumbsup.m */; };
@@ -188,6 +189,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36C82D52191AE01C00D21DD5 /* ProviderSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderSettingsViewController.m; sourceTree = "<group>"; };
+		36C82D53191AE01C00D21DD5 /* ProviderSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderSettingsViewController.h; sourceTree = "<group>"; };
 		B6012FCB77A64332A79F84F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB06CB6717EBA50B007323AA /* DockedAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockedAPIClient.h; sourceTree = "<group>"; };
 		CB06CB6817EBA50B007323AA /* DockedAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockedAPIClient.m; sourceTree = "<group>"; };
@@ -540,6 +543,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36C82D51191ADED400D21DD5 /* oauth_service */ = {
+			isa = PBXGroup;
+			children = (
+				36C82D52191AE01C00D21DD5 /* ProviderSettingsViewController.m */,
+				36C82D53191AE01C00D21DD5 /* ProviderSettingsViewController.h */,
+			);
+			name = oauth_service;
+			sourceTree = "<group>";
+		};
 		CB06CB6617EBA4EE007323AA /* networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +703,7 @@
 		CB429B9317EFDAA8002273D6 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				36C82D51191ADED400D21DD5 /* oauth_service */,
 				CB5FF741185A448500FEB6BC /* bitbucket */,
 				CBC82A211846B33600C96D3E /* braintree */,
 				CB27B518184420CC000B4D55 /* beanstalk */,
@@ -1469,6 +1482,7 @@
 				CB4FDD4D17FF75B700EEE7F6 /* PersistentStack.m in Sources */,
 				CB4F87B3180F9A1B00B685E1 /* EventCell.m in Sources */,
 				CBCC6C9518199D71001030C2 /* MLPAutoCompleteTextField.m in Sources */,
+				36C82D54191AE01C00D21DD5 /* ProviderSettingsViewController.m in Sources */,
 				CB2F9FAD1808B40A00F5F97C /* MPCJSONDataSerializer.m in Sources */,
 				CB08E8A318ECC7D5008EC9BD /* EmptyTeammateViewController.m in Sources */,
 				CB1394751822F88C00053086 /* ProviderAccountCell.m in Sources */,
